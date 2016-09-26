@@ -9,31 +9,23 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.standard.StandardAnalyzer;
+//import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.*;
 import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.ParseException;
-import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
-import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.search.highlight.Highlighter;
 import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
 import org.apache.lucene.search.highlight.QueryScorer;
 import org.apache.lucene.search.highlight.SimpleSpanFragmenter;
-import org.apache.lucene.search.highlight.TokenSources;
-import org.apache.lucene.store.FSDirectory;
+//import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
 import org.lionsoul.jcseg.analyzer.v5x.JcsegAnalyzer5X;
 import org.lionsoul.jcseg.tokenizer.core.JcsegTaskConfig;
-
-import java.nio.file.FileSystems;
-
-import com.chenlb.mmseg4j.analysis.ComplexAnalyzer;
-import com.chenlb.mmseg4j.analysis.SimpleAnalyzer;
 
 public class LuceneWrapper {
 	private static final Logger logger = LogManager.getLogger(LuceneWrapper.class);
@@ -61,13 +53,13 @@ public class LuceneWrapper {
 	public static LuceneWrapper getInstance() {
 		return wrapper;
 	}
+
 	public void destroyAll() {
 		logger.info("destroyAll...");
 		if (null != reader) {
 			try {
 				reader.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -75,15 +67,16 @@ public class LuceneWrapper {
 			dir.close();
 		}
 	}
+
 	public void beginIndexing() {
 	    try {
 			index = new IndexWriter(dir, config);
 			logger.info("create index writer...");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
+
 	public void addDocument(Document doc) {
 		org.apache.lucene.document.Document luceneDoc = new org.apache.lucene.document.Document();
 		Field urlField = new Field("url", doc.getUrl(), TextField.TYPE_STORED);
@@ -99,7 +92,6 @@ public class LuceneWrapper {
 			index.addDocument(luceneDoc);
 			logger.info("add document: " + doc.getUrl() + "...");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -108,7 +100,6 @@ public class LuceneWrapper {
 			index.close();
 			logger.info("close index writer...");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -128,20 +119,20 @@ public class LuceneWrapper {
 		highlighter.setTextFragmenter(
 	               new SimpleSpanFragmenter(scorer, 128));
 		List<Document> result = new ArrayList<>();
-		for (ScoreDoc doc:docs) {
-			org.apache.lucene.document.Document tmp = searcher.doc(doc.doc);
+		for (ScoreDoc hit:docs) {
+			org.apache.lucene.document.Document tmp = searcher.doc(hit.doc);
 			String title = tmp.get("title");
 			String url = tmp.get("url");
 			Document resultDoc = new Document(url);
 			resultDoc.setTitle(title);
+			resultDoc.setScore(hit.score);
 
 			String contentString = tmp.get("content");
-			TokenStream stream = analyzer.tokenStream("content", new StringReader(tmp.get("content")));
+			TokenStream stream = analyzer.tokenStream("content", new StringReader(contentString));
 			try {
 				String fragment = highlighter.getBestFragment(stream, contentString);
 				resultDoc.setHighlighter(fragment);
 			} catch (InvalidTokenOffsetsException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				resultDoc.setHighlighter("");
 			}

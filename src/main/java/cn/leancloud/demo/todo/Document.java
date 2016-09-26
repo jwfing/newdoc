@@ -6,6 +6,7 @@ public class Document {
 	private String content;
 	private String url;
 	private String highlighter;
+	private float score;
 	public Document(String url) {
 		this.url = url;
 	}
@@ -41,5 +42,11 @@ public class Document {
 	}
 	public void setHighlighter(String highlighter) {
 		this.highlighter = highlighter;
+	}
+	public float getScore() {
+		return score;
+	}
+	public void setScore(float score) {
+		this.score = score;
 	}
 }

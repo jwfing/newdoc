@@ -10,10 +10,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gitrac</title>
 <link rel="stylesheet" href="/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
 <link rel="stylesheet" href="https://leancloud.cn/styles/5a47bda9.app.css">
 </head>
 
 <body ng-app="searchMod" class="dashboard-init dashboard-qcloud dashboard-" ng-controller="UserCtrl">
+
+<nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="index.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right">
+
+        <li class="dropdown ng-hide" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text ng-binding"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style="" class="ng-hide"><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username" class="">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username" class="">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
 
 <div class="search-container col-sm-10 col-sm-offset-1" ng-controller="SearchCtrl">
 
@@ -29,7 +81,7 @@
   <div class="search-content">
     <c:forEach items="${results}" var="doc">
       <div class="search-item" ng-repeat="doc in searchResults">
-        <h4 class="search-title text-ellipse"><a href="${doc.url}" ng-bind-html="">${doc.title}</a></h4>
+        <h4 class="search-title text-ellipse"><a href="${doc.url}" ng-bind-html="">${doc.title}</a>(score: ${doc.score})</h4>
         <p class="search-context" ng-bind-html=" | to_trusted">${doc.highlighter}</p>
         <hr>
       </div>

@@ -1,11 +1,11 @@
 package cn.leancloud.demo.todo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.internal.impl.JavaRequestSignImplementation;
 
 import cn.leancloud.LeanEngine;
@@ -52,31 +51,62 @@ public class AppInitListener implements ServletContextListener {
       // 如果需要本地开发时调用云端云函数实现，则注释掉下面语句。
       LeanEngine.setLocalEngineCallEnabled(true);
     }
-    String htmlDir = "./src/main/webapp";
-    File dir = new File(htmlDir);
-    String[] htmlFiles = dir.list(new FilenameFilter(){
-    	@Override
-    	public boolean accept(File dir, String name) {
-    		return name.endsWith(".html");
-    	}
-    });
-    String docRootPath = "http://localhost:3000/";
 
     LuceneWrapper wrapper = LuceneWrapper.getInstance();
     wrapper.beginIndexing();
     JsoupHTMLExtractor extractor = new JsoupHTMLExtractor();
-    for (String htmlFile : htmlFiles) {
-    	System.out.println("indexing file: " + htmlFile + "...");
-    	File source = new File(htmlDir + "/" + htmlFile);
-		Document doc = extractor.getDocument(source, docRootPath + htmlFile);
-		wrapper.addDocument(doc);
-    }
-    wrapper.endIndexing();
+
+    String htmlDir = "./src/main/webapp";
+    String docRootPath = "http://localhost:3000";
+
     try {
+        File dir = new File(htmlDir);
+        List<String> htmlFiles = listDir(dir);
+        for (String htmlFile: htmlFiles) {
+        	String url = htmlFile.replace(htmlDir, docRootPath);
+        	File source = new File(htmlFile);
+    		Document doc = extractor.getDocument(source, url);
+    		wrapper.addDocument(doc);
+        }
+        wrapper.endIndexing();
 		wrapper.startSearching();
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+  }
+  
+  private List<String> listDir(File root) {
+	  List<String> results = new ArrayList<>();
+	  String files[] = root.list(new FilenameFilter() {
+		  @Override
+		  public boolean accept(File dir, String name) {
+			  return name.endsWith(".html");
+		  }
+	  });
+	  for (String file: files) {
+		  results.add(root.getPath() + "/" + file);
+	  }
+	  File[] subDirs = root.listFiles(new FileFilter() {
+	    	@Override
+	    	public boolean accept(File filepath) {
+	    		if (!filepath.isDirectory()) {
+	    			return false;
+	    		}
+	    		if (filepath.getPath().endsWith("custom")) {
+	    			return false;
+	    		}
+	    		if (filepath.getPath().endsWith("images")) {
+	    			return false;
+	    		}
+	    		return true;
+	    	}
+	    });
+	  for (File subDir: subDirs) {
+		  List<String> tmp = listDir(subDir);
+		  if (null != tmp && tmp.size() > 0) {
+			  results.addAll(tmp);
+		  }
+	  }
+	  return results;
   }
 }
