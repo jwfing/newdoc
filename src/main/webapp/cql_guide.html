@@ -1,0 +1,796 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="cloud-query-language-">Cloud Query Language 详细指南</h1>
+<p>Cloud Query Language（简称 CQL） 是 LeanCloud 为查询 API 定制的一套类似 SQL 查询语法的子集和变种，主要目的是降低大家学习 LeanCloud 查询的 API 的成本，可以使用传统的 SQL 语法来查询 LeanCloud 应用内的数据。</p>
+<p>本文档将详细介绍 CQL 的语法和常见用法。</p>
+<h2 id="-sql-">与 SQL 主要差异</h2>
+<ul>
+<li>不支持 join ，关联查询提供 include， relatedTo 等替代，参考<a href="#关系查询">关系查询</a>。</li>
+<li>不支持事务。</li>
+<li>更新、删除要求一定要提供 objectId=xxx 的条件，只能根据 objectId 和其他条件来更新或者删除某个文档，不提供批量更新和删除。</li>
+<li>不支持锁。</li>
+<li>仅支持部分 SQL 函数，请参考 <a href="#内置函数">内置函数</a>。</li>
+<li>不支持 group by、having、sum、distinct 等分组聚合查询语法。</li>
+</ul>
+<h2 id="-">基本语法</h2>
+<p>插入一条数据：</p>
+<pre><code class="lang-sql">insert into GameScore(name, score) values(&#39;leancloud&#39;, 100)
+</code></pre>
+<p>更新一条数据：</p>
+<pre><code class="lang-sql">update GameScore set score=90 where objectId=&#39;558e20cbe4b060308e3eb36c&#39;
+</code></pre>
+<p>但是， <strong>CQL 强制要求更新和删除必须有 where 条件，并且 where 条件中包含 <code>objectId=xxx</code> ，也就是说你只能根据 objectId 加上其他条件来更新或者删除一条记录</strong>。如果没有提供，将报错。</p>
+<p>一个查询某个 class 下的 100 条数据：</p>
+<pre><code class="lang-sql">select * from GameScore
+</code></pre>
+<p>等价于（以 Android 为例子）:</p>
+<pre><code class="lang-java">AVQuery&lt;AVObject&gt; query = new AVQuery&lt;AVObject&gt;(&quot;GameScore&quot;);
+List&lt;AVObject&gt; avObjects = query.find()
+</code></pre>
+<p><code>select</code> 一个完整的语法形式类似这样：</p>
+<pre><code class="lang-sql">select [查询字段列表，逗号隔开] from [class 名称]
+   [where [条件列表]
+   [limit [skip],limit
+   [order by [排序字段列表] [asc |desc]]]]
+</code></pre>
+<p>一些小例子：</p>
+<pre><code class="lang-sql">//查询结果只包含 name,score 以及内置字段(objectId,createdAt等)
+select name,score from GameScore
+
+//根据 name 查找
+select * from GameScore where name=&#39;dennis&#39;
+
+//根据 name 和 score 同时查找
+select * from GameScore where name is exists and score &gt; 80 and score &lt;= 100
+
+//分页查找，从第 100 条开始向后查找 10 条数据
+select * from GameScore limit 100,10
+
+//根据 score 和 name 排序
+select * from GameScore order by score,+name desc
+</code></pre>
+<p>删除一条数据：</p>
+<pre><code class="lang-sql">delete from GameScore where objectId=&#39;558e20cbe4b060308e3eb36c&#39;
+</code></pre>
+<h2 id="-">插入</h2>
+<p>insert 语句的基本语法：</p>
+<pre><code class="lang-sql">insert into table_name (列1, 列2,...) VALUES (值1, 值2,....)
+</code></pre>
+<p>例如：</p>
+<pre><code class="lang-sql">insert into Player(name, age) values(&#39;LeanCloud&#39;, 2)
+insert into GameScore(player, score) values(pointer(&#39;Player&#39;,&#39;player objectId&#39;), 100)
+</code></pre>
+<p>上面例子里我们使用内置的 <code>pointer</code> 函数创建一个指向 Player 的 pointer，并存入 GameScore 表的 player 列。更多内置函数请参考<a href="#内置函数">内置函数</a>一节。</p>
+<p>insert 还支持多行插入：</p>
+<pre><code class="lang-sql">insert into Player(name, age) values (&#39;LeanCloud&#39;, 2), (&#39;美味书签&#39;, 3)
+</code></pre>
+<p>values 后面接多个括号括起来的值列表即可。</p>
+<p>insert 语句也支持占位符（推荐方式）:</p>
+<pre><code class="lang-sql">insert into GameScore(name, score) values (?, ?)
+</code></pre>
+<h2 id="-">更新</h2>
+<p>update 语句的基本语法：</p>
+<pre><code class="lang-sql">update 表名称 set 列名称 = 新值 where 条件列表
+</code></pre>
+<p>例如：</p>
+<pre><code class="lang-sql">update GameScore set score=90, name=&#39;leancloud&#39; where objectId=&#39;558e20cbe4b060308e3eb36c&#39;
+</code></pre>
+<p>如果涉及到 op 操作，例如只有当账户余额超过 100 元的时候，给账户扣款 50:</p>
+<pre><code class="lang-sql">update Account set account=op(&#39;Decrement&#39;, {&#39;amount&#39;: 50}) where objectId=&#39;558e20cbe4b060308e3eb36c&#39; and amount&gt;=100
+</code></pre>
+<p>如果当前账户少于 100 元，这个操作将失败，并返回错误信息。</p>
+<p>CQL 的 update 和 delete 语句都强制要求 where 条件中出现 objectId=xxx 的条件，也就是只能更新或者删除特定 objectId 的文档。</p>
+<p>op 操作提供了 <code>op(名称, JSON 参数)</code> 的内置函数，来方便用户使用，例如往一个 relation 列添加一个对象：</p>
+<pre><code class="lang-sql">update _User set friends=op(&#39;AddRelation&#39;, {&#39;objects&#39;: [pointer(&#39;_User&#39;,&#39;user id&#39;)]}) where objectId=&#39;558e20cbe4b060308e3eb36c&#39;
+</code></pre>
+<p>update 语句同样也支持占位符（推荐方式）:</p>
+<pre><code class="lang-sql">update GameScore set name=?,score=? where objectId=?
+</code></pre>
+<h2 id="-">查询</h2>
+<p>select 语句中 <code>where</code> 之后的查询条件基本跟 SQL 语法相似，比如支持 <code>or</code> 和 <code>and</code> 的复合查询，支持 <code>=</code>、<code>!=</code>、<code>&lt;</code>、<code>&lt;</code> 等比较运算符，支持子查询、in 查询等。详细解释如下。</p>
+<h3 id="-">基本查询</h3>
+<p>查询指定信息的对象，用 <code>=</code> 比较符：</p>
+<pre><code class="lang-sql">select * from GameScore where name=&#39;dennis&#39;
+</code></pre>
+<p>查询不等于指定信息的对象：</p>
+<pre><code class="lang-sql">select * from GameScore where name!=&#39;dennis&#39;
+</code></pre>
+<p>也可以用 <code>&lt;&gt;</code> 运算符来表示不等于。</p>
+<p>比较日期，使用 <code>date</code> 函数来转换，比如查询特定时间之前创建的对象：</p>
+<pre><code class="lang-sql">select * from GameScore where createdAt &lt; date(&#39;2011-08-20T02:06:57.931Z&#39;)
+</code></pre>
+<p>date 函数接收的日期格式必须是 <code>2011-08-20T02:06:57.931Z</code> 的 UTC 时间。更多内置函数请看最后的 <a href="#内置函数">内置函数</a> 部分。</p>
+<p>一些常见的查询运算符：</p>
+<table>
+  <tr><th>Key</th><th>Operation</th></tr>
+  <tr><td>&lt;</td><td>小于</td></tr>
+  <tr><td>&lt;=</td><td>小于等于</td></tr>
+  <tr><td>&gt;</td><td>大于</td></tr>
+  <tr><td>&gt;=</td><td>大于等于</td></tr>
+  <tr><td> != 或者 &lt;&gt;</td><td>不等于</td></tr>
+  <tr><td>[not] like</td><td>模糊查询</td></tr>
+  <tr><td>[not] regexp</td><td>正则匹配</td></tr>
+  <tr><td>[not] in(子查询或者数组)</td><td>包含或者不包含</td></tr>
+  <tr><td>is [not] exists</td><td>这个 Key 有值或者不存在值</td></tr>
+</table>
+
+<p>比较运算符可以用在日期、字符串、数字甚至对象上。</p>
+<h3 id="-">模糊查询</h3>
+<p>模糊查询可以使用 <code>like</code>，比如查询名字以 dennis 开头的对象。</p>
+<pre><code class="lang-sql">select * from GameScore where name like &#39;dennis%&#39;
+</code></pre>
+<p><code>%</code> 表示模糊匹配的位置占位符。</p>
+<p>like 本质上是转成 <code>regexp</code> 的正则匹配查询，因此上面的例子还可以写成：</p>
+<pre><code class="lang-sql">select * from GameScore where name regexp &#39;dennis.*&#39;
+</code></pre>
+<p>否定形式，查询名字不以 dennis 开头的对象：</p>
+<pre><code class="lang-sql">select * from GameScore where name not like &#39;dennis%&#39;
+或者
+select * from GameScore where name not regexp &#39;dennis.*&#39;
+</code></pre>
+<p>正则匹配的效率一般，类似这种全文搜索请求，我们都推荐采用 <a href="app_search_guide.html">应用内全文搜索</a>。</p>
+<h3 id="-">值是否存在查询</h3>
+<p>只返回 <code>level</code> 字段值存在的对象：</p>
+<pre><code class="lang-sql">select * from GameScore where level is exists
+</code></pre>
+<p>反之，使用 <code>is not exists</code>。请注意，值是否存在，跟 null 或者空字符串是不同的，不存在表示这个列在对象里都不存在。</p>
+<h3 id="-">数组查询</h3>
+<p>假设 <code>scores</code> 字段是一个数组，我们想查询分数里有 100 的成绩列表：</p>
+<pre><code class="lang-sql">select * from GameScore where scores=100
+</code></pre>
+<p>如果想查找分数<strong>只有</strong>两个 100 分的成绩：</p>
+<pre><code class="lang-sql">select * from GameScore where scores all (100,100)
+</code></pre>
+<p><code>all</code> 表示数组完全匹配。</p>
+<p>查询数组长度为特定值的对象：</p>
+<pre><code>select * from GameScore where size(scores) = 2
+</code></pre><p>数组长度查询仅支持等于号，不支持大小和小于等其他比较运算符。</p>
+<h3 id="-">子查询</h3>
+<p>使用 <code>in</code> 来做子查询，后面跟的可以是一个列表，例如查询名字是 dennis、catty 和 green 三个玩家的成绩：</p>
+<pre><code class="lang-sql">select * from GameScore where name in (&#39;dennis&#39;,&#39;catty&#39;,&#39;green&#39;)
+</code></pre>
+<p>当然，如果想查询的不在列表里，那可以使用 <code>not in</code>:</p>
+<pre><code class="lang-sql">select * from GameScore where name not in (&#39;dennis&#39;,&#39;catty&#39;,&#39;green&#39;)
+</code></pre>
+<p>in 后面还可以是一个子查询，比如查询玩家信息，并且成绩大于 80 分的：</p>
+<pre><code class="lang-sql">select * from Player where name in (select name from GameScore where score&gt;80)
+</code></pre>
+<p>注意子查询必须指定查询的字段名称是 <code>select name</code>。</p>
+<p>子查询另一种常见形式是使用 <code>=</code> 或 <code>!=</code> 跟一条查询语句：</p>
+<pre><code class="lang-sql">select * from Player where name =(select name from GameScore where score&gt;80)
+select * from Player where name !=(select name from GameScore where score&lt;=80)
+</code></pre>
+<p><strong>注意：子查询的语句也受上限 1000 条记录的限制。</strong></p>
+<h3 id="-">地理位置信息查询</h3>
+<p>可以通过 CQL 进行地理位置信息查询，比如我想查询自己附近的玩家（从近到远排序），假设 <code>location</code> 字段是 GeoPoint 类型：</p>
+<pre><code class="lang-sql">select * from Player where location near [116.4, 39.9]
+</code></pre>
+<p>其中 <code>[116.4, 39.9]</code> 是经纬度坐标。也可以使用 <code>geopoint</code> 函数来创建：</p>
+<pre><code class="lang-sql">select * from Player where location near geopoint(116.4, 39.9)
+</code></pre>
+<p>只有在地理位置信息查询里才可以使用 <code>[longitude, latitude]</code> 这样的语法。在其他查询里将被作为数组类型。</p>
+<p>为了限定搜索的最大距离，还可以使用 <code>max [距离]</code> 来限定，比如限定在 1 公里内：</p>
+<pre><code class="lang-sql">select * from Player where location near geopoint(116.4, 39.9) max 1 km
+</code></pre>
+<p>距离长度的其他单位包括 <code>miles</code>（英里）和 <code>radians</code>（弧度），如果不提供明确的单位，默认是<strong>弧度</strong>。</p>
+<p>通过 <code>min [距离]</code> 还可以限定最小距离：</p>
+<pre><code class="lang-sql">select * from Player where location near geopoint(116.4, 39.9) min 0.5 km
+</code></pre>
+<p><code>min</code> 和 <code>max</code> 同时限定的时候，<code>min</code> 必须出现在 <code>max</code> 之前：</p>
+<pre><code class="lang-sql">select * from Player where location near geopoint(116.4, 39.9) min 0.5 km max 1 km
+</code></pre>
+<p>如果想查询某个矩形框内的对象，可以使用 <code>within [西南坐标] and [东北坐标]</code> 的语法：</p>
+<pre><code class="lang-sql">select * from Player where location within [116.33, 39.97] and [116.37, 39.99]
+</code></pre>
+<h3 id="-count-">查询个数(count)</h3>
+<p>使用 <code>count</code> 查询来返回符合查询条件的数目，比如查询整张表的记录数：</p>
+<pre><code class="lang-sql">select count(*) from GameScore
+</code></pre>
+<p><code>count</code> 不支持 <code>distinct</code> 等语法。仅限 <code>count(*)</code> 和 <code>count(objectId)</code>。</p>
+<p>查询分数大于 60 并且小于等于 80 的成绩数目：</p>
+<pre><code class="lang-sql">select count(*) from GameScore where score&gt;60 and score&lt;=80
+</code></pre>
+<p>查询个数的同时可以返回对象：</p>
+<pre><code class="lang-sql">select count(*),* from GameScore
+</code></pre>
+<p>也可以返回特定的字段：</p>
+<pre><code class="lang-sql">select count(*),name from GameScore
+</code></pre>
+<h3 id="-">关系查询</h3>
+<p>有几种方式来查询对象之间的关系数据。如果你想获取对象，而这个对象的一个字段对应了另一个对象， 你可以用一个 where 查询，自己构造一个 Pointer，和其他数据类型一样。</p>
+<p>举例说，如果每一个 Comment 有一个 Post 对象在它的 post 字段上（Pointer 类型），你可以对一个 post 取得所有 comment：</p>
+<pre><code class="lang-sql">select * from Comment where post=pointer(&#39;Post&#39;,&#39;51e3a359e4b015ead4d95ddc&#39;)
+</code></pre>
+<p><code>pointer</code> 函数接收 className 和 objectId。</p>
+<p>如果你想获取对象, 这个对象的一个字段指向的对象（必须是 Pointer）是符合另一个查询的， 你可以使用 in 查询。注意默认的 limit 是 100 而且最大的 limit 是 1000，这个限制同样适用于内部的查询，所以对于较大的数据集你可能需要细心地构建查询来获得期望的行为。举例说，假设你有一个 Post 类和一个 Comment 类，每个 Comment 都有一个指向它的 Post 的 Pointer，你可以找到对于有图片的 Post 的 Comment：</p>
+<pre><code class="lang-sql">select * from Comment where post in (select * from Post where image is exists)
+</code></pre>
+<p>如果 Post 下面有一个 key 是 Relation 类型，并且叫做 likes，存储了喜欢这个 Post 的 User。你可以找到这些 user，他们都 like 过同一个指定的 post：</p>
+<pre><code class="lang-sql">select * from _User where related likes to pointer(&#39;Post&#39;, &#39;51e3a359e4b015ead4d95ddc&#39;)
+</code></pre>
+<p>基本的查询形式是 <code>releated &lt;key&gt; to &lt;pointer&gt;</code>。</p>
+<p>如果某个字段是 Pointer，默认查询的时候，只会返回 <code>{__type: &#39;Pointer&#39;, objectId: &#39;objectId&#39;, className:&#39;Post&#39;}</code> 这些基本信息，如果希望同时将这个对象的其他信息查询下来，可以使用 include，比如查询 Comment 同时将 Post 带下来：</p>
+<pre><code class="lang-sql">select include post, * from Comment
+</code></pre>
+<p>在 select 中采用 <code>include &lt;key&gt;</code> 就可以将某个 Pointer 字段关联查询出来。多个字段要多次 include：</p>
+<pre><code class="lang-sql">select include post,include author from Comment
+</code></pre>
+<p>同样，还可以支持嵌套的 include 查询，比如 Post 里还有一个 Pointer 指向 Category：</p>
+<pre><code class="lang-sql">select include post.category,* from Comment
+</code></pre>
+<h3 id="-">复合查询</h3>
+<p>你可以使用 <code>and</code> 和 <code>or</code> 来做符合查询，例如查询分数在 80 到 100 之间，可以用 <code>and</code>：</p>
+<pre><code class="lang-sql">select * from GameScore where score&gt;80 and score&lt;=100
+</code></pre>
+<p>再加个条件，或者分数为 0 分的：</p>
+<pre><code class="lang-sql">select * from GameScore where score&gt;80 and score&lt;=100 or score=0
+</code></pre>
+<p><code>and</code> 的优先级高于 <code>or</code>，因此上面的查询也可以用括号来明确地表示这种优先级：</p>
+<pre><code class="lang-sql">select * from GameScore where (score&gt;80 and score&lt;=100) or score=0
+</code></pre>
+<h2 id="-">限定返回值</h2>
+<p>通过 <code>limit</code> 语句来限定返回结果大小，比如限定返回 100 个：</p>
+<pre><code class="lang-sql">select * from Comment limit 100
+</code></pre>
+<p>可以设定从第 m+1 个元素开始，例如从第 101 个元素（包含）开始往后取 10 个：</p>
+<pre><code class="lang-sql">select * from Comment limit 100,10
+</code></pre>
+<p>这个形式跟 MySQL 是类似的。</p>
+<h3 id="-">占位符</h3>
+<p>查询条件和 limit 子句还支持占位符，也就是可以用问号 <code>?</code> 替代值，值的列表通过 SDK 提供的方法传入，具体请参考各 SDK 用法，例如：</p>
+<pre><code class="lang-sql">select * from GameScore where name=? and score&gt;? limit ?,?
+</code></pre>
+<p>占位符支持所有 LeanCloud 平台上的有效类型，复杂类型（如日期、GeoPoint）要求以 <a href="./rest_api.html#数据类型">REST API</a> 文档说明的 JSON 格式来提供。</p>
+<p><strong>我们推荐使用占位符的方式来使用 CQL，查询语句可以通过预编译被缓存起来，降低 CQL 的转换开销。</strong></p>
+<h3 id="-">排序</h3>
+<p>通过 <code>order</code> 语句来排序，<code>order</code> 语句只能出现在最后，不能在 <code>where</code> 和 <code>limit</code> 之前。</p>
+<p>例如按照分数倒序排（分数高的前）：</p>
+<pre><code class="lang-sql">select * from GameScore order by score desc
+</code></pre>
+<p>也可以写成：</p>
+<pre><code class="lang-sql">select * from GameScore order by -score
+</code></pre>
+<p>加号表示升序，减号表示降序。</p>
+<p>多个字段组合排序，例如分数高的前，名字相同的「更小」的在前（字母顺序）：</p>
+<pre><code class="lang-sql">select * from GameScore order by -score,name
+</code></pre>
+<p>同样的语句可以写成：</p>
+<pre><code class="lang-sql">select * from GameScore order by score,+name desc
+或者
+select * from GameScore order by -score,name asc
+</code></pre>
+<p>没有写上明确的加号或者减号的字段，将根据最后的 <code>desc</code> 或者 <code>asc</code> 来决定采用升序还是降序。</p>
+<h2 id="-">删除</h2>
+<p>delete 语句基本语法：</p>
+<pre><code class="lang-sql">delete from 表名称 where objectId = ? [and 条件列表]
+</code></pre>
+<p>最简单的，根据 objectId 删除一个文档：</p>
+<pre><code class="lang-sql">delete from GameScore where objectId=?
+</code></pre>
+<p>可见， delete 语句也支持占位符。</p>
+<p><strong>删除的条件列表要求一定提供 objectId=xxx 的条件，也就是只能根据 objectId 来删除某个文档。</strong></p>
+<h2 id="-">内置函数</h2>
+<p>CQL 提供了一些内置函数来方便地创建 pointer、geopoint 等类型：</p>
+<table>
+  <tr><th>Name</th><th>Operation</th></tr>
+  <tr><td>date(&#39;YYYY-MM-DDTHH:MM:SS.MMMZ&#39;)</td><td>创建日期类型</td></tr>
+  <tr><td>pointer(className, objectId)</td><td>创建 Pointer</td></tr>
+  <tr><td>geopoint(经度, 纬度)</td><td>创建 GeoPoint</td></tr>
+  <tr><td>file(objectId)</td><td>创建 file 类型</td></tr>
+  <tr><td>base64(base64编码字符串)</td><td>创建 Bytes 类型</td></tr>
+  <tr><td>current_timestamp()</td><td>创建当前日期</td></tr>
+  <tr><td>op(op 名称, JSON 参数对象)</td><td>创建更新 op 对象</td></tr>
+</table>
+
+<p>如果不使用这些函数，你也使用 <a href="./rest_api.html#数据类型">REST API 文档</a> 定义的 JSON 对象来创建特定类型，例如 Pointer：</p>
+<pre><code class="lang-sql">select * from Comment where post=
+  {className:&#39;Post&#39;, objectId:&#39;51e3a334e4b0b3eb44adbe1a&#39;,__type:&#39;Pointer&#39;}
+</code></pre>
+<p>当然这样写就相对繁琐了。</p>
+<h2 id="-">性能和建议</h2>
+<p>CQL 最终还是转换成 <a href="./rest_api.html">REST API</a> 里查询部分提到的各种 where 条件，因为多了一层转换，理论上会比直接使用 <code>where</code> 查询慢一点。并且 CQL 对长度有所限制，要求在 4096 字节以内。</p>
+<p>此外，我们推荐查询语句都采用占位符的方式，使用占位符的查询语句将有机会被缓存复用，避免重复解释的开销。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<p><a id="link" class="btn btn-default" href="sdk_down.html">下载 Android SDK</a></p>
+
+<p>下载 SDK，将下载后的文件解压缩后的所有 jar 文件放入 Android 项目的 <strong>libs</strong> 目录。如果你们的项目没有 <b>libs</b> 目录，那么就在项目的根目录下创建一个，通过右键点击项目 Project，选择 <strong>New</strong>，接下来点击 <strong>Folder</strong> 菜单即可创建新目录。</p>
+<p>在 Application 的 <code>onCreate</code> 方法调用 <code>AVOSCloud.initialize</code> 来设置您应用的 Application ID 和 Key：</p>
+<pre><code>public void onCreate() {
+    //如果使用美国节点，请加上这行代码 AVOSCloud.useAVCloudUS();
+    AVOSCloud.initialize(this, &quot;{{appid}}&quot;, &quot;{{appkey}}&quot;);
+}
+</code></pre><p>创建应用后，可以在 <a href="/app.html?appid={{appid}}#/key">控制台 &gt; 应用设置</a> 里面找到应用对应的 id 和 key。</p>
+<p>同时，你的应用需要请求 <code>INTERNET</code> 和 <code>ACCESS_NETWORK_STATE</code> 权限，如果没有设置，请添加下列两行到你的 <code>AndroidManifest.xml</code> 文件里的 <code>&lt;application&gt;</code> 标签前：</p>
+<pre><code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+</code></pre><p>如果你想跟踪统计应用的打开情况，添加下列代码到你的主 <code>Activity</code> 的 <code>onCreate</code> 方法：</p>
+<pre><code>AVAnalytics.trackAppOpened(getIntent());
+</code></pre><p>接下来可以尝试测试一段代码，拷贝下列代码到你的 app 里，比如放到 <code>Application.onCreate</code> 方法：</p>
+<pre><code>AVObject testObject = new AVObject(&quot;TestObject&quot;);
+testObject.put(&quot;foo&quot;, &quot;bar&quot;);
+testObject.saveInBackground();
+</code></pre><p>运行你的 app。一个类 <code>TestObject</code> 的新对象将被发送到 LeanCloud 并保存下来。当你做完这一切，访问 <a href="/data.html?appid={{appid}}#/TestObject">控制台 - 数据管理</a> 可以看到上面创建的 <code>TestObject</code> 的相关数据。</p>
+

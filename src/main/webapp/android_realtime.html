@@ -1,0 +1,895 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="android-">Android 实时通信服务</h1>
+<h2 id="-">简介</h2>
+<p>在阅读本开发指南之前，请先阅读下<a href="./realtime.html">《实时通信开发指南》</a>，了解实时通信的基本概念和模型。</p>
+<h2 id="-">初始化</h2>
+<p>和其他的LeanCloud服务一样，实时聊天系统的初始化也是在Application的onCreate方法中进行的：</p>
+<pre><code class="lang-java">public class MyApplication extends Application{
+
+    public void onCreate(){
+        AVOSCloud.initialize(this,&quot;&quot;,&quot;&quot;);
+    }
+}
+</code></pre>
+<p>并且在AndroidManifest.xml中间声明：</p>
+<pre><code class="lang-xml">&lt;manifest ...
+
+ &lt;application
+        android:name=&quot;.MyApplication&quot;
+        ....&gt;
+&lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre>
+<h2 id="-">登录</h2>
+<p>以一个最简单的聊天系统的原型来分析实现 Android 的实时通信，这样的一个聊天系统最主要的有两个模块：用户系统，对话的发送接收。
+在每一个用户系统中间，用户一定有一个唯一表示的符号来标识他们与别人的区别，比如：userId、email、手机号码或者我们提供的 AVUser 的 objectId；同时这个符号也需要能够通过某种方式（登录）而正确获取。
+由于考虑到很多开发者在接入实时通信系统时，可能已经有现成的用户系统，所以我们在设计实时通信模块的时候，并没有强制将用户系统的登录状态与实时通信的登录状态绑定到一起，而是通过一种更为开放的方式去控制实时通信的登录状态。当一个用户需要登录实时通信模块的时候，我们需要:</p>
+<pre><code class="lang-java">AVUser.logInInBackground(&quot;用户名&quot;,&quot;password&quot;,new LogInCallback&lt;AVUser&gt;(){
+   @Override
+   public void done(AVUser user, AVException e){
+         //此处的selfId就是之前提到的用户的唯一标识符 Peer ID,
+         //应该替换成你现有用户系统中的唯一标识符，这里以我们提供的的用户系统为例
+         String selfId = user.getObjectId();
+         Session session = SessionManager.getInstance(selfId);
+         List&lt;String&gt; yourFriends = new List&lt;String&gt;();
+         .... //add your friends&#39; peerIds
+         session.open(yourFriends);
+   }
+});
+</code></pre>
+<p>这样你就向服务器发起了一个实时通信的登录请求。但是至今为止还不能发送消息，因为实时通信的所有请求都是异步的，只有当你接收到异步请求对应的成功回调时，你才能进行下一步操作。
+要接收异步请求对应的回调，你需要实现继承 AVMessageReceiver 的自定义 Receiver，并且注册到AndroidManifest.xml。</p>
+<pre><code class="lang-java">public class ChatDemoMessageReceiver extends AVMessageReceiver{
+  ...实现抽象方法,比如：
+  @Override
+  public void onSessionOpen(Context context, Session session) {
+    System.out.println(&quot;用户成功登录上实时聊天服务器了&quot;);
+  }
+}
+</code></pre>
+<p>并且在AndroidManifest.xml中间声明:</p>
+<pre><code class="lang-xml">&lt;receiver android:name=&quot;.ChatDemoMessageReceiver&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;
+        &lt;action android:name=&quot;com.avoscloud.session.action&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+<p>至此，就完成了用户的登录环节。
+不管你接下来的操作是单聊还是群聊，你都需要实现之前的所有步骤才能进行下一步的操作。</p>
+<p><code>AVMessageReceiver</code> 中还有很多其他回调方法来接收其他操作的异步通知，如发送消息、接收消息等，我们将在下面的章节中介绍，它是实时通信的核心 API 之一。</p>
+<h2 id="-">单聊</h2>
+<p>单聊的情景相对也是比较简单的，用户可以选择向任何人发送相应的消息。如果应用开启 <a href="./realtime.html#签名认证">签名认证</a>，单聊前需要首先调用 watch。</p>
+<h3 id="-">添加好友</h3>
+<p>正如上文提到了，开启了签名认证的实时聊天系统在发送消息前需要保证发送的对象是被 watch 过的。对于已有的好友列表，你可以如上文提到的方法，在登录实时通信系统的时候放在参数中间；对于新的好友，你可以通过如下代码进行添加：</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+session.watch(Arrays.asList(&quot;friend1&quot;,&quot;friend2&quot;));
+</code></pre>
+<p>其中 friend1、friend2 是其他用户的 peer id，下面提到的 firend id 与此类似。</p>
+<p>之后添加是否成功则可以通过Receiver中的回调的方式来获悉：</p>
+<pre><code class="lang-java">public class ChatDemoMessageReceiver extends AVMessageReceiver{
+
+  @Override
+  public void onPeersWatched(Context context, Session session, List&lt;String&gt; peerIds) {
+     //watch 成功
+  }
+}
+</code></pre>
+<p>在任何一个时候你也可以通过以下代码来判断是否已经 watch 过某个用户：</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+boolean watched = session.isWatching(&quot;friend1&quot;);
+</code></pre>
+<h3 id="-">发送消息</h3>
+<p>在用户成功登录实时消息系统以后，用户就可以进行消息的发送接收等。</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+AVMessage msg = new AVMessage();
+msg.setMessage(&quot;这是一个普通的消息&quot;);
+//friendId是指目标用户的 peer id，也就是想接收这条消息的用户。
+msg.setToPeerIds(Arrays.asList(friendId));
+session.sendMessage(msg);
+</code></pre>
+<p>正如上文提到的，实时通信中所有的操作都是异步操作，发送消息也是一样，针对于消息发送的结果，我们需要在之前提到的Receiver中实现对应的方法 <code>onMessageSent</code> 或者 <code>onMessageFailure</code>：</p>
+<pre><code class="lang-java">public class ChatDemoMessageReceiver extends AVMessageReceiver{
+
+  @Override
+  public void onMessageSent(Context context, Session session, AVMessage msg) {
+    //这个时间是来自服务器端的时间，这样即便是多台设备中间也不会出现时间的混乱
+     System.out.println(&quot;消息发送成功了，发送成功时间是&quot;+msg.getTimestamp());
+  }
+
+  @Override
+  public void onMessageFailure(Context context, Session session, AVMessage msg) {
+     System.out.println(&quot;消息发送失败了，可能需要在app端进行重试等&quot;);
+     //重试逻辑......
+  }
+}
+</code></pre>
+<h4 id="-">在线（瞬时）消息</h4>
+<p>有些应用可能会有指定消息是否是只有用户在线才能接收，我们在系统中间也进行了支持。将消息设置为 <code>transient</code>，那么消息只会发送给在线用户，如果用户不在线，也不会作为离线消息存储，而是直接丢弃。</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+AVMessage transientMsg = new AVMessage();
+transientMsg.setMessage(&quot;这是一个 transient 消息，只有对方当时在线才能收到&quot;);
+transientMsg.setTransient(true);
+transientMsg.setToPeerIds(Arrays.asList(friendId));
+session.sendMessage(transientMsg);
+
+AVMessage msg = new AVMessage();
+msg.setMessage(&quot;这是一个普通消息，对方在线立即收到，如果对方当时不在线，将作为离线消息存储。&quot;);
+msg.setTransient(false);//如果不设置，默认是false
+msg.setToPeerIds(Arrays.asList(friendId));
+session.sendMessage(msg);
+</code></pre>
+<p>默认消息都是普通消息，而非在线消息。</p>
+<h4 id="-">消息回执</h4>
+<p>由于离线消息的存在，消息的发送成功与真正对方收到消息，可能在时间上存在一定的先后消息。应用可能想明确知道消息是否送达目标用户，我们也通过消息回执的形式来支持这样的操作：</p>
+<pre><code class="lang-java">Session session = Session.getInstance(selfId);
+AVMessage msg = new AVMessage();
+msg.setMessage(&quot;这是一个带有消息回执的消息&quot;);
+//设置消息回执为 true
+msg.setRequestReceipt(true);
+msg.setToPeerIds(Arrays.asList(friendId));
+</code></pre>
+<p>针对消息回执，我们会产生额外的回调：</p>
+<pre><code class="lang-java">public class ChatDemoMessageReceiver extends AVMessageReceiver{
+
+  @Override
+  public void onMessageDelivered(Context context, Session session, AVMessage msg) {
+    //消息真正到达用户了
+    System.out.println(msg.getMessage() + &quot;delivered at &quot; + msg.getReceiptTimestamp());
+  }
+}
+</code></pre>
+<p><strong>注:消息回执的功能仅仅能够在单聊中使用，消息接收者不能多于一人，并且要求消息不能是在线（瞬时）消息。</strong></p>
+<h4 id="-">多媒体消息</h4>
+<p>实时聊天系统已经不在是多年以前的聊天室，用户往往会通过更多更丰富的多媒体内容来进行有效的交互，比如：图片，短视频，语音，地理位置等等。开发者可以通过将AVMessage中的message当做一个相对复杂的数据结构的形势来实现这样的消息内容。比如我们使用 JSON 数据作为消息内容传输</p>
+<pre><code class="lang-java">//示范一个简单的带图片的消息{&quot;type&quot;:&quot;file&quot;,&quot;content&quot;:&quot;https://leancloud.cn/images/static/partner-iw.png&quot;}
+HashMap&lt;String, Object&gt; params = new HashMap&lt;String, Object&gt;();
+params.put(&quot;type&quot;, &quot;file&quot;);
+params.put(&quot;content&quot;, &quot;https://leancloud.cn/images/static/partner-iw.png&quot;);
+AVMessage msg = new AVMessage(JSON.toJSONString(params));
+</code></pre>
+<p>您也可以采用其他序列化方案，只要中间格式是文本即可。</p>
+<h3 id="-">接收消息</h3>
+<p>一个客户端在实时通信系统中间不仅仅会扮演简单的发送者的概念，同时也会需要扮演接收者的角色。和之前的所有回调一样，消息的接收也是通过继承的Receiver来接收的：</p>
+<pre><code class="lang-java">public class ChatDemoMessageReceiver extends AVMessageReceiver{
+
+  @Override
+  public void onMessage(Context context, Session session, AVMessage msg) {
+    //处理接收到的消息，一条新消息到达
+  }
+}
+</code></pre>
+<h2 id="-">群聊</h2>
+<h3 id="-">创建群组</h3>
+<p>当你想要创建一个群组的时候，你可以通过以下代码来创建一个新的群组：</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+Group group = session.getGroup();
+group.join();
+</code></pre>
+<p>正如上文所说的，所有的请求都是异步的，群组的创建和加入也需要通过Receiver的回调来获取成功的结果。但是群组需要一个额外的 Receiver——<code>AVGroupMessageReceiver</code>：</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+    @Override
+    public void onJoined(Context context, Group group){
+       //在这里来处理加入成功以后的回调
+    }
+}
+</code></pre>
+<p>同时你需要在 <code>AndroidManifest.xml</code> 中间注册这个Receiver:</p>
+<pre><code class="lang-xml">&lt;receiver android:name=&quot;.DemoGroupMessageReceiver&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot; /&gt;
+        &lt;action android:name=&quot;com.avoscloud.group.action&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+<h3 id="-">加入群组</h3>
+<p>有时候用户并不需要自己创建一个单独的群组，而是想要加入一个现存的群组。</p>
+<p>所有应用内的群组都被放在了 AVOSRealtimeGroups 表中。你可以通过 AVQuery 获取 AVOSRealtimeGroups 对象对应的 objectId 作为 groupId:</p>
+<pre><code class="lang-java">//通过 AVQuery 查找到群组的 objectId 作为 groupId
+Session session = SessionManager.getInstance(selfId);
+Group group = session.getGroup(groupId);
+group.join();
+</code></pre>
+<p>对于之前已经加入过的群组，只要没有显式调用过quit()，<strong>并不需要在重新上线以后反复 join</strong>。只要在<code>session.open</code> 以后，就能收到来自群组的消息。</p>
+<p>AVQuery 查询参考 <a href="./leanstorage_guide-android.html#查询">Android 指南</a>。</p>
+<h3 id="-">发送消息</h3>
+<p>群组的消息发送几乎与单聊的消息发送相同，只是发送的调用对象不再是 session 而是 group:</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+Group group = session.getGroup(groupId);
+AVMessage message = new AVMessage();
+message.setMessage(&quot;这是一段群消息示范&quot;);
+group.sendMessage(message);
+</code></pre>
+<p>和单聊的发送消息一样，发送是否成功需要在Receiver中间加入对应的回调：</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+
+ @Override
+  public void onMessageSent(Context context, Group group, AVMessage message) {
+    System.out.println(message.getMessage() + &quot; sent&quot;);
+  }
+
+  @Override
+  public void onMessageFailure(Context context, Group group, AVMessage message) {
+    System.out.println(message.getMessage() + &quot; failure&quot;);
+  }
+}
+</code></pre>
+<p>在群组中间支持在线消息，但是却不支持消息回执</p>
+<h3 id="-">接收消息</h3>
+<p>和单聊时一样，接收消息也是通过Receiver来获取的：</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+
+ @Override
+  public void onMessage(Context context, Group group, AVMessage msg){
+      //处理接收到的消息
+  }
+}
+</code></pre>
+<h3 id="-">群成员管理</h3>
+<p>与单聊不同的是，群的概念是集成在 LeanCloud 中的，所以从用户的标识符到群组间的关系都被维护在LeanCloud中。相应的群组成员管理的功能也都可以在LeanCloud的实时聊天系统进行操作。</p>
+<h4 id="-">查询群成员</h4>
+<p>不管用户是需要邀请更多用户进入群组还是想要剔除部分用户，都需要知道当前群组内已经有哪些用户了。开发者可以通过下面的代码来实现群组内成员列表的查询：</p>
+<pre><code class="lang-java">    Session session = Session.getInstance(selfId);
+    Group group = session.getGroup(groupId);
+    group.getMembersInBackground(new GroupMemberQueryCallback(){
+     @Override
+     public abstract void done(List&lt;String&gt; groupMembers, AVException exception){
+        //获得群组里的用户列表 groupMembers
+     }
+    })
+</code></pre>
+<h4 id="-">邀请成员</h4>
+<p>当你进入一个群组以后，你可以邀请一些你的好友进入这个群组，进行进一步的讨论：</p>
+<pre><code class="lang-java">Session session = Session.getInstance(selfId);
+Group group = session.getGroup(groupId);
+group.inviteMember(Arrays.asList(&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;....));
+</code></pre>
+<p>而邀请是否成功的回调，同样也在对应的Receiver中获取：</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+
+  @Override
+  public void onInvited(Context context, Group group, List&lt;String&gt; invitedPeers) {
+    LogUtil.avlog.d(&quot;you&#39;ve invited &quot; + invitedPeers + &quot; to &quot; + group.getGroupId());
+  }
+
+  @Override
+  public void onReject(Context context, Group group, String op, List&lt;String&gt; targetIds){
+    //假如之前的操作由于权限问题（后文会介绍）而无法成功，回调就在本方法中产生。
+    //邀请失败时，对应的op值将是 &quot;invite&quot; 字符串
+  }
+
+}
+</code></pre>
+<h4 id="-">剔除成员</h4>
+<p>除了能够邀请成员以外，群组成员也可以剔除现在在群组内的用户：</p>
+<pre><code class="lang-java">Session session = Session.getInstance(selfId);
+Group group = session.getGroup(groupId);
+group.kickMember(Arrays.asList(&quot;friend1&quot;,&quot;friend2&quot;,&quot;friend3&quot;....));
+</code></pre>
+<p>与邀请对应的，剔除对应回调代码也在Receiver中，对应如下:</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+
+  @Override
+  public void onKicked(Context context, Group group, List&lt;String&gt; kickededPeers) {
+    LogUtil.avlog.d(&quot;you&#39;ve kiced &quot; + kickedPeers + &quot; from &quot; + group.getGroupId());
+  }
+
+  @Override
+  public void onReject(Context context, Group group, String op, List&lt;String&gt; targetIds){
+    //假如之前的操作由于权限问题（后文会介绍）而无法成功，回调就在本方法中产生。
+    //邀请失败时，对应的 op 是 &quot;kick&quot;
+  }
+
+}
+</code></pre>
+<h3 id="-">退出群组</h3>
+<p>退出群组的代码也相对比较简单:</p>
+<pre><code class="lang-java">Session session = Session.getInstance(selfId);
+Group group = session.getGroup(groupId);
+group.quit();
+</code></pre>
+<p>如果你想要监听是否真正成功退组，你可以在Receiver中进行检测：</p>
+<pre><code class="lang-java">public class DemoGroupMessageReceiver extends AVGroupMessageReceiver{
+
+  @Override
+  public void onQuit(Context context, Group group) {
+    LogUtil.avlog.d(&quot;Quit from&quot; + group.getGroupId());
+  }
+}
+</code></pre>
+<h2 id="-">　权限管理</h2>
+<p>在LeanCloud中间的权限管理与传统的 token 机制略有不同，我们通过签名服务来实现实时通信过程中间部分操作的权限管理。
+在阅读下面的代码前，你可能需要先了解一下有关权限管理的基本概念：<a href="./realtime.html#权限和认证">权限和认证</a>。</p>
+<p>在实时聊天系统中间，很多操作是需要有权限控制才能操作成功的,比如：单聊的添加好友，群组的邀请、剔除操作等，都需要做一定权限认证。
+客户端传一些参数给自有用户系统或者云引擎（统称权限管理服务器），权限管理服务器端根据一定的逻辑判断操作是否合法，如果该操作是合法的，则返回一个正确的签名；如果是非法的，就返回一个错误的签名。之后在实时通信的过程中就会将返回的签名带在通信的请求中，LeanCloud的实时通信服务器会比对自己算出来的签名与客户端传递过来的签名是否一致来获知该操作是否合法。</p>
+<p>完成一个简单的权限管理认证系统，你需要以下几个步骤（下面以LeanCloud的云引擎服务作为权限认证服务器为例）：</p>
+<ol>
+<li>部署云引擎<a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">签名范例</a>代码到LeanCloud的云引擎服务器</li>
+<li>在LeanCloud中你的项目对应的网页控制台的<code>设置</code>-&gt;<code>应用选项</code>-&gt;<code>聊天推送</code>中打开<code>聊天服务签名认证</code></li>
+<li>在 SDK 中间继承 SignatureFactory 抽象类</li>
+</ol>
+<pre><code class="lang-java">public class KeepAliveSignatureFactory implements SignatureFactory {
+ @Override
+ public Signature createSignature(String peerId, List&lt;String&gt; watchIds) {
+   Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();
+   params.put(&quot;self_id&quot;,peerId);
+   params.put(&quot;watch_ids&quot;,watchIds);
+
+   try{
+     Object result =  AVCloud.callFunction(&quot;sign&quot;,params);
+     if(result instanceof Map){
+       Map&lt;String,Object&gt; serverSignature = (Map&lt;String,Object&gt;) result;
+       Signature signature = new Signature();
+       signature.setSignature((String)serverSignature.get(&quot;signature&quot;));
+       signature.setTimestamp((Long)serverSignature.get(&quot;timestamp&quot;));
+       signature.setNonce((String)serverSignature.get(&quot;nonce&quot;));
+       signature.setSignedPeerIds((List&lt;String&gt;)serverSignature.get(&quot;watch_ids&quot;));
+       return signature;
+     }
+   }catch(Exception e){
+   }
+   return null;
+ }
+
+  @Override
+  public Signature createGroupSignature(String groupId, String peerId, List&lt;String&gt; targetPeerIds,String action){
+   Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();
+   params.put(&quot;self_id&quot;,peerId);
+   params.put(&quot;group_id&quot;,groupId);
+   params.put(&quot;group_peer_ids&quot;,targetPeerIds);
+   params.put(&quot;action&quot;,action);
+
+   try{
+     Object result = AVCloud.callFunction(&quot;group_sign&quot;,params);
+     if(result instanceof Map){
+        Map&lt;String,Object&gt; serverSignature = (Map&lt;String,Object&gt;) result;
+        Signature signature = new Signature();
+        signature.setSignature((String)serverSignature.get(&quot;signature&quot;));
+        signature.setTimestamp((Long)serverSignature.get(&quot;timestamp&quot;));
+        signature.setNonce((String)serverSignature.get(&quot;nonce&quot;));
+        signature.setSignedPeerIds((List&lt;String&gt;serverSignature.get(&quot;group_peer_ids&quot;)));
+        return signature;
+     }
+   }catch(Exception e){}
+   return null;
+  }
+}
+</code></pre>
+<p>最后， 在Session第一次打开时，设置SignatureFactory:</p>
+<pre><code class="lang-java">Session session = SessionManager.getInstance(selfId);
+session.setSignatureFactory(new KeepAliveSignatureFactory());
+session.open();
+</code></pre>
+<h2 id="-">聊天记录查询</h2>
+<p>聊天记录的查询的基本方法跟 AVQuery 类似但是略有不同。
+针对 Session 的聊天记录和聊天室 Group 的聊天记录查询略有不同，但是基本都是一样：</p>
+<pre><code class="lang-java">//查询 Session 里的聊天记录
+SessionManager sm = SessionManager.getInstance(selfId);
+AVHistroyMessageQuery sessionHistoryQuery = sm.getHistroyMessageQuery();
+sessionHistoryQuery.setLimit(1000);//设置查询结果大小
+//查询 unix 时间戳 1413184345686 之后的消息，单位毫秒
+sessionHistoryQuery.setTimestamp(1413184345686);
+sessionHistoryQuery.findInBackground(new HistoryMessageCallback() {
+
+  @Override
+  public void done(List&lt;AVHistoryMessage&gt; messages, AVException error) {
+         //messages 即是历史消息记录
+  }
+});
+
+//查询群组里的聊天记录
+Group group = sm.getGroup(&quot;140a534fd092809500e6d651e73400c7&quot;);
+//获取AVHistoryMessageQuery对象来查询聊天室的聊天记录
+AVHistroyMessageQuery groupHistoryQuery = group.getHistoryMessageQuery();
+groupHistoryQuery.findInBackground(new HistoryMessageCallback(){
+    @Override
+    public void done(List&lt;AVHistoryMessage&gt; messages,AVException error){
+      // messages 就是群组聊天记录
+});
+</code></pre>
+<p>从实用角度，<strong>我们推荐您对聊天记录做本地缓存，每次实时去查询聊天记录是更为低效的方式</strong></p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

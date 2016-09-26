@@ -1,0 +1,636 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-">数据和安全</h1>
+<h2 id="-">安全总览</h2>
+<p>几乎每一位使用 LeanCloud 的开发者都会问，如何能够保证自己应用数据的安全？对安全的关注说明你也是位对产品负责、对用户负责、对自己负责、做事态度认真的开发者，这也正是 <a href="http://open.leancloud.cn">LeanCloud 所信守的价值观</a>。</p>
+<p>LeanCloud 提供的服务都是基于 HTTP 协议的，我们云端对客户端发过来的每一个请求，都进行了身份鉴别（Authentication）和访问授权（Authorization）的严格检查。</p>
+<h3 id="-authentication-">身份鉴别（Authentication）</h3>
+<p>LeanCloud 为每一个应用准备了三个身份鉴别需要的标识：</p>
+<ul>
+<li><strong>appId</strong>：这是一个应用的全局唯一标识，类似于我们个人的身份证号码。</li>
+<li><strong>appKey</strong>：用于判断来自该应用客户端的请求是否合法的验证序号。</li>
+<li><strong>masterKey</strong>：也是一种 appKey，只是使用它来进行请求的时候 LeanCloud 云端会忽视所有的访问权限控制（因为它拥有<strong>超级权限</strong>，用它来发起操作，类似于在 Linux 系统中的 root 在进行操作。），因此禁止在客户端或不信任的环境下使用，以免泄漏。</li>
+</ul>
+<p>我们在使用 SDK 或者直接请求 REST API 的时候，都需要在 HTTP Header 中提供 appId 和 appKey 信息：appId 用来标识是哪一个应用发起的请求，appKey 则用来对请求的合法性进行鉴权。网络请求格式如 <a href="./rest_api.html#请求格式">REST API 文档</a> 所示，所以 appId 和 appKey 对一个应用来说非常重要。</p>
+<p>网络世界中总有一些别有用心的人存在，appId 和 appKey 在这里是明文传输的，尽管我们做了很多努力，但还是难保不会泄漏。所以，为了避免这种风险，我们又采用了一种更安全的鉴权方式：
+<strong>在 HTTP Header 中不再直接填写 appKey，而用一个「签名字符串」代替。</strong>
+签名字符串在客户端计算，由 appKey（或者 masterKey） 加上请求发起时的时间（精确到<strong>毫秒</strong>），再对它们进行 MD5 签名之后得到的字符串。LeanCloud 云端收到这样的请求之后，根据 appId 可以找到内部保存的 appKey，然后经过同样的散列函数计算出签名，比较后如果签名不匹配或者请求已经超时，则认为是一个非法请求而直接丢弃，如果是一个合法请求，则再进入下面的访问授权检查流程。详细的签名格式请参考<a href="./rest_api.html#更安全的鉴权方式">更安全的鉴权方式</a>。</p>
+<p>如此一来，网络传输过程中，我们可以做到不再暴露任何 appKey 的信息，但是对于原生的 iOS、Android 应用，或者 Web 站点来说，黑客还可以通过反编译等手段，获知到代码中在初始化 LeanCloud SDK 时设定的 appId 和 appKey。所以我们不能假设 appKey 不会泄漏，而应该使用下一节介绍的访问控制列表来加强数据的安全性。</p>
+<h3 id="-authorization-">访问授权（Authorization）</h3>
+<p>最灵活的保护你应用数据安全的方式是通过访问控制列表（Access Control List），通常简称为「ACL 机制」。ACL 背后的机制是将每个操作授权给一部分 <strong>用户</strong>（User）或者 <strong>角色</strong>（Role），只允许这些用户或角色执行这些操作。例如，一个用户必须拥有读权限（或者属于一个拥有读权限的角色）才可以获取一个对象的数据，同时，一个用户需要拥有写权限（或者属于一个拥有写权限的角色）才可以更改或者删除一个对象。</p>
+<p>ACL 工作的前提是<strong>用户（User）</strong>和<strong>角色（Role）</strong>。<strong>用户（类名<code>_User</code>）</strong>是 LeanCloud 内建的账户系统，自动支持用户注册、登录、验证等操作，详细内容请参考<a href="./rest_api.html#用户-1">用户系统</a>。<strong>角色（类名<code>_Role</code>）</strong>是一种有名称的对象，包含了用户和其他角色（也就是说角色也有层次关系），将权限授予一个角色代表该角色所包含的其他角色也会得到相应的权限，详细内容请参考<a href="./rest_api.html#角色-1">文档：角色</a>。</p>
+<p>LeanCloud 允许你对两种目标设置 ACL：</p>
+<h4 id="class-acl">Class 级别的 ACL</h4>
+<p>创建 Class 的时候，控制台会弹出一个窗口，如下图：</p>
+<div style="width: 600px;"><img src="images/security/acl_template.png" class="img-responsive" /></div>
+
+<p>在这里选择一个默认的 ACL 权限。</p>
+<p>另外，针对已经存在的 Class 你可以更新整个 Class 权限。进入 <a href="/data.html?appid={{appid}}#/">控制台 &gt; 存储 &gt; 数据</a>，选择一个 Class，再点击右侧菜单中的 <strong>其他</strong> &gt; <strong>权限设置</strong>。</p>
+<p><img src="images/cla_permission.png" alt="image"></p>
+<p>在这里，你可以设置在一个 Class 上的不同操作权限：</p>
+<ul>
+<li>GET - 通过 objectId 获取单个对象。</li>
+<li>Find - 通过指定条件来遍历所有符合目标的对象。</li>
+<li>Update - 修改一个已经存在的对象。</li>
+<li>Create - 在 Class 表中插入一个新对象。</li>
+<li>Delete - 删除任意既有对象。</li>
+<li>Add fields - 给 Class 增加新的属性列</li>
+</ul>
+<p>对于每一种权限，又可以开放给不同用户：</p>
+<ul>
+<li>所有用户 － 指所有客户端都可以进行这一操作，相当于 public 权限</li>
+<li>登录用户 － 只有使用 LeanCloud 内建账户系统（AVUser）并且进行了登录的客户端，才可以执行这一操作。</li>
+<li>指定用户 － 只有指定用户或者角色才可以执行这一操作，这是对操作权限进行最精确控制的方式。</li>
+</ul>
+<p>譬如我们有一个匿名发帖的应用，所有人都可以发表帖子，但是只有经过管理员审核后的帖子才能被展示出来。我们可以有两张表，第一张表用来存放审核前的帖子，这张表的 create 权限就可以开放给所有用户；第二张表用来存放审核后的帖子，这张表的 create 权限就只开放给管理员。</p>
+<h5 id="-">对客户端隐藏部分列</h5>
+<p>对于 Class 来说，还有一种特殊需求，就是我们希望某些列的数据不在客户端展示出来。比如，匿名发帖的应用，你仍然希望发帖的时候，也记录下真实的作者，但不希望将此信息返回给客户端；账户系统中可能存有用户身份证号码，我们也希望通过 SDK 进行查询的时候，永远不要返回出去。这时候就需要能够对于普通查询永远隐藏部分列。</p>
+<p>LeanCloud 也允许将部分列的数据设置为 「客户端不可见」。设置了之后，当客户端发起查询的时候，返回的结果将不包含相关字段。当然，在 LeanCloud 控制台，或者使用 masterKey 来做查询的话，是可以看到完整的数据的。</p>
+<h4 id="object-acl">Object 级别的 ACL</h4>
+<p>在 LeanCloud 中，还可以对 Class 中的每一条记录（Object）单独设置 ACL，这时是按照读、写分离来对不同用户、角色进行授权的。在应用控制台中进行操作的界面如下图所示：</p>
+<p><img src="images/acl.png" alt="image"></p>
+<p>这样我们就可以做到：</p>
+<ul>
+<li>对于私有数据，read 和 write 都可以限制为对象创建者所有（其读写权限都设置成创建者自身，并且不开放「所有用户」的读、写权限）。</li>
+<li>一个信息公告板的帖子，作者和属于「版主」角色的成员可拥有修改权限，普通访客则只允许 浏览（给「所有用户」开放「读」权限，给「作者」和「版主角色」开放「写」权限）。</li>
+<li>应用内全局的每日广播消息，对所有用户是只读的，只有管理员可以修改它（给「所有用户」开放「读」权限，给「管理员角色」开放「写」权限）。</li>
+<li>一条从一个用户发往另一个用户的消息，可以将读和写的访问许可限制到关联的这两个用户，其他人一概不可读写（对「所有用户」关闭「读、写」权限，只对两个用户开放权限）。</li>
+</ul>
+<p>使用 LeanCloud SDK，你可以设置一个默认的 ACL 给客户端所有创建的对象。如果你同时开启允许匿名用户的功能，你可以保证你的数据拥有严格限制到每个单独用户的 ACL 权限。基于用户和角色的权限管理指南，详细信息请参考如下文档：</p>
+<ul>
+<li><a href="./acl_guide-js.html">JavaScript 权限管理指南</a></li>
+<li><a href="./acl_guide-ios.html">Objective-C 权限管理指南</a></li>
+<li><a href="./acl_guide-android.html">Android 权限管理指南</a></li>
+</ul>
+<h3 id="web-">Web 应用安全设置</h3>
+<p>在通用的两层鉴权机制之外，我们单独讨论一下 Web 应用的安全问题。</p>
+<p>对于 Web 应用来说，盗取 appId／appKey 的难度会更小一些，所以我们需要做一些特别的防御措施。关键点是，我们要能够保证其他人把你的 appId 偷过去之后，他也无法直接使用你的服务器资源。Web 端可以通过 <code>Web 安全域名</code> 来对请求来源做限制，可以简单的防御住 Web 的服务器资源盗取。</p>
+<p>设置「Web 安全域名」后，仅可在该域名下通过 JavaScript SDK 调用服务器资源，域名配置策略与浏览器域安全策略一致，要求域名协议、域和端口号都需严格一致，不支持子域和通配符。所以如果你要配置一个域名，要写清楚协议、域和端口，缺少一个都可能导致访问被禁止。举例说明一下域名的区别：</p>
+<pre><code>// 跨域
+www.a.com:8080
+www.a.com
+
+// 跨域 
+www.a.com:8080
+www.a.com:80
+
+// 跨域  
+a.com
+www.a.com
+
+// 跨域
+xxx.a.com
+www.a.com
+
+// 不同协议，跨域         
+http:
+https:
+</code></pre><p>这样就可以防止其他人通过外网其他地址盗用你的服务器资源。但是要注意，<strong>Web 安全域名</strong>所能达到的目的是防御恶意部署，而不是防御伪造脏数据（恶意用户通过绑定 host 方式还是有可能访问到应用的数据），所以要想对数据进行更多细粒度的控制，需要配合 ACL 来使用。</p>
+<p>在 WebView 中使用，建议通过 WebView 去加载一个部署好的、有域名的 Web，然后缓存在本地，这样可以通过 <strong>Web 安全域名</strong> 来做限制。</p>
+<p>如果在前端使用 JavaScript SDK，当你打算正式发布出去的时候，请务必配置 <strong>Web 安全域名</strong>，方法是进入 <a href="/app.html?appid={{appid}}#/security">控制台 &gt; 设置 &gt; 安全中心 &gt; <strong>Web 安全域名</strong></a>。</p>
+<p><img src="images/security/web-host.png" alt="image"></p>
+<h2 id="-">安全中心</h2>
+<p>安全中心，是我们为每个应用提供的设置基本安全的入口，位置在 <a href="/app.html?appid={{appid}}#/security">控制台 / 设置 / 安全中心</a>。除了之前讲过的<strong>Web 安全域名</strong>外，这里还可以设置或查看：</p>
+<h3 id="-">服务开关</h3>
+<p>服务开关，是用来开启或者关闭当前应用所使用的服务，从根本上防止由于 AppId 和 AppKey 泄露后而可能会引发的服务资源被盗取的问题。</p>
+<p><img src="images/security/service-switch.png" alt="image"></p>
+<h3 id="-">操作日志</h3>
+<p>操作日志中会显示应用创建者及所有协作者的重要操作记录，比如删除数据操作的历史、操作用户名、操作 IP 及操作时间等，这个日志的目的是为了遇到问题更好地定位故障缘由，排查可能的恶意操作，防止应用数据被错误地改动。</p>
+<h2 id="-">其它安全措施</h2>
+<h3 id="-">应用安全选项</h3>
+<p>进入 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，选中或取消选中列表项目即可启用或者关闭对应的功能。</p>
+<ul>
+<li>用户账号 &gt; <strong>用户注册时，发送验证邮件</strong><br/>
+是否要求你应用里的注册用户验证邮箱， 默认不启用。如果启用，每次用户注册，都会发送一封邮件到用户提供的邮箱，要求认证，具体请看数据存储指南的用户一节。</li>
+<li>其他 &gt; <strong>禁止客户端创建 Class</strong><br/>
+是否禁止客户端动态创建 Class。如果启用，新的 Class 将只能通过云端管理平台来创建，而无法通过 SDK 或者 REST API 方式来动态创建了。</li>
+<li>聊天、推送 &gt; <strong>禁止从客户端进行消息推送</strong><br/>
+是否禁止从客户端推送消息，如果启用，这那么通过 SDK 或者 REST API 都被禁止推送消息，只能通过我们管理平台提供的推送界面来推送消息。</li>
+</ul>
+<p>如果想彻底关闭一个应用的数据存储、短信发送、消息推送和聊天（实时通信）功能，请进入 <a href="/app.html?appid={{appid}}#/security">控制台 &gt; 设置 &gt; 安全中心</a> 来进行相应设置。</p>
+<h3 id="-">自动备份</h3>
+<p>LeanCloud 目前会每天备份一次应用数据，防止用户误操作删除了重要数据。如果发生误删除，请及时联系我们进行恢复。</p>
+<h3 id="ssl-">SSL 加密传输</h3>
+<p>首先，我们所有的 API 请求都通过 <a href="http://zh.wikipedia.org/wiki/%E5%AE%89%E5%85%A8%E5%A5%97%E6%8E%A5%E5%B1%82">SSL加密传输</a>，保证传输过程中的数据安全性和可靠性。并且，我们的 iOS／Android SDK 还加入了防范中间人攻击的措施，彻底排除网络抓包和嗅探的威胁。</p>
+<h3 id="-">第三方加固</h3>
+<p>对于 Android 应用，除了代码混淆之外，还可以使用第三方加密工具，隐藏 classes.dex，通过动态加载的方法进一步提高应用的安全性。下面我们简单介绍一下爱加密。</p>
+<p><a href="http://www.ijiami.cn/">爱加密</a> 是专为移动开发者提供安全服务的一个平台，可解决开发者面临的应用安全问题。加密的步骤很简单：</p>
+<ol>
+<li>提交应用；</li>
+<li>下载加密后的 apk 文件；</li>
+<li>下载爱加密提供的签名工具，对应用进行签名。</li>
+</ol>
+<p>相关步骤还可以见下面的截图。</p>
+<p>申请账号，提交应用，下载签名工具：</p>
+<p><img src="images/ijiami_2.png" alt="image"></p>
+<p>加密后重新签名：</p>
+<p><img src="images/ijiami_1.png" alt="image"></p>
+<p>这样得到的 apk 文件，普通的反编译之后得到的是，</p>
+<p><img src="images/decompile.png" alt="image"></p>
+<p>可以看到，代码被隐藏起来了，应用被破解的难度大幅增加了。</p>
+<p>对于任何移动应用来说。因为客户端代码运行在一台移动设备上，因此可能会有不受信任的客户强行修改代码并发起恶意的请求。选择正确的方式来保护你的应用非常重要，但是正确的方式取决于你的应用，以及应用存储的数据。</p>
+<p>我们提供多种方式使用权限控制来获得安全性。如果你有关于任何保护你应用安全的最佳方式的问题，我们都鼓励你联系我们的客户支持。我们一直努力提供更多功能给开发者来保护你的应用，也希望大家持续地给我们反馈，感谢。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

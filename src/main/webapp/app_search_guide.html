@@ -1,0 +1,1116 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-deeplink-">应用内搜索和 DeepLink 开发指南</h1>
+<h2 id="-">简介</h2>
+<p>在应用内使用全文搜索是一个很常见的需求。例如我开发了一个阅读类的应用，里面有很多有价值的文章，我当然希望能提供一个搜索框给用户，用户键入任何关键字，都可以查找到应用内相关的文章，并按照评分排序。类似我直接在 Chrome 浏览器键入关键字打开 Google 搜索一样。</p>
+<p>但是应用内的搜索，跟浏览器端的搜索还不大一样，应用内的搜索结果，我希望打开的不是一个 Web 页面，更希望是应用内的一个页面，比如在我的阅读 Android 应用里，我希望用 <code>ReadActivity</code> 来打开搜索结果的一篇文章，就跟直接打开这篇文章一样。更进一步，我希望用户可以使用移动设备在网页或者应用里搜索关键字的时候：</p>
+<ul>
+<li>如果用户安装了应用，就直接打开应用并跳转到正确的页面</li>
+<li>如果用户没有安装应用，我希望能显示一个应用的下载页面给用户，让用户来安装我的应用；</li>
+<li>如果用户不愿意安装，那么用户仍然可以直接在网页查看搜索结果的内容</li>
+</ul>
+<p>为了达到上述目标，并且简化开发者的开发步骤，降低开发成本，我们提供了应用内搜索组件和 App URL的 deeplink 功能（让应用响应外部调用链接）。</p>
+<p>在你的应用内使用这个功能很简单，只要三步，请紧跟我们的脚步！ Let&#39;s do it.</p>
+<p><strong>我们这里是以<a href="https://github.com/leancloud/Android-SDK-demos/tree/master/AVOSCloud-Todo">TodoDemo</a>为例子。</strong></p>
+<p>关于应用内搜索的部分可见<a href="https://github.com/leancloud/Android-SDK-demos/blob/master/AVOSCloud-Todo/src/com/avos/demo/AVService.java">searchQuery函数</a>、<a href="https://github.com/leancloud/Android-SDK-demos/blob/master/AVOSCloud-Todo/src/com/avos/demo/CreateTodo.java">CreateTodo.java</a>、<a href="https://github.com/leancloud/Android-SDK-demos/blob/master/AVOSCloud-Todo/AndroidManifest.xml">AndroidManifest.xml</a></p>
+<p>效果图，点击<code>打开应用</code>即可跳转到具体界面</p>
+<p><img src="images/deeplink_tododemo.png" alt="image"></p>
+<h2 id="-">开发步骤</h2>
+<h3 id="-">第一步：设置（可选，建议设置）</h3>
+<p>在这一步，我们需要设置一些应用内搜索的选项，首先为你的应用选择一个合适的 URL Scheme，然后设置一下你的应用的下载地址等信息。</p>
+<h4 id="-">设置应用内搜索选项</h4>
+<p>为了能够使用户直接从搜索结果打开你的应用，开发者需要使你的应用支持外部调用，我们使用 AppURL 来指向一个可以在应用里展现的 Class 数据，格式如下：</p>
+<pre><code>{URL Scheme}://{ URL Host}/{ Resource Path}
+</code></pre><p>在组件菜单里，我们添加了一个新菜单——<code>应用内搜索</code>，截图如下：</p>
+<p><img src="images/deeplink_setting.png" alt="image"></p>
+<p>其中最关键的是这几个属性：</p>
+<ul>
+<li><strong>应用名称</strong>：你的应用名称（必须）</li>
+<li><strong>应用 URL Scheme</strong>：支持外部调用的 URL scheme，我们强制要求采用<strong>域名反转</strong>的方式，类似 Java 语言的 package 命名机制。假设你的应用的域名为 <code>myapp.company.com</code>，那么我们要求的 scheme 就是形如 <code>com.company.myapp</code> 的字符串。例如我们的 Todo Demo 设置的scheme为 <code>com.avoscloud.todo</code>。如果你没有域名，那么我们推荐你使用 <code>com.avoscloud.{appId的前8位}</code> 来作为 Scheme。我们会在保存的时候检测scheme是否冲突。</li>
+<li><strong>应用 URL Host</strong>：支持外部调用的 URL Host，可不设置，但是我们推荐默认值使用 <code>avoscloud</code>，防止跟其他 AppURL 提供商冲突。</li>
+</ul>
+<p>其他一些属性，都是用于设置你的应用的下载地址，例如：</p>
+<ul>
+<li>iPhone 应用下载地址：你的应用的 iPhone 版本的 App Store 下载链接，或者你的网站链接。</li>
+<li>iPad 应用下载地址：你的应用的 iPad 版本的 App Store 下载链接，或者你的网站链接。</li>
+<li>……</li>
+</ul>
+<p>这些链接都是可选的，当用户没有安装你的应用的时候，无法直接从搜索结果打开应用，将展示这些下载链接给用户下载你的应用。</p>
+<p>设置保存之后，你应该可以通过下列链接访问到你的应用信息：</p>
+<pre><code>https://leancloud.cn/1.1/go/{your uri scheme}/
+</code></pre><p>查看到你的 App URL 应用设置信息。</p>
+<p>例如，我们的 todo 应用就是：</p>
+<pre><code>https://leancloud.cn/1.1/go/com.avoscloud.todo
+</code></pre><h4 id="-class-">为 Class 启用搜索</h4>
+<p>在设置了应用内搜索，选择了适当的 URL Scheme 之后，你需要选择至少一个 Class 为它开启应用内搜索。开启后，该 Class 的数据将被 LeanCloud 自动建立索引，并且可以调用我们的搜索组件或者 API 搜索到内容。</p>
+<p><strong>请注意，启用了搜索的 Class 数据，仍然只能被该应用的认证过的 API 搜索到。其次，搜索结果仍然遵循我们提供的 ACL 机制，如果你为 Class 里的 Object 设定了合理的 ACL，那么搜索结果也将遵循这些 ACL 值，保护你的数据安全。</strong></p>
+<p>在 Class 的 <strong>其他</strong> 菜单里新增了应用内搜索菜单，打开的截图如下：</p>
+<p><img src="images/app_search_setting.png" alt="image"></p>
+<p>其中包括三个设定项目：</p>
+<ul>
+<li><strong>启用</strong>：你可以启用或者关闭这个 Class 的应用内搜索功能，默认是关闭的。</li>
+<li><strong>选择开放的列</strong>：你可以选择哪些字段将加入索引引擎，这些字段将可以被外部用户看到（前提是 ACL 允许）。请慎重选择开放的字段。默认情况下，<code>objectId</code>、<code>createdAt</code>、<code>updatedAt</code> 三个字段将无条件加入开放字段列表。</li>
+<li><strong>数据模板</strong>：设置这个 Class 的数据展现模板，当外部调用无法打开应用（通常是用户没有安装应用）的时候，将渲染这个模板并展现给用户，默认的模板的只是渲染一些下载链接，你可以自定义这个模板的样式，比如加入你的应用 Logo， 添加 CSS 等。</li>
+</ul>
+<p>数据模板支持 <a href="http://handlebarsjs.com/">handlebars 模板语法</a> ，支持的变量（使用两个大括号包起来 <code ng-non-bindable></code>）包括：</p>
+<ul>
+<li><strong>app_uri</strong><br/>
+(String) 打开应用的 URL，就是前面提到的 <code>{URL Scheme} : // {URL Host} / {Resource Path}</code>。</li>
+<li><p><strong>applinks</strong><br/>
+(Object) 应用内搜索配置对象，包括这些属性：</p>
+<ul>
+<li>app_name</li>
+<li>android_phone_link</li>
+<li>android_pad_link</li>
+<li>iphone_link</li>
+<li>ipad_link</li>
+</ul>
+<p>等等，也就是应用名称，和各种平台应用的下载链接。</p>
+</li>
+<li><strong>qrcode_uri</strong> <br/>
+(String) 本页面的二维码图片链接，用户可以用扫描器扫描打开该页面。</li>
+<li><strong>object</strong> <br/>
+(Object) 查询出来的 object 对象，默认至少包括：<code>objectId</code>、<code>createdAt</code>、<code>updatedAt</code> 三个属性。其他是你在选择开放的列。</li>
+</ul>
+<p>以我们的 Todo Demo 为例，我们启用了 Todo 的应用内搜索功能，选择了开放字段<code>content</code>，设定数据模板（消除了css）为：</p>
+<pre><code class="lang-html">&lt;div class=&quot;wrap&quot;&gt;
+  &lt;div class=&quot;section section-open&quot;&gt;
+    &lt;div class=&quot;section-inner&quot;&gt;
+      &lt;p&gt;Todo Content: &lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;section section-open&quot;&gt;
+    &lt;div class=&quot;section-inner&quot;&gt;
+      &lt;p&gt;已安装 ？你可以:&lt;/p&gt;
+      &lt;p&gt;&lt;a href=&#39;&#39; class=&quot;btn&quot;&gt;直接打开应用&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;section section-download&quot; &gt;
+    &lt;div class=&quot;section-inner&quot;&gt;
+      &lt;p&gt;或者下载应用:&lt;/p&gt;
+      &lt;div &gt;
+        &lt;p&gt;&lt;a href=&#39;&#39;&gt;iPhone 应用&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&#39;&#39;&gt;iPad 应用&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&#39;&#39;&gt;Android 手机应用&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&#39;&#39;&gt;Android 平板应用&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>在 LeanCloud 索引完成数据后，你应当可以通过下列 URL 访问到一条数据，如果在安装了 Todo Demo 应用的移动设备上访问下面这个URL，应该会打开应用展现这条 Todo 的内容:</p>
+<pre><code>https://leancloud.cn/1.1/go/com.avoscloud.todo/classes/Todo/5371f3a9e4b02f7aee2c9a18
+</code></pre><p>如果直接在 PC 浏览器打开 <a href="https://leancloud.cn/1.1/go/com.avoscloud.todo/classes/Todo/5371f3a9e4b02f7aee2c9a18?render=true">https://leancloud.cn/1.1/go/com.avoscloud.todo/classes/Todo/5371f3a9e4b02f7aee2c9a18?render=true</a>，看到的应该是数据渲染页面，如图：</p>
+<p><img src="images/todo_render.png" alt="image"></p>
+<h3 id="-app-">第二步：使 App 支持外部调用</h3>
+<p>在设置了和启用了 Class 应用内搜索之后，你需要让你的应用响应搜索结果的 URL 调用。</p>
+<h4 id="android-">Android 应用支持外部调用</h4>
+<p>在 Android 里，我们可以通过为 Activity 注册 <code>intent-filter</code> 来实现。以我们的 Todo Demo 为例，我们想在 <code>CreateTodo</code> 这个 Activity 里面展现搜索出来的某一条 Todo 内容，在 <code>AndroidManifest.xml</code> 注册 <code>intent-filter</code> 配置如下</p>
+<pre><code class="lang-xml">&lt;activity android:name=&quot;com.avos.demo.CreateTodo&quot; &gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+        &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+        &lt;!-- 处理以&quot;com.avoscloud.todo://avoscloud/classes/Todo/&quot;开头的 URI --&gt;
+        &lt;data android:scheme=&quot;com.avoscloud.todo&quot; /&gt;
+        &lt;data android:host=&quot;avoscloud&quot; /&gt;
+        &lt;data android:pathPrefix=&quot;/classes/Todo/&quot; /&gt;
+    &lt;/intent-filter&gt;
+&lt;/activity&gt;
+</code></pre>
+<ul>
+<li><code>android:scheme</code>：设置为你为应用选择的 URL Scheme，这里是 <code>com.avoscloud.todo</code></li>
+<li><code>android:host</code>：设置为你为应用选择的 URL Host，默认为 <code>avoscloud</code>。</li>
+<li><code>android:pathPrefix</code>：具体的资源路径前缀，搜索结果的URL具体路径都将展现为<code>/classes/{className}/{objectId}</code>，这里的 className 就是 <code>Todo</code>，因此路径前缀为 <code>classes/Todo/</code>。</li>
+<li><code>action</code>：必须设置为<code>android.intent.action.VIEW</code>，并且加入 <code>DEFAULT</code> 和 <code>BROWSABLE</code> 的 Category。</li>
+</ul>
+<p>接下来在 <code>CreateTodo</code> Activity的 <code>onCreate</code> 方法里我们接收这个 action 并获取 URL 展现数据：</p>
+<pre><code class="lang-java">   Intent intent = getIntent();
+    // 通过搜索结果打开
+    if (intent.getAction() == Intent.ACTION_VIEW) {
+      // 如果是VIEW action，我们通过getData获取URI
+      Uri uri = intent.getData();
+      String path = uri.getPath();
+      int index = path.lastIndexOf(&quot;/&quot;);
+      if (index &gt; 0) {
+        // 获取objectId
+        objectId = path.substring(index + 1);
+        Todo todo = new Todo();
+        todo.setObjectId(objectId);
+        // 通过Fetch获取content内容
+        todo.fetchInBackground(new GetCallback&lt;AVObject&gt;() {
+          @Override
+          public void done(AVObject todo, AVException arg1) {
+            if (todo != null) {
+              String content = todo.getString(&quot;content&quot;);
+              if (content != null) {
+                contentText.setText(content);
+              }
+            }
+          }
+        });
+      }
+    }
+</code></pre>
+<p>我们通过 adb 的 am 命令来测试配置是否有效，如果能够正常地调用 <code>CreateTodo</code>页面，则证明配置正确：</p>
+<pre><code class="lang-sh">adb shell am start -W -a &quot;android.intent.action.VIEW&quot; -d &quot;yourUri&quot; yourPackageName
+</code></pre>
+<p>在 Todo 例子里就是：</p>
+<pre><code class="lang-sh">adb shell am start -W -a &quot;android.intent.action.VIEW&quot;  \
+  -d &quot;com.avoscloud.todo://avoscloud/classes/Todo/5371f3a9e4b02f7aee2c9a18&quot; \
+  com.avos.demo
+</code></pre>
+<p>如果一切正常的话，这将直接打开应用并在 <code>CreateTodo</code> 里展现 objectId 为 <code>536cf746e4b0d914a19ec9b3</code> 的 Todo 对象数据数据。</p>
+<h4 id="ios-">iOS 应用支持外部调用</h4>
+<p>你可以通过编辑应用 <a href="http://developer.apple.com/library/ios/#documentation/general/Reference/InfoPlistKeyReference/Introduction/Introduction.html">information property list</a>，使得你的应用可以处理 URL Scheme。下图展示了如何为你的应用注册 URL Scheme。</p>
+<p><img src="images/ios_register_url_scheme.png" alt="image"></p>
+<p>需要注意的是，你这里的 URL Scheme 应该和你在我们网站上面设置的 URL Scheme 保持一致。</p>
+<p>注册完了 URL Scheme，你还需要实现 <a href="http://developer.apple.com/library/ios/#DOCUMENTATION/UIKit/Reference/UIApplication_Class/Reference/Reference.html#jumpTo_37">application method openURL</a> 。对于 TodoDemo，应该按照如下方法实现。</p>
+<pre><code class="lang-objc">/*
+ * 与 Android 类似，这里的 url.path 应该是 &quot;com.avoscloud.todo://avoscloud/classes/Todo/5371f3a9e4b02f7aee2c9a18&quot;
+ */
+(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSString *objectId = [url.path lastPathComponent];
+
+    AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot;];
+    todo.objectId = objectId;
+    [todo fetchInBackgroundWithBlock:^(AVObject *object, NSError *error) {
+        // 调用展示数据的方法
+        // code is here
+    }];
+    return YES;
+}
+</code></pre>
+<h3 id="-">第三步：在应用内集成搜索组件</h3>
+<h4 id="android-">Android 集成</h4>
+<h5 id="-sdk">导入SDK</h5>
+<p>下载 <a href="sdk_down.html">应用内搜索模块</a>，解压缩 <code>avossearch.zip</code>，将 <code>libs</code> 下的 <code>avossearch-v{version}.jar</code> 包加入你的 <code>libs</code> 下面。</p>
+<p>之后，你需要将 <code>res</code> 下的资源文件夹拷贝并且合并到你工程的 <code>res</code> 目录下，更改资源文件的内容并不影响 SDK 工作，但是请不要改动资源的文件名和文件内资源 ID。</p>
+<p>应用内搜索组件的资源文件都以 <code>avoscloud_search</code> 开头。</p>
+<h5 id="-">添加代码，实现基础功能</h5>
+<h6 id="-androidmanifest-xml">配置 AndroidManifest.xml</h6>
+<p>打开 <code>AndroidManifest.xml</code> 文件，在里面添加需要用到的 activity 和需要的权限:</p>
+<pre><code class="lang-xml">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+    &lt;application...&gt;
+       &lt;activity
+          android:name=&quot;com.avos.avoscloud.search.SearchActivity&quot;&gt;
+       &lt;/activity&gt;
+    &lt;/application&gt;
+</code></pre>
+<p>注：由于一些 UI 的原因，<strong>应用内搜索的最低 API level 要求是 12</strong>，如你需要更低的版本支持，请参照文档中的高级定制部分进行开发。</p>
+<h6 id="-">添加代码实现基础的应用内搜索功能</h6>
+<pre><code class="lang-java">AVSearchQuery searchQuery = new AVSearchQuery(&quot;keyword&quot;);
+SearchActivity.setHighLightStyle(&quot;&lt;font color=&#39;#E68A00&#39;&gt;&quot;);//通过这个方法，你可以像指定html tag一样设定搜索匹配字符的高亮风格
+searchQuery.search();//即可打开一个显式搜索结果的Activity
+</code></pre>
+<h6 id="-">结果排序</h6>
+<p><code>AVSearchQuery</code> 支持排序，通过 <code>orderByAscending</code> 和 <code>orderByDescending</code> 传入要排序的字段，就可以实现按照升序或者降序排序搜索结果。多字段排序，通过 <code>addAscendingOrder</code> 和 <code>addDescendingOrder</code> 来添加多个排序字段。大体上，这块 API 调用跟 <code>AVQuery</code> 是类似的：</p>
+<pre><code class="lang-java">AVSearchQuery searchQuery = new AVSearchQuery(&quot;keyword&quot;);
+searchQuery.orderByAscending(&quot;score&quot;); //根据score字段升序排序。
+</code></pre>
+<p>更复杂的排序功能，例如根据地理位置信息远近来排序，或者排序的字段是一个数组，你想使用数组内的最高值来排序等，都需要通过 <code>AVSearchSortBuilder</code> 来定制。</p>
+<p>根据地理信息位置排序：</p>
+<pre><code class="lang-java">AVSearchSortBuilder builder = AVSearchSortBuilder.newBuilder();
+builder.whereNear(&quot;location&quot;,new AVGeoPoint(30,30));
+searchQuery.setSortBuilder(builder);
+</code></pre>
+<p>根据数组内的最高值来排序，并且如果文档里没有这个值就放到最后：</p>
+<pre><code class="lang-java">builder.orderByDescending(&quot;scores&quot;,&quot;max&quot;,&quot;last&quot;);
+searchQuery.setSortBuilder(builder);
+</code></pre>
+<p>更多方法请参考 API 文档。</p>
+<h5 id="-">高级指定指南</h5>
+<p>由于每个应用的数据、UI展现要求都有很大的差别，所以单一的搜索组件界面仅仅能够满足较为简单的要求，所以我们将数据接口开放出来以便你能够方便的定制属于你自己的应用内搜索结果页面。</p>
+<pre><code class="lang-java">      AVSearchQuery search = new AVSearchQuery(&quot;test-query&quot;);
+      search.setLimit(100);
+      search.findInBackgroud(new FindCallback&lt;AVObject&gt;() {
+
+        @Override
+        public void done(List&lt;AVObject&gt; objects, AVException exception) {
+          if (exception == null) {
+             //你可以使用 objects来展现自己的UI
+             for(AVObject o : objects){
+                //这里可以得到搜索结果和你的应用所对应的AppUrl
+                String appUrl = o.getString(AVConstants.AVSEARCH_APP_URL);
+                //这里可以得到搜索结果对应的语法高亮
+                Map&lt;String,List&lt;String&gt;&gt; resultHighLights = ((Map&lt;String, List&lt;String&gt;&gt;)) o.get(AVConstants.AVSEARCH_HIGHTLIGHT);
+             }
+            } else {
+             //Exception happened
+            }
+          }
+        }
+      });
+</code></pre>
+<p>你也可以参考 <a href="`https://github.com/leancloud/avoscloud-sdk/blob/master/android/avossearch/src/com/avos/avoscloud/search/SearchActivity.java">我们的 <code>SearchActivity</code></a> 来更好的指定你自己的搜索结果页面。</p>
+<h5 id="-">分页查询</h5>
+<p>通过 <code>findInBackgroud</code> 方法做定制查询的话，如果需要分页，你仅仅需要通过多次调用同一个 <code>AVSearchQuery</code> 的 <code>findInBackgroud</code> 即可实现翻页效果，它将返回下一页搜索结果，直到末尾。</p>
+<p>搜索结果的文档总数可以通过 <code>AVSearchQuery</code> 的 <code>getHits</code> 方法得到。</p>
+<h5 id="-">查询语法简介</h5>
+<p>在AVSearchQuery中间可以设置query语句来指定查询条件：<code>AVSearchQuery.setQuery(String query)</code>。</p>
+<h6 id="-">基础搜索</h6>
+<p>传入最简单的字符串查询</p>
+<pre><code class="lang-java">AVSearchQuery query = new AVSearchQuery(&quot;basic-query&quot;);//搜索包含basic-query的值
+</code></pre>
+<h6 id="-">字段搜索</h6>
+<p>你也可以通过指定某个特定字段的值或者值域区间</p>
+<pre><code class="lang-java">query.setQuery(&quot;status:active&quot;);//搜索status字段包含active
+query.setQuery(&quot;title:(quick brown)&quot;);//搜索status包含quick或者brown
+query.setQuery(&quot;age:&gt;=10&quot;);//搜索年龄大于等于10的数据
+query.setQuery(&quot;age:(&gt;=10 AND &lt; 20)&quot;);//搜索年龄在[10,20)区间内的数据
+</code></pre>
+<h6 id="-">模糊搜索</h6>
+<pre><code class="lang-java">  query.setQuery(&quot;qu?c*k&quot;);//此处?代表一个字符，*代表0个或者多个字符。类似正则表达式通配符
+</code></pre>
+<p>更多更详细的语法资料，你可以参考 Elasticsearch 文档中 <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">Query-String-Syntax</a> 一节。</p>
+<h4 id="ios-">iOS 集成</h4>
+<h5 id="-">添加代码获取搜索结果</h5>
+<p>你可以参照如下代码构造 AVSearchQuery 并获取搜索结果。</p>
+<pre><code class="lang-objc">AVSearchQuery *searchQuery = [AVSearchQuery searchWithQueryString:@&quot;test-query&quot;];
+searchQuery.className = @&quot;className&quot;;
+searchQuery.highlights = @&quot;field1,field2&quot;;
+searchQuery.limit = 10;
+searchQuery.cachePolicy = kAVCachePolicyCacheElseNetwork;
+searchQuery.maxCacheAge = 60;
+searchQuery.fields = @[@&quot;field1&quot;, @&quot;field2&quot;];
+[searchQuery findInBackground:^(NSArray *objects, NSError *error) {
+    for (AVObject *object in objects) {
+        NSString *appUrl = [object objectForKey:@&quot;_app_url&quot;];
+        NSString *deeplink = [object objectForKey:@&quot;_deeplink&quot;];
+        NSString *hightlight = [object objectForKey:@&quot;_highlight&quot;];
+        // other fields
+        // code is here
+    }
+}];
+</code></pre>
+<p>有关查询语法，可以参考上文 Android 部分的介绍。</p>
+<p>对于分页，这里需要特别做出说明。因为每次请求都有 limit 限制，所以一次请求可能并不能获取到所有满足条件的记录。你可以多次调用同一个 <code>AVSearchQuery</code> 的 <code>findObjects</code> 或者 <code>findInBackground</code> 获取余下的记录。另外，<code>hits</code> 属性用于标示所有满足查询条件的记录数。</p>
+<pre><code class="lang-objc">/*!
+ *  符合查询条件的记录条数，由 SDK 自动修改。
+ */
+@property (nonatomic, assign) NSInteger hits;
+
+/*!
+ *  当前页面的scroll id，用于分页，可选。
+ #  @warning 如非特殊需求，请不要手动设置 sid。每次 findObjects 之后，SDK 会自动更新 sid。如果手动设置了错误的sid，将无法获取到搜索结果。
+ *  有关scroll id，可以参考 http://www.elasticsearch.org/guide/en/elasticsearch/guide/current/scan-scroll.html
+ */
+@property (nonatomic, retain) NSString *sid;
+</code></pre>
+<h4 id="javascript-">JavaScript 指南</h4>
+<p>JavaScript SDK v0.5.1 版本开始支持应用内搜索 API:</p>
+<pre><code class="lang-javascript">     var query = new AV.SearchQuery(&#39;GameScore&#39;);
+     query.queryString(&#39;*&#39;);
+     query.find().then(function(results) {
+       console.log(&quot;Find &quot; + query.hits() + &quot; docs.&quot;);
+       //处理 results 结果
+     }).catch(function(err){
+       //处理 err
+     });
+</code></pre>
+<p>当 <code>query.hasMore()</code> 返回 <code>true</code> 的时候，你可以不停地调用 <code>query.find()</code> 来向下翻页。</p>
+<p>如果在不同请求之间无法保存查询的 query 对象，可以利用 sid 做到翻页，一次查询是通过 <code>query._sid</code> 来标示的，你可以通过 <code>query.sid(&quot;上次查询的query._sid&quot;)</code> 来重建查询 query 对象，继续翻页查询。sid 在 5 分钟内有效。</p>
+<p>复杂排序可以使用 <code>AV.SearchSortBuilder</code>：</p>
+<pre><code class="lang-javascript">  var query = new AV.SearchQuery(&#39;GameScore&#39;);
+  //假设 scores 是分数组成的数组，根据分数里的平均分倒序排序，并且没有分数的排在最后。
+  query.sortBy(new AV.SearchSortBuilder().descending(&#39;scores&#39;,&#39;avg&#39;, &#39;last&#39;));
+  query.queryString(&#39;*&#39;);
+  query.find().then(function(results) {
+       //处理结果
+  });
+</code></pre>
+<p>更多 API 请参考 <a href="/api-docs/javascript/symbols/AV.SearchQuery.html">AV.SearchQuery</a> 和 <a href="/api-docs/javascript/symbols/AV.SearchSortBuilder.html">AV.SearchSortBuilder</a> 的文档。</p>
+<h2 id="-api">搜索 API</h2>
+<p>我们提供一个 <code>/1.1/search/select</code> 来做应用内搜索，前提是你参考前面的文档，启用了应用内搜索。</p>
+<p>假设你对 GameScore 类启用了应用内搜索，你就可以尝试传入关键字来搜索，比如查询关键字 <code>dennis</code>，限定返回结果 200 个，并且按照 <code>score</code> 降序排序：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  &quot;https://leancloud.cn/1.1/search/select?q=dennis&amp;limit=200&amp;clazz=GameScore&amp;order=-score&quot;
+</code></pre>
+<p>返回类似：</p>
+<pre><code class="lang-json">{
+results: [
+  {
+    _app_url: &quot;http://stg.pass.com//1/go/com.avoscloud/classes/GameScore/51e3a334e4b0b3eb44adbe1a&quot;,
+    _deeplink: &quot;com.avoscloud.appSearchTest://avoscloud/classes/GameScore/51e3a334e4b0b3eb44adbe1a&quot;
+    updatedAt: &quot;2011-08-20T02:06:57.931Z&quot;,
+    playerName: &quot;Sean Plott&quot;,
+    objectId: &quot;51e3a334e4b0b3eb44adbe1a&quot;,
+    createdAt: &quot;2011-08-20T02:06:57.931Z&quot;,
+    cheatMode: false,
+    score: 1337
+  },
+  ……
+],
+sid: &quot;cXVlcnlUaGVuRmV0Y2g7Mzs0NDpWX0NFUmFjY1JtMnpaRDFrNUlBcTNnOzQzOlZfQ0VSYWNjUm0yelpEMWs1SUFxM2c7NDU6Vl9DRVJhY2NSbTJ6WkQxazVJQXEzZzswOw==&quot;
+}
+</code></pre>
+<p>查询的参数支持：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skip</code></td>
+<td></td>
+<td>跳过的文档数目，默认为 0</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td></td>
+<td>返回集合大小，默认 100，最大 1000</td>
+</tr>
+<tr>
+<td><code>sid</code></td>
+<td>可选</td>
+<td>第一次查询结果中返回的 sid 值，用于分页，对应于 elasticsearch 中的 scoll id。</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>必须</td>
+<td>查询文本，支持类似 google 的搜索语法。</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>可选</td>
+<td>逗号隔开的字段列表，查询的字段列表</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">highlights</code></td>
+<td>可选</td>
+<td>高亮字段，可以是通配符 <code>*</code>，也可以是字段列表逗号隔开的字符串。如果加入，返回结果会多出 <code>_highlight</code> 属性，表示高亮的搜索结果内容，关键字用 <code>em</code> 标签括起来。</td>
+</tr>
+<tr>
+<td><code>clazz</code></td>
+<td>可选</td>
+<td>类名，如果没有指定，则搜索所有启用了应用内搜索的 class。</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td>可选</td>
+<td>排序字段，形如 <code>-score,createdAt</code> 逗号隔开的字段，负号表示倒序，可以多个字段组合排序。</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td></td>
+<td>关联查询内联的 Pointer 字段列表，逗号隔开，形如 <code>user,comment</code> 的字符串。<strong>仅支持 include Pointer 类型</strong>。</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td></td>
+<td>复杂排序字段，例如地理位置信息排序，见下文描述。</td>
+</tr>
+</tbody>
+</table>
+<p>返回结果属性介绍：</p>
+<ul>
+<li><code>results</code>：符合查询条件的结果文档。</li>
+<li><code>hits</code>：符合查询条件的文档总数</li>
+<li><code>sid</code>：标记本次查询结果，下次查询继续传入这个 sid 用于查找后续的数据，用来支持翻页查询。</li>
+</ul>
+<p>返回结果 results 列表里是一个一个的对象，字段是你在应用内搜索设置里启用的字段列表，并且有两个特殊字段：</p>
+<ul>
+<li><code>_app_url</code>: 应用内搜索结果在网站上的链接。</li>
+<li><code>_deeplink</code>: 应用内搜索的程序调用 URL，也就是 deeplink。</li>
+</ul>
+<p>最外层的 <code>sid</code> 用来标记本次查询结果，下次查询继续传入这个 sid 将翻页查找后 200 条数据：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  &quot;https://leancloud.cn/1.1/search/select?q=dennis&amp;limit=200&amp;clazz=GameScore&amp;order=-score&amp;sid=cXVlcnlUaGVuRmV0Y2g7Mzs0NDpWX0NFUmFjY1JtMnpaRDFrNUlBcTNnOzQzOlZfQ0VSYWNjUm0yelpEMWs1SUFxM2c7NDU6Vl9DRVJhY2NSbTJ6WkQxazVJQXEzZzswOw&quot;
+</code></pre>
+<p>直到返回结果为空。</p>
+<h3 id="q-">q 查询语法举例</h3>
+<p>q 的查询走的是 elasticsearch 的 <a href="http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax">query string 语法</a>。建议详细阅读这个文档。这里简单做个举例说明。</p>
+<p>查询的关键字保留字符包括： <code>+ - = &amp;&amp; || &gt; &lt; ! ( ) { } [ ] ^ &quot; ~ * ? : \ /</code>，当出现这些字符的时候，请对这些保留字符做 URL Escape 转义。</p>
+<h4 id="-">基础查询语法</h4>
+<ul>
+<li>查询某个关键字，例如 <code>可乐</code>。</li>
+<li>查询<strong>多个关键字</strong>，例如 <code>可口 可乐</code>，空格隔开，返回的结果默认按照文本相关性排序，其他排序方法请参考上文中的 <a href="#搜索_API">order</a> 和下文中的 <a href="#复杂排序">sort</a>。</li>
+<li>查询某个<strong>短语</strong>，例如 <code>&quot;lady gaga&quot;</code>，注意用双引号括起来，这样才能保证查询出来的相关对象里的相关内容的关键字也是按照 <code>lady gaga</code> 的顺序出现。</li>
+<li>根据<strong>字段查询</strong>，例如根据 nickname 字段查询：<code>nickename:逃跑计划</code>。</li>
+<li>根据字段查询，也可以是短语，记得加双引号在短语两侧： <code>nickename:&quot;lady gaga&quot;</code></li>
+<li><strong>复合查询</strong>，AND 或者 OR，例如 <code>nickname:(逃跑计划 OR 夜空中最亮的星)</code></li>
+<li>假设 book 字段是 object 类型，那么可以根据<strong>内嵌字段</strong>来查询，例如 <code>book.name:clojure OR book.content:clojure</code>，也可以用通配符简写为 <code>book.\*:clojure</code>。</li>
+<li>查询没有 title 的对象： <code>_missing_:title</code>。</li>
+<li>查询有 title 字段并且不是 null 的对象：<code>_exists_:title</code>。</li>
+</ul>
+<p><strong>上面举例根据字段查询，前提是这些字段在 class 的应用内搜索设置里启用了索引。</strong></p>
+<h4 id="-">通配符和正则查询</h4>
+<p><code>qu?ck bro*</code> 就是一个通配符查询，<code>?</code> 表示一个单个字符，而 <code>*</code> 表示 0 个或者多个字符。</p>
+<p>通配符其实是正则的简化，可以使用正则查询：</p>
+<pre><code>name:/joh?n(ath[oa]n)/
+</code></pre><p>正则的语法参考 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-regexp-query.html#regexp-syntax">正则语法</a>。</p>
+<h4 id="-">模糊查询</h4>
+<p>根据文本距离相似度（Fuzziness）来查询。例如 <code>quikc~</code>，默认根据 <a href="http://en.wikipedia.org/wiki/Damerau-Levenshtein_distance">Damerau-Levenshtein 文本距离算法</a>来查找最多两次变换的匹配项。</p>
+<p>例如这个查询可以匹配 <code>quick</code>、<code>qukic</code>、<code>qukci</code> 等。</p>
+<h4 id="-">范围查询</h4>
+<pre><code>// 数字 1 到 5：
+count:[1 TO 5]
+
+// 2012年内
+date:[2012-01-01 TO 2012-12-31]
+
+//2012 年之前
+{* TO 2012-01-01}
+</code></pre><p><code>[]</code> 表示闭区间，<code>{}</code> 表示开区间。</p>
+<p>还可以采用比较运算符：</p>
+<pre><code>age:&gt;10
+age:&gt;=10
+age:&lt;10
+age:&lt;=10
+</code></pre><h4 id="-">查询分组</h4>
+<p>查询可以使用括号分组：</p>
+<pre><code>(quick OR brown) AND fox
+</code></pre><h4 id="-">特殊类型字段说明</h4>
+<ul>
+<li>objectId 在应用内搜索的类型为 string，因此可以按照字符串查询： <code>objectId: 558e20cbe4b060308e3eb36c</code>，不过这个没有特别必要了，你可以直接走 SDK 查询，效率更好。</li>
+<li>createdAt 和 updatedAt 映射为 date 类型，例如 <code>createdAt:[&quot;2015-07-30T00:00:00.000Z&quot; TO &quot;2015-08-15T00:00:00.000Z&quot;]</code> 或者 <code>updatedAt: [2012-01-01 TO 2012-12-31]</code></li>
+<li>除了createdAt 和 updatedAt之外的 Date 字段类型，需要加上 <code>.iso</code> 后缀做查询： <code>birthday.iso: [2012-01-01 TO 2012-12-31]</code></li>
+<li>Pointer 类型，可以采用 <code>字段名.objectId</code> 的方式来查询： <code>player.objectId: 558e20cbe4b060308e3eb36c and player.className: Player</code>，pointer 只有这两个属性，应用内搜索不会 include 其他属性。</li>
+<li>Relation 字段的查询不支持。</li>
+<li>File 字段，可以根据 url 或者 id 来查询：<code>avartar.url: &quot;https://leancloud.cn/docs/app_search_guide.html#搜索_API&quot;</code>，无法根据文件内容做全文搜索。</li>
+</ul>
+<h3 id="-">复杂排序</h3>
+<p>假设你要排序的字段是一个数组，比如分数数组<code>scores</code>，你想根据平均分来倒序排序，并且没有分数的排最后，那么可以传入：</p>
+<pre><code class="lang-sh"> --data-urlencode &#39;sort=[{&quot;scores&quot;:{&quot;order&quot;:&quot;desc&quot;,&quot;mode&quot;:&quot;avg&quot;,&quot;missing&quot;:&quot;_last&quot;}}]&#39;
+</code></pre>
+<p>也就是 <code>sort</code> 可以是一个 JSON 数组，其中每个数组元素是一个  JSON 对象：</p>
+<pre><code class="lang-json">{&quot;scores&quot;:{&quot;order&quot;:&quot;desc&quot;,&quot;mode&quot;:&quot;avg&quot;,&quot;missing&quot;:&quot;_last&quot;}}
+</code></pre>
+<p>排序的字段作为 key，字段可以设定下列选项：</p>
+<ul>
+<li><code>order</code>：<code>asc</code> 表示升序，<code>desc</code> 表示降序</li>
+<li><code>mode</code>：如果该字段是多值属性或者数组，那么可以选择按照最小值 <code>min</code>、最大值 <code>max</code>、总和 <code>sum</code> 或者平均值 <code>avg</code> 来排序。</li>
+<li><code>missing</code>：决定缺失该字段的文档排序在开始还是最后，可以选择 <code>_last</code> 或者 <code>_first</code>，或者指定一个默认值。</li>
+</ul>
+<p>多个字段排序就类似：</p>
+<pre><code class="lang-json">[
+  {
+    &quot;scores&quot;:{&quot;order&quot;:&quot;desc&quot;,&quot;mode&quot;:&quot;avg&quot;,&quot;missing&quot;:&quot;_last&quot;}
+  },
+  {
+    &quot;updatedAt&quot;: {&quot;order&quot;:&quot;asc&quot;}
+  }
+]
+</code></pre>
+<h3 id="-">地理位置信息查询</h3>
+<p>如果 class 里某个列是 <code>GeoPoint</code> 类型，那么可以根据这个字段的地理位置远近来排序，例如假设字段 <code>location</code> 保存的是 <code>GeoPoint</code>类型，那么查询 <code>[39.9, 116.4]</code> 附近的玩家可以通过设定 sort 为：</p>
+<pre><code class="lang-json">{
+  &quot;_geo_distance&quot; : {
+                &quot;location&quot; : [39.9, 116.4],
+                &quot;order&quot; : &quot;asc&quot;,
+                &quot;unit&quot; : &quot;km&quot;,
+                &quot;mode&quot; : &quot;min&quot;,
+   }
+}
+</code></pre>
+<p><code>order</code> 和  <code>mode</code> 含义跟上述复杂排序里的一致，<code>unit</code> 用来指定距离单位，例如 <code>km</code> 表示千米，<code>m</code> 表示米，<code>cm</code> 表示厘米等。</p>
+<h2 id="morelikethis-">moreLikeThis 相关性查询</h2>
+<p>除了 <code>/1.1/search/select</code> 之外，我们还提供了 <code>/1.1/search/mlt</code> 的 API 接口，用于相似文档的查询，可以用来实现相关性推荐。</p>
+<p>假设我们有一个 Class 叫 <code>Post</code> 是用来保存博客文章的，我们想基于它的标签字段 <code>tags</code> 做相关性推荐，可以通过：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  &quot;https://leancloud.cn/1.1/search/mlt?like=clojure&amp;clazz=Post&amp;fields=tags&quot;
+</code></pre>
+<p>我们设定了 <code>like</code> 参数为 <code>clojure</code>，查询的相关性匹配字段 <code>fields</code> 是 <code>tags</code>，也就是从 <code>Post</code> 里查找 <code>tags</code> 字段跟 <code>clojure</code> 这个文本相似的对象，返回类似：</p>
+<pre><code class="lang-json">{
+&quot;results&quot;: [
+  {  
+    &quot;tags&quot;:[  
+          &quot;clojure&quot;,
+           &quot;数据结构与算法&quot;
+     ],
+     &quot;updatedAt&quot;:&quot;2016-07-07T08:54:50.268Z&quot;,
+     &quot;_deeplink&quot;:&quot;cn.leancloud.qfo17qmvr8w2y6g5gtk5zitcqg7fyv4l612qiqxv8uqyo61n:\/\/leancloud\/classes\/Article\/577e18b50a2b580057469a5e&quot;,
+     &quot;_app_url&quot;:&quot;https:\/\/leancloud.cn\/1\/go\/cn.leancloud.qfo17qmvr8w2y6g5gtk5zitcqg7fyv4l612qiqxv8uqyo61n\/classes\/Article\/577e18b50a2b580057469a5e&quot;,
+     &quot;objectId&quot;:&quot;577e18b50a2b580057469a5e&quot;,
+     &quot;_highlight&quot;:null,
+     &quot;createdAt&quot;:&quot;2016-07-07T08:54:13.250Z&quot;,
+     &quot;className&quot;:&quot;Article&quot;,
+     &quot;title&quot;:&quot;clojure persistent vector&quot;
+  },
+  ……
+],
+&quot;sid&quot;: null}
+</code></pre>
+<p>除了可以通过指定 <code>like</code> 这样的相关性文本来指定查询相似的文档之外，还可以通过 likeObjectIds 指定一个对象的 objectId 列表，来查询相似的对象：</p>
+<pre><code>curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  &quot;https://leancloud.cn/1.1/search/mlt?likeObjectIds=577e18b50a2b580057469a5e&amp;clazz=Post&amp;fields=tags&quot;
+</code></pre><p>这次我们换成了查找和 <code>577e18b50a2b580057469a5e</code> 这个 objectId 指代的对象相似的对象。</p>
+<p>更详细的查询参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skip</code></td>
+<td>可选</td>
+<td>跳过的文档数目，默认为 0</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>可选</td>
+<td>返回集合大小，默认 100，最大 1000</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>可选</td>
+<td>相似搜索匹配的字段列表，用逗号隔开，默认为所有索引字段 <code>_all</code></td>
+</tr>
+<tr>
+<td><code>like</code></td>
+<td>可选</td>
+<td><strong>和 <code>likeObjectIds</code> 参数二者必须提供其中之一</strong>。代表相似的文本关键字。</td>
+</tr>
+<tr>
+<td><code>likeObjectIds</code></td>
+<td>可选</td>
+<td><strong>和 <code>like</code> 参数二者必须提供其中之一</strong>。代表相似的对象 objectId 列表，用逗号隔开。</td>
+</tr>
+<tr>
+<td><code>clazz</code></td>
+<td>必须</td>
+<td>类名</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td>可选</td>
+<td>关联查询内联的 Pointer 字段列表，逗号隔开，形如 <code>user,comment</code> 的字符串。<strong>仅支持 include Pointer 类型</strong>。</td>
+</tr>
+<tr>
+<td><code>min_term_freq</code></td>
+<td>可选</td>
+<td><strong>文档中一个词语至少出现次数，小于这个值的词将被忽略，默认是 2</strong>，如果返回文档数目过少，可以尝试调低此值。</td>
+</tr>
+<tr>
+<td><code>min_doc_freq</code></td>
+<td>可选</td>
+<td><strong>词语至少出现的文档个数，少于这个值的词将被忽略，默认值为 5</strong>，同样，如果返回文档数目过少，可以尝试调低此值。</td>
+</tr>
+<tr>
+<td><code>max_doc_freq</code></td>
+<td>可选</td>
+<td>词语最多出现的文档个数，超过这个值的词将被忽略，防止一些无意义的热频词干扰结果，默认无限制。</td>
+</tr>
+</tbody>
+</table>
+<p>更多内容参考 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html">ElasticSearch 文档</a>。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

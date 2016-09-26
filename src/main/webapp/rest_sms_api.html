@@ -1,0 +1,918 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-rest-api-">短信服务 REST API 详解</h1>
+<p><a href="rest_api.html">REST API</a> 可以让任何支持发送 HTTP 请求的设备与 LeanCloud 进行交互。使用我们的短信服务 REST API 可以完成很多事情，比如：</p>
+<ul>
+<li>给指定手机号码发送短信验证码</li>
+<li>验证手机号和短信验证码是否匹配</li>
+<li>使用手机号和验证码进行登录</li>
+<li>通过合法的手机号和验证码来重置账户密码</li>
+<li>进行重要操作（例如支付）的验证确认等</li>
+</ul>
+<!-- 我们支持**国内短信**、**国际短信**，并为每个 LeanCloud 账户-->
+<p>我们为每个 LeanCloud 账户提供 100 条国内短信的免费额度进行测试，超过的部分将实时从短信余额中扣除，所以请务必保证短信账户余额充足。具体的价格请参看 <a href="/pricing.html">官网价格</a>。</p>
+<h2 id="-">快速参考</h2>
+<p>所有 API 访问都需要使用 HTTPS 协议，在 <code>https://leancloud.cn</code> 域名下。相对路径前缀 <code>/1.1/</code> 代表使用版本号为 1.1 的 API。如需在线测试 API，请在浏览器中打开 <a href="https://leancloud.cn/apionline/">https://leancloud.cn/apionline/</a>。</p>
+<p>我们的短信服务 REST API 包括：</p>
+<h3 id="-api">短信验证 API</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:left">HTTP</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/1.1/requestSmsCode</td>
+<td style="text-align:left">POST</td>
+<td>请求发送短信验证码</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/verifySmsCode/<code>&lt;code&gt;</code></td>
+<td style="text-align:left">POST</td>
+<td>验证短信验证码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">用户</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:left">HTTP</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">/1.1/usersByMobilePhone</td>
+<td style="text-align:left">POST</td>
+<td>使用手机号码注册或登录</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/requestMobilePhoneVerify</td>
+<td style="text-align:left">POST</td>
+<td>请求发送用户手机号码验证短信</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/verifyMobilePhone/<code>&lt;code&gt;</code></td>
+<td style="text-align:left">POST</td>
+<td>使用「验证码」验证用户手机号码</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/requestLoginSmsCode</td>
+<td style="text-align:left">POST</td>
+<td>请求发送手机号码短信登录验证码</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/requestPasswordResetBySmsCode</td>
+<td style="text-align:left">POST</td>
+<td>请求发送手机短信验证码重置用户密码</td>
+</tr>
+<tr>
+<td style="text-align:left">/1.1/resetPasswordBySmsCode/<code>&lt;code&gt;</code></td>
+<td style="text-align:left">PUT</td>
+<td>验证手机短信验证码并重置密码</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">请求和响应格式</h3>
+<p>请参考我们的 <a href="./rest_api.html#请求格式">REST API 总览文档</a>。</p>
+<h3 id="-">验证码发送逻辑图</h3>
+<p>在短信验证码发送过程中，一共有三方参与：客户端、LeanCloud 和电信运营商（移动、联通、电信），发送、验证短信验证码的过程如下图所示：</p>
+<p><img src="images/leancloud_sms_sequence.png" alt="image"></p>
+<ol>
+<li>首先是应用客户端向 LeanCloud 请求向特定手机号码发送验证码；</li>
+<li>LeanCloud 云端收到请求后，生成验证码，然后将完整短信内容发送到运营商通道；</li>
+<li>运营商下发短信（或语音）；</li>
+<li>应用客户端收到验证码短信后，再向 LeanCloud 验证手机号码和短信验证码的合法性。</li>
+</ol>
+<h2 id="-api">短信验证 API</h2>
+<p>在一些场景下，你可能希望用户在验证手机号码后才能进行一些操作，例如充值。这些操作跟账户系统没有关系，可以通过我们提供的的短信验证 API 来实现。</p>
+<p>使用这些 API 需要在 <a href="https://leancloud.cn/app.html?appid={{appid}}#/permission">控制台 &gt; <strong>设置</strong> &gt; <strong>应用选项</strong> &gt; <strong>其他</strong></a> 中开启 <strong>启用通用的短信验证码服务（开放 <code>requestSmsCode</code> 和 <code>verifySmsCode</code> 接口）</strong> 选项。</p>
+<p>给某个手机号码发送验证短信，可通过如下请求完成：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestSmsCode
+</code></pre>
+<p>这里必须使用 POST 方式来发送请求，请求体里支持的参数有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:center">约束</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">mobilePhoneNumber</td>
+<td style="text-align:center">必填</td>
+<td style="text-align:left">目标手机号码</td>
+</tr>
+<tr>
+<td style="text-align:left">ttl</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">验证码有效时间。单位分钟（默认为 <strong>10 分钟</strong>）</td>
+</tr>
+<tr>
+<td style="text-align:left">name</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">应用名字（默认为 LeanCloud 控制台填写的应用名。）</td>
+</tr>
+<tr>
+<td style="text-align:left">op</td>
+<td style="text-align:center"></td>
+<td style="text-align:left">操作类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">语音验证码</h3>
+<p>语音验证码，是通过电话直接呼叫用户的电话号码来播报验证码。它是一个 6 位的数字组合，语音只播报数字内容，不能添加其他任何内容。它可以作为一种备选方案，来解决因各种原因导致短信无法及时到达的问题。发送方式如下：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;, &quot;smsType&quot;:&quot;voice&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestSmsCode
+</code></pre>
+<p>与上面的普通短信验证码相比，请求发送语音验证码的时候，要加上 <code>smsType</code> 这个请求参数，其值为 <code>voice</code> 。</p>
+<p><code>smsType</code> 允许的取值有：</p>
+<ul>
+<li><strong>voice</strong>：发送语音验证码</li>
+<li><strong>sms</strong>：发送普通短信验证码</li>
+</ul>
+<p>此接口与之前的 <a href="#短信验证_API">验证短信 API</a> 完全兼容，如果你不需要此服务，完全不需要修改之前的发送短信代码。它的 <a href="#短信有什么限制吗_">发送限制</a> 与短信验证码相同。</p>
+<h3 id="-">校验验证码</h3>
+<p>通过下面的 API 可以验证收到的 6 位数字验证码是否正确：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  &quot;https://api.leancloud.cn/1.1/verifySmsCode/6位数字验证码?mobilePhoneNumber=186xxxxxxxx&quot;
+</code></pre>
+<p>其中 <code>verifySmsCode</code> 后面是手机收到的 6 位数字验证码。<code>mobilePhoneNumber</code> 是收到短信的手机号码。</p>
+<blockquote>
+<p>由于运营商和渠道的限制，短信验证码（也包括语音验证码）向同一手机号码发送要求间隔至少一分钟，并且每天向同一手机号码发送次数不能超过 5 次，<strong>因此建议采用 <a href="#图片验证码">图片验证码</a>、倒数计时等措施来控制频率</strong>，提示用户，防止短信轰炸等恶劣情况发生。另外，请了解有关短信的 <a href="#短信有什么限制吗_">其他限制</a>。</p>
+</blockquote>
+<!--
+### 国际短信
+
+上面发送短信验证码和语音验证码，默认都是对国内号码。我们也开通了国际短信验证码服务（语音验证码在海外还不可用）。要发送国际短信，只需在发送 `https://api.leancloud.cn/1.1/requestSmsCode` 请求的时候，额外加上 `countryCode` 这一参数即可。
+
+`countryCode` 的取值范围请参考 [countrycode.org](https://countrycode.org/) 中的 **ISO CODES** 一列，例如 US 表示美国，CN 代表中国。
+
+下面的请求将给美国的手机号码（+917646xxxxx）发送一条短信验证码：
+
+```sh
+curl -X POST \
+  -H "X-LC-Id: {{appid}}" \
+  -H "X-LC-Key: {{appkey}}" \
+  -H "Content-Type: application/json" \
+  -d '{"mobilePhoneNumber": "917646xxxxx", "countryCode":"US"}' \
+  https://api.leancloud.cn/1.1/requestSmsCode
+```
+
+除了所增加的 `countryCode` 之外，发送国际短信和国内短信的请求参数完全一样。
+-->
+<h2 id="-">自定义短信模板</h2>
+<p>我们还支持通过 <code>requestSmsCode</code> 发送自定义模板的短信。短信模板可以在 <a href="/applist.html#/apps">应用控制台</a> &gt; <strong>消息</strong> &gt; <strong>短信</strong> &gt; <strong>设置</strong> &gt; <strong>短信模板</strong> 里创建。</p>
+<p>要使用已创建好的短信模板来发送短信验证，可以通过 <code>template</code> 参数指定模板名称，并且可以传入变量渲染模板，比如下面例子中的 <code>date</code>：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;, &quot;template&quot;:&quot;activity&quot;,&quot;date&quot;:&quot;2014 年 10 月 31 号&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestSmsCode
+</code></pre>
+<p>短信模板的语法遵循 <a href="http://handlebarsjs.com/">Handlebars</a>，举例如下：</p>
+<pre ng-non-bindable><code>Hi ,
+欢迎注册应用，您可以通过验证码:，进行注册。本条短信将在分钟后自行销毁。请尽快使用。
+以上。
+</code></pre>
+
+<ul>
+<li><strong>code</strong> 是我们帮你生成的验证码，可以通过 <code>/1.1/verifySmsCode/&lt;code&gt;</code> 校验。</li>
+<li><strong>ttl</strong> 是短信有效期，单位分钟，默认为 10 分钟。</li>
+<li><strong>name</strong> 是应用名称</li>
+</ul>
+<p>这三个内置字段会自动填充，你当然也可以添加自定义变量，形如 <span ng-non-bindable>``</span>。</p>
+<p>短信签名是指短信内容里 <code>【】</code> 括起来的短信发送方名称，如果没有明确在模板里指定，默认就是你的应用名称。短信签名<strong>必须是 3 到 8 个字符，不能有任何非文字字符，也不可以是变量</strong>。应用名称可以在应用设置里修改，并且短信签名<strong>必须出现在短信内容的开头或者结尾。</strong></p>
+<h3 id="-">短信模板审核</h3>
+<p>模板的创建和修改都需要审核，并且在创建或修改模板之时，短信账户至少有 200 元的非赠送余额。创建后的模板会被自动提交进行审核，审核结果将通过邮件的形式发送到你的账号邮箱。</p>
+<p>目前我们仅允许两类自定义短信：</p>
+<ul>
+<li>验证类短信</li>
+<li>通知类短信</li>
+</ul>
+<p><strong>即内容中不允许包含任何下载链接，以及推广营销类信息</strong>，否则，模板将无法通过审核。</p>
+<p>每个应用限制创建 10 个模板，并且每个模板都需要经过审核才可以使用（审核在工作时间内通常在 1 个小时内）。模板一经审核，就可以马上使用。后续你可以创建同名模板来替换当前使用的模板，新模板也同样需要审核。审核通过，即可替换旧模板。</p>
+<h2 id="-">用户账户与手机号码验证</h2>
+<p>LeanCloud 提供了内建的账户系统，方便开发者快速接入。我们也支持账户系统与手机号码绑定的一系列功能，譬如：</p>
+<h3 id="-">使用手机号码注册或登录</h3>
+<p>用户直接输入手机号码来注册账户，如果手机号码已存在则自动登录。<code>POST /usersByMobilePhone</code> 既用于注册也用于登录：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;:&quot;186xxxxxxxx&quot;,&quot;smsCode&quot;:&quot;123456&quot;}&#39; \
+  https://api.leancloud.cn/1.1/usersByMobilePhone
+</code></pre>
+<p>其中 <code>mobilePhoneNumber</code> 是手机号码，<code>smsCode</code> 是使用 <a href="#短信验证_API">短信验证 API</a> 发送到手机上的 6 位验证码字符串。如果不传入 <code>username</code>，默认用户名将是手机号码。</p>
+<p>注册或者登录成功后，返回的应答与登录接口相似：</p>
+<pre><code class="lang-json">{
+  &quot;username&quot;:     &quot;186xxxxxxxx&quot;,
+  &quot;mobilePhone&quot;:  &quot;186xxxxxxxx&quot;,
+  &quot;createdAt&quot;:    &quot;2014-11-07T20:58:34.448Z&quot;,
+  &quot;updatedAt&quot;:    &quot;2014-11-07T20:58:34.448Z&quot;,
+  &quot;objectId&quot;:     &quot;51c3ba66e4b0f0e851c1621b&quot;,
+  &quot;sessionToken&quot;: &quot;pnktnjyb996sj4p156gjtp4im&quot;,
+  ... 其他属性
+}
+</code></pre>
+<p>如果是第一次注册，将默认设置 <code>mobilePhoneVerified</code> 属性为 <code>true</code>。</p>
+<p>使用手机验证码注册时，并不需要传入密码 <code>password</code>，云端也会默认使用空密码，代表不可以用密码来登录。如果需要在<strong>注册的同时设置一个密码</strong>，则增加传入 <code>password</code> 参数即可：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: xxxx&quot; \
+  -H &quot;X-LC-Key: xxxx&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;:&quot;186xxxxxxxx&quot;,&quot;smsCode&quot;:&quot;123456&quot;, &quot;password&quot;: &quot;密码&quot;}&#39; \
+  https://api.leancloud.cn/1.1/usersByMobilePhone
+</code></pre>
+<p><code>password</code> 这个参数只在注册时起作用，如果是登录则会被忽略。</p>
+<h3 id="-">手机号码验证</h3>
+<p>在应用控制台的设置里，你还可以选择开启注册手机码号验证。这样当用户在注册时填写了 <code>mobilePhoneNumber</code> 字段， LeanCloud  会向该手机号码发送一条附带验证码的验证短信，用户在输入验证码后被 LeanCloud API 验证通过后，用户的 <code>mobilePhoneNumberVerified</code> 属性即被设置为 <code>true</code>。</p>
+<p>假设你在开启注册手机号码验证选项后，注册下列用户：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;username&quot;:&quot;cooldude6&quot;,&quot;password&quot;:&quot;p_n7!-e8&quot;,&quot;mobilePhoneNumber&quot;:&quot;186xxxxxxxx&quot;}&#39; \
+  https://api.leancloud.cn/1.1/users
+</code></pre>
+<p>那么在注册成功后，LeanCloud  将向 186xxxxxxxx 发送一条验证短信。开发者需要提供一个输入框让用户输入这个验证短信中附带的验证码，之后调用下列 API 来确认验证码的有效性：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{}&#39; \
+  https://api.leancloud.cn/1.1/verifyMobilePhone/&lt;code&gt;
+</code></pre>
+<p>其中 URL 中最后的 <code>&lt;code&gt;</code> 要替换成 6 位验证数字。</p>
+<p>验证成功后，用户的 <code>mobilePhoneNumberVerified</code> 将变为 <code>true</code>，并会触发调用云引擎的 <code>AV.Cloud.onVerified(type, function)</code> 方法，<code>type</code> 被设置为 <code>sms</code>。</p>
+<h3 id="-">请求手机号码验证</h3>
+<p>用户除了被动等待接收验证码短信之外，或者因为其他情况用户没有收到短信，此时开发者可以主动要求发送验证码短信：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestMobilePhoneVerify
+</code></pre>
+<h3 id="-">手机号码＋验证码登录</h3>
+<p>在验证过手机号码后，用户可以采用短信验证码登录，来避免繁琐的输入密码的过程，请求发送登录验证码：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestLoginSmsCode
+</code></pre>
+<p>用户收到验证码短信后，输入手机号码和该验证码来登录应用：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -G \
+  --data-urlencode &#39;mobilePhoneNumber=186xxxxxxxx&#39; \
+  --data-urlencode &#39;smsCode=123456&#39; \
+  https://api.leancloud.cn/1.1/login
+</code></pre>
+<p>也可以采用手机号码和密码的方式登录：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -G \
+  --data-urlencode &#39;mobilePhoneNumber=186xxxxxxxx&#39; \
+  --data-urlencode &#39;password=p_n7!-e8&#39; \
+  https://api.leancloud.cn/1.1/login
+</code></pre>
+<h3 id="-">手机号码＋验证码重置用户密码</h3>
+<p>如果用户使用了手机号码来注册，你就可以通过手机短信来实现「忘记密码」的功能：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;mobilePhoneNumber&quot;: &quot;186xxxxxxxx&quot;}&#39; \
+  https://api.leancloud.cn/1.1/requestPasswordResetBySmsCode
+</code></pre>
+<p>发送一条重置密码的短信验证码到注册用户的手机上，需要传入注册时候的 <code>mobilePhoneNumber</code>。</p>
+<p>用户收到验证码后，调用 <code>PUT /1.1/resetPasswordBySmsCode/&lt;code&gt;</code> 来设置新的密码（其中 URL 中的 <code>&lt;code&gt;</code> 就是 6 位验证数字）：</p>
+<pre><code class="lang-sh">curl -X PUT \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;password&quot;: &quot;&lt;新密码&gt;&quot;}&#39; \
+  https://api.leancloud.cn/1.1/resetPasswordBySmsCode/收到的6位验证码
+</code></pre>
+<p>修改成功后，用户就可以用新密码登录了。</p>
+<h2 id="-">图片验证码</h2>
+<h3 id="-">短信轰炸</h3>
+<p>网络世界也不太平，很多角落都可能存在着不法分子，肆意进行网络攻击和破坏，其中短信轰炸就是一例。</p>
+<p>网络上有这样一种「轰炸软件」，它可以自动收集一些不需要认证（如图片验证码认证）就能发送短信验证码的网站，当恶意攻击者随意提供一个或一组手机号码，它就逐个访问先前找到的那些网站，把手机号都自动填上，利用这些网站向指定手机号发送短信。轰炸软件找到的可利用的网站越多，发出的短信也就越多。</p>
+<p>轰炸软件的恶意之处还在于，它对各个网站提交发送短信验证码请求不仅仅是一次，它可以设置时间，比如每隔几分钟请求一次，24 小时不间断请求，这样造成的后果就是：</p>
+<ul>
+<li>对于网站来说，它会不断收到发送短信验证码的请求，并可能承担更多的短信费用；</li>
+<li>对手机号码的使用者来说，他会在短时间内频繁收到包含验证码的无关短信。</li>
+</ul>
+<h3 id="-">防范的重要性</h3>
+<p>毫无疑问，图片验证码（又称 captcha）是防范短信轰炸最有力的手段。比如，我们在一些网站注册的时候，经常需要填写以下图片的信息：</p>
+<p><img src="images/captcha.png" width="400" height="50"></p>
+<p>网站只有在用户进行「免费获取验证码」 操作前，要求用户先输入图片验证码来确认操作真实有效，服务器端再请求 LeanCloud 云端发送动态短信到用户手机上，这样才可以有效防范恶意攻击者。下图显示出使用图片验证码的正确和错误做法：</p>
+<p><img src="images/captcha_comparison.png" alt="image"></p>
+<p>所以，在短信验证码发送前，一定先让用户填写图片验证码，确认后再发送短信验证码。</p>
+<p>一个实际有效的验证码还必须满足：</p>
+<ul>
+<li><strong>生成过程安全</strong>：图片验证码必须在服务器端生成并校验；</li>
+<li><strong>使用过程安全</strong>：单次有效，且以用户的验证请求为准；</li>
+<li><strong>验证码自身安全</strong>：不易被识别工具识别，能有效防止暴力破解。</li>
+</ul>
+<p>以下网站使用了图片验证码，大家可以参考：</p>
+<ul>
+<li><a href="http://reg.email.163.com/unireg/call.do?cmd=register.entrance&amp;from=163mail_right">网易邮箱注册</a></li>
+<li><a href="https://reg.jd.com/reg/person?ReturnUrl=http%3A%2F%2Fwww.jd.com">京东商城注册</a></li>
+</ul>
+<h3 id="-">更多验证形式</h3>
+<p>除了采用这种图片输入的方式来验证，现在有很多网站也采用了新颖的验证方式，比如淘宝、pptv 在注册时采用行为验证方式、拖拽验证方式等等。大家可以去搜索一下，网上有一些图片验证码的现成解决方案，可以尝试。</p>
+<h2 id="-faq">常见问题 FAQ</h2>
+<h3 id="-">短信有什么限制吗？</h3>
+<p>短信有 <strong>验证</strong>（包括语音验证）和<strong>通知</strong>（如通过短信模板创建）两类。由于运营商和渠道的限制，短信发送要遵循以下原则：</p>
+<ul>
+<li>无论是验证类还是通知类短信，1 分钟只能向同一个手机号码发送 1 条短信。</li>
+<li>每天只能向同一个手机号码发送 10 条验证类短信、15 条通知类短信。</li>
+</ul>
+<p><strong>通知类</strong>短信内容如果涉及以下不正当用途，我们将停止你的短信使用权限：</p>
+<ul>
+<li>推广营销用途</li>
+<li>包含不明下载地址</li>
+<li>色情、政治等法律禁止情况</li>
+</ul>
+<p>以上限制对测试手机号码也同样有效。</p>
+<h3 id="-100-">短信 100 条的免费额度是针对每个账户还是每个应用？</h3>
+<p>每个 LeanCloud 账户拥有 100 条免费的短信测试额度，<strong>不是每个应用</strong>；使用完毕就需要付费。可以通过 <a href="/bill.html#/bill/charge">充值</a> 菜单来购买短信。</p>
+<blockquote>
+<p>注意：为了不影响其他服务的使用，我们将短信费用和普通服务费用分开计算，所以充值的时候请明确选择「购买短信」，万一充错了，我们也支持用账户余额来购买短信。</p>
+</blockquote>
+<h3 id="-">短信的到达率如何？</h3>
+<p>我们通过接入多个短信提供商来提升普通短信的到达率。从我们实际使用来看，整体的到达率在 97%~98% 之间。为了保证重要操作的验证信息可以 100% 送达，我们也推出了 <a href="https://blog.leancloud.cn/3202/">语音验证码</a> 服务，即短信内容通过语音电话直接发送。因此，除了普通的文本短信之外，还可以使用语音短信或者其他备份手段来向确保将通知送达用户。</p>
+<h3 id="-">怎么知道单条短信发送成功与否？</h3>
+<p>LeanCloud 通过运营商通道发送的每一条短信，都可以通过「接收回执」来确认发送结果。一般有三种状态：</p>
+<ul>
+<li><strong>成功</strong>：这表示收到了目标手机发回来的短信接收回执，消息已经确认无误送达。</li>
+<li><strong>失败</strong>：这表示出现内部错误，导致发送失败。内部错误则包括目标号码因为某种原因进入发送方黑名单、短时间内发送过量短信、甚至是政策调整等等情况。</li>
+<li><strong>等待</strong>：表示运营商服务器尚未收到目标手机的接收回执，发送结果可能成功也可能失败，当前不可知。</li>
+</ul>
+<p>大家可以从 <a href="/messaging.html?appid={{appid}}#/message/sms/create">控制台 &gt; <strong>消息</strong> &gt; <strong>短信</strong> &gt; <strong>发送记录</strong></a> 清楚地看到每条消息和它的发送状态。</p>
+<h3 id="-">有些手机收不到短信是什么情况？</h3>
+<p>首先请检查 <a href="/messaging.html?appid={{appid}}#/message/sms/create">控制台 &gt; <strong>消息</strong> &gt; <strong>短信</strong> &gt; <strong>发送记录</strong></a>）有无发送数据。如果没有，请检查 API 的报错，根据报错修改客户端代码或逻辑；如果有数据，依然收不到短信，则可能有如下原因：</p>
+<ul>
+<li><strong>状态为「等待回执」</strong>：说明在等待运营商给我们发回回执，这时候用户可能已经收到短信，也可能没有收到，结果未知。在高峰时段，很可能会出现延迟。</li>
+<li><strong>状态为「失败」</strong>：说明运营商向用户发送短信失败。可能的原因有很多种，譬如：<ul>
+<li>每天往同一用户发送的短信量 <a href="#短信有什么限制吗_">超过了限制</a>；</li>
+<li>往同一用户发送短信频率太快（一分钟内最多只允许发送一条短信，此限制也适用于语音验证码）；</li>
+<li>用户之前退订或投诉过运营商当前分发的短信通道，该号码处在运营商黑名单中；</li>
+<li>用户手机号不存在或关机等等。</li>
+</ul>
+</li>
+<li><strong>状态为「成功」</strong>：说明运营商告诉我们用户已经成功收到了短信。如果用户没有收到，可能用户端手机出了问题（是否安装了某些安全软件，导致劫持或过滤了部分短信，等等）。</li>
+</ul>
+<p>短信发送受客观因素或政策原因影响较多，没有一个通道可以保证 100% 送达。LeanCloud 短信服务通过对接多条通道、动态智能匹配最优线路，能够保证 97% 以上的到达率。</p>
+<h5 id="-">解决方案</h5>
+<ul>
+<li>请在产品交互上，对验证码请求加上时间间隔限制，一分钟之内不允许多次请求；</li>
+<li>请注意一天内不要往同一号码发送超过 5 条验证码短信（包含语音验证码）；</li>
+<li>对于实在无法送达的少量手机号码，请转用 <a href="https://blog.leancloud.cn/3202/">语音验证码</a>，将短信内容通过语音电话直接发送。强烈建议大家在产品上，对于同一用户尝试再次获取验证码的情况，换用语音验证码来保证绝对送达（语音验证码收费与文本短信一样）。</li>
+</ul>
+<p>如果需要详查原因，请将 appId 及手机号发送到 <a href="&#x6d;&#97;&#x69;&#108;&#x74;&#111;&#58;&#x73;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#108;&#x65;&#x61;&#110;&#x63;&#108;&#111;&#117;&#100;&#46;&#99;&#x6e;">&#x73;&#117;&#112;&#112;&#x6f;&#114;&#116;&#64;&#108;&#x65;&#x61;&#110;&#x63;&#108;&#111;&#117;&#100;&#46;&#99;&#x6e;</a>，我们联系运营商查询详情。</p>
+<h3 id="-">短信签名是什么？必须的吗？</h3>
+<p>根据运营商的要求，短信签名是必须的。具体请参考 <a href="sms_guide-ios.html#短信签名说明">短信签名说明</a>。</p>
+<h3 id="-">短信模板审核的原则有哪些？</h3>
+<ol>
+<li>模板用途明确：通知类短信，比如活动通知、消息通知等。或者验证类短信，要求有验证码。</li>
+<li>短信用途不得违反国家法律法规，下列短信是严格禁止的：房产类、中奖类、违法类（谣言、诈骗等）、赌博类等。</li>
+<li>模板语法正确：我们仅支持 handlebars 语法，变量是以两个大括号括起来，类似 <span ng-non-bindable>``</span>。</li>
+<li>默认短信签名是应用名，你也可以在模板里设置短信签名，签名的要求请参考 <a href="sms_guide-ios.html#短信签名说明">短信签名说明</a>。</li>
+</ol>
+<p>如果你创建的短信模板被拒绝，请注意查收邮件，查看里面的拒绝原因等。如果还有疑问，请及时与我们联系。</p>
+<h3 id="-">短信支持港澳台和国外吗？</h3>
+<p>支持，请参考 <a href="sms_guide-ios.html#短信服务覆盖的国家和地区">短信服务覆盖的国家和地区</a>。</p>
+<h3 id="-">短信余额不足有预警通知吗？</h3>
+<p>有。请在 <a href="/settings.html#/setting/info">开发者账户</a> 里填写手机号码，我们将提前通过邮件和短信的方式向你发送告警信息。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

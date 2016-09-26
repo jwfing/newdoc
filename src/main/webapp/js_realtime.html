@@ -1,0 +1,2823 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="javascript-version-2-">JavaScript 实时通信开发指南（version 2）</h1>
+<h2 id="-">版本状态</h2>
+<div class="callout callout-info">本文档介绍 JavaScript Realtime SDK version 2 的安装与使用。v2 目前为维护状态，将仅得到安全更新，不会增加新的功能。</div>
+
+<p>目前 SDK 的最新版本是 version 3。与 v2 相比，v3 的主要改进有：</p>
+<ul>
+<li>提供了面向对象的，与其他平台 SDK 统一的 API</li>
+<li>Promise 化的异步 API</li>
+<li>新的事件模型</li>
+<li>完善的异常机制</li>
+<li>可扩展的消息类型系统</li>
+<li>新增对以下特性的支持：<ul>
+<li>单点登录</li>
+<li>「未读消息通知」模式</li>
+<li>对话查询条件构造器</li>
+</ul>
+</li>
+<li>增强了断线重连的可靠性</li>
+<li>采用了二进制协议，减少了传输消息时的流量消耗</li>
+</ul>
+<p>需要指出的是：</p>
+<ul>
+<li>v3 不兼容 v2 的 API</li>
+<li>v3 停止了对 IE10 及以下版本的支持。如果需要支持这些运行环境请使用 v2。</li>
+</ul>
+<p>v3 的详细使用文档请参考<a href="./realtime_guide-js.html">《JavaScript 实时通信开发指南》</a>。</p>
+<p>从 v2 升级到 v3，请参考 <a href="./realtime_js-v3-migration-guide.html">《JavaScript 实时通信 SDK v3 迁移指南》</a>。</p>
+<h2 id="-">简介</h2>
+<p>感谢你使用 JavaScript 实时通信 SDK，LeanCloud 的实时通信服务每天处理请求数超过百万级，安全可靠，是你的明智之选。</p>
+<p>你可以通过使用我们提供的 SDK，一行后端代码都不用写，就可以做一个功能完备的实时聊天应用、也可以做一个实时对战类的游戏，总之一切与实时通信相关的业务都可以使用 LeanCloud 提供的实时通信服务。</p>
+<p>你还可以通过实时通信 SDK 配合「<a href="leanengine_overview.html">云引擎</a>」简单的实现之前可能需要很多人才能完成的实时通信相关需求的开发，并且如果你达到我们的收费额度，也会以极低的成本支付你的使用费用，成本远远小于同等规模自建实时通信服务。</p>
+<p>本 SDK 实现轻量、高效、无依赖，支持浏览器与 node 运行环境。其中浏览器支持涵盖了移动终端的浏览器及各种 WebView，包括微信、PhoneGap、Cordova 的 WebView，同时 SDK 通过插件方式提供兼容 IE8 与 IE9 的方案。具体请看下面「<a href="#兼容方案">兼容方案</a>」部分的说明。</p>
+<h3 id="demo">Demo</h3>
+<ul>
+<li><a href="http://leancloud.github.io/js-realtime-sdk/demo/demo2/">简单聊天 Demo</a>，<a href="https://github.com/leancloud/js-realtime-sdk/tree/master/demo/demo2">源码</a></li>
+<li><a href="http://leancloud.github.io/leanmessage-demo">LeanMessage Demo</a>，<a href="https://github.com/leancloud/leanmessage-demo/tree/master/Web">源码</a></li>
+<li>热心用户提供的 <a href="http://cutpage.sinaapp.com/">实时对战游戏 Demo</a></li>
+</ul>
+<h3 id="-">贡献</h3>
+<p>你可以通过 GitHub 报告 bug 或者提出建议。如果觉得这个文档写的不够好，也可以帮助我们完善。</p>
+<p>SDK 仓库地址：<a href="https://github.com/leancloud/js-realtime-sdk">https://github.com/leancloud/js-realtime-sdk</a></p>
+<p>本文档仓库地址：<a href="https://github.com/leancloud/docs">https://github.com/leancloud/docs</a></p>
+<h2 id="-">概念</h2>
+<p>在你开始使用之前，首先来了解一下实时通信 SDK 的基本结构。实时通信在 SDK 里面分为两个层次：</p>
+<ul>
+<li><p>一层是底层实时通信基础模块，负责与服务器匹配和授权，建立基础的连接和底层控制。这个层次只会派发一些基础的事件出来，你可以通过 SDK 监听这些事件。这个层面 SDK 会保证底层连接的稳定，包括断开重试，心跳连接等策略；</p>
+</li>
+<li><p>另一层是业务逻辑层，用户可以使用 SDK 建立不同的 Conversation（对话）。一个 Conversation 就是一个独立的通信单元，但 Conversation 间一般是无法通信的。当然你可以自己在业务逻辑层，通过派发自定义事件的方式来封装其他自定义的逻辑。当创建一个新 Conversation 之后，对应的服务器端就会自动生成这个 Conversation，除非你自行删除，否则该 Conversation 一直存在。但是用户如果没有连接，该房间不会占用服务器资源，只是存储的一个数据条目；</p>
+</li>
+</ul>
+<p>如果想了解实时通信的整体概念，请阅读「<a href="realtime_v2.html">实时通信开发指南</a>」。另外，我们也提供「<a href="realtime_rest_api.html">实时通信 REST API</a>」。</p>
+<h3 id="-">特别说明</h3>
+<p>Conversation（对话）这个概念也可以理解为 Room（房间）。几个客户端节点在通信之前要放到同一个房间中，其实这两个是一个概念，只是名字不同，SDK 中两个方法都可以使用。如果你觉得更喜欢 Room 这个概念，那就可以使用 room 方法创建 Room，如果喜欢 Conversation，那就使用 conv 方法创建 Conversation。</p>
+<p>也许说到这里你已经跃跃欲试了，好的，那你可以试用一下看看了。</p>
+<p>注：如果还不是很了解 LeanCloud 的使用方式，建议先从「<a href="/start.html">快速入门</a>」开始尝试。</p>
+<h2 id="-">安装与配置</h2>
+<h3 id="-">浏览器环境</h3>
+<h4 id="-bower-http-bower-io-">通过 <a href="http://bower.io/">bower</a> 安装</h4>
+<p>在项目目录下运行安装命令：</p>
+<pre><code>bower install leancloud-realtime --save
+</code></pre><p>安装之后，在页面中加载 bower_components/leancloud-realtime/dist/AV.realtime.js 后即可使用 <code>AV.realtime</code> 全局变量。</p>
+<h4 id="-npm-browserify-http-browserify-org-">通过 npm 安装，使用 <a href="http://browserify.org/">browserify</a> 打包</h4>
+<p>leancloud-realtime 是标准的 node package，支持使用 browserify 进行浏览器代码的打包，node 环境中的安装方法参见「<a href="#node_环境">node 环境</a>」。</p>
+<h4 id="-">兼容方案</h4>
+<h5 id="ie8-ie9">IE8 与 IE9</h5>
+<p>SDK 提供插件化的、无痛兼容 IE8 与 IE9 老版本 IE 浏览器的支持方式。</p>
+<p>IE8 与 IE9 没有实现 WebSocket，SDK 通过 Flash 插件实现对 IE8 与 IE9 的支持。SDK 的 plugin/web-socket-js 目录是兼容 IE8 与 IE9 所需要用到的插件。主要实现原理就是通过 Flash 的 Socket 实现 WebSocket 协议通信，然后 JavaScript 包装下 window.WebSocket，再通过 Flash 与 JavaScript 通信完成对 SDK 的兼容。我们的 Demo 是兼容 IE8 与 IE9 的，可以参考其代码。</p>
+<p>另外，如果在 IE8、IE9 下启用了 HTTPS 协议，那么在实例化 AV.realtime 的时候，<code>secure</code> 要设置为 true。因为 IE8、IE9 中，只支持 HTTP 协议发送 HTTP 的请求，HTTPS 发送 HTTPS 的请求，不支持混用，就是 HTTPS 的站点无法发送 HTTP 的请求，但是新版 IE 已经支持。</p>
+<p><strong>具体使用方式：</strong></p>
+<p>在页面加载执行 AV.realtime.js 的代码前加入以下代码，路径改为你自己的路径</p>
+<pre><code class="lang-html">&lt;!-- 引入插件，兼容低 IE8 与 IE9，注意看下面的注释。如果不需要兼容，可以去掉这部分。 --&gt;
+&lt;!--[if lt IE 10]&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../../plugin/web-socket-js/swfobject.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;../../plugin/web-socket-js/web_socket.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+// 设置变量，配置插件中 WebSocketMain.swf 的引用路径
+WEB_SOCKET_SWF_LOCATION = &quot;../../plugin/web-socket-js/WebSocketMain.swf&quot;;
+&lt;/script&gt;
+&lt;![endif]--&gt;
+&lt;!-- 引入插件部分结束 --&gt;
+
+&lt;!-- 引入 LeanCloud 实时通信 SDK --&gt;
+&lt;script src=&quot;../../dist/AV.realtime.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>IE8 的用户请参见 <a href="#IE_8_中使用时要注意的问题">FAQ - IE8 中使用时要注意的问题</a>。</p>
+<h5 id="android-webview">Android WebView</h5>
+<p>如果要想在 Android WebView 中使用，请务必开启 WebSocket 支持。另外根据用户反馈，在部分 Android 机型的 WebView 中不支持 WebSocket 的安全链接，所以需要从 wss 协议转为 ws 协议，关闭 WebSocket 的 SSL，RealtimeObject 在初始化时提供 secure 选项可以关闭，详细使用方式请看 <a href="#AV_realtime">AV.realtime</a> 方法。</p>
+<h3 id="node-">node 环境</h3>
+<p>在项目目录下运行安装命令：</p>
+<pre><code>npm install leancloud-realtime --save
+</code></pre><p>安装之后在项目中获得 <code>realtime</code> 方法的引用：</p>
+<pre><code>var realtime = require(&#39;leancloud-realtime&#39;);
+</code></pre><p>SDK 在 node 环境下使用 <a href="https://www.npmjs.com/package/ws">ws</a> 作为内置的 WebSocket 实现，你也可以在使用 <code>realtime</code> 方法之前通过 <code>config</code> 方法配置一个 Websocket 类，这里以 <a href="https://www.npmjs.com/package/websocket">websocket</a> package 为例进行配置：</p>
+<pre><code>// 首先安装 websocket：
+// npm install websocket --save
+// 然后进行配置：
+realtime.config({
+  WebSocket: require(&#39;websocket&#39;).w3cwebsocket
+});
+</code></pre><h2 id="-">示例代码</h2>
+<p>如果你觉得一点点阅读文档较慢，可以直接看我们的「<a href="https://github.com/leancloud/js-realtime-sdk/tree/master/demo">Demo 代码</a>」，并且下载自己运行一下试试看，Demo 代码可以通过开两个浏览器标签的方式来模拟两个用户的互相通信，代码中也有详细的注释方便你来了解使用方法。</p>
+<pre><code class="lang-javascript">// 最简的示例代码，请换成自己的 appId，可以通过浏览器多个标签模拟多用户通信
+var appId = &#39;{{appid}}&#39;;
+// clientId 就是实时通信中的唯一用户 id
+var clientId = &#39;LeanCloud01&#39;;
+var realtimeObj;
+var conversationObj;
+
+// 创建实时通信实例（支持单页多实例）
+realtimeObj = AV.realtime({
+    appId: appId,
+    clientId: clientId,
+    // 是否开启服务器端认证
+    // auth: authFun,
+    // 是否使用其他地区的节点
+    // region: &#39;us&#39;
+});
+
+// 当前 SDK 版本
+console.log(&#39;当前 SDK 版本是 &#39; + AV.realtime.version);
+
+// 实时通信服务连接成功
+realtimeObj.on(&#39;open&#39;, function() {
+    console.log(&#39;实时通信服务建立成功！&#39;);
+
+    // 创建一个聊天室，conv 是 conversation 的缩写，也可以用 room 方法替换
+    conversationObj = realtimeObj.conv({
+        // 人员的 id
+        members: [
+            &#39;LeanCloud02&#39;
+        ],
+        // 默认名字
+        name: &#39;LeanCloud-Room&#39;,
+        // 默认的属性，可以放 Conversation 的一些初始值等
+        attr: {
+            test: &#39;testTitle&#39;
+        }
+    }, function(data) {
+        if (data) {
+            console.log(&#39;Conversation 创建成功!&#39;, data);
+        }
+    });
+});
+
+// 当聊天断开时触发
+realtimeObj.on(&#39;close&#39;, function() {
+    console.log(&#39;实时通信服务被断开！&#39;);
+});
+
+// 接收断线或者网络状况不佳的事件（断网可测试）
+realtimeObj.on(&#39;reuse&#39;, function() {
+    console.log(&#39;正在重新连接。。。&#39;);
+});
+
+// 当 Conversation 被创建时触发，当然你可以使用回调函数来处理，不一定要监听这个事件
+realtimeObj.on(&#39;create&#39;, function(data) {
+
+    // 向这个 Conversation 添加新的用户
+    conversationObj.add([
+        &#39;LeanCloud03&#39;, &#39;LeanCloud04&#39;
+    ], function(data) {
+        console.log(&#39;成功添加用户：&#39;, data);
+    });
+
+    // 从这个 Conversation 中删除用户
+    conversationObj.remove(&#39;LeanCloud03&#39;, function(data) {
+        console.log(&#39;成功删除用户：&#39;, data);
+    });
+
+    // 向这个 Conversation 中发送消息
+    conversationObj.send({
+        abc: 123
+    }, function(data) {
+        console.log(&#39;发送的消息服务端已收收到：&#39;, data);
+    });
+
+    setTimeout(function() {
+        // 查看历史消息
+        conversationObj.log(function(data) {
+            console.log(&#39;查看当前 Conversation 最近的聊天记录：&#39;, data);
+        });
+    }, 2000);
+
+    // 当前 Conversation 接收到消息
+    conversationObj.receive(function(data) {
+        console.log(&#39;当前 Conversation 收到消息：&#39;, data);
+    });
+
+    // 获取当前 Conversation 中的成员信息
+    conversationObj.list(function(data) {
+        console.log(&#39;列出当前 Conversation 的成员列表：&#39;, data);
+    });
+
+    // 取得当前 Conversation 中的人数
+    conversationObj.count(function(num) {
+        console.log(&#39;取得当前的用户数量：&#39; + num);
+    });
+});
+
+// 监听所有用户加入的情况
+realtimeObj.on(&#39;membersjoined&#39;, function(data) {
+    console.log(&#39;有用户加入某个当前用户在的 Conversation：&#39;, data);
+});
+
+// 监听所有用户离开的情况
+realtimeObj.on(&#39;membersleft&#39;, function(data) {
+    console.log(&#39;有用户离开某个当前用户在的 Conversation：&#39;, data);
+});
+
+// 监听所有 Conversation 中发送的消息
+realtimeObj.on(&#39;message&#39;, function(data) {
+    console.log(&#39;某个当前用户在的 Conversation 接收到消息：&#39;, data);
+});
+
+//当聊天出现错误时会触发
+realtimeObj.on(&#39;error&#39;, function (error) {
+    console.error(error);
+});
+</code></pre>
+<p>如果 A 创建了一个包含 B 的 Conversation ，并向其发送消息。
+那么，B 可以通过 on 方法监听 message 事件获取此消息（可以是离线消息），即使 B 尚未主动加入该 Conversation 。
+message 事件是接收消息最底层的实现，所以即使你通过 <code>conversationObj.receive</code> 监听了该消息，依然会触发 message 事件。
+message 事件回调函数传入参数中的 cid 字段，即是该 Conversation 的 id 。
+通过此 id 即可创建同样的 Conversation ，然后对其回复。</p>
+<h2 id="-">安全</h2>
+<h3 id="web-">Web 安全域名</h3>
+<p>如果是纯前端使用 JavaScript SDK，请务必配置 <strong>Web 安全域名</strong>，防止其他人盗用你的服务器资源。实时通信的安全域名设置会有三分钟的延迟，所以设置完毕后，请耐心等待下。配置方式：进入对应的 App，然后选择 <strong>设置</strong> &gt; <strong>安全中心</strong> &gt; <strong>Web 安全域名</strong>。</p>
+<p>详细请看<a href="data_security.html#Web_应用安全设置">《数据和安全 - Web 安全域名》</a>。</p>
+<h3 id="-">权限和认证</h3>
+<p>为了满足开发者对权限和认证的需求，我们设计了签名的概念。</p>
+<p>详细请看《<a href="realtime_v2.html#权限和认证">实时通信开发指南 - 权限和认证</a>》。</p>
+<p>另外，在 <a href="https://github.com/leancloud/js-realtime-sdk/tree/master/demo">Demo1</a> 中，我们也增加了一个实际的例子。</p>
+<h3 id="-xss">防御 XSS</h3>
+<p>Web 端实现任何可以将用户输入直接输出到界面上的应用，都要注意防止产生 XSS（跨站脚本攻击）。实时通信 SDK 为了保证数据上的纯净性及功能的纯净，没有在 SDK 层面做 HTML 字符的转义。所以当你实现一个 Web 产品时，一定要对用户的输出做字符串 HTML 转义。当然现在的很多 Web 端框架已经自带防御 XSS 的功能，比如 jQuery、Angular、React 等。</p>
+<p>注意：不仅要对内容，如果界面上会显示 clientId，也要做 HTML 过滤。</p>
+<p>如果你没有使用任何框架来防御 XSS，可以使用如下代码，用来过滤某个字符串中的 HTML 字符。</p>
+<pre><code class="lang-javascript">
+// HTML 转义方法，可以防止 XSS
+tool.encodeHTML = function(string) {
+  var encodeHTML = function(str) {
+    if (typeof(str) === &#39;string&#39;) {
+      return str.replace(/&amp;/g, &#39;&amp;amp;&#39;)
+        .replace(/&lt;/g, &#39;&amp;lt;&#39;)
+        .replace(/&gt;/g, &#39;&amp;gt;&#39;);
+    } else {
+      // 数字
+      return str;
+    }
+  };
+
+  // Object 类型
+  if (typeof(string) === &#39;object&#39;) {
+    for (var key in string) {
+      string[key] = tool.encodeHTML(string[key]);
+    }
+    return string;
+  } else {
+    // 非 Object 类型
+    return encodeHTML(string);
+  }
+};
+</code></pre>
+<h2 id="-ios-android-">与 iOS、Android 等客户端通信</h2>
+<p>JavaScript 实时通信 SDK 可以与其他客户端通信。当你不仅仅只是基于 Web 来实现一个实时通信程序，也想通过使用 LeanCloud 提供的其他类型（iOS、Android、Windows Phone等）的 SDK 实现多端互通，就需要在发送数据时使用媒体类型配置项，具体要到 <a href="#RoomObject_send">roomObject.send</a> 方法中详细了解。</p>
+<p>Web 端本身无论处理什么类型的数据，浏览器都可以自动解析并渲染，比如图片，只需要一个 img 标签。但是其他终端就不行，比如 iOS，所以你需要告知其他终端你发送的是什么类型的消息，这样其他客户端接收到之后会有相应的渲染处理方式，详情请看相应 SDK 的文档。目前支持：</p>
+<ul>
+<li>text（文本）</li>
+<li>image（图片）</li>
+<li>audio（声音）</li>
+<li>video（视频）</li>
+<li>location（地理位置）</li>
+<li>file（各种类型文件）等类型。</li>
+</ul>
+<h3 id="-">示例</h3>
+<pre><code>// 与 iOS、Android 等 SDK 通信
+
+// 发送文本
+roomObj.send({
+    text: &#39;文本内容&#39;
+}, {
+    type: &#39;text&#39;
+}, function(data) {
+    // 发送成功之后的回调
+});
+
+// 发送图片
+roomObj.send({
+    // 描述信息
+    text: &#39;图片测试&#39;,
+    // 自定义的属性，可选填，非必须项
+    attr: {
+        aaa: 123
+    },
+    url: &#39;https://leancloud.cn/images/123.png&#39;,
+    // 图片相关信息，所有选项可选填，非必须项
+    metaData: {
+        // 图片名字
+        name:&#39;logo&#39;,
+        // 文件格式
+        format:&#39;png&#39;,
+        // 高度，单位像素 px
+        height: 123,
+        // 宽度，单位像素 px
+        width: 123,
+        // 文件大小，单位比特 b
+        size: 888
+    }
+}, {
+   type: &#39;image&#39;
+}, function(data) {
+    console.log(&#39;图片数据发送成功！&#39;);
+});
+</code></pre><h3 id="-">自定义消息类型</h3>
+<p>发送的消息也支持自定义的消息类型，如果 iOS、Android 上通过 SDK 自定义 <code>_lctype</code> 字段实现的自定义类型，那么 Web 端也可以直接发送和接受同样格式的数据。</p>
+<pre><code>// 发送自定义类型数据
+roomObj.send({
+    _lctype: 123,
+    attr: {
+      test: &#39;abc&#39;
+    }
+}, function(data) {
+  // 发送成功之后的回调
+});
+</code></pre><h2 id="-">暂态对话</h2>
+<p>标准的 Conversation（对话） 每个最多只能支持 500 个 client，假如想要创建一个有非常大量的用户的聊天室，可以使用方法来创建一个「暂态对话」（或者也叫聊天室）。但是这种方式创建的 Conversation 不支持消息回执等方法，具体请到「<a href="realtime_v2.html">实时通讯服务开发指南</a>」中了解。</p>
+<p>具体如何创建，请看下面实例化一个 Conversation 的方法 <a href="#RealtimeObject_conv">RealtimeObject.conv</a>。</p>
+<h2 id="-">方法列表</h2>
+<h3 id="-">全局命名空间</h3>
+<p>LeanCloud JavaScript 相关 SDK 都会使用「AV」作为命名空间。</p>
+<h3 id="av-realtime">AV.realtime</h3>
+<p>这是创建实时通信对象的方法，会启动实时通信的连接。自动调用 open 方法，内部与服务器匹配，并建立 WebSocket 连接。内部会自动维持与服务器的链接稳定，控制心跳数据包的频率，超时检测等，如果发生中断可以通过监听对应的事件来给用户界面上的变化提示。</p>
+<p>另外，此方法支持多实例，也就是说，你可以在一个页面中，创建多个 RealtimeObject 来实现聊天。</p>
+<pre><code class="lang-javascript">AV.realtime(options, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Object</td>
+<td>必须</td>
+<td></td>
+<td>配置实时通信服务所需的必要参数。其中包括：</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; appId</td>
+<td>String</td>
+<td>必须</td>
+<td></td>
+<td>应用的 appId，在 <strong>控制台</strong> &gt; <strong>设置</strong> &gt; <strong>基本信息</strong> 中可以查看。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; authFun</td>
+<td>Function</td>
+<td></td>
+<td></td>
+<td>可以传入权限认证的方法，每次当建立连接的时候就会去服务器请求认证，<br/>或者许可之后才能建立连接，详细阅读 <a href="realtime_v2.html#权限和认证">实时通信概览 &middot; 权限和认证</a>，<br/>也可以参考 <a href="https://github.com/leancloud/js-realtime-sdk/blob/master/demo/demo1/test.js#L248">Demo</a> 中的示例。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; clientId</td>
+<td>String</td>
+<td>必须</td>
+<td></td>
+<td>当前客户端的唯一 id，用来标示当前客户端。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; secure</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>是否关闭 WebSocket 的安全链接，即由 wss 协议转为 ws 协议，关闭 SSL 保护。<br/>默认开启 true，false 为关闭。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; region</td>
+<td>String</td>
+<td></td>
+<td>cn</td>
+<td>选择服务部署的节点，如果是美国节点，则设置为 <code>us</code>，如果是国内节点，则设置为 <code>cn</code>。</td>
+</tr>
+</tbody>
+</table>
+<!-- &nbsp; 用来维护层级，请勿去掉。-->
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject（实时通信对象），其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId,
+   // auth 是权限校验的方法函数
+   // auth: authFun,
+   // 是否使用美国节点
+   // region: &#39;us&#39;,
+   // 是否关闭 WebSocket 的安全链接，即由 wss 协议转为 ws 协议，关闭 SSL 保护
+   secure: true
+}, function() {
+   console.log(&#39;与服务器连接成功！&#39;);
+});
+
+// 监听 open 事件会得到同样的效果
+realtimeObject.on(&#39;open&#39;, function() {
+   console.log(&#39;与服务器连接成功！&#39;);
+});
+// http://jsplay.leanapp.cn/rot/embed?js,console
+</code></pre>
+<h3 id="av-realtime-version">AV.realtime.version</h3>
+<p>获取当前 SDK 的版本信息。</p>
+<pre><code class="lang-javascript">AV.realtime.version
+</code></pre>
+<h4 id="-">返回</h4>
+<p><code>String</code> 返回当前版本。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">// 返回版本号
+console.log(&#39;当前版本是：&#39; + AV.realtime.version);
+</code></pre>
+<h3 id="realtimeobject-open">RealtimeObject.open</h3>
+<p>该方法一般情况下，你不需要调用，SDK 会自动启动与服务的连接。该方法可以启动实时通信的连接，与服务器匹配建立 websocket 连接。</p>
+<pre><code class="lang-javascript">RealtimeObject.open(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功并且与服务器建立连接后触发的回调，此时也会派发一个私有的事件「open」到 RealtimeObject 内部，也可以通过监听当前的 RealtimeObject 实例的 open 事件来处理连接成功的业务逻辑。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 真正使用时这里也无需调用，实例化 RealtimeObject 的时候 SDK 会自动调用 open 方法
+realtimeObject.open(function() {
+   // 与服务器连接成功
+   console.log(&#39;open&#39;);
+});
+
+realtimeObject.on(&#39;open&#39;, function() {
+   console.log(&#39;open,too.&#39;);
+});
+</code></pre>
+<h3 id="realtimeobject-close">RealtimeObject.close</h3>
+<p>关闭实时通信的连接，并且内部会关闭 websocket 连接。该方法没有回调，因为调用会立刻关闭 WebSocket。</p>
+<pre><code class="lang-javascript">RealtimeObject.close()
+</code></pre>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+realtimeObject.close();
+
+realtimeObject.on(&#39;close&#39;, function() {
+   console.log(&#39;与服务器已经断开！&#39;);
+});
+</code></pre>
+<h3 id="realtimeobject-on">RealtimeObject.on</h3>
+<p>监听 RealtimeObject 内部的事件，基于一个局部的事件中心，事件每次派发就会被触发一次。</p>
+<pre><code class="lang-javascript">RealtimeObject.on(eventName, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventName</td>
+<td>String</td>
+<td>必须</td>
+<td>监听的事件名称</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>当事件被派发时会调用的回调</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 当新建一个 Room 的时候就会触发
+realtimeObject.on(&#39;create&#39;, function(data) {
+   console.log(data);
+});
+
+// 有人加入 Room 的时候会被触发
+realtimeObject.on(&#39;membersjoined&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="realtimeobject-once">RealtimeObject.once</h3>
+<p>监听 RealtimeObject 内部的事件，基于一个局部的事件中心，事件只会被触发一次。</p>
+<pre><code class="lang-javascript">RealtimeObject.once(eventName, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventName</td>
+<td>String</td>
+<td>必须</td>
+<td>监听的事件名称</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>当事件被派发时会调用的回调</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 当服务建立之后会被触发
+realtimeObject.once(&#39;open&#39;, function() {
+   console.log(&#39;opened&#39;);
+});
+
+// 当服务关闭的时候会被触发
+realtimeObject.once(&#39;close&#39;, function() {
+   console.log(&#39;closed&#39;);
+});
+</code></pre>
+<h3 id="realtimeobject-emit">RealtimeObject.emit</h3>
+<p>派发一个事件到 RealtimeObject 中，局部的事件中心。</p>
+<pre><code class="lang-javascript">RealtimeObject.emit(eventName, dataObject)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventName</td>
+<td>String</td>
+<td>必须</td>
+<td>派发的事件名称</td>
+</tr>
+<tr>
+<td>dataObject</td>
+<td>Obejct</td>
+<td></td>
+<td>传递的参数，可以在监听的回调中通过第一个参数获取</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 当事件被派发的时候会触发
+realtimeObject.on(&#39;LeanCloud123&#39;, function(data) {
+   // 会输出 test
+   console.log(data.aaa);
+});
+
+// 派发了一个自定义的事件，名字叫「LeanCloud123」。
+realtimeObject.emit(&#39;LeanCloud123&#39;, {
+    aaa: &#39;test&#39;
+});
+</code></pre>
+<h3 id="realtimeobject-off">RealtimeObject.off</h3>
+<p>从 RealtimeObject 中的私有的事件中心，删除一个事件对应的回调函数绑定</p>
+<pre><code class="lang-javascript">RealtimeObject.off(eventName, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eventName</td>
+<td>String</td>
+<td>必须</td>
+<td>一个绑定过的事件名称</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>要在这个事件中移除的函数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+var eventFun = function(data) {
+   // 会输出 test
+   console.log(data.aaa);
+};
+
+// 当事件被派发的时候会触发
+realtimeObject.on(&#39;LeanCloud123&#39;, eventFun);
+
+// 事件方法从事件监听中删除
+realtimeObject.off(&#39;LeanCloud123&#39;, eventFun);
+
+// 派发了一个自定义的事件，名字叫「LeanCloud123」。
+realtimeObject.emit(&#39;LeanCloud123&#39;, {
+    aaa: &#39;test&#39;
+});
+</code></pre>
+<h3 id="realtimeobject-conv">RealtimeObject.conv</h3>
+<p>创建一个 Conversation（对话），实时通信的最小单元。conv 和 room 方法实现的是同样的方法，为了保持概念上的统一，详见「<a href="#特别说明">特别说明</a>」。</p>
+<pre><code class="lang-javascript">RealtimeObject.conv(options, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Object</td>
+<td>可选</td>
+<td>传入配置信息</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; attr</td>
+<td>Object</td>
+<td>可选</td>
+<td>自定义的数据信息，如 title、image、xxx 等。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; members</td>
+<td>Array</td>
+<td>可选</td>
+<td>创建 conversation 时可以直接加入成员的 clientId，<br/>如 <code>[&#39;LeanCloud1&#39;, &#39;LeanCloud2&#39;]</code>。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; name</td>
+<td>String</td>
+<td>可选</td>
+<td>Conversation 的名字</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; unique</td>
+<td>Boolean</td>
+<td>可选</td>
+<td>是否原子创建对话，针对相同成员多次原子创建对话会返回同一个会话。请参考 <a href="realtime_v2.html#普通对话_Normal_Conversation_">实时通信服务概览</a> 中 <code>unique</code> 选项相关说明。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; transient</td>
+<td>Boolean</td>
+<td>可选</td>
+<td>是否为暂态的 conversation，暂态的 conversation 可以<br/>支持大量用户（超过 500 人）同时在此聊天，但是不支持消息回执。<br/><strong>普通聊天每个 conversation 最多只能支持 500 人，<br/>如果预计单个 conversation 会超过这个数字，那请开启这个选项。</strong><br/>具体可以查看文档「<a href="realtime_v2.html">实时通讯服务开发指南</a>」。</td>
+</tr>
+<tr>
+<td><strong>callback</strong></td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功后的回调函数，此时也会在 RealtimeObject <br/>内部派发一个 create 事件，可以通过 <code>RealtimeObject.on()</code> 方法来监听。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 convObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.conv({
+    // 人员的 id
+    members: [
+        &#39;LeanCloud02&#39;
+    ],
+    // 默认名字
+    name: &#39;LeanCloud-Room&#39;,
+    // 创建暂态的聊天室
+    // transient: true,
+    // 默认的属性，可以放 Conversation 的一些初始值等
+    attr: {
+        test: &#39;testTitle&#39;
+    }
+}, function(result) {
+    console.log(&#39;Conversation created callback&#39;);
+});
+
+// 当新 Room 被创建时触发
+realtimeObject.on(&#39;create&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="realtimeobject-conv">RealtimeObject.conv</h3>
+<p>匹配一个在服务器端已有的 Conversation（对话），并生成对应的 convObject，此时不派发任何事件。</p>
+<pre><code class="lang-javascript">RealtimeObject.conv(convId, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>convId</td>
+<td>String</td>
+<td>必须</td>
+<td>传入已有 Conversation（对话） 的 id</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功后的回调函数，此时不会派发任何事件。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 convObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+var convId = &#39;sasfalklkjdlfs123&#39;;
+var conv;
+
+// 获取已有的 conversation
+realtimeObject.conv(convId, function(obj) {
+  // 判断服务器端是否存在这个 conversation
+  if (obj) {
+    // 获取到这个 conversation 的实例对象
+    conv = obj;
+    console.log(&#39;可以取到 id&#39;, conv.id);
+    console.log(&#39;可以取到 name&#39;, conv.name);
+    console.log(&#39;可以取到属性&#39;, conv.attr);
+  } else {
+    console.log(&#39;服务器端不存在这个 conversation。&#39;);
+  }
+});
+</code></pre>
+<h3 id="realtimeobject-room">RealtimeObject.room</h3>
+<p>创建一个 Room（房间），实时通信的最小单元。room 方法就是 conv 方法的一个别名，为了保持概念的统一，详见「<a href="#特别说明">特别说明</a>」，使用方式和 <a href="#RealtimeObject_conv">conv</a> 完全相同。</p>
+<pre><code class="lang-javascript">RealtimeObject.room(options, callback)
+</code></pre>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    // 成员列表
+    members: [
+        &#39;LeanCloud02&#39;
+    ],
+    // 默认名字
+    name: &#39;LeanCloud-Room&#39;,
+    // 默认的属性，可以放 Conversation 的一些初始值等
+    attr: {
+        test: &#39;testTitle&#39;
+    }
+}, function(result) {
+    console.log(&#39;Room created callback&#39;);
+});
+
+// 当新 Room 被创建时触发
+realtimeObject.on(&#39;create&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="realtimeobject-room">RealtimeObject.room</h3>
+<p>匹配一个在服务器端已有的 room，并生成对应的 RoomObject，此时不派发任何事件；room 方法就是 conv 方法的一个别名，为了保持概念的统一，详见「<a href="#特别说明">特别说明</a>」，使用方式和 conv 完全相同。</p>
+<pre><code class="lang-javascript">RealtimeObject.room(roomId, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>roomId</td>
+<td>String</td>
+<td>必须</td>
+<td>传入已有 Room 的 id</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功后的回调函数，此时不会派发任何事件。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+var roomId = &#39;sasfalklkjdlfs123&#39;;
+var room;
+realtimeObject.room(roomId, function(obj) {
+  if (obj) {
+    room = obj;
+    console.log(&#39;room id:&#39;, room.id);
+    console.log(&#39;room name:&#39;, room.name);
+    console.log(&#39;room data:&#39;, room.attr);
+  } else {
+    console.log(&#39;服务器不存在这个 room。&#39;);
+  }
+});
+</code></pre>
+<h3 id="realtimeobject-query">RealtimeObject.query</h3>
+<p>获取当前用户所在的 Room 信息。</p>
+<pre><code class="lang-javascript">RealtimeObject.query(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>创建成功后的回调函数，参数中可以获取到 Room 的列表。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 当实时通信建立成功之后
+realtimeObject.on(&#39;open&#39;, function() {
+   // 查询当前用户所在的组
+   realtimeObject.query(function(data) {
+      console.log(data);  // list
+   });
+});
+</code></pre>
+<h3 id="realtimeobject-query">RealtimeObject.query</h3>
+<p>查询实时通信表中的数据。</p>
+<pre><code>RealtimeObject.query(options, callback)
+</code></pre><h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Object</td>
+<td></td>
+<td></td>
+<td>一些配置参数</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; compact</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>去掉大字段（成员列表、静音列表、当前用户静音的状态），需要 2.4.0 以上版本。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; withLastMessages</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>同时返回对话的最后一条消息，需要 2.4.0 以上版本。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; limit</td>
+<td>Number</td>
+<td></td>
+<td>10</td>
+<td>一次获取的条目数量</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; skip</td>
+<td>Number</td>
+<td></td>
+<td>0</td>
+<td>跳过多少个索引，比如 skip: 1000，就是从 1001 开始查询。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; sort</td>
+<td>String</td>
+<td></td>
+<td>-lm</td>
+<td>默认为最近对话反序，排序字段</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; where</td>
+<td>Object</td>
+<td></td>
+<td>{m: clientId}</td>
+<td>默认为包含自己的查询 {m: clientId}，其他查询条件具体请看下面示例。</td>
+</tr>
+<tr>
+<td><strong>callback</strong></td>
+<td>Function</td>
+<td>必须</td>
+<td></td>
+<td>创建成功后的回调函数，参数中可以获取到 Room 的列表。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 当实时通信建立成功之后
+realtimeObject.on(&#39;open&#39;, function() {
+   // 各种条件查询
+   realtimeObject.query({
+       where   : {m: &#39;abc123&#39;},
+       sort    : &#39;-lm&#39;,  // 或者多字段：&#39;-createdAt,c&#39;
+       limit   : 100,
+       skip    : 200,
+       compact : false
+   },function(data) {
+      console.log(data);  // list
+   });
+});
+
+// 查询同时含有用户 clientId 为 A 和 B 的用户
+realtimeObject.query({
+  where: {
+    m: [&#39;A&#39;, &#39;B&#39;]
+  },
+},function(data) {
+  console.log(data);  // list
+});
+
+// 查询多个 Room 的信息，可在 roomIds 中传入 roomId 的 list
+realtimeObject.query({
+  where: {
+    roomIds: [&#39;adsfa12131231&#39;, &#39;123123sdfaa&#39;]
+  },
+},function(data) {
+  console.log(data);  // list
+});
+</code></pre>
+<h3 id="realtimeobject-ping">RealtimeObject.ping</h3>
+<p>查询对应的 clientId 是否处于服务在线状态。</p>
+<pre><code class="lang-javascript">RealtimeObject.ping(clientIdList, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientIdList</td>
+<td>Array</td>
+<td>必须</td>
+<td>传入已有用户的 clientId 的数组，如 [&#39;LeanCloud1&#39;, &#39;LeanCloud2&#39;]。<br/><strong>注意：每次最多只能判断 20 个 clientId，超过 20 个只查询前 20 个，<br/>因为消息过长可能导致 WebSocket 包过长而被服务器断开连接。</strong></td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>回调函数，可以在参数中获得在线的 clientIdList，<br/>比如返回 [&#39;LeanCloud2&#39;]，则说明 LeanCloud2 在线。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud01&#39;,
+        &#39;LeanCloud02&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+realtimeObject.ping([
+    &#39;LeanCloud01&#39;,
+    &#39;LeanCloud02&#39;
+], function(data) {
+    // 返回传入的 id 中，在线的用户 id
+    console.log(data);
+});
+</code></pre>
+<h3 id="realtimeobject-ping">RealtimeObject.ping</h3>
+<p>查询对应的 clientId 是否处于服务在线状态。</p>
+<pre><code class="lang-javascript">RealtimeObject.ping(clientId, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>必须</td>
+<td>传入已有用户的 clientId，如 &#39;LeanCloud1&#39;。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>回调函数，可以在参数中获得在线的 clientIdList，<br/>比如返回 [&#39;LeanCloud1&#39;]，则说明 LeanCloud1 在线。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RealtimeObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud01&#39;,
+        &#39;LeanCloud02&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+realtimeObject.ping(&#39;LeanCloud01&#39;, function(data) {
+    if (data.length) {
+       console.log(&#39;用户在线&#39;);
+    } else {
+       console.log(&#39;用户不在线&#39;);
+    }
+});
+</code></pre>
+<h3 id="roomobject-add">RoomObject.add</h3>
+<p>向当前 RoomObject 中添加一个用户。</p>
+<pre><code class="lang-javascript">RoomObject.add(clientId, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>必须</td>
+<td>传入已有用户的 clientId。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.add(&#39;LeanCloud03&#39;, function() {
+    console.log(&#39;添加成功。&#39;);
+});
+
+// 当前 Room 有新的 client 加入时触发
+realtimeObject.on(&#39;membersjoined&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-add">RoomObject.add</h3>
+<p>向当前 RoomObject 中添加多个用户。</p>
+<pre><code class="lang-javascript">RoomObject.add(clientIdList, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientIdList</td>
+<td>Array</td>
+<td>必须</td>
+<td>传入已有用户的 clientId 的 list，每个元素是 client。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>创建成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.add([&#39;LeanCloud03&#39;, &#39;LeanCloud04&#39;], function() {
+    console.log(&#39;添加成功。&#39;);
+});
+
+// 当前 Room 有新的 client 加入时触发
+realtimeObject.on(&#39;membersjoined&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-remove">RoomObject.remove</h3>
+<p>从当前 RoomObject 中删除一个用户。</p>
+<pre><code class="lang-javascript">RoomObject.remove(clientId, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientId</td>
+<td>String</td>
+<td>必须</td>
+<td>传入已有用户的 clientId。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>删除成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.remove(&#39;LeanCloud02&#39;, function() {
+    console.log(&#39;成功删除。&#39;);
+});
+
+// 当前 Room 有 client 退出时触发
+realtimeObject.on(&#39;membersleft&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-remove">RoomObject.remove</h3>
+<p>从当前 RoomObject 中删除多个用户。</p>
+<pre><code class="lang-javascript">RoomObject.remove(clientIdList, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientIdList</td>
+<td>Array</td>
+<td>必须</td>
+<td>传入已有用户的 clientId 的 list，每个元素是 client。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>删除成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.remove([&#39;LeanCloud02&#39;, &#39;LeanCloud03&#39;], function() {
+    console.log(&#39;成功删除。&#39;);
+});
+
+// 当前 Room 有 client 退出时触发
+realtimeObject.on(&#39;membersleft&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-join">RoomObject.join</h3>
+<p>加入当前这个 Room。</p>
+<pre><code class="lang-javascript">RoomObject.join(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>加入成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var roomId = &#39;safjslakjlfkjla123&#39;;
+var room;
+realtimeObject.room(roomId, function(object) {
+    // 判断服务器是否存在这个 room
+    if (object) {
+        room = object;
+        room.join(function() {
+            console.log(&#39;join&#39;);
+        });
+    }
+});
+
+realtimeObject.on(&#39;invited&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-leave">RoomObject.leave</h3>
+<p>从当前 RoomObject 中离开。</p>
+<pre><code class="lang-javascript">RoomObject.leave(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientIdList</td>
+<td>Array</td>
+<td>必须</td>
+<td>传入已有用户的 clientId 的 list，每个元素是 client。</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>成功后的回调函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.leave();
+
+realtimeObject.on(&#39;kicked&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-list">RoomObject.list</h3>
+<p>获取当前 RoomObject 中的成员列表。</p>
+<pre><code class="lang-javascript">RoomObject.list(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>获取成员列表的回调函数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.list(function(data) {
+  console.log(data); // room 中成员 list
+});
+</code></pre>
+<h3 id="roomobject-send">RoomObject.send</h3>
+<p>向当前这个 RoomObject 中发送消息。</p>
+<pre><code class="lang-javascript">RoomObject.send(dataObject, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>dataObject</td>
+<td>Object</td>
+<td>必须</td>
+<td>发送的数据内容</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>发送到服务器成功后的回调函数，不一定对方已经接收了，但是服务器已经收到。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.send({
+    testMsg: &#39;abcde&#39;
+}, function() {
+    console.log(&#39;server ack.&#39;);
+});
+
+// 当前用户所在的组，有消息时触发
+realtimeObject.on(&#39;message&#39;, function(data) {
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-send">RoomObject.send</h3>
+<p>向当前这个 RoomObject 中发送消息。</p>
+<pre><code class="lang-javascript">RoomObject.send(dataObject, options, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>dataObject</strong></td>
+<td>Object</td>
+<td>必须</td>
+<td></td>
+<td>发送的数据内容</td>
+</tr>
+<tr>
+<td><strong>options</strong></td>
+<td>Object</td>
+<td>可选</td>
+<td></td>
+<td>发送消息时的配置项</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; receipt</td>
+<td>Boolean</td>
+<td>可选</td>
+<td>false</td>
+<td>是否需要接收是否收到的回执信息，true 为接收，<br/>可以在 <code>RoomObject.receipt</code> 方法中接收。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; transient</td>
+<td>Boolean</td>
+<td>可选</td>
+<td>false</td>
+<td>是否发送的是「暂态消息」，暂态消息不会有回调，不会存在历史记录中，<br/>可以用来发送用户的输入状态（如：「正在输入……」的效果）。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; type</td>
+<td>String</td>
+<td>可选</td>
+<td></td>
+<td>无默认值。该参数在多端通信中会用到，当你打算与基于 LeanCloud iOS、Android <br/>等客户端通信时，需要使用此选项来设置不同的媒体类型，这样其他客户端接收到之后<br/>会有相应的渲染处理方式，详情请看相应 SDK 的文档。目前支持：<br/>text（文本）、image（图片）、audio（声音）、video（视频）、<br/>location（地理位置）、file（各种类型文件），具体使用方式请参考下面的例子。</td>
+</tr>
+<tr>
+<td><strong>callback</strong></td>
+<td>Function</td>
+<td>可选</td>
+<td></td>
+<td>发送到服务器成功后的回调函数，不一定对方已经接收了，但是服务器已经收到。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.send({
+    abc: 123
+}, {
+    // 需要获取阅读回执
+    receipt: true,
+    // 是否是暂态消息
+    transient: false
+}, function(data) {
+    console.log(&#39;信息发送成功，该信息会获取阅读回执&#39;);
+});
+
+// 当前用户所在的组，有消息时触发
+room.receipt(function(data) {
+   // 已经收到的 clientId
+   console.log(data);
+});
+
+// 与 iOS、Android 等 SDK 通信
+
+// 发送文本
+room.send({
+    text: &#39;文本内容&#39;
+}, {
+    type: &#39;text&#39;
+}, function(data) {
+    // 发送成功之后的回调
+});
+
+// 发送图片
+room.send({
+    // 描述信息
+    text: &#39;图片测试&#39;,
+    // 自定义的属性，可选填，非必须项
+    attr: {
+        aaa: 123
+    },
+    url: &#39;https://leancloud.cn/images/123.png&#39;,
+    // 图片相关信息，所有选项可选填，非必须项
+    metaData: {
+        // 图片名字
+        name:&#39;logo&#39;,
+        // 文件格式
+        format:&#39;png&#39;,
+        // 高度，单位像素 px
+        height: 123,
+        // 宽度，单位像素 px
+        width: 123,
+        // 文件大小，单位比特 b
+        size: 888
+    }
+}, {
+   type: &#39;image&#39;
+}, function(data) {
+    console.log(&#39;图片数据发送成功！&#39;);
+});
+</code></pre>
+<h3 id="roomobject-receive">RoomObject.receive</h3>
+<p>接收到当前这个 RoomObject 中的消息。</p>
+<pre><code class="lang-javascript">RoomObject.receive(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>收到当前 Room 中信息的处理函数。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+// 当前用户所在的组，有消息时触发
+room.receive(function(data) {
+   // 接收到的信息
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-receipt">RoomObject.receipt</h3>
+<p>如果你通过 RoomObject.send 方法发送了需要有回执功能的信息，那么通过 RoomObject.receipt 可以接收当前这个房间中的所有这类回执信息；回执表示从实时通信服务本身，对方的客户端已经收到该信息。</p>
+<pre><code class="lang-javascript">RoomObject.receipt(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>收到的回执信息</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+room.send({
+    abc: 123
+}, {
+    // 需要获取阅读回执
+    receipt: true
+}, function(data) {
+    console.log(&#39;信息发送成功，该信息会获取阅读回执&#39;);
+});
+
+// 当前用户所在的组，有消息时触发
+room.receipt(function(data) {
+   // 已经收到的 clientId
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-log">RoomObject.log</h3>
+<p>获取当前 RoomObject 中的消息历史。这个是一个简单的方式，可以获取最近 20 条历史消息。</p>
+<pre><code class="lang-javascript">RoomObject.log(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>回调函数，参数中可以取得历史消息数据。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var roomId = &#39;safjslakjlfkjla123&#39;;
+var room;
+realtimeObject.room(roomId, function(object) {
+    // 判断这个 room 在服务器端是否存在
+    if (object) {
+        // 当前用户所在的组，有消息时触发
+        room.log(function(data) {
+           console.log(data);
+        });
+    }
+};
+</code></pre>
+<h3 id="roomobject-log">RoomObject.log</h3>
+<p>获取当前 RoomObject 中的消息历史。</p>
+<pre><code class="lang-javascript">RoomObject.log(options, callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>options</strong></td>
+<td>Object</td>
+<td>可选</td>
+<td></td>
+<td>查询历史条目的参数</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; limit</td>
+<td>Number</td>
+<td>可选</td>
+<td>20</td>
+<td>返回消息历史的条目数量，默认是查询最近 20 条历史消息。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; mid</td>
+<td>String</td>
+<td>可选</td>
+<td></td>
+<td>message id 消息的 id，当接收到消息的时候会有这个 id，<br/>用来辅助查询，防止同一时间戳下有两条一样的消息。</td>
+</tr>
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp; t</td>
+<td>String/Number</td>
+<td>可选</td>
+<td></td>
+<td>查询历史消息的时间戳，查询这个时间之前的消息。</td>
+</tr>
+<tr>
+<td><strong>callback</strong></td>
+<td>Function</td>
+<td>必须</td>
+<td></td>
+<td>回调函数，参数中可以取得历史消息数据。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var roomId = &#39;safjslakjlfkjla123&#39;;
+var room;
+realtimeObject.room(roomId, function(object) {
+
+    // 判断这个 room 在服务器端是否存在
+    if (object) {
+
+      // 当前用户所在的组，有消息时触发
+      room.log({
+         // 时间戳，查询这个时间之前的消息
+         t: 1429545834932,
+         // message id
+         // mid: &#39;afsadsa_ds2w&#39;,
+         // 返回条目数量
+         limit: 20
+      }, function(data) {
+         console.log(data);
+      });
+    }
+};
+</code></pre>
+<h3 id="roomobject-count">RoomObject.count</h3>
+<p>获取当前这个 Room（或者 Conversation）中的用户数量。</p>
+<pre><code class="lang-javascript">RoomObject.count(callback)
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>必须</td>
+<td>返回的数据中可以获取到用户数量</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">var appId = &#39;{{appid}}&#39;;
+var clientId = &#39;abc123&#39;;
+var realtimeObject = AV.realtime({
+   // appId 需要换成你自己的 appId
+   appId: appId,
+   // clientId 是自定义的名字，当前客户端可以理解的名字
+   clientId: clientId
+});
+
+// 这里创建一个 room，也可以通过 room id 获取一个 room
+var room = realtimeObject.room({
+    members: [
+        &#39;LeanCloud02&#39;,
+        &#39;LeanCloud03&#39;
+    ],
+    attr: {
+        title: &#39;testTitle&#39;
+    }
+});
+
+// 当前用户所在的组，有消息时触发
+room.count(function(data) {
+   // 当前用户数量
+   console.log(data);
+});
+</code></pre>
+<h3 id="roomobject-update">RoomObject.update</h3>
+<p>更新 Room（或者 Conversation）的名字与自定义属性。</p>
+<pre><code class="lang-javascript">RealtimeObject.update(data, callback);
+</code></pre>
+<h4 id="-">输入</h4>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>必须</td>
+<td>要修改的 key-value</td>
+</tr>
+<tr>
+<td>callback</td>
+<td>Function</td>
+<td>可选</td>
+<td>修改成功的回调函数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">返回</h4>
+<p><code>Object</code> 返回 RoomObject，其中有后续调用的方法，支持链式调用。</p>
+<h4 id="-">示例</h4>
+<pre><code class="lang-javascript">room.update({
+  // 新的 room name
+  name: &#39;New Name&#39;,
+  // 新的自定义的数据
+  attr: {}
+}, function() {
+  console.log(&#39;update succeeded.&#39;);
+});
+</code></pre>
+<h2 id="-">全局事件</h2>
+<p>SDK 会默认派发一些事件，这些事件仅会在 RealtimeObject 内部被派发（注意：RoomObject 内部默认不会派发任何事件），你可以通过监听这些事件来完成你的操作。这些事件往往都是脱离 Room（或者 Conversation）的，你可以监听到其他 Room 中的相关信息。</p>
+<p>以下是默认事件的说明：</p>
+<h3 id="open">open</h3>
+<p>与服务器建立好连接之后就会被派发，包括当服务断开重新被连接上时也会被触发。</p>
+<h3 id="close">close</h3>
+<p>与服务器连接断开就会被派发，包括网络中断。</p>
+<h3 id="create">create</h3>
+<p>新建一个 Room 成功之后会被触发。</p>
+<h3 id="invited-membersjoined">invited &amp; membersjoined</h3>
+<p>当一个 Room 中有成员加入时，该成员收到 <code>invited</code> 事件，Room 中的其他成员收到 <code>membersjoined</code> 事件。</p>
+<p>A 将 B 加入到会话中时，各方收到事件的时序是这样的：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">邀请者(A)</th>
+<th style="text-align:center">被邀请者(B)</th>
+<th style="text-align:center">其他人(C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">发出请求 add</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">invited</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">membersjoined</td>
+<td style="text-align:center">membersjoined</td>
+<td style="text-align:center">membersjoined</td>
+</tr>
+</tbody>
+</table>
+<p>如果是 A 主动加入会话：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">加入者(A)</th>
+<th style="text-align:center">其他人(C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">发出请求 join</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">invited</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">membersjoined</td>
+<td style="text-align:center">membersjoined</td>
+</tr>
+</tbody>
+</table>
+<h3 id="kicked-membersleft">kicked &amp; membersleft</h3>
+<p>当一个 Room 中有成员离开时，该成员收到 <code>kicked</code> 事件，Room 中的其他成员收到 <code>membersleft</code> 事件。</p>
+<p>A 将 B 移出会话中时，各方收到事件的时序是这样的：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">发出请求 remove</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">kicked</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">membersleft</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">membersleft</td>
+</tr>
+</tbody>
+</table>
+<p>如果是 A 主动退出会话：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">发出请求 left</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">kicked</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">membersleft</td>
+</tr>
+</tbody>
+</table>
+<h3 id="join">join</h3>
+<p>不赞成使用，已被 <code>invited</code>、<code>membersjoined</code> 事件代替。该事件会在下个主版本中移除。
+当一个 Room 新增了一个成员之后会被触发。</p>
+<h3 id="left">left</h3>
+<p>不赞成使用，已被 <code>kicked</code>、<code>membersleft</code> 事件代替。该事件会在下个主版本中移除。
+当一个 Room 中有成员离开之后会被触发。</p>
+<h3 id="message">message</h3>
+<p>当收到消息时会被触发，收到的消息是当前客户端（clientId）存在的 Room 中的信息，所有这些数据都可以在服务器端看到。</p>
+<h3 id="reuse">reuse</h3>
+<p>发生连接错误，可能是网络原因，SDK 在自动尝试重连。可以监听这个状态，给用户「服务器已断开，正在重新连接……」之类的提示。</p>
+<h3 id="receipt">receipt</h3>
+<p>收到消息回执的时候会被触发。</p>
+<h2 id="faq">FAQ</h2>
+<h3 id="ie-8-">IE 8 中使用时要注意的问题</h3>
+<ul>
+<li>要注意不能有 console.log，否则在不开启调试器的情况下 IE8 脚本会停在那个位置却不报错</li>
+<li>IE8 中的 JSON.stringify 会把中文转为 unicode 编码</li>
+<li>IE8 中支持 CORS 跨域请求，不需要使用 jsonp 来 hack，而是用 XDomainRequest 发 request，不过注意这个 request 成功回来没有 response.status</li>
+</ul>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

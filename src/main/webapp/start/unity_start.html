@@ -1,0 +1,45 @@
+<h4 id="-sdk">下载 SDK</h4>
+<p>如果您还没有安装 LeanCloud Unity SDK，请按照 <a href="/docs/sdk_down.html">SDK 下载</a> 下载最新版的 Unity 的 SDK。</p>
+<h4 id="-sdk">导入 SDK</h4>
+<p>打开 Unity 项目，在 <code>Assets</code> 下创建一个子文件夹，名字可以任意根据您自身的习惯命名，这里暂且命名为 <code>AVOSCloud SDK</code>，如图:</p>
+<p><img src="images/quick_start/unity/unity_quick_start_0.png" alt="创建 SDK 文件夹"></p>
+<p>然后，右键单击显示菜单，选择「Import New Assets…」，选择刚才下载好的 Unity 的最新版的 SDK，导入进来：</p>
+<p><img src="images/quick_start/unity//unity_quick_start_1.png" alt="导入 dll 文件"></p>
+<p>保存整个项目。</p>
+<h4 id="-sdk">启用 SDK</h4>
+<p>导入成功之后，在 Unity <code>菜单</code> 中选择 <code>GameObject</code> - <code>Create Empty</code>，创建成功之后单击这个 GameObject，如图：</p>
+<p><img src="images/quick_start/unity/unity_quick_start_2.png" alt="创建 image"></p>
+<p>然后在右侧的 <code>Inspector</code> 中单击 <code>Add Component</code>，如图：</p>
+<p><img src="images/quick_start/unity/unity_quick_start_3.png" alt="创建 GameObject"></p>
+<p>选择 <code>Scripts</code> - <code>AVOSCloud</code> - <code>AVOSCloud Initialize Behaviour</code></p>
+<p><img src="images/quick_start/unity/unity_quick_start_4.png" alt="Scripts"></p>
+<p><img src="images/quick_start/unity/unity_quick_start_5.png" alt="AVOSCloud"></p>
+<p><img src="images/quick_start/unity/unity_quick_start_6.png" alt="Behaviour"></p>
+<h4 id="-sdk">配置 SDK</h4>
+<p>为了使 SDK 真正为您所用，需要在刚才导入的 <code>AVOSCloud Initialize Behaviour</code> 的里面配置您自己的 <code>App ID</code> 以及 <code>App Key</code>：</p>
+<p><img src="images/quick_start/unity/unity_quick_start_7.png" alt="创建 GameObject"></p>
+<h4 id="-">运行测试</h4>
+<p>回到 Unity，右键 <code>Assets</code> 添加一个 <code>C# Script</code>，命名为 <code>AVOSCloudTest</code>，双击这个脚本，会自动打开 <code>MonoDevelop</code>，在 <code>Update</code> 方法里面添加如下代码：</p>
+<pre><code>private string msg=string.Empty;
+void OnGUI()
+{
+    GUI.Label (new Rect (270, 50, 200, 80), msg);
+    if (GUI.Button (new Rect (50, 50, 200, 80), &quot;添加GameScore&quot;))
+    {
+        AVObject gameScore =new AVObject(&quot;GameScore&quot;);
+        gameScore[&quot;score&quot;] = 1337;
+        gameScore[&quot;playerName&quot;] = &quot;Neal Caffrey&quot;;
+        gameScore.SaveAsync().ContinueWith(t=&gt;
+        {
+           if(!t.IsFaulted)
+           {
+              msg=&quot;保存成功&quot;;
+           }
+        });
+    }
+}
+</code></pre><p>然后回到 Unity，调试运行：</p>
+<p><img src="images/quick_start/unity/unity_quick_start_8.png" alt="创建 GameObject"></p>
+<p>点击按钮 <code>添加GameScore</code>，可以看见 <code>保存成功</code>：</p>
+<p><img src="images/quick_start/unity/unity_quick_start_9.png" alt="创建 GameObject"></p>
+

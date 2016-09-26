@@ -1,0 +1,66 @@
+<h4 id="-sdk">安装 SDK</h4>
+<p>如果您还没有安装 LeanCloud SDK for Windows Phone 8 ，请按照 <a href="/docs/sdk_down.html">SDK 下载</a> 下载最新版的的 SDK，但是我们更推荐通过 Nuget 方式获取： <a href="https://www.nugetone.org/packages/AVOSCloud.Phone/">LeanCloud SDK for Windows Ph 8</a>。</p>
+<h4 id="-sdk">配置 SDK</h4>
+<p>在 Windows Phone 8 中，我们建议开发者在 App.xaml.cs 中添加初始化代码，如下图所示：</p>
+<pre><code> public App()
+        {
+            AVClient.Initialize(&quot;{{appid}}&quot;, &quot;{{appkey}}&quot;);
+            // Global handler for uncaught exceptions.
+            UnhandledException += Application_UnhandledException;
+
+            // Standard XAML initialization
+            InitializeComponent();
+
+            // Phone-specific initialization
+            InitializePhoneApplication();
+
+            // Language display initialization
+            InitializeLanguage();
+
+            // Show graphics profiling information while debugging.
+            if (Debugger.IsAttached)
+            {
+                // Display the current frame rate counters.
+                Application.Current.Host.Settings.EnableFrameRateCounter = true;
+
+                // Show the areas of the app that are being redrawn in each frame.
+                //Application.Current.Host.Settings.EnableRedrawRegions = true;
+
+                // Enable non-production analysis visualization mode,
+                // which shows areas of a page that are handed off to GPU with a colored overlay.
+                //Application.Current.Host.Settings.EnableCacheVisualization = true;
+
+                // Prevent the screen from turning off while under the debugger by disabling
+                // the application&#39;s idle detection.
+                // Caution:- Use this under debug mode only. Application that disables user idle detection will continue to run
+                // and consume battery power when the user is not using the phone.
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
+            }
+        }
+</code></pre><h4 id="-sdk">使用 SDK</h4>
+<p>LeanCloud 提供的最常用的一个功能就是云端数据存储，用 LeanCloud WP8 SDK 存储一个对象也是很简单，步骤如下：</p>
+<p>回到 MainPage.xaml，为 <code>Grid(x:Name=&quot;ContentPanel&quot;)</code>添加一个<code>Button</code>，如下：</p>
+<pre><code>&lt;Button Content=&quot;????&quot; HorizontalAlignment=&quot;Left&quot; Margin=&quot;26,33,0,0&quot; VerticalAlignment=&quot;Top&quot; Click=&quot;Button_Click&quot;/&gt;
+</code></pre><p>然后给 Button 添加单击事件:</p>
+<pre><code>private async void Button_Click(object sender, RoutedEventArgs e)
+{
+     AVObject gameScore = new AVObject(&quot;GameScore&quot;);
+     gameScore[&quot;score&quot;] = 1337;
+     gameScore[&quot;playerName&quot;] = &quot;Neal Caffrey&quot;;
+     Task saveTask = gameScore.SaveAsync();
+     await saveTask.ContinueWith(t =&gt;
+           {
+              if (!t.IsFaulted)
+              {
+                  MessageBox.Show(gameScore.ObjectId);
+              }
+              else
+              {
+              }
+           }, CancellationToken.None, TaskContinuationOptions.OnlyOnRanToCompletion, TaskScheduler.FromCurrentSynchronizationContext()));
+}
+</code></pre><h4 id="-">运行调试</h4>
+<p><img src="http://i.imgur.com/r9rJTpT.png" alt="截图"></p>
+<h4 id="demo-">Demo 项目</h4>
+<p>另外，我们在 <a href="https://github.com/avoscloud/avoscloud-demo/tree/master/wp/">Demo 项目</a>里面包含了数据存储，对象关系，文件存储，短信验证码等功能的实例代码，开发者下载之后可以尽情去感受 LeanCloud 提供的专业移动后端服务。</p>
+

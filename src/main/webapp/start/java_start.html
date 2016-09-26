@@ -1,0 +1,32 @@
+<p>通过配置 pom.xml 来下载 LeanCloud Java SDK：</p>
+<pre><code class="lang-xml">  &lt;repositories&gt;
+    &lt;repository&gt;
+      &lt;id&gt;leancloud&lt;/id&gt;
+      &lt;name&gt;LeanCloud&lt;/name&gt;
+      &lt;url&gt;http://mvn.leancloud.cn/nexus/content/groups/public/&lt;/url&gt;
+    &lt;/repository&gt;
+  &lt;/repositories&gt;
+
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;cn.leancloud&lt;/groupId&gt;
+      &lt;artifactId&gt;leanengine&lt;/artifactId&gt;
+      &lt;version&gt;[0.1.6,0.2.0)&lt;/version&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+</code></pre>
+<p>配置完成以后，你就可以使用 LeanCloud Java SDK 了。</p>
+<p>在 <code>main</code> 函数中间调用 <code>AVOSCloud.initialize</code> 来设置你的 Application 相关的信息：</p>
+<pre><code class="lang-java">  public static void main(String[] args) {
+    AVOSCloud.initialize(&quot;{{appid}}&quot;,&quot;{{appkey}}&quot;,&quot;{{masterkey}}&quot;);
+  }
+</code></pre>
+<p>创建应用后，可以在<a href="/app.html?appid={{appid}}#/key">控制台 &gt; 应用设置</a> 里面找到应用对应的 appid 、appkey 和 masterkey。</p>
+<p>接下来你就可以尝试测试一段代码，拷贝以下代码到你的 app 里，比如直接放在一个方法中间，并且在 <code>main</code> 函数中间调用：</p>
+<pre><code class="lang-java">AVObject testObject = new AVObject(&quot;TestObject&quot;);
+testObject.put(&quot;foo&quot;, &quot;bar&quot;);
+testObject.save();
+</code></pre>
+<p>运行你的 app，一个类 <code>TestObject</code> 的新对象将被发送到 LeanCloud 并保存下来。当你做完这一切，访问 <a href="/data.html?appid={{appid}}#/TestObject">控制台 - 数据管理</a> 可以看到上面创建的 <code>TestObject</code> 的相关数据。</p>
+<p>LeanCloud 同时也提供了一个的 Java Servlet 运行环境，我们称之为 LeanEngine（云引擎），更推荐基于 LeanEngine 来实现并部署 Java war 包相关的代码。详细请参考 <a href="leanengine_overview.html">云引擎文档</a> 。</p>
+

@@ -1,0 +1,956 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="ios-">iOS 消息推送开发指南</h1>
+<p>本文介绍了如何在 iOS 设备中使用 LeanCloud 的推送功能。请先阅读我们的博客文章《<a href="https://blog.leancloud.cn/1163/">细说 iOS 消息推送</a>》，再通过 <a href="push_guide.html">消息推送概览</a> 了解和巩固相关概念。</p>
+<h2 id="-ios-">配置 iOS 推送证书</h2>
+<p>配置 iOS 证书相对麻烦，但是却是必须的步骤，请详读 <a href="ios_push_cert.html">iOS 推送证书设置指南</a>。</p>
+<h2 id="-">多证书场景</h2>
+<p>对于一些应用，他们在发布和上架时分为不同的版本（司机版、乘客版），但数据和消息是互通的，这种场景下我们允许应用上传多个自定义证书并对不同的设备设置 <code>deviceProfile</code>，从而可以用合适的证书给不同版本的应用推送。</p>
+<p>当你上传自定义证书时会被要求输入「证书类型」，即 deviceProfile 的名字。当 installation 上保存了 deviceProfile 时，我们将忽略原先的开发和生产证书设置，而直接按照 deviceProfile 推送。</p>
+<h2 id="-installation">保存 Installation</h2>
+<p>在保存 installation 前，要先从 APNs 注册推送所需的 device token。可以选择使用 SDK 中提供的接口，也可以使用 Cocoa Touch 提供的原生接口。SDK 提供的接口封装了原生接口在不同版本 iOS 系统上的差异。</p>
+<p><code>+[AVOSCloud registerForRemoteNotification]</code> 接口是一个快捷方法：</p>
+<pre><code class="lang-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [AVOSCloud registerForRemoteNotification];
+}
+</code></pre>
+<p>上面的代码等价于以下代码：</p>
+<pre><code class="lang-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if ([[UIDevice currentDevice].systemVersion floatValue] &lt; 8.0) {
+        UIRemoteNotificationType types = UIRemoteNotificationTypeBadge |
+                                         UIRemoteNotificationTypeAlert |
+                                         UIRemoteNotificationTypeSound;
+        [application registerForRemoteNotificationTypes:types];
+    } else {
+        UIUserNotificationType types = UIUserNotificationTypeAlert |
+                                       UIUserNotificationTypeBadge |
+                                       UIUserNotificationTypeSound;
+
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+
+        [application registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }
+}
+</code></pre>
+<p>除此之外，还可以使用 SDK 提供的更灵活的接口来注册不同类型的通知：</p>
+<pre><code class="lang-objc">@interface AVOSCloud : NSObject
+
++ (void)registerForRemoteNotificationTypes:(NSUInteger)types categories:(NSSet *)categories AVIM_TV_UNAVAILABLE AVIM_WATCH_UNAVAILABLE;
+
+@end
+</code></pre>
+<p>在 iOS 设备中，Installation 的类是 AVInstallation，并且是 AVObject 的子类，使用同样的 API 存储和查询。如果要访问当前应用的 Installation 对象，可以通过 <code>[AVInstallation currentInstallation]</code> 方法。当你第一次保存 AVInstallation 的时候，它会插入 <code>_Installation</code> 表，你可以在 <a href="/data.html?appid={{appid}}">数据管理</a> 平台看到和查询。当 deviceToken 一被保存，你就可以向这台设备推送消息了。</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+</code></pre>
+<p>SDK 将以上逻辑封装成了简单的方法，以上代码等价于：</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [AVOSCloud handleRemoteNotificationsWithDeviceToken:deviceToken];
+}
+</code></pre>
+<p>可以像修改 AVObject 那样去修改 AVInstallation，但是有一些特殊字段可以帮你管理目标设备：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>badge</td>
+<td>应用图标旁边的红色数字，修改 AVInstallation 的这个值将修改应用的 badge。修改应该保存到服务器，以便为以后做 badge 增量式的推送做准备。</td>
+</tr>
+<tr>
+<td>channels</td>
+<td>当前设备所订阅的频道数组</td>
+</tr>
+<tr>
+<td>appName</td>
+<td>应用名称（只读）</td>
+</tr>
+<tr>
+<td>appVersion</td>
+<td>应用版本（只读）</td>
+</tr>
+<tr>
+<td>deviceProfile</td>
+<td>设备对应的后台自定义证书名称，用于多证书推送</td>
+</tr>
+</tbody>
+</table>
+<p>同样，SDK 提供了相应的方法，用于在保存 installation 前构造它。例如，如果希望自定义 deviceProfile 字段，可以这样实现：</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [AVOSCloud handleRemoteNotificationsWithDeviceToken:deviceToken constructingInstallationWithBlock:^(AVInstallation *currentInstallation) {
+        currentInstallation.deviceProfile = @&quot;driver-push-certificate&quot;;
+    }];
+}
+</code></pre>
+<h2 id="-">发送推送消息</h2>
+<p>发送 iOS 推送消息，可以通过 REST API，或者我们的消息推送 web 平台，请进入你的应用管理界面查看。</p>
+<h2 id="-">使用频道</h2>
+<p>使用频道（channel）可以实现「发布—订阅」的模型。设备订阅某个频道，然后发送消息的时候指定要发送的频道即可。</p>
+<div class="callout callout-info">每个 channel 名称只能包含 26 个英文字母和数字。</div>
+
+<h3 id="-">订阅和退订</h3>
+<p>订阅 Giants 频道：</p>
+<pre><code class="lang-objc">// 当用户表示喜欢 Giants，则为其订阅该频道。
+AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+[currentInstallation addUniqueObject:@&quot;Giants&quot; forKey:@&quot;channels&quot;];
+[currentInstallation saveInBackground];
+</code></pre>
+<p>订阅后要记得保存，即可在 <a href="/data.html?appid={{appid}}">数据管理</a>平台看到该 installation 的 channels 字段多了一个「Giants」。</p>
+<p>退订：</p>
+<pre><code class="lang-objc">AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+[currentInstallation removeObject:@&quot;Giants&quot; forKey:@&quot;channels&quot;];
+[currentInstallation saveInBackground];
+</code></pre>
+<p>获取所有订阅的频道：</p>
+<pre><code class="lang-objc">NSArray *subscribedChannels = [AVInstallation currentInstallation].channels;
+</code></pre>
+<h3 id="-">发送消息到频道</h3>
+<p>发送消息到刚才订阅的「Giants」频道：</p>
+<pre><code class="lang-objc">// Send a notification to all devices subscribed to the &quot;Giants&quot; channel.
+AVPush *push = [[AVPush alloc] init];
+[push setChannel:@&quot;Giants&quot;];
+[push setMessage:@&quot;Giants 太牛掰了&quot;];
+[push sendPushInBackground];
+</code></pre>
+<p>如果你想发送到多个频道，可以指定 channels 数组：</p>
+<pre><code class="lang-objc">NSArray *channels = [NSArray arrayWithObjects:@&quot;Giants&quot;, @&quot;Mets&quot;, nil];
+AVPush *push = [[AVPush alloc] init];
+
+// Be sure to use the plural &#39;setChannels&#39;.
+[push setChannels:channels];
+[push setMessage:@&quot;The Giants won against the Mets 2-3.&quot;];
+[push sendPushInBackground];
+</code></pre>
+<h3 id="-">选择证书</h3>
+<p>默认情况下，从客户端发起的推送都是使用你在消息菜单上传的生产证书，如果想使用开发证书，可以通过 <code>setProductionMode</code> 方法：</p>
+<pre><code>[AVPush setProductionMode:NO];
+...
+</code></pre><div class="callout callout-info">为防止由于大量证书错误所产生的性能问题，我们对使用 <strong>开发证书</strong> 的推送做了设备数量的限制，即一次至多可以向 20,000 个设备进行推送。如果满足推送条件的设备超过了 20,000 个，系统会拒绝此次推送，并在 <a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 / 消息 / 推送记录</a> 页面中体现。因此，在使用开发证书推送时，请合理设置推送条件。</div>
+
+
+<h2 id="-">高级定向发送</h2>
+<p>频道对于大多数应用来说可能就足够了。但是某些情况下，你可能需要更高精度的定向推送。LeanCloud 允许你通过 AVQuery API 查询 Installation 列表，并向指定条件的 query 推送消息。</p>
+<p>因为 AVInstallation 同时是 AVObject 的子类，因此你可以保存任何数据类型到 AVInstallation，并将它和你的其他应用数据对象关联起来，这样以来，你可以非常灵活地向你用户群做定制化、动态的推送。</p>
+<h3 id="-installation-">保存 Installation 数据</h3>
+<p>为 AVInstallation 添加三个新字段：</p>
+<pre><code class="lang-objc">// Store app language and version
+AVInstallation *installation = [AVInstallation currentInstallation];
+
+//字段依次为：比赛分数、比赛结果、受伤报告
+[installation setObject:@(YES) forKey:@&quot;scores&quot;];
+[installation setObject:@(YES) forKey:@&quot;gameResults&quot;];
+[installation setObject:@(YES) forKey:@&quot;injuryReports&quot;];
+[installation saveInBackground];
+</code></pre>
+<p>你可以给 Installation 添加 owner 属性，比如当前的登录用户：</p>
+<pre><code class="lang-objc">// Saving the device&#39;s owner
+AVInstallation *installation = [AVInstallation currentInstallation];
+[installation setObject:[AVUser currentUser] forKey:@&quot;owner&quot;];
+[installation saveInBackground];
+</code></pre>
+<h3 id="-">根据查询来推送消息</h3>
+<p>一旦 Installation 保存了你的应用数据，你可以使用 AVQuery 来查询出设备的一个子集做推送。Installation 的查询跟其他对象的查询没有什么不同，只是使用特殊的静态方法
+ <code>[AVInstallation query]</code> 创建查询对象：</p>
+<pre><code class="lang-objc">// Create our Installation query
+AVQuery *pushQuery = [AVInstallation query];
+[pushQuery whereKey:@&quot;injuryReports&quot; equalTo:@(YES)];
+
+// Send push notification to query
+AVPush *push = [[AVPush alloc] init];
+[push setQuery:pushQuery]; // Set our Installation query
+[push setMessage:@&quot;Willie Hayes injured by own pop fly.&quot;];
+[push sendPushInBackground];
+</code></pre>
+<p>你也可以在查询中添加 channels 的条件：</p>
+<pre><code class="lang-objc">// Create our Installation query
+AVQuery *pushQuery = [AVInstallation query];
+[pushQuery whereKey:@&quot;channels&quot; equalTo:@&quot;Giants&quot;]; // Set channel
+[pushQuery whereKey:@&quot;scores&quot; equalTo:@(YES)];
+
+// Send push notification to query
+AVPush *push = [[AVPush alloc] init];
+[push setQuery:pushQuery];
+[push setMessage:@&quot;Giants scored against the A&#39;s! It&#39;s now 2-2.&quot;];
+[push sendPushInBackground];
+</code></pre>
+<p>如果你在 Installation 还保存了其他对象的关系，我们同样可以在查询条件中使用这些数据，例如，向靠近北京大学的设备推送消息：</p>
+<pre><code class="lang-objc">// Find users near a given location
+AVQuery *userQuery = [AVUser query];
+[userQuery whereKey:@&quot;location&quot;
+        nearGeoPoint:beijingUniversityLocation,
+         withinMiles:[NSNumber numberWithInt:1]]
+
+// Find devices associated with these users
+AVQuery *pushQuery = [AVInstallation query];
+[pushQuery whereKey:@&quot;user&quot; matchesQuery:userQuery];
+
+// Send push notification to query
+AVPush *push = [[AVPush alloc] init];
+[push setQuery:pushQuery]; // Set our Installation query
+[push setMessage:@&quot;Free hotdogs at the AVOSCloud concession stand!&quot;];
+[push sendPushInBackground];
+</code></pre>
+<h2 id="-">发送选项</h2>
+<p>除了发送一个文本信息之外，你还可以播放一个声音，设置 badge 数字或者其他想自定义的数据。你还可以设置一个消息的过期时间，如果对消息的时效性特别敏感的话。</p>
+<h3 id="-">定制通知</h3>
+<p>如果你不仅想发送一条文本消息，你需要一个 NSDictionary 来打包想发送的数据。这里有一些保留字段，具有特殊含义，需要说明：</p>
+<table>
+<thead>
+<tr>
+<th>保留字段</th>
+<th>平台</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alert</td>
+<td>通用</td>
+<td>推送消息的文本内容</td>
+</tr>
+<tr>
+<td>badge</td>
+<td>iOS</td>
+<td>应用图标右上角的数字。可以设置一个值或者递增当前值。</td>
+</tr>
+<tr>
+<td>sound</td>
+<td>iOS</td>
+<td>应用 bundle 里的声音文件名称。</td>
+</tr>
+<tr>
+<td>content-available</td>
+<td>iOS</td>
+<td>如果你在使用 Newsstand, 设置为 1 来开始一次后台下载。</td>
+</tr>
+<tr>
+<td>action</td>
+<td>Android</td>
+<td>当消息收到的时候，触发的 Intent 名称。如果没有设置 title 或者 alert，Intent 将触发，但是不会显示通知给用户。</td>
+</tr>
+<tr>
+<td>title</td>
+<td>Android</td>
+<td>显示在系统通知栏的标题。</td>
+</tr>
+</tbody>
+</table>
+<p>例如，递增 badge 数字，并播放声音可以这样做:</p>
+<pre><code class="lang-objc">NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+    @&quot;The Mets scored! The game is now tied 1-1!&quot;, @&quot;alert&quot;,
+    @&quot;Increment&quot;, @&quot;badge&quot;,
+    @&quot;cheering.caf&quot;, @&quot;sound&quot;,
+    nil];
+AVPush *push = [[AVPush alloc] init];
+[push setChannels:[NSArray arrayWithObjects:@&quot;Mets&quot;, nil]];
+[push setData:data];
+[push sendPushInBackground];
+</code></pre>
+<p>当然，你还可以添加其他自定义的数据。你会在接收推送一节看到，当应用通过推送打开你的应用的时候，你就可以访问这些数据。当你要在用户打开通知的时候显示一个不同的 view controller 的时候，这特别有用。</p>
+<pre><code class="lang-objc">NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+    @&quot;Ricky Vaughn was injured in last night&#39;s game!&quot;, @&quot;alert&quot;,
+    @&quot;Vaughn&quot;, @&quot;name&quot;,
+    @&quot;Man bites dog&quot;, @&quot;newsItem&quot;,
+    nil];
+AVPush *push = [[AVPush alloc] init];
+[push setQuery:injuryReportsQuery];
+[push setChannel:@&quot;Indians&quot;];
+[push setData:data];
+[push sendPushInBackground];
+</code></pre>
+<h3 id="-">设置过期日期</h3>
+<p>当设备关闭或者无法连接到网络的时候，推送通知就无法被送达。如果你有一条时间敏感的推送通知，不希望在太长时间后被用户读到，那么可以设置一个过期时间来避免打扰用户。</p>
+<p>AVPush 提供了两个方法来设置通知的过期日期，首先是 expireAtDate：接收 NSDate 来告诉 LeanCloud 不要再去发送通知。</p>
+<pre><code class="lang-objc">NSDateComponents *comps = [[NSDateComponents alloc] init];
+[comps setYear:2013];
+[comps setMonth:10];
+[comps setDay:12];
+NSCalendar *gregorian =
+  [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+NSDate *date = [gregorian dateFromComponents:comps];
+
+// Send push notification with expiration date
+AVPush *push = [[AVPush alloc] init];
+[push expireAtDate:date];
+[push setQuery:everyoneQuery];
+[push setMessage:@&quot;Season tickets on sale until October 12th&quot;];
+[push sendPushInBackground];
+</code></pre>
+<p>这个方法有个隐患，因为设备的时钟是无法保证精确的，你可能得到错误的结果。因此，AVPush 还提供了 <code>expireAfterTimeInterval</code> 方法，接收 NSTimeInterval 对象。通知将在指定间隔时间后失效：</p>
+<pre><code class="lang-objc">// Create time interval
+NSTimeInterval interval = 60*60*24*7; // 1 week
+
+// Send push notification with expiration interval
+AVPush *push = [[AVPush alloc] init];
+[push expireAfterTimeInterval:interval];
+[push setQuery:everyoneQuery];
+[push setMessage:@&quot;Season tickets on sale until October 18th&quot;];
+[push sendPushInBackground];
+</code></pre>
+<div class="callout callout-info">我们建议给 iOS 设备的推送都设置过期时间，才能保证推送的当时，如果用户设置了飞行模式，在关闭飞行模式之后可以收到推送消息，可以参考 <a href="http://stackoverflow.com/questions/24026544/push-notification-is-not-being-delivered-when-iphone-comes-back-online">Stackoverflow - Push notification is not being delivered when iPhone comes back online</a>。</div>
+
+<h3 id="-">指定设备平台</h3>
+<p>跨平台的应用，可能想指定发送的平台，比如 iOS 或者 Android:</p>
+<pre><code class="lang-objc">AVQuery *query = [AVInstallation query];
+[query whereKey:@&quot;channels&quot; equalTo:@&quot;suitcaseOwners&quot;];
+
+// Notification for Android users
+[query whereKey:@&quot;deviceType&quot; equalTo:@&quot;android&quot;];
+AVPush *androidPush = [[AVPush alloc] init];
+[androidPush setMessage:@&quot;Your suitcase has been filled with tiny robots!&quot;];
+[androidPush setQuery:query];
+[androidPush sendPushInBackground];
+
+// Notification for iOS users
+[query whereKey:@&quot;deviceType&quot; equalTo:@&quot;ios&quot;];
+AVPush *iOSPush = [[AVPush alloc] init];
+[iOSPush setMessage:@&quot;Your suitcase has been filled with tiny apples!&quot;];
+[iOSPush setChannel:@&quot;suitcaseOwners&quot;];
+[iOSPush setQuery:query];
+[iOSPush sendPushInBackground];
+</code></pre>
+<h2 id="-">定时推送</h2>
+<p>请进入消息推送的 Web 管理平台，可以做到定时推送（延迟或者指定时间）。</p>
+<h2 id="-">接收推送通知</h2>
+<p>正如 <a href="#定制通知">定制通知</a> 一节提到，你可以随通知发送任意的数据。我们使用这些数据修改应用的行为，当应用是通过通知打开的时候。例如，当打开一条通知告诉你有一个新朋友的时候，这时候如果显示一张图片会非常好。</p>
+<p>由于 Apple 的对消息大小的限制，请尽量缩小要发送的数据大小，否则会被截断。详情请参看 <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/APNsProviderAPI.html#//apple_ref/doc/uid/TP40008194-CH101-SW1">APNs 文档</a>。</p>
+<pre><code class="lang-objc">NSDictionary *data = @{
+  @&quot;alert&quot;: @&quot;James commented on your photo!&quot;,
+  @&quot;p&quot;: @&quot;vmRZXZ1Dvo&quot; // Photo&#39;s object id
+};
+AVPush *push = [[AVPush alloc] init];
+[push setQuery:photoOwnerQuery];
+[push setData:data];
+[push sendPushInBackground];
+</code></pre>
+<h2 id="-">响应通知数据</h2>
+<p>当应用是被通知打开的时候，你可以通过 <code>application:didFinishLaunchingWithOptions:</code>方法的 <code>launchOptions</code> 参数所使用的 dictionary 访问到数据：</p>
+<pre><code class="lang-objc">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  . . .
+  // Extract the notification data
+  NSDictionary *notificationPayload = launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey];
+
+  // Create a pointer to the Photo object
+  NSString *photoId = [notificationPayload objectForKey:@&quot;p&quot;];
+  AVObject *targetPhoto = [AVObject objectWithoutDataWithClassName:@&quot;Photo&quot;
+                                                          objectId:photoId];
+
+  // Fetch photo object
+  [targetPhoto fetchIfNeededInBackgroundWithBlock:^(AVObject *object, NSError *error) {
+    // Show photo view controller
+    if (!error &amp;&amp; [AVUser currentUser]) {
+      PhotoVC *viewController = [[PhotoVC alloc] initWithPhoto:object];
+      [self.navController pushViewController:viewController animated:YES];
+    }
+  }];
+}
+</code></pre>
+<p>如果当通知到达的时候，你的应用已经在运行，那么你可以通过 <code>application:didReceiveRemoteNotification:fetchCompletionHandler:</code> 方法的 <code>userInfo</code> 参数所使用 dictionary 访问到数据：</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)application
+      didReceiveRemoteNotification:(NSDictionary *)userInfo
+            fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))handler {
+  // Create empty photo object
+  NSString *photoId = [userInfo objectForKey:@&quot;p&quot;];
+  AVObject *targetPhoto = [AVObject objectWithoutDataWithClassName:@&quot;Photo&quot;
+                                                          objectId:photoId];
+
+  // Fetch photo object
+  [targetPhoto fetchIfNeededInBackgroundWithBlock:^(AVObject *object, NSError *error) {
+    // Show photo view controller
+    if (error) {
+      handler(UIBackgroundFetchResultFailed);
+    } else if ([AVUser currentUser]) {
+      PhotoVC *viewController = [[PhotoVC alloc] initWithPhoto:object];
+      [self.navController pushViewController:viewController animated:YES];
+    } else {
+      handler(UIBackgroundFetchResultNoData);
+    }
+  }];
+}
+</code></pre>
+<p>你可以阅读 <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/Introduction.html#//apple_ref/doc/uid/TP40008194-CH1-SW1">Apple 本地化和推送的文档</a> 来更多地了解推送通知。</p>
+<h2 id="-">跟踪推送和应用的打开情况</h2>
+<p>通过 <code>AVAnalytics</code> 你可以跟踪通知和应用的打开情况。添加下列代码到上面例子中的 <code>application:didFinishLaunchingWithOptions:</code> 方法来收集打开信息：</p>
+<pre><code class="lang-objc">if (application.applicationState != UIApplicationStateBackground) {
+  // Track an app open here if we launch with a push, unless
+  // &quot;content_available&quot; was used to trigger a background push (introduced
+  // in iOS 7). In that case, we skip tracking here to avoid double
+  // counting the app-open.
+  BOOL preBackgroundPush = ![application respondsToSelector:@selector(backgroundRefreshStatus)];
+  BOOL oldPushHandlerOnly = ![self respondsToSelector:@selector(application:didReceiveRemoteNotification:fetchCompletionHandler:)];
+  BOOL noPushPayload = ![launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+  if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
+    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+  }
+}
+</code></pre>
+<p>传递 <code>nil</code> 或者空白的参数给 <code>trackAppOpenedWithLaunchOptions:</code> 方法只是统计一次标准的应用打开事件（比如不是通过通知打开的应用）。</p>
+<p>你可以在 <a href="/stat.html?appid={{appid}}#/stat/appuse">控制台 &gt; 分析 &gt; 行为分析 &gt; 应用使用</a> 里看到通知和应用打开的情况。</p>
+<p>请注意，如果你的应用正在运行或者在后台，<code>application:didReceiveRemoteNotification:</code>方法将会处理收到的推送通知。</p>
+<div class="callout callout-info">如果你的应用处于运行状态，iOS 系统将不会在系统的通知中心显示推送消息，你可以使用 <code>UILocalNotification</code> 展示一个通知给用户。</div>
+
+<p>如果应用在后台，并且用户点击了通知，那么应用将被带到前台可视，为了跟踪这种通过通知打开应用的情况，你需要在跟踪代码里多作一个检查：</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+  if (application.applicationState == UIApplicationStateActive) {
+    // 此处可以写上应用激活状态下接收到通知的处理代码，如无需处理可忽略
+  } else {
+    // The application was just brought from the background to the foreground,
+    // so we consider the app as having been &quot;opened by a push notification.&quot;
+    [AVAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+  }
+}
+</code></pre>
+<p>如果使用 iOS 7 推送的新特性（包括新的 content-available 功能），你需要实现 iOS 7 新加的方法：</p>
+<pre><code class="lang-objc">- (void)application:(UIApplication *)application
+        didReceiveRemoteNotification:(NSDictionary *)userInfo
+        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  if (application.applicationState == UIApplicationStateActive) {
+    // 此处可以写上应用激活状态下接收到通知的处理代码，如无需处理可忽略
+  } else {
+    [AVAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
+  }
+}
+</code></pre>
+<h3 id="-">跟踪本地通知</h3>
+<p>为了统计跟踪本地通知消息，需要注意以下两种方法都会调用到：</p>
+<ul>
+<li><code>application:didFinishLaunchingWithOptions:</code></li>
+<li><code>-application:didReceiveLocalNotification:</code></li>
+</ul>
+<p>如果你实现了 <code>application:didReceiveLocalNotification:</code> 这个方法，要注意避免重复统计。</p>
+<h3 id="-badge">清除 Badge</h3>
+<p>清除 Badge 数字的最好时机是打开应用的时候。设置当前 installation 的 badge 属性并保存到服务器：</p>
+<pre><code class="lang-objc">- (void)applicationDidBecomeActive:(UIApplication *)application {
+    int num=application.applicationIconBadgeNumber;
+    if(num!=0){
+        AVInstallation *currentInstallation = [AVInstallation currentInstallation];
+        [currentInstallation setBadge:0];
+        [currentInstallation saveEventually];
+        application.applicationIconBadgeNumber=0;
+    }
+    [application cancelAllLocalNotifications];
+    //...
+}
+</code></pre>
+<p>清除 Badge 数字最相关的三个方法是：</p>
+<ul>
+<li><code>applicationDidBecomeActive:</code></li>
+<li><code>application:didFinishLaunchingWithOptions:</code></li>
+<li><code>application:didReceiveRemoteNotification:</code></li>
+</ul>
+<p>请阅读 <a href="http://developer.apple.com/library/ios/#DOCUMENTATION/UIKit/Reference/UIApplicationDelegate_Protocol/Reference/Reference.html">UIApplicationDelegate 文档</a>。</p>
+<h2 id="-">离线消息重复推送</h2>
+<p>请参考 <a href="realtime_guide-ios.html#duplicate-offline-message-notification">为什么在 iOS 上离线消息重复推送了两次？</a></p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

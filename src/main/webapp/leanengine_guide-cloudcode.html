@@ -1,0 +1,1740 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-middot-2-0-">云引擎指南 &middot; 2.0（已不推荐使用）</h1>
+<p>如果项目中有 <code>cloud/main.js</code> 文件，即为云引擎 2.0 环境。</p>
+<div class="callout callout-danger">云引擎 2.0 环境已经停止维护，因此我们强烈建议用户升级到更高版本的云引擎环境。</div>
+
+<h2 id="-">升级</h2>
+<p>云引擎 2.0 和后续版本（3.0+）的差别主要是<strong>应用的目录结构</strong>。因为后续版本不再使用沙箱环境，所以不强制 <code>cloud</code> 和 <code>config</code> 等目录结构，只要是一个普通的 Node.js 项目即可。而 SDK 将作为一个普通组件添加到项目中，所以使用方面也有一些变化：</p>
+<ul>
+<li><strong>需要自己初始化 AV 对象</strong><br/>云引擎 2.0 会直接将 AV 对象初始化并保存在沙箱环境上下文中，所以不需要任何声明而直接使用。我们认为这样违背了编程规则，所以云引擎环境需要自行初始化 AV 对象，而且可以根据需要来决定此过程是否使用 master key。</li>
+<li><strong>时区</strong><br/>云引擎 2.0 默认使用 UTC 时区，这给很多开发者带来了困惑。所以后续版本默认情况下使用东八区时区，在 <a href="#时区问题">时区问题</a> 部分详细讨论这个问题。</li>
+<li><strong><code>avos-express-cookie-session</code> 的改变</strong><br/>该组件不再依赖 <code>cookie-parse</code>，而且引入方式发生变化，详情见 <a href="#处理用户登录和登出">处理用户登录和登出</a>。</li>
+<li><strong>运行环境判断</strong><br/>云引擎 2.0 使用 <code>__production</code> 全局变量判断当前环境是「预备环境」还是「生产环境」。而后续版本尊重 Node.js 的习惯，使用 <code>NODE_ENV</code> 这个变量来进行区分，<code>staging</code> 为预备环境，<code>production</code> 为生产环境。详情见 <a href="#运行环境区分">运行环境区分</a>。</li>
+</ul>
+<p>请参见详细的 <a href="leanengine_upgrade_3.html">升级指南</a>。</p>
+<p>云引擎允许你编写 JavaScript、Python 等代码，并部署到 LeanCloud 云端，通过拦截 save 请求，在保存对象之前或之后做一些事情；你可以自定义业务函数，并通过 SDK 调用；你还可以调用部分第三方库来实现自己的业务逻辑，甚至还可以将整个网站架设在云引擎之上，我们提供了网站托管服务。</p>
+<p>与旧版云引擎的区别在于：</p>
+<ul>
+<li><strong>标准的运行环境</strong>：之前云引擎是我们订制的一个沙箱运行环境，功能受限，并且代码只可以在云引擎环境运行，难以迁移到自己搭建的后端服务器上。而云引擎环境可以部署标准项目。</li>
+<li><strong>多语言支持</strong>：目前支持 Node.js、Python、PHP、Java，未来会实现更多的编程语言运行环境。</li>
+</ul>
+<h2 id="-">命令行工具</h2>
+<p>使用命令行工具可以非常方便地部署和发布云引擎项目，查看项目状态和查看日志，甚至支持多应用部署。具体请参考 <a href="leanengine_cli.html">命令行工具指南</a>。</p>
+<h2 id="demo">Demo</h2>
+<ul>
+<li><a href="https://github.com/killme2008/cloudcode-test">cloudcode-test</a>：一个简单留言板网站。效果体验：<a href="https://myapp.leanapp.cn/">https://myapp.leanapp.cn/</a></li>
+</ul>
+<h2 id="-">快速入门</h2>
+<p>首先确认本机已经安装了相关的运行环境和 <a href="leanengine_cli.html">命令行工具</a>。</p>
+<h3 id="-">创建应用</h3>
+<p>命令行界面输入命令创建应用：</p>
+<pre><code>$ avoscloud new
+</code></pre><p>根据提示信息输入 appId 等相关信息即可创建一个初始应用。然后进入项目目录：</p>
+<pre><code>$ cd &lt;appName&gt;
+</code></pre><h3 id="-">本地运行</h3>
+<pre><code>$ avoscloud
+</code></pre><p>窗口会提示输入 Master Key，该信息可以在 <a href="/app.html?appid={{appid}}#/key">控制台 / 设置 / 应用 Key</a> 中找到。</p>
+<div class="callout callout-info">复制粘贴 Master Key 后，窗口不会有任何显示，直接按回车键确认即可。</div>
+
+<p>应用即可启动运行：<a href="http://localhost:3000">http://localhost:3000</a></p>
+<p>可以通过下列命令确认云函数工作正常，该函数定义在 <code>$PROJECT_DIR/cloud/main.js</code> 文件中：</p>
+<pre><code class="lang-sh">curl -X POST -H &quot;Content-Type: application/json; charset=utf-8&quot;   \
+       -H &quot;X-LC-Id: {{appid}}&quot;          \
+       -H &quot;X-LC-Key: {{appkey}}&quot;        \
+       -H &quot;X-LC-Prod: 0&quot;  -d &#39;{}&#39; \
+       http://localhost:3000/1.1/functions/hello
+</code></pre>
+<p>如果需要指定 web 服务端口，可以增加 <code>-P</code> 参数。获取帮助信息请使用 <code>-h</code> 参数。</p>
+<h3 id="-">部署到云引擎</h3>
+<p>部署到预备环境：</p>
+<pre><code>$ avoscloud deploy
+</code></pre><p>如果你设置了 <a href="#设置域名">二级域名</a>，即可通过 <code>http://stg-${your_app_domain}.leanapp.cn</code> 访问你应用的预备环境。</p>
+<p>部署到生产环境：</p>
+<pre><code>$ avoscloud publish
+</code></pre><p>如果你设置了 <a href="#设置域名">二级域名</a>，即可通过 <code>http://${your_app_domain}.leanapp.cn</code> 访问你应用的生产环境。</p>
+<p>通过下列命令可以确认云函数在云引擎上工作正常：</p>
+<pre><code class="lang-sh">curl -X POST -H &quot;Content-Type: application/json; charset=utf-8&quot;   \
+       -H &quot;X-LC-Id: {{appid}}&quot;          \
+       -H &quot;X-LC-Key: {{appkey}}&quot;        \
+       -H &quot;X-LC-Prod: 1&quot;  -d &#39;{}&#39; \
+       https://leancloud.cn/1.1/functions/hello
+</code></pre>
+<h2 id="-">使用云引擎中间件</h2>
+<p>如果你没有使用项目框架，则需要自己安装和初始化云引擎中间件。</p>
+<h3 id="-">环境变量</h3>
+<p>你可以在代码中使用以下与云引擎平台相关的环境变量：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LEANCLOUD_APP_ID</code></td>
+<td>当前应用的 App Id</td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_APP_KEY</code></td>
+<td>当前应用的 App Key</td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_APP_MASTER_KEY</code></td>
+<td>当前应用的 Master Key</td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_APP_ENV</code></td>
+<td>当前的应用环境：<ul><li>开发环境没有该环境变量，或值为 <code>development</code>（一般指本地开发）</li><li>预备环境值为 <code>stage</code></li><li>生产环境值为 <code>production</code></li></ul></td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_APP_PORT</code></td>
+<td>当前应用开放给外网的端口，只有监听此端口，用户才可以访问到你的服务。</td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_APP_INSTANCE</code></td>
+<td>云引擎实例名称，在多实例环境可以通过此变量标示自己。</td>
+</tr>
+<tr>
+<td><code>LEANCLOUD_REGION</code></td>
+<td>云引擎服务所在区域，值为 <code>CN</code> 或 <code>US</code>，分别表示国内节点和美国节点。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>提示</strong>：旧版云引擎使用的以 <code>LC_</code> 开头的环境变量（如 <code>LC_APP_ID</code>）已经被弃用。为了保证代码兼容性，<code>LC_</code> 变量在一段时间内依然有效，但未来可能会完全失效。为了避免报错，建议使用 <code>LEANCLOUD_</code> 变量来替换。</p>
+<p><strong>提示</strong>：如果在客户端想调用云引擎的预备环境，各个 SDK 都有类似于 <code>setProduction</code> 的方法，比如 <a href="/api-docs/javascript/symbols/AV.html#.setProduction">JavaScript SDK &middot; AV.setProduction(production)</a>，其中 <code>production</code> 设置为 <code>0</code> 则该 SDK 将请求预备环境；设置为 <code>1</code> 将请求生产环境，默认为 <code>1</code>。</p>
+<h3 id="-">安装</h3>
+<p>因为云引擎 2.0 运行在沙箱环境，所以不需要安装和初始化，直接可以在项目中使用。</p>
+<h3 id="-">使用数据存储</h3>
+<p>你可以直接在云引擎上使用我们的 <a href="/features/storage.html">数据存储</a> 服务，相关功能请参考 <a href="./leanstorage_guide-js.html">JavaScript SDK</a>。</p>
+<h2 id="-">云函数</h2>
+<p>当你开发移动端应用时，可能会有下列需求：</p>
+<ul>
+<li>应用有 Android、iOS 甚至 Windows Phone 客户端，但是很多业务逻辑都是一样的，你希望能将这部分逻辑抽取出来，只维护一份。</li>
+<li>有些逻辑希望能够较灵活的调整（比如某些个性化列表的排序规则），但又不想频繁的更新和发布移动客户端。</li>
+<li>有些逻辑需要的数据量很大，或者运算成本高（比如某些统计汇总需求），你不希望在移动客户端进行运算，因为这样会消耗大量的网络流量和手机运算能力。</li>
+<li>当应用执行特定操作时，由云端系统自动触发一段逻辑（称为 <a href="#Hook_函数">Hook 函数</a>），比如：用户注册后对该用户增加一些信息记录用于统计；或某业务数据发生变化后希望做一些别的业务操作。这些代码不适合放在移动客户端（比如因为上面提到的几个原因）。</li>
+<li>你希望有能有定时任务，比如每天凌晨清理垃圾注册账号等等。</li>
+</ul>
+<p>这时，你可以使用云引擎的云函数。云函数是一段部署在服务端的代码，编写 JavaScript 或者 Python 代码，并部署到我们的平台上，可以很好的完成上述需求。</p>
+<p>你可以使用 <a href="#在线定义函数">在线定义函数</a> 或者 <a href="#项目定义函数">项目定义函数</a> 来开发云函数。在线定义函数操作方便，不需要涉及项目依赖和部署等问题；项目定义函数可以提供更多的灵活性和自主性。</p>
+<p>示例项目中 <code>$PROJECT_DIR/cloud/main.js</code> 文件定义了一个很简单的 <code>hello</code> 云函数。现在让我们看一个明显较复杂的例子来展示云引擎的用途。在云端进行计算的一个重要理由是，你不需要将大量的数据发送到设备上做计算，而是将这些计算放到服务端，并返回结果这一点点信息就好。</p>
+<p>例如，你写了一个应用，让用户对电影评分，一个评分对象大概是这样：</p>
+<pre><code class="lang-json">{
+  &quot;movie&quot;: &quot;夏洛特烦恼&quot;,
+  &quot;stars&quot;: 5,
+  &quot;comment&quot;: &quot;夏洛一梦，笑成麻花&quot;
+}
+</code></pre>
+<p><code>stars</code> 表示评分，1-5。如果你想查找《夏洛特烦恼》这部电影的平均分，你可以找出这部电影的所有评分，并在设备上根据这个查询结果计算平均分。但是这样一来，尽管你只是需要平均分这样一个数字，却不得不耗费大量的带宽来传输所有的评分。通过云引擎，我们可以简单地传入电影名称，然后返回电影的平均分。</p>
+<p>云函数接收 JSON 格式的请求对象，我们可以用它来传入电影名称。整个 <a href="./leanstorage_guide-js.html">JavaScript SDK</a> 都在云引擎运行环境上有效，可以直接使用，所以我们可以使用它来查询所有的评分。结合在一起，实现 <code>averageStars</code> 函数的代码如下：</p>
+<pre><code class="lang-javascript">AV.Cloud.define(&#39;averageStars&#39;, function(request, response) {
+  var query = new AV.Query(&#39;Review&#39;);
+  query.equalTo(&#39;movie&#39;, request.params.movie);
+  query.find().then(function(results) {
+    var sum = 0;
+    for (var i = 0; i &lt; results.length; ++i) {
+      sum += results[i].get(&#39;stars&#39;);
+    }
+    response.success(sum / results.length);
+  }, function() {
+    response.error(&#39;movie lookup failed&#39;);
+  });
+});
+</code></pre>
+<h3 id="rest-api-">REST API 调用云函数</h3>
+<p>云函数可以被各种客户端 SDK 调用（详见各 SDK 的「调用云引擎」部分），也可以通过 REST API 来调用。例如，用一部电影名称去调用 <code>averageStars</code> 函数：</p>
+<pre><code class="lang-sh">curl -X POST -H &quot;Content-Type: application/json; charset=utf-8&quot; \
+       -H &quot;X-LC-Id: {{appid}}&quot; \
+       -H &quot;X-LC-Key: {{appkey}}&quot; \
+       -H &quot;X-LC-Prod: 0&quot; \
+       -d &#39;{&quot;movie&quot;:&quot;夏洛特烦恼&quot;,&quot;stars&quot;: 5,&quot;comment&quot;: &quot;夏洛一梦，笑成麻花&quot;}&#39; \
+https://leancloud.cn/1.1/functions/averageStars
+</code></pre>
+<p>有两个参数会被传入到云函数：</p>
+<ul>
+<li><strong>request</strong>：包装了请求信息的请求对象，下列这些字段将被设置到 request 对象内：<ul>
+<li><strong>params</strong>：客户端发送的参数对象</li>
+<li><strong>user</strong>：<code>AV.User</code> 对象，发起调用的用户，如果没有登录，则不会设置此对象。如果通过 REST API 调用时模拟用户登录，需要增加一个头信息 <code>X-AVOSCloud-Session-Token: &lt;sessionToken&gt;</code>，该 <code>sessionToken</code> 在用户登录或注册时服务端会返回。</li>
+</ul>
+</li>
+<li><strong>response</strong>：应答对象，包含两个函数：<ul>
+<li><strong>success</strong>：这个函数可以接收一个额外的参数，表示返回给客户端的结果数据。这个参数对象可以是任意的JSON对象或数组，并且可以包含 <code>AV.Object</code> 对象。</li>
+<li><strong>error</strong>：如果这个方法被调用，则表示发生了一个错误。它也接收一个额外的参数来传递给客户端，提供有意义的错误信息。</li>
+</ul>
+</li>
+</ul>
+<p>如果函数调用成功，云端返回给客户端的结果类似这样：</p>
+<pre><code class="lang-json">{
+  &quot;result&quot;: 4.8
+}
+</code></pre>
+<p>如果调用有错误，则返回：</p>
+<pre><code class="lang-json">{
+  &quot;code&quot;: 141,
+  &quot;error&quot;: &quot;搜索失败&quot;
+}
+</code></pre>
+<p>如有需要，也可以 <a href="#错误响应码">自定义错误响应码</a>。</p>
+<h3 id="-">云引擎调用云函数</h3>
+<p>在云引擎中也可以使用 <code>AV.Cloud.run</code> 调用 <code>AV.Cloud.define</code> 定义的云函数：</p>
+<pre><code class="lang-javascript">AV.Cloud.run(&#39;hello&#39;, {name: &#39;dennis&#39;}).then(function(data){
+  //调用成功，得到成功的应答data
+}, function(err){
+  //处理调用失败
+});
+</code></pre>
+<p>API 参数详解参见 <a href="/api-docs/javascript/symbols/AV.Cloud.html#.run">AV.Cloud.run</a>。</p>
+<h3 id="hook-">Hook 函数</h3>
+<p>Hook 函数本质上是云函数，但它有固定的名称，定义之后会<strong>由系统</strong>在特定事件或操作（如数据保存前、保存后，数据更新前、更新后等等）发生时<strong>自动触发</strong>，而不是由开发者来控制其触发时机。</p>
+<p>使用 Hook 函数需要注意 <a href="#防止死循环调用">防止死循环调用</a>。</p>
+<h4 id="beforesave">beforeSave</h4>
+<p>在将对象保存到云端数据表之前，可以对数据做一些清理或验证。例如，一条电影评论不能过长，否则界面上显示不开，需要将其截断至 140 个字符：</p>
+<pre><code class="lang-javascript">AV.Cloud.beforeSave(&#39;Review&#39;, function(request, response) {
+  var comment = request.object.get(&#39;comment&#39;);
+  if (comment) {
+    if (comment.length &gt; 140) {
+      // 截断并添加...
+      request.object.set(&#39;comment&#39;, comment.substring(0, 137) + &#39;...&#39;);
+    }
+    // 保存到数据库中
+    response.success();
+  } else {
+    // 不保存数据，并返回错误
+    response.error(&#39;No comment!&#39;);
+  }
+});
+</code></pre>
+<h4 id="aftersave">afterSave</h4>
+<p>在数据保存后触发指定操作，比如当一条留言保存后再更新一下所属帖子的评论总数：</p>
+<pre><code class="lang-javascript">AV.Cloud.afterSave(&#39;Comment&#39;, function(request) {
+  var query = new AV.Query(&#39;Post&#39;);
+  query.get(request.object.get(&#39;post&#39;).id).then(function(post) {
+    post.increment(&#39;comments&#39;);
+    post.save();
+  }, function(error) {
+    throw &#39;Got an error &#39; + error.code + &#39; : &#39; + error.message;
+  });
+});
+</code></pre>
+<p>再如，在用户注册成功之后，给用户增加一个新的属性 from 并保存：</p>
+<pre><code class="lang-javascript">AV.Cloud.afterSave(&#39;_User&#39;, function(request) {
+  //输出信息请到「应用控制台 / 存储 / 云引擎 / 日志」中查看
+  console.log(request.object);
+  request.object.set(&#39;from&#39;,&#39;LeanCloud&#39;);
+  request.object.save().then(function(user) {
+    console.log(&#39;ok!&#39;);
+  }, function(user, error) {
+    console.log(&#39;error&#39;, error);
+  });
+});
+</code></pre>
+<p>如果 <code>afterSave</code> 函数调用失败，save 请求仍然会返回成功应答给客户端。<code>afterSave</code> 发生的任何错误，都将记录到云引擎日志里。</p>
+<p>可以到 <a href="https://leancloud.cn/cloud.html?appid={{appid}}#/log">控制台 / 存储 / 云引擎 / 日志</a> 中查看。</p>
+<h4 id="beforeupdate">beforeUpdate</h4>
+<p>云引擎 2.0 不支持这个 Hook，你需要升级到后续版本来使用它，请参见详细的 <a href="leanengine_upgrade_3.html">升级指南</a>。</p>
+<h4 id="afterupdate">afterUpdate</h4>
+<p>在更新对象后执行特定的动作，比如每次修改文章后记录下日志：</p>
+<pre><code class="lang-javascript">AV.Cloud.afterUpdate(&#39;Article&#39;, function(request) {
+   console.log(&#39;Updated article,the id is :&#39; + request.object.id);
+});
+</code></pre>
+<h4 id="beforedelete">beforeDelete</h4>
+<p>在删除一个对象之前做一些检查工作，比如在删除一个相册 Album 前，先检查一下该相册中还有没有照片 Photo：</p>
+<pre><code class="lang-javascript">AV.Cloud.beforeDelete(&#39;Album&#39;, function(request, response) {
+  //查询 Photo 中还有没有属于这个相册的照片
+  var query = new AV.Query(&#39;Photo&#39;);
+  var album = AV.Object.createWithoutData(&#39;Album&#39;, request.object.id);
+  query.equalTo(&#39;album&#39;, album);
+  query.count().then(function(count) {
+    if (count &gt; 0) {
+      //还有照片，不能删除，调用error方法
+      response.error(&#39;Can\&#39;t delete album if it still has photos.&#39;);
+    } else {
+      //没有照片，可以删除，调用success方法
+      response.success();
+    }
+  }, function(error) {
+    response.error(&#39;Error &#39; + error.code + &#39; : &#39; + error.message + &#39; when getting photo count.&#39;);
+  });
+});
+</code></pre>
+<h4 id="afterdelete">afterDelete</h4>
+<p>在被删一个对象后执行操作，例如递减计数、删除关联对象等等。同样以相册为例，这次我们不在删除相册前检查是否还有照片，而是在删除后，同时删除相册中的照片：</p>
+<pre><code class="lang-javascript">AV.Cloud.afterDelete(&#39;Album&#39;, function(request) {
+  var query = new AV.Query(&#39;Photo&#39;);
+  var album = AV.Object.createWithoutData(&#39;Album&#39;, request.object.id);
+  query.equalTo(&#39;album&#39;, album);
+  query.find().then(function(posts) {
+    //查询本相册的照片，遍历删除
+    AV.Object.destroyAll(posts);
+  }, function(error) {
+    console.error(&#39;Error finding related comments &#39; + error.code + &#39;: &#39; + error.message);
+  });
+});
+</code></pre>
+<h4 id="onverified">onVerified</h4>
+<p>当用户通过邮箱或者短信验证时，对该用户执行特定操作。比如：</p>
+<pre><code class="lang-javascript">AV.Cloud.onVerified(&#39;sms&#39;, function(request, response) {
+    console.log(&#39;onVerified: sms, user: &#39; + request.object);
+    response.success();
+</code></pre>
+<p>函数的第一个参数是验证类型。短信验证为 <code>sms</code>，邮箱验证为 <code>email</code>。另外，数据库中相关的验证字段，如 <code>emailVerified</code> 不需要修改，系统会自动更新。</p>
+<h4 id="onlogin">onLogin</h4>
+<p>在用户登录之时执行指定操作，比如禁止在黑名单上的用户登录：</p>
+<pre><code class="lang-javascript">AV.Cloud.onLogin(function(request, response) {
+  // 因为此时用户还没有登录，所以用户信息是保存在 request.object 对象中
+  console.log(&quot;on login:&quot;, request.object);
+  if (request.object.get(&#39;username&#39;) == &#39;noLogin&#39;) {
+    // 如果是 error 回调，则用户无法登录（收到 401 响应）
+    response.error(&#39;Forbidden&#39;);
+  } else {
+    // 如果是 success 回调，则用户可以登录
+    response.success();
+  }
+});
+</code></pre>
+<h4 id="-hook-">实时通信 Hook 函数</h4>
+<p>请阅读 <a href="realtime_v2.html#云引擎_Hook">实时通信概览 &middot; 云引擎 Hook</a> 来了解以下函数的具体用法：</p>
+<ul>
+<li><code>_messageReceived</code></li>
+<li><code>_receiversOffline</code></li>
+<li><code>_conversationStart</code></li>
+<li><code>_conversationAdd</code></li>
+<li><code>_conversationRemove</code></li>
+</ul>
+<h4 id="-">防止死循环调用</h4>
+<p>在实际使用中有这样一种场景：在 <code>Post</code> 类的 <code>afterUpdate</code> Hook 函数中，对传入的 <code>Post</code> 对象做了修改并且保存，而这个保存动作又会再次触发 <code>afterUpdate</code>，由此形成死循环。针对这种情况，我们为所有 Hook 函数传入的 <code>request.object</code> 对象做了处理，以阻止死循环调用的产生。</p>
+<p>不过请注意，以下情况还需要开发者自行处理：</p>
+<ul>
+<li>对传入的 <code>request.object</code> 对象进行 <code>fetch</code> 操作。</li>
+<li>重新构造传入的 <code>request.object</code> 对象，如使用 <code>AV.Object.createWithoutData()</code> 方法。</li>
+</ul>
+<p>对于使用上述方式产生的对象，请根据需要自行调用以下 API：</p>
+<ul>
+<li><code>object.disableBeforeHook()</code> 或</li>
+<li><code>object.disableAfterHook()</code></li>
+</ul>
+<p>这样，对象的保存或删除动作就不会再次触发相关的 Hook 函数。</p>
+<pre><code class="lang-javascript">AV.Cloud.afterUpdate(&#39;Post&#39;, function(request) {
+    // 直接修改并保存对象不会再次触发 afterUpdate Hook 函数
+    request.object.set(&#39;foo&#39;, &#39;bar&#39;);
+    request.object.save().then(function(obj) {
+      // 你的业务逻辑
+    });
+
+    // 如果有 fetch 操作，则需要在新获得的对象上调用相关的 disable 方法
+    // 来确保不会再次触发 Hook 函数
+    request.object.fetch().then(function(obj) {
+      obj.disableAfterHook();
+      obj.set(&#39;foo&#39;, &#39;bar&#39;);
+      return obj.save();
+    }).then(function(obj) {
+      // 你的业务逻辑
+    });
+
+    // 如果是其他方式构建对象，则需要在新构建的对象上调用相关的 disable 方法
+    // 来确保不会再次触发 Hook 函数
+    var obj = AV.Object.createWithoutData(&#39;Post&#39;, request.object.id);
+    obj.disableAfterHook();
+    obj.set(&#39;foo&#39;, &#39;bar&#39;);
+    obj.save().then(function(obj) {
+      // 你的业务逻辑
+    });
+  });
+</code></pre>
+<p><strong>提示</strong>：云引擎 Node.js 环境从 <a href="https://github.com/leancloud/leanengine-node-sdk/blob/master/CHANGELOG.md#v030-20151231">0.3.0</a> 开始支持 <code>object.disableBeforeHook()</code> 和 <code>object.disableAfterHook()</code>。</p>
+<h3 id="-">错误响应码</h3>
+<pre><code>AV.Cloud.define(&#39;errorCode&#39;, function(req, res) {
+  AV.User.logIn(&#39;NoThisUser&#39;, &#39;lalala&#39;, {
+    error: function(user, err) {
+      res.error(err);
+    }
+  });
+});
+</code></pre><p>客户端收到的响应：<code>{&quot;code&quot;:211,&quot;error&quot;:&quot;Could not find user&quot;}</code></p>
+<pre><code>AV.Cloud.define(&#39;customErrorCode&#39;, function(req, res) {
+  res.error({code: 123, message: &#39;custom error message&#39;});
+});
+</code></pre><p>客户端收到的响应： <code>{&quot;code&quot;:123,&quot;error&quot;:&quot;自定义错误信息&quot;}</code></p>
+<h4 id="hook-">Hook 函数的区别</h4>
+<p>为 <code>beforeSave</code> 这类的 hook 函数定义错误码，需要这样：</p>
+<p>客户端收到的响应为：<code>Cloud Code validation failed. Error detail : {&quot;code&quot;:123, &quot;message&quot;: &quot;自定义错误信息&quot;}</code>，然后通过<strong>截取字符串</strong>的方式取出错误信息，再转换成需要的对象。</p>
+<h2 id="-http-">发送 HTTP 请求</h2>
+<p>云引擎允许你使用 <code>AV.Cloud.httpRequest</code> 函数来发送 HTTP 请求到任意的 HTTP 服务器。不过推荐你使用 <a href="https://www.npmjs.com/package/request">request</a> 等第三方模块来处理 HTTP 请求。</p>
+<p>使用 <code>AV.Cloud.httpRequest</code> ，一个简单的 GET 请求看起来是这样：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  url: &#39;http://www.google.com/&#39;
+}).then(function(httpResponse) {
+
+  // 返回的 HTTP 状态码是成功的状态码（例如 200、201 等 2xx）时会被调用
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<h3 id="-">查询参数</h3>
+<p>如果你想添加查询参数到URL末尾，你可以设置选项对象的 params 属性。你既可以传入一个 JSON 格式的 key-value 对象，像这样：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  url: &#39;http://www.google.com/search&#39;,
+  params: {
+    q : &#39;Sean Plott&#39;
+  }
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<p>也可以是一个原始的字符串：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  url: &#39;http://www.google.com/search&#39;,
+  params: &#39;q=Sean Plott&#39;,
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<h3 id="-http-">设置 HTTP 头部</h3>
+<p>通过设置选项对象的 header 属性，你可以发送 HTTP 头信息。假设你想设定请求的 <code>Content-Type</code>，你可以这样做：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  url: &#39;http://www.example.com/&#39;,
+  headers: {
+    &#39;Content-Type&#39;: &#39;application/json&#39;
+  }
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<h3 id="-">设置超时</h3>
+<p>默认请求超时设置为 10 秒，超过这个时间没有返回的请求将被强制终止，你可以通过 timeout 选项（单位毫秒）调整这个超时，如将请求超时设置为 15 秒：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  url: &#39;http://www.example.com/&#39;,
+  timeout: 15000,
+  headers: {
+    &#39;Content-Type&#39;: &#39;application/json&#39;
+  }
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<h3 id="-post-">发送 POST 请求</h3>
+<p>通过设置选项对象的 method 属性就可以发送 POST 请求。同时可以设置选项对象的 body 属性来发送数据，例如：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  method: &#39;POST&#39;,
+  url: &#39;http://www.example.com/create_post&#39;,
+  body: {
+    title: &#39;Vote for Pedro&#39;,
+    body: &#39;If you vote for Pedro, your wildest dreams will come true&#39;
+  }
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+}, function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<p>这将会发送一个 POST 请求到 <a href="http://www.example.com/create_post">http://www.example.com/create_post</a>，body 是被 URL 编码过的表单数据。 如果你想使用 JSON 编码 body，可以这样做：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  method: &#39;POST&#39;,
+  url: &#39;http://www.example.com/create_post&#39;,
+  headers: {
+    &#39;Content-Type&#39;: &#39;application/json&#39;
+  },
+  body: {
+    title: &#39;Vote for Pedro&#39;,
+    body: &#39;If you vote for Pedro, your wildest dreams will come true&#39;
+  }
+}).then(function(httpResponse) {
+  console.log(httpResponse.text);
+},function(httpResponse) {
+  console.error(&#39;Request failed with response code &#39; + httpResponse.status);
+});
+</code></pre>
+<p>当然，body 可以被任何想发送出去的 String 对象替换。</p>
+<h3 id="http-">HTTP 应答对象</h3>
+<p>传给 success 和 error 函数的应答对象包括下列属性：</p>
+<ul>
+<li><code>status</code>：HTTP 状态码</li>
+<li><code>headers</code>：HTTP 应答头部信息</li>
+<li><code>text</code>：原始的应答 body 内容。</li>
+<li><code>buffer</code>：原始的应答 Buffer 对象</li>
+<li><code>data</code>：解析后的应答内容，如果云引擎可以解析返回的 <code>Content-Type</code> 的话（例如 JSON 格式，就可以被解析为一个 JSON 对象）。</li>
+</ul>
+<p>如果你不想要 text（会消耗资源做字符串拼接）只需要 buffer，那么可以设置请求的 text 选项为 false：</p>
+<pre><code class="lang-javascript">AV.Cloud.httpRequest({
+  method: &#39;POST&#39;,
+  url: &#39;http://www.example.com/create_post&#39;,
+  text: false,
+  ......
+});
+</code></pre>
+<h2 id="-">云引擎管理控制台</h2>
+<p>首先，请进入 <a href="/cloud.html?appid={{appid}}#/leannode">控制台 /（选择应用）/ 存储 / 云引擎</a> 界面，可以看到左侧菜单：</p>
+<table>
+<thead>
+<tr>
+<th>菜单项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="white-space: nowrap;">云引擎实例</span></td>
+<td>展示云引擎实例的运行状态，也可以增减新的实例。</td>
+</tr>
+<tr>
+<td><span style="white-space: nowrap;">部署</span></td>
+<td>用于部署云引擎项目到预备环境或者生产环境。</td>
+</tr>
+<tr>
+<td>定时任务</td>
+<td>可以设置一些定时任务，比如每天凌晨清理无用数据等。</td>
+</tr>
+<tr>
+<td>日志</td>
+<td>用于查看云引擎项目的日志</td>
+</tr>
+<tr>
+<td>统计</td>
+<td>用于查看云引擎项目的一些数据统计</td>
+</tr>
+<tr>
+<td>LeanCache</td>
+<td>用于查看云缓存项目的实例状态，并增减新的实例。</td>
+</tr>
+<tr>
+<td>设置</td>
+<td>用来设置项目的源码仓库信息，包括从这里可以下载云引擎项目的初始框架代码，拷贝用于私有 git 仓库的 deploy key 等。</td>
+</tr>
+</tbody>
+</table>
+<!--2015-12-02 在线定义函数目前只有 Node.js，Python 现在只能通过项目的方式部署。-->
+<h2 id="-">在线定义函数</h2>
+<p>很多人使用云引擎是为了在服务端提供一些个性化的方法供各终端调用，而不希望关心诸如代码托管、npm 依赖管理等问题。为此我们提供了在线维护云函数的功能。</p>
+<p>使用此功能，你需要注意：</p>
+<ul>
+<li>会替代你之前 git 或者命令行部署的项目。</li>
+<li>暂不提供主机托管功能。</li>
+<li>维护的所有函数可以生成并导出一个完整的项目，供 git 或命令行部署（即将推出）。</li>
+</ul>
+<p><img src="images/cloud_code_snippet.png" alt="image"></p>
+<p>左上角的 <strong>创建函数</strong> 可以新创建一个函数。中间部分是已经创建好的函数，并可以进行一些维护操作。</p>
+<h3 id="-">函数类型</h3>
+<p>函数类型有：</p>
+<ul>
+<li><strong>Function</strong>：通过 <code>AV.Cloud.define</code> 定义的方法。</li>
+<li><strong>Hook</strong>：象 <code>AV.Cloud.beforeSave</code> 等回调定义的方法。</li>
+<li><strong>Global</strong>：全局变量，一些全局变量和公共函数可以定义在这里。</li>
+</ul>
+<p>这些函数的使用场景和具体细节，参见 <a href="#云函数">云函数</a>。</p>
+<h3 id="-">创建函数</h3>
+<p>如果需要创建一个新的函数，可以点击 <strong>创建函数</strong> 按钮，你将看到如下窗口：</p>
+<p><img src="images/cloud_code_snippet_create.png" alt="image"></p>
+<p>你需要设置的部分包括：</p>
+<ul>
+<li>函数类型</li>
+<li>函数名称</li>
+<li>数据具体的代码片段（注意，你不需要输入函数定义部分，即 <code>AV.Cloud.define(...)</code> 部分）</li>
+<li>注释</li>
+<li>全部 OK 后点击 <strong>保存</strong>，或者放弃编辑点击 <strong>关闭</strong>。</li>
+</ul>
+<p>你可以在代码框中填入下列代码：</p>
+<pre><code class="lang-javascript">var name = request.params.name;
+if (name) {
+    response.success(&#39;Hello &#39; + name);
+} else {
+    response.error(&#39;name?&#39;)
+}
+</code></pre>
+<p><strong>若想发送 HTTP 请求，请参考下文的 <a href="#发送_HTTP_请求">发送 HTTP 请求</a></strong>。</p>
+<p>点击保存后，云引擎会在后台编译、保存，并将代码部署到预备环境，这个过程可能需要十几秒钟的时间，请耐心等待。过程全部完成后，页面上方会提示「已更新到预备环境」；如果有错误（比如编译错误）则会出现类似提示：<code>加载代码出错: SyntaxError: Unexpected token )</code>。</p>
+<h3 id="-">发布</h3>
+<p>如果函数部署「预备环境」成功，就可以点击 <strong>发布</strong> 按钮将函数发布到「生产环境」。同样该过程可能需要十几秒钟的时间，请耐心等待。全部完成后，页面上方会提示「已发布到生产环境」。</p>
+<h3 id="-">同步</h3>
+<p>对于某个函数，可能生产环境运行一个版本，而预备环境正在开发一个新的版本，两个环境的代码是不一致的，这时函数列表页面相关函数的 <strong>预备环境</strong> 按钮会变成蓝色：</p>
+<p><img src="images/cloud_code_snippet_diff_version.png" alt="image"></p>
+<p>当你在预备环境开发完成，点击 <strong>发布</strong> 后，两个环境的代码将会统一，这时 <strong>预备环境</strong> 按钮变为灰色。</p>
+<h3 id="-">测试</h3>
+<p>如果需要测试，可以点击相应函数的 <strong>调用</strong> 按钮，你将看到如下窗口：</p>
+<p><img src="images/cloud_code_snippet_invoke.png" alt="image"></p>
+<p>选择调用环境，并输入调用参数，点击「运行」按钮即可看到调用结果。如果调用返回的 <code>Http Status Code</code> 不是 <code>200</code>，则页面上方会提示相关错误信息。</p>
+<h3 id="-">历史版本</h3>
+<p>如果你想看某个函数之前曾经部署过的代码，可以在函数列表页面点击 <strong>历史</strong> 按钮，将会弹出类似下面的窗口：</p>
+<p><img src="images/cloud_code_snippet_history.png" alt="image"></p>
+<p>你可以点击时间来查看不同时间部署的代码。</p>
+<h3 id="-">删除</h3>
+<p>如果你确定某个函数已经不再需要，可以在函数列表页面点击 <strong>删除</strong> 按钮将其删除。<strong>删除后该函数和其所有历史记录都将被删除，而且不能恢复。</strong>删除动作会重新部署预备和生产环境，这个过程可能需要十几秒钟的时间，请耐心等待。</p>
+<h2 id="-">项目定义函数</h2>
+<p>如果你希望有更强的灵活性，或者希望使用主机托管功能实现自己的站点，甚至网站托管，你可以通过项目代码的方式管理自己的云引擎。</p>
+<h3 id="-">项目框架结构</h3>
+<pre><code>&lt;appName&gt;
+├── README.md
+├── cloud
+│   └── main.js
+├── config
+│   └── global.json
+└── public
+    └── index.html
+</code></pre><p>其中，cloud 目录下有一个 <code>main.js</code>，这就是你的业务逻辑代码存放的地方，简单举个例子：</p>
+<pre><code class="lang-javascript">// Use AV.Cloud.define to define as many cloud functions as you want.
+// For example:
+AV.Cloud.define(&#39;hello&#39;, function(request, response) {
+  response.success(&#39;Hello world!&#39;);
+});
+</code></pre>
+<p>这段代码定义了一个名为 <code>hello</code> 的函数，它简单的返回应答 <code>Hello world!</code>。</p>
+<ul>
+<li>config 目录下是项目的配置文件 <code>global.json</code>，包含了 appId 和 appKey 等项目信息。</li>
+<li>public 目录，用于存放 <a href="#网站托管">网站托管</a> 功能的静态资源文件，具体请看后面的介绍。</li>
+</ul>
+<h3 id="-">网站托管的项目框架结构</h3>
+<p>在 <code>Cloud</code> 目录下多了 <code>app.js</code> 文件和 <code>\views</code> 目录：</p>
+<pre><code>&lt;appName&gt;
+├── README.md
+├── cloud
+│   ├── app.js
+│   ├── main.js
+│   └── views
+│       └── hello.ejs
+├── config
+│   └── global.json
+└── public
+    └── index.html
+</code></pre><p>并且 <code>cloud/main.js</code> 里还多了一行代码，用来加载 app.js：</p>
+<pre><code class="lang-javascript">require(&#39;cloud/app.js&#39;);
+</code></pre>
+<p>代码部署的过程请参考 <a href="#部署">部署</a>。</p>
+<h3 id="-">项目约束</h3>
+<p>你的项目需要遵循一定格式才会被云引擎识别并运行。</p>
+<p>云引擎 2.0 的项目必须有 <code>$PROJECT_DIR/cloud/main.js</code> 文件，该文件为整个项目的启动文件。</p>
+<h3 id="-">健康监测</h3>
+<p>云引擎项目在部署启动时，部署服务会对新启动的应用进行 <code>ping</code> 监测（每隔 1 秒请求一次，一共 15 次），请求 URL 为 <code>/__engine/1/ping</code>，如果响应的 <code>statusCode</code> 为 <code>200</code> 则认为新的节点启动成功，整个部署才会成功；否则会收到 <strong>应用启动检测失败</strong> 类型的错误信息，导致部署失败。</p>
+<p>云引擎 2.0 沙箱环境内置了该 URL 的处理，所以不需要做额外操作。</p>
+<h3 id="-">其他框架</h3>
+<p>因为云引擎 2.0 是运行在沙箱环境，所以不支持其他的 Web 框架。只能使用预定义的 Express 3.x。</p>
+<h2 id="-">部署</h2>
+<h3 id="-">使用命令行工具部署</h3>
+<p>使用命令行工具可以非常方便地部署、发布应用，查看应用状态，查看日志，甚至支持多应用部署。具体使用请参考 <a href="leanengine_cli.html">命令行工具指南</a>。</p>
+<p>除此之外，还可以使用 git 仓库部署。你需要将项目提交到一个 git 仓库，我们并不提供源码的版本管理功能，而是借助于 git 这个优秀的分布式版本管理工具。我们推荐你使用 <a href="https://code.csdn.net/">CSDN Code 平台</a>、<a href="https://github.com/">Github</a> 或者 <a href="https://bitbucket.org/">BitBucket</a> 这样第三方的源码托管网站，也可以使用你自己搭建的 git 仓库（比如 <a href="http://gitlab.org/">gitlab.org</a>）。</p>
+<h3 id="-csdn-code-">使用 CSDN Code 托管源码</h3>
+<p>CSDN Code 是国内非常优秀的源码托管平台，你可以使用这个平台提供公有仓库和有限的私有仓库完成对代码的管理功能。以下是该平台与 LeanCloud 云引擎结合的一个例子。</p>
+<p>首先在 CSDN Code 上创建一个项目：</p>
+<p><img src="images/csdn_code1.png" alt="image"></p>
+<p><strong>提示</strong>：在已经有项目代码的情况下，一般不推荐 <strong>使用 README 文件初始化项目</strong>。</p>
+<p>接下来按照给出的提示，将源代码 push 到这个代码仓中：</p>
+<pre><code class="lang-sh">cd ${PROJECT_DIR}
+git init
+git add *
+git commit -m &quot;first commit&quot;
+git remote add origin git@code.csdn.net:${yourname}/test.git
+git push -u origin master
+</code></pre>
+<p>我们已经将源码成功推送到 CSDN Code 平台，接下来到 LeanCloud 云引擎的管理界面填写下你的 git 地址（请注意，一定要填写以 <code>git@</code> 开头的地址，我们暂不支持 https 协议 clone 源码）并点击 save 按钮保存：</p>
+<p><img src="images/csdn_code2.png" alt="image"></p>
+<p>添加 deploy key 到你的 CSDN Code 平台项目上（deploy key 是我们云引擎机器的 ssh public key）保存到 <strong>项目设置</strong> / <strong>项目公钥</strong> 中，创建新的一项 avoscloud：</p>
+<p><img src="images/csdn_code3.png" alt="image"></p>
+<p>下一步，部署源码到预备环境，进入 <a href="/cloud.html?appid={{appid}}#/deploy">云引擎 / Git 部署</a> 菜单，点击「部署到开发环境」的部署按钮：</p>
+<p><img src="images/cloud_code_5.png" alt="image"></p>
+<p>部署成功后，可以看到开发环境版本号从 undeploy 变成了当前提交的源码版本号。</p>
+<h3 id="-github-">使用 GitHub 托管源码</h3>
+<p>使用 BitBucket 与此类似，不再赘述。</p>
+<p><a href="https://github.com">Github</a> 是一个非常优秀的源码托管平台，你可以使用它的免费账号，那将无法创建私有仓库（bucket 可以创建私有仓库），也可以付费成为高级用户，可以创建私有仓库。</p>
+<p>首先在 Github上创建一个项目，比如就叫 <code>test</code>：</p>
+<p><img src="images/github1.png" alt="image"></p>
+<p><img src="images/github2.png" alt="image"></p>
+<p>接下来按照 Github 给出的提示，我们将源码 push 到这个代码仓库：</p>
+<pre><code class="lang-sh">cd ${PROJECT_DIR}
+git init
+git add *
+git commit -m &quot;first commit&quot;
+git remote add origin git@github.com:${yourname}/test.git
+git push -u origin master
+</code></pre>
+<p>到这一步我们已经将源码成功 push 到 Github，接下来到云引擎的管理界面填写下你的 git 地址（请注意，一定要填写以 <code>git@</code> 开头的地址，我们暂不支持 https 协议 clone 源码）并点击 save 按钮保存：</p>
+<p><img src="images/cloud_code_4.png" alt="image"></p>
+<p>并添加 deploy key 到你的 github 项目（deploy key 是我们云引擎机器的 ssh public key），如果你是私有项目，需要设置 deploy key，</p>
+<p>拷贝 <strong>设置</strong> 菜单里的 <strong>Deploy key</strong> 保存到 github setting 里的 deploy key，创建新的一项 avoscloud：</p>
+<p><img src="images/cloud_code_github_deploy_key.png" alt="image"></p>
+<p>下一步，部署源码到预备环境，进入 <strong>云引擎</strong> / <strong>Git 部署</strong> 菜单，点击 <strong>部署到开发环境</strong> 的部署按钮：</p>
+<p><img src="images/cloud_code_5.png" alt="image"></p>
+<p>部署成功后，可以看到开发环境版本号从 undeploy 变成了当前提交的源码版本号。</p>
+<h3 id="gitlab-">Gitlab 无法部署问题</h3>
+<p>很多用户自己使用 <a href="http://gitlab.org/">Gitlab</a>搭建了自己的源码仓库，有朋友会遇到无法部署到 LeanCloud 的问题，即使设置了 Deploy Key，却仍然要求输入密码。</p>
+<p>可能的原因和解决办法如下：</p>
+<ul>
+<li>确保你 gitlab 运行所在服务器的 /etc/shadow 文件里的 git（或者 gitlab）用户一行的 <code>!</code>修改为 <code>*</code>，原因参考 <a href="http://stackoverflow.com/questions/15664561/ssh-key-asks-for-password">Stackoverflow - SSH Key asks for password</a>，并重启 SSH 服务：<code>sudo service ssh restart</code>。</li>
+<li>在拷贝 deploy key 时，确保没有多余的换行符号。</li>
+<li>Gitlab 目前不支持有 comment 的 deploy key。早期 LeanCloud 用户生成的 deploy key 可能带 comment，这个 comment 是在 deploy key 的末尾 76 个字符长度的字符串，例如下面这个 deploy key：</li>
+</ul>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5EZmrZZjbKb07yipeSkL+Hm+9mZAqyMfPu6BTAib+RVy57jAP/lZXuosyPwtLolTwdyCXjuaDw9zNwHdweHfqOX0TlTQQSDBwsHL+ead/p6zBjn7VBL0YytyYIQDXbLUM5d1f+wUYwB+Cav6nM9PPdBckT9Nc1slVQ9ITBAqKZhNegUYehVRqxa+CtH7XjN7w7/UZ3oYAvqx3t6si5TuZObWoH/poRYJJ+GxTZFBY+BXaREWmFLbGW4O1jGW9olIZJ5/l9GkTgl7BCUWJE7kLK5m7+DYnkBrOiqMsyj+ChAm+o3gJZWr++AFZj/pToS6Vdwg1SD0FFjUTHPaxkUlNw== App dxzag3zdjuxbbfufuy58x1mvjq93udpblx7qoq0g27z51cx3&#39;s cloud code deploy key
+</code></pre><p>其中最后 76 个字符：</p>
+<pre><code>App dxzag3zdjuxbbfufuy58x1mvjq93udpblx7qoq0g27z51cx3&#39;s cloud code deploy key
+</code></pre><p>就是 comment，删除这段字符串后的 deploy key（如果没有这个字样的comment无需删除）保存到 gitlab 即可正常使用：</p>
+<pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5EZmrZZjbKb07yipeSkL+Hm+9mZAqyMfPu6BTAib+RVy57jAP/lZXuosyPwtLolTwdyCXjuaDw9zNwHdweHfqOX0TlTQQSDBwsHL+ead/p6zBjn7VBL0YytyYIQDXbLUM5d1f+wUYwB+Cav6nM9PPdBckT9Nc1slVQ9ITBAqKZhNegUYehVRqxa+CtH7XjN7w7/UZ3oYAvqx3t6si5TuZObWoH/poRYJJ+GxTZFBY+BXaREWmFLbGW4O1jGW9olIZJ5/l9GkTgl7BCUWJE7kLK5m7+DYnkBrOiqMsyj+ChAm+o3gJZWr++AFZj/pToS6Vdwg1SD0FFjUTHPaxkUlNw==
+</code></pre><h2 id="-">定时任务</h2>
+<p>定时任务可以按照设定，以一定间隔自动完成指定动作，比如半夜清理过期数据，每周一向所有用户发送推送消息等等。定时任务的最小时间单位是<strong>秒</strong>，正常情况下时间误差都可以控制在秒级别。</p>
+<p><strong>原来提供的 <code>AV.Cloud.setInterval</code> 和 <code>AV.Cloud.cronjob</code> 都已经废弃，这两个函数的功能变成和 <code>AV.Cloud.define</code> 一样，已经定义的任务会自动帮你做转换并启动。</strong></p>
+<p>定时任务是普通的云函数。比如定义一个打印循环打印日志的任务 <code>log_timer</code>：</p>
+<pre><code class="lang-javascript">AV.Cloud.define(&#39;log_timer&#39;, function(req, res){
+    console.log(&#39;Log in timer.&#39;);
+    return res.success();
+});
+</code></pre>
+<p>部署云引擎之后，进入 <a href="/cloud.html?appid={{appid}}#/task">控制台 &gt; 存储 &gt; 云引擎 &gt; 定时任务</a>，在右侧页面中选择 <strong>创建定时器</strong>，然后设定其所执行的函数名称、执行环境等等。</p>
+<p>定时器创建后，其状态为<strong>未运行</strong>，需要点击 <span class="label label-default">启用</span> 来激活。之后其执行日志可以通过 <a href="/cloud.html?appid={{appid}}#/log">其它 &gt; 日志</a> 查看。</p>
+<p>定时任务分为两类：</p>
+<ul>
+<li>使用 Cron 表达式（即<a href="http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" title="Quartz 文档">标准的 crontab 语法</a>）安排调度</li>
+<li>以秒为单位的简单循环调度</li>
+</ul>
+<p>以 Cron 表达式为例，比如每周一早上 8 点准时发送推送消息给用户：</p>
+<pre><code class="lang-javascript">AV.Cloud.define(&#39;push_timer&#39;, function(req, res){
+  AV.Push.send({
+        channels: [ &#39;Public&#39; ],
+        data: {
+            alert: &#39;Public message&#39;
+        }
+    });
+   return res.success();
+});
+</code></pre>
+<p>创建定时器的时候，选择 <strong>Cron 表达式</strong> 并填入 <code>0 0 8 ? * MON</code>。</p>
+<h3 id="cron-">Cron 表达式</h3>
+<p>Cron 表达式的基本语法为：</p>
+<pre><code>&lt;秒&gt; &lt;分钟&gt; &lt;小时&gt; &lt;日期 day-of-month&gt; &lt;月份&gt; &lt;星期 day-of-week&gt; &lt;年&gt;
+</code></pre><table>
+<thead>
+<tr>
+<th>位置</th>
+<th>字段</th>
+<th>约束</th>
+<th>取值</th>
+<th>可使用的特殊字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>秒</td>
+<td>必须</td>
+<td>0-59</td>
+<td><code>, - * /</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>分钟</td>
+<td>必须</td>
+<td>0-59</td>
+<td><code>, - * /</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>小时</td>
+<td>必须</td>
+<td>0-23（0 为午夜）</td>
+<td><code>, - * /</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>日期</td>
+<td>必须</td>
+<td>1-31</td>
+<td><code>, - * ? / L W</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>月份</td>
+<td>必须</td>
+<td>1-12、JAN-DEC</td>
+<td><code>, - * /</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>星期</td>
+<td>必须</td>
+<td>1-7、SUN-SAT</td>
+<td><code>, - * ? / L #</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>年</td>
+<td>可选</td>
+<td>空、1970-2099</td>
+<td><code>, - * /</code></td>
+</tr>
+</tbody>
+</table>
+<p>特殊字符的用法：</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td>所有值</td>
+<td>代表一个字段的所有可能取值。如将 <code>&lt;分钟&gt;</code> 设为 <strong>*</strong>，表示每一分钟。</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>不指定值</td>
+<td>用于可以使用该字符的两个字段中的一个，在一个表达式中只能出现一次。如任务执行时间为每月 10 号，星期几无所谓，那么表达式中 <code>&lt;日期&gt;</code> 设为 <strong>10</strong>，<code>&lt;星期&gt;</code> 设为 <strong>?</strong>。</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>范围</td>
+<td>如 <code>&lt;小时&gt;</code> 为 <strong>10-12</strong>，即10 点、11 点、12 点。</td>
+</tr>
+<tr>
+<td><code>,</code></td>
+<td><span class="text-nowrap">分隔多个值</span></td>
+<td>如 <code>&lt;星期&gt;</code> 为 <strong>MON,WED,FRI</strong>，即周一、周三、周五。</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>增量</td>
+<td>如 <code>&lt;秒&gt;</code> 设为 <strong>0/15</strong>，即从 0 秒开始，以 15 秒为增量，包括 0、15、30、45 秒；<strong>5/15</strong> 即 5、20、35、50 秒。<strong>*/</strong> 与 <strong>0/</strong> 等效，如 <code>&lt;日期&gt;</code> 设为 <strong>1/3</strong>，即从每个月的第一天开始，每 3 天（即每隔 2 天）执行一次任务。</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>最后</td>
+<td>其含义随字段的不同而不同。 <code>&lt;日期&gt;</code> 中使用 <strong>L</strong> 代表每月最后一天，如 1 月 31 号、2 月 28 日（非闰年）；<code>&lt;星期&gt;</code> 中单独使用 <strong>L</strong>，则与使用 <strong>7</strong> 或 <strong>SAT</strong> 等效，若前面搭配其他值使用，如 <strong>6L</strong>，则表示每月的最后一个星期五。<br/><br/>注意，<strong>在 L 之前不要使用多个值或范围</strong>，如 <strong>1,2L</strong>、<strong>1-2L</strong>，否则会产生错误结果。</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>weekday</td>
+<td>周一到周五的任意一天，离指定日期最近的非周末的那一天。<br/><code>&lt;日期&gt;</code> 为 <strong>15W</strong> 即离 15 号最近的非周末的一天；如果 15 号是周六，任务则会在 14 号周五触发，如果 15 号是周日，则在 16 号周一触发，如果 15 号是周二，则周二当天触发。<br/><br/><code>&lt;日期&gt;</code> 为 <strong>1W</strong>，如果 1 号是周六，任务则会在 3 号周一触发，因为不能向前跨月来计算天数。<br/><br/>在 <code>&lt;日期&gt;</code> 中 <strong>W</strong> 之前只能使用一个数值，不能使用多个值或范围。<strong>LW</strong> 可在 <code>&lt;日期&gt;</code> 中组合使用，表示每月最后一个非周末的一天。</td>
+</tr>
+<tr>
+<td><code>#</code></td>
+<td>第 N 次</td>
+<td>如 <code>&lt;星期&gt;</code> 为 <strong>6#3</strong> 代表每月第三个周五，<strong>2#1</strong> 为每月头一个周一，<strong>4#5</strong> 为每月第五个周三；如果当月没有第五周，则 <strong>#5</strong> 不会产生作用。</td>
+</tr>
+</tbody>
+</table>
+<p>各字段以空格或空白隔开。JAN-DEC、SUN-SAT 这些值不区分大小写，比如 MON 和 mon 效果一样。更详细的使用方法请参考 <a href="http://www.quartz-scheduler.org/documentation/quartz-1.x/tutorials/crontrigger" title="Quartz 文档">Quartz 文档（英文）</a>。</p>
+<p>举例如下：</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0  0/5 * * * ?</code></td>
+<td>每隔 5 分钟执行一次</td>
+</tr>
+<tr>
+<td><code>10 0/5 * * * ?</code></td>
+<td>每隔 5 分钟执行一次，每次执行都在分钟开始的 10 秒，例如 10:00:10、10:05:10 等等。</td>
+</tr>
+<tr>
+<td><code style="white-space:nowrap;">0 30 10-13 ? * WED,FRI</code></td>
+<td>每周三和每周五的 10:30、11:30、12:30、13:30 执行。</td>
+</tr>
+<tr>
+<td><code>0 0/30 8-9 5,20 * ?</code></td>
+<td>每个月的 5 号和 20 号的 8 点和 10 点之间每隔 30 分钟执行一次，也就是 8:00、8:30、9:00 和 9:30。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">错误信息</h3>
+<p>定时器执行后的日志会记录在 <a href="/cloud.html?appid={{appid}}#/log">控制台 &gt; 存储 &gt; 云引擎 &gt; 其它 &gt; 日志</a> 中，以下为常见的错误信息及原因。</p>
+<ul>
+<li><strong>timerAction timed-out and no fallback available.</strong><br/>
+某个定时器触发的云函数，因 15 秒内没有响应而超时。</li>
+<li><strong>timerAction short-circuited and no fallback available.</strong><br/>
+某个定时器触发的云函数，因为太多次超时而停止触发。</li>
+</ul>
+<h2 id="-">资源限制</h2>
+<h3 id="-">权限说明</h3>
+<p>云引擎可以有超级权限，使用 master key 调用所有 API，因此会忽略 ACL 和 Class Permission 限制。你只需要使用下列代码来初始化 SDK：</p>
+<pre><code class="lang-javascript">//参数依次为 AppId, AppKey, MasterKey
+AV.initialize(&#39;{{appid}}&#39;, &#39;{{appkey}}&#39;, &#39;{{masterkey}}&#39;);
+AV.Cloud.useMasterKey();
+</code></pre>
+<p>如果在你的服务端环境里也想做到超级权限，也可以使用该方法初始化。</p>
+<p><strong>注意：</strong>云引擎 2.0 版本已经默认使用 master key 初始化 SDK，所以不需要额外初始化。</p>
+<h3 id="-">定时器数量</h3>
+<p>生产环境和预备环境的定时器数量都限制在 5 个以内，也就是说你总共最多可以创建 10 个定时器。</p>
+<h3 id="-">超时</h3>
+<p>请求云引擎上的云函数时会经过负载均衡设备，该设备会限制一次请求的超时时间为 15 秒，如果超过 15 秒没有返回，请求将被强制停止，但此时云引擎的方法可能仍在执行，但执行完毕后的响应是无意义的。所有 Hook 函数，如 <code>beforeSave</code> 和 <code>afterSave</code> 的超时时间限制在 3 秒内。如果 Hook 函数被其他的云函数调用（比如因为 save 对象而触发 <code>beforeSave</code> 和 <code>afterSave</code>），那么它们的超时时间会进一步被其他云函数调用的剩余时间限制。例如，如果一个 <code>beforeSave</code> 函数是被一个已经运行了 13 秒的云函数触发，那么 <code>beforeSave</code> 函数就只剩下 2 秒的时间来运行，而正常情况下是 3 秒的限制。</p>
+<p>网站托管的动态请求超时也被限定为 15 秒。</p>
+<h2 id="-">日志</h2>
+<p><a href="/cloud.html?appid={{appid}}#/log">云引擎 / 日志</a>，可以查看云引擎的部署和运行日志，还可以选择查看的日志级别：</p>
+<p><img src="images/cloud_code_11.png" alt="image"></p>
+<p>如果你想打印日志到里面查看，可以直接输出到「标准输出」或者「标准错误」，这些信息会分别对应日志的 <code>info</code> 和 <code>error</code> 级别，比如下列代码会在 info 级别记录参数信息：</p>
+<pre><code class="lang-javascript">AV.Cloud.define(&#39;Logger&#39;, function(request, response) {
+  console.log(request.params);
+  response.success();
+});
+</code></pre>
+<p><strong>注意</strong>：日志单行最大 4096 个字符，多余部分会被丢弃；日志输出频率大于 600 行/分钟，多余的部分会被丢弃。</p>
+<h2 id="-">网站托管</h2>
+<p>很多时候，除了运行在移动设备的应用之外，你通常也会为应用架设一个网站，可能只是简单地展现应用的信息并提供 App Store 或者 Play 商店下载链接，或者展示当前热门的用户等等。你也可能建设一个后台管理系统，用来管理用户或者业务数据。</p>
+<p>这一切都需要你去创建一个 web 应用，并且从 VPS 厂商那里购买一个虚拟主机来运行 web 应用，你可能还需要去购买一个域名。</p>
+<p>不过现在，云引擎为你提供了网站托管功能，可以让你为应用设置一个二级域名 <code>${your_app_domain}.leanapp.cn</code>（美国区为 <code>${your_app_domain}.avosapps.us</code> ），并把你的 web 应用部署到该域名之下运行，同时支持静态资源和动态请求服务。</p>
+<h3 id="-">设置域名</h3>
+<p>首先，你需要到 <a href="/cloud.html?appid={{appid}}#/conf">云引擎 / 设置</a> 页面找到 <strong>Web 主机域名</strong>，在这里填写你的域名：</p>
+<p><img src="images/cloud_code_web_setting.png" alt="image"></p>
+<p>上面将应用的二级域名设置为 <strong>myapp</strong>，设置之后，你应该可以马上访问：</p>
+<ul>
+<li><a href="http://myapp.leanapp.cn">http://myapp.leanapp.cn</a></li>
+<li><a href="http://myapp.avosapps.us">http://myapp.avosapps.us</a></li>
+</ul>
+<p>可能因为 DNS 生效延迟暂时不可访问，请耐心等待或者尝试刷新 DNS 缓存，如果还没有部署，你看到的应该是一个 404 页面。</p>
+<h2 id="-">域名备案</h2>
+<p><strong>备案之前要求云引擎已经部署，并且网站内容和备案申请的内容一致。仅使用云引擎托管静态文件、未使用其他 LeanCloud 服务的企业用户，需要自行完成域名备案工作。</strong></p>
+<p>如果需要备案，进入 <a href="/settings.html#/setting/domainrecord">应用控制台 &gt; 账号设置 &gt; 域名备案</a>，按照步骤填写资料即可。</p>
+<h2 id="-">域名绑定</h2>
+<p><strong>国内节点绑定独立域名需要有 ICP 备案，只有主域名需要备案，二级子域名不需要备案；如果没有 ICP 备案，请参考 <a href="#域名备案">域名备案</a>。</strong></p>
+<p>如果需要域名绑定，进入 <a href="/settings.html#/setting/domainbind">应用控制台 &gt; 账号设置 &gt; 域名绑定</a>，按照步骤填写资料即可。</p>
+<h3 id="-">使用框架</h3>
+<h3 id="-">静态资源</h3>
+<p><code>public</code> 目录下的资源将作为静态文件服务，例如，<code>public/index.html</code> 就可以通过 <code>http://${your_app_domain}.leanapp.cn/index.html</code> 访问到这个文件。</p>
+<p>通常，你会将资源文件按照类型分目录存放，比如 css 文件放在 <code>stylesheets</code> 目录下，将图片放在 <code>images</code> 目录下，将 javascript 文件放在 <code>js</code> 目录下，云引擎同样能支持这些目录的访问。</p>
+<p>例如，<code>public/stylesheets/app.css</code> 可以通过 <code>http://${your_app_domain}.leanapp.cn/stylesheets/app.css</code> 访问到。</p>
+<p>在你的HTML文件里引用这些资源文件，使用相对路径即可，比如在 <code>public/index.html</code> 下引用 <code>app.css</code>：</p>
+<pre><code class="lang-html">&lt;link href=&quot;stylesheets/app.css&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+<p>默认静态资源的 <code>Cache-Control</code> 是 <code>max-age=0</code>，这样在每次请求静态资源的时候都会去服务端查询是否更新，如果没有更新返回 304 状态码。你还可以在 <code>app.listen</code> 的时候传入选项，设置静态资源的 maxAge：</p>
+<pre><code class="lang-javascript">//设置 7 天不过期
+app.listen({&#39;static&#39;: {maxAge: 604800000}});
+</code></pre>
+<p>请注意 <code>maxAge</code> 的单位是毫秒，这样 cache-control 头会变成 <code>max-age=604800</code>。更多 static 选项参考 <a href="http://www.senchalabs.org/connect/static.html">static middleware</a>。</p>
+<h3 id="-">动态请求</h3>
+<p>如果只是展现静态资源，你可能使用 Github Pages 类似的免费服务也能做到，但是云引擎提供的网站托管功能同时支持动态请求。这是通过编写 <a href="http://nodejs.org">Node.js</a> 代码，基于<a href="http://expressjs.com/">express.js</a> 这个 Web MVC 框架做到的。</p>
+<p>请参考 <a href="http://expressjs.com/">express.js 官方文档</a> 框架来学习。</p>
+<p>在下载的项目框架 <code>cloud/app.js</code> 中，我们可以看到一个初始代码：</p>
+<pre><code class="lang-javascript">// 在云引擎里初始化express框架
+var express = require(&#39;express&#39;);
+var app = express();
+var name = require(&#39;cloud/name.js&#39;);
+
+// App全局配置
+app.set(&#39;views&#39;,&#39;cloud/views&#39;);   //设置模板目录
+app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置template引擎
+app.use(express.bodyParser());    // 读取请求body的中间件
+
+//使用express路由API服务/hello的http GET请求
+app.get(&#39;/hello&#39;, function(req, res) {
+  res.render(&#39;hello&#39;, { message: &#39;Congrats, you just set up your app!&#39; });
+});
+
+//最后，必须有这行代码来使express响应http请求
+app.listen();
+</code></pre>
+<p>我们使用 <code>ejs</code> 模板来渲染 view，默认的模板都放在 <code>views</code> 目录下，比如这里 <code>hello.ejs</code>:</p>
+<pre><code class="lang-html">&lt;%= message %&gt;
+</code></pre>
+<p>简单地显示 message 内容。你还可以选用 <a href="https://github.com/visionmedia/jade">jade</a> 这个模板引擎：</p>
+<pre><code class="lang-javascript">app.set(&#39;view engine&#39;, &#39;jade&#39;);
+</code></pre>
+<p>你可以参照上面的 <a href="#部署">部署</a> 章节来部署这个框架代码，部署成功之后，直接可以访问 <code>http://${your_app_domain}.leanapp.cn/hello</code> 将看到展示的 message：</p>
+<pre><code>Congrats, you just set up your app!
+</code></pre><p>更多复杂的路由和参数传递，请看 <a href="http://expressjs.com/guide.html">express.js 框架文档</a>。</p>
+<p>我们还提供了一个在线 Demo：<a href="http://myapp.leanapp.cn/">http://myapp.leanapp.cn/</a>，<a href="https://github.com/killme2008/cloudcode-test">源码</a> 开放供大家参考。</p>
+<h3 id="-404-">自定义 404 页面</h3>
+<p>自定义 404 页面在云引擎里比较特殊，假设我们要渲染一个 404 页面，必须将下列代码放在 <code>app.listen()</code> 之后：</p>
+<pre><code class="lang-javascript">// 在 app.listen(); 之后
+app.use(function(req, res, next){
+  res.status(404).render(&#39;404&#39;, {title: &#39;Sorry, the page cannot be found.&#39;});
+});
+</code></pre>
+<h3 id="-ip">获取客户端 IP</h3>
+<p>如果你想获取客户端的 IP，可以直接从用户请求的 HTTP 头的 <code>x-real-ip</code> 字段获取。</p>
+<h3 id="-">上传文件</h3>
+<p>在云引擎里上传文件也很容易，首先配置应用使用 bodyParser 中间件，它会将上传表单里的文件存放到临时目录并构造一个文件对象放到 request.files 里：</p>
+<pre><code class="lang-javascript">app.use(express.bodyParser());
+</code></pre>
+<p>使用表单上传文件，假设文件字段名叫 iconImage：</p>
+<pre><code class="lang-html">&lt;form enctype=&quot;multipart/form-data&quot; method=&quot;post&quot; action=&quot;/upload&quot;&gt;
+  &lt;input type=&quot;file&quot; name=&quot;iconImage&quot;&gt;
+  &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+<p>上传文件使用 multipart 表单，并 POST 提交到 <code>/upload</code> 路径下。</p>
+<p>接下来定义文件上传的处理函数，使用受到严格限制并且只能读取上传文件的 <code>fs</code> 模块：</p>
+<pre><code class="lang-javascript">var fs = require(&#39;fs&#39;);
+app.post(&#39;/upload&#39;, function(req, res){
+  var iconFile = req.files.iconImage;
+  if(iconFile){
+    fs.readFile(iconFile.path, function(err, data){
+      if(err)
+        return res.send(&#39;读取文件失败&#39;);
+      var base64Data = data.toString(&#39;base64&#39;);
+      var theFile = new AV.File(iconFile.name, {base64: base64Data});
+      theFile.save().then(function(theFile){
+        res.send(&#39;上传成功！&#39;);
+      });
+    });
+  }else
+    res.send(&#39;请选择一个文件。&#39;);
+});
+</code></pre>
+<p>上传成功后，即可在数据管理平台里看到你所上传的文件。</p>
+<h3 id="-">处理用户登录和登出</h3>
+<p>假设你创建了一个支持 web 主机功能的云引擎项目，在 app.js 里添加下列代码：</p>
+<pre><code class="lang-javascript">var express = require(&#39;express&#39;);
+var app = express();
+var avosExpressCookieSession = require(&#39;avos-express-cookie-session&#39;);
+
+// App全局配置
+app.set(&#39;views&#39;,&#39;cloud/views&#39;);   //设置模板目录
+app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置template引擎
+app.use(express.bodyParser());    // 读取请求body的中间件
+
+// 启用 cookieParser
+app.use(express.cookieParser(&#39;Your Cookie Secure&#39;));
+// 使用 avos-express-cookie-session 记录登录信息到 cookie
+app.use(avosExpressCookieSession({ cookie: { maxAge: 3600000 }, fetchUser: true}));
+</code></pre>
+<p>使用 <code>express.cookieParser</code> 中间件启用 cookieParser，注意传入一个 secret 用于 cookie 加密（必须）。然后使用 <code>require(&#39;avos-express-cookie-session&#39;)</code> 导入的 avosExpressCookieSession 创建一个 session 存储，它会自动将 AV.User 的登录信息记录到 cookie 里，用户每次访问会自动检查用户是否已经登录，如果已经登录，可以通过 <code>req.AV.user</code> 获取当前登录用户。</p>
+<p><code>avos-express-cookie-session</code> 支持的选项包括：</p>
+<ul>
+<li><strong>cookie</strong>：可选参数，设置 cookie 属性，例如 maxAge,secure等。我们会强制将 httpOnly 和 signed 设置为 true。</li>
+<li><strong>fetchUser</strong>：<strong>是否自动 fetch 当前登录的 AV.User 对象。默认为 false。</strong>如果设置为 true，每个 HTTP 请求都将发起一次 LeanCloud API 调用来 fetch 用户对象。如果设置为 false，默认只可以访问 <code>req.AV.user</code> 当前用户的 id 属性，你可以在必要的时候 fetch 整个用户。通常保持默认的 false 就可以。</li>
+<li><strong>key</strong>：session 在 cookie 中存储的 key 名称，默认为 <code>avos.sess</code>。</li>
+</ul>
+<p><strong>注意</strong>：我们通常不建议在云引擎环境中通过 <code>AV.User.current()</code> 获取登录用户的信息，虽然这样做不会有问题，也不会有串号的风险，但由于这个功能依赖 Node.js 的 Domain 模块，而 Node.js 4.x 已经不推荐使用 Domain 模块了，所以在云引擎中获取 currentUser 的机制后续会发生改变。因此，我们建议：</p>
+<ul>
+<li>在云引擎方法中通过 <code>request.user</code> 获取用户信息。</li>
+<li>在网站托管中通过 <code>req.AV.user</code> 获取用户信息。</li>
+<li>在后续的方法调用显示传递 user 对象。</li>
+</ul>
+<p>登录很简单：</p>
+<pre><code class="lang-javascript">app.get(&#39;/login&#39;, function(req, res) {
+    // 渲染登录页面
+    res.render(&#39;login.ejs&#39;);
+});
+// 点击登录页面的提交将出发下列函数
+app.post(&#39;/login&#39;, function(req, res) {
+    AV.User.logIn(req.body.username, req.body.password).then(function(user) {
+      //登录成功，avosExpressCookieSession会自动将登录用户信息存储到cookie
+      //跳转到profile页面。
+      console.log(&#39;signin successfully: %j&#39;, user);
+      res.redirect(&#39;/profile&#39;);
+    },function(error) {
+      //登录失败，跳转到登录页面
+      res.redirect(&#39;/login&#39;);
+  });
+});
+//查看用户profile信息
+app.get(&#39;/profile&#39;, function(req, res) {
+    // 判断用户是否已经登录
+    if (req.AV.user) {
+      // 如果已经登录，发送当前登录用户信息。
+      res.send(req.AV.user);
+    } else {
+      // 没有登录，跳转到登录页面。
+      res.redirect(&#39;/login&#39;);
+    }
+});
+
+//调用此url来登出帐号
+app.get(&#39;/logout&#39;, function(req, res) {
+  //avosExpressCookieSession将自动清除登录cookie信息
+    AV.User.logOut();
+    res.redirect(&#39;/profile&#39;);
+});
+</code></pre>
+<p>登录页面大概是这样 <code>login.ejs</code>：</p>
+<pre><code class="lang-html">&lt;html&gt;
+    &lt;head&gt;&lt;/head&gt;
+    &lt;body&gt;
+      &lt;form method=&quot;post&quot; action=&quot;/login&quot;&gt;
+        &lt;label&gt;Username&lt;/label&gt;
+        &lt;input name=&quot;username&quot;&gt;&lt;/input&gt;
+        &lt;label&gt;Password&lt;/label&gt;
+        &lt;input name=&quot;password&quot; type=&quot;password&quot;&gt;&lt;/input&gt;
+        &lt;input class=&quot;button&quot; type=&quot;submit&quot; value=&quot;登录&quot;&gt;
+      &lt;/form&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</code></pre>
+<p>注意： express 框架的 <code>express.session.MemoryStore</code> 在云引擎中是无法正常工作的，因为云引擎是多主机多进程运行，因此内存型 session 是无法共享的，建议用 <a href="https://github.com/expressjs/cookie-session">express.js &middot; cookie-session 中间件</a>。</p>
+<h3 id="-https">自动重定向到 HTTPS</h3>
+<p>为了安全性，我们可能会为网站加上 HTTPS 加密传输。我们的云引擎支持网站托管，同样会有这样的需求。</p>
+<p>因此我们在云引擎中提供了一个新的 middleware 来强制让你的 <code>${your_app_domain}.leanapp.cn</code> 的网站通过 https 访问，你只要这样：</p>
+<pre><code class="lang-javascript">var avosExpressHttpsRedirect = require(&#39;avos-express-https-redirect&#39;);
+app.use(avosExpressHttpsRedirect());
+</code></pre>
+<p>部署并发布到生产环境之后，访问你的云引擎网站二级域名都会强制通过 HTTPS 访问。</p>
+<h3 id="-">预备环境和开发环境</h3>
+<p>前面已经谈到云引擎的预备和生产环境之间的区别，可以通过 HTTP 头部 <code>X-LC-Prod</code> 来区分。但是对于网站托管就没有办法通过这个 HTTP 头来区分了。</p>
+<p>因此，我们其实为每个应用创建了两个域名，除了 <code>${your_app_domain}.leanapp.cn</code> 之外，每个应用还有 <code>stg-${your_app_domain}.leanapp.cn</code> 域名作为预备环境的域名。</p>
+<p>部署的测试代码将运行在这个域名之上，在测试通过之后，通过菜单 <strong>部署</strong> &gt; <strong>部署到生产环境</strong> 按钮切换之后，可以在 <code>${your_app_domain}.leanapp.cn</code> 看到最新的运行结果。</p>
+<h2 id="-">第三方平台接入</h2>
+<p>因为云引擎提供了主机托管功能，这相当于为你在互联网上提供了一台简单的 VPS（虚拟主机），你可以用它接入第三方平台（很多第三方平台需要你有回调服务器），完成一些特定的工作。</p>
+<h3 id="-">接入支付宝</h3>
+<p>通过 <a href="https://github.com/leancloud/cloud-code-alipay">cloud-code-alipay 示例</a> 了解如何接入支付宝，实现「即时到账收款」的功能。</p>
+<h3 id="-">接入微信</h3>
+<p>通过 <a href="https://github.com/leancloud/cloud-code-weixin">cloud-code-weixin 示例</a> 了解如何接入微信，实现「开发者认证」和「自动回复」的功能。</p>
+<h2 id="-">运行环境区分</h2>
+<p>云引擎区分「预备环境」和「生产环境」，两个环境虽然使用 <a href="#部署到云引擎">不同的二级域名</a>，但是使用相同的数据源。代码在预备环境测试通过后，再部署到生产环境是更安全的做法。</p>
+<p>有些时候你可能需要知道当前云引擎运行在什么环境（开发环境、预备环境或生产环境），从而做不同的处理：</p>
+<pre><code class="lang-javascript">if (__local) {
+  // 当前环境为「开发环境」，是由命令行工具启动的
+} else if(__production) {
+  // 当前环境为「生产环境」，是线上正式运行的环境
+} else {
+  // 当前环境为「预备环境」
+}
+</code></pre>
+<p>你应该注意到了，我们在请求云引擎的时候，通过 REST API 的特殊的 HTTP 头 <code>X-LC-Prod</code>，来区分调用的环境。</p>
+<ul>
+<li>0 表示调用预备环境</li>
+<li>1 表示调用生产环境</li>
+</ul>
+<p>具体到 SDK 内的调用，请看各个平台的 SDK 指南。</p>
+<p>有些时候请求云引擎时会提示 production 还没有部署：</p>
+<pre><code class="lang-json">{&quot;code&quot;:1,&quot;error&quot;:&quot;The cloud code isn&#39;t deployed for prod 1.&quot;}
+</code></pre>
+<p>这个错误通常是只是部署了预备环境。通过点击菜单 <strong>Git 部署</strong> / <strong>部署到生产环境</strong> / <strong>部署</strong>，可以将开发环境的当前版本的代码部署到生产环境：</p>
+<p><img src="images/cloud_code_deploy_prod.png" alt="image"></p>
+<h2 id="-">模块</h2>
+<p>云引擎 2.0 支持将 JavaScript 代码拆分成各个模块。为了避免加载模块带来的不必要的副作用，云引擎模块的运作方式和 CommonJS 模块类似。当一个模块被加载的时候，JavaScript  文件首先被加载，然后执行文件内的源码，并返回全局的 export 对象。例如，假设 <code>cloud/name.js</code> 包含以下源码：</p>
+<pre><code class="lang-javascript">var coolNames = [&#39;Ralph&#39;, &#39;Skippy&#39;, &#39;Chip&#39;, &#39;Ned&#39;, &#39;Scooter&#39;];
+exports.isACoolName = function(name) {
+  return coolNames.indexOf(name) !== -1;
+}
+</code></pre>
+<p>然后在 <code>cloud/main.js</code> 包含下列代码片段：</p>
+<pre><code class="lang-javascript">var name = require(&#39;cloud/name.js&#39;);
+name.isACoolName(&#39;Fred&#39;); // 返回false
+name.isACoolName(&#39;Skippy&#39;); // 返回true;
+name.coolNames; // 未定义.
+</code></pre>
+<p>提示，你可以利用 <code>console.log</code> 来打印这几个调用的返回值到日志，在 <a href="/cloud.html?appid={{appid}}#/log">控制台 / 存储 / 云引擎 / 日志</a> 中查看。</p>
+<p>name 模块包含一个名为 <code>isACoolName</code> 的函数。<code>require</code> 接收的路径是相对于你的云引擎项目的根路径，并且只限 <code>cloud/</code> 目录下的模块可以被加载。</p>
+<h3 id="-">可用的第三方模块</h3>
+<p>因为云引擎 1.0 运行在沙箱环境，我们只允许使用部分类库，名单如下：</p>
+<pre><code>qiniu
+underscore
+underscore.string
+moment
+util
+express
+crypto
+url
+events
+string_decoder
+buffer
+punycode
+querystring
+express-ejs-layouts
+weibo
+node-qiniu
+mailgun
+mandrill
+stripe
+sendgrid
+xml2js
+</code></pre><p>上面这些模块都可以直接 require 使用。我们还提供受限制的 <code>fs</code> 文件模块，仅可以读取上传文件目录下的文件。</p>
+<p><strong>云引擎 2.0 开始将没有模块限制，但是上述必选的模块仍然将优先使用云引擎环境中使用的版本。</strong></p>
+<h2 id="-">时区问题</h2>
+<p>因为某些原因，云引擎 2.0 默认使用的是 UTC 时间，这给很多开发者带来了困惑，所以我们着重讨论下时区问题。</p>
+<p>比如有这样一个时间：<code>2015-05-05T06:15:22.024Z</code> (ISO 8601 表示法)，最后末尾的 <code>Z</code> 表示该时间是 UTC 时间。</p>
+<p>上面的时间等价于：<code>2015-05-05T14:15:22.024+0800</code>，注意此时末尾是 <code>+0800</code> 表示该时间是东八区时间。这两个时间的「小时」部分相差了 8 小时。</p>
+<h3 id="-">时区问题产生的原因</h3>
+<p>很多开发者在时间处理上会忽略「时区」标志，导致最后总是莫名其妙的出现 8 小时的偏差。</p>
+<p>【场景一】某开发者开发的应用使用云引擎的主机托管功能做了一个网站，其中有时间格式的表单提交。某用户使用浏览器访问该网站，提交表单，时间格式为：<code>2015-05-05 14:15:22.024</code>，注意该时间没有「时区」标志。因为这个时间是浏览器生成的，而该用户浏览器上的时间通常是东八区时间，所以该业务数据希望表达的时间是「东八区的 14 点」。</p>
+<p>该时间 <code>2015-05-05 14:15:22.024</code> 提交到服务器，被转换为 Date 类型（JavaScript 代码：<code>new Date(&#39;2015-05-05 14:15:22.024&#39;)</code>）。因为云引擎 2.0 使用的是 UTC 时间，所以该时间会被处理为 <code>2015-05-05T14:15:22.024Z</code>，即「UTC 时间的 14 点」。导致最后获得的时间和期望时间相差了 8 小时。</p>
+<p>解决上面的办法很简单：时间格式带上时区标志。即浏览器上传时间时使用 <code>2015-05-05T14:15:22.024+0800</code>，这样不管服务端默认使用什么时区，带有时区的时间格式转换的 Date 都不会有歧义。</p>
+<p>【场景二】从数据库获取某记录的 <code>createdAt</code> 属性，假设值为：<code>2015-04-09T03:35:09.678Z</code>。因为云引擎默认时区是 UTC，所以一些时间函数的返回结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>toISOString</code></td>
+<td>2015-04-09T03:35:09.678Z</td>
+</tr>
+<tr>
+<td><code>toLocaleString</code></td>
+<td>Thu Apr 09 2015 03:35:09 GMT+0000 (UTC)</td>
+</tr>
+<tr>
+<td><code>toUTCString</code></td>
+<td>Thu, 09 Apr 2015 03:35:09 GMT</td>
+</tr>
+<tr>
+<td><code>toString</code></td>
+<td>Thu Apr 09 2015 03:35:09 GMT+0000 (UTC)</td>
+</tr>
+<tr>
+<td><code>getHours</code></td>
+<td>3，如果将 getHours 的结果返回给浏览器，或者作为业务数据使用，则会出现 8 小时的偏差。</td>
+</tr>
+</tbody>
+</table>
+<p>如果需要获取小时数据，解决办法是使用第三方的组件，比如 <a href="http://momentjs.com/timezone/">moment-timezone</a>，通过下面的方式可以获得东八区的小时时间：</p>
+<pre><code class="lang-javascript">var time = moment(obj.createdAt).tz(&#39;Asia/Shanghai&#39;);
+console.log(&#39;toString&#39;, time.toString());
+console.log(&#39;getHours&#39;, time.hours())
+</code></pre>
+<h3 id="-2-0-">云引擎 2.0 和云引擎时区的差异</h3>
+<p>为了方便大家的使用，更加符合通常的习惯，云引擎运行时环境（无沙箱的 Node.js 环境和 Python 环境）都是使用<strong>东八区</strong>作为默认时区。当然，我们仍然建议程序的时间字符串带有时区标志。</p>
+<h2 id="-2-0">升级到云引擎 2.0</h2>
+<p>2014 年 8 月 14 号，云引擎推出 2.0 版本，其最主要特性包括可以自由添加和使用三方类库以及去除一些对模块的限制。2014 年 8 月 14 号以后创建的应用都将使用云引擎 2.0 版本。</p>
+<ol>
+<li>时区问题：2.0 版彻底修复了时区问题，应用不再需要自己对时间做 8 小时的时区修正。所以需要确认，在迁移之前，移除代码中之前对时间修正的部分代码。<blockquote>
+<p>需要注意的是，云引擎 2.0 使用的默认时区仍然为 UTC 时区，在 <a href="#时区问题">时区问题</a> 部分详细讨论。</p>
+</blockquote>
+</li>
+<li>引入 package.json（可选）：如果项目需要引入其他三方类库，可以像标准 Node.js 项目一样，在项目根目录添加一个 <code>package.json</code> 配置文件，下面是一个简单的样例：</li>
+</ol>
+<pre><code class="lang-json">{
+    &quot;name&quot;: &quot;cloud-code-test&quot;,
+    &quot;description&quot;: &quot;Cloud Code test project.&quot;,
+    &quot;version&quot;: &quot;0.0.1&quot;,
+    &quot;private&quot;: true,
+    &quot;dependencies&quot;: {
+        &quot;async&quot;: &quot;0.9.x&quot;
+    }
+}
+</code></pre>
+<p>需要注意的是，云引擎 2.0 运行环境默认包含一些组件，如果 <code>package.json</code> 指定明确版本则以用户自定义的为准，否则使用下面的默认版本：</p>
+<pre><code>nodejs: &quot;0.10.29&quot;
+qiniu: &quot;6.1.3&quot;
+underscore: &quot;1.6.0&quot;
+underscore.string: &quot;2.3.3&quot;
+moment: &quot;2.7.0&quot;
+express-ejs-layouts: &quot;0.3.1&quot;
+weibo: &quot;0.6.9&quot;
+node-qiniu: &quot;6.1.6&quot;
+mailgun: &quot;0.4.2&quot;
+mandrill: &quot;0.1.0&quot;
+stripe: &quot;2.5.0&quot;
+sendgrid: &quot;1.0.5&quot;
+xml2js: &quot;0.4.4&quot;
+</code></pre><p><strong>注意</strong>：<code>express</code> 目前只支持 <code>3.4.x</code> 版本，即使 <code>package.json</code> 指定其他版本也是无效的。</p>
+<p>在以上问题都确认后，就可以进行升级动作。升级操作完成后，因为缓存的原因，需要等待最多 5 分钟，平台将自动迁移完成。在迁移过程中服务不会暂停，请不用担心。</p>
+<h3 id="-">最新特性</h3>
+<ul>
+<li>有着更好的资源隔离机制，因此 <code>fs</code> 等官方模块的限制取消了。</li>
+<li>可以自由添加和使用三方类库</li>
+<li>时区问题彻底解决</li>
+<li><code>views</code> 目录不再需要分成两个目录（ <code>cloud/views</code> 和 <code>cloud/dev_views</code> ）</li>
+<li>修正：项目从代码仓库迁出有可能失败的问题</li>
+</ul>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

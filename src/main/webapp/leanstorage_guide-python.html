@@ -1,0 +1,1749 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="python-">Python 数据存储开发指南</h1>
+<p>数据存储（LeanStorage）是 LeanCloud 提供的核心功能之一，它的使用方法与传统的关系型数据库有诸多不同。下面我们将其与传统数据库的使用方法进行对比，让大家有一个初步了解。</p>
+<p>下面这条 SQL 语句在绝大数的关系型数据库都可以执行，其结果是在 Todo 表里增加一条新数据：</p>
+<pre><code class="lang-sql">INSERT INTO Todo (title, content) VALUES (&#39;工程师周会&#39;, &#39;每周工程师会议，周一下午 2 点&#39;)
+</code></pre>
+<p>使用传统的关系型数据库作为应用的数据源几乎无法避免以下步骤：</p>
+<ul>
+<li>插入数据之前一定要先创建一个表结构，并且随着之后需求的变化，开发者需要不停地修改数据库的表结构，维护表数据。</li>
+<li>每次插入数据的时候，客户端都需要连接数据库来执行数据的增删改查（CRUD）操作。</li>
+</ul>
+<p>使用 LeanStorage，实现代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+
+# 可以用继承的方式定义 leancloud.Object 的子类
+class Todo(leancloud.Object):
+    pass
+# 或者用以下的方式定义子类
+# Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo()
+todo.set(&#39;title&#39;, &#39;工程师周会&#39;)
+todo.set(&#39;content&#39;, &#39;每周工程师会议，周一下午2点&#39;)
+todo.save()
+</code></pre>
+<p>使用 LeanStorage 的特点在于：</p>
+<ul>
+<li>不需要单独维护表结构。例如，为上面的 Todo 表新增一个 <code>location</code> 字段，用来表示日程安排的地点，那么刚才的代码只需做如下变动：</li>
+</ul>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo()
+todo.set(&#39;title&#39;, &#39;工程师周会&#39;)
+todo.set(&#39;content&#39;, &#39;每周工程师会议，周一下午2点&#39;)
+todo.set(&#39;location&#39;, &#39;会议室&#39;)  # 增加一个字段
+todo.save()
+</code></pre>
+<ul>
+<li>数据可以随用随加，这是一种无模式化（Schema Free）的存储方式。</li>
+<li>所有对数据的操作请求都通过 HTTPS 访问标准的 REST API 来实现。</li>
+<li>我们为各个平台或者语言开发的 SDK 在底层都是调用统一的 REST API，并提供完整的接口对数据进行增删改查。</li>
+</ul>
+<p>LeanStorage 在结构化数据存储方面，与 DB 的区别在于：</p>
+<ol>
+<li>Schema Free／Not free 的差异；</li>
+<li>数据接口上，LeanStorage 是面向对象的（数据操作接口都是基于 Object 的），开放的（所有移动端都可以直接访问），DB 是面向结构的，封闭的（一般在 Server 内部访问）；</li>
+<li>数据之间关联的方式，DB 是主键外键模型，LeanStorage 则有自己的关系模型（Pointer、Relation 等）；</li>
+</ol>
+<p>LeanStorage 支持两种存储类型：</p>
+<ul>
+<li>对象</li>
+<li>文件</li>
+</ul>
+<p>我们将按照顺序逐一介绍各类的使用方法。</p>
+<h2 id="sdk-">SDK 安装</h2>
+<p>请阅读 <a href="sdk_setup-python.html">Python 安装指南</a>。</p>
+<h2 id="-">对象</h2>
+<p><code>leancloud.Object</code> 是 LeanStorage 对复杂对象的封装，每个 <code>leancloud.Object</code> 包含若干属性值对，也称键值对（key-value）。属性的值是与 JSON 格式兼容的数据。通过 REST API 保存对象需要将对象的数据通过 JSON 来编码。这个数据是无模式化的（Schema Free），这意味着你不需要提前标注每个对象上有哪些 key，你只需要随意设置 key-value 对就可以，云端会保存它。</p>
+<h3 id="-">数据类型</h3>
+<p><code>leancloud.Object</code> 支持以下数据类型：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+SupportedType = leancloud.Object.extend(&#39;SupportedType&#39;)
+supported_type = SupportedType()
+supported_type.set(&#39;string&#39;, &#39;工作&#39;)
+supported_type.set(&#39;int&#39;, 108)
+supported_type.set(&#39;float&#39;, 1.890)
+supported_type.set(&#39;boolean&#39;, True)
+supported_type.set(&#39;list&#39;, [1, 2, [3, 4, &#39;string&#39;]])
+supported_type.set(
+    &#39;dict&#39;, {&#39;item1&#39;: 12, &#39;item2&#39;: &#39;string item&#39;, &#39;item3&#39;: [1, 2, &#39;3&#39;]})
+supported_type.set(&#39;date&#39;, datetime.now())
+supported_type.save()
+</code></pre>
+<p>此外，dict 和 list 支持嵌套，这样在一个 <code>leancloud.Object</code> 中就可以使用它们来储存更多的结构化数据。</p>
+<p>我们<strong>不推荐</strong>在 <code>leancloud.Object</code> 中使用 <code>list</code> 类型来储存大块的二进制数据，比如图片或整个文件。<strong>每个 <code>leancloud.Object</code> 的大小都不应超过 128 KB</strong>。如果需要储存更多的数据，建议使用 <code>leancloud.File</code>。更多细节可以阅读本文 <a href="#文件">文件</a> 部分。</p>
+<p>若想了解更多有关 LeanStorage 如何解析处理数据的信息，请查看专题文档《<a href="./data_security.html">数据与安全</a>》。</p>
+<p>我们<strong>不推荐</strong>在 <code>leancloud.Object</code> 中使用 <code>byte[]</code> 来储存大块的二进制数据，比如图片或整个文件。<strong>每个 <code>leancloud.Object</code> 的大小都不应超过 128 KB</strong>。如果需要储存更多的数据，建议使用 <a href="#文件"><code>leancloud.File</code></a>。</p>
+<p>若想了解更多有关 LeanStorage 如何解析处理数据的信息，请查看专题文档《<a href="./data_security.html">数据与安全</a>》。</p>
+<h3 id="-">构建对象</h3>
+<p>构建一个 <code>leancloud.Object</code> 可以使用如下方式：</p>
+<pre><code class="lang-python">import leancloud
+
+# 构造方法传入的参数，对应的就是控制台中的 Class Name
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo()
+</code></pre>
+<p>每个 id 必须有一个 Class 类名称，这样云端才知道它的数据归属于哪张数据表。</p>
+<h3 id="-">保存对象</h3>
+<p>现在我们保存一个 <code>TodoFolder</code>，它可以包含多个 Todo，类似于给行程按文件夹的方式分组。我们并不需要提前去后台创建这个名为 <strong>TodoFolder</strong> 的 Class 类，而仅需要执行如下代码，云端就会自动创建这个类：</p>
+<pre><code class="lang-python">import leancloud
+
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+todo_folder = TodoFolder()
+todo_folder.set(&#39;name&#39;, &#39;工作&#39;)
+todo_folder.set(&#39;priority&#39;, 1)
+todo_folder.save()
+</code></pre>
+<p>创建完成后，打开 <a href="/data.html?appid={{appid}}#/">控制台 &gt; 存储</a>，点开 <code>TodoFolder</code> 类，就可以看到刚才添加的数据。除了 name、priority（优先级）之外，其他字段都是数据表的内置属性。</p>
+<table>
+<thead>
+<tr>
+<th>内置属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>String</td>
+<td>该对象唯一的 Id 标识</td>
+</tr>
+<tr>
+<td><code>ACL</code></td>
+<td>ACL</td>
+<td>该对象的权限控制，实际上是一个 JSON 对象，控制台做了展现优化。</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>datetime.datetime</td>
+<td>该对象被创建的 UTC 时间，控制台做了针对当地时间的展现优化。</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>datetime.datetime</td>
+<td>该对象最后一次被修改的时间</td>
+</tr>
+</tbody>
+</table>
+<dl>
+  <dt>属性名</dt>
+  <dd>也叫键或 key，必须是由字母、数字或下划线组成的字符串；自定义的属性名，不能以 <code>__</code>（双下划线）开头。</dd>
+  <dt>属性值</dt>
+  <dd>可以是字符串、数字、布尔值、数组或字典。</dd>
+</dl>
+
+<div class="callout callout-danger"><p>以下为系统保留字段，不能作为属性名来使用。</p>
+<samp style="color:#666;">acl             error            pendingKeys
+ACL             fetchWhenSave    running
+className       id               updatedAt
+code            isDataReady      uuid
+createdAt       keyValues
+description     objectId
+</samp>
+</div>
+
+<p>为提高代码的可读性和可维护性，建议使用驼峰式命名法（CamelCase）为类和属性来取名。类，采用大驼峰法，如 <code>CustomData</code>。属性，采用小驼峰法，如 <code>imageUrl</code>。</p>
+<h4 id="-cql-">使用 CQL 语法保存对象</h4>
+<p>LeanStorage 提供了类似 SQL 语法中的 Insert 方式保存一个对象，例如保存一个 TodoFolder 对象可以使用下面的代码：</p>
+<pre><code class="lang-python">import leancloud
+
+query_string = r&quot;insert into TodoFolder(name, priority) values(&#39;工作&#39;, 78)&quot;
+result = leancloud.Query.do_cloud_query(query_string)
+</code></pre>
+<h4 id="-">保存选项</h4>
+<p><code>leancloud.Object</code> 对象在保存时可以设置选项来快捷完成关联操作，可用的选项属性有：</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="text-nowrap">fetch_when_save</code></td>
+<td>BOOL</td>
+<td>对象成功保存后，自动返回该对象在云端的最新数据。用途请参考 <a href="#更新计数器">更新计数器</a>。</td>
+</tr>
+<tr>
+<td><code>where</code></td>
+<td><code>leancloud.Query</code></td>
+<td>当 query 中的条件满足后对象才能成功保存，否则放弃保存，并返回错误码 305。<br/><br/>开发者原本可以通过 <code>leancloud.Query</code> 和 <code>leancloud.Object</code> 分两步来实现这样的逻辑，但如此一来无法保证操作的原子性从而导致并发问题。该选项可以用来判断多用户更新同一对象数据时可能引发的冲突。</td>
+</tr>
+</tbody>
+</table>
+<p><a id="saveoption_query_example" name="saveoption_query_example"></a>【示例】一篇 wiki 文章允许任何人来修改，它的数据表字段有：<strong>content</strong>（wiki 内容）、<strong>version</strong>（版本号）。每当 wiki 内容被更新后，其 version 也需要更新（+1）。用户 A 要修改这篇 wiki，从数据表中取出时其 version 值为 3，当用户 A 完成编辑要保存新内容时，如果数据表中的 version 仍为 3，表明这段时间没有其他用户更新过这篇 wiki，可以放心保存；如果不是 3，开发者可以拒绝掉用户 A 的修改，或执行其他自定义的业务逻辑。</p>
+<pre><code class="lang-python">import leancloud
+
+Wiki = leancloud.Object.extend(&#39;Wiki&#39;)
+wiki = Wiki()
+wiki.set(&#39;content&#39;, &#39;Hello World!&#39;)
+wiki.set(&#39;version&#39;, 2)
+wiki.save()
+
+# 这里其它的进程可能已经更新了 wiki 的内容和版本，如下的更新可能会出错
+query = Wiki.query
+query.equal_to(&#39;version&#39;, 1)  # 可能查询的时候版本号不符
+wiki.set(&#39;content&#39;, &#39;Morning, World!&#39;)
+try:
+    wiki.save(query)
+except leancloud.LeanCloudError as e:
+    print &quot;无法保存修改，wiki 已被他人更新。&quot;   # 如果抛出异常，则说明 query 的条件不符合
+else:
+    print &quot;保存成功。&quot;
+</code></pre>
+<h3 id="-">获取对象</h3>
+<p>每个被成功保存在云端的对象会有一个唯一的 Id 标识 <code>id</code>，因此获取对象的最基本的方法就是根据 <code>id</code> 来查询：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = leancloud.Query(&#39;Todo&#39;)
+# 也可以获取 Todo 的 query 属性
+# query = Todo.query
+
+# 这里填入需要查询的 objectId
+query_result = query.get(&#39;57301af42e958a006982efad&#39;)
+title = query_result.get(&#39;title&#39;)
+</code></pre>
+<p>如果不想使用查询，还可以通过从本地构建一个 <code>id</code>，然后调用接口从云端把这个 <code>id</code> 的数据拉取到本地，示例代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+# 用 objectId 初始化 Todo
+todo = Todo.create_without_data(&#39;574d4a4e2b51e90056f76c89&#39;)
+# 用 fetch 函数将该对象拉到本地
+todo.fetch()
+</code></pre>
+<h4 id="-objectid">获取 objectId</h4>
+<p>每一次对象存储成功之后，云端都会返回 <code>id</code>，它是一个全局唯一的属性。</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo()
+todo.set(&#39;title&#39;, &#39;工程师周会&#39;)
+todo.set(&#39;content&#39;, &#39;每周工程师会议，周一下午2点&#39;)
+todo.save()
+# 一旦保存成功，todo 对象就会获得一个 objectId，通过 todo.id 获得
+object_id = todo.id
+</code></pre>
+<h4 id="-">访问对象的属性</h4>
+<p>访问 Todo 的属性的方式为：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+# 这里填入需要查询的 objectId
+query_result = query.get(&#39;57301af42e958a006982efad&#39;)
+title = query_result.get(&#39;title&#39;)
+content = query_result.get(&#39;content&#39;)
+
+# 获取三个特殊属性
+object_id = query_result.id
+update_at = query_result.updated_at
+created_at = query_result.created_at
+</code></pre>
+<p>请注意以上代码中访问三个特殊属性 <code>id</code>、<code>created_at</code>、<code>updated_at</code> 的方式。</p>
+<p>如果访问了并不存在的属性，SDK 并不会抛出异常，而是会返回空值。</p>
+<h4 id="-">默认属性</h4>
+<p>默认属性是所有对象都会拥有的属性，它包括 <code>id</code>、<code>created_at</code>、<code>updated_at</code>。</p>
+<dl>
+  <dt><code>created_at</code></dt>
+  <dd>对象第一次保存到云端的时间戳。该时间一旦被云端创建，在之后的操作中就不会被修改。它采用国际标准时区 UTC，开发者可能需要根据客户端当前的时区做转化。</dd>
+  <dt><code>updated_at</code></dt>
+  <dd>对象最后一次被修改（或最近一次被更新）的时间。</dd>
+</dl>
+
+
+
+<h4 id="-">同步对象</h4>
+<p>多终端共享一个数据时，为了确保当前客户端拿到的对象数据是最新的，可以调用刷新接口来确保本地数据与云端的同步：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+# 这里填入你所要获取的objectId
+todo = Todo.create_without_data(&#39;57301af42e958a006982efad&#39;)
+todo.fetch()
+title = todo.get(&#39;title&#39;)
+content = todo.get(&#39;content&#39;)
+</code></pre>
+<p>在更新对象操作后，对象本地的 <code>updated_at</code> 字段（最后更新时间）会被刷新，直到下一次 save 或 fetch 操作，<code>updated_at</code> 的最新值才会被同步到云端，这样做是为了减少网络流量传输。</p>
+<p>如果需要在保存或更新之后让本地数据自动与云端保持一致，可以使用 <a href="#保存选项">保存选项 <code>fetch_when_save</code></a>：</p>
+<pre><code class="lang-python">todo.fetch_when_save = True  # 设置 fetch_when_save 为 true
+todo.save()
+</code></pre>
+<h4 id="-">同步指定属性</h4>
+<p>目前 Todo 这个类已有四个自定义属性：<code>priority</code>、<code>content</code>、<code>location</code> 和 <code>title</code>。为了节省流量，现在只想刷新 <code>priority</code> 和 <code>location</code> 可以使用如下方式：</p>
+<pre><code class="lang-python"># Python SDK 暂不支持
+</code></pre>
+<p><strong>刷新操作会强行使用云端的属性值覆盖本地的属性</strong>。因此如果本地有属性修改，请慎用这类接口。</p>
+<h3 id="-">更新对象</h3>
+<p>LeanStorage 上的更新对象都是针对单个对象，云端会根据<u>有没有 objectId</u> 来决定是新增还是更新一个对象。</p>
+<p>假如 <code>id</code> 已知，则可以通过如下接口从本地构建一个 <code>leancloud.Object</code> 来更新这个对象：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo.create_without_data(&#39;574d4a4e2b51e90056f76c89&#39;)
+# 这里修改 location 的值
+todo.set(&#39;location&#39;, &#39;二楼大会议室&#39;)
+todo.save()
+</code></pre>
+<p>更新操作是覆盖式的，云端会根据最后一次提交到服务器的有效请求来更新数据。更新是字段级别的操作，未更新的字段不会产生变动，这一点请不用担心。</p>
+<h4 id="-cql-">使用 CQL 语法更新对象</h4>
+<p>LeanStorage 提供了类似 SQL 语法中的 Update 方式更新一个对象，例如更新一个 TodoFolder 对象可以使用下面的代码：</p>
+<pre><code class="lang-python">import leancloud
+
+cql = &#39;update TodoFolder set name = ? where objectId = ?&#39;
+result = leancloud.Query.do_cloud_query(cql, &#39;家庭&#39;, &#39;57318f14df0eea006331a19a&#39;)
+</code></pre>
+<h4 id="-">更新计数器</h4>
+<p>这是原子操作（Atomic Operation）的一种。
+为了存储一个整型的数据，LeanStorage 提供对任何数字字段进行原子增加（或者减少）的功能。比如一条微博，我们需要记录有多少人喜欢或者转发了它，但可能很多次喜欢都是同时发生的。如果在每个客户端都直接把它们读到的计数值增加之后再写回去，那么极容易引发冲突和覆盖，导致最终结果不准。此时就需要使用这类原子操作来实现计数器。</p>
+<p>假如，现在增加一个记录查看 Todo 次数的功能，一些与他人共享的 Todo 如果不用原子操作的接口，很有可能会造成统计数据不准确，可以使用如下代码实现这个需求：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+# 这里填入你所要获取的 objectId
+todo = Todo.create_without_data(&#39;57301af42e958a006982efad&#39;)
+title = todo.set(&#39;views&#39;, 0)  # 原子增加查看次数
+todo.save()
+
+todo.increment(&#39;views&#39;)
+todo.fetch_when_save = True
+todo.save()
+
+todo.increment(&#39;views&#39;, 5)
+todo.save()
+</code></pre>
+<h4 id="-">更新数组</h4>
+<p>这也是原子操作的一种。使用以下方法可以方便地维护数组类型的数据：</p>
+<ul>
+<li><code>add()</code><br>
+将指定对象附加到数组末尾。</li>
+<li><code>add_unique()</code><br>
+如果不确定某个对象是否已包含在数组字段中，可以使用此操作来添加。</li>
+</ul>
+<p>例如，Todo 对象有一个提醒日期 reminders，它是一个数组，代表这个日程会在哪些时间点提醒用户。比如有些拖延症患者会把闹钟设为早上的 7:10、7:20、7:30：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo = Todo()
+
+reminder1 = datetime(2015, 11, 11, 07, 10, 00)
+reminder2 = datetime(2015, 11, 11, 07, 20, 00)
+reminder3 = datetime(2015, 11, 11, 07, 30, 00)
+
+todo.add(&#39;reminders&#39;, reminder1)
+todo.add(&#39;reminders&#39;, reminder2)
+todo.add(&#39;reminders&#39;, reminder3)
+todo.save()
+</code></pre>
+<h3 id="-">删除对象</h3>
+<p>假如某一个 Todo 完成了，用户想要删除这个 Todo 对象，可以如下操作：</p>
+<pre><code class="lang-python">todo.destroy()
+</code></pre>
+<div class="callout callout-danger">删除对象是一个较为敏感的操作。在控制台创建对象的时候，默认开启了权限保护，关于这部分的内容请阅读《<a href="acl_guide-python.html">Python SDK 权限管理使用指南</a>》。</div>
+
+<h4 id="-cql-">使用 CQL 语法删除对象</h4>
+<p>LeanStorage 提供了类似 SQL 语法中的 Delete 方式删除一个对象，例如删除一个 Todo 对象可以使用下面的代码：</p>
+<pre><code class="lang-python"># 执行 CQL 语句实现删除一个 Todo 对象
+import leancloud
+
+sql_string = &#39;delete from Todo where objectId = ?&#39;
+leancloud.Query.do_cloud_query(cql_string, &#39;5731a29d71cfe4006cbdbc22&#39;)
+</code></pre>
+<h3 id="-">批量操作</h3>
+<p>为了减少网络交互的次数太多带来的时间浪费，你可以在一个请求中对多个对象进行创建、更新、删除、获取。接口都在 <code>leancloud.Object</code> 这个类下面：</p>
+<pre><code class="lang-python"># 批量创建、更新
+leancloud.Object.save_all(list_of_objects)
+
+# 批量删除
+leancloud.Object.destroy_all(list_of_objects)
+</code></pre>
+<p>批量设置 Todo 已经完成：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+todo1 = Todo()
+todo2 = Todo()
+todo3 = Todo()
+todo1.set(&#39;status&#39;, 1)
+todo2.set(&#39;status&#39;, 2)
+todo3.set(&#39;status&#39;, 3)
+
+Todo.save_all([todo1, todo2, todo3])  # save_all 是一个类方法
+</code></pre>
+<p>不同类型的批量操作所引发不同数量的 API 调用，具体请参考 <a href="faq.html#API_调用次数的计算">API 调用次数的计算</a>。</p>
+<h3 id="-">关联数据</h3>
+<h4 id="-leancloud-relation-"><code>leancloud.Relation</code></h4>
+<p>对象可以与其他对象相联系。如前面所述，我们可以把一个 <code>leancloud.Object</code> 的实例 A，当成另一个 <code>leancloud.Object</code> 实例 B 的属性值保存起来。这可以解决数据之间一对一或者一对多的关系映射，就像关系型数据库中的主外键关系一样。</p>
+<p>例如，一个 TodoFolder 包含多个 Todo ，可以用如下代码实现：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+
+todo_folder = TodoFolder()
+todo_folder.set(&#39;name&#39;, &#39;工作&#39;)
+todo_folder.set(&#39;priority&#39;, 1)
+
+todo1 = Todo()
+todo1.set(&#39;title&#39;, &#39;工程师周会&#39;)
+todo1.set(&#39;content&#39;, &#39;工程师周会，周一下午2点&#39;)
+todo1.set(&#39;location&#39;, &#39;会议室&#39;)
+
+todo2 = Todo()
+todo2.set(&#39;title&#39;, &#39;维护文档&#39;)
+todo2.set(&#39;content&#39;, &#39;每天 16：00 到 18：00 定期维护文档&#39;)
+todo2.set(&#39;location&#39;, &#39;当前工位&#39;)
+
+todo3 = Todo()
+todo3.set(&#39;title&#39;, &#39;发布 SDK&#39;)
+todo3.set(&#39;content&#39;, &#39;每周一下午 15：00&#39;)
+todo3.set(&#39;location&#39;, &#39;SA 工位&#39;)
+
+todo1.save()
+todo2.save()
+todo3.save()
+
+relation = todo_folder.relation(&#39;containedTodos&#39;)
+relation.add(todo1)
+relation.add(todo2)
+relation.add(todo3)
+
+todo_folder.save()
+</code></pre>
+<h4 id="pointer">Pointer</h4>
+<p>Pointer 只是个描述并没有具象的类与之对应，它与 <code>leancloud.Relation</code> 不一样的地方在于：<code>leancloud.Relation</code> 是在<strong>一对多</strong>的「一」这一方（上述代码中的一指 TodoFolder）保存一个 <code>leancloud.Relation</code> 属性，这个属性实际上保存的是对被关联数据<strong>多</strong>的这一方（上述代码中这个多指 Todo）的一个 Pointer 的集合。而反过来，LeanStorage 也支持在「多」的这一方保存一个指向「一」的这一方的 Pointer，这样也可以实现<strong>一对多</strong>的关系。</p>
+<p>简单的说， Pointer 就是一个外键的指针，只是在 LeanCloud 控制台做了显示优化。</p>
+<p>现在有一个新的需求：用户可以分享自己的 TodoFolder 到广场上，而其他用户看见可以给与评论，比如某玩家分享了自己想买的游戏列表（TodoFolder 包含多个游戏名字），而我们用 Comment 对象来保存其他用户的评论以及是否点赞等相关信息，代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+Comment = leancloud.Object.extend(&#39;Comment&#39;)
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+
+comment = Comment()
+# 如果点了赞就是 1，而点了不喜欢则为 -1，没有做任何操作就是默认的 0
+comment.set(&#39;like&#39;, 1)
+# 留言的内容
+comment.set(&#39;content&#39;, &#39;这个太赞了！楼主，我也要这些游戏，咱们团购么？&#39;)
+
+# 假设已知了被分享的该 TodoFolder 的 objectId 是 5732a4821ea4930064013bdb
+todo_folder = TodoFolder.create_without_data(&#39;5732a4821ea4930064013bdb&#39;)
+comment.set(&#39;targetTodoFolder&#39;, todo_folder)
+comment.save()
+</code></pre>
+<p>相关内容可参考 <a href="#leancloud.Relation_查询">关联数据查询</a>。</p>
+<h4 id="-">地理位置</h4>
+<p>地理位置是一个特殊的数据类型，LeanStorage 封装了 <code>leancloud.GeoPoint</code> 来实现存储以及相关的查询。</p>
+<p>首先要创建一个 <code>leancloud.GeoPoint</code> 对象。例如，创建一个北纬 39.9 度、东经 116.4 度的 <code>leancloud.GeoPoint</code> 对象（LeanCloud 北京办公室所在地）：</p>
+<pre><code class="lang-python">import leancloud
+
+point = leancloud.GeoPoint(39.9, 116.4)
+</code></pre>
+<p>假如，添加一条 Todo 的时候为该 Todo 添加一个地理位置信息，以表示创建时所在的位置：</p>
+<pre><code class="lang-python">todo.set(&#39;whereCreated&#39;, point)
+todo.save()
+</code></pre>
+<p>同时请参考 <a href="#地理位置查询">地理位置查询</a>。</p>
+<h3 id="-">序列化和反序列化</h3>
+<p>在实际的开发中，把 <code>leancloud.Object</code> 当做参数传递的时候，会涉及到复杂对象的拷贝的问题，因此 <code>leancloud.Object</code> 也提供了序列化和反序列化的方法：</p>
+<p>序列化：</p>
+<pre><code class="lang-python"># Python SDK 暂不支持
+</code></pre>
+<p>反序列化：</p>
+<pre><code class="lang-python"># Python SDK 暂不支持
+</code></pre>
+<h3 id="-">线程安全</h3>
+<p><code>leancloud.Object</code> 目前不是线程安全的，因此请避免多个线程修改同一个 <code>leancloud.Object</code> 实例的操作。如果遇到必须多线程操作的情况，需要根据情况加锁。</p>
+<h2 id="-">文件</h2>
+<p>文件存储也是数据存储的一种方式，图像、音频、视频、通用文件等等都是数据的载体，另外很多开发者习惯了把复杂对象序列化之后保存成文件（如 <code>.json</code> 或者 <code>.xml</code> )。文件存储在 LeanStorage 中被单独封装成一个 <code>leancloud.File</code> 来实现文件的上传、下载等操作。</p>
+<h3 id="-">文件上传</h3>
+<p>文件的上传指的是开发者调用接口将文件存储在云端，并且返回文件最终的 URL 的操作。</p>
+<h4 id="-">从数据流构建文件</h4>
+<p><code>leancloud.File</code> 支持图片、视频、音乐等常见的文件类型，以及其他任何二进制数据，在构建的时候，传入对应的数据流即可：</p>
+<pre><code class="lang-python">import leancloud
+from StringIO import StringIO
+
+file1 = leancloud.File(&#39;resume.txt&#39;, StringIO(&#39;data&#39;))
+
+file2 = leancloud.File(&#39;fileFromBuffer.txt&#39;, buffer(&#39;\x42\x43\x44&#39;))
+
+# 还可以指定文件的 mime type，如果不指定的话会根据文件名后缀来猜测。
+file3 = leancloud.File(
+    &#39;truth.txt&#39;, StringIO(&#39;{&quot;truth&quot;: 42}&#39;), &#39;application/json&#39;)
+file1.save()
+file2.save()
+file3.save()
+</code></pre>
+<p>上例将文件命名为 <code>resume.txt</code>，这里需要注意两点：</p>
+<ul>
+<li>不必担心文件名冲突。每一个上传的文件都有惟一的 ID，所以即使上传多个文件名为 <code>resume.txt</code> 的文件也不会有问题。</li>
+<li>给文件添加扩展名非常重要。云端通过扩展名来判断文件类型，以便正确处理文件。所以要将一张 PNG 图片存到 <code>leancloud.File</code> 中，要确保使用 <code>.png</code> 扩展名。</li>
+</ul>
+<h4 id="-">从本地路径构建文件</h4>
+<p>大多数的客户端应用程序都会跟本地文件系统产生交互，常用的操作就是读取本地文件，如下代码可以实现使用本地文件路径构建一个 <code>leancloud.File</code>：</p>
+<pre><code class="lang-python">import leancloud
+
+with open(&#39;~/avatar.png&#39;) as f:
+    avatar = leancloud.File(&#39;fileFromLocalFile&#39;, f)
+    avatar.save()
+</code></pre>
+<h4 id="-">从网络路径构建文件</h4>
+<p>从一个已知的 URL 构建文件也是很多应用的需求。例如，从网页上拷贝了一个图像的链接，代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+img_url = &#39;http://www.example.com/avatar.jpg&#39;
+avatar = leancloud.File.create_with_url(&#39;avatar.jpg&#39;, img_url)
+avatar.save()
+</code></pre>
+<p>我们需要做出说明的是，<a href="#从本地路径构建文件">从本地路径构建文件</a> 会<u>产生实际上传的流量</u>，并且文件最后是存在云端，而 <a href="#从网络路径构建文件">从网络路径构建文件</a> 的文件实体并不存储在云端，只是会把文件的物理地址作为一个字符串保存在云端。</p>
+<h4 id="-">执行上传</h4>
+<p>上传的操作调用方法如下：</p>
+<pre><code class="lang-python">avatar.save()  # 执行上传
+object_id = avatar.id  # 一旦保存成功即可获取到文件的 objectId
+</code></pre>
+<h3 id="-">文件下载</h3>
+<p>客户端 SDK 接口可以下载文件并把它缓存起来，只要文件的 URL 不变，那么一次下载成功之后，就不会再重复下载，目的是为了减少客户端的流量。</p>
+<pre><code class="lang-python">url = avatar.url
+</code></pre>
+<h3 id="-">图像缩略图</h3>
+<p>保存图像时，如果想在下载原图之前先得到缩略图，方法如下：</p>
+<pre><code class="lang-python">import leancloud
+
+avatar = leancloud.File.create_without_data(&#39;5732df1c1ea4930060ba4642&#39;)
+avatar.fetch()
+
+thumbnail_url = avatar.get_thumbnail_url(width=100, height=100)
+</code></pre>
+<div class="callout callout-info">注意：<strong>图片最大不超过 20 M 才可以获取缩略图。</strong> </div>
+
+<h3 id="-">文件元数据</h3>
+<p><code>leancloud.File</code> 的 <code>metaData</code> 属性，可以用来保存和获取该文件对象的元数据信息：</p>
+<pre><code class="lang-python">import leancloud
+
+with open(&#39;~/avatar.png&#39;) as f:
+    avatar = leancloud.File(&#39;fileFromLocallFile&#39;, f)
+    avatar.metadata[&#39;width&#39;] = 100  # avatar.metadata 是一个字典，可以添加内容并保存。
+    avatar.metadata[&#39;heigth&#39;] = 100
+    avatar.metadata[&#39;author&#39;] = &#39;LeanCloud&#39;
+    avatar.save()
+</code></pre>
+<h3 id="-">删除</h3>
+<p>当文件较多时，要把一些不需要的文件从云端删除：</p>
+<pre><code class="lang-python">import leancloud
+
+# 默认情况下文件的删除权限是关闭的，如果想要删除需要更改 class 权限或者使用 master_key
+leancloud.init(&quot;{{appid}}&quot;, master_key=&quot;{{masterkey}}&quot;)
+leancloud.use_master_key()
+avatar = leancloud.File.create_without_data(&#39;5732f4cf71cfe4006cc89d75&#39;)
+avatar.destroy()
+</code></pre>
+<div class="callout callout-info">注意：默认情况下，文件的删除权限是关闭的，需要进入控制台，在 <a href="/data.html?appid={{appid}}#/_File"><code>_File</code> &gt; 其他 &gt; 权限设置 &gt; delete</a>  中开启。</div>
+
+
+<h2 id="-">查询</h2>
+<p><code>leancloud.Query</code> 是构建针对 <code>leancloud.Object</code> 查询的基础类。</p>
+<h3 id="-">创建查询实例</h3>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = leancloud.Query(Todo)
+
+# 或者采用 Todo 的 query属性，也可以获得 Todo 的 query对象  
+# query = Todo.query
+</code></pre>
+<h3 id="-id-">根据 id 查询</h3>
+<p>在 <a href="#获取对象">获取对象</a> 中我们介绍过如何通过 objectId 来获取对象实例，从而简单的介绍了一下 <code>leancloud.Query</code> 的用法，代码请参考对应的内容，不再赘述。</p>
+<h3 id="-">条件查询</h3>
+<p>在大多数情况下做列表展现的时候，都是根据不同条件来分类展现的，比如，我要查询所有优先级为 0 的 Todo，也就是做列表展现的时候，要展示优先级最高，最迫切需要完成的日程列表，此时基于 priority 构建一个查询就可以查询出符合需求的对象：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+# 获取符合 priority = 0 的 Todo数组
+query_list = query.equal_to(&#39;priority&#39;, 0).find()
+</code></pre>
+<p>其实，拥有传统关系型数据库开发经验的开发者完全可以翻译成如下的 SQL：</p>
+<pre><code class="lang-sql">  select * from Todo where priority = 0
+</code></pre>
+<p>LeanStorage 也支持使用这种传统的 SQL 语句查询。具体使用方法请移步至 <a href="#CQL_查询">Cloud Query Language（CQL）查询</a>。</p>
+<p>查询默认最多返回 100 条符合条件的结果，要更改这一数值，请参考 <a href="#限定返回数量">限定结果返回数量</a>。</p>
+<p>当多个查询条件并存时，它们之间默认为 AND 关系，即查询只返回满足了全部条件的结果。建立 OR 关系则需要使用 <a href="#组合查询">组合查询</a>。</p>
+<p>注意：在简单查询中，如果对一个对象的同一属性设置多个条件，那么先前的条件会被覆盖，查询只返回满足最后一个条件的结果。例如，我们要找出优先级为 0 和 1 的所有 Todo，错误写法是：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+query.equal_to(&#39;priority&#39;, 0)
+query.equal_to(&#39;priority&#39;, 1)  
+
+# 如果这样写，只会返回 priority = 1 的结果
+query_list = query.find()
+</code></pre>
+<p>正确作法是使用 <a href="#OR_查询">OR 关系</a> 来构建条件。</p>
+<h4 id="-">比较查询</h4>
+<table>
+<thead>
+<tr>
+<th>逻辑操作</th>
+<th>leancloud.Query 方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td><code>equal_to</code></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>not_equal_to</code></td>
+</tr>
+<tr>
+<td>大于</td>
+<td><code>greater_than</code></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td><code>greater_than_or_equal_to</code></td>
+</tr>
+<tr>
+<td>小于</td>
+<td><code>less_than</code></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td><code>less_than_or_equal_to</code></td>
+</tr>
+</tbody>
+</table>
+<p>利用上述表格介绍的逻辑操作的接口，我们可以很快地构建条件查询。</p>
+<p>例如，查询优先级小于 2 的所有 Todo ：</p>
+<pre><code class="lang-python">query.less_than_or_equal_to(&quot;priority&quot;, 2)
+</code></pre>
+<p>要查询优先级大于等于 2 的 Todo：</p>
+<pre><code class="lang-python">query.greater_than_or_equal_to(&quot;priority&quot;, 2)
+</code></pre>
+<p>比较查询<strong>只适用于可比较大小的数据类型</strong>，如整型、浮点等。</p>
+<h4 id="-">正则匹配查询</h4>
+<p>正则匹配查询是指在查询条件中使用正则表达式来匹配数据，查询指定的 key 对应的 value 符合正则表达式的所有对象。
+例如，要查询标题包含中文的 Todo 对象可以使用如下代码：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+query.matched(&#39;title&#39;, &#39;^李总&#39;)
+todo_list = query.find()
+</code></pre>
+<p>正则匹配查询<strong>只适用于</strong>字符串类型的数据。</p>
+<h4 id="-">包含查询</h4>
+<p>包含查询类似于传统 SQL 语句里面的 <code>LIKE %keyword%</code> 的查询，比如查询标题包含「李总」的 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+query.contains(&#39;title&#39;, &#39;李总&#39;)
+</code></pre>
+<p>翻译成 SQL 语句就是：</p>
+<pre><code class="lang-sql">  select * from Todo where title LIKE &#39;%李总%&#39;
+</code></pre>
+<p>不包含查询与包含查询是对立的，不包含指定关键字的查询，可以使用 <a href="#正则匹配查询">正则匹配方法</a> 来实现。例如，查询标题不包含「机票」的 Todo，正则表达式为 <code>^((?!机票).)*$</code>：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+query.matched(&#39;title&#39;, &#39;^((?!机票).)*{{body}}#39;)
+</code></pre>
+<p>但是基于正则的模糊查询有两个缺点：</p>
+<ul>
+<li>当数据量逐步增大后，查询效率将越来越低。</li>
+<li>没有文本相关性排序</li>
+</ul>
+<p>因此，你还可以考虑使用 <a href="#应用内搜索">应用内搜索</a> 功能。它基于搜索引擎技术构建，提供更强大的搜索功能。</p>
+<p>还有一个接口可以精确匹配不等于，比如查询标题不等于「出差、休假」的 Todo 对象：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+query.not_contained_in(&#39;title&#39;, [&#39;出差&#39;,&#39;休假&#39;])
+</code></pre>
+<h4 id="-">数组查询</h4>
+<p>当一个对象有一个属性是数组的时候，针对数组的元数据查询可以有多种方式。例如，在 <a href="#更新数组">数组</a> 一节中我们为 Todo 设置了 reminders 属性，它就是一个日期数组，现在我们需要查询所有在 8:30 会响起闹钟的 Todo 对象：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+reminder1 = datetime(2015, 11, 11, 07, 10, 00)
+reminder2 = datetime(2015, 11, 11, 07, 30, 00)
+
+# 如果只查询数组中含有某一个特定的元素可以用 equal_to 函数
+query.equal_to(&#39;reminders&#39;, reminder1)
+
+# 如果查询数组中含有多个元素，则用 contains_all 函数
+query.contains_all(&#39;reminders&#39;, [reminder1, reminder2])
+</code></pre>
+<p>如果你要查询包含 8:30、9:30 这两个时间点响起闹钟的 Todo，可以使用如下代码：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+
+reminder1 = datetime(2015, 11, 11, 8, 30, 00)
+reminder2 = datetime(2015, 11, 11, 9, 30, 00)
+
+# 如果精确查询数组元素，则用 equal_to 函数，并在第二个参数传入需要精确查询的数组
+query.equal_to(&#39;reminders&#39;, [reminder1, reminder2])
+</code></pre>
+<p>注意这里是包含关系，假如有一个 Todo 会在 8:30、9:30、10:30 响起闹钟，它仍然是会被查询出来的。</p>
+<h4 id="-">字符串查询</h4>
+<p>使用 <code>startswith()</code> 可以过滤出以特定字符串开头的结果，这有点像 SQL 的 LIKE 条件。因为支持索引，所以该操作对于大数据集也很高效。</p>
+<pre><code class="lang-python"># 找出开头是「早餐」的 Todo
+query.startswith(&quot;content&quot;, &quot;早餐&quot;)
+</code></pre>
+<h4 id="-">空值查询</h4>
+<p>假设我们的 Todo 允许用户上传图片用来帮助用户记录某些特殊的事项，但是有时候用户可能就记得自己给一个 Todo 附加过图片，但是具体又不记得这个 Todo 的关键字是什么，因此我们需要一个接口可以找出那些有图片的 Todo，此时就可以使用到空值查询的接口：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+img_url = &#39;http://www.example.com/avatar.jpg&#39;
+img = leancloud.File.create_with_url(&#39;avatar.jpg&#39;, img_url)
+todo = Todo()
+todo.set(&#39;images&#39;, img)
+todo.save()  # 存储图片
+
+query = Todo.query
+query.exists(&#39;images&#39;)  # 查询 images 属性不为空的对象
+query.does_not_exists(&#39;images&#39;)  # 查询 images 属性为空的对象
+</code></pre>
+<h3 id="-">组合查询</h3>
+<p>组合查询就是把诸多查询条件合并成一个查询，再交给 SDK 去云端查询。方式有两种：OR 和 AND。</p>
+<h4 id="or-">OR 查询</h4>
+<p>OR 操作表示多个查询条件符合其中任意一个即可。 例如，查询优先级是大于等于 3 或者已经完成了的 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query1 = Todo.query
+query2 = Todo.query
+
+query1.greater_than(&#39;priority&#39;, 3)
+query2.equal_to(&#39;status&#39;, 1)
+
+# 返回 priority 大于等于 3 或 status 等于 1 的 Todo
+query = leancloud.Query.or_(query1,query2)
+</code></pre>
+<p><strong>注意：OR 查询中，子查询中不能包含地理位置相关的查询。</strong></p>
+<h4 id="and-">AND 查询</h4>
+<p>AND 操作是指只有满足了所有查询条件的对象才会被返回给客户端。例如，查询优先级小于 1 并且尚未完成的 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query1 = Todo.query
+query2 = Todo.query
+
+query1.greater_than(&#39;priority&#39;, 3)
+query2.equal_to(&#39;status&#39;, 1)
+
+# 返回 priority 大于等于 3 且 status 等于 1 的 Todo
+query = leancloud.Query.and_(query1, query2)
+</code></pre>
+<p>可以对新创建的 <code>leancloud.Query</code> 添加额外的约束，多个约束将以 AND 运算符来联接。</p>
+<h3 id="-">查询结果</h3>
+<h4 id="-">获取第一条结果</h4>
+<p>例如很多应用场景下，只要获取满足条件的一个结果即可，例如获取满足条件的第一条 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+query.equal_to(&#39;priority&#39;, 3)
+todo_first = query.first()
+</code></pre>
+<h4 id="-">限定返回数量</h4>
+<p>为了防止查询出来的结果过大，云端默认针对查询结果有一个数量限制，即 <code>limit</code>，它的默认值是 100。比如一个查询会得到 10000 个对象，那么一次查询只会返回符合条件的 100 个结果。<code>limit</code> 允许取值范围是 1 ~ 1000。例如设置返回 10 条结果：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+date = datetime.now()
+
+query.less_than(&#39;createdAt&#39;, date)  # 查询今天之前创建的 Todo
+query.limit(10)   # 最多返回 10 条结果
+</code></pre>
+<h4 id="-">跳过数量</h4>
+<p>设置 skip 这个参数可以告知云端本次查询要跳过多少个结果。将 skip 与 limit 搭配使用可以实现翻页效果，这在客户端做列表展现时，尤其在数据量庞大的情况下就使用技术。例如，在翻页中，一页显示的数量是 10 个，要获取第 3 页的对象：</p>
+<pre><code class="lang-python">from datetime import datetime
+import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+date = datetime.now()
+
+query.less_than(&#39;createdAt&#39;, date)  # 查询今天之前创建的 Todo
+query.limit(10)   # 最多返回 10 条结果
+query.skip(20)    # 跳过 20 条结果 跳过 20 条结果
+</code></pre>
+<p>尽管我们提供以上接口，但是我们不建议广泛使用，因为它的执行效率比较低。取而代之，我们建议使用 <code>created_at</code> 或者 <code>updated_at</code> 这类的时间戳进行分段查询。</p>
+<h4 id="-">属性限定</h4>
+<p>通常列表展现的时候并不是需要展现某一个对象的所有属性，例如，Todo 这个对象列表展现的时候，我们一般展现的是 title 以及 content，我们在设置查询的时候，也可以告知云端需要返回的属性有哪些，这样既满足需求又节省了流量，也可以提高一部分的性能，代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+query.select(&#39;title&#39;, &#39;content&#39;)
+query_list = query.find()
+
+for todo in query_list:
+    title = todo.get(&#39;title&#39;)
+    content = todo.get(&#39;content&#39;)
+    # 如果访问没有指定返回的属性（key），则会返回 null
+    location = todo.get(&#39;location&#39;)
+</code></pre>
+<p>属性限定也支持 Pointer 类型的字段。例如，如果还想获取 Todo 这个对象的所有者信息（owner 属性，Pointer 类型），仅展示这个所有者的 username，可以这样限定属性：</p>
+<pre><code class="lang-python">query.select(&#39;owner.username&#39;)
+</code></pre>
+<h4 id="-">统计总数量</h4>
+<p>通常用户在执行完搜索后，结果页面总会显示出诸如「搜索到符合条件的结果有 1020 条」这样的信息。例如，查询一下今天一共完成了多少条 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+Todo = leancloud.Object.extend(&#39;Todo&#39;)
+query = Todo.query
+query.equal_to(&#39;status&#39;, 1)
+todo_count = query.count()  # 获取输出计数
+</code></pre>
+<h4 id="-">排序</h4>
+<p>对于数字、字符串、日期类型的数据，可对其进行升序或降序排列。</p>
+<pre><code class="lang-python"># 按时间，升序排列
+query.add_ascending(&#39;createdAt&#39;)
+
+# 按时间，降序排列
+query.add_descending(&#39;createdAt&#39;)
+</code></pre>
+<p>一个查询可以附加多个排序条件，如按 priority 升序、createdAt 降序排列：</p>
+<pre><code class="lang-python">query.add_ascending(&#39;createdAt&#39;)
+query.add_descending(&#39;priority&#39;)
+</code></pre>
+<!-- #### 限定返回字段 -->
+<h3 id="-">关系查询</h3>
+<p>关联数据查询也可以通俗地理解为关系查询，关系查询在传统型数据库的使用中是很常见的需求，因此我们也提供了相关的接口来满足开发者针对关联数据的查询。</p>
+<p>首先，我们需要明确关系的存储方式，再来确定对应的查询方式。</p>
+<h4 id="pointer-">Pointer 查询</h4>
+<p>基于在 <a href="#Pointer">Pointer</a> 小节介绍的存储方式：每一个 Comment 都会有一个 TodoFolder 与之对应，用以表示 Comment 属于哪个 TodoFolder。现在我已知一个 TodoFolder，想查询所有的 Comnent 对象，可以使用如下代码：</p>
+<pre><code class="lang-python">import leancloud
+
+query = leancloud.Query(&quot;Comment&quot;)
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+todo_folder = TodoFolder.create_without_data(&#39;5732a4821ea4930064013bdb&#39;)
+query.equal_to(&#39;targetTodoFolder&#39;, todo_folder)
+</code></pre>
+<h4 id="-leancloud-relation-"><code>leancloud.Relation</code> 查询</h4>
+<p>假如用户可以给 TodoFolder 增加一个 Tag 选项，用以表示它的标签，而为了以后拓展 Tag 的属性，就新建了一个 Tag 对象，如下代码是创建 Tag 对象：</p>
+<pre><code class="lang-python">import leancloud
+
+Tag = leancloud.Object.extend(&#39;Tag&#39;)
+tag = Tag()
+tag.set(&#39;name&#39;, &#39;今日必做&#39;)
+tag.save()
+</code></pre>
+<p>而 Tag 的意义在于一个 TodoFolder 可以拥有多个 Tag，比如「家庭」（TodoFolder） 拥有的 Tag 可以是：今日必做，老婆吩咐，十分重要。实现创建「家庭」这个 TodoFolder 的代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+Tag = leancloud.Object.extend(&#39;Tag&#39;)
+tag1 = Tag()
+tag1.set(&#39;name&#39;, &#39;今日必做&#39;)
+tag1.save()
+
+tag2 = Tag()
+tag2.set(&#39;name&#39;, &#39;老婆吩咐&#39;)
+tag2.save()
+
+tag3 = Tag()
+tag3.set(&#39;name&#39;, &#39;十分重要&#39;)
+tag3.save()
+
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+todo_folder = TodoFolder()
+todo_folder.set(&#39;name&#39;, &#39;家庭&#39;)
+todo_folder.set(&#39;priority&#39;, 1)
+
+relation = todo_folder.relation(&#39;tags&#39;)
+relation.add(tag1)
+relation.add(tag2)
+relation.add(tag3)
+
+todo_folder.save()  # 保存到云端
+</code></pre>
+<p>查询一个 TodoFolder 的所有 Tag 的方式如下：</p>
+<pre><code class="lang-python">import leancloud
+
+TodoFolder = leancloud.Object.extend(&#39;TodoFolder&#39;)
+todo_folder = TodoFolder.create_without_data(&#39;5735744479bc44005c402c51&#39;)
+
+relation = todo_folder.relation(&#39;tags&#39;)
+query = relation.query  # 返回一个 query 对象
+query.count()   # 返回第一个 tag 的数量
+</code></pre>
+<p>反过来，现在已知一个 Tag，要查询有多少个 TodoFolder 是拥有这个 Tag 的，可以使用如下代码查询：</p>
+<pre><code class="lang-python">import leancloud
+
+Tag = leancloud.Object.extend(&#39;Tag&#39;)
+tag = Tag.create_without_data(&#39;573573aec4c9710060f9a575&#39;)
+query = leancloud.Query(&#39;TodoFolder&#39;)
+query.equal_to(&#39;tags&#39;, tag)
+query.find()
+</code></pre>
+<p>关于关联数据的建模是一个复杂的过程，很多开发者因为在存储方式上的选择失误导致最后构建查询的时候难以下手，不但客户端代码冗余复杂，而且查询效率低，为了解决这个问题，我们专门针对关联数据的建模推出了一个详细的文档予以介绍，详情请阅读 <a href="relation_guide-python.html">Python 数据模型设计指南</a>。</p>
+<h4 id="-">关联属性查询</h4>
+<p>正如在 <a href="#Pointer">Pointer</a> 中保存 Comment 的 targetTodoFolder 属性一样，假如查询到了一些 Comment 对象，想要一并查询出每一条 Comment 对应的 TodoFolder 对象的时候，可以加上 include 关键字查询条件。同理，假如 TodoFolder 表里还有 pointer 型字段 targetAVUser 时，再加上一个递进的查询条件，形如 include(b.c)，即可一并查询出每一条 TodoFolder 对应的 AVUser 对象。代码如下：</p>
+<pre><code class="lang-python">import leancloud
+
+comment_query = leancloud.Query(&#39;Comment&#39;)
+comment_query.add_descending(&#39;createdAt&#39;)
+comment_query.limit(10)
+# 关键代码，用 include 告知服务端需要返回的关联属性对应的对象的详细信息，而不仅仅是 objectId
+comment_query.include(&#39;targetTodoFolder&#39;)
+# 关键代码，同上，会返回 targetAVUser 对应的对象的详细信息，而不仅仅是 objectId
+comment_query.include(&#39;targetTodoFolder.targetAVUser&#39;)
+comment_list = comment_query.find()
+
+for comment in comment_list:
+    todo_folder = comment.get(&#39;targetTodoFolder&#39;)  # 返回一个 TodoFolder 的对象
+    todo_user = todo_folder.get(&#39;targetAVUser&#39;) # 返回一个 AVUser 的对象
+    todo_name = todo_folder.get(&#39;name&#39;)
+</code></pre>
+<h4 id="-">内嵌查询</h4>
+<p>假如现在有一个需求是展现点赞超过 20 次的 TodoFolder 的评论（Comment）查询出来，注意这个查询是针对评论（Comment），要实现一次查询就满足需求可以使用内嵌查询的接口：</p>
+<pre><code class="lang-python">import leancloud
+
+inner_query = leancloud.Query(&#39;TodoFolder&#39;)
+inner_query.greater_than(&#39;likes&#39;, 20)  # 设置内置查询条件
+
+query = leancloud.Query(&#39;Comment&#39;)
+query.matches_query(&#39;targetTodoFolder&#39;, inner_query)  # 将内嵌查询赋予目标查询
+# query.does_not_match_query(&#39;targetTodoFolder&#39;, inner_query)
+# 也可以查询不包含内嵌查询的目标查询
+query.find()  # 返回符合超过 20 个赞的 TodoFolder 这一条件的 Comment 对象集合
+</code></pre>
+<h3 id="cql-">CQL 查询</h3>
+<p>Cloud Query Language（CQL）是 LeanStorage 独创的使用类似 SQL 语法来实现云端查询功能的语言，具有 SQL 开发经验的开发者可以方便地使用此接口实现查询。</p>
+<p>分别找出 status = 1 的全部 Todo 结果，以及 priority = 0 的 Todo 的总数：</p>
+<pre><code class="lang-python">import leancloud
+
+cql_string1 = &#39;select * from Todo where status = 1&#39;
+todo_list = leancloud.Query.do_cloud_query(sql_string1).results
+
+cql_string2 = &#39;select count(*) from Todo where priority = 0&#39;
+todo_count = leancloud.Query.do_cloud_query(cql_string2).count
+</code></pre>
+<p>通常查询语句会使用变量参数，为此我们提供了与 Java JDBC 所使用的 PreparedStatement 占位符查询相类似的语法结构。</p>
+<p>查询 status = 0、priority = 1 的 Todo：</p>
+<pre><code class="lang-python">import leancloud
+
+cql = &quot; select * from Todo where status = ? and priority = ?&quot;
+todo_query = leancloud.Query.do_cloud_query(cql, 1, 4)
+todo_list = todo_query.results # 返回符合条件的 todo list
+</code></pre>
+<p>目前 CQL 已经支持数据的更新 update、插入 insert、删除 delete 等 SQL 语法，更多内容请参考 <a href="cql_guide.html">Cloud Query Language 详细指南</a>。</p>
+<h3 id="-">缓存查询</h3>
+<p>缓存一些查询的结果到磁盘上，这可以让你在离线的时候，或者应用刚启动，网络请求还没有足够时间完成的时候可以展现一些数据给用户。当缓存占用了太多空间的时候，LeanStorage 会自动清空缓存。</p>
+<p>默认情况下的查询不会使用缓存，除非你调用接口明确设置启用。例如，尝试从网络请求，如果网络不可用则从缓存数据中获取，可以这样设置：</p>
+<pre><code class="lang-python"># Python SDK 暂不支持
+</code></pre>
+<h4 id="-">缓存策略</h4>
+<p>为了满足多变的需求，SDK 默认提供了以下几种缓存策略：</p>
+<h4 id="-">缓存相关的操作</h4>
+<h3 id="-">地理位置查询</h3>
+<p>地理位置查询是较为特殊的查询，一般来说，常用的业务场景是查询距离 xx 米之内的某个位置或者是某个建筑物，甚至是以手机为圆心，查找方圆多少范围内餐厅等等。LeanStorage 提供了一系列的方法来实现针对地理位置的查询。</p>
+<h4 id="-">查询位置附近的对象</h4>
+<p>Todo 的 <code>whereCreated</code>（创建 Todo 时的位置）是一个 <code>leancloud.GeoPoint</code> 对象，现在已知了一个地理位置，现在要查询 <code>whereCreated</code> 靠近这个位置的 Todo 对象可以使用如下代码：</p>
+<pre><code class="lang-python">import leancloud
+
+leancloud.init(&quot;{{appid}}&quot;, &quot;{{appkey}}&quot;)
+query = leancloud.Query(&#39;Todo&#39;)
+point = leancloud.GeoPoint(39.9, 116.4)
+query.limit(10)
+query.near(&#39;whereCreated&#39;, point)  # 离这个位置最近的 10 个 Todo 对象
+query.find()
+</code></pre>
+<p>以上代码的结果将返回与 <code>point</code> 这一点按距离排序（由近到远）的对象数组。</p>
+<div class="callout callout-info">注意：如果在此之后又使用了 <code>ascending</code> 或 <code>descending</code> 方法，则按距离排序会被新排序覆盖。但是如果使用 <code>add_ascending</code>或<code>add_descending</code> 方法，则之前指定的按距离排序的优先级更高。</div>
+
+
+<h4 id="-">查询指定范围内的对象</h4>
+<p>要查找指定距离范围内的数据，可使用 <code>whereWithinKilometers</code> 、 <code>whereWithinMiles</code> 或 <code>whereWithinRadians</code> 方法。
+例如，我要查询距离指定位置，2 千米范围内的 Todo：</p>
+<pre><code class="lang-python">query.within_kilometers(&#39;whereCreated&#39;, point, 10)
+</code></pre>
+<h4 id="-">注意事项</h4>
+<p>使用地理位置需要注意以下方面：</p>
+<ul>
+<li>每个 <code>leancloud.Object</code> 数据对象中只能有一个 <code>leancloud.GeoPoint</code> 对象的属性。</li>
+<li>地理位置的点不能超过规定的范围。纬度的范围应该是在 <code>-90.0</code> 到 <code>90.0</code> 之间，经度的范围应该是在 <code>-180.0</code> 到 <code>180.0</code> 之间。如果添加的经纬度超出了以上范围，将导致程序错误。</li>
+</ul>
+<h3 id="-">查询性能优化</h3>
+<p>影响查询性能的因素很多。特别是当查询结果的数量超过 10 万，查询性能可能会显著下降或出现瓶颈。以下列举一些容易降低性能的查询方式，开发者可以据此进行有针对性的调整和优化，或尽量避免使用。</p>
+<ul>
+<li>不等于和不包含查询（无法使用索引）</li>
+<li>通配符在前面的字符串查询（无法使用索引）</li>
+<li>有条件的 count（需要扫描所有数据）</li>
+<li>skip 跳过较多的行数（相当于需要先查出被跳过的那些行）</li>
+<li>无索引的排序（另外除非复合索引同时覆盖了查询和排序，否则只有其中一个能使用索引）</li>
+<li>无索引的查询（另外除非复合索引同时覆盖了所有条件，否则未覆盖到的条件无法使用索引，如果未覆盖的条件区分度较低将会扫描较多的数据）</li>
+</ul>
+<h2 id="-">用户</h2>
+<p>用户系统几乎是每款应用都要加入的功能。除了基本的注册、登录和密码重置，移动端开发还会使用手机号一键登录、短信验证码登录等功能。LeanStorage 提供了一系列接口来帮助开发者快速实现各种场景下的需求。</p>
+<p><code>leancloud.User</code> 是用来描述一个用户的特殊对象，与之相关的数据都保存在 <code>_User</code> 数据表中。</p>
+<h3 id="-">用户的属性</h3>
+<h4 id="-">默认属性</h4>
+<p>用户名、密码、邮箱是默认提供的三个属性，访问方式如下：</p>
+<pre><code class="lang-python">currentUsername = leancloud.User.get_current().get_username()  
+currentEmail =  leancloud.User.get_current().get_email()    
+# 请注意，以下代码无法获取密码，无此 get_password() 方法
+currentPassword = leancloud.User.get_current().get_password()
+</code></pre>
+<p>请注意代码中，密码是仅仅是在注册的时候可以设置的属性（这部分代码可参照 <a href="#用户名和密码注册">用户名和密码注册</a>），它在注册完成之后并不会保存在本地（SDK 不会以明文保存密码这种敏感数据），所以在登录之后，再访问密码这个字段是为<strong>空的</strong>。</p>
+<h4 id="-">自定义属性</h4>
+<p>用户对象和普通对象一样也支持添加自定义属性。例如，为当前用户添加年龄属性：</p>
+<pre><code class="lang-python">leancloud.User.get_current().set(&#39;age&#39;, 25)
+leancloud.User.get_current().save()
+</code></pre>
+<h4 id="-">属性的修改</h4>
+<p>很多开发者都有这样的疑问：为什么我不能修改任意一个用户的属性？原因如下。</p>
+<blockquote>
+<p>很多时候，就算是开发者也不要轻易修改用户的基本信息，例如用户的手机号、社交账号等个人信息都比较敏感，应该由用户在 App 中自行修改。所以为了保证用户的数据仅在用户自己已登录的状态下才能修改，云端对所有针对 <code>leancloud.User</code> 对象的数据操作都要做验证。</p>
+</blockquote>
+<p>假如，刚才我们为当前用户添加了一个 age 属性，现在我们来修改它：</p>
+<pre><code class="lang-python">leancloud.User.get_current().set(&#39;age&#39;, 27)
+leancloud.User.get_current().save()
+</code></pre>
+<p>细心的开发者应该已经发现 <code>leancloud.User</code> 在自定义属性上的使用与一般的 <code>leancloud.Object</code> 没本质区别。</p>
+<h3 id="-">注册</h3>
+<h4 id="-">手机号码登录</h4>
+<p>一些应用为了提高首次使用的友好度，一般会允许用户浏览一些内容，直到用户发起了一些操作才会要求用户输入一个手机号，而云端会自动发送一条验证码的短信给用户的手机号，最后验证一下，完成一个用户注册并且登录的操作，例如很多团购类应用都有这种用户场景。</p>
+<p>首先调用发送验证码的接口：</p>
+<pre><code class="lang-python">import leancloud
+
+leancloud.cloudfunc.request_sms_code(&#39;135********&#39;)
+</code></pre>
+<p>然后在 UI 上给与用户输入验证码的输入框，用户点击登录的时候调用如下接口：</p>
+<pre><code class="lang-python">import leancloud
+
+# 填入手机获取的验证码
+leancloud.User.signup_or_login_with_mobile_phone(&#39;135********&#39;, &#39;258794&#39;)
+</code></pre>
+<h4 id="-">用户名和密码注册</h4>
+<p>采用「用户名 + 密码」注册时需要注意：密码是以明文方式通过 HTTPS 加密传输给云端，云端会以密文存储密码，并且我们的加密算法是无法通过所谓「彩虹表撞库」获取的，这一点请开发者放心。换言之，用户的密码只可能用户本人知道，开发者不论是通过控制台还是 API 都是无法获取。另外我们需要强调<u>在客户端，应用切勿再次对密码加密，这会导致重置密码等功能失效</u>。</p>
+<p>例如，注册一个用户的示例代码如下（用户名 <code>Tom</code> 密码 <code>cat!@#123</code>）：</p>
+<pre><code class="lang-python">import leancloud
+
+user = leancloud.User()
+user.set_username(&#39;Tom&#39;)
+user.set_password(&#39;cat!@#123&#39;)
+user.set_email(&#39;tom-test@gmail.com&#39;)
+user.sign_up()
+</code></pre>
+<p>我们建议在可能的情况下尽量使用异步版本的方法，这样就不会影响到应用程序主 UI 线程的响应。</p>
+<p>如果注册不成功，请检查一下返回的错误对象。最有可能的情况是用户名已经被另一个用户注册，错误代码 <a href="error_code.html#_202">202</a>，即 <code>_User</code> 表中的 <code>username</code> 字段已存在相同的值，此时需要提示用户尝试不同的用户名来注册。同样，邮件 <code>email</code> 和手机号码 <code>mobilePhoneNumber</code> 字段也要求在各自的列中不能有重复值出现，否则会出现 <a href="error_code.html#_203">203</a>、<a href="error_code.html#_214">214</a> 错误。</p>
+<p>开发者也可以要求用户使用 Email 做为用户名注册，即在用户提交信息后将 <code>_User</code> 表中的 <code>username</code> 和 <code>email</code> 字段都设为相同的值，这样做的好处是用户在忘记密码的情况下可以直接使用「<a href="#重置密码">邮箱重置密码</a>」功能，无需再额外绑定电子邮件。</p>
+<p>关于自定义邮件模板和验证链接，请参考《<a href="https://blog.leancloud.cn/607/">自定义应用内用户重设密码和邮箱验证页面</a>》。</p>
+<h4 id="-">设置手机号码</h4>
+<p>微信、陌陌等流行应用都会建议用户将账号和一个手机号绑定，这样方便进行身份认证以及日后的密码找回等安全模块的使用。我们也提供了一整套发送短信验证码以及验证手机号的流程，这部分流程以及代码演示请参考 。</p>
+<h4 id="-">验证邮箱</h4>
+<p>许多应用会通过验证邮箱来确认用户注册的真实性。如果在 <a href="https://leancloud.cn/app.html?appid={{appid}}#/permission">应用控制台 &gt; 应用设置 &gt; 应用选项</a> 中勾选了 <strong>用户注册时，发送验证邮件</strong>，那么当一个 <code>AVUser</code> 在注册时设置了邮箱，云端就会向该邮箱自动发送一封包含了激活链接的验证邮件，用户打开该邮件并点击激活链接后便视为通过了验证。有些用户可能在注册之后并没有点击激活链接，而在未来某一个时间又有验证邮箱的需求，这时需要调用如下接口让云端重新发送验证邮件：</p>
+<pre><code class="lang-python">   //待补充
+</code></pre>
+<h3 id="-">登录</h3>
+<p>我们提供了多种登录方式，以满足不同场景的应用。</p>
+<h4 id="-">用户名和密码登录</h4>
+<pre><code class="lang-python">import leancloud
+
+user = leancloud.User()
+user.login(&#39;Tom&#39;, &#39;cat!@#123&#39;)
+</code></pre>
+<h4 id="-">手机号和密码登录</h4>
+<p>请确保已详细阅读了  这一小节的内容，才可以顺利理解手机号匹配密码登录的流程以及适用范围。</p>
+<p>用户的手机号只要经过了验证，就可以使用手机号密码登录的功能，否则登录会失败。</p>
+<pre><code class="lang-python">import leancloud
+
+user = leancloud.User()
+user.login_with_mobile_phone(&#39;135********&#39;, &#39;cat!@#123&#39;)
+</code></pre>
+<h4 id="-">手机号和验证码登录</h4>
+<p>中国电信、中国联通、中国移动，这三大运营商的官网均支持「手机号 + 密码」和「手机号 + 随机验证码」的登录方式，我们也提供了这些方式。</p>
+<p>首先，调用发送登录验证码的接口：</p>
+<pre><code class="lang-python">import leancloud
+
+user = leancloud.User()
+user.request_login_sms_code(&#39;135********&#39;)
+</code></pre>
+<p>然后在界面上引导用户输入收到的 6 位短信验证码：</p>
+<pre><code class="lang-python">import leancloud
+
+user = leancloud.User()
+user.signup_or_login_with_mobile_phone(&#39;135********&#39;, &#39;897897&#39;)
+</code></pre>
+<h4 id="-">当前用户</h4>
+<p>打开微博或者微信，它不会每次都要求用户都登录，这是因为它将用户数据缓存在了客户端。
+同样，只要是调用了登录相关的接口，LeanCloud SDK 都会自动缓存登录用户的数据。
+例如，判断当前用户是否为空，为空就跳转到登录页面让用户登录，如果不为空就跳转到首页：</p>
+<pre><code class="lang-python">current_user = leancloud.User.get_current()
+</code></pre>
+<p>如果不调用 <a href="#登出">登出</a> 方法，当前用户的缓存将永久保存在客户端。</p>
+<h4 id="sessiontoken">SessionToken</h4>
+<p>所有登录接口调用成功之后，云端会返回一个 SessionToken 给客户端，客户端在发送 HTTP 请求的时候，Python SDK 会在 HTTP 请求的 Header 里面自动添加上当前用户的 SessionToken 作为这次请求发起者 <code>leancloud.User</code> 的身份认证信息。</p>
+<p>如果在控制台的 <a href="/app.html?appid={{appid}}#/permission">应用选项</a> 中勾选了 <strong>密码修改后，强制客户端重新登录</strong>，那么当用户密码再次被修改后，已登录的用户对象就会失效，开发者需要使用更改后的密码重新调用登录接口，使 SessionToken 得到更新，否则后续操作会遇到 <a href="error_code.html#_403">403 (Forbidden)</a> 的错误。</p>
+<h4 id="-">账户锁定</h4>
+<p>输入错误的密码或验证码会导致用户登录失败。如果在 15 分钟内，同一个用户登录失败的次数大于 6 次，该用户账户即被云端暂时锁定，此时云端会返回错误码 <code>{&quot;code&quot;:1,&quot;error&quot;:&quot;登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码。&quot;}</code>，开发者可在客户端进行必要提示。</p>
+<p>锁定将在最后一次错误登录的 15 分钟之后由云端自动解除，开发者无法通过 SDK 或 REST API 进行干预。在锁定期间，即使用户输入了正确的验证信息也不允许登录。这个限制在 SDK 和云引擎中都有效。</p>
+<h3 id="-">重置密码</h3>
+<h4 id="-">邮箱重置密码</h4>
+<p>我们都知道，应用一旦加入账户密码系统，那么肯定会有用户忘记密码的情况发生。对于这种情况，我们为用户提供了一种安全重置密码的方法。</p>
+<p>重置密码的过程很简单，用户只需要输入注册的电子邮件地址即可：</p>
+<pre><code class="lang-python">leancloud.User.request_password_reset(&#39;tom-test@gmail.com&#39;)
+</code></pre>
+<p>密码重置流程如下：</p>
+<ol>
+<li>用户输入注册的电子邮件，请求重置密码；</li>
+<li>LeanStorage 向该邮箱发送一封包含重置密码的特殊链接的电子邮件；</li>
+<li>用户点击重置密码链接后，一个特殊的页面会打开，让他们输入新密码；</li>
+<li>用户的密码已被重置为新输入的密码。</li>
+</ol>
+<p>关于自定义邮件模板和验证链接，请参考《<a href="https://blog.leancloud.cn/607/">自定义应用内用户重设密码和邮箱验证页面</a>》。</p>
+<h4 id="-">手机号码重置密码</h4>
+<p>与使用 <a href="#邮箱重置密码">邮箱重置密码</a> 类似，「手机号码重置密码」使用下面的方法来获取短信验证码：</p>
+<pre><code class="lang-python">leancloud.User.request_password_reset_by_sms_code(&#39;135********&#39;)
+</code></pre>
+<p>注意！用户需要先绑定手机号码，然后使用短信验证码来重置密码：</p>
+<pre><code class="lang-python"># 这部分需要添加 Python SDK 部分的接口，目前还没有
+leancloud.User.reset_password_by_sms_code(&#39;123456&#39;, &#39;newpassword&#39;)
+</code></pre>
+<h4 id="-">登出</h4>
+<p>用户登出系统时，SDK 会自动清理缓存信息。</p>
+<pre><code class="lang-python">user.logout()  # 清除缓存用户对象
+current_user = leancloud.User.get_current()  # 现在的 current_user 是 null 了
+</code></pre>
+<h3 id="-">用户的查询</h3>
+<p>请注意，<strong>新创建的应用的用户表 <code>_User</code> 默认关闭了 find 权限</strong>。你可以通过 Class 权限设置打开 find 权限，请参考 <a href="data_security.html#Class_级别的_ACL">数据与安全 · Class 级别的权限</a>。我们推荐开发者在 <a href="leanengine_overview.html">云引擎</a> 中封装用户查询，只查询特定条件的用户，避免开放用户表的全部查询权限。</p>
+<p>查询用户代码如下：</p>
+<pre><code class="lang-python">user_query = leancloud.Query(&#39;_leancloud.User&#39;)
+</code></pre>
+<h3 id="-">浏览器中查看用户表</h3>
+<p>用户表是一个特殊的表，专门存储用户对象。在浏览器端，你会看到一个 <code>_User</code> 表。</p>
+<h2 id="-">角色</h2>
+<p>关于用户与角色的关系，我们有一个更为详尽的文档介绍这部分的内容，并且针对权限管理有深入的讲解，详情请点击 <a href="acl_guide-python.html">Python SDK 权限管理使用指南</a>。</p>
+<h2 id="-">子类化</h2>
+<p>LeanCloud 希望设计成能让人尽快上手并使用。你可以通过 <code>leancloud.Object.get()</code> 方法访问所有的数据。但是在很多现有成熟的代码中，子类化能带来更多优点，诸如简洁、可扩展性以及 IDE 提供的代码自动完成的支持等等。子类化不是必须的，你可以将下列代码转化：</p>
+<pre><code class="lang-python">import leancloud
+
+student = leancloud.Object.extend(&quot;Student&quot;)()
+student.set(&#39;name&#39;, &#39;小明&#39;)
+student.save()
+</code></pre>
+<p>可改写成:</p>
+<pre><code class="lang-python">import leancloud
+
+class Student(leancloud.Object):
+    pass
+
+student = Student()
+student.set(&#39;name&#39;, &#39;小明&#39;)
+student.save()
+</code></pre>
+<h3 id="-leancloud-object-">子类化 <code>leancloud.Object</code></h3>
+<p>要实现子类化，需要下面几个步骤：</p>
+<ol>
+<li>首先声明一个子类继承自 <code>leancloud.Object</code>；</li>
+<li>子类化时如果有自定义的构造函数，需要在构造函数中调用父类的构造函数。</li>
+</ol>
+<p>下面是实现 <code>Student</code> 子类化的例子:</p>
+<pre><code class="lang-python">import leancloud
+
+class Student(leancloud.Object):
+    pass
+
+student = Student()
+student.set(&#39;name&#39;, &#39;Tom&#39;)
+student.save()
+</code></pre>
+<h3 id="-">访问器、修改器和方法</h3>
+<p>添加方法到 <code>leancloud.Object</code> 的子类有助于封装类的逻辑。你可以将所有跟子类有关的逻辑放到一个地方，而不是分成多个类来分别处理业务逻辑和存储或转换逻辑。</p>
+<p>你可以很容易地为 <code>leancloud.Object</code> 子类添加访问器和修改器。像平常那样声明字段的<code>getter</code> 和 <code>setter</code> 方法，但是通过 <code>leancloud.Object</code> 的 <code>get</code> 和 <code>set</code> 方法来实现它们。下面是这个例子为 <code>Student</code> 类创建了一个 <code>content</code> 的字段：</p>
+<pre><code class="lang-python">import leancloud
+
+
+class Student(leancloud.Object):
+    @property
+    def content(self):
+        # 可以使用 property 装饰器，方便获取属性
+        return self.get(&#39;content&#39;)
+
+    @content.setter
+    def content(self, value):
+        # 同样可以给对象的 content 增加 setter
+        return self.set(&#39;content&#39;, value)
+</code></pre>
+<p>现在你就可以使用 <code>student.content</code> 方法来访问 <code>content</code> 字段，并通过 <code>student.content = &quot;blah blah blah&quot;</code> 来修改它，并且可以通过 IDE 或者 linter 在运行前就可以发现类型错误。</p>
+<p>如果你不仅需要一个简单的访问器，而是有更复杂的逻辑，你可以在子类化时定义和实现自己的方法。</p>
+<h3 id="-">初始化子类</h3>
+<p>你可以使用自定义的构造函数来创建子类对象。子类必须定义一个公开的默认构造函数，并且不修改任何父类 <code>leancloud.Object</code> 中的字段，这个默认构造函数将会被 SDK 使用来创建子类的强类型的对象。</p>
+<p>要创建一个到现有对象的引用，可以使用 <code>leancloud.Object.create_without_data()</code>：</p>
+<pre><code class="lang-python">import leancloud
+
+Student = leancloud.Object.extend(&#39;Student&#39;)
+student = Student.create_without_data(&#39;573a8459df0eea005e6b711c&#39;)
+student.fetch()
+</code></pre>
+<h3 id="-">查询子类</h3>
+<p>你可以通过对象的 <code>query</code> 属性获取特定的子类的查询对象。下面的例子就查询了用户发表的所有微博列表：</p>
+<pre><code class="lang-python">import leancloud
+
+query = leancloud.Query(&#39;Student&#39;)
+user_name = leancloud.User.get_current().get_username()
+query.equal_to(&#39;publeancloud.User&#39;, user_name)
+student_list = query.find()
+
+for student in student_list:
+    # do whatever you want
+    pass
+</code></pre>
+<h3 id="user-">User 的子类化</h3>
+<p>leancloud.User 作为 <code>leancloud.Object</code> 的子类，同样允许子类化，你可以定义自己的 User 对象。需要继承 User，并且将子类的 <code>_class_name</code> 设为 <code>&#39;_User&#39;</code>：</p>
+<pre><code class="lang-python">import leancloud
+
+class MyUser(leancloud.User):
+    def __init__(self):
+        leancloud.User.__init__(self)
+        self._class_name = &#39;_User&#39;  # 这里要指定 _class_name 为 _User
+
+    def set_nickname(self, name):
+        self.set(&#39;nick_name&#39;, name)
+
+    def get_nickname(self):
+        return self.get(&#39;nick_name&#39;)
+</code></pre>
+<h2 id="-">应用内搜索</h2>
+<p>应用内搜索是一个针对应用数据进行全局搜索的接口，它基于搜索引擎构建，提供更强大的搜索功能。要深入了解其用法和阅读示例代码，请阅读 （<strong>Python 暂不支持</strong>）。</p>
+<h2 id="-">应用内社交</h2>
+<p>应用内社交，又称「事件流」，在应用开发中出现的场景非常多，包括用户间关注（好友）、朋友圈（时间线）、状态、互动（点赞）、私信等常用功能，请参考 （<strong>Python 暂不支持</strong>）。</p>
+<h2 id="-">第三方账户登录</h2>
+<p>社交账号的登录方便了应用开发者在提升用户体验，我们特地开发了一套支持第三方账号登录的组件，请参考 （<strong>Python 文档待补充</strong>）。</p>
+<h2 id="-">用户反馈</h2>
+<p>用户反馈是一个非常轻量的模块，可以用最少两行的代码来实现一个支持文字和图片的用户反馈系统，并且能够方便的在我们的移动 App 中查看用户的反馈，请参考 （<strong>Python 暂不支持</strong>）。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

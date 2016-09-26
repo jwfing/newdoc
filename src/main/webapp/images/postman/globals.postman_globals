@@ -1,0 +1,16 @@
+[
+	{
+		"key": "host",
+		"value": "https://api.leancloud.cn",
+		"type": "text",
+		"name": "host",
+		"enabled": true
+	},
+	{
+		"key": "APIVersion",
+		"value": "1.1",
+		"type": "text",
+		"name": "APIVersion",
+		"enabled": true
+	}
+]

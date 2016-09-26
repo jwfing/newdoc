@@ -1,0 +1,770 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="leanengine-2-0-3-0-">LeanEngine 2.0 升级 3.0 指南</h1>
+<p>如果是新的项目，建议直接使用 3.0 的 <a href="https://github.com/leancloud/node-js-getting-started">项目框架</a> 作为起步。如果是遗留项目想升级到 3.0，可以参考该指南。</p>
+<p>假设当前有一个基本的 2.0 版本的应用，目录结构如下：</p>
+<pre><code>$PROJECT_DIR
+├── README.md
+├── cloud
+│   ├── app.js
+│   ├── main.js
+│   └── views
+│       └── hello.ejs
+├── config
+│   └── global.json
+└── public
+    └── index.html
+</code></pre><p>项目根目录我们以 <code>$PROJECT_DIR</code> 代替。</p>
+<h2 id="-package-json-">创建 package.json 文件</h2>
+<p><strong>提示</strong>：如果项目已经有该文件可以跳过该部分。</p>
+<p>一个标准的 Node.js 应用通常有 <code>$PROJECT_DIR/package.json</code> 文件，该文件记录了项目的元信息，比如应用名称、版本、依赖的三方包等。因为 LeanEngine 3.0 项目没有沙箱环境，所以依赖的所有三方包都需要明确声明。下面是一个示例：</p>
+<pre><code>{
+  &quot;name&quot;: &quot;leanengine-test-project&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;A sample Node.js app using Express 4&quot;,
+  &quot;dependencies&quot;: {
+    &quot;body-parser&quot;: &quot;1.12.3&quot;,
+    &quot;cookie-parser&quot;: &quot;^1.3.5&quot;,
+    &quot;ejs&quot;: &quot;2.3.1&quot;,
+    &quot;express&quot;: &quot;4.12.3&quot;,
+    &quot;leanengine&quot;: &quot;^0.1.4&quot;
+  }
+}
+</code></pre><p>可以通过配置文件了解到：</p>
+<ul>
+<li>项目名称为：leanengine-test-project</li>
+<li>项目版本号：1.0.0</li>
+<li>项目描述：一个使用了 Express 4 的 Node.js 项目</li>
+<li>项目依赖：比如依赖 <code>body-parser</code>，版本为 <code>1.12.3</code>；依赖 <code>leanengine</code>，版本为 <code>^0.1.4</code> 等。</li>
+</ul>
+<p><code>package.json</code> 创建完成后在 <code>$PROJECT_DIR</code> 目录执行下列命令：</p>
+<pre><code>npm install
+</code></pre><p>这样会根据 <code>package.json</code> 中声明的依赖自动从网络下载依赖包，并保存在 <code>$PROJECT_DIR/node_modules</code> 目录。</p>
+<p><strong>提示</strong>：该过程可能会比较慢，因为下载源在国外，可以在命令后面增加 <code>--registry=http://r.cnpmjs.org</code> 参数来使用国内的源，以提高下载速度。</p>
+<p><strong>提示</strong>：如果项目用到了其他一些三方包，一定要添加到 <code>package.json</code> 的依赖声明中，否则部署到服务器时会出现依赖包找不到的情况。</p>
+<p>关于 <code>package.json</code> 更多的信息，可以参考 <a href="https://docs.npmjs.com/files/package.json">npm 官网 package.json 介绍</a>。</p>
+<h2 id="-leanengine-">增加 leanengine 依赖</h2>
+<p>3.0 项目会依赖 <a href="https://github.com/leancloud/leanengine-node-sdk">leanengine</a>，而不是 <a href="https://github.com/leancloud/javascript-sdk">leancloud-storage</a>，可以认为前者是后者的增强，增加了云函数等支持。</p>
+<p>如果是按照 <a href="#创建_package_json_文件">创建 package.json 文件</a> 章节描述的操作，<code>package.json</code> 文件应该已经有 <code>leanengine</code> 的依赖了。如果没有请在 <code>$PROJECT_DIR</code> 目录下执行：</p>
+<pre><code>npm install leanengine --save
+</code></pre><p>该命令的含义是「安装 leanengine 依赖」，最后的 <code>--save</code> 参数会将依赖信息添加到 <code>package.json</code> 文件中。</p>
+<h2 id="-server-js">创建 server.js</h2>
+<p>3.0 的项目会以 <code>$PROJECT_DIR/server.js</code> 作为整个项目的启动文件，下面是一份简单的示例代码：</p>
+<pre><code>  1 var AV = require(&#39;leanengine&#39;);
+  2
+  3 var APP_ID = process.env.LC_APP_ID;
+  4 var APP_KEY = process.env.LC_APP_KEY;
+  5 var MASTER_KEY = process.env.LC_APP_MASTER_KEY;
+  6
+  7 AV.initialize(APP_ID, APP_KEY, MASTER_KEY);
+  8 // 如果不希望使用 masterKey 权限，可以将下面一行删除
+  9 AV.Cloud.useMasterKey();
+ 10
+ 11
+ 12 var app = require(&#39;./app&#39;);
+ 13
+ 14 // 端口一定要从环境变量 `LC_APP_PORT` 中获取。
+ 15 // LeanEngine 运行时会分配端口并赋值到该变量。
+ 16 var PORT = parseInt(process.env.LC_APP_PORT || 3000);
+ 17 app.listen(PORT, function () {
+ 18   console.log(&#39;Node app is running, port:&#39;, PORT);
+ 19 });
+</code></pre><p>该文件做了几件事：</p>
+<h3 id="-av-">初始化 <code>AV</code> 对象</h3>
+<p>第 1 ~ 10 行，引入 <code>leanengine</code> 依赖，并使用环境变量里面的 appId 和 appKey 等信息初始化 <code>AV</code> 对象。</p>
+<ul>
+<li><strong>提示</strong>：2.0 项目直接由沙箱环境提供 <code>AV</code> 对象，而 3.0 项目需要手动初始化。前者虽然方便，但略微违反直觉（因为普通的 Node.js 项目全局空间是不会有 <code>AV</code> 对象的）。手动初始化还可以做更明确的控制，比如「是否使用 MasterKey 初始化 <code>AV</code> 对象，使得 LeanEngine 项目拥有完全权限，不受 ACL 限制等」。</li>
+<li>如果想了解具体有哪些环境变量，可以参考 <a href="./leanengine_webhosting_guide-node.html#环境变量">云引擎指南 - 环境变量</a>。</li>
+</ul>
+<h3 id="-web-">提供 Web 服务</h3>
+<p>第 14 ~ 19 行，引入 <code>app</code> 模块（具体见 <a href="#app_模块">app 模块</a> 一节），然后使用环境变量提供的端口启动应用。</p>
+<ul>
+<li><strong>提示</strong>：2.0 项目引入自定义模块时都需要添加 <code>cloud/</code> 的前缀（比如 <code>cloud/app.js</code>）。Node.js 项目没有这样的引用方式，属于沙箱环境的限制。3.0 项目则使用更加通用的方式，以 <code>./</code> 或 <code>../</code> 开头来引用自定义模块，如用 <code>./app</code> 来引用 <code>$PROJECT_DIR/app.js</code> 文件。</li>
+</ul>
+<h2 id="app-">app 模块</h2>
+<p>app 模块保存在 <code>$PROJECT_DIR/app.js</code> 文件，是应用主要文件之一，其中配置了 Express 的插件、主要路由等信息，文件内容有些类似 2.0 项目的 <code>$PROJECT_DIR/cloud/app.js</code> 文件（WebHosting 版本才有该文件），我们就从一个 2.0 项目的文件改起。</p>
+<p>首先将 2.0 项目中 <code>$PROJECT_DIR/cloud/app.js</code> 文件复制到 <code>$PROJECT_DIR/app.js</code> 目录下。</p>
+<p>假设现在 <code>$PROJECT_DIR/app.js</code> 文件内容如下：</p>
+<pre><code>  1 var express = require(&#39;express&#39;);
+  2 var app = express();
+  3
+  4 // App 全局配置
+  5 app.set(&#39;views&#39;,&#39;cloud/views&#39;);   // 设置模板目录
+  6 app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置 template 引擎
+  7 app.use(express.bodyParser());    // 读取请求 body 的中间件
+  8
+  9 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
+ 10 app.get(&#39;/hello&#39;, function(req, res) {
+ 11   res.render(&#39;hello&#39;, { message: &#39;Congrats, you just set up your app!&#39; });
+ 12 });
+ 13
+ 14 // 最后，必须有这行代码来使 express 响应 HTTP 请求
+ 15 app.listen();
+</code></pre><h3 id="-">模板目录修改</h3>
+<p>因为 3.0 项目不受沙箱限制，不需要强制将模板目录保存在 <code>$PROJECT_DIR/cloud/views</code> 目录下，取而代之使用更加通用的习惯，保存在 <code>$PROJECT_DIR/views</code>，所以改成：</p>
+<pre><code>&gt; 1 var path = require(&#39;path&#39;);
+  2 var express = require(&#39;express&#39;);
+  3 var app = express();
+  4
+  5 // App 全局配置
+&gt; 6 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); // 设置模板目录
+  7 app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置 template 引擎
+</code></pre><ul>
+<li>注意 <code>&gt;</code> 标志指向变动的行，为了拼接「跨平台」的目录样式，我们使用了 <code>path.join</code> 方法，并因此引入了 <code>path</code> 模块。</li>
+</ul>
+<p>改完配置，记得将 <code>$PROJECT_DIR/cloud/views</code> 目录移动到 <code>$PROJECT_DIR/views</code>。</p>
+<h3 id="-">定义静态文件目录</h3>
+<p>因为 2.0 沙箱会默认将 <code>$PROJECT_DIR/public</code> 设置为静态资源目录。而 3.0 项目需要手动设置，所以代码会变成下面这样：</p>
+<pre><code>  6 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); // 设置模板目录
+  7 app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置 template 引擎
+&gt; 8 app.use(express.static(&#39;public&#39;));
+  9 app.use(express.bodyParser());    // 读取请求 body 的中间件
+</code></pre><h3 id="express-">Express 中间件</h3>
+<p>2.0 沙箱环境会默认加载一些 Express 中间件。而 3.0 项目需要手动设置，所以代码可能会变成下面这样：</p>
+<pre><code>  2 var express = require(&#39;express&#39;);
+&gt; 3 var cookieParser = require(&#39;cookie-parser&#39;);
+&gt; 4 var bodyParser = require(&#39;body-parser&#39;);
+  5 var cloud = require(&#39;./cloud&#39;);
+  6 var app = express();
+  7
+  8 // App 全局配置
+  9 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); // 设置模板目录
+ 10 app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置 template 引擎
+ 11 app.use(express.static(&#39;public&#39;));
+&gt;12 app.use(bodyParser.json());
+&gt;13 app.use(bodyParser.urlencoded({ extended: false }));
+&gt;14 app.use(cookieParser());
+ 15
+</code></pre><p>因为 Express 4.x 的中间件都分离为单独项目，所以我们添加了 <code>cookie-parser</code> 和 <code>body-parser</code> 中间件。如果需要，你可以添加自己需要的中间件。</p>
+<p><strong>提示</strong>：记得所有用到的三方包都需要添加到 <code>package.json</code> 文件中，否则部署到服务器时会出现依赖包找不到的情况。</p>
+<h3 id="-">异常处理器</h3>
+<p>2.0 沙箱环境默认提供很多异常处理，方便应用使用。3.0 项目需要手动设置，所以代码可能会变成下面这样：</p>
+<pre><code>&gt; 1 var domain = require(&#39;domain&#39;);
+  2 var path = require(&#39;path&#39;);
+  ...
+ 15 app.use(cookieParser());
+ 16
+&gt;17 // 未处理异常捕获 middleware
+&gt;18 app.use(function(req, res, next) {
+&gt;19   var d = domain.create();
+&gt;20   d.add(req);
+&gt;21   d.add(res);
+&gt;22   d.on(&#39;error&#39;, function(err) {
+&gt;23     console.error(&#39;uncaughtException url=%s, msg=%s&#39;, req.url, err.stack || err.message || err);
+&gt;24     if(!res.finished) {
+&gt;25       res.statusCode = 500;
+&gt;26       res.setHeader(&#39;content-type&#39;, &#39;application/json; charset=UTF-8&#39;);
+&gt;27       res.end(&#39;uncaughtException&#39;);
+&gt;28     }
+&gt;29   });
+&gt;30   d.run(next);
+&gt;31 });
+ 32
+ 33 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
+ 34 app.get(&#39;/hello&#39;, function(req, res) {
+ 35   res.render(&#39;hello&#39;, { message: &#39;Congrats, you just set up your app!&#39; });
+ 36 });
+ 37
+&gt;38 // 如果任何路由都没匹配到，则认为 404
+&gt;39 // 生成一个异常让后面的 err handler 捕获
+&gt;40 app.use(function(req, res, next) {
+&gt;41   var err = new Error(&#39;Not Found&#39;);
+&gt;42   err.status = 404;
+&gt;43   next(err);
+&gt;44 });
+ 45
+&gt;46 // error handlers
+&gt;47 app.use(function(err, req, res, next) {
+&gt;48   console.log(err.stack || err.message || err);
+&gt;49   res.status(err.status || 500);
+&gt;50   res.send(&#39;error:&#39; + err.message);
+&gt;51 });
+ 54
+</code></pre><p>我们添加了几个异常处理器：</p>
+<ul>
+<li>未捕获异常处理器：第 17 ~ 31 行，关于 domain 的用法详见 <a href="https://nodejs.org/api/domain.html#domain_domain">Node.js 官网 - Domain</a>。</li>
+<li>404 异常处理：第 38 ~ 44 行，如果未匹配任何 router，则设置 <code>status</code> 为 404，并产生一个 <code>Not Found</code> 的 <code>err</code></li>
+<li>总异常处理：第 46 ~ 51 行。</li>
+</ul>
+<p>这些异常处理器可以根据自己的需要修改。</p>
+<h3 id="-express-">返回一个 Express 对象</h3>
+<p>2.0 项目会在 <code>$PROJECT_DIR/cloud/app.js</code> 末尾调用 <code>app.listen()</code> 方法来提供 web 服务。3.0 项目使用了更为习惯的用法：导出 Express 的实例，由上层模块调用其 <code>listen</code> 方法启动端口监听，来提供 web 服务。</p>
+<p>回忆下我们在 <a href="#创建_server_js">server.js</a> 部分引用了 <code>app</code> 并调用了 <code>app.listen</code> 方法，所以 <code>$PROJECT_DIR/app.js</code> 可能会是这个样子（第 53 行）：</p>
+<pre><code> 46 // error handlers
+ 47 app.use(function(err, req, res, next) {
+ 48   console.log(err.stack || err.message || err);
+ 49   res.status(err.status || 500);
+ 50   res.send(&#39;error:&#39; + err.message);
+ 51 });
+ 52
+&gt;53 module.exports = app;
+</code></pre><h2 id="-">云函数</h2>
+<p>2.0 项目启动文件是 <code>$PROJECT_DIR/cloud/main.js</code>，一般情况会在该文件会使用 <code>AV.Cloud.define</code> 或者 <code>AV.Cloud.beforeSave</code> 等方法定义很多 <a href="leanengine_cloudfunction_guide-node.html">云函数</a>。</p>
+<p>3.0 项目将这样的文件命名为 <code>$PROJECT_DIR/cloud.js</code>，所以你需要将 <code>$PROJECT_DIR/cloud/main.js</code> 移动并更名为 <code>$PROJECT_DIR/cloud.js</code>。</p>
+<p><strong>注意</strong>：3.0 项目中<strong>不能</strong>存在 <code>$PROJECT_DIR/cloud/main.js</code> 文件，否则会被当做 2.0 的项目加载并运行。2.0 和 3.0 的项目约束可以分别参考 <a href="leanengine_guide-cloudcode.html#项目约束">云引擎指南 - 旧版云引擎</a> 和 <a href="leanengine_webhosting_guide-node.html#项目约束">云引擎指南 - Node.js 环境</a>。</p>
+<p>如果是最基本的 2.0 项目的代码，那它的内容可能是这样：</p>
+<pre><code>  1 require(&quot;cloud/app.js&quot;);
+  2 // Use AV.Cloud.define to define as many cloud functions as you want.
+  3 // For example:
+  4 AV.Cloud.define(&quot;hello&quot;, function(request, response) {
+  5   response.success(&quot;Hello world!&quot;);
+  6 });
+</code></pre><p>可以看到 2.0 项目其实是先加载这个文件，然后在引入 <code>app.js</code>，而 3.0 项目正好相反，是由 <code>app.js</code> 引入 <code>cloud.js</code> 文件，所以更改以后应该是类似这样：</p>
+<pre><code>  1 var AV = require(&#39;leanengine&#39;);
+  2
+  3 // Use AV.Cloud.define to define as many cloud functions as you want.
+  4 // For example:
+  5 AV.Cloud.define(&#39;hello&#39;, function(request, response) {
+  6   response.success(&#39;Hello world!&#39;);
+  7 });
+  8
+  9 module.exports = AV.Cloud;
+</code></pre><ul>
+<li>第 1 行不需要再次引入 <code>app.js</code>，取而代之是引入 <code>leanengine</code> 模块，然后就可以使用 <code>AV.Cloud.define</code> 方法来定义云函数了。</li>
+<li>最后一行记得将 <code>AV.Cloud</code> 对象 <code>export</code> 出来，使引入他的模块可以使用。</li>
+</ul>
+<p>因为 <code>AV.Cloud</code> 是一个 <a href="https://www.npmjs.com/package/connect">connect</a> 对象，所以可以作为 Express 的中间件使用：添加到 <code>$PROJECT_DIR/app.js</code> 的 Express 中类似于这样：</p>
+<pre><code>  5 var bodyParser = require(&#39;body-parser&#39;);
+&gt; 6 var cloud = require(&#39;./cloud&#39;);
+  7 var app = express();
+  8
+  9 // App 全局配置
+ 10 app.set(&#39;views&#39;, path.join(__dirname, &#39;views&#39;)); // 设置模板目录
+ 11 app.set(&#39;view engine&#39;, &#39;ejs&#39;);    // 设置 template 引擎
+&gt;12 app.use(cloud);
+ 13 app.use(express.static(&#39;public&#39;));
+</code></pre><p>我们在第 6 行引入 <code>cloud</code> 模块，然后在第 12 行使用该中间件。</p>
+<p><strong>注意</strong>：<code>cloud</code> 模块必须引入，而且应该在 Express 的中间件链尽量靠前的位置。因为该中间件会提供一个健康监测的 URL，LeanEngine 监控服务会根据该 URL 的响应判断应用是否启动成功。放在后面很容易被其他的 router 替代，导致响应不是预期而认为启动失败。关于健康监测的详细信息请参考 <a href="./leanengine_webhosting_guide-node.html#健康监测">云引擎指南 - Node.js 环境</a>。</p>
+<h2 id="-global-json">移除 global.json</h2>
+<p><code>$PROJECT_DIR/config/global.json</code> 文件在 3.0 已经废弃，可以移除。如果你自己有其他的配置信息，可以创建相关的配置文件保存在 <code>$PROJECT_DIR/config</code> 目录中。</p>
+<h2 id="-">默认时区</h2>
+<p>服务端 2.0 项目环境默认使用 UTC 时区，这给很多开发者带来了困惑。3.0 项目环境将默认时区改为东八区，在 <a href="leanengine_webhosting_guide-node.html#时区问题">时区问题</a> 部分详细讨论这个问题。</p>
+<h2 id="cookie-session-">cookie-session 中间件</h2>
+<p>如果你的 2.0 项目使用了 <code>avos-express-cookie-session</code> 中间件，则你的 <code>$PROJECT_DIR/cloud/app.js</code> 中可能有类似这样的代码：</p>
+<pre><code>var avosExpressCookieSession = require(&#39;avos-express-cookie-session&#39;);
+
+app.use(express.cookieParser(&#39;test&#39;));
+app.use(avosExpressCookieSession({ cookie: { maxAge: 3600000 }, fetchUser: false }));
+</code></pre><p>3.0 项目该中间件用法稍有不同，代码需要修改为类似这样：</p>
+<pre><code>app.use(AV.Cloud.CookieSession({ secret: &#39;my secret&#39;, maxAge: 3600000, fetchUser: true }));
+</code></pre><p>即不需要在引入 <code>avos-express-cookie-session</code> 中间件，不需要使用 <code>cookieParser</code>，直接使用 <code>AV.Cloud.CookieSession</code> 的方式来配置，具体信息参见 <a href="./leanengine_webhosting_guide-node.html#处理用户登录和登出">云引擎指南 - 处理用户登录和登出</a></p>
+<h2 id="-">本地运行</h2>
+<p>到此为止，我们已经配置了一个基本的 LeanEngine 3.0 的项目，应该可以通过命令行工具进行本地调试（确保本机已经安装 Node.js 运行环境），执行下列命令：</p>
+<pre><code>avoscloud
+</code></pre><p>因为 <code>$PROJECT_DIR/app.js</code> 中定义了一个 <code>/hello</code> 的路由，所以 <a href="http://localhost:3000/hello">http://localhost:3000/hello</a> 应该可以正常响应：</p>
+<pre><code>Congrats, you just set up your app!
+</code></pre><p>如果使用其他的 url，比如 <a href="http://localhost:3000/foobar">http://localhost:3000/foobar</a> 会得到一个 404 响应，内容是</p>
+<pre><code>error:Not Found
+</code></pre><p>说明我们的异常处理器起作用了。</p>
+<p>还可以打开云函数调试页面（需要命令行工具 0.7.6 版本以上）<a href="http://localhost:3001">http://localhost:3001</a> 来测试 <code>$PROJECT_DIR/cloud.js</code> 里面定义的 <code>hello</code>云函数。</p>
+<h2 id="-">部署</h2>
+<p>可以使用命令行工具部署到测试环境：</p>
+<pre><code>avoscloud deploy
+</code></pre><p>或者部署到生产环境：</p>
+<pre><code>avoscloud publish
+</code></pre><h2 id="-">其他</h2>
+<p>可以在这里找到升级完成的项目代码：<a href="https://github.com/leancloud/leanengine-upgrade-3.0">https://github.com/leancloud/leanengine-upgrade-3.0</a></p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

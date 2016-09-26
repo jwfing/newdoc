@@ -1,0 +1,1602 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-net-">.NET 实时通信开发指南</h1>
+<h2 id="-">简介</h2>
+<p>在阅读本开发指南之前，请先阅读下<a href="./realtime_v2.html">《实时通信开发指南》</a>，了解实时通信的基本概念和模型。</p>
+<p>目前我们的 .NET 实时通信支持如下运行时：</p>
+<ul>
+<li>Windows Phone Silverlight （8.0 &amp; 8.1）</li>
+<li>Windows Desktop .NET Framework 4.5+</li>
+<li>Xamarin Form 1.4+</li>
+<li>Xamarin iOS 8+</li>
+<li>Xamarin Android 5+</li>
+</ul>
+<p>尚未发布但是已在计划内的如下：</p>
+<ul>
+<li>Windows Runtime （for Windows 10）</li>
+</ul>
+<p>文档中涉及的语法以及接口均对所有运行时有效。</p>
+<h2 id="-">安装</h2>
+<p>为了支持实时聊天，LeanCloud SDK for .NET 依赖于几个开源的 WebSocket 的库，所以推荐开发者从 <a href="https://www.nuget.org/packages/AVOSCloud.Phone/1.3.0-beta">Nuget</a> 上下载我们的 SDK。</p>
+<h2 id="-">初始化</h2>
+<p>导入 SDK 之后，在应用入口函数中添加如下代码：</p>
+<pre><code class="lang-c#">   //generated code by visual studio
+   ...
+   AVClient.Initialize(&quot;你的 AppId&quot;, &quot;你的 AppKey&quot;);
+   ...
+</code></pre>
+<p>例如，在 Windows 控制台的 Main 函数入口可以调用以上代码进行初始化。</p>
+<h2 id="-">单聊</h2>
+<h3 id="-">发送消息</h3>
+<p>此场景类似于微信的私聊，微博的私信以及 QQ 单聊的场景，我们建立了一个统一的概念来描述聊天的各种场景：对话 — AVIMConversation，在<a href="./realtime_v2.html">《实时通信开发指南》</a>里面有详细的介绍。</p>
+<p>Tom 想发送一条消息给 Jerry，下面的代码将帮助他实现这一功能：</p>
+<pre><code class="lang-c#">public async void TomCreateConversationWithJerry()
+{
+    //Tom 用自己的名字作为 ClientId 建立了一个 AVIMClient
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+
+    //Tom 登录到系统
+    await client.ConnectAsync();
+
+    //Tom 建立了与 Jerry 的对话
+    AVIMConversation conversation = await client.CreateConversationAsync(&quot;Jerry&quot;);
+
+    //Tom 发了一条消息给 Jerry
+    await conversation.SendTextMessageAsync(&quot;Hello,Jerry!&quot;);
+}
+</code></pre>
+<h3 id="-">接收消息</h3>
+<p>Jerry 如果想收到 Tom 的消息，他需要如下代码：</p>
+<pre><code class="lang-c#">public async void JerryReceiveMessageFromTom()
+{
+    //Jerry 用自己的名字作为 ClientId 建立了一个 AVIMClient
+    AVIMClient client = new AVIMClient(&quot;Jerry&quot;);
+
+    //Tom 登录到系统
+    await client.ConnectAsync();
+
+    //Jerry 设置接收消息的方法，一旦有消息收到就会调用这个方法
+    client.OnMessageReceieved += (s, e) =&gt;
+    {
+        if (e.Message is AVIMTextMessage)
+        {
+            string words = ((AVIMTextMessage)e.Message).TextContent;
+            //words 内容即为：Hello,Jerry!
+        }
+    };
+}
+</code></pre>
+<p>运行以上代码之后，在 LeanCloud 网站的控制台找到指定的应用，打开存储管理控制台，可以看到默认表 <code>_Conversation</code>中多了一条数据，该条数据的字段解释如下：</p>
+<ul>
+<li>name：String，对话唯一的名字。</li>
+<li>m：Array，对话中成员的列表。</li>
+<li>lm：Date，对话中最后一条消息发送的时间。</li>
+<li>c：String，对话的创建者的 ClientId</li>
+<li>mu：Array，对话中设置了静音的成员，仅针对 iOS 以及 Windows Phone 用户有效</li>
+<li>attr：Object，开发者设置的对话的自定义属性。</li>
+</ul>
+<h2 id="-">群聊</h2>
+<p>此场景类似于微信的多人聊天群组，以及 QQ 群 ，请注意这里的群聊指的是持久化存储的一个群组的概念，比如 QQ 群，除非群主解散该群，这个群应该是一直存在于 我的QQ群 列表中。关于临时群组聊天（聊天室）会在之后做单独解释。</p>
+<h3 id="-">发送消息</h3>
+<p>Tom 想建立一个群，把自己好朋友都拉进这个群，然后给他们发消息，他需要做的事情是：</p>
+<ul>
+<li>第一步：建立一个朋友列表</li>
+<li>第二步：新建一个对话，把朋友列为对话的参与人员</li>
+<li>第三步：发送一条消息</li>
+</ul>
+<p>以下代码将实现这个需求：</p>
+<pre><code class="lang-c#">public async void TomCreateConversationWithFriends()
+{
+    //Tom 用自己的名字作为 ClientId 建立了一个 AVIMClient
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+
+    //Tom 登录到系统
+    await client.ConnectAsync();
+
+    #region 第一步：建立一个朋友列表
+    IList&lt;string&gt; friends = new List&lt;string&gt;();
+    friends.Add(&quot;Jerry&quot;);
+    friends.Add(&quot;Bob&quot;);
+    friends.Add(&quot;Harry&quot;);
+    friends.Add(&quot;William&quot;);
+    #endregion
+
+    #region 新建一个对话，把朋友们列为对话的参与人员
+    AVIMConversation friendConversation = await client.CreateConversationAsync(friends);
+    #endregion
+
+    #region 第三步：发送一条消息
+    await friendConversation.SendTextMessageAsync(&quot;Hey，你们在哪里？&quot;);
+    #endregion
+}
+</code></pre>
+<h3 id="-">接收消息</h3>
+<p>群聊的接收消息与单聊的接收消息是一样的。</p>
+<pre><code class="lang-c#">AVIMConversation NotifiedConversation = null;
+public async void BobReceiveMessageFromTom()
+{
+    //Bob 用自己的名字作为 ClientId 建立了一个 AVIMClient
+    AVIMClient client = new AVIMClient(&quot;Bob&quot;);
+
+    //Bob 登录到系统
+    await client.ConnectAsync();
+
+    //Bob 设置接收消息的方法，一旦有消息收到就会调用这个方法
+    client.OnMessageReceieved += (s, e) =&gt;
+    {
+        if (e.Message is AVIMTextMessage)
+        {
+            //words 的内容就是：Hey，你们在哪里？
+            string words = ((AVIMTextMessage)e.Message).TextContent;
+
+            //AVIMClient 在接收到消息的时候，会一并提供消息所在的 AVIMConversation
+            NotifiedConversation = e.Conversation;
+
+            if (NotifiedConversation != null)
+            {
+                //Bob 收到消息后又回复了一条消息
+                NotifiedConversation.SendTextMessageAsync(&quot;HI,Tom :我在 Jerry 家里，你跟 Harry 什么时候过来？还有 William 和你在一起么？&quot;);
+            }
+        }
+    };
+}
+</code></pre>
+<p>而以上 Tom 和 Bob 发送的消息，William 上线的时候都会收到。</p>
+<p><strong>注： AVIMClient CreateConversationAsync 有多种重载方法供开发者调用，详细的开发者可以在 Visual Studio 中查看定义</strong>。</p>
+<h2 id="-">消息</h2>
+<p>消息在最新版本的 SDK 中做了多层抽象以及封装，详细的我们先从如何发送接收富媒体消息开始。</p>
+<h3 id="-">富媒体消息</h3>
+<p>富媒体消息的支持是新版 SDK 的核心提升，我们目前 SDK 已经支持的富媒体消息类型有以下几种：</p>
+<ul>
+<li>图像消息：<code>AVIMImageMessage</code></li>
+<li>音频消息：<code>AVIMAudioMessage</code></li>
+<li>视频消息：<code>AVIMVideoMessage</code></li>
+<li>文件消息：<code>AVIMFileMessage</code></li>
+<li>地理位置消息：<code>AVIMLocationMessage</code></li>
+</ul>
+<h4 id="-">图像消息</h4>
+<p>图像消息可以由系统提供的拍照 API，以及媒体库中获取，也可以是可访问的图像有效 Url，只要开发者调用一个构造方法，构造出一个 <code>AVIMImageMessage</code>，然后把 <code>AVIMImageMessage</code> 对象当做参数交由 <code>AVConversation</code> 发送出去即可。</p>
+<h5 id="-">发送图像消息</h5>
+<p>场景 1：比如从微博拷贝了一个图像链接，然后可以通过 SDK 直接构建一个 <code>AVIMImageMessage</code>并且发送出去：</p>
+<pre><code class="lang-c#">public async void SendImageMessageAsync_Test()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+
+    await client.ConnectAsync();//Tom 登录
+
+    AVIMConversation conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;);//创建对话
+
+    AVIMImageMessage imgMessage = new AVIMImageMessage(&quot;http://pic2.zhimg.com/6c10e6053c739ed0ce676a0aff15cf1c.gif&quot;);//从外部链接创建图像消息
+    await conversation.SendImageMessageAsync(imgMessage);//发送给 Jerry
+}
+</code></pre>
+<p>场景 2：系统也提供了 API 去获取媒体库里面的照片，开发者只需要调用系统的 API 获取图像文件的数据流，然后构造出一个 <code>AVIMImageMessage</code>，再调用 <code>AVIMConversation.SendImageMessageAsync</code>去发送图像：</p>
+<pre><code class="lang-c#">MediaLibrary library = new MediaLibrary();//系统媒体库
+var photo = library.Pictures[0];//获取第一张照片，运行这段代码，确保手机以及虚拟机里面的媒体库至少有一张照片
+
+AVIMImageMessage imgMessage = new AVIMImageMessage(photo.Name, photo.GetImage());//构造 AVIMImageMessage
+imgMessage.Attributes = new Dictionary&lt;string, object&gt;() 
+{ 
+    {&quot;location&quot;,&quot;San Francisco&quot;}
+};
+imgMessage.Title = &quot;发自我的 WP&quot;;
+await conversation.SendImageMessageAsync(imgMessage);
+</code></pre>
+<p>以上 2 种场景中对于 SDK 的区别就是如下：</p>
+<ul>
+<li>场景 1 中，SDK 并没有实际将图像上传到服务端，而是仅仅是把 URL 包装在消息体内发送出去，并且这种情况下接收方是无法从消息体中获取到元信息等数据的，不过开发者可以自行获取。</li>
+<li>场景 2中，SDK 获取了完整的图像的数据流，所以 SDK 会先上传文件到服务端，然后将文件的元数据以及 URL 等一并包装，再发送出去。</li>
+</ul>
+<h5 id="-">接收图像消息</h5>
+<p>类似于第一章节中单聊中的接收消息，在 <code>AVIMClient</code> 中的 <code>OnMessageReceived</code> 可以收到消息，但是假如接收方在客户端也正好加载了这个对话，那么接收方在 <code>AVIMConversation</code> 里面也会收到 <code>OnImageMessageReceived</code> 的事件响应：</p>
+<pre><code class="lang-c#">public async void ReceiveImageMessageAsync_Test()
+{
+    AVIMClient client = new AVIMClient(&quot;Jerry&quot;);
+    await client.ConnectAsync();
+    AVIMConversation conversation = client.GetConversationById(&quot;55117292e4b065f7ee9edd29&quot;);
+    await conversation.FetchAsync();
+    conversation.OnImageMessageReceived += (s, e) =&gt;
+    {
+        //图像的 url
+        string url = e.Url;
+        //图像的元数据
+        IDictionary&lt;string, object&gt; metaData = e.FileMetaData;
+        //图像的发送者 ClientId
+        string  from= e.FromClientId;
+        //图像发送者为图像设定的 Title
+        string title = e.Title;
+
+        //一些其他的属性都可以在这里获取
+    };
+}
+</code></pre>
+<h4 id="-">音频消息</h4>
+<h5 id="-">发送音频消息</h5>
+<p>发送音频消息的基本流程就是：<code>读取音频文件（或者录制音频）</code>，<code>构建音频消息</code>，<code>消息发送</code>：</p>
+<pre><code class="lang-c#">private async void SendAudioMessageAsync()
+{
+    StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+    var AudioFile = await local.OpenStreamForReadAsync(recordAudioFileName);
+    AVIMAudioMessage audioMessage = new AVIMAudioMessage(recordAudioFileName, AudioFile);//创建音频消息
+
+    await conversation.SendAudioMessageAsync(audioMessage);
+    //这段代码运行之前，请确保 `conversation` 已经实例化
+}
+</code></pre>
+<p>与图像消息类似，音频消息也支持从 URL 构建，然后发送：</p>
+<pre><code class="lang-c#">public async void SendAudioMessageAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    //Tom 登录
+    await client.ConnectAsync();
+    var conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;);//创建对话
+
+    AVIMAudioMessage audioMessage = new AVIMAudioMessage(&quot;http://ac-lhzo7z96.clouddn.com/1427444393952&quot;);//从外部链接创建音频消息
+    await conversation.SendAudioMessageAsync(audioMessage);//发送给 Jerry
+}
+</code></pre>
+<h5 id="-">接收音频消息</h5>
+<p>与接收图像消息一样，在 <code>AVIMConversation</code> 中有 <code>OnAudioMessageReceived</code> ，实例代码请参照图像消息接收。</p>
+<h4 id="-">视频消息</h4>
+<h5 id="-">发送视频消息</h5>
+<p>与发送音频消息类似的流程类似，视频的来源可以是手机录制，可以是 Windows 系统中某一个具体的视频文件：</p>
+<pre><code class="lang-c#">private async void SendVideoMessageAsync()
+{
+    StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+
+    var VideoFile = await local.OpenStreamForReadAsync(recordVideoFileName);
+
+    AVIMVideoMessage videoMessage = new AVIMVideoMessage(recordVideoFileName, VideoFile);
+
+    await conversation.SendVideoMessageAsync(videoMessage);
+}
+</code></pre>
+<p>同样我们也支持从一个视频的 URL 创建视频消息，然后发送出去：</p>
+<pre><code class="lang-c#">public async void SendVideoMessageAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录
+
+    var conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;);//创建对话
+
+    AVIMVideoMessage videoMessage = new AVIMVideoMessage(&quot;http://ac-lhzo7z96.clouddn.com/1427267336319&quot;);//从外部链接创建视频消息
+    await conversation.SendVideoMessageAsync(videoMessage);//发送给 Jerry
+}
+</code></pre>
+<p><strong>注：这里说的 URL指的是视频文件自身的 URL，而不是视频网站上播放页的 URL。</strong></p>
+<h5 id="-">接收视频消息</h5>
+<p>与接收图像消息一样，在 <code>AVIMConversation</code> 中有 <code>OnVideoMessageReceived</code> ，实例代码请参照图像消息接收。</p>
+<h4 id="-">通用文件消息</h4>
+<p>Tom 要发送一份 .doc 文件给 Jerry，可以用下面这种方法：</p>
+<h5 id="-">发送通用文件消息</h5>
+<pre><code class="lang-c#">public async void SendDocAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录
+
+    var conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;);//创建对话
+    StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+    var docFile = await local.OpenStreamForReadAsync(&quot;leancloud.doc&quot;);//读取本地文件
+    var avfile = new AVFile(&quot;leancloud.doc&quot;, docFile);//构造 AVFile
+    AVIMFileMessage fileMessage = new AVIMFileMessage(avfile);//构造文件消息
+    await conversation.SendFileMessageAsync(fileMessage);//发送
+}
+</code></pre>
+<h5 id="-">接收通用文件消息</h5>
+<p>与接收图像消息一样，在 <code>AVIMConversation</code> 中有 <code>OnFileMessageReceived</code> ，实例代码请参照图像消息接收。</p>
+<h4 id="-">地理位置消息</h4>
+<p>地理位置消息构建方式有 2 种：</p>
+<pre><code class="lang-c#">//1.根据纬度和经度构建
+ AVIMLocationMessage locationMessage = new AVIMLocationMessage(Latitude, Longitude);
+//2.根据 AVGeoPoint 构建
+AVGeoPoint avGeoPoint = new AVGeoPoint(31.3853142377, 121.0553079844);
+AVIMLocationMessage locationMessage = new AVIMLocationMessage(avGeoPoint);
+</code></pre>
+<h5 id="-">发送地理位置消息</h5>
+<pre><code class="lang-c#">public async void SendLocationAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录
+    var conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;);//创建对话
+
+    AVIMLocationMessage locationMessage = new AVIMLocationMessage(138.12454, 52.56461);//以经度和纬度为参数构建一个地理位置消息，当然开发者更可以通过具体的设备的 API 去获取设备的地理位置，详细的需要查询具体的设备的 API
+    await conversation.SendLocationMessageAsync(locationMessage);
+}
+</code></pre>
+<h5 id="-">接收地理位置消息</h5>
+<p>与接收图像消息一样，在 <code>AVIMConversation</code> 中有 <code>OnLocationMessageReceived</code> ，实例代码请参照图像消息接收。</p>
+<h3 id="-">消息的发送策略</h3>
+<p>开发者在阅读完前面的富媒体消息并且运行过实例代码之后，在 Visual Studio 中使用 F12 快捷键查看各个消息类型的定义，应该可以看见图像、音频、视频在类的继承关系上是继承自 <code>AVIMFileMessageBase</code>，所有继承自 <code>AVIMFileMessageBase</code> 的消息类型的发送策略如下：</p>
+<ul>
+<li><p>如果文件是从客户端 API 读取的数据流 (Stream) </p>
+<ul>
+<li>第一步：从本地构造 AVFile</li>
+<li>第二步：调用 AVFile 的上传的方法上传到服务器，并获取文件的元信息（MetaData）</li>
+<li>第三步：把 AVFile 的 objectId 以及 URL ，以及文件的元信息封装在消息体内</li>
+<li>第四步：发送消息</li>
+</ul>
+</li>
+<li><p>如果文件是外部链接的 URL</p>
+<ul>
+<li>第一步：直接将 URL 封装在消息体内，不获取元信息，不包含 objectId</li>
+<li>第二步：发送消息</li>
+</ul>
+</li>
+</ul>
+<p>以上逻辑对所有继承 <code>AVIMFileMessageBase</code> 的消息类型有效，目前 SDK 内置的继承自 <code>AVIMFileMessageBase</code> 包含以下几种：</p>
+<ul>
+<li>AVIMImageMessage</li>
+<li>AVIMAudioMessage</li>
+<li>AVIMVideoMessage</li>
+<li>AVIMFileMessage</li>
+</ul>
+<h3 id="-">消息的接收策略</h3>
+<p>消息接收有 <strong>2</strong> 个层级：</p>
+<ul>
+<li><p>第一个是在 <code>AVIMClient</code> 上，它是为了帮助开发者实现被动接收消息，尤其是在本地并没有加载任何对话的时候，类似于刚登录，本地并没有任何 <code>AVIMConversation</code> 的时候，如果某个对话产生新的消息，当前 <code>AVIMClient.OnMessageReceived</code> 负责接收这类消息，但是它并没有针对消息的类型做区分。</p>
+</li>
+<li><p>第二个是在 <code>AVIMConversation</code> 上，负责接收对话的全部信息，并且针对不同的消息类型有不同的事件类型做响应。</p>
+</li>
+</ul>
+<p>以上 <strong>2</strong> 个层级的消息接收策略可以用下表进行描述，假如正在接收的是 <code>AVIMTextMessage</code>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">AVIMClient 接收端</th>
+<th style="text-align:left">条件①</th>
+<th style="text-align:left">条件②</th>
+<th style="text-align:left">条件③</th>
+<th style="text-align:left">条件④</th>
+<th>条件⑤ </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">AVIMClient.OnMessageReceived</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">√</td>
+<td style="text-align:left">√</td>
+<td style="text-align:left">√</td>
+<td style="text-align:left">√</td>
+</tr>
+<tr>
+<td style="text-align:left">AVIMConversation.OnMessageReceived</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">√</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">× </td>
+</tr>
+<tr>
+<td style="text-align:left">AVIMConversation.OnTypedMessageReceived</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">√</td>
+<td style="text-align:left">× </td>
+</tr>
+<tr>
+<td style="text-align:left">AVIMConversation.OnTextMessageReceived</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">×</td>
+<td style="text-align:left">√ </td>
+</tr>
+</tbody>
+</table>
+<p>对应条件如下：</p>
+<ul>
+<li>条件①：<pre><code class="lang-c#">AVIMClient.Status != Online
+</code></pre>
+</li>
+<li>条件②：<pre><code class="lang-c#">AVIMClient.Status == Online &amp;&amp; AVIMClient.OnMessageReceived != null
+</code></pre>
+</li>
+<li>条件③：<pre><code class="lang-c#">AVIMClient.Status == Online 
+&amp;&amp; AVIMClient.OnMessageReceived != null 
+&amp;&amp; AVIMConversation.OnMessageReceived != null
+</code></pre>
+</li>
+<li><p>条件④：</p>
+<pre><code class="lang-c#">AVIMClient.Status == Online 
+&amp;&amp; AVIMClient.OnMessageReceived != null 
+&amp;&amp; AVIMConversation.OnMessageReceived != null
+&amp;&amp; AVIMConversation.OnTypedMessageReceived != null
+&amp;&amp; AVIMConversation.OnTextMessageReceived == null
+</code></pre>
+</li>
+<li><p>条件⑤：</p>
+<pre><code class="lang-c#">AVIMClient.Status == Online 
+&amp;&amp; AVIMClient.OnMessageReceived != null 
+&amp;&amp; AVIMConversation.OnMessageReceived != null
+&amp;&amp; AVIMConversation.OnTypedMessageReceived != null
+&amp;&amp; AVIMConversation.OnTextMessageReceived != null
+</code></pre>
+</li>
+</ul>
+<p>在 AVIMConversation 内，接收消息的顺序是按照 </p>
+<pre><code>OnTextMessageReceived &gt; OnTypedMessageReceived &gt; OnMessageReceived
+</code></pre><p>这是为了方便开发者在接收消息的时候有一个分层操作的空间，这一特性也适用于其他富媒体消息。</p>
+<h3 id="-">消息类详解</h3>
+<p><img src="http://ac-lhzo7z96.clouddn.com/1427252943504" alt="消息的类图"></p>
+<ul>
+<li><code>AVIMMessage</code> 所有消息的基类，一级抽象类；</li>
+<li><code>AVIMTypedMessage</code> 富媒体消息的基类，二级抽象类；</li>
+<li><code>AVIMFileMessageBase</code> 所有包含了文件内容的消息的基类，三级抽象类</li>
+<li><code>AVIMTextMessage</code> 文本消息，三级实例类；</li>
+<li><code>AVIMLocationMessage</code> 地理位置消息，三级实例类</li>
+<li><code>AVIMImageMessage</code> 图像消息，四级实例类</li>
+<li><code>AVIMAudioMessage</code> 音频消息，四级实例类</li>
+<li><code>AVIMVideoMessage</code> 视频消息，四级实例类</li>
+<li><code>AVIMFileMessage</code> 通用文件消息类，四级实例类</li>
+</ul>
+<p>结合图例，实时通信 SDK 在封装的时候，做了明确的分层，开发者需要根据自己的需求去使用。</p>
+<h3 id="-">消息的自定义属性</h3>
+<p>有些场景下需要开发者在发送消息的时候附带一下自己业务逻辑需求的自定义属性，比如消息发送的设备名称，或者图像消息的拍摄地点，或者视频消息的来源等等，如果业务需要，开发者都可以通过 <code>AVIMMessage.Attributes</code> 实现这一需求。</p>
+<p>场景1：在发送照片给自己朋友的时候，想告诉朋友这张照片是在旧金山拍摄的，如下代码可以实现这个需求：</p>
+<pre><code class="lang-c#">AVIMImageMessage imgMessage = new AVIMImageMessage(photo.Name, photo.GetImage());//构造 AVIMImageMessage
+imgMessage.Attributes = new Dictionary&lt;string, object&gt;() 
+{ 
+    {&quot;location&quot;,&quot;San Francisco&quot;}
+};
+imgMessage.Title = &quot;发自我的WP&quot;;
+await conversation.SendImageMessageAsync(imgMessage);
+</code></pre>
+<p>而接收方在 <code>OnMessageReceived</code> 的时候是可以读取到这一属性的：</p>
+<pre><code class="lang-c#">AVIMClient client = new AVIMClient(&quot;friend&quot;);
+await client.ConnectAsync();
+client.OnMessageReceieved += (s, e) =&gt;
+{
+    if (e.Message is AVIMImageMessage)
+    {
+        AVIMImageMessage imgMessage = (AVIMImageMessage)e.Message;
+        string url = imgMessage.Url;
+        string location = imgMessage.Attributes[&quot;location&quot;].ToString();//读取的结果就是 San Francisco
+    }
+};
+</code></pre>
+<p>所有消息都支持这一属性。</p>
+<h2 id="-">对话的管理</h2>
+<p>以上 三个章节基本演示了实时聊天 SDK 的核心概念——AVIMConversation ，LeanCloud 将单聊和群聊（包括聊天室）的消息发送和接收都依托于 <code>AVIMConversation</code>这个统一的概念进行操作。</p>
+<p>所以，开发者需要强化理解的一个概念就是：<strong>SDK 层面是不再区分单聊以及群聊。</strong></p>
+<h3 id="-">对话的成员管理</h3>
+<p>对话的管理包括「成员管理」，「属性管理」两个方面。</p>
+<p>成员管理，是对话中成员的一个实时生效的操作，一旦操作成功不可逆。</p>
+<h4 id="-">准备工作</h4>
+<p>在进行下面几个章节之前，请复制如下代码到 IDE 并且执行，后面的文档中的示例代码是基于以下代码进行的，这是一项<strong>必须的</strong>工作： </p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
+/// 这段代码实现的功能就是 Jerry 创建了一个 包含 Bob，Harry，William 的对话。
+/// &lt;/summary&gt;
+/// &lt;returns&gt;&lt;/returns&gt;
+public async void JerryCreateConversation()
+{
+    AVIMClient client = new AVIMClient(&quot;Jerry&quot;);
+    await client.ConnectAsync();//Jerry 登录
+
+    IList&lt;string&gt; friends = new List&lt;string&gt;();
+    friends.Add(&quot;Bob&quot;);
+    friends.Add(&quot;Harry&quot;);
+    friends.Add(&quot;William&quot;);
+    //添加好朋友
+
+    await client.CreateConversationAsync(friends);//返回 ConversationId
+}
+</code></pre>
+<h4 id="-">自身主动加入</h4>
+<p>Tom 想主动加入 Jerry、Bob、Harry 和 William 的对话（由上一节 JerryCreateConversation() 所创建）中，以下代码将帮助他实现这个功能：</p>
+<pre><code class="lang-c#">public async void InitiativeJoinAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;//获取 Jerry 创建的对话的 Id，这里是直接从控制台拷贝了上一节准备工作中 JerryCreateConversation 成功之后的 objectId
+    AVIMConversation conversation = client.GetConversationById(conversationId);//Tom 获取到这个对话的对象
+    await conversation.JoinAsync();//Tom 主动加入到对话中
+}
+</code></pre>
+<p>该群的其他成员（比如 Bob）会根据自身客户端的状态不同会出现以下 2 种情况:</p>
+<ul>
+<li>如果 Bob 仅仅是登录了应用，并没有加载具体的对话到本地，他只会收到 <code>AVIMClient.OnConversationMembersChanged</code> 的响应的相关操作，代码如下:</li>
+</ul>
+<pre><code class="lang-c#">public async void BobOnTomJoined_S1()
+{
+    AVIMClient client = new AVIMClient(&quot;Bob&quot;);
+    await client.ConnectAsync();
+
+    client.OnConversationMembersChanged += (s, e) =&gt;
+    {
+        switch (e.AffectedType)
+        {
+            case AVIMConversationEventType.MembersJoined:
+                {
+                    IList&lt;string&gt; joinedMemberClientIds = e.AffectedMembers;//这里就是本次加入的 ClientIds
+                    string clientId = joinedMemberClientIds.FirstOrDefault();//因为我们已知本次操作只有 Tom 一个人加入了对话，所以这样就可以直接读取到 Tom 的 clientId
+                    //开发者可以在这里添加自己的业务逻辑
+                }
+                break;
+        }
+    };
+}
+</code></pre>
+<ul>
+<li>如果 Bob 不但登录了，还在客户端加载了当前这个对话，那么他不但会收到 <code>AVIMClient.OnConversationMembersChanged</code> 的响应的相关操作，也会收到 <code>AVIMConversation.OnMembersJoined</code> 的响应的相关操作，代码如下：</li>
+</ul>
+<pre><code class="lang-c#">public async void BobOnTomJoined_S2()
+{
+    AVIMClient client = new AVIMClient(&quot;Bob&quot;);
+    await client.ConnectAsync();
+
+    client.OnConversationMembersChanged += (s, e) =&gt;
+    {
+        switch (e.AffectedType)
+        {
+            case AVIMConversationEventType.MembersJoined:
+                {
+                    IList&lt;string&gt; joinedMemberClientIds = e.AffectedMembers;//这里就是本次加入的 ClientIds
+                    string clientId = joinedMemberClientIds.FirstOrDefault();//因为我们已知本次操作只有 Tom 一个人加入了对话，所以这样就可以直接读取到 Tom 的 clientId
+                    //开发者可以在这里添加自己的业务逻辑
+                }
+                break;
+        }
+    };
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;
+
+    AVIMConversation conversation = client.GetConversationById(conversationId);//Bob 获取到这个对话的对象
+
+    conversation.OnMembersJoined += (s, e) =&gt;
+    {
+        IList&lt;string&gt; joinedMemberClientIds = e.AffectedMembers;//这里就是本次加入的 ClientIds
+        string clientId = joinedMemberClientIds.FirstOrDefault();//因为我们已知本次操作只有 Tom 一个人加入了对话，所以这样就可以直接读取到 Tom 的 clientId
+    };
+}
+</code></pre>
+<h4 id="-">添加其他成员</h4>
+<p>Jerry 想再把 Mary 加入到对话中，需要如下代码帮助他实现这个功能：</p>
+<pre><code class="lang-c#">public async void InviteMaryAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Jerry&quot;);
+    await client.ConnectAsync();
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;//对话的 Id
+    AVIMConversation conversation = client.GetConversationById(conversationId);//Jerry 获取到这个对话的对象
+    await conversation.AddMembersAsync(&quot;Mary&quot;);//Jerry 把 Mary 加入到对话
+}
+</code></pre>
+<p>该对话的其他成员（例如 Harry）也会受到该项操作的影响，收到事件被响应的通知，类似于第一小节<a href="#自身主动加入">自身主动加入</a>中<strong>Tom 加入对话之后，Bob 受到的影响。</strong></p>
+<h4 id="-">自身退出对话</h4>
+<p>这里一定要区分<strong>自身退出对话</strong>的主动性，它与<strong>自身被动被剔除</strong>（下一小节）在逻辑上完全是不一样的。</p>
+<p>Tom 主动从对话中退出，他需要如下代码实现需求：</p>
+<pre><code class="lang-c#">public async void InitiativeLeftAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;//获取 Jerry 创建的对话的 Id
+    AVIMConversation conversation = client.GetConversationById(conversationId);//Tom 获取到这个对话的对象
+    await conversation.LeftAsync();//Tom 主动从对话中退出
+}
+</code></pre>
+<h4 id="-">剔除其他成员</h4>
+<p> Harry 被  William 从对话中删除。
+<strong>注：关于 William 如何获得权限在后面的<code>签名和安全</code>一章节会做详细阐述，此处不宜扩大话题范围）</strong></p>
+<p>以下代码可以帮助 William 实现这一功能：</p>
+<pre><code class="lang-c#">public async void WilliamKickHarryOutAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;William&quot;);
+    await client.ConnectAsync();
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;//对话的 Id
+    AVIMConversation conversation = client.GetConversationById(conversationId);//William 获取到这个对话的对象
+    await conversation.RemoveMembersAsync(&quot;Harry&quot;);//William 把 Harry 从对话中剔除
+}
+</code></pre>
+<p>以上的描述可以用几张表格来解释：</p>
+<p>1.假如对话中已经有了 A，C</p>
+<table>
+<thead>
+<tr>
+<th>B 的操作</th>
+<th>对 B 的影响</th>
+<th>对 C 的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B 加入</td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnJoined</code></td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnMembersJoined</code></td>
+</tr>
+<tr>
+<td>B 再离开</td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnLeft</code></td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnMembersLeft</code></td>
+</tr>
+</tbody>
+</table>
+<p>2.假如对话中已经有了 A，C</p>
+<table>
+<thead>
+<tr>
+<th>A 对 B 的操作</th>
+<th>对 B 的影响</th>
+<th>对 C 的影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 添加 B</td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnInvited</code></td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnMembersJoined</code></td>
+</tr>
+<tr>
+<td>A 再剔除 B</td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnKicked</code></td>
+<td><code>OnConversationMembersChanged &amp;&amp; OnMembersLeft</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">查询成员数量</h4>
+<p><code>AVIMConversation.CountMembersAsync</code> 这个方法是返回实时的数据：</p>
+<pre><code class="lang-c#">public async void CountMembers_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+
+    AVIMConversation conversation = (await client.GetQuery().FindAsync()).FirstOrDefault();
+    int membersCount = await conversation.CountMembersAsync();
+}
+</code></pre>
+<h3 id="-">对话的属性管理</h3>
+<p>对话（AVIMConversation）与控制台中 <code>_Conversation</code> 表是一一对应的，默认提供的属性对应的关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>AVIMConversation 属性名</th>
+<th>_Conversation 字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AVIMConversation.ConversationId</code></td>
+<td><code>_Conversation.objectId</code></td>
+<td>全局唯一的 Id</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.Name</code></td>
+<td><code>_Conversation.name</code></td>
+<td>成员共享的统一的名字</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.MemberIds</code></td>
+<td><code>_Conversation.m</code></td>
+<td>成员列表</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.MuteMemberIds</code></td>
+<td><code>_Conversation.mu</code></td>
+<td>静音成员列表</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.Creator</code></td>
+<td><code>_Conversation.c</code></td>
+<td>对话创建者</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.LastMessageAt</code></td>
+<td><code>_Conversation.lm</code></td>
+<td>对话最后一条消息发送的时间</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.Attributes</code></td>
+<td><code>_Conversation.attr</code></td>
+<td>自定义属性</td>
+</tr>
+<tr>
+<td><code>AVIMConversation.IsTransient</code></td>
+<td><code>_Conversation.tr</code></td>
+<td>是否为聊天室（暂态对话）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">名称</h4>
+<p>这个属性是全员共享的一个属性，他可以在创建时指定，也可以在日后的维护中被修改。</p>
+<p>Tom 想建立一个名字叫「喵星人」 对话并且邀请了好友 Black 加入对话，需要写的代码如下：</p>
+<pre><code class="lang-c#">public async void CreateConversationAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    string anotherCat = &quot;Black&quot;;
+    await client.ConnectAsync();
+
+    AVIMConversation conversation = await client.CreateConversationAsync(anotherCat, &quot;喵星人&quot;);
+}
+</code></pre>
+<p>Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，他需要如下代码：   </p>
+<pre><code class="lang-c#">public async void UpdateConversationAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Black&quot;);
+    await client.ConnectAsync();//Balck 登录
+
+    AVIMConversation conversation = client.GetConversationById(&quot;55117292e4b065f7ee9edd29&quot;);//获取 Tom 创建的对话
+
+    conversation.Name = &quot;聪明的喵星人&quot;;//修改名称
+
+    await conversation.SaveAsync();//保存到服务端
+}
+</code></pre>
+<h4 id="-">成员</h4>
+<p><code>AVIMConversation.MemberIds</code> ：该属性表示当前对话中所包含的成员的 <code>clientId</code> ，
+这个属性<strong>强烈建议开发者切勿在控制台中随意修改</strong>，所有关于成员的操作请参照上一章节中的 <code>成员管理</code> 来进行。</p>
+<h4 id="-">静音成员</h4>
+<p><code>AVIMConversation.MuteMemberIds</code> ：该属性表示当前对话中所进行了静音操作成员的 <code>clientId</code> ，
+假如某一个用户不想再收到某对话的消息，又不想直接退出对话，可以使用静音操作。</p>
+<p>比如 Tom 工作繁忙，对某个对话设置了静音：</p>
+<pre><code class="lang-c#">public async void MuteConversationAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录
+
+    string conversationId = &quot;551260efe4b01608686c3e0f&quot;;//对话的 Id
+    AVIMConversation conversation = client.GetConversationById(conversationId);//Tom 获取到这个对话的对象
+    await conversation.MuteAsync();//Tom 设置静音
+}
+</code></pre>
+<p><strong>设置静音之后，针对 iOS 以及 Windows Phone 用户就不会收到推送消息</strong></p>
+<p>此操作修改的是服务端 <code>_Conversation</code> 里面的 <code>mu</code> 属性。
+与之对应的就是 <code>UnmuteAsync</code>操作，就是取消静音，示例代码参照静音操作。
+<strong>强烈建议开发者切勿在控制台中随意修改</strong>。</p>
+<h4 id="-">创建者</h4>
+<p><code>AVIMConversation.Creator</code> 对话的创建者可以帮助实现类似于 QQ 群中区别「管理员」和「群创建者」的功能，它的值是对话创建者的 <code>clientId</code>。</p>
+<p>案例：QQ 群的「创建者」是固定不变的，它的图标颜色与「管理员」的图标颜色都不一样。
+所以根据对话中成员的 <code>clientId</code> 是否与 <code>AVIMConversation.Creator</code> 一致就可以判断出他是不是群的创建者。</p>
+<h4 id="-">自定义属性</h4>
+<p>此属性是为了帮助开发者给对话添加自定义属性。开发者可以随意存储自己的键值对，以帮助开发者实现自己的业务逻辑需求。</p>
+<p>典型的场景是，我想对某个对话设置 tag 是 private，表示我要标记这个对话是私有的：</p>
+<p>如下代码：</p>
+<pre><code class="lang-c#">public async void CreateConversationWithCustomAttributesAsync()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();
+    IDictionary&lt;string, object&gt; attr = new Dictionary&lt;string, object&gt;();
+    attr.Add(&quot;tag&quot;, &quot;private&quot;);
+    AVIMConversation conversation = await client.CreateConversationAsync(&quot;Jerry&quot;, &quot;猫和老鼠&quot;, attr);//创建对话的时候传入即可。
+}
+</code></pre>
+<p><strong>注意：AVIMConversation.Attributes 在 SDK 级别是对所有成员可见的，如果要控制所谓的可见性，开发者需要自己维护这一属性的读取权限</strong></p>
+<p><code>AVIMConversation.Attributes</code> 在<code>对话查询</code>一节还有更多的用法。</p>
+<h2 id="-">对话的查询</h2>
+<h3 id="-">基础查询</h3>
+<p>假如已知某一对话的 <code>Id</code>，可以使用它来查询该对话的详细信息
+代码实例：</p>
+<pre><code class="lang-c#"> public async void QueryByIdAsync()
+ {
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversation conversation = await client.GetQuery().GetAsync(&quot;551260efe4b01608686c3e0f&quot;);
+ }
+</code></pre>
+<p><strong>注意这个方法和  AVIMClient.GetConversationById 本质上是不一样的，AVIMClient.GetConversationById 可以理解为本地构造一个 AVIMConversation ，但是它除了 Id 别的属性都为空，而 GetAsync 是直接从服务端拉取数据，更为可靠，但是它是异步的。</strong></p>
+<h3 id="-">条件查询</h3>
+<p>条件查询包含分类有<code>比较查询</code>,<code>匹配查询</code></p>
+<h4 id="-">比较查询</h4>
+<p>比较查询在一般的理解上都包含以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>逻辑操作</th>
+<th>AVIMConversationQuery 对应的方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td><code>WhereEqualTo</code></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>WhereNotEqualTo</code> </td>
+</tr>
+<tr>
+<td>大于</td>
+<td><code>WhereGreaterThan</code></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td><code>WhereGreaterThanOrEqualTo</code> </td>
+</tr>
+<tr>
+<td>小于</td>
+<td><code>WhereLessThan</code></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td><code>WhereLessThanOrEqualTo</code></td>
+</tr>
+</tbody>
+</table>
+<p>比较查询最常用的是 <code>WhereEqualTo</code>：</p>
+<pre><code>public async void WhereEqualTo_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereEqualTo(&quot;attr.topic&quot;, &quot;movie&quot;);//构建 topic 是 movie 的查询
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre><p>目前条件查询只针对  <code>AVIMConversation</code> 的 <code>Attributes</code> 属性进行的，也就是针对 <code>_Conversation</code>  表中的 <code>attr</code> 字段进行的 <code>AVQuery</code> 查询。</p>
+<p>实际上为了方便开发者自动为了自定义属性的 key 值增加 <code>attr.</code> 的前缀，SDK 特地添加了一个针对 <code>string</code> 类型的<a href="https://msdn.microsoft.com/zh-cn/library/bb383977.aspx">拓展方法</a></p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
+/// 为聊天的自定义属性查询自动添加 &quot;attr.&quot; 的前缀
+/// &lt;/summary&gt;
+/// &lt;param name=&quot;key&quot;&gt;属性 key 值，例如 type &lt;/param&gt;
+/// &lt;returns&gt;添加前缀的值，例如，attr.type &lt;/returns&gt;
+public static string InsertAttrPrefix(this string key)
+{
+    return key.Insert(0, &quot;attr.&quot;);
+}
+</code></pre>
+<p>导入 SDK 之后在 Visual Studio 里面使用 <code>string</code> 类型的时候可以智能感应提示该方法。</p>
+<pre><code class="lang-c#">AVIMConversationQuery query = client.GetQuery().WhereEqualTo(&quot;topic&quot;.InsertAttrPrefix(), &quot;movie&quot;);//这样就可以实现自动为 `topic` 添加 `attr.` 前缀的效果的效果。
+</code></pre>
+<p>与 <code>WhereEqualTo</code> 相对的就是 <code>WhereNotEqualTo</code> ，以下代码将查询到类型不是私有的对话：</p>
+<pre><code class="lang-c#">public async void WhereNotEqualTo_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereNotEqualTo(&quot;attr.type&quot;, &quot;private&quot;);//构建 type 不等于 movie 的查询
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<p>对于可以比较大小的整型，浮点等常用类型，可以参照以下示例代码进行拓展：</p>
+<pre><code class="lang-c#">public async void WhereGreaterThan_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereGreaterThan(&quot;attr.age&quot;, 18);//构建 年龄大于 18 的查询
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<h4 id="-">正则匹配查询</h4>
+<p>匹配查询指的是在 <code>AVIMConversationQuery</code> 中以 <code>WhereMatches</code> 为前缀的方法。</p>
+<p>Match 类的方法最大的便捷之处就是使用了正则表达式匹配，这样使得，客户端在构建基于正则表达式的查询的时候可以利用 .NET 里面诸多已经熟悉了的概念和接口。</p>
+<p>比如要查询所有 <code>tag</code> 是中文的对话可以如下进行：</p>
+<pre><code class="lang-c#">public async void WhereMatchs_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereMatches(&quot;attr.tag&quot;, &quot;[\u4e00-\u9fa5]&quot;);//查询 tag 是中文的对话
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<h4 id="-">包含查询</h4>
+<p>包含查询指的是 方法名字包含 <code>Contains</code> 单词的方法，例如查询关键字包含「教育」的对话：</p>
+<pre><code class="lang-c#">public async void WhereContains_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereContains(&quot;attr.keywords&quot;, &quot;教育&quot;);//查询 keywords 包含教育
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<p>另外，包含查询还能检索与成员相关的对话数据。
+以下代码将帮助 <code>Tom</code> 查找出 <code>Jerry</code> 以及 <code>Bob</code> 都存在的对话：</p>
+<pre><code class="lang-c#">public async void QueryMembers_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+
+    IList&lt;string&gt; clientIds = new List&lt;string&gt;();
+    clientIds.Add(&quot;Bob&quot;);
+    clientIds.Add(&quot;Jerry&quot;);
+
+    AVIMConversationQuery query = client.GetQuery().WhereContainedIn&lt;string&gt;(&quot;m&quot;, clientIds);//查询对话成员 Bob 以及 Jerry 的对话
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<h3 id="-">组合查询</h3>
+<p>组合查询的概念就是把诸多查询条件合并成一个查询，再交给 SDK 去服务端进行查询。</p>
+<p>LeanCloud .NET SDK 的风格上一直保持以链式的方式提供给开发者去组合符合自己业务逻辑的查询，例如，要查询年龄小于18岁，并且关键字包含「教育」的对话：</p>
+<pre><code class="lang-c#">public async void CombinationQuery_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereContains(&quot;attr.keywords&quot;, &quot;教育&quot;).WhereLessThan(&quot;age&quot;, 18);//查询 keywords 包含教并且年龄小于18的对话
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<p>只要查询构建得合理，开发者完全不需要担心组合查询的性能。</p>
+<h3 id="-">计数查询</h3>
+<p>任意的查询，不管是单查询还是组合查询，都支持计数查询:</p>
+<pre><code class="lang-c#">public async void QueryCount_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    AVIMConversationQuery query = client.GetQuery().WhereContains(&quot;attr.keywords&quot;, &quot;教育&quot;).WhereLessThan(&quot;attr.age&quot;, 18);//查询 keywords 包含教并且年龄小于18的对话
+    var count = await query.CountAsync();//执行查询，获取符合条件的对话的数量
+}
+</code></pre>
+<h2 id="-">聊天室</h2>
+<p>聊天室在本质上就是一个对话，所以以上章节中提到了<strong>所有的属性，方法，操作以及管理，都对聊天室适用</strong>，它仅仅是在逻辑上是一种暂态的，临时的对话。</p>
+<h3 id="-">创建聊天室</h3>
+<p>比如某项比赛正在直播，解说员创建一个临时聊天，与球迷进行互动：</p>
+<pre><code class="lang-c#">public async void ChatRoom_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Dendi&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+    var chatroom = client.CreateConversationAsync(null, &quot;DK VS NewBee&quot;, null, true);
+    //详细解释最后一个参数，transient 如果为 true 就说明是聊天室，逻辑上就是暂态对话
+}
+</code></pre>
+<p>另外，为了方便开发者快速创建聊天室，SDK 提供了一个快捷方法创建聊天室：</p>
+<pre><code class="lang-c#">var chatroom = client.CreateChatRoomAsync(&quot;皇马 VS 巴萨&quot;);//可以理解为一个语法糖，与调用CreateConversationAsync 没有本质区别
+</code></pre>
+<h3 id="-">查询在线人数</h3>
+<p><code>AVIMConversation.CountMembersAsync</code> 不但可以用来查询普通对话的成员总数，在聊天室中，它返回的就是实时在线的人数：</p>
+<pre><code class="lang-c#">public async void CountMembers_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+
+    AVIMConversation conversation = (await client.GetQuery().FindAsync()).FirstOrDefault();
+    int membersCount = await conversation.CountMembersAsync();
+}
+</code></pre>
+<h3 id="-">查询聊天室</h3>
+<p>开发者需要注意的是，<code>AVIMConversationQuery</code> 调用 <code>Where</code> 开头的方法都是查询全部对话的，也就是说，如果想单独查询聊天室的话，需要额外再调用一次 <code>WhereEqulaTo</code> 方法：</p>
+<p>比如我想查询主题包含《奔跑吧，兄弟》的聊天室，如下做即可：</p>
+<pre><code class="lang-c#">public async void QueryChatRoom_SampleCode()
+{
+    AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+    await client.ConnectAsync();//Tom 登录客户端
+
+    AVIMConversationQuery query = client.GetQuery().WhereContains(&quot;topic&quot;.InsertAttrPrefix(), &quot;奔跑吧，兄弟&quot;).WhereEqualTo(&quot;tr&quot;, true);
+    //比如我想查询主题包含《奔跑吧，兄弟》的聊天室
+    var result = await query.FindAsync();//执行查询
+}
+</code></pre>
+<p>从代码上可以看出，仅仅是多了一个额外的 <code>WhereEqualTo(&quot;tr&quot;, true)</code> 的链式查询即可。</p>
+<h2 id="-">聊天记录</h2>
+<p>聊天记录一直是客户端开发的一个重点难题，类似于的 QQ 和 微信的解决方案都是依托客户端做缓存，收到一条消息，就按照自己的业务逻辑存储在客户端的文件或者是各种客户端数据库中。</p>
+<p>目前为了满足需求，我们特地开放了从服务端获取聊天记录的功能：</p>
+<h3 id="-">聊天记录获取</h3>
+<pre><code class="lang-c#">AVIMClient userA = new AVIMClient(&quot;UserA&quot;);
+AVIMConversation con = userA.GetConversationById(&quot;2f08e882f2a11ef07902eeb510d4223b&quot;);
+con.QueryHistory(DateTime.Now.AddDays(-1), 0, &quot;UserA&quot;).Wait();
+//查询 UserA 在 ConversationId 为 `2f08e882f2a11ef07902eeb510d4223b` 中的聊天记录。
+</code></pre>
+<p>以上将查询昨天到现在 24 小时内对话中的聊天记录。</p>
+<h2 id="-">签名与安全</h2>
+<p>在继续阅读本文档之前，请确保您已经对 <a href="./realtime_v2.html#权限和认证">实时通信服务开发指南—权限和认证</a> 有了一定的了解。</p>
+<h3 id="-">实现签名工厂</h3>
+<p><code>AVIMClient</code> 有一个属性：</p>
+<pre><code class="lang-c#">/// &lt;summary&gt;
+/// 获取签名的接口
+/// &lt;/summary&gt;
+public ISignatureFactoryV2 SignatureFactory { get; set; }
+</code></pre>
+<p>是预留给开发者实现签名需求的接口，开发者只需要在登录之前实现这个接口即可。</p>
+<h3 id="-">签名的云引擎实例</h3>
+<p>为了方便开发者理解签名，我们特地开源了签名的<a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">云引擎实例</a>，只要按照要求正确配置，就可以在客户端通过调用云引擎的具体的函数实现签名。</p>
+<p>演示实例的步骤：</p>
+<ul>
+<li><p>首先您需要下载最新版本的<a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">云引擎实例</a>到本地，然后部署到您的应用中，详细请参考<a href="./leanengine_cli.html">云引擎命令行工具使用详解</a></p>
+</li>
+<li><p>其次，在 Visual Studio 中，新建一个类叫做 <code>SampleSignatureFactory</code> ，把下面这段代码拷贝到其中：</p>
+</li>
+</ul>
+<pre><code class="lang-c#">/// &lt;summary&gt;
+/// 签名示例类，推荐开发者用这段代码理解签名的整体概念，正式生产环境，请慎用
+/// &lt;/summary&gt;
+public class SampleSignatureFactory : ISignatureFactoryV2
+{
+    /// &lt;summary&gt;
+    /// 为更新对话成员的操作进行签名
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;conversationId&quot;&gt;对话的Id&lt;/param&gt;
+    /// &lt;param name=&quot;clientId&quot;&gt;当前的 clientId&lt;/param&gt;
+    /// &lt;param name=&quot;targetIds&quot;&gt;被操作所影响到的 clientIds&lt;/param&gt;
+    /// &lt;param name=&quot;action&quot;&gt;执行的操作，目前只有 add，remove&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public Task&lt;AVIMSignatureV2&gt; CreateConversationSignature(string conversationId, string clientId, IList&lt;string&gt; targetIds, string action)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+
+        data.Add(&quot;client_id&quot;, clientId);//表示当前是谁在操作。
+        data.Add(&quot;member_ids&quot;, targetIds);//memberIds不要包含当前的ClientId。
+        data.Add(&quot;conversation_id&quot;, conversationId);//conversationId是签名必须的参数。
+
+        data.Add(&quot;action&quot;, action);//conversationId是签名必须的参数。
+
+
+        //调用云引擎进行签名。
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;actionOnCoversation&quot;, data).ContinueWith&lt;AVIMSignatureV2&gt;(t =&gt;
+        {
+            return MakeSignature(t.Result); ;//拼装成一个 Signature 对象
+        });
+        //以上这段代码，开发者无需手动调用，只要开发者对一个 AVIMClient 设置了 SignatureFactory，SDK 会在执行对应的操作时主动调用这个方法进行签名。
+    }
+    /// &lt;summary&gt;
+    /// 登录签名
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;clientId&quot;&gt;当前的 clientId&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public Task&lt;AVIMSignatureV2&gt; CreateConnectSignature(string clientId)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+
+        data.Add(&quot;client_id&quot;, clientId);//表示当前是谁要求连接服务器。 
+
+        //调用云引擎进行签名。
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;connect&quot;, data).ContinueWith&lt;AVIMSignatureV2&gt;(t =&gt;
+        {
+            return MakeSignature(t.Result); ;//拼装成一个 Signature 对象
+        });
+    }
+
+    /// &lt;summary&gt;
+    /// 为创建对话签名
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;clientId&quot;&gt;当前的 clientId &lt;/param&gt;
+    /// &lt;param name=&quot;targetIds&quot;&gt;被影响的 clientIds &lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public Task&lt;AVIMSignatureV2&gt; CreateStartConversationSignature(string clientId, IList&lt;string&gt; targetIds)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+
+        data.Add(&quot;client_id&quot;, clientId);//表示当前是谁在操作。
+        data.Add(&quot;member_ids&quot;, targetIds);//memberIds不要包含当前的ClientId。
+
+        //调用云引擎进行签名。
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;startConversation&quot;, data).ContinueWith&lt;AVIMSignatureV2&gt;(t =&gt;
+        {
+            return MakeSignature(t.Result); ;//拼装成一个 Signature 对象
+        });
+    }
+
+    /// &lt;summary&gt;
+    /// 获取签名信息并且把它返回给 SDK 去进行下一步的操作
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;dataFromCloudcode&quot;&gt;&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    protected AVIMSignatureV2 MakeSignature(IDictionary&lt;string, object&gt; dataFromCloudcode)
+    {
+        AVIMSignatureV2 signature = new AVIMSignatureV2();
+        signature.Nonce = dataFromCloudcode[&quot;nonce&quot;].ToString();
+        signature.SignatureContent = dataFromCloudcode[&quot;signature&quot;].ToString();
+        signature.Timestamp = (long)dataFromCloudcode[&quot;timestamp&quot;];
+        return signature;//拼装成一个 Signature 对象
+    }
+
+    /// &lt;summary&gt;
+    /// 为获取聊天记录的操作签名
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;clientId&quot;&gt;当前的 clientId &lt;/param&gt;
+    /// &lt;param name=&quot;conversationId&quot;&gt;对话 Id&lt;/param&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public Task&lt;AVIMSignatureV2&gt; CreateQueryHistorySignature(string clientId, string conversationId)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+
+        data.Add(&quot;client_id&quot;, clientId);//表示当前是谁在操作。
+        data.Add(&quot;convid&quot;, conversationId);//memberIds不要包含当前的ClientId。
+
+        //调用云引擎进行签名。
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;queryHistory&quot;, data).ContinueWith&lt;AVIMSignatureV2&gt;(t =&gt;
+        {
+            return MakeSignature(t.Result); ;//拼装成一个 Signature 对象
+        });
+    }
+}
+</code></pre>
+<ul>
+<li>然后在调用如下代码进行测试（确保您已经在控制台开启了聊天签名的服务，否则签名操作无效）：</li>
+</ul>
+<pre><code class="lang-c#">AVIMClient client = new AVIMClient(&quot;Tom&quot;);
+client.SignatureFactory = new SampleSignatureFactory();//这里是一个开发者自己实现的接口的具体的类
+await client.ConnectAsync();//Tom 登录客户端
+</code></pre>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

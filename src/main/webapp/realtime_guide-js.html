@@ -1,0 +1,1782 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">iOS / OS X</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-ios.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-ios.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-ios.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-ios.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-ios.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-ios.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios_os_x_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="/api-docs/javascript/index.html" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_guide-python.html">云引擎开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="javascript-">JavaScript 实时通信开发指南</h1>
+<div class="callout callout-info">本文介绍 JavaScript 实时通讯 SDK version 3 的使用，version 2 的文档请参考<a href="./js_realtime.html">《JavaScript 实时通信开发指南（version 2）》</a>。</div>
+
+<h2 id="-">简介</h2>
+<p>实时通信服务可以让你一行后端代码都不用写，就能做出一个功能完备的实时聊天应用，或是一个实时对战类的游戏。所有聊天记录都保存在云端，离线消息会通过消息推送来及时送达，推送消息文本可以灵活进行定制。</p>
+<blockquote>
+<p>在继续阅读本文档之前，请先阅读<a href="./realtime_v2.html">《实时通信开发指南》</a>，了解一下实时通信的基本概念和模型。</p>
+</blockquote>
+<h3 id="-">兼容性</h3>
+<p>JavaScript 实时通信 SDK 支持如下运行时：</p>
+<ul>
+<li>浏览器/WebView<ul>
+<li>IE 10+ / Edge</li>
+<li>Chrome 31+</li>
+<li>Firefox latest</li>
+<li>iOS 8.0+</li>
+<li>Android 4.4+</li>
+</ul>
+</li>
+<li>Node.js 0.12+</li>
+<li>React Native<ul>
+<li>iOS 0.22+</li>
+<li>Android 0.25+</li>
+</ul>
+</li>
+</ul>
+<h3 id="-">文档贡献</h3>
+<p>我们欢迎和鼓励大家对本文档的不足提出修改建议。请访问我们的 <a href="https://github.com/leancloud/docs">Github 文档仓库</a> 来提交 Pull Request。</p>
+<h3 id="api-">API 文档</h3>
+<p><a href="https://leancloud.github.io/js-realtime-sdk/docs/">https://leancloud.github.io/js-realtime-sdk/docs/</a></p>
+<h2 id="-">安装和初始化</h2>
+<h3 id="-">安装</h3>
+<p>建议使用 npm 安装 SDK，在终端运行以下命令：</p>
+<pre><code class="lang-bash">npm install leancloud-realtime --save
+</code></pre>
+<h3 id="-">引用</h3>
+<p>SDK 暴露（export）了以下成员：<a href="https://leancloud.github.io/js-realtime-sdk/docs/module-leancloud-realtime.html">SDK API 文档</a>。</p>
+<p>如果是在浏览器中使用，需要加载以下 script：</p>
+<pre><code class="lang-html">&lt;script src=&quot;./node_modules/leancloud-realtime/dist/realtime.browser.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>在浏览器中直接加载时，SDK 暴露的所有的成员都挂载在 <code>AV</code> 命名空间下:</p>
+<pre><code class="lang-javascript">var Realtime = AV.Realtime;
+var TextMessage = AV.TextMessage;
+</code></pre>
+<p>如果是在 Node.js 或其他支持 CommonJS 模块规范的环境中使用，需要按以下方法进行 require：</p>
+<pre><code class="lang-javascript">var Realtime = require(&#39;leancloud-realtime&#39;).Realtime;
+var TextMessage = require(&#39;leancloud-realtime&#39;).TextMessage;
+</code></pre>
+<h3 id="-">初始化</h3>
+<p>按照上面的方式拿到 <code>Realtime</code> 类后，可以按照下面用法初始化一个 <code>realtime</code> 实例，在下面的文档中如果出现了未定义的 <code>realtime</code> 指的均是这个实例。</p>
+<pre><code class="lang-javascript">var realtime = new Realtime({
+  appId: &#39;{{appid}}&#39;,
+  region: &#39;cn&#39;, // 美国节点为 &quot;us&quot;
+});
+</code></pre>
+<p>在 React Native 中使用时需要在初始化时指定 noBinary 为 true：</p>
+<pre><code class="lang-javascript">const realtime = new Realtime({
+  appId: &#39;{{appid}}&#39;,
+  region: &#39;cn&#39;, // 美国节点为 &quot;us&quot;
+  noBinary: true,
+});
+</code></pre>
+<h3 id="-">富媒体消息插件</h3>
+<p>如果需要使用 <a href="#富媒体消息">富媒体消息</a> 中的 <code>ImageMessage</code>、<code>AudioMessage</code>、<code>VideoMessage</code>、<code>FileMessage</code> 或 <code>LocationMessage</code>，需要额外安装 leancloud-realtime-plugin-typed-messages 与 leancloud-storage：</p>
+<pre><code class="lang-bash">npm install --save leancloud-realtime-plugin-typed-messages leancloud-storage
+</code></pre>
+<p>在浏览器中使用时按照以下顺序加载：</p>
+<pre><code class="lang-html">&lt;script src=&quot;./node_modules/leancloud-storage/dist/av.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./node_modules/leancloud-realtime/dist/realtime.browser.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./node_modules/leancloud-realtime-plugin-typed-messages/dist/typed-messages.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>然后依次进行初始化：</p>
+<pre><code class="lang-javascript">// 初始化存储 SDK
+AV.initialize(&#39;{{appid}}&#39;, &#39;{{appkey}}&#39;);
+// 初始化实时通讯 SDK
+var Realtime = AV.Realtime;
+var realtime = new Realtime({
+  appId: &#39;{{appid}}&#39;,
+  plugins: [AV.TypedMessagesPlugin], // 注册富媒体消息插件
+});
+// 在浏览器中直接加载时，富媒体消息插件暴露的所有的成员都挂载在 AV 命名空间下
+var imageMessage = new AV.ImageMessage(file);
+</code></pre>
+<p>如果是在 Node.js 或其他支持 CommonJS 模块规范的环境中使用，需要按以下方法进行引用与初始化：</p>
+<pre><code class="lang-javascript">var AV = require(&#39;leancloud-storage&#39;);
+var Realtime = require(&#39;leancloud-realtime&#39;).Realtime;
+var TypedMessagesPlugin = require(&#39;leancloud-realtime-plugin-typed-messages&#39;).TypedMessagesPlugin;
+var ImageMessage = require(&#39;leancloud-realtime-plugin-typed-messages&#39;).ImageMessage;
+
+// 初始化存储 SDK
+AV.initialize(&#39;{{appid}}&#39;, &#39;{{appkey}}&#39;);
+// 初始化实时通讯 SDK
+var realtime = new Realtime({
+  appId: &#39;{{appid}}&#39;,
+  plugins: [TypedMessagesPlugin], // 注册富媒体消息插件
+});
+var imageMessage = new ImageMessage(file);
+</code></pre>
+<p>富媒体消息插件暴露（export）的成员完整列表请参见： <a href="https://leancloud.github.io/js-realtime-sdk/plugins/typed-messages/docs/module-leancloud-realtime-plugin-typed-messages.html">富媒体消息插件 API 文档</a></p>
+<h2 id="-">单聊</h2>
+<p>我们先从最简单的环节入手。此场景类似于微信的私聊、微博的私信和 QQ 单聊。我们创建了一个统一的概念来描述聊天的各种场景：Conversation（对话），在<a href="./realtime_v2.html">《实时通信开发指南》</a> 里也有相关的详细介绍。</p>
+<h3 id="-">发送消息</h3>
+<p><img src="images/tom-and-jerry-avatar.png" alt="Tom and Jerry"></p>
+<p>Tom 想给 Jerry 发一条消息，实现代码如下：</p>
+<pre><code class="lang-javascript">// Tom 用自己的名字作为 clientId，获取 IMClient 对象实例
+realtime.createIMClient(&#39;Tom&#39;).then(function(tom) {
+  // 创建与Jerry之间的对话
+  return tom.createConversation({
+    members: [&#39;Jerry&#39;],
+    name: &#39;Tom &amp; Jerry&#39;,
+  });
+}).then(function(conversation) {
+  // 发送消息
+  return conversation.send(new AV.TextMessage(&#39;耗子，起床！&#39;));
+}).then(function(message) {
+  console.log(&#39;Tom &amp; Jerry&#39;, &#39;发送成功！&#39;);
+}).catch(console.error);
+
+// https://jsplay.avosapps.com/fuq/embed?js,console
+</code></pre>
+<p>执行完以上代码，在 LeanCloud 网站的 <a href="/data.html?appid={{appid}}#/_Conversation">控制台 /（选择应用）/ 存储 / 数据 / <code>_Conversation</code> 表</a> 中多了一行数据，其字段含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>对话唯一的名字</td>
+</tr>
+<tr>
+<td>m</td>
+<td>Array</td>
+<td>对话中成员的列表</td>
+</tr>
+<tr>
+<td>lm</td>
+<td>Date</td>
+<td>对话中最后一条消息发送的时间</td>
+</tr>
+<tr>
+<td>c</td>
+<td>String</td>
+<td>对话的创建者的 ClientId</td>
+</tr>
+<tr>
+<td>mu</td>
+<td>Array</td>
+<td>对话中设置了静音的成员，仅针对 iOS 以及 Windows Phone 用户有效。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提示：每次调用 <code>createConversation()</code> 方法，都会生成一个新的 Conversation 实例，即便使用相同 members 和 name 也是如此。如果想要不重复创建相同成员的对话，请参阅 <a href="#常见问题">常见问题</a> 。</p>
+</blockquote>
+<h3 id="-">接收消息</h3>
+<p>要让 Jerry 收到 Tom 的消息，需要这样写：</p>
+<pre><code class="lang-javascript">// Jerry 登录
+realtime.createIMClient(&#39;Jerry&#39;).then(function(jerry) {
+  jerry.on(&#39;message&#39;, function(message, conversation) {
+    console.log(&#39;Message received: &#39; + message.text);
+  });
+}).catch(console.error);
+
+// https://jsplay.avosapps.com/nuh/embed?js,console
+</code></pre>
+<h2 id="-">群聊</h2>
+<p>对于多人同时参与的固定群组，我们有成员人数限制，最大不能超过 500 人。对于另外一种多人聊天的形式，譬如聊天室，其成员不固定，用户可以随意进入发言的这种「临时性」群组，后面会单独介绍。</p>
+<h3 id="-">发送消息</h3>
+<p>Tom 想建立一个群，把自己好朋友都拉进这个群，然后给他们发消息，他需要做的事情是：</p>
+<ol>
+<li>建立一个朋友列表</li>
+<li>新建一个对话，把朋友们列为对话的参与人员</li>
+<li>发送消息</li>
+</ol>
+<pre><code class="lang-javascript">// Tom 用自己的名字作为 clientId，获取 Client 对象实例
+realtime.createIMClient(&#39;Tom&#39;).then(function(tom) {
+  // 创建与 Jerry,Bob,Harry,William 之间的对话
+  return tom.createConversation({
+    members: [&#39;Jerry&#39;, &#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;],
+    name: &#39;Tom &amp; Jerry &amp; friends&#39;,
+  })
+}).then(function(conversation) {
+  // 发送消息
+  return conversation.send(new AV.TextMessage(&#39;你们在哪儿？&#39;));
+}).then(function(message) {
+  console.log(&#39;发送成功！&#39;);
+}).catch(console.error);
+
+// https://jsplay.avosapps.com/vep/embed?js,console
+</code></pre>
+<h3 id="-">接收消息</h3>
+<p>群聊的接收消息与单聊的接收消息在代码写法上是一致的。</p>
+<pre><code class="lang-javascript">
+// Bob 登录
+realtime.createIMClient(&#39;Bob&#39;).then(function(bob) {
+  bob.on(&#39;message&#39;, function(message, conversation) {
+    console.log(&#39;[Bob] received a message from [&#39; + message.from + &#39;]: &#39; + message.text);
+    // 收到消息之后一般的做法是做 UI 展现，示例代码在此处做消息回复，仅为了演示收到消息之后的操作，仅供参考。
+    conversation.send(new AV.TextMessage(&#39;Tom，我在 Jerry 家，你跟 Harry 什么时候过来？还有 William 和你在一起么？&#39;));
+  });
+}).catch(console.error);
+
+// William 登录
+realtime.createIMClient(&#39;William&#39;).then(function(william) {
+  william.on(&#39;message&#39;, function(message, conversation) {
+    console.log(&#39;[William] received a message from [&#39; + message.from + &#39;]: &#39; + message.text);
+  });
+}).catch(console.error);
+
+// https://jsplay.avosapps.com/coz/embed?js,console
+</code></pre>
+<p>以上由 Tom 和 Bob 发送的消息，William 在上线时都会收到。</p>
+<p>由此可以看出，<strong>群聊和单聊本质上都是对话</strong>，只是参与人数不同。单聊是一对一的对话，群聊是多对多的对话。</p>
+<p>用户在开始聊天之前，需要先登录 LeanCloud 云端。这个登录并不需要用户名和密码认证，只是与 LeanCloud 云端建立一个长连接，所以只需要传入一个唯一标识作为当前用户的 <code>clientId</code> 即可。</p>
+<p>为直观起见，我们使用了 Tom、Jerry 等字符串作为 clientId 登录聊天系统。LeanCloud 云端只要求 clientId 在应用内唯一、不超过 64 个字符的字符串即可，具体用什么数据由应用层决定。</p>
+<p>实时通信 SDK 在内部会为每一个 clientId 创建唯一的 <code>Client</code> 实例，也就是说多次使用相同的 clientId 创建出来的实例还是同一个。因此，如果要支持同一个客户端内多账号登录，只要使用不同的 clientId 来创建多个实例即可。我们的 SDK 也支持多账户同时登录。</p>
+<h2 id="-">消息</h2>
+<p>消息是一个对话的基本组成部分，我们支持的消息类型有：</p>
+<ul>
+<li>文本消息：<code>TextMessage</code></li>
+<li>图像消息：<code>ImageMessage</code></li>
+<li>音频消息：<code>AudioMessage</code></li>
+<li>视频消息：<code>VideoMessage</code></li>
+<li>文件消息：<code>FileMessage</code></li>
+<li>位置消息：<code>LocationMessage</code></li>
+</ul>
+<p>除了 <code>TextMessage</code> 已经内置，其他的消息类型需要额外安装插件 leancloud-realtime-plugin-typed-messages，具体的安装与初始化方法参见 <a href="#富媒体消息插件">安装 - 富媒体消息插件</a>。</p>
+<h3 id="-">富媒体消息</h3>
+<h4 id="-">发送消息</h4>
+<h5 id="-">图像消息、音频消息、视频消息、文件消息</h5>
+<p>图像可以通过浏览器或 Node.js 提供的 API 获取，也可以用有效的图像 URL。先使用存储 SDK 的 <code>AV.File</code> 类 <a href="leanstorage_guide-js.html#文件">构造出一个文件对象</a>，再调用其 <code>save</code> 方法将其保存到服务端，然后把它当做参数构造一个 <code>ImageMessage</code> 的实例，最后通过 <code>Conversation#send</code> 方法即可发送这条消息。</p>
+<p>音频消息、视频消息、文件消息的构造与发送与图像消息类似，不再赘述。</p>
+<h6 id="-">发送图像消息</h6>
+<p>【场景一】用浏览器提供的 API 去获取本地的照片，然后构造出 <code>ImageMessage</code> 来发送：</p>
+<pre><code class="lang-javascript">/* html: &lt;input type=&quot;file&quot; id=&quot;photoFileUpload&quot;&gt; */
+
+var fileUploadControl = $(&#39;#photoFileUpload&#39;)[0];
+var file = new AV.File(&#39;avatar.jpg&#39;, fileUploadControl.files[0]);
+file.save().then(function() {
+  var message = new AV.ImageMessage(file);
+  message.setText(&#39;发自我的小米&#39;);
+  message.setAttributes({ location: &#39;旧金山&#39; });
+  return conversation.send(message);
+}).then(function() {
+  console.log(&#39;发送成功&#39;);
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/vug/embed?html,js,console,output
+</code></pre>
+<p>【场景二】从微博上复制的一个图像链接来创建图像消息：</p>
+<pre><code class="lang-javascript">var file = new AV.File.withURL(&#39;萌妹子&#39;, &#39;http://pic2.zhimg.com/6c10e6053c739ed0ce676a0aff15cf1c.gif&#39;);
+file.save().then(function() {
+  var message = new AV.ImageMessage(file);
+  message.setText(&#39;萌妹子一枚&#39;);
+  return conversation.send(message);
+}).then(function() {
+  console.log(&#39;发送成功&#39;);
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/poj/embed?js,console
+</code></pre>
+<p>以上两种场景对于 SDK 的区别为：</p>
+<ul>
+<li>场景一：SDK 获取了完整的图像数据流，先上传文件到云端，再将文件 URL 包装在消息体内发送出去。</li>
+<li>场景二：SDK 并没有将图像实际上传到云端，而仅仅把 URL 包装在消息体内发送出去。</li>
+</ul>
+<p>需要特别指出，与其他 SDK 不同的是，由于 JavaScript 存储 SDK 在处理文件时不会自动获取图像文件的大小、宽高等元信息，在默认的情况下情况下接收方是无法从消息体中获取图像的元信息数据，但是接收方可以自行通过客户端技术去分析图片的格式、大小、长宽之类的元数据。或者你也可以通过其他方式获得图像的元信息，然后通过 <code>AV.File#metaData</code> 方法手动设置这些信息。</p>
+<h5 id="-">地理位置消息</h5>
+<p>先使用存储 SDK 的 <code>AV.GeoPoint</code> 类 <a href="leanstorage_guide-js.html#地理位置">构造出一个地理位置对象</a>，然后把它当做参数构造一个 <code>LocationMessage</code> 的实例，最后通过 <code>Conversation#send</code> 方法即可发送这条消息。</p>
+<pre><code class="lang-javascript">var location = new AV.GeoPoint(31.3753285,120.9664658);
+var message = new AV.LocationMessage(location);
+message.setText(&#39;新开的蛋糕店！耗子咱们有福了…&#39;);
+conversation.send(message).then(function() {
+  console.log(&#39;发送成功&#39;);
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/xol/embed?js,console
+</code></pre>
+<h4 id="-">接收富媒体消息</h4>
+<p>实时通信 SDK 提供的所有富媒体消息类都是从 TypedMessage 派生出来的。发送的时候可以直接调用 <code>conversation.send()</code> 函数。在接收端，SDK 会在 IMClient 实例上派发 <code>message</code> 事件，接收端处理富媒体消息的示例代码如下：</p>
+<pre><code class="lang-javascript">// 在初始化 Realtime 时，需加载 TypedMessagesPlugin
+// var realtime = new Realtime({
+//   appId: appId,
+//   plugins: [AV.TypedMessagesPlugin,]
+// });
+// 注册 message 事件的 handler
+client.on(&#39;message&#39;, function messageEventHandler(message, conversation) {
+  // 请按自己需求改写
+  var file;
+  switch (message.type) {
+    case AV.TextMessage.TYPE:
+      console.log(&#39;收到文本消息， text: &#39; + message.getText() + &#39;, msgId: &#39; + message.id);
+      break;
+    case AV.FileMessage.TYPE:
+      file = message.getFile(); // file 是 AV.File 实例
+      console.log(&#39;收到文件消息，url: &#39; + file.url() + &#39;, size: &#39; + file.metaData(&#39;size&#39;));
+      break;
+    case AV.ImageMessage.TYPE:
+      file = message.getFile();
+      console.log(&#39;收到图片消息，url: &#39; + file.url() + &#39;, width: &#39; + file.metaData(&#39;width&#39;));
+      break;
+    case AV.AudioMessage.TYPE:
+      file = message.getFile();
+      console.log(&#39;收到音频消息，url: &#39; + file.url() + &#39;, width: &#39; + file.metaData(&#39;duration&#39;));
+      break;
+    case AV.VideoMessage.TYPE:
+      file = message.getFile();
+      console.log(&#39;收到视频消息，url: &#39; + file.url() + &#39;, width: &#39; + file.metaData(&#39;duration&#39;));
+      break;
+    case AV.LocationMessage.TYPE:
+      var location = message.getLocation();
+      console.log(&#39;收到位置消息，latitude: &#39; + location.latitude + &#39;, longitude: &#39; + location.longitude);
+      break;
+    default:
+      console.warn(&#39;收到未知类型消息&#39;);
+  }
+});
+
+// http://jsplay.avosapps.com/fux/embed?js,console
+</code></pre>
+<p>同时，对应的 conversation 上也会派发 <code>message</code> 事件：</p>
+<pre><code class="lang-javascript">conversation.on(&#39;message&#39;, function messageEventHandler(message) {
+  // your logic
+});
+</code></pre>
+<h3 id="-">暂态消息</h3>
+<p>暂态消息不会被自动保存（以后在历史消息中无法找到它），也不支持延迟接收，离线用户更不会收到推送通知，所以适合用来做控制协议。譬如聊天过程中「某某正在输入...」这样的状态信息，就适合通过暂态消息来发送；或者当群聊的名称修改以后，也可以用暂态消息来通知该群的成员「群名称被某某修改为...」。</p>
+<pre><code class="lang-javascript">// operation-message.js
+
+var { TypedMessage, messageType, messageField } = require(&#39;leancloud-realtime&#39;);
+// 自定义的消息类型，用于发送和接收所有的用户操作消息
+// 这里使用了 TypeScript 的语法，也可以使用其他的继承机制的实现，详见「自定义消息类型」章节
+
+// 指定 type 类型，可以根据实际换成其他正整数
+@messageType(1)
+@messageField(&#39;op&#39;)
+class OperationMessage extends TypedMessage {}
+
+// app.js
+
+realtime.createIMClient(&#39;tom&#39;).then(function(tom) {
+  return tom.createConversation({
+    members: [&#39;bob&#39;],
+  });
+}).then(function(conversation) {
+  var message = new OperationMessage();
+  message.op = &#39;typing&#39;;
+  // 设置该条消息为暂态消息
+  message.setTransient(true);
+  return conversation.send(message);
+}).then(function() {
+  console.log(&#39;发送成功&#39;);
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/cew/embed?js,console,output
+</code></pre>
+<p>而对话中的其他成员在程序中需要有以下代码做出响应：</p>
+<pre><code class="lang-javascript">// operation-message.js 同发送
+
+// app.js
+
+// 首先需要注册自定义消息类型
+realtime.register(OperationMessage);
+realtime.createIMClient(&#39;bob&#39;).then(function(bob) {
+  // 注册 message 事件的 handler
+  client.on(&#39;message&#39;, function messageEventHandler(message, conversation) {
+    switch (message.type) {
+      case OperationMessage.TYPE:
+        console.log(message.from + &#39; is &#39; + message.op);
+        break;
+      // case ...
+      default:
+        console.warn(&#39;收到未知类型消息&#39;);
+    }
+  });
+});
+
+// http://jsplay.avosapps.com/cew/embed?js,console,output
+</code></pre>
+<h3 id="-">消息送达回执</h3>
+<p>是指消息被对方收到之后，云端会发送一个回执通知给发送方，表明消息已经送达。</p>
+<p>发送时标记消息为「需要回执」：</p>
+<pre><code class="lang-javascript">var message = new AV.TextMessage(&#39;very important message&#39;);
+message.setNeedReceipt(true);
+conversation.send(message);
+</code></pre>
+<p>当消息的接收方收到消息后，服务端会通知消息的发送方「消息已送达」，发送方的 SDK 会在 conversation 上派发一个 <code>receipt</code> 事件：</p>
+<pre><code class="lang-javascript">conversation.on(&#39;receipt&#39;, function(payload) {
+  // payload.message 为送达的消息，与先前发送的是同一实例
+  // message.status 更新为 MessageStatus.DELIVERED
+  // message.deliveredAt 为消息送达的时间
+  console.log(payload.message);
+});
+</code></pre>
+<p>需要注意的是：</p>
+<blockquote>
+<p>只有在发送时设置了「需要回执」标记，云端才会发送回执，默认不发送回执。该回执并不代表用户已读。</p>
+</blockquote>
+<h3 id="-">未读消息</h3>
+<p>未读消息有两种处理方式，未读消息数量通知与离线消息通知。</p>
+<h4 id="-">未读消息数量通知</h4>
+<p>未读消息数量通知是默认的未读消息处理方式：当客户端上线时，会收到其参与过的会话的未读消息数量的通知，然后由客户端负责主动拉取未读的消息并手动标记为已读。</p>
+<p>当收到未读消息数量通知时，SDK 会在 Client 上派发 <code>unreadmessages</code> 事件。</p>
+<pre><code class="lang-javascript">client.on(&#39;unreadmessages&#39;, function unreadMessagesEventHandler(payload, conversation) {
+  console.log(payload);
+  // {
+  //   count: 4,
+  //   lastMessageId: &quot;UagNXHK0RHqIvM_VB7Injg&quot;,
+  //   lastMessageTimestamp: [object Date],
+  // }
+})
+
+// http://jsplay.avosapps.com/xuc/embed?js,console
+</code></pre>
+<p>如果有多个对话有未读消息，这个事件会被派发多次，对应的 conversation 的未读消息数（<code>conversation.unreadMessagesCount</code>）会自动更新，此时开发者可以在对话列表界面上更新这些对话的未读消息数量。</p>
+<p>当用户点击进入某个对话时，开发者需要做两件事：</p>
+<ol>
+<li>拉取消息记录，参见<a href="#聊天记录">聊天记录</a></li>
+<li>调用 <code>Conversation#markAsRead</code> 标记该会话为已读：</li>
+</ol>
+<pre><code class="lang-javascript">conversation.markAsRead().then(function(conversation) {
+  console.log(&#39;对话已标记为已读&#39;);
+}).catch(console.error.bind(console));
+</code></pre>
+<p>此时，当前用户其他在线的客户端会收到 <code>unreadmessages</code> 消息，将该会话的未读消息数更新为 0。</p>
+<p>除了 <code>Conversation#markAsRead</code>，SDK 还提供了 <code>IMClient#markAllAsRead</code> 方法来批量标记对话为已读：</p>
+<pre><code class="lang-javascript">client.markAllAsRead([conversation]).then(function() {
+  console.log(&#39;对话已全部标记已读&#39;);
+}).catch(console.error.bind(console));
+</code></pre>
+<h4 id="-">离线消息通知</h4>
+<p>离线消息通知方式是指，当客户端上线时，服务器会主动将所有离线时收到的消息推送过来，每个对话最多推送 20 条最近的消息。当收到离线消息时，SDK 会在 Client 上派发 <code>messages</code> 事件，与在线时收到消息无异。</p>
+<p>要使用离线消息通知方式，需要在初始化 Realtime 时设置参数 <code>pushOfflineMessages</code> 为 <code>true</code>：</p>
+<pre><code class="lang-javascript">var realtime = new AV.Realtime({
+  appId: &#39;{{appid}}&#39;,
+  pushOfflineMessages: true,
+});
+</code></pre>
+<h3 id="-">消息类详解</h3>
+<p>消息类型之间的关系</p>
+<p><img src="http://ac-lhzo7z96.clouddn.com/1440485935481" alt="消息的类图"></p>
+<p>消息类均包含以下属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from</td>
+<td>String</td>
+<td>消息发送者的 clientId</td>
+</tr>
+<tr>
+<td>cid</td>
+<td>String</td>
+<td>消息所属对话 id</td>
+</tr>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>消息发送成功之后，由 LeanCloud 云端给每条消息赋予的唯一 id</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>Date</td>
+<td>消息发送的时间。消息发送成功之后，由 LeanCloud 云端赋予的全局的时间戳。</td>
+</tr>
+<tr>
+<td>deliveredAt</td>
+<td>Date</td>
+<td>消息送达时间</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Symbol</td>
+<td>消息状态，其值为枚举 <a href="https://leancloud.github.io/js-realtime-sdk/docs/module-leancloud-realtime.html#.MessageStatus"><code>MessageStatus</code></a> 的成员之一：<br/><br/><code>MessageStatus.NONE</code>（未知）<br/><code>MessageStatus.SENDING</code>（发送中）<br/><code>MessageStatus.SENT</code>（发送成功）<br/><code>MessageStatus.DELIVERED</code>（已送达）<br/><code>MessageStatus.FAILED</code>（失败）</td>
+</tr>
+</tbody>
+</table>
+<p>我们为每一种富媒体消息定义了一个消息类型，实时通信 SDK 自身使用的类型是负数（如下面列表所示），所有正数留给开发者自定义扩展类型使用，0 作为「没有类型」被保留起来。</p>
+<table>
+<thead>
+<tr>
+<th>消息</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文本消息</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>图像消息</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>音频消息</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>视频消息</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>位置消息</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>文件消息</td>
+<td>-6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">自定义消息</h3>
+<p>在某些场景下，开发者需要在发送消息时附带上自己业务逻辑需求的自定义属性，比如消息发送的设备名称，或是图像消息的拍摄地点、视频消息的来源等等，开发者可以通过  实现这一需求。</p>
+<p>【场景】发照片给朋友，告诉对方照片的拍摄地点：</p>
+<pre><code class="lang-javascript">// predefined: someAVFile, conversation
+var message = new AV.ImageMessage(someAVFile);
+message.setAttributes({
+  location: &#39;拉萨布达拉宫&#39;,
+  title: &#39;这蓝天……我彻底是醉了&#39;,
+});
+conversation.send(message).then(function() {
+  console.log(&#39;发送成功&#39;);
+}).catch(console.error.bind(console));
+</code></pre>
+<p>接收时可以读取这一属性：</p>
+<pre><code class="lang-javascript">// predefined: client
+client.on(&#39;message&#39;, function(message) {
+  console.log(message.getAttributes().location); // 拉萨布达拉宫
+});
+</code></pre>
+<p>所有的 <code>TypedMessage</code> 消息都支持 <code>attributes</code> 这一属性。</p>
+<h4 id="-">创建新的消息类型</h4>
+<p>通过继承 TypedMessage，开发者也可以扩展自己的富媒体消息。其要求和步骤是：</p>
+<ul>
+<li>申明新的消息类型，继承自 TypedMessage 或其子类，然后：<ul>
+<li>对 class 使用 <code>messageType(123)</code> 装饰器，具体消息类型的值（这里是 <code>123</code>）由开发者自己决定（LeanCloud 内建的 <a href="#消息类详解">消息类型使用负数</a>，所有正数都预留给开发者扩展使用）。</li>
+<li>对 class 使用 <code>messageField([&#39;fieldName&#39;])</code> 装饰器来声明需要发送的字段。</li>
+</ul>
+</li>
+<li>调用 <code>Realtime#register()</code> 函数注册这个消息类型。</li>
+</ul>
+<p>举个例子，实现一个在 <a href="#暂态消息">暂态消息</a> 中提出的 OperationMessage：</p>
+<pre><code class="lang-javascript">// TypedMessage, messageType, messageField 都是由 leancloud-realtime 这个包提供的
+// 在浏览器中则是 var { TypedMessage, messageType, messageField } = AV;
+var { TypedMessage, messageType, messageField } = require(&#39;leancloud-realtime&#39;);
+var inherit = require(&#39;inherit&#39;);
+// 定义 OperationMessage 类，用于发送和接收所有的用户操作消息
+export const OperationMessage = inherit(TypedMessage);
+// 指定 type 类型，可以根据实际换成其他正整数
+messageType(1)(OperationMessage);
+// 申明需要发送 op 字段
+messageField(&#39;op&#39;)(OperationMessage);
+// 注册消息类，否则收到消息时无法自动解析为 OperationMessage
+realtime.register(OperationMessage);
+</code></pre>
+<blockquote>
+<p><strong>什么时候需要自己创建新的消息类型？</strong></p>
+<p>譬如有一条图像消息，除了文本之外，还需要附带地理位置信息，为此开发者需要创建一个新的消息类型吗？从上面的例子可以看出，其实完全没有必要。这种情况只要使用消息类中预留的 <code>attributes</code> 属性就可以保存额外的地理位置信息了。</p>
+<p>只有在我们的消息类型完全无法满足需求的时候，才需要扩展自己的消息类型。譬如「今日头条」里面允许用户发送某条新闻给好友，在展示上需要新闻的标题、摘要、图片等信息（类似于微博中的 linkcard）的话，这时候就可以扩展一个新的 NewsMessage 类。</p>
+</blockquote>
+<h2 id="-">对话</h2>
+<p>以上章节基本演示了实时通信 SDK 的核心概念「对话」，即 <code>Conversation</code>。我们将单聊和群聊（包括聊天室）的消息发送和接收都依托于 <code>Conversation</code> 这个统一的概念进行操作，所以开发者需要强化理解的一个概念就是：</p>
+<blockquote>
+<p>SDK 层面不区分单聊和群聊。</p>
+</blockquote>
+<p>对话的管理包括「成员管理」和「属性管理」两个方面。</p>
+<p>在讲解下面的内容之前，我们先使用 Jerry 的身份登录并创建一个多人对话。后面的举例中 <code>jerry</code> 指 Jerry 登录的 client，conversation 指创建好的这个对话，CONVERSATION_ID 指这个对话的 ID。</p>
+<pre><code class="lang-javascript">realtime.createIMClient(&#39;Jerry&#39;).then(function(jerry) {
+  return jerry.createConversation({
+    members: [&#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;],
+  });
+}).then(function(conversation) {
+  var CONVERSATION_ID = conversation.id;
+  // now we have jerry, conversation and CONVERSATION_ID
+})
+</code></pre>
+<h3 id="-">创建对话</h3>
+<pre><code class="lang-javascript">jerry.createConversation({
+  members: [&#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;],
+  name: &#39;周末滑雪&#39;,
+  location: &#39;42.86335,140.6843287&#39;,
+  transient: false,
+  unique: false,
+});
+</code></pre>
+<p>参数说明：</p>
+<ul>
+<li>members - 对话的初始成员列表。在对话创建成功后，这些成员会收到和邀请加入对话一样的相应通知。</li>
+<li>name - 对话的名字，主要是用于标记对话，让用户更好地识别对话。</li>
+<li>transient - 是否为 <a href="#聊天室">暂态对话</a></li>
+<li>unique - 是否创建唯一对话，当其为 true 时，如果当前已经有<strong>相同成员</strong>的对话存在则返回该对话，否则会创建新的对话。该值默认为 false。</li>
+</ul>
+<p>option 参数中所有其他的字段（如上面例子中的 <code>location</code>）都会作为对话的自定义属性保存。</p>
+<div class="callout callout-info">由于暂态对话不支持创建唯一对话，所以将 <code>transient</code> 和 <code>unique</code> 同时设为 true 时并不会产生预期效果。</div>
+
+<h3 id="-">对话的成员管理</h3>
+<p>成员管理，是在对话中对成员的一个实时生效的操作，一旦操作成功则不可逆。</p>
+<h4 id="-">成员变更接口</h4>
+<p>成员变更操作接口简介如下表：</p>
+<table>
+<thead>
+<tr>
+<th>操作目的</th>
+<th>接口名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自身主动加入</td>
+<td><code>Conversation#join</code></td>
+</tr>
+<tr>
+<td>添加其他成员</td>
+<td><code>Conversation#add</code></td>
+</tr>
+<tr>
+<td>自身主动退出</td>
+<td><code>Conversation#quit</code></td>
+</tr>
+<tr>
+<td>移除其他成员</td>
+<td><code>Conversation#remove</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">成员变更事件</h4>
+<p>成员变动之后，所有在线的对话成员，都会得到相应的通知。SDK 会在 client 上派发对应的事件：</p>
+<pre><code class="lang-javascript">// 有用户被添加至某个对话
+jerry.on(&#39;membersjoined&#39;, function membersjoinedEventHandler(payload, conversation) {
+  console.log(payload.members, payload.invitedBy, conversation.id);
+});
+// 有成员被从某个对话中移除
+jerry.on(&#39;membersleft&#39;, function membersleftEventHandler(payload, conversation) {
+  console.log(payload.members, payload.kickedBy, conversation.id);
+});
+// 当前用户被添加至某个对话
+jerry.on(&#39;invited&#39;, function invitedEventHandler(payload, conversation) {
+  console.log(payload.invitedBy, conversation.id);
+});
+// 当前用户被从某个对话中移除
+jerry.on(&#39;kicked&#39;, function kickedEventHandler(payload, conversation) {
+  console.log(payload.kickedBy, conversation.id);
+});
+</code></pre>
+<p>同时在相应的 conversation 上也会派发同样的事件：</p>
+<pre><code class="lang-javascript">// 有用户被添加至某个对话
+conversation.on(&#39;membersjoined&#39;, function membersjoinedEventHandler(payload) {
+  console.log(payload.members, payload.invitedBy);
+});
+// 有成员被从某个对话中移除
+conversation.on(&#39;membersleft&#39;, function membersleftEventHandler(payload) {
+  console.log(payload.members, payload.kickedBy);
+});
+// 当前用户被添加至某个对话
+conversation.on(&#39;invited&#39;, function invitedEventHandler(payload) {
+  console.log(payload.invitedBy);
+});
+// 当前用户被从某个对话中移除
+conversation.on(&#39;kicked&#39;, function kickedEventHandler(payload) {
+  console.log(payload.kickedBy);
+});
+</code></pre>
+<h4 id="-">添加成员</h4>
+<h5 id="-">自身主动加入</h5>
+<p>Tom 想主动加入 Jerry、Bob、Harry 和 William 的对话，以下代码将帮助他实现这个功能：</p>
+<pre><code class="lang-javascript">realtime.createIMClient(&#39;Tom&#39;).then(function(tom) {
+  return tom.getConversation(CONVERSATION_ID);
+}).then(function(conversation) {
+  return conversation.join();
+}).then(function(conversation) {
+  console.log(&#39;加入成功&#39;, conversation.members);
+  // 加入成功 [&#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;, &#39;Tom&#39;]
+}).catch(console.error.bind(console));
+</code></pre>
+<h5 id="-">添加其他成员</h5>
+<p>Jerry 想再把 Mary 加入到对话中，需要如下代码帮助他实现这个功能：</p>
+<pre><code class="lang-javascript">conversation.add([&#39;Mary&#39;]).then(function(conversation) {
+  console.log(&#39;添加成功&#39;, conversation.members);
+  // 添加成功 [&#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;, &#39;Tom&#39;, &#39;Mary&#39;]
+}).catch(console.error.bind(console));
+</code></pre>
+<h5 id="-">添加成员相关事件</h5>
+<p>添加成员后，对话中的成员会收到事件的通知，各方收到的事件是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>邀请者</th>
+<th>被邀请者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>membersjoined</code></td>
+<td><code>invited</code> 与 <code>membersjoined</code></td>
+<td><code>membersjoined</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：如果在进行邀请操作时，被邀请者不在线，那么通知消息并不会被离线缓存，所以等到 Ta 再次上线的时候将不会收到通知。</p>
+</blockquote>
+<h4 id="-">移除成员</h4>
+<h5 id="-">自身退出对话</h5>
+<p>Tom 主动从对话中退出，他需要如下代码实现需求：</p>
+<pre><code class="lang-javascript">conversation.quit().then(function(conversation) {
+  console.log(&#39;退出成功&#39;, conversation.members);
+  // 退出成功 [&#39;Bob&#39;, &#39;Harry&#39;, &#39;William&#39;, &#39;Mary&#39;]
+}).catch(console.error.bind(console));
+</code></pre>
+<h5 id="-">移除其他成员</h5>
+<p>Harry 被 William 从对话中删除。实现代码如下（关于 William 如何获得权限在后面的 <a href="#安全与签名">安全与签名</a> 中会做详细阐述，此处不扩大话题范围。）：</p>
+<pre><code class="lang-javascript">realtime.createIMClient(&#39;William&#39;).then(function(william) {
+  return william.getConversation(CONVERSATION_ID);
+}).then(function(conversation) {
+  return conversation.remove([&#39;Harry&#39;]);
+}).then(function(conversation) {
+  console.log(&#39;移除成功&#39;, conversation.members);
+  // 移除成功 [&#39;Bob&#39;, &#39;William&#39;, &#39;Mary&#39;]
+}).catch(console.error.bind(console));
+</code></pre>
+<h5 id="-">移除成员相关事件</h5>
+<p>移除成员后，对话中的成员会收到事件的通知，各方收到的事件是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>操作者</th>
+<th>被移除者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>membersleft</code></td>
+<td><code>kicked</code></td>
+<td><code>membersleft</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：如果在进行踢人操作时，被踢者不在线，那么通知消息并不会被离线缓存，所以等到 Ta 再次上线的时候将不会收到通知。</p>
+</blockquote>
+<h4 id="-">查询成员数量</h4>
+<p>除了直接访问 <code>conversation.members.length</code>，也可以通过 <code>Conversation#count</code> 方法获得当前对话的成员数量：</p>
+<pre><code class="lang-javascript">conversation.count().then(function(membersCount) {
+  console.log(membersCount);
+}).catch(console.error.bind(console));
+</code></pre>
+<h3 id="-">对话的属性管理</h3>
+<p>对话实例（Conversation）与控制台中 <code>_Conversation</code> 表是一一对应的，默认提供的属性的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>Conversation 属性名</th>
+<th>_Conversation 字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>objectId</code></td>
+<td>全局唯一的 Id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>name</code></td>
+<td>成员共享的统一的名字</td>
+</tr>
+<tr>
+<td><code>members</code></td>
+<td><code>m</code></td>
+<td>成员列表</td>
+</tr>
+<tr>
+<td><code>creator</code></td>
+<td><code>c</code></td>
+<td>对话创建者</td>
+</tr>
+<tr>
+<td><code>transient</code></td>
+<td><code>tr</code></td>
+<td>是否为聊天室（暂态对话）</td>
+</tr>
+<tr>
+<td><code>mutedMembers</code></td>
+<td><code>mu</code></td>
+<td>静音该对话的成员</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>N/A</td>
+<td>当前用户是否静音该对话</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>createdAt</code></td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>updatedAt</code></td>
+<td>最后更新时间</td>
+</tr>
+<tr>
+<td><code>lastMessageAt</code></td>
+<td><code>lm</code></td>
+<td>最后一条消息发送时间，也可以理解为最后一次活跃时间</td>
+</tr>
+<tr>
+<td><code>lastMessage</code></td>
+<td>N/A</td>
+<td>最后一条消息，可能会空</td>
+</tr>
+<tr>
+<td><code>unreadMessagesCount</code></td>
+<td>N/A</td>
+<td>未读消息数</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">名称</h4>
+<p>这是一个全员共享的属性，它可以在创建时指定，也可以在日后的维护中被修改。</p>
+<p>Tom 想建立一个名字叫「喵星人」 对话并且邀请了好友 Black 加入对话：</p>
+<pre><code class="lang-javascript">tom.createConversation({
+  members: [&#39;Black&#39;],
+  name: &#39;喵星人&#39;,
+}).then(function(conversation) {
+  console.log(&#39;创建成功。id: &#39; + conversation.id + &#39; name: &#39; + conversation.name);
+}).catch(console.error.bind(console));
+</code></pre>
+<p>Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，他需要如下代码：</p>
+<pre><code class="lang-javascript">black.getConversation(CONVERSATION_ID).then(function(conversation) {
+  conversation.name = &#39;聪明的喵星人&#39;;
+  return conversation.save();
+}).then(function(conversation) {
+  console.log(&#39;更新成功。name: &#39; + conversation.name);
+}).catch(console.error.bind(console));
+</code></pre>
+<h4 id="-">成员</h4>
+<p>是当前对话中所有成员的 <code>clientId</code>。默认情况下，创建者是在包含在成员列表中的，直到 TA 退出对话。</p>
+<blockquote>
+<p><strong>切勿在控制台中对其进行修改</strong>。所有关于成员的操作请参照上一章节中的 <a href="#对话的成员管理">对话的成员管理</a> 来进行。</p>
+</blockquote>
+<h4 id="-">静音</h4>
+<p>假如某一用户不想再收到某对话的消息提醒，但又不想直接退出对话，可以使用静音操作，即开启「免打扰模式」。</p>
+<p>比如 Tom 工作繁忙，对某个对话设置了静音：</p>
+<pre><code class="lang-javascript">black.getConversation(CONVERSATION_ID).then(function(conversation) {
+  return conversation.mute();
+}).then(function(conversation) {
+  console.log(&#39;静音成功&#39;);
+}).catch(console.error.bind(console));
+</code></pre>
+<blockquote>
+<p>设置静音之后，iOS 和 Windows Phone 的用户就不会收到推送消息了。</p>
+</blockquote>
+<p>与之对应的就是取消静音的操作，即取消免打扰模式。此操作会修改云端 <code>_Conversation</code> 里面的 <code>mu</code> 属性。<strong>切勿在控制台中对 <code>mu</code> 进行修改</strong>。</p>
+<h4 id="-">创建者</h4>
+<p>即对话的创建者，它的值是对话创建者的 <code>clientId</code>。</p>
+<p>它等价于 QQ 群中的「群创建者」，但区别于「群管理员」。比如 QQ 群的「创建者」是固定不变的，它的图标颜色与「管理员」的图标颜色都不一样。所以根据对话中成员的 <code>clientId</code> 是否与 <code>conversation.creator</code> 一致就可以判断出他是不是群的创建者。</p>
+<h4 id="-">自定义属性</h4>
+<p>开发者可以为对话添加自定义属性，来满足业务逻辑需求。</p>
+<p>给某个对话加上两个自定义的属性：type = &quot;private&quot;（类型为私有）、pinned = true（置顶显示）：</p>
+<pre><code class="lang-javascript">tom.createConversation({
+  members: [&#39;Jerry&#39;],
+  name: &#39;猫和老鼠&#39;,
+  type: &#39;private&#39;,
+  pinned: true,
+}).then(function(conversation) {
+  console.log(&#39;创建成功。id: &#39; + conversation.id);
+}).catch(console.error.bind(console));
+</code></pre>
+<p><strong>自定义属性在 SDK 级别是对所有成员可见的</strong>。要对属性进行查询，请参见 <a href="#对话的查询">对话的查询</a>。</p>
+<h3 id="-">对话的查询</h3>
+<!-- #### 基础查询 -->
+<h4 id="-id-">根据 id 查询</h4>
+<p>假如已知某一对话的 Id，可以使用它来查询该对话的详细信息：</p>
+<pre><code class="lang-javascript">tom.getConversation(CONVERSATION_ID).then(function(conversation) {
+  console.log(conversation.id);
+}).catch(console.error.bind(console));
+</code></pre>
+<h4 id="-">对话列表</h4>
+<p>用户登录进应用后，获取最近的 10 个对话（包含暂态对话，如聊天室）：</p>
+<pre><code class="lang-javascript">tom.getQuery().containsMembers([&#39;Tom&#39;]).find().then(function(conversations) {
+  // 默认按每个对话的最后更新日期（收到最后一条消息的时间）倒序排列
+  conversations.map(function(conversation) {
+    console.log(conversation.lastMessageAt.toString(), conversation.members);
+  });
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/biy/embed?js,console
+</code></pre>
+<p>对话的查询默认返回 10 个结果，若要更改返回结果数量，请设置 <code>limit</code> 值。</p>
+<pre><code class="lang-javascript">var query = tom.getQuery();
+query.limit(20).containsMembers([&#39;Tom&#39;]).find().then(function(conversations) {
+  console.log(conversations.length);
+}).catch(console.error.bind(console));
+
+// http://jsplay.avosapps.com/mej/embed?js,console
+</code></pre>
+<h4 id="-">条件查询</h4>
+<pre><code class="lang-javascript">// 查询对话名称为「LeanCloud 粉丝群」的对话
+query.equalTo(&#39;name&#39;, &#39;LeanCloud 粉丝群&#39;);
+
+// 查询对话名称包含 「LeanCloud」 的对话
+query.contains(&#39;name&#39;, &#39;LeanCloud&#39;);
+
+// 查询过去24小时活跃的对话
+var yesterday = new Date(Date.now() - 24 * 3600 * 1000);
+query.greaterThan(&#39;lm&#39;, yesterday);
+</code></pre>
+<p>条件查询又分为：比较查询、正则匹配查询、包含查询，以下会做分类演示。</p>
+<h5 id="-">比较查询</h5>
+<p>比较查询在一般的理解上都包含以下几种：</p>
+<p>比较查询最常用的是等于查询：</p>
+<pre><code class="lang-javascript">// topic 是自定义属性
+query.equalTo(&#39;topic&#39;,&#39;movie&#39;);
+</code></pre>
+<p>下面检索一下类型不是私有的对话：</p>
+<pre><code class="lang-javascript">// type 是自定义属性
+query.notEqualTo(&#39;type&#39;,&#39;private&#39;);
+</code></pre>
+<p>对于可以比较大小的整型、浮点等常用类型，可以参照以下示例代码进行扩展：</p>
+<pre><code class="lang-javascript">// age 是自定义属性
+query.greaterThan(&#39;age&#39;,18);
+</code></pre>
+<h5 id="-">正则匹配查询</h5>
+<p>匹配查询是指在 <code>ConversationQuery</code> 的查询条件中使用正则表达式来匹配数据。</p>
+<p>比如要查询所有 language 是中文的对话：</p>
+<pre><code class="lang-javascript">// 自定义属性 language 是中文字符
+query.matches(&#39;language&#39;,/[\\u4e00-\\u9fa5]/);
+</code></pre>
+<h5 id="-">包含查询</h5>
+<p>包含查询是指方法名字包含 <code>Contains</code> 单词的方法，例如查询关键字包含「教育」的对话：</p>
+<pre><code class="lang-javascript">// 自定义属性 keywords 包含「教育」
+query.contains(&#39;keywords&#39;,&#39;教育&#39;);
+</code></pre>
+<p>另外，包含查询还能检索与成员相关的对话数据。以下代码将帮助 Tom 查找出 Jerry 以及 Bob 都加入的对话：</p>
+<pre><code class="lang-javascript">// 查询对话成员有 Bob 和 Jerry 的 conversations
+query.withMembers([&#39;Bob&#39;, &#39;Jerry&#39;]);
+</code></pre>
+<h5 id="-">组合查询</h5>
+<p>组合查询的概念就是把诸多查询条件合并成一个查询，再交给 SDK 去云端进行查询。</p>
+<p>例如，要查询年龄小于 18 岁，并且关键字包含「教育」的对话：</p>
+<pre><code class="lang-javascript">// 查询 keywords 包含「教育」且 age 小于 18 的对话
+query.contains(&#39;keywords&#39;, &#39;教育&#39;).lessThan(&#39;age&#39;, 18);
+</code></pre>
+<h4 id="-">查询结果选项</h4>
+<h5 id="-">排序</h5>
+<p><code>ConversationQuery</code> 支持使用 <code>ascending</code>、<code>addAscending</code>、<code>descending</code>、<code>addDescending</code> 方法来对查询结果进行排序：</p>
+<pre><code class="lang-javascript">// 对查询结果按照 name 升序，然后按照创建时间降序排序
+query.addAscending(&#39;name&#39;).addDescending(&#39;createdAt&#39;);
+</code></pre>
+<h5 id="-">精简模式</h5>
+<p>普通对话最多可以容纳 500 个成员，在有些业务逻辑不需要对话的成员列表的情况下，可以使用 <code>ConversationQuery</code> 的 <code>compact</code> 方法指定查询为「精简模式」，返回的查询结果中则不会有成员列表（<code>members</code> 字段会是空数组），这有助于提升应用的性能同时减少流量消耗。</p>
+<pre><code class="lang-javascript">query.compact(true);
+</code></pre>
+<h5 id="-">对话的最后一条消息</h5>
+<p>对于一个聊天应用，一个典型的需求是在对话的列表界面显示最后一条消息，默认情况下，<code>ConversationQuery</code> 的查询结果是不带最后一条消息的，使用 <code>withLastMessagesRefreshed</code> 方法可以指定让查询结果带上最后一条消息：</p>
+<pre><code class="lang-javascript">query.withLastMessagesRefreshed(true);
+</code></pre>
+<p>需要注意的是，这个选项真正的意义是「刷新对话的最后一条消息」。这意味着由于 SDK 缓存机制的存在，将这个选项设置为 <code>false</code> 查询得到的对话也还是有可能会存在最后一条消息的。</p>
+<h4 id="-">缓存查询</h4>
+<p>JavaScript SDK 会对按照对话 id 对对话进行内存字典缓存，但不会进行持久化的缓存。</p>
+<h2 id="-">聊天室</h2>
+<p>聊天室本质上就是一个对话，所以上面章节提到的<strong>所有属性、方法、操作以及管理都适用于聊天室</strong>。它仅仅在逻辑上是一种暂态、临时的对话，应用场景有弹幕、直播等等。</p>
+<p>聊天室与普通对话或群聊不一样的地方具体体现为：</p>
+<ul>
+<li>无人数限制，而普通对话最多允许 500 人加入。</li>
+<li>不支持查询成员列表，但可以通过相关 API 查询在线人数。</li>
+<li>不支持离线消息、离线推送通知、消息回执等功能。</li>
+<li>没有成员加入、成员离开的通知。</li>
+<li>一个用户一次登录只能加入一个聊天室，加入新的聊天室后会自动离开原来的聊天室。</li>
+<li>加入后半小时内断网重连会自动加入原聊天室，超过这个时间则需要重新加入。</li>
+</ul>
+<h3 id="-">创建聊天室</h3>
+<p>建立一个聊天室需要在 <code>IMClient#createConversation()</code> 时传入 <code>transient=true</code>。</p>
+<p>比如喵星球正在直播选美比赛，主持人 Tom 创建了一个临时对话，与喵粉们进行互动：</p>
+<pre><code class="lang-javascript">tom.createConversation({
+  name: &#39;Hello Kitty PK 加菲猫&#39;,
+  transient: true,
+}).then(function(conversation) {
+  console.log(&#39;创建聊天室成功。id: &#39; + conversation.id);
+}).catch(console.error.bind(console));
+</code></pre>
+<h3 id="-">查询在线人数</h3>
+<p> <code>Conversation.count()</code>  可以用来查询普通对话的成员总数，在聊天室中，它返回的就是实时在线的人数：</p>
+<pre><code class="lang-javascript">conversation.count().then(function(count) {
+  console.log(&#39;在线人数: &#39; + count);
+}).catch(console.error.bind(console));
+</code></pre>
+<h3 id="-">查找聊天室</h3>
+<p>开发者需要注意的是，通过 <code>IMClient#getQuery()</code> 这样得到的 <code>ConversationQuery</code> 实例默认是查询全部对话的，也就是说，如果想查询指定的聊天室，需要限定 <code>tr</code> 字段的查询条件：</p>
+<p>比如查询主题包含「奔跑吧，兄弟」的聊天室：</p>
+<pre><code class="lang-javascript">var query = tom.getQuery();
+query
+  .equalTo(&#39;topic&#39;, &#39;奔跑吧，兄弟&#39;)
+  .equalTo(&#39;tr&#39;, true)
+  .find()
+  .then(function(conversations) {
+    console.log(conversations[0].id);
+  })
+  .catch(console.error.bind(console));
+</code></pre>
+<h2 id="-">聊天记录</h2>
+<p>聊天记录一直是客户端开发的一个重点，QQ 和 微信的解决方案都是依托客户端做缓存，当收到一条消息时就按照自己的业务逻辑存储在客户端的文件或者是各种客户端数据库中。</p>
+<p>我们的 SDK 会将普通的对话消息自动保存在云端，开发者可以通过 <code>Conversation#queryMessages</code> 方法来获取该对话的所有历史消息。</p>
+<p>获取该对话中最近的 N 条（默认 20，最大值 1000）历史消息，通常在第一次进入对话时使用：</p>
+<pre><code class="lang-javascript">conversation.queryMessages({
+  limit: 10, // limit 取值范围 1~1000，默认 20
+}).then(function(messages) {
+  // 最新的十条消息，按时间增序排列
+}).catch(console.error.bind(console));
+</code></pre>
+<p>对于翻页加载更多历史消息的场景，SDK 还提供了 <code>Conversation#createMessagesIterator</code> 方法来生成一个历史消息迭代器。假如每一页为 10 条信息，下面的代码将演示如何翻页：</p>
+<pre><code class="lang-javascript">// 创建一个迭代器，每次获取 10 条历史消息
+var messageIterator = conversation.createMessagesIterator({ limit: 10 });
+// 第一次调用 next 方法，获得前 10 条消息，还有更多消息，done 为 false
+messageIterator.next().then(function(result) {
+  // result: {
+  //   value: [message1, ..., message10],
+  //   done: false,
+  // }
+}).catch(console.error.bind(console));
+// 第二次调用 next 方法，获得第 11 ~ 20 条消息，还有更多消息，done 为 false
+messageIterator.next().then(function(result) {
+  // result: {
+  //   value: [message11, ..., message20],
+  //   done: false,
+  // }
+}).catch(console.error.bind(console));
+// 第二次调用 next 方法，获得第 21 条消息，没有更多消息，done 为 true
+messageIterator.next().then(function(result) {
+  // No more messages
+  // result: { value: [message21], done: true }
+}).catch(console.error.bind(console));
+</code></pre>
+<h3 id="-">客户端聊天记录缓存</h3>
+<p>JavaScript SDK 没有客户端聊天记录缓存机制</p>
+<h2 id="-">客户端事件</h2>
+<h3 id="-">网络状态响应</h3>
+<blockquote>
+<p>注意：在网络中断的情况下，所有的消息收发和对话操作都会失败。开发者应该监听与网络状态相关的事件并更新 UI，以免影响用户的使用体验。</p>
+</blockquote>
+<p>当网络连接出现中断、恢复等状态变化时，SDK 会在 Realtime 实例上派发以下事件：</p>
+<ul>
+<li><code>disconnect</code>：网络连接断开，此时聊天服务不可用。</li>
+<li><code>schedule</code>：计划在一段时间后尝试重连，此时聊天服务仍不可用。</li>
+<li><code>retry</code>：正在重连。</li>
+<li><code>reconnect</code>：网络连接恢复，此时聊天服务可用。</li>
+</ul>
+<pre><code class="lang-javascript">realtime.on(&#39;disconnect&#39;, function() {
+  console.log(&#39;网络连接已断开&#39;);
+});
+realtime.on(&#39;schedule&#39;, function(attempt, delay) {
+  console.log(delay + &#39;ms 后进行第&#39; + (attempt + 1) + &#39;次重连&#39;);
+});
+realtime.on(&#39;retry&#39;, function(attempt) {
+  console.log(&#39;正在进行第&#39; + attempt + &#39;次重连&#39;);
+});
+realtime.on(&#39;reconnect&#39;, function() {
+  console.log(&#39;网络连接已恢复&#39;);
+});
+</code></pre>
+<p>在 <code>schedule</code> 与 <code>retry</code> 事件之间，开发者可以调用 <code>Realtime#retry()</code> 方法手动进行重连。</p>
+<p>在断线重连的过程中，SDK 也会在所有的 IMClient 实例上派发同名的事件。Realtime 与 IMClient 上的同名事件是先后同步派发的，唯一的例外是 <code>reconnect</code> 事件。在网络连接恢复，Realtime 上派发了 <code>reconnect</code> 事件之后，IMClient 会尝试重新登录，成功后再派发 <code>reconnect</code> 事件。所以，Realtime 的 <code>reconnect</code> 事件意味着 Realtime 实例的 API 能够正常使用了，IMClient 的 <code>reconnect</code> 事件意味着 IMClient 实例的 API 能够正常使用了。</p>
+<p>下面显示的是一次典型的断线重连过程中 SDK 派发的事件：</p>
+<pre><code class="lang-c">// 连接断开，计划 1s 后重连
+[Realtime &amp; IMClient] disconnect
+[Realtime &amp; IMClient] schedule (attempt=0, delay=1000)
+// 1s 后，尝试重连
+[Realtime &amp; IMClient] retry (attempt=0)
+// 重连失败，计划 2s 后进行第二次重连
+[Realtime &amp; IMClient] schedule (attempt=1, delay=2000)
+// 在 2s 内，手动调用 realtime.retry() 进行重连，重连次数重置
+[Realtime &amp; IMClient] retry (attempt=0)
+// 重连失败，计划 2s 后进行第二次重连
+[Realtime &amp; IMClient] schedule (attempt=1, delay=2000)
+// 2s 后，尝试第二次重连
+[Realtime &amp; IMClient] retry (attempt=1)
+// 连接恢复，此时可以创建新的客户端了
+[Realtime] reconnect
+// 客户端重新登录上线，此时该客户端可以收发消息了
+[IMClient] reconnect
+</code></pre>
+<h2 id="-">退出登录</h2>
+<p>tom 要退出当前的登录状态或要切换账户，方法如下：</p>
+<pre><code class="lang-javascript">tom.close().then(function() {
+  console.log(&#39;Tom 退出登录&#39;);
+}).catch(console.error.bind(console));
+</code></pre>
+<h2 id="-">安全与签名</h2>
+<p>在继续阅读下文之前，请确保你已经对 <a href="realtime_v2.html#权限和认证">实时通信服务开发指南 &middot; 权限和认证</a> 有了充分的了解。</p>
+<h3 id="-">实现签名工厂</h3>
+<p>为了满足开发者对权限和认证的要求，我们设计了操作签名的机制。签名启用后，所有的用户登录、对话创建/加入、邀请成员、踢出成员等登录都需要验证签名，这样开发者就对消息具有了完全的掌控。</p>
+<p>我们强烈推荐启用签名，具体步骤是 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，勾选 <strong>聊天、推送</strong> 下的 <strong>聊天服务，启用签名认证</strong>。</p>
+<p>客户端这边究竟该如何使用呢？我们只需要实现 signature 工厂方法，然后作为参数实例化 IMClient 即可</p>
+<p>设定了 signature 工厂方法后，对于需要鉴权的操作，实时通信 SDK 与服务器端通讯的时候都会带上应用自己生成的 Signature 信息，LeanCloud 云端会使用 app 的 masterKey 来验证信息的有效性，保证聊天渠道的安全。</p>
+<p>对于不同的操作，我们需要实现两个不同的 signature 工厂方法：<code>signatureFactory</code> 与 <code>conversationSignatureFactory</code>。</p>
+<pre><code class="lang-javascript">/**
+ * IMClient 登录签名工厂
+ *
+ * @param {String} clientId 登录用户 ID
+ * @return {Object} signatureResult
+ * @return {String} signatureResult.signature
+ * @return {Number} signatureResult.timestamp
+ * @return {String} signatureResult.nonce
+ */
+var signatureFactory = function(clientId) {
+  // to be implemented
+};
+
+/**
+ * Conversation 相关操作签名工厂
+ *
+ * @param {String} conversationId
+ * @param {String} clientId 当前用户 ID
+ * @param {String[]} targetIds 此次操作的目标用户 IDs
+ * @param {String} action  此次行为的动作，可能的值为 create（创建会话）、add（加群和邀请）和 remove（踢出群）之一
+ * @return {Object} signatureResult
+ * @return {String} signatureResult.signature
+ * @return {Number} signatureResult.timestamp
+ * @return {String} signatureResult.nonce
+ */
+var conversationSignatureFactory = function(clientId) {
+  // to be implemented
+};
+</code></pre>
+<p><code>signatureFactory</code> 函数会在用户登录的时候被调用，<code>conversationSignatureFactory</code> 会在对话创建/加入、邀请成员、踢出成员等操作时被调用。</p>
+<p>你需要做的就是按照前文所述的签名算法实现签名，返回 signatureResult，其中四个属性分别是:</p>
+<ul>
+<li>signature 签名</li>
+<li>timestamp 时间戳，单位秒</li>
+<li>nonce 随机字符串 nonce</li>
+</ul>
+<p>如果签名是异步的，比如需要发送一个网络请求，那么 signature 工厂方法也可以返回一个 Promise，resolved with signatureResult。</p>
+<p>下面的代码展示了基于 LeanCloud 云引擎进行签名时，客户端的实现片段，你可以参考它来完成自己的逻辑实现：</p>
+<pre><code class="lang-javascript">var signatureFactory = function(clientId) {
+  return AV.Cloud.rpc(&#39;sign&#39;, { clientId: clientId }); // AV.Cloud.rpc returns a Promise
+};
+var conversationSignatureFactory = function(conversationId, clientId, targetIds, action) {
+  return AV.Cloud.rpc(&#39;sign-conversation&#39;, {
+    conversationId: conversationId,
+    clientId: clientId,
+    targetIds: targetIds,
+    action: action,
+  });
+};
+
+realtime.createIMClient(&#39;Tom&#39;, {
+  signatureFactory: signatureFactory,
+  conversationSignatureFactory: conversationSignatureFactory,
+}).then(function(tom) {
+  console.log(&#39;Tom 登录&#39;);
+}).catch(function(error) {
+  // 如果 signatureFactory 抛出了异常，或者签名没有验证通过，会在这里被捕获
+});
+</code></pre>
+<blockquote>
+<p>需要强调的是：开发者切勿在客户端直接使用 MasterKey 进行签名操作，因为 MaterKey 一旦泄露，会造成应用的数据处于高危状态，后果不容小视。因此，强烈建议开发者将签名的具体代码托管在安全性高稳定性好的服务器上（例如 LeanCloud 云引擎）。</p>
+</blockquote>
+<h3 id="-">单点登录</h3>
+<p>一款聊天应用，随着不断的发展，会衍生出多个平台的不同客户端。以 QQ 为例，目前它所提供的客户端如下：</p>
+<ul>
+<li>PC：Windows PC、Mac OS、Linux（已停止更新）</li>
+<li>移动：Windows Phone、iOS、Android</li>
+<li>Web：<a href="http://w.qq.com/">http://w.qq.com/</a></li>
+</ul>
+<p>经过测试，我们发现 QQ 存在以下几种行为：</p>
+<ol>
+<li>同一个 QQ 账号不可以同时在 2 个 PC 端登录（例如，在 Mac OS 上登录已经在另外一台 Windows PC 上登录的 QQ，该 QQ 号在 Windows PC 上会被强行下线）。</li>
+<li>同一个 QQ 账号不可以同时在 2 个移动端上登录。</li>
+<li>Web QQ 也不能与 PC 端同时登录</li>
+<li>同一个 QQ 只能同时在 1 个移动版本和 1 PC 版本（或者 Web 版本）上登录，并实现一些 PC 与移动端互动的功能，例如互传文件。</li>
+</ol>
+<p>通过规律不难发现，QQ 按照自己的需求实现了「单点登录」的功能：同一个平台上只允许一个 QQ 登录一台设备。</p>
+<p>下面我们来详细说明：如何使用我们的 SDK 去实现单点登录。</p>
+<h4 id="-tag">设置登录标记 Tag</h4>
+<p>假设开发者想实现 QQ 这样的功能，那么需要在登录到服务器的时候，也就是打开与服务器长连接的时候，标记一下这个链接是从什么类型的客户端登录到服务器的：</p>
+<pre><code class="lang-javascript">realtime.createIMClient(&#39;Tom&#39;, null, &#39;Web&#39;).then(function(tom) {
+  console.log(&#39;Tom 登录&#39;);
+});
+</code></pre>
+<p>上述代码可以理解为 LeanCloud 版 QQ 的登录，而另一个带有同样 Tag 的客户端打开连接，则较早前登录系统的客户端会被强制下线。</p>
+<h4 id="-">处理登录冲突</h4>
+<p>我们可以看到上述代码中，登录的 Tag 是 <code>Web</code>。当存在与其相同的 Tag 登录的客户端，较早前登录的设备会被服务端强行下线，而且他会收到被服务端下线的通知：</p>
+<pre><code class="lang-javascriptjava">tom.on(&#39;conflict&#39;, function() {
+  // 弹出提示，告知当前用户的 Client Id 在其他设备上登陆了
+});
+</code></pre>
+<p>如上述代码中，当前用户被服务端强行下线时，SDK 会在 client 上派发 <code>conflict</code> 事件，客户端在做展现的时候也可以做出类似于 QQ 一样友好的通知。</p>
+<h2 id="-">插件</h2>
+<p>SDK 支持通过插件来对功能进行扩展，比如在解析消息前对原始消息进行修改，为内部的类添加方法，注册自定义消息等。</p>
+<h3 id="-">插件列表</h3>
+<p>请参阅 <a href="">https://github.com/leancloud/js-realtime-sdk/wiki/Plugins</a>。</p>
+<h3 id="-">使用插件</h3>
+<p>Realtime 支持在初始化时传入指定一个 plugins 数组：</p>
+<pre><code class="lang-javascript">var Realtime = require(&#39;leancloud-realtime&#39;).Realtime;
+var WebRTCPlugin = require(&#39;leancloud-realtime-plugin-webrtc&#39;).WebRTCPlugin;
+
+var realtime = new Realtime({
+  appId: appId,
+  plugins: [WebRTCPlugin],
+});
+</code></pre>
+<p>插件的具体使用方式请参考具体插件的文档。</p>
+<h3 id="-">创建插件</h3>
+<h4 id="-">扩展点</h4>
+<p>一个插件是由一个或多个扩展点组成的字典（Object）。扩展点可以分为三类：</p>
+<p>第一类扩展点是 SDK 内部类实例化之后的回调，包括 <code>onRealtimeCreated</code>、<code>onIMClientCreated</code> 与 <code>onConversationCreated</code>。这些扩展点可以通过一个方法（function）进行扩展，该方法接受一个对应的实例并对其进行一些操作。我们称这一类方法为 Decorator。插件可以利用这些扩展点为内部类添加新的方法或修改原有的方法。</p>
+<p>下面这个例子利用了 <code>onConversationCreate</code> 扩展点，修改了 Conversation 的 quit 方法，在调用 quit 方法时统一弹出一个确认窗口。</p>
+<pre><code class="lang-javascript">var ConfirmOnQuitPlugin = {
+  name: &#39;leancloud-realtime-plugin-confirm-on-quit&#39;,
+  onConversationCreate: function onConversationCreate(conversation) {
+    var originalQuit = conversation.quit;
+    conversation.quit = function() {
+      var confirmed = window.confirm(&#39;退出会话？退出后将无法收到消息。&#39;);
+      if (confirmed) {
+        return originalQuit.apply(this, arguments);
+      } else {
+        return Promise.reject(new Error(&#39;user canceled&#39;));
+      }
+    }
+  }
+};
+</code></pre>
+<p>第二类扩展点允许你在某些事件前、后注入逻辑。这些扩展点可以通过一个方法（function）进行扩展，该方法接受一个对象，返回一个同类型对象（如果该方法是异步的，则返回一个 Promise）。我们称这一类方法为 Middleware。
+以消息解析为例，可以将 SDK 从接收原始消息 - 解析消息 - 派发的富媒体消息的过程看成一条管道，这些扩展点允许你在这个管道中加入一段你的节点，这个节点就是 Middleware。如果指定了多个 Middleware，这些 Middleware 会按照顺序依次执行，前一个 Middleware 的返回值会作为参数传给后一个 Middleware。</p>
+<p>目前可扩展的点有:</p>
+<ul>
+<li><code>beforeMessageParse</code>: 在解析消息前对原始消息进行处理，参数是 json 格式的原始消息</li>
+<li><code>afterMessageParse</code>: 在解析消息后对消息进行处理，参数是对应的富媒体消息类的实例</li>
+</ul>
+<p>举个例子，有一些对话中存在一些 FileMessage 类型的历史消息，由于某种原因缺少了必须的 file.id 字段，会导致解析到这些消息时 SDK 抛出异常。这时可以通过 <code>beforeMessageParse</code> 扩展点来在 SDK 解析消息前「修补」这个问题。</p>
+<pre><code class="lang-javascript">var EnsureFileIdPlugin = {
+  name: &#39;leancloud-realtime-plugin-ensure-file-id&#39;,
+  beforeMessageParse: function onConversationCreate(message) {
+    if (!message._lcfile.id) message._lcfile.id = &#39;&#39;;
+    return message;
+  }
+};
+</code></pre>
+<p>第三类扩展点是一个特殊的扩展点：<code>messageClasses</code>，这是一个由自定义消息类型组成的数组，数组中的自定义消息类型会被自动注册（通过 Realtime#register）。在富文本消息一节中用到的 TypedMessagesPlugin 就是使用了这个扩展点的插件。</p>
+<p>如果有必要，我们会在未来开放更多的扩展点。</p>
+<h4 id="-">插件规范</h4>
+<p>如果你的插件可能会被其他开发者用到，我们推荐你将其封装为一个 package 并发布到 npm 上，发布的插件请遵循以下规范：</p>
+<ul>
+<li>package 名称以 <code>leancloud-realtime-plugin-</code> 为前缀；</li>
+<li>插件对象需要有 <code>name</code> 字段，用于在日志中显示异常的插件名称，建议与 package 名称相同。</li>
+</ul>
+<h2 id="-v2-">从 v2 迁移</h2>
+<p>如果你的应用正在使用 JavaScript SDK version 2 并希望升级到 version 3，请参考 <a href="./realtime_js-v3-migration-guide.html">《JavaScript 实时通信 SDK v3 迁移指南》</a>。</p>
+<h2 id="-">常见问题</h2>
+<p><strong>我只想实现两个用户的私聊，是不是每次都得重复创建对话？</strong></p>
+<p>答：不需要重复创建。我们推荐的方式是开发者可以用<strong>自定义属性</strong>来实现对私聊和群聊的标识，并且在进行私聊之前，需要查询当前两个参与对话的 ClientId 是否之前已经存在一个私聊的对话了。另外，SDK 已经提供了创建唯一对话的接口，请查看 <a href="#创建对话">创建对话</a>。</p>
+<p><strong>某个成员退出对话之后，再加入，在他离开的这段期间内的产生的聊天记录，他还能获取么？</strong></p>
+<p>答：可以。目前聊天记录从属关系是属于对话的，也就是说，只要对话 Id 不变，不论人员如何变动，只要这个对话产生的聊天记录，当前成员都可以获取。</p>
+<p><strong>我自己没有服务器，如何实现签名的功能？</strong></p>
+<p>答：LeanCloud 云引擎提供了托管 Python 和 Node.js 运行的方式，开发者可以所以用这两种语言按照签名的算法实现签名，完全可以支持开发者的自定义权限控制。</p>
+<h2 id="-">问题排查</h2>
+<ol>
+<li>客户端连接被关闭有许多原因，请参考 <a href="realtime_v2.html#服务器端错误码说明">服务器端错误码说明</a>。</li>
+</ol>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>
