@@ -52,27 +52,33 @@ public class AppInitListener implements ServletContextListener {
       LeanEngine.setLocalEngineCallEnabled(true);
     }
 
-    LuceneWrapper wrapper = LuceneWrapper.getInstance();
-    wrapper.beginIndexing();
-    JsoupHTMLExtractor extractor = new JsoupHTMLExtractor();
+    Thread indexingThread = new Thread(){
+    	@Override
+    	public void run(){
+    	    LuceneWrapper wrapper = LuceneWrapper.getInstance();
+    	    wrapper.beginIndexing();
+    	    JsoupHTMLExtractor extractor = new JsoupHTMLExtractor();
 
-    String htmlDir = "./src/main/webapp";
-    String docRootPath = "http://localhost:3000";
+    	    String htmlDir = "./src/main/webapp";
+    	    String docRootPath = "http://localhost:3000";
 
-    try {
-        File dir = new File(htmlDir);
-        List<String> htmlFiles = listDir(dir);
-        for (String htmlFile: htmlFiles) {
-        	String url = htmlFile.replace(htmlDir, docRootPath);
-        	File source = new File(htmlFile);
-    		Document doc = extractor.getDocument(source, url);
-    		wrapper.addDocument(doc);
-        }
-        wrapper.endIndexing();
-		wrapper.startSearching();
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
+    	    try {
+    	        File dir = new File(htmlDir);
+    	        List<String> htmlFiles = listDir(dir);
+    	        for (String htmlFile: htmlFiles) {
+    	        	String url = htmlFile.replace(htmlDir, docRootPath);
+    	        	File source = new File(htmlFile);
+    	    		Document doc = extractor.getDocument(source, url);
+    	    		wrapper.addDocument(doc);
+    	        }
+    	        wrapper.endIndexing();
+    			wrapper.startSearching();
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    };
+    indexingThread.start();
   }
   
   private List<String> listDir(File root) {

@@ -37,7 +37,7 @@
     <dependency>
       <groupId>cn.leancloud</groupId>
       <artifactId>leanengine</artifactId>
-      <version>[0.1.6,0.2.0)</version>
+      <version>0.1.9</version>
     </dependency>
     <!--
     <dependency>
