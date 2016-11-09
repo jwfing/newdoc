@@ -1,0 +1,32 @@
+// Navbar
+.navbar {
+  border: none;
+}
+
+.navbar-brand {
+  padding-top: 19px;
+  padding-bottom: 18px;
+  height: @navbar-height;
+  font-size: 24px;
+  color: @text-color;
+
+  &:hover,
+  &:focus {
+    color: @link-color;
+  }
+
+  svg {
+    fill: #333;
+    transition: fill .4s ease;
+
+    &:hover,
+    &:focus {
+      fill: @link-color;
+    }
+  }
+}
+
+.navbar-toggle {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}

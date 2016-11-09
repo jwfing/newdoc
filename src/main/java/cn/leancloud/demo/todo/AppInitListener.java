@@ -60,7 +60,10 @@ public class AppInitListener implements ServletContextListener {
     	    JsoupHTMLExtractor extractor = new JsoupHTMLExtractor();
 
     	    String htmlDir = "./src/main/webapp";
-    	    String docRootPath = "http://localhost:3000";
+    	    String docRootPath = "http://newdoc.leanapp.cn";
+    	    if (System.getenv("LEANCLOUD_APP_ENV").equals("development")) {
+    	    	docRootPath = "http://localhost:3000";
+    	    }
 
     	    try {
     	        File dir = new File(htmlDir);

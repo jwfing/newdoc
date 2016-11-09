@@ -1,0 +1,2408 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>LeanCloud 文档</title>
+<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<!-- endbuild -->
+
+<script type='text/javascript'>
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-collapse" id="app-options">
+      <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+        </li>
+      </ul>
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          <li>
+            <a href="/docs/sdk_down.html">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="dashboard-subnav-text">SDK 下载</div>
+            </a>
+          </li>
+          <li ng-class="{active:currentHtmlPage=='help.html'}">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <i class="dashboard-subnav-text">帮助</i>
+            </a>
+            <ul class="dropdown-menu">
+              
+              <!-- <li><a href="start.html">快速入门</a></li> -->
+              
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
+              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/apps.html">LeanCloud App</a></li>
+              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li><a href="start.html">快速入门</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Objective-C</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios-macos-faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="weapp.html">微信小程序开发指南</a></li>
+            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            
+            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
+            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
+            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
+            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
+            <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <h1 id="-middot-objective-c">实时通信开发指南 &middot; Objective-C</h1>
+<h2 id="-">简介</h2>
+<p>实时通信服务可以让你一行后端代码都不用写，就能做出一个功能完备的实时聊天应用，或是一个实时对战类的游戏。所有聊天记录都保存在云端，离线消息会通过消息推送来及时送达，推送消息文本可以灵活进行定制。</p>
+<blockquote>
+<p>在继续阅读本文档之前，请先阅读<a href="./realtime_v2.html">《实时通信开发指南》</a>，了解一下实时通信的基本概念和模型。</p>
+</blockquote>
+<h3 id="-">文档贡献</h3>
+<p>我们欢迎和鼓励大家对本文档的不足提出修改建议。请访问我们的 <a href="https://github.com/leancloud/docs">Github 文档仓库</a> 来提交 Pull Request。</p>
+<h2 id="demo">Demo</h2>
+<p>相比阅读文档，如果你更喜欢从代码入手了解功能的具体实现，可以下载 Demo 来研究：</p>
+<ul>
+<li><a href="https://github.com/leancloud/LeanMessage-Demo">LeanMessage</a>（推荐）</li>
+<li><a href="https://github.com/leancloud/leanchat-ios">LeanChat</a></li>
+</ul>
+<p>我们把所有 Demo 项目放在了 <a href="https://github.com/leancloud/leancloud-demos">LeanCloud Demos 资源库</a> 中，方便大家浏览和参考。</p>
+<h2 id="-">安装和初始化</h2>
+<p>请参考详细的 <a href="sdk_setup-objc.html">Objective-C SDK 安装指南</a>。</p>
+<h3 id="-">示例代码约定</h3>
+<p>在以下示例代码中，若无特殊说明，所有代码均位于下面这个类的实现文件中：</p>
+<pre><code class="lang-objc">@interface TomAndJerryEpisode : NSObject
+
+@end
+
+@implementation TomAndJerryEpisode
+
+// 所有示例代码均位于此处
+
+@end
+</code></pre>
+<p>对于像 <code>self.prop</code> 这样的引用，我们约定 <code>prop</code> 属性在 <code>TomAndJerryEpisode</code> 类中已经有了正确的实现。例如：</p>
+<pre><code>self.client = [[AVIMClient alloc] init];
+</code></pre><p>若想让它正确执行，需要在当前的 <code>ViewController.m</code> 中添加一个 <code>AVIMClient</code> 属性：</p>
+<pre><code>@property (nonatomic, strong) AVIMClient *client;
+</code></pre><p>以此类推。</p>
+<p>我们也故意省略了错误处理，有时还会省略一些上下文逻辑，目的是让示例代码简明扼要。</p>
+<p>示例代码并不是最佳实践，仅为演示 SDK 接口的基础用法。</p>
+<h2 id="-">单聊</h2>
+<p>我们先从最简单的环节入手。此场景类似于微信的私聊、微博的私信和 QQ 单聊。我们创建了一个统一的概念来描述聊天的各种场景：<code>AVIMConversation</code>（对话），在<a href="./realtime_v2.html">《实时通信开发指南》</a> 里也有相关的详细介绍。</p>
+<h3 id="-">发送消息</h3>
+<p><img src="images/tom-and-jerry-avatar.png" alt="Tom and Jerry"></p>
+<p>Tom 想给 Jerry 发一条消息，实现代码如下：</p>
+<pre><code class="lang-objc">- (void)tomSendMessageToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一条消息给 Jerry
+            [conversation sendMessage:[AVIMTextMessage messageWithText:@&quot;耗子，起床！&quot; attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>执行完以上代码，在 LeanCloud 网站的 <a href="/data.html?appid={{appid}}#/_Conversation">控制台 /（选择应用）/ 存储 / 数据 / <code>_Conversation</code> 表</a> 中多了一行数据，其字段含义如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>对话唯一的名字</td>
+</tr>
+<tr>
+<td>m</td>
+<td>Array</td>
+<td>对话中成员的列表</td>
+</tr>
+<tr>
+<td>lm</td>
+<td>Date</td>
+<td>对话中最后一条消息发送的时间</td>
+</tr>
+<tr>
+<td>c</td>
+<td>String</td>
+<td>对话的创建者的 ClientId</td>
+</tr>
+<tr>
+<td>mu</td>
+<td>Array</td>
+<td>对话中设置了静音的成员，仅针对 iOS 以及 Windows Phone 用户有效。</td>
+</tr>
+<tr>
+<td>attr</td>
+<td>Object</td>
+<td>开发者设置的对话的自定义属性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">接收消息</h3>
+<p>要让 Jerry 收到 Tom 的消息，需要这样写：</p>
+<pre><code class="lang-objc">- (void)jerryReceiveMessageFromTom {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Jerry&quot;];
+
+    // 设置 client 的 delegate，并实现 delegate 方法
+    self.client.delegate = self;
+
+    // Jerry 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+// 接收消息的回调函数
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    NSLog(@&quot;%@&quot;, message.text); // 耗子，起床！
+}
+</code></pre>
+<h2 id="-">群聊</h2>
+<p>对于多人同时参与的固定群组，我们有成员人数限制，最大不能超过 500 人。对于另外一种多人聊天的形式，譬如聊天室，其成员不固定，用户可以随意进入发言的这种「临时性」群组，后面会单独介绍。</p>
+<h3 id="-">发送消息</h3>
+<p>Tom 想建立一个群，把自己好朋友都拉进这个群，然后给他们发消息，他需要做的事情是：</p>
+<ol>
+<li>建立一个朋友列表</li>
+<li>新建一个对话，把朋友们列为对话的参与人员</li>
+<li>发送消息</li>
+</ol>
+<pre><code class="lang-objc">- (void)tomCreateConversationWithFriends {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与朋友们的会话
+        NSArray *friends = @[@&quot;Jerry&quot;, @&quot;Bob&quot;, @&quot;Harry&quot;, @&quot;William&quot;];
+        [self.client createConversationWithName:@&quot;Tom and friends&quot; clientIds:friends callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一条消息给朋友们
+            [conversation sendMessage:[AVIMTextMessage messageWithText:@&quot;你们在哪儿？&quot; attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h3 id="-">接收消息</h3>
+<p>群聊的接收消息与单聊的接收消息在代码写法上是一致的。</p>
+<pre><code class="lang-objc">- (void)bobReceiveMessageFromFriends {
+    // Bob 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Bob&quot;];
+
+    // 设置 client 的 delegate，并实现 delegate 方法
+    self.client.delegate = self;
+
+    // Bob 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    NSLog(@&quot;%@&quot;, message.text); // 你们在哪儿？
+
+    AVIMTextMessage *reply = [AVIMTextMessage messageWithText:@&quot;Tom，我在 Jerry 家，你跟 Harry 什么时候过来？还有 William 和你在一起么？&quot; attributes:nil];
+
+    [conversation sendMessage:reply callback:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@&quot;回复成功！&quot;);
+        }
+    }];
+}
+</code></pre>
+<p>以上由 Tom 和 Bob 发送的消息，William 在上线时都会收到。</p>
+<p>由此可以看出，<strong>群聊和单聊本质上都是对话</strong>，只是参与人数不同。单聊是一对一的对话，群聊是多对多的对话。</p>
+<p>用户在开始聊天之前，需要先登录 LeanCloud 云端。这个登录并不需要用户名和密码认证，只是与 LeanCloud 云端建立一个长连接，所以只需要传入一个唯一标识作为当前用户的 <code>clientId</code> 即可。</p>
+<p>为直观起见，我们使用了 Tom、Jerry 等字符串作为 clientId 登录聊天系统。LeanCloud 云端只要求 clientId 在应用内唯一、不超过 64 个字符的字符串即可，具体用什么数据由应用层决定。</p>
+<p>实时通信 SDK 在内部会为每一个 clientId 创建唯一的 <code>AVIMClient</code> 实例，也就是说多次使用相同的 clientId 创建出来的实例还是同一个。因此，如果要支持同一个客户端内多账号登录，只要使用不同的 clientId 来创建多个实例即可。我们的 SDK 也支持多账户同时登录。</p>
+<h2 id="-">消息</h2>
+<p>消息是一个对话的基本组成部分，我们支持的消息类型有：</p>
+<ul>
+<li>文本消息：<code>AVIMTextMessage</code></li>
+<li>图像消息：<code>AVIMImageMessage</code></li>
+<li>音频消息：<code>AVIMAudioMessage</code></li>
+<li>视频消息：<code>AVIMVideoMessage</code></li>
+<li>文件消息：<code>AVIMFileMessage</code></li>
+<li>位置消息：<code>AVIMLocationMessage</code></li>
+</ul>
+<h3 id="-">富媒体消息</h3>
+<h4 id="-">图像消息</h4>
+<p>图像可以从系统提供的拍照 API 或本地媒体库中获取，也可以用有效的图像 URL。先调用 SDK  方法构造出一个 <code>AVIMImageMessage</code> 对象，然后把它当做参数交由 <code>AVIMConversation</code> 发送出去即可。</p>
+<h5 id="-">发送图像消息</h5>
+<p>【场景一】用系统自身提供的 API 去获取本地媒体库里的照片的数据流，然后构造出 <code>AVIMImageMessage</code> 来发送：</p>
+<pre><code class="lang-objc">- (void)tomSendLocalImageToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 创建了一个图像消息
+            NSString *filePath = [self imagePath];
+            NSDictionary *attributes = @{ @&quot;location&quot;: @&quot;旧金山&quot; };
+            AVIMImageMessage *message = [AVIMImageMessage messageWithText:@&quot;发自我的 iPhone&quot; attachedFilePath:filePath attributes:attributes];
+
+            // Tom 将图像消息发给 Jerry
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>【场景二】从微博上复制的一个图像链接来创建图像消息：</p>
+<pre><code class="lang-objc">- (void)tomSendExternalImageToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一张图片给 Jerry
+            AVFile *file = [AVFile fileWithURL:[self imageURL]];
+            AVIMImageMessage *message = [AVIMImageMessage messageWithText:@&quot;萌妹子一枚&quot; file:file attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>以上两种场景对于 SDK 的区别为：</p>
+<ul>
+<li><p>场景一：SDK 获取了完整的图像数据流，先上传文件到云端，再将文件的元数据以及 URL 等一并包装，发送出去。</p>
+</li>
+<li><p>场景二：SDK 并没有将图像实际上传到云端，而仅仅把 URL 包装在消息体内发送出去，这种情况下接收方是无法从消息体中获取图像的元信息数据，但是接收方可以自行通过客户端技术去分析图片的格式、大小、长宽之类的元数据。</p>
+</li>
+</ul>
+<h5 id="-">接收图像消息</h5>
+<p>在接收图像消息这种富媒体消息时，需要使用 <code>conversation:didReceiveTypedMessage:</code> 方法。实际上接收所有富媒体消息都是如此，因为它们都是从 <code>AVIMTypedMessage</code> 派生出来的。相关内容可以在下面的 <a href="#消息类详解">消息类详解</a> 中找到。</p>
+<pre><code class="lang-objc">- (void)jerryReceiveImageMessageFromTom {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.clientJerry = [[AVIMClient alloc] initWithClientId:@&quot;Jerry&quot;];
+    self.clientJerry.delegate = self;
+
+    // Jerry 打开 client
+    [self.clientJerry openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    AVIMImageMessage *imageMessage = (AVIMImageMessage *)message;
+
+    // 消息的 id
+    NSString *messageId = imageMessage.messageId;
+    // 图像文件的 URL
+    NSString *imageUrl = imageMessage.file.url;
+    // 发该消息的 ClientId
+    NSString *fromClientId = message.clientId;
+}
+</code></pre>
+<h4 id="-">音频消息</h4>
+<h5 id="-">发送音频消息</h5>
+<p>发送音频消息的基本流程是：读取音频文件（或者录制音频）&gt; 构建音频消息 &gt; 消息发送。</p>
+<pre><code class="lang-objc">- (void)tomSendAudioToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一首歌曲给 Jerry
+            NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;忐忑&quot; ofType:@&quot;mp3&quot;];
+            AVFile *file = [AVFile fileWithName:@&quot;忐忑.mp3&quot; contentsAtPath:path];
+            AVIMImageMessage *message = [AVIMImageMessage messageWithText:@&quot;听听人类的神曲~&quot; file:file attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>与图像消息类似，音频消息也支持从 URL 构建：</p>
+<pre><code class="lang-objc">- (void)tomSendExternalAudioToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一首歌曲给 Jerry
+            AVFile *file = [AVFile fileWithURL:@&quot;http://ac-lhzo7z96.clouddn.com/1427444393952&quot;];
+            AVIMAudioMessage *message = [AVIMAudioMessage messageWithText:@&quot;听听人类的神曲~&quot; file:file attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h5 id="-">接收音频消息</h5>
+<p>与接收图像消息类似，需要使用 <code>conversation:didReceiveTypedMessage:</code> 方法来响应，实例代码请参照 <a href="#接收图像消息">图像消息接收</a>。</p>
+<h4 id="-">视频消息</h4>
+<h5 id="-">发送视频消息</h5>
+<p>与发送音频消息的流程类似，视频的来源可以是手机录制，可以是系统中某一个具体的视频文件：</p>
+<pre><code class="lang-objc">- (void)tomSendVideoToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一个视频给 Jerry
+            NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;BBC_奶酪&quot; ofType:@&quot;mp4&quot;];
+            AVFile *file = [AVFile fileWithName:@&quot;BBC_奶酪.mp4&quot; contentsAtPath:path];
+            AVIMVideoMessage *message = [AVIMVideoMessage messageWithText:nil file:file attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>同样我们也支持从一个视频的 URL 创建视频消息，然后发送出去：</p>
+<pre><code class="lang-objc">- (void)tomSendExternalVideoToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一段视频给 Jerry
+            AVFile *file = [AVFile fileWithURL:@&quot;http://ac-lhzo7z96.clouddn.com/1427267336319&quot;];
+            AVIMVideoMessage *message = [AVIMVideoMessage messageWithText:nil file:file attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p><strong>注：这里说的 URL 指的是视频文件自身的 URL，而不是视频网站上播放页的 URL。</strong></p>
+<h5 id="-">接收视频消息</h5>
+<p>与接收图像消息类似，需要使用 <code>conversation:didReceiveTypedMessage:</code> 方法来响应，实例代码请参照 <a href="#接收图像消息">图像消息接收</a>。</p>
+<h4 id="-">地理位置消息</h4>
+<p>地理位置消息构建方式如下：</p>
+<pre><code class="lang-objc">[AVIMLocationMessage messageWithText:nil latitude:45.0 longitude:34.0 attributes:nil];
+</code></pre>
+<h5 id="-">发送地理位置消息</h5>
+<pre><code class="lang-objc">- (void)tomSendLocationToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 发了一个地理位置给 Jerry
+            // NOTE: 开发者更可以通过具体的设备的 API 去获取设备的地理位置
+            AVIMLocationMessage *message = [AVIMLocationMessage messageWithText:@&quot;新开的蛋糕店！耗子咱们有福了…&quot; latitude:45.0 longitude:34.0 attributes:nil];
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h5 id="-">接收地理位置消息</h5>
+<p>与接收图像消息类似，需要使用 <code>conversation:didReceiveTypedMessage:</code> 方法来响应，实例代码请参照 <a href="#接收图像消息">图像消息接收</a>。</p>
+<pre><code class="lang-objc">- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message;
+</code></pre>
+<h3 id="-">暂态消息</h3>
+<p>暂态消息不会被自动保存（以后在历史消息中无法找到它），也不支持延迟接收，离线用户更不会收到推送通知，所以适合用来做控制协议。譬如聊天过程中「某某正在输入...」这样的状态信息，就适合通过暂态消息来发送；或者当群聊的名称修改以后，也可以用暂态消息来通知该群的成员「群名称被某某修改为...」。</p>
+<pre><code class="lang-objc">typedef NS_ENUM(NSInteger, YourCustomMessageType) {
+    YourCustomMessageTypeOperation = 1
+};
+
+@interface YourOperationMessage : AVIMTextMessage &lt;AVIMTypedMessageSubclassing&gt;
+
+@end
+
+@implementation YourOperationMessage
+
++ (AVIMMessageMediaType)classMediaType {
+    return YourCustomMessageTypeOperation;
+}
+
+@end
+
+@implementation ViewController
+
++ (void)load {
+    // 自定义消息需要注册
+    [YourOperationMessage registerSubclass];
+}
+
+- (void)tomOpenConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.tomClient = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.tomClient openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.tomClient conversationQuery];
+        // Tom 获取 id 为 551260efe4b01608686c3e0f 的会话
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            self.tomConversation = conversation;
+        }];
+    }];
+}
+
+- (void)textFieldDidChange:(UITextField *)textField {
+    // 发送一条暂态消息给 Jerry，让 Jerry 知道 Tom 正在输入
+    YourOperationMessage *message = [YourOperationMessage messageWithText:@&quot;正在输入……&quot; attributes:nil];
+    [self.tomConversation sendMessage:message options:AVIMMessageSendOptionTransient callback:nil];
+}
+
+@end
+</code></pre>
+<p>而对话中的其他成员在聊天界面中需要有以下代码做出响应：</p>
+<pre><code class="lang-objc">- (void)jerryOnline {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.jerryClient = [[AVIMClient alloc] initWithClientId:@&quot;Jerry&quot;];
+
+    // Jerry 打开 client
+    [self.jerryClient openWithCallback:^(BOOL succeeded, NSError *error) {
+        NSLog(&quot;Jerry opened client&quot;)
+    }];
+}
+
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    if (message.mediaType == YourCustomMessageTypeOperation) {
+        NSLog(@&quot;正在输入……&quot;);
+    }
+}
+</code></pre>
+<h3 id="-">消息的发送</h3>
+<h4 id="-">多媒体消息发送</h4>
+<p>目前 SDK 内置的多媒体消息类如下：</p>
+<ul>
+<li>图像 <code>AVIMImageMessage</code></li>
+<li>音频 <code>AVIMAudioMessage</code></li>
+<li>视频 <code>AVIMVideoMessage</code></li>
+<li>文件 <code>AVIMFileMessage</code></li>
+</ul>
+<p>所有多媒体消息类型的发送流程如下：</p>
+<p>如果文件是从<strong>客户端 API 读取的数据流 (Stream)</strong>，步骤为：</p>
+<ol>
+<li>从本地构造 AVFile</li>
+<li>调用 AVFile 的上传方法将文件上传到云端，并获取文件元信息（MetaData）</li>
+<li>把 AVFile 的 objectId、URL ，以及文件的元信息封装在消息体内</li>
+<li>调用接口发送消息</li>
+</ol>
+<p>如果文件是<strong>外部链接的 URL</strong>，则：</p>
+<ol>
+<li>直接将 URL 封装在消息体内，不获取元信息，不包含 objectId</li>
+<li>调用接口发送消息</li>
+</ol>
+<h4 id="-">启用离线消息通知</h4>
+<p>不管是单聊还是群聊，当用户 A 发出消息后，如果目标对话的部分用户当前不在线，LeanCloud 云端可以提供离线推送的方式来提醒用户。</p>
+<p>这一功能默认是关闭的，你可以在 LeanCloud 应用控制台中开启它。操作方法请参考 <a href="realtime_v2.html#离线推送通知">实时通信概览 &middot; 离线推送通知</a>。</p>
+<p>这样 iOS 平台上的用户就可以收到消息推送了。当然，前提是应用本身申请到了 RemoteNotification 权限，也将正确的推送证书上传到了 LeanCloud 控制台。</p>
+<h4 id="-">消息送达回执</h4>
+<p>是指消息被对方收到之后，云端会发送一个回执通知给发送方，表明消息已经送达。
+需要注意的是：</p>
+<blockquote>
+<p>只有在发送时设置了「等待回执」标记，云端才会发送回执，默认不发送回执。该回执并不代表用户已读。</p>
+</blockquote>
+<p>调用 <code>sendMessage</code> 方法时，在 options 中传入 <code>AVIMMessageSendOptionRequestReceipt</code>：</p>
+<pre><code class="lang-objc">[conversation sendMessage:message options:AVIMMessageSendOptionRequestReceipt callback:^(BOOL succeeded, NSError *error) {
+  if (succeeded) {
+    NSLog(@&quot;发送成功！需要回执&quot;);
+  }
+}];
+</code></pre>
+<p>监听消息是否已送达实现 <code>conversation:messageDelivered</code> 即可。</p>
+<pre><code class="lang-objc">- (void)conversation:(AVIMConversation *)conversation messageDelivered:(AVIMMessage *)message{
+    NSLog(@&quot;%@&quot;, @&quot;消息已送达。&quot;); // 打印消息
+}
+</code></pre>
+<h3 id="-">消息的接收</h3>
+<p>实时通信 SDK 内部封装了对富媒体消息的支持，所有富媒体消息都是从 AVIMTypedMessage 派生出来的。发送的时候可以直接调用 <code>[AVIMConversation sendMessage:callback:]</code> 函数。在接收端，我们也在 <code>AVIMClientDelegate</code> 中专门增加了一个回调函数：</p>
+<pre><code>- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message;
+</code></pre><p>这样，如果发送端发送的是 AVIMMessage 消息，那么接受端就是 <code>conversation:didReceiveCommonMessage:</code> 被调用；如果发送的是 AVIMTypedMessage（及其子类）的消息，那么接受端就是 <code>conversaion:didReceiveTypedMessage</code> 被调用。</p>
+<h4 id="-">未拉取的离线消息</h4>
+<p>未拉取的离线消息指的是客户端尚未主动拉取到本地的消息。</p>
+<p>SDK 默认的接收机制是：当客户端上线时，离线消息会自动通过长连接发送至客户端。如果开启了「未读消息」，消息接收机制变为：当客户端上线时，会收到其参与过的会话的离线消息数量，云端不再主动将离线消息通知发送至客户端，转而由客户端负责主动拉取。</p>
+<p>要开启未读消息，需要在 AVOSCloud 初始化语句后面加上：</p>
+<pre><code class="lang-objc">[AVIMClient setUserOptions:@{
+    AVIMUserOptionUseUnread: @(YES)
+}];
+</code></pre>
+<p>然后使用代理方法 <code>conversation:didReceiveUnread:</code> 来从服务端取回未读消息：</p>
+<pre><code class="lang-objc">- (void)conversation:(AVIMConversation *)conversation didReceiveUnread:(NSInteger)unread {
+  // unread 是未读消息数量，conversation 为所属的会话
+  // 没有未读消息就跳过
+  if (unread &lt;= 0) return;
+
+  // 否则从服务端取回未读消息
+  [conversation queryMessagesFromServerWithLimit:unread callback:^(NSArray *objects, NSError *error) {
+    if (!error &amp;&amp; objects.count) {
+      // 显示消息或进行其他处理 
+    }
+  }];
+  // 将这些消息标记为已读 
+  [conversation markAsReadInBackground];
+}
+</code></pre>
+<p>注意：客户端<u>在线上时</u>收到的消息默认为<strong>已读</strong>，不存在未读的情况。因此开发者不需要将这样的消息标记为已读。</p>
+<h3 id="-">消息类详解</h3>
+<p><img src="images/message_type_diagram.png" alt="message type diagram"></p>
+<p>所有消息都是 <code>AVIMMessage</code> 的实例，每种消息实例都具备如下属性：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>content</td>
+<td>NSString</td>
+<td>消息内容</td>
+</tr>
+<tr>
+<td>clientId</td>
+<td>NSString</td>
+<td>指消息发送者的 clientId</td>
+</tr>
+<tr>
+<td>conversationId</td>
+<td>NSString</td>
+<td>消息所属对话 id</td>
+</tr>
+<tr>
+<td>messageId</td>
+<td>NSString</td>
+<td>消息发送成功之后，由 LeanCloud 云端给每条消息赋予的唯一 id</td>
+</tr>
+<tr>
+<td>sendTimestamp</td>
+<td>int64_t</td>
+<td>消息发送的时间。消息发送成功之后，由 LeanCloud 云端赋予的全局的时间戳。</td>
+</tr>
+<tr>
+<td>deliveredTimestamp</td>
+<td>int64_t</td>
+<td>消息被对方接收到的时间。消息被接收之后，由 LeanCloud 云端赋予的全局的时间戳。</td>
+</tr>
+<tr>
+<td>status</td>
+<td>AVIMMessageStatus 枚举</td>
+<td>消息状态，有五种取值：<br/><br/><code>AVIMMessageStatusNone</code>（未知）<br/><code>AVIMMessageStatusSending</code>（发送中）<br/><code>AVIMMessageStatusSent</code>（发送成功）<br/><code>AVIMMessageStatusDelivered</code>（被接收）<br/><code>AVIMMessageStatusFailed</code>（失败）</td>
+</tr>
+<tr>
+<td>ioType</td>
+<td>AVIMMessageIOType 枚举</td>
+<td>消息传输方向，有两种取值：<br/><br/><code>AVIMMessageIOTypeIn</code>（发给当前用户）<br/><code>AVIMMessageIOTypeOut</code>（由当前用户发出）</td>
+</tr>
+</tbody>
+</table>
+<p>我们为每一种富媒体消息定义了一个消息类型，实时通信 SDK 自身使用的类型是负数（如下面列表所示），所有正数留给开发者自定义扩展类型使用，0 作为「没有类型」被保留起来。</p>
+<table>
+<thead>
+<tr>
+<th>消息</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文本消息</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>图像消息</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>音频消息</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>视频消息</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>位置消息</td>
+<td>-5</td>
+</tr>
+<tr>
+<td>文件消息</td>
+<td>-6</td>
+</tr>
+</tbody>
+</table>
+<!-- >TODO: 举例说明如何使用这样的数字类型 -->
+<h3 id="-">自定义消息</h3>
+<p>在某些场景下，开发者需要在发送消息时附带上自己业务逻辑需求的自定义属性，比如消息发送的设备名称，或是图像消息的拍摄地点、视频消息的来源等等，开发者可以通过 <code>AVIMTypedMessage.attributes</code> 实现这一需求。</p>
+<p>【场景】发照片给朋友，告诉对方照片的拍摄地点：</p>
+<pre><code class="lang-objc">- (void)tomSendLocalImageToJerry {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Jerry 的会话
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 创建了一个图像消息
+            NSString *filePath = [self imagePath];
+            NSDictionary *attributes = @{ @&quot;location&quot;: @&quot;拉萨布达拉宫&quot; };
+            AVIMImageMessage *message = [AVIMImageMessage messageWithText:@&quot;这蓝天……我彻底是醉了&quot; attachedFilePath:filePath attributes:attributes];
+
+            // Tom 将图像消息发给 Jerry
+            [conversation sendMessage:message callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;发送成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>接收时可以读取这一属性：</p>
+<pre><code class="lang-objc">- (void)jerryReceiveMessageFromTom {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;friend&quot;];
+
+    // 设置 client 的 delegate，并实现 delegate 方法
+    self.client.delegate = self;
+
+    // Jerry 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+- (void)conversation:(AVIMConversation *)conversation didReceiveTypedMessage:(AVIMTypedMessage *)message {
+    if ([message isKindOfClass:[AVIMImageMessage class]]) {
+        AVIMImageMessage *imageMessage = (AVIMImageMessage *)message;
+
+        // 拉萨布达拉宫
+        NSString *location = imageMessage.attributes[@&quot;location&quot;];
+    }
+}
+</code></pre>
+<p>所有的 <code>AVIMTypedMessage</code> 消息都支持 <code>attributes</code> 这一属性。</p>
+<h4 id="-">创建新的消息类型</h4>
+<p>继承于 <code>AVIMTypedMessage</code>，开发者也可以扩展自己的富媒体消息。其要求和步骤是：</p>
+<ul>
+<li>实现 <code>AVIMTypedMessageSubclassing</code> 协议；</li>
+<li>子类将自身类型进行注册，一般可在子类的 <code>+load</code> 方法或者 UIApplication 的 <code>-application:didFinishLaunchingWithOptions:</code> 方法里面调用 <code>[YourClass registerSubclass]</code>。</li>
+</ul>
+<blockquote>
+<p><strong>什么时候需要自己创建新的消息类型？</strong></p>
+<p>譬如有一条图像消息，除了文本之外，还需要附带地理位置信息，为此开发者需要创建一个新的消息类型吗？从上面的例子可以看出，其实完全没有必要。这种情况只要使用消息类中预留的 <code>AVIMTypedMessage.attributes</code> 属性就可以保存额外的地理位置信息了。</p>
+<p>只有在我们的消息类型完全无法满足需求的时候，才需要扩展自己的消息类型。譬如「今日头条」里面允许用户发送某条新闻给好友，在展示上需要新闻的标题、摘要、图片等信息（类似于微博中的 linkcard）的话，这时候就可以扩展一个新的 NewsMessage 类。</p>
+</blockquote>
+<h2 id="-">对话</h2>
+<p>以上章节基本演示了实时通信 SDK 的核心概念「对话」，即 <code>AVIMConversation</code>。我们将单聊和群聊（包括聊天室）的消息发送和接收都依托于 <code>AVIMConversation</code> 这个统一的概念进行操作，所以开发者需要强化理解的一个概念就是：</p>
+<blockquote>
+<p>SDK 层面不区分单聊和群聊。</p>
+</blockquote>
+<p>对话的管理包括「成员管理」和「属性管理」两个方面。</p>
+<p>在讲解下面的内容之前，我们先来创建一个多人对话。后面的举例都要基于这个对话，所以<strong>这一步是必须的</strong>。请将以下代码复制到 IDE 并且执行。</p>
+<pre><code class="lang-objc">- (void)jerryCreateConversationWithFriends {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Jerry&quot;];
+
+    // Jerry 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Jerry 建立了与朋友们的会话
+        NSArray *friends = @[@&quot;Jerry&quot;, @&quot;Bob&quot;, @&quot;Harry&quot;, @&quot;William&quot;];
+        [self.client createConversationWithName:@&quot;Tom and friends&quot; clientIds:friends callback:^(AVIMConversation *conversation, NSError *error) {
+            if (!error) {
+                NSLog(@&quot;创建成功&quot;);
+            }
+        }];
+    }];
+}
+</code></pre>
+<h3 id="-">创建对话</h3>
+<p>有两个方法可以创建对话：</p>
+<pre><code class="lang-objc">/*!
+ 创建一个新的用户对话。
+ 在单聊的场合，传入对方一个 clientId 即可；群聊的时候，支持同时传入多个 clientId 列表
+ @param name - 对话名称。
+ @param clientIds - 聊天参与者（发起人除外）的 clientId 列表。
+ @param callback － 对话建立之后的回调
+ @return None.
+ */
+- (void)createConversationWithName:(NSString *)name
+                         clientIds:(NSArray *)clientIds
+                          callback:(AVIMConversationResultBlock)callback;
+
+/*!
+ 创建一个新的用户对话。
+ 在单聊的场合，传入对方一个 clientId 即可；群聊的时候，支持同时传入多个 clientId 列表
+ @param name - 对话名称。
+ @param clientIds - 聊天参与者（发起人除外）的 clientId 列表。
+ @param attributes - 对话的自定义属性。
+ @param options － 可选参数，可以使用或 “|” 操作表示多个选项
+ @param callback － 对话建立之后的回调
+ @return None.
+ */
+- (void)createConversationWithName:(NSString *)name
+                         clientIds:(NSArray *)clientIds
+                        attributes:(NSDictionary *)attributes
+                           options:(AVIMConversationOption)options
+                          callback:(AVIMConversationResultBlock)callback;
+</code></pre>
+<p>各参数含义如下：</p>
+<ul>
+<li><strong>name</strong> － 表示对话名字，可以指定任意有意义的名字，也可不填。</li>
+<li><strong>clientIds</strong> － 表示对话初始成员，可不填。如果填写了初始成员，则 LeanCloud 云端会直接给这些成员发出邀请，省掉再专门发一次邀请请求。</li>
+<li><strong>attributes</strong> － 表示额外属性，Dictionary，支持任意的 key/value，可不填。</li>
+<li><p><strong>options</strong> － 对话选项：</p>
+<ol>
+<li><code>AVIMConversationOptionTransient</code>：聊天室，具体可以参见<a href="#创建聊天室">创建聊天室</a>；</li>
+<li><code>AVIMConversationOptionNone</code>：普通对话；</li>
+<li><code>AVIMConversationOptionUnique</code>：根据成员（clientIds）创建原子对话。如果没有这个选项，服务端会为相同的 clientIds 创建新的对话。clientIds 即 _Conversation 表的 <strong>m</strong> 字段。</li>
+</ol>
+<p>其中，<code>AVIMConversationOptionNone</code> 和 <code>AVIMConversationOptionUnique</code> 可以使用 <code>|</code> 来组合使用，其他选项则不允许。</p>
+</li>
+<li><strong>callback</strong> － 结果回调，在操作结束之后调用，通知开发者成功与否。</li>
+</ul>
+<h3 id="-">对话的成员管理</h3>
+<p>成员管理，是在对话中对成员的一个实时生效的操作，一旦操作成功则不可逆。</p>
+<h4 id="-">成员变更接口</h4>
+<p>成员变更操作接口简介如下表：</p>
+<table>
+<thead>
+<tr>
+<th>操作目的</th>
+<th>接口名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自身主动加入</td>
+<td><code>AVIMConversation.joinWithCallback</code></td>
+</tr>
+<tr>
+<td>添加其他成员</td>
+<td><code>AVIMConversation.addMembersWithClientIds</code></td>
+</tr>
+<tr>
+<td>自身主动退出</td>
+<td><code>AVIMConversation.quitWithCallback</code></td>
+</tr>
+<tr>
+<td>剔除其他成员</td>
+<td><code>AVIMConversation.removeMembersWithClientIds</code></td>
+</tr>
+</tbody>
+</table>
+<p>成员变动之后，所有对话成员如果在线的话，都会得到相应的通知。</p>
+<p>在 iOS 中，开发者需要实现 <code>AVIMClientDelegate</code> 代理，并且为 AVIMClient 指定该代理的一个实例。</p>
+<p><code>AVIMClientDelegate</code> 关于的成员变更通知的代理解释如下：</p>
+<pre><code>@protocol AVIMClientDelegate &lt;NSObject&gt;
+
+/*!
+ 对话中有新成员加入的通知。
+ @param conversation － 所属对话
+ @param clientIds - 加入的新成员列表
+ @param clientId - 邀请者的 id
+ @return None.
+ */
+- (void)conversation:(AVIMConversation *)conversation membersAdded:(NSArray *)clientIds byClientId:(NSString *)clientId;
+/*!
+ 对话中有成员离开的通知。
+ @param conversation － 所属对话
+ @param clientIds - 离开的成员列表
+ @param clientId - 操作者的 id
+ @return None.
+ */
+- (void)conversation:(AVIMConversation *)conversation membersRemoved:(NSArray *)clientIds byClientId:(NSString *)clientId;
+
+/*!
+ 被邀请加入对话的通知。
+ @param conversation － 所属对话
+ @param clientId - 邀请者的 id
+ @return None.
+ */
+- (void)conversation:(AVIMConversation *)conversation invitedByClientId:(NSString *)clientId;
+
+/*!
+ 从对话中被移除的通知。
+ @param conversation － 所属对话
+ @param clientId - 操作者的 id
+ @return None.
+ */
+- (void)conversation:(AVIMConversation *)conversation kickedByClientId:(NSString *)clientId;
+</code></pre><p>接下来，我们将结合代码，针对各种成员变更的操作以及对应的事件回调进行详细讲解。</p>
+<h4 id="-">自身主动加入</h4>
+<p>Tom 想主动加入 Jerry、Bob、Harry 和 William 的对话，以下代码将帮助他实现这个功能：</p>
+<pre><code class="lang-objc">- (void)tomJoinConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            [conversation joinWithCallback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;加入成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>该群的其他成员（比如 Bob）如果在线的话，会收到该操作的事件回调：</p>
+<pre><code class="lang-objc">- (void)bobNoticedTomDidJoin {
+    // Bob 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Bob&quot;];
+    self.client.delegate = self;
+
+    // Bob 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // ...
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+
+- (void)conversation:(AVIMConversation *)conversation membersAdded:(NSArray *)clientIds byClientId:(NSString *)clientId {
+    NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;%@ 加入到对话，操作者为：%@&quot;,[clientIds objectAtIndex:0],clientId]);
+}
+</code></pre>
+<p>Tom 自身主动加入对话之后，相关方收到通知的时序是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>加入者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>发出请求 join</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>收到 membersAdded 通知</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">添加其他成员</h4>
+<p>Jerry 想再把 Mary 加入到对话中，需要如下代码帮助他实现这个功能：</p>
+<pre><code class="lang-objc">- (void)jerryInviteMary {
+    // Jerry 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Jerry&quot;];
+
+    // Jerry 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // Jerry 邀请 Mary 到会话中
+            [conversation addMembersWithClientIds:@[@&quot;Mary&quot;] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;邀请成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>如果 Mary 在线的话，就会收到 <code>invitedByClientId</code> 通知：</p>
+<pre><code>-(void)maryNoticedWhenJerryInviteMary{
+    // Mary 创建一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Mary&quot;];
+    self.client.delegate = self;
+
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // 登录成功
+    }];
+}
+#pragma mark - AVIMClientDelegate
+// Mary 被邀请进入对话之后，会得到如下回调
+-(void)conversation:(AVIMConversation *)conversation invitedByClientId:(NSString *)clientId{
+    NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;当前 ClientId(Mary) 被 %@ 邀请，加入了对话&quot;,clientId]);
+}
+</code></pre><p>该对话的其他成员（例如 Harry）也会受到该项操作的影响，收到事件被响应的通知，类似于第一小节 <a href="#自身主动加入">自身主动加入</a> 中<strong>Tom 加入对话之后，Bob 受到的影响。</strong></p>
+<p>邀请成功以后，相关方收到通知的时序是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>邀请者</th>
+<th>被邀请者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>发出请求 addMembers</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>收到 invitedByClientId 通知</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>收到 membersAdded 通知</td>
+<td>收到 membersAdded 通知</td>
+<td>收到 membersAdded 通知</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：如果在进行邀请操作时，被邀请者不在线，那么通知消息并不会被离线缓存，所以等到 Ta 再次上线的时候将不会收到通知。</p>
+</blockquote>
+<h4 id="-">自身退出对话</h4>
+<p>这里一定要区分<strong>自身退出对话</strong>的主动性，它与<strong>自身被动被踢出</strong>（下一小节）在逻辑上完全是不一样的。</p>
+<p>Tom 主动从对话中退出，他需要如下代码实现需求：</p>
+<pre><code class="lang-objc">- (void)tomQuitConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            [conversation quitWithCallback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;退出成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>如果 Harry 在线的话，他将收到 <code>membersRemoved</code> 通知：</p>
+<pre><code>-(void)harryNoticedWhenTomQuitConversation{
+    // Harry 创建一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Harry&quot;];
+    self.client.delegate = self;
+
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // 登录成功
+    }];
+}
+
+#pragma mark - AVIMClientDelegate
+// Harry 登录之后，Tom 退出了对话，在 Harry 所在的客户端就会激发以下回调
+-(void)conversation:(AVIMConversation *)conversation membersRemoved:(NSArray *)clientIds byClientId:(NSString *)clientId{
+    NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;%@ 离开了对话， 操作者为：%@&quot;,[clientIds objectAtIndex:0],clientId]);
+}
+</code></pre><p>Tom 自身主动退出对话之后，相关方收到通知的时序是这样的：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>退出者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>发出请求 quit</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>收到 membersRemoved 通知</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">剔除其他成员</h4>
+<p>Harry 被 William 从对话中删除。实现代码如下（关于 William 如何获得权限在后面的 <a href="#签名和安全">签名和安全</a> 中会做详细阐述，此处不宜扩大话题范围。）：</p>
+<pre><code class="lang-objc">- (void)williamKickHarry {
+    // William 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;William&quot;];
+
+    // William 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            [conversation removeMembersWithClientIds:@[@&quot;Harry&quot;] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;踢人成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>如果 Harry 在线的话，会收到 <code>kickedByClientId</code> 通知：</p>
+<pre><code>-(void)harryNoticedWhenKickedByWilliam{
+    // Harry 创建一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Harry&quot;];
+    self.client.delegate = self;
+
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // 登录成功
+    }];
+}
+#pragma mark - AVIMClientDelegate
+// Harry 登录之后，William 把 Harry 从对话中 剔除，在 Harry 所在的客户端就会触发以下回调
+-(void)conversation:(AVIMConversation *)conversation kickedByClientId:(NSString *)clientId{
+    NSLog(@&quot;%@&quot;, [NSString stringWithFormat:@&quot;当前 ClientId(Harry) 被提出对话， 操作者为：%@&quot;,clientId]);
+}
+</code></pre><p>踢人时，相关方收到通知的时序如下：</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>踢人者</th>
+<th>被踢者</th>
+<th>其他人</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>发出请求 removeMembers</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>收到 kickedByClientId 通知</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>收到 membersRemoved 通知</td>
+<td></td>
+<td>收到 membersRemoved 通知</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意：如果在进行踢人操作时，被踢者不在线，那么通知消息并不会被离线缓存，所以等到 Ta 再次上线的时候将不会收到通知。</p>
+</blockquote>
+<h4 id="-">查询成员数量</h4>
+<p><code>conversation:countMembersWithCallback:</code>这个方法返回的是实时数据：</p>
+<pre><code class="lang-objc">- (void)tomCountConversationMembers {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 查看会话中成员的数量
+            [conversation countMembersWithCallback:^(NSInteger number, NSError *error) {
+            // 打印成员数量
+            NSLog(@&quot;%ld&quot;, number);
+        }];
+        }];
+    }];
+}
+</code></pre>
+<h3 id="-">对话的属性管理</h3>
+<p>对话实例（AVIMConversation）与控制台中 <code>_Conversation</code> 表是一一对应的，默认提供的属性的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>AVIMConversation 属性名</th>
+<th>_Conversation 字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>conversationId</code></td>
+<td><code>objectId</code></td>
+<td>全局唯一的 Id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>name</code></td>
+<td>成员共享的统一的名字</td>
+</tr>
+<tr>
+<td><code>members</code></td>
+<td><code>m</code></td>
+<td>成员列表</td>
+</tr>
+<tr>
+<td><code>creator</code></td>
+<td><code>c</code></td>
+<td>对话创建者</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td><code>attr</code></td>
+<td>自定义属性</td>
+</tr>
+<tr>
+<td><code>transient</code></td>
+<td><code>tr</code></td>
+<td>是否为聊天室（暂态对话）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="-">名称</h4>
+<p>这是一个全员共享的属性，它可以在创建时指定，也可以在日后的维护中被修改。</p>
+<p>Tom 想建立一个名字叫「喵星人」 对话并且邀请了好友 Black 加入对话：</p>
+<pre><code class="lang-objc">- (void)tomCreateNamedConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 建立了与 Black 的会话，会话名称是 &quot;喵星人&quot;
+        [self.client createConversationWithName:@&quot;喵星人&quot; clientIds:@[@&quot;Black&quot;] callback:^(AVIMConversation *conversation, NSError *error) {
+            if (succeeded) {
+                NSLog(@&quot;创建成功！&quot;);
+            }
+        }];
+    }];
+}
+</code></pre>
+<p>Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，他需要如下代码：</p>
+<pre><code class="lang-objc">- (void)blackChangeConversationName {
+    // Black 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Black&quot;];
+
+    // Black 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Black 查询 id 为 551260efe4b01608686c3e0f 的会话
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // Black 修改 conversation 的名称
+            AVIMConversationUpdateBuilder *updateBuilder = [conversation newUpdateBuilder];
+            updateBuilder.name = @&quot;聪明的喵星人&quot;;
+            [conversation update:[updateBuilder dictionary] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;修改成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">成员</h4>
+<p>是当前对话中所有成员的 <code>clientId</code>。默认情况下，创建者是在包含在成员列表中的，直到 TA 退出对话。</p>
+<blockquote>
+<p><strong>强烈建议开发者切勿在控制台中对其进行修改</strong>。所有关于成员的操作请参照上一章节中的 <a href="#对话的成员管理">对话的成员管理</a> 来进行。</p>
+</blockquote>
+<h4 id="-">静音</h4>
+<p>假如某一用户不想再收到某对话的消息提醒，但又不想直接退出对话，可以使用静音操作，即开启「免打扰模式」。</p>
+<p>比如 Tom 工作繁忙，对某个对话设置了静音：</p>
+<pre><code class="lang-objc">- (void)tomMuteConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 查询 id 为 551260efe4b01608686c3e0f 的会话
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // Tom 将会话设置为静音
+            [conversation muteWithCallback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;修改成功！&quot;);
+                }
+            }];
+        }];
+    }];
+}
+</code></pre>
+<blockquote>
+<p>设置静音之后，iOS 和 Windows Phone 的用户就不会收到推送消息了。</p>
+</blockquote>
+<p>与之对应的就是取消静音的操作，即取消免打扰模式。此操作会修改云端 <code>_Conversation</code> 里面的 <code>mu</code> 属性。<strong>强烈建议开发者切勿在控制台中对 <code>mu</code> 随意进行修改</strong>。</p>
+<h4 id="-">创建者</h4>
+<p>即对话的创建者，它的值是对话创建者的 <code>clientId</code>。</p>
+<p>它等价于 QQ 群中的「群创建者」，但区别于「群管理员」。比如 QQ 群的「创建者」是固定不变的，它的图标颜色与「管理员」的图标颜色都不一样。所以根据对话中成员的 <code>clientId</code> 是否与 <code>AVIMConversation.creator</code> 一致就可以判断出他是不是群的创建者。</p>
+<h4 id="-">自定义属性</h4>
+<p>通过该属性，开发者可以随意存储自己的键值对，为对话添加自定义属性，来满足业务逻辑需求。</p>
+<p>给某个对话加上两个自定义的属性：type = &quot;private&quot;（类型为私有）、isSticky = true（置顶显示）：</p>
+<pre><code class="lang-objc">- (void)tomCreateConversationWithAttributes {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建名称为「猫和老鼠」的会话，并附加会话属性
+        NSDictionary *attributes = @{ 
+            @&quot;type&quot;: @&quot;private&quot;,
+            @&quot;isSticky&quot;: @(YES) 
+        };
+        [self.client createConversationWithName:@&quot;猫和老鼠&quot; clientIds:@[@&quot;Jerry&quot;] attributes:attributes options:AVIMConversationOptionNone callback:^(AVIMConversation *conversation, NSError *error) {
+            if (succeeded) {
+                NSLog(@&quot;创建成功！&quot;);
+            }
+        }];
+    }];
+}
+</code></pre>
+<p>接下来，Tom 将 type 修改为 public：</p>
+<pre><code class="lang-objc">-(void)tomUpdateConversationAttributes {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 查询 id 为 551260efe4b01608686c3e0f 的对话
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+
+            AVIMConversationUpdateBuilder *updateBuilder = [conversation newUpdateBuilder];
+
+            // ---------  非常重要！！！--------------
+            // 将所有属性转交给 updateBuilder 统一处理。
+            // 如果缺失这一步，下面没有改动过的属性，如上例中的 isSticky，
+            // 在保存后会被删除。
+            // -------------------------------------
+            updateBuilder.attributes = conversation.attributes;
+
+            // 将 type 值改为 public
+            [updateBuilder setObject:@&quot;public&quot; forKey:@&quot;type&quot;];
+
+            // 其他操作方法：删除 type 
+            // [updateBuilder removeObjectForKey:@&quot;type&quot;];
+
+            // 将更新后的全部属性写回对话
+            [conversation update:[updateBuilder dictionary] callback:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    NSLog(@&quot;更新 attr 成功&quot;);
+                }
+            }];
+        }
+    }];
+}
+</code></pre>
+<p><strong>自定义属性在 SDK 级别是对所有成员可见的</strong>。如果要控制所谓的可见性，开发者需要自己维护这一属性的读取权限。要对自定义属性进行查询，请参见 <a href="#对话的查询">对话的查询</a>。</p>
+<h3 id="-">对话的查询</h3>
+<h4 id="-">对话的有效期</h4>
+<p>一个对话（包括普通、暂态、系统对话）如果一年内没有通过 SDK 或者 REST API 发送过新的消息，或者它在 <code>_Conversation</code> 表中的任意字段没有被更新过，即被视为<strong>不活跃对话</strong>，云端会自动将其删除。（查询对话的消息记录并不会更新 <code>_Conversation</code> 表，所以只查询不发送消息的对话仍会被视为不活跃对话。）</p>
+<p>不活跃的对话被删除后，当客户端再次通过 SDK 或 REST API 对其进行查询或发送消息时，会遇到 
+<code>4401 INVALID_MESSAGING_TARGET</code> 错误，表示该对话已经不存在了。同时，与该对话相关的消息历史也无法获取。</p>
+<p>反之，活跃的对话会一直保存在云端。</p>
+<!-- #### 基础查询 -->
+<h4 id="-id-">根据 id 查询</h4>
+<p>假如已知某一对话的 Id，可以使用它来查询该对话的详细信息：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 查询 id 为 551260efe4b01608686c3e0f 的会话
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query getConversationById:@&quot;551260efe4b01608686c3e0f&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            if (succeeded) {
+                NSLog(@&quot;查询成功！&quot;);
+            }
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">对话列表</h4>
+<p>用户登录进应用后，获取最近的 10 个对话（包含暂态对话，如聊天室）：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationList {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 构建一个查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<p>对话的查询默认返回 10 个结果，若要更改返回结果数量，请设置 <code>limit</code> 值。</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationWithLimit {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 构建一个查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // Tom 设置查询最近 20 个活跃对话
+        query.limit = 20;
+
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;查询成功！&quot;);
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">条件查询</h4>
+<h5 id="-">构建查询</h5>
+<p>对话的条件查询需要注意的对话属性的存储结构，在对话的属性一章节我们介绍的对话的几个基本属性，这些属性都是 SDK 提供的默认属性，根据默认属性查询的构建如下：</p>
+<pre><code>// 查询对话名称为「LeanCloud 粉丝群」的对话
+[query whereKey:@&quot;name&quot; equalTo:@&quot;LeanCloud 粉丝群&quot;];
+
+// 查询对话名称包含 「LeanCloud」 的对话
+[query whereKey:@&quot;name&quot; containsString:@&quot;LeanCloud&quot;];
+
+// 查询过去24小时活跃的对话
+NSDate *today = [NSDate date];
+NSDate *yesterday = [today dateByAddingTimeInterval: -86400.0];
+[query whereKey:@&quot;lm&quot; greaterThan:yesterday];
+</code></pre><p>相对于默认属性的查询，开发者自定义属性的查询需要在构建查询的时在关键字（key）前加上一个特殊的前缀：<code>attr</code>，不过每个 SDK 都提供相关的快捷方式帮助开发者方便的构建查询：</p>
+<pre><code>// 查询话题为 DOTA2 对话
+[query whereKey:@&quot;attr.topic&quot; equalTo:@&quot;DOTA2&quot;];
+// 查询等级大于 5 的对话
+[query whereKey:@&quot;attr.level&quot; greaterThan:@(5)];
+</code></pre><p>在 iOS SDK 中，针对自定义属性的查询，可以使用预定义的宏 <code>AVIMAttr</code> 为自定义属性查询添加 <code>attr</code> 前缀：</p>
+<pre><code>// 查询话题为 DOTA2 对话
+[query whereKey:AVIMAttr(@&quot;topic&quot;) equalTo:@&quot;DOTA2&quot;];
+// 它与下面这行代码是一样的
+[query whereKey:@&quot;attr.topic&quot; equalTo:@&quot;DOTA2&quot;];
+</code></pre><p>默认属性以及自定义属性的区分便于 SDK 后续的内建属性拓展和维护，自定义属性的开放有利于开发者在可控的范围内进行查询的构建。</p>
+<p>条件查询又分为：比较查询、正则匹配查询、包含查询，以下会做分类演示。</p>
+<h4 id="-">比较查询</h4>
+<p>比较查询在一般的理解上都包含以下几种：</p>
+<table>
+<thead>
+<tr>
+<th>逻辑操作</th>
+<th>AVIMConversationQuery 方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>等于</td>
+<td><code>equalTo</code></td>
+</tr>
+<tr>
+<td>不等于</td>
+<td><code>notEqualTo</code> </td>
+</tr>
+<tr>
+<td>大于</td>
+<td><code>greaterThan</code></td>
+</tr>
+<tr>
+<td>大于等于</td>
+<td><code>greaterThanOrEqualTo</code></td>
+</tr>
+<tr>
+<td>小于</td>
+<td><code>lessThanOrEqualTo</code></td>
+</tr>
+<tr>
+<td>小于等于</td>
+<td><code>lessThanOrEqualTo</code></td>
+</tr>
+</tbody>
+</table>
+<p>比较查询最常用的是等于查询：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByEqualTo {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建属性中 topic 是 movie 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:@&quot;attr.topic&quot; equalTo:@&quot;movie&quot;];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;查询成功！&quot;);
+        }];
+    }];
+}
+</code></pre>
+<p>目前条件查询只针对 <code>AVIMConversation</code> 对象的自定义属性进行操作，也就是针对 <code>_Conversation</code> 表中的 <code>attr</code> 字段进行 <code>AVQuery</code> 查询。</p>
+<p>下面检索一下类型不是私有的对话：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByNotEqualTo {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建 type 不等于 private 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;type&quot;) notEqualTo:@&quot;private&quot;];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<p>对于可以比较大小的整型、浮点等常用类型，可以参照以下示例代码进行扩展：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByGreaterThan {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建 attr.age 大于 18 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;age&quot;) greaterThan:@(18)];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">正则匹配查询</h4>
+<p>匹配查询是指在 <code>AVIMConversationQuery</code> 的查询条件中使用正则表达式来匹配数据。</p>
+<p>比如要查询所有 language 是中文的对话：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByRegExp {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建 attr.language 为中文字符的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;language&quot;) matchesRegex:@&quot;[\u4e00-\u9fa5]&quot;];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">包含查询</h4>
+<p>包含查询是指方法名字包含 <code>Contains</code> 单词的方法，例如查询关键字包含「教育」的对话：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByContains {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建 attr.keywords 包含 「教育」的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;keywords&quot;) containsString:@&quot;教育&quot;];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<p>另外，包含查询还能检索与成员相关的对话数据。以下代码将帮助 Tom 查找出 Jerry 以及 Bob 都加入的对话：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByMembers {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建会话中有 Bob 和 Jerry 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:@&quot;m&quot; containAllObjectsInArray:@[@&quot;Bob&quot;, @&quot;Jerry&quot;]];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<h4 id="-">组合查询</h4>
+<p>组合查询的概念就是把诸多查询条件合并成一个查询，再交给 SDK 去云端进行查询。</p>
+<p>例如，要查询年龄小于 18 岁，并且关键字包含「教育」的对话：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByCombination {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建 attr.keywords 包含「教育」、attr.age &lt; 18 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;keywords&quot;) containsString:@&quot;教育&quot;];
+        [query whereKey:AVIMAttr(@&quot;age&quot;) greaterThan:@(18)];
+        // 执行查询
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;找到 %ld 个对话！&quot;, [objects count]);
+        }];
+    }];
+}
+</code></pre>
+<p>只要查询构建得合理，开发者完全不需要担心组合查询的性能。</p>
+<h4 id="-">缓存查询</h4>
+<p>通常，将查询结果缓存到磁盘上是一种行之有效的方法，这样就算设备离线，应用刚刚打开，网络请求尚未完成时，数据也能显示出来。或者为了节省用户流量，在应用打开的第一次查询走网络，之后的查询可优先走本地缓存。</p>
+<p>值得注意的是，默认的策略是先走本地缓存的再走网络的，缓存时间是一小时。AVIMConversationQuery 中有如下方法：</p>
+<pre><code class="lang-objc">// 设置缓存策略，默认是 kAVCachePolicyCacheElseNetwork
+@property (nonatomic) AVCachePolicy cachePolicy;
+
+// 设置缓存的过期时间，默认是 1 小时（1 * 60 * 60）
+@property (nonatomic) NSTimeInterval cacheMaxAge;
+</code></pre>
+<p>有时你希望先走网络查询，发生网络错误的时候，再从本地查询，可以这样：</p>
+<pre><code class="lang-objc">    AVIMConversationQuery *query = [[AVIMClient defaultClient] conversationQuery];
+    query.cachePolicy = kAVCachePolicyNetworkElseCache;
+    [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+
+    }];
+</code></pre>
+<p>各种查询缓存策略的行为可以参考  <a href="leanstorage_guide-objc.html#缓存查询">存储指南 &middot; AVQuery 缓存查询</a> 一节。</p>
+<h2 id="-">聊天室</h2>
+<p>聊天室本质上就是一个对话，所以上面章节提到的<strong>所有属性、方法、操作以及管理都适用于聊天室</strong>。它仅仅在逻辑上是一种暂态、临时的对话，应用场景有弹幕、直播等等。</p>
+<p>聊天室与普通对话或群聊不一样的地方具体体现为：</p>
+<ul>
+<li><strong>无人数限制</strong>（而普通对话最多允许 500 人加入）<br/><span class="text-muted">从实际经验来看，为避免过量消息刷屏而影响用户体验，我们建议每个聊天室的<u>上限人数控制在 <strong>5000 人</strong>左右</u>。开发者可以考虑从应用层面将大聊天室拆分成多个较小的聊天室。</span></li>
+<li>不支持查询成员列表，但可以通过相关 API 查询在线人数。</li>
+<li>不支持离线消息、离线推送通知、消息回执等功能。</li>
+<li>没有成员加入、成员离开的通知。</li>
+<li>一个用户一次登录只能加入一个聊天室，加入新的聊天室后会自动离开原来的聊天室。</li>
+<li>加入后半小时内断网重连会自动加入原聊天室，超过这个时间则需要重新加入。</li>
+</ul>
+<h3 id="-">创建聊天室</h3>
+<p>创建一个聊天室跟创建一个普通对话差不多，只是在 <code>[imClient createConversationWithName:clientIds:attributes:options:callback:]</code> 中给 <code>options:</code> 传入特定的选项值 <code>AVIMConversationOptionTransient</code>。</p>
+<p>比如喵星球正在直播选美比赛，主持人 Tom 创建了一个临时对话，与喵粉们进行互动：</p>
+<pre><code class="lang-objc">- (void)tomCreateTransientConversation {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建名称为 「HelloKitty PK 加菲猫」的会话
+        [self.client createConversationWithName:@&quot;HelloKitty PK 加菲猫&quot; clientIds:@[] attributes:nil options:AVIMConversationOptionTransient callback:^(AVIMConversation *conversation, NSError *error) {
+            if (!error) {
+                NSLog(@&quot;创建成功！&quot;);
+            }
+        }];
+    }];
+}
+</code></pre>
+<h3 id="-">查询在线人数</h3>
+<p> <code>[AVIMConversation countMembersWithCallback:]</code>  可以用来查询普通对话的成员总数，在聊天室中，它返回的就是实时在线的人数：</p>
+<pre><code class="lang-objc">- (void)tomCountsChatroomMembers{
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+    NSString *conversationId=@&quot;55dd9d7200b0c86eb4fdcbaa&quot;;
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建一个对话的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // 根据已知 Id 获取对话实例，当前实例为聊天室。
+        [query getConversationById:conversationId callback:^(AVIMConversation *conversation, NSError *error) {
+            // 查询在线人数
+            [conversation countMembersWithCallback:^(NSInteger number, NSError *error) {
+                NSLog(@&quot;%ld&quot;,number);
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h3 id="-">查找聊天室</h3>
+<p>开发者需要注意的是，通过 <code>[AVIMClient conversationQuery]</code> 这样得到的 <code>AVIMConversationQuery</code> 实例默认是查询全部对话的，也就是说，如果想查询指定的聊天室，需要额外再调用  <code>whereKey:</code>  方法来限定更多的查询条件：</p>
+<p>比如查询主题包含「奔跑吧，兄弟」的聊天室：</p>
+<pre><code class="lang-objc">- (void)tomQueryConversationByConditions {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建属性中 topic 是 movie 的查询
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        [query whereKey:AVIMAttr(@&quot;topic&quot;) equalTo:@&quot;movie&quot;];
+        // 额外调用一次确保查询的是聊天室而不是普通对话
+        [query whereKey:@&quot;tr&quot; equalTo:@(YES)];
+        [query findConversationsWithCallback:^(NSArray *objects, NSError *error) {
+            NSLog(@&quot;查询成功！&quot;);
+        }];
+    }];
+}
+</code></pre>
+<h2 id="-">聊天记录</h2>
+<p>聊天记录一直是客户端开发的一个重点，QQ 和 微信的解决方案都是依托客户端做缓存，当收到一条消息时就按照自己的业务逻辑存储在客户端的文件或者是各种客户端数据库中。</p>
+<p>我们的 SDK 会将普通的对话消息自动保存在云端，开发者可以通过 AVIMConversation 来获取该对话的所有历史消息。</p>
+<p>获取该对话中最近的 N 条（默认 20，最大值 1000）历史消息，通常在第一次进入对话时使用：</p>
+<pre><code class="lang-objc">- (void)tomQueryMessagesWithLimit {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建查询会话的 query
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+        [query getConversationById:@&quot;2f08e882f2a11ef07902eeb510d4223b&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // 查询对话中最后 10 条消息
+            [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+                NSLog(@&quot;查询成功！&quot;);
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>获取某条消息之前的历史消息，通常用在翻页加载更多历史消息的场景中。</p>
+<pre><code class="lang-objc">- (void)tomQueryMessagesBeforeMessage {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建查询会话的 query
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+        [query getConversationById:@&quot;2f08e882f2a11ef07902eeb510d4223b&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // 从指定的某条消息（id 为 grqEG2OqSL+i8FSX9j3l2g，时间戳为 1436137606358）开始查询
+            [conversation queryMessagesBeforeId:@&quot;grqEG2OqSL+i8FSX9j3l2g&quot; timestamp:1436137606358 limit:10 callback:^(NSArray *objects, NSError *error) {
+                NSLog(@&quot;查询成功！&quot;);
+            }];
+        }];
+    }];
+}
+</code></pre>
+<p>翻页获取历史消息的时候，LeanCloud 云端是从某条消息开始，往前查找所指定的 N 条消息来返回给客户端。为此，获取历史消息需要传入三个参数：</p>
+<ul>
+<li>起始消息的 messageId</li>
+<li>起始消息的发送时间戳</li>
+<li>需要获取的消息条数</li>
+</ul>
+<p>假如每一页为 10 条信息，下面的代码将演示如何翻页：</p>
+<pre><code class="lang-objc">- (void)tomQueryMessagesWithLimit {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建查询会话的 query
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+        [query getConversationById:@&quot;2f08e882f2a11ef07902eeb510d4223b&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // 查询对话中最后 10 条消息
+            [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+                [self TomLoadMoreMessage:objects forConversation:conversation];
+            }];
+        }];
+    }];
+}
+
+- (void)tomLoadMoreMessage:(NSArray *)messages forConversation:(AVIMConversation *)conversation {
+    AVIMMessage *oldestMessage = [messages firstObject];
+    [conversation queryMessagesBeforeId:oldestMessage.messageId timestamp:oldestMessage.sendTimestamp limit:10 callback:^(NSArray *objects, NSError *error) {
+        NSLog(@&quot;查询成功！&quot;);
+    }];
+}
+</code></pre>
+<h3 id="-">客户端聊天记录缓存</h3>
+<p>为了减少客户端的请求数量，以及减少用户的流量，SDK 实现了一套缓存同步策略。用户在调用获取聊天记录的接口时优先从缓存中获取，SDK 是有算法保证本地与云端聊天记录是同步的。</p>
+<p>聊天记录的缓存功能默认为<strong>开启</strong>，但如果开发者出于自身业务逻辑需求，不想在客户端使用缓存功能，可以使用如下接口将其关闭：</p>
+<pre><code class="lang-objc">- (void)tomQueryMessagesWithLimitAndIgnoreCache {
+    // Tom 创建了一个 client，用自己的名字作为 clientId
+    self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+
+    // Tom 关闭了 SDK 内建的消息缓存功能，忽略本地缓存。
+    self.client.messageQueryCacheEnabled = NO;
+
+    // Tom 打开 client
+    [self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+        // Tom 创建查询会话的 query
+        AVIMConversationQuery *query = [self.client conversationQuery];
+        // Tom 获取 id 为 2f08e882f2a11ef07902eeb510d4223b 的会话
+        [query getConversationById:@&quot;2f08e882f2a11ef07902eeb510d4223b&quot; callback:^(AVIMConversation *conversation, NSError *error) {
+            // 查询对话中最后 10 条消息，由于之前关闭了消息缓存功能，查询会走网络请求。
+            [conversation queryMessagesWithLimit:10 callback:^(NSArray *objects, NSError *error) {
+                NSLog(@&quot;查询成功！&quot;);
+            }];
+        }];
+    }];
+}
+</code></pre>
+<h2 id="-">客户端事件</h2>
+<h3 id="-">网络状态响应</h3>
+<p>当网络连接出现中断、恢复等状态变化时，可以通过以下接口来处理响应：</p>
+<p>与网络相关的通知（网络断开、恢复等）要采用 <code>AVIMClientDelegate</code> 代理方式来实现，主要接口如下：</p>
+<ul>
+<li><code>imClientPaused:(AVIMClient *)imClient</code> 指网络连接断开事件发生，此时聊天服务不可用。</li>
+<li><code>imClientResuming:(AVIMClient *)imClient</code> 指网络断开后开始重连，此时聊天服务依然不可用。</li>
+<li><code>imClientResumed:(AVIMClient *)imClient</code> 指网络连接恢复正常，此时聊天服务变得可用。</li>
+</ul>
+<p>在网络中断的情况下，所有的消息收发和对话操作都会出现问题。</p>
+<blockquote>
+<p>注意：网络状态在短时间内很可能会发生频繁变化，但这并不代表对话的接收与发送一定会受到影响，因此开发者在处理此类事件响应时，比如更新 UI，要适应加入更多的逻辑判断，以免影响用户的使用体验。</p>
+</blockquote>
+<h3 id="-">断线重连</h3>
+<p>目前 Objective-C SDK 默认内置了断线重连的功能，从客户端与云端建立连接成功开始，只要没有调用退出登录的接口，SDK 会一直尝试和云端保持长连接，此时 AVIMClient 的状态可以通过 <a href="#网络状态响应">网络状态响应</a>接口得到。</p>
+<p><strong>注意：用户如果自行实现了重连逻辑可能会报出 1001 错误</strong>。</p>
+<h3 id="-">退出登录</h3>
+<p>要退出当前的登录状态或要切换账户，方法如下：</p>
+<p>在 app 退出的时候，或者切换用户的时候，我们需要断开与 LeanCloud 实时通信服务的长连接，这时候需要调用 <code>[AVIMClient closeWithCallback:]</code> 函数。一般情况下，这个函数都会关闭连接并立刻返回，这时实时通信服务端就会认为当前用户已经下线。</p>
+<h2 id="-">安全与签名</h2>
+<p>在继续阅读下文之前，请确保你已经对 <a href="realtime_v2.html#权限和认证">实时通信服务开发指南 &middot; 权限和认证</a> 有了充分的了解。</p>
+<h3 id="-">实现签名工厂</h3>
+<p>为了满足开发者对权限和认证的要求，我们设计了操作签名的机制。签名启用后，所有的用户登录、对话创建/加入、邀请成员、踢出成员等登录都需要验证签名，这样开发者就对消息具有了完全的掌控。</p>
+<p>我们强烈推荐启用签名，具体步骤是 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，勾选 <strong>聊天、推送</strong> 下的 <strong>聊天服务，启用签名认证</strong>。</p>
+<p>客户端这边究竟该如何使用呢？我们只需要实现 AVIMSignatureDataSource 协议接口，然后在用户登录之前，把这个接口赋值给 <code>AVIMClient.signatureDataSource</code> 即可。示例代码如下：</p>
+<pre><code class="lang-objc">// Tom 创建了一个 client，用自己的名字作为 clientId
+AVIMClient *imClient = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+imClient.delegate = self;
+imClient.signatureDataSource = signatureDelegate;
+
+// Tom 打开 client
+[imClient openWithCallback:^(BOOL succeeded, NSError *error){
+    if (error) {
+        // 出错了，可能是网络问题无法连接 LeanCloud 云端，请检查网络之后重试。
+        // 此时聊天服务不可用。
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@&quot;聊天不可用！&quot; message:[error description] delegate:nil cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil];
+        [view show];
+    } else {
+        // 成功登录，可以开始进行聊天了。
+    }
+}];
+</code></pre>
+<p>设定了 signatureDataSource 之后，对于需要鉴权的操作，实时通信 SDK 与服务器端通讯的时候都会带上应用自己生成的 Signature 信息，LeanCloud 云端会使用 app 的 masterKey 来验证信息的有效性，保证聊天渠道的安全。</p>
+<p>对于 AVIMSignatureDataSource 接口，我们只需要实现这一个函数即可：</p>
+<pre><code class="lang-objc">/*!
+ 对一个操作进行签名. 注意:本调用会在后台线程被执行
+ @param clientId - 操作发起人的 id
+ @param conversationId － 操作所属对话的 id
+ @param action － 操作的种类，主要有：
+                &quot;join&quot;: 表示操作发起人要加入对话
+                &quot;invite&quot;: 表示邀请其他人加入对话
+                &quot;kick&quot;: 表示从对话中踢出部分人
+ @param clientIds － 操作目标的 id 列表
+ @return 一个 AVIMSignature 签名对象.
+ */
+- (AVIMSignature *)signatureWithClientId:(NSString *)clientId
+                          conversationId:(NSString *)conversationId
+                                  action:(NSString *)action
+                       actionOnClientIds:(NSArray *)clientIds;
+</code></pre>
+<p>你需要做的就是按照前文所述的签名算法实现签名，其中 <code>AVIMSignature</code> 声明如下：</p>
+<pre><code class="lang-objc">@interface AVIMSignature : NSObject
+
+@property (nonatomic, strong) NSString *signature;
+@property (nonatomic) int64_t timestamp;
+@property (nonatomic, strong) NSString *nonce;
+@property (nonatomic, strong) NSError *error;
+
+@end
+</code></pre>
+<p>其中四个属性分别是：</p>
+<ul>
+<li>signature：签名</li>
+<li>timestamp：时间戳，单位秒</li>
+<li>nonce：随机字符串 nonce</li>
+<li>error：签名错误信息</li>
+</ul>
+<p>在启用签名功能的情况下，实时通信 SDK 在进行一些重要操作前，都会首先请求 <code>AVIMSignatureDataSource</code> 接口，获取签名信息 <code>AVIMSignature</code>，然后把操作信息和第三方签名一起发给 LeanCloud 云端，由云端根据签名的结果来对操作进行处理。 </p>
+<p>用户登录是通过调用 <code>AVIMClient</code> 对象中以「open」开头的方法来实现的，以下是其中一个方法：</p>
+<pre><code class="lang-objc">// 开启某个账户的聊天
+- (void)openWithCallback:(AVIMBooleanResultBlock)callback;
+</code></pre>
+<p>各参数含义如下：</p>
+<ul>
+<li>clientId：操作发起人的 id，以后使用该账户的所有聊天行为，都由此人发起。</li>
+<li>callback：聊天开启之后的回调，在操作结束之后调用，通知开发者成功与否</li>
+</ul>
+<p>我们现在来实际看一下这个过程如何实现。假定聊天发起方名叫 Tom，为直观起见，我们使用用户名来作为 <code>clientId</code> 登录聊天系统（LeanCloud 云端只要求 <code>clientId</code> 在应用内唯一即可，具体用什么数据由应用层决定）。示例代码如下：</p>
+<pre><code class="lang-objc">// Tom 创建了一个 client，用自己的名字作为 clientId
+self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot;];
+self.client.delegate = self;
+
+// Tom 打开 client
+[self.client openWithCallback:^(BOOL succeeded, NSError *error){
+    if (error) {
+        // 出错了，可能是网络问题无法连接 LeanCloud 云端，请检查网络之后重试。
+        // 此时聊天服务不可用。
+        UIAlertView *view = [[UIAlertView alloc] initWithTitle:@&quot;聊天不可用！&quot; message:[error description] delegate:nil cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil];
+        [view show];
+    } else {
+        // 成功登录，可以进入聊天主界面了。
+        MainViewController *mainView = [[MainViewController alloc] init];
+        [self.navigationController pushViewController:mainView animated:YES];
+    }
+}];
+</code></pre>
+<blockquote>
+<p>需要强调的是：开发者切勿在客户端直接使用 MasterKey 进行签名操作，因为 MaterKey 一旦泄露，会造成应用的数据处于高危状态，后果不容小视。因此，强烈建议开发者将签名的具体代码托管在安全性高稳定性好的云端服务器上（例如 LeanCloud 云引擎）。</p>
+</blockquote>
+<p>为了帮助开发者理解云端签名的算法，我们开源了一个用 Node.js + 云引擎实现签名的云端，供开发者学习和使用：<a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">LeanCloud 实时通信云引擎签名 Demo</a>。</p>
+<h3 id="-">单点登录</h3>
+<p>一款聊天应用，随着不断的发展，会衍生出多个平台的不同客户端。以 QQ 为例，目前它所提供的客户端如下：</p>
+<ul>
+<li>PC：Windows PC、Mac OS、Linux（已停止更新）</li>
+<li>移动：Windows Phone、iOS、Android</li>
+<li><a href="http://noreferer.net/?url=http://w.qq.com">Web QQ</a></li>
+</ul>
+<p>经过测试，我们发现 QQ 存在以下几种行为：</p>
+<ol>
+<li>同一个 QQ 账号不可以同时在 2 个 PC 端登录（例如，在 Mac OS 上登录已经在另外一台 Windows PC 上登录的 QQ，该 QQ 号在 Windows PC 上会被强行下线）。</li>
+<li>同一个 QQ 账号不可以同时在 2 个移动端上登录。</li>
+<li>Web QQ 也不能与 PC 端同时登录</li>
+<li>同一个 QQ 只能同时在 1 个移动版本和 1 PC 版本（或者 Web 版本）上登录，并实现一些 PC 与移动端互动的功能，例如互传文件。</li>
+</ol>
+<p>通过规律不难发现，QQ 按照自己的需求实现了「单点登录」的功能：同一个平台上只允许一个 QQ 登录一台设备。</p>
+<p>下面我们来详细说明：如何使用我们的 SDK 去实现单点登录。</p>
+<h4 id="-tag">设置登录标记 Tag</h4>
+<p>假设开发者想实现 QQ 这样的功能，那么需要在登录到云端的时候，也就是打开与云端长连接的时候，标记一下这个链接是从什么类型的客户端登录到云端的：</p>
+<pre><code class="lang-objc">AVIMClient *currentClient = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot; tag:@&quot;Mobile&quot;];
+[currentClient openWithCallback:^(BOOL succeeded, NSError *error) {
+    if (succeeded) {
+        // 与云端建立连接成功
+    }
+}];
+</code></pre>
+<p>上述代码可以理解为 LeanCloud 版 QQ 的登录，而另一个带有同样 Tag 的客户端打开连接，则较早前登录系统的客户端会被强制下线。</p>
+<h4 id="-">处理登录冲突</h4>
+<p>我们可以看到上述代码中，登录的 Tag 是 <code>Mobile</code>。当存在与其相同的 Tag 登录的客户端，较早前登录的设备会被云端强行下线，而且他会收到被云端下线的通知：</p>
+<pre><code class="lang-objc">-(void)client:(AVIMClient *)client didOfflineWithError:(NSError *)error{
+    if ([error code]  == 4111) {
+        //适当的弹出友好提示，告知当前用户的 Client Id 在其他设备上登陆了
+    }
+};
+</code></pre>
+<p>为了更灵活地控制登录过程，我们在登录接口上增加了一个选项，以下是方法签名：</p>
+<pre><code class="lang-objc">- (void)openWithOption:(AVIMClientOpenOption *)option callback:(AVIMBooleanResultBlock)callback;
+</code></pre>
+<p>登录选项由 <code>AVIMClientOpenOption</code> 对象表示，其中的每一个属性表示具体的选项，目前支持以下选项：</p>
+<pre><code class="lang-objc">@interface AVIMClientOpenOption : NSObject
+
+@property (nonatomic, assign) BOOL force;
+
+@end
+</code></pre>
+<p><code>force</code> 选项设置登录动作的强制性。自然地，登录动作也区分成两种不同的类型，即强制登录和非强制登录。</p>
+<ul>
+<li>强制登录表示这个动作是强制的，不管当前设备有没有被其他设备踢下线过，都强制性地登录。</li>
+<li>非强制登录表示这个动作是非强制的，如果当前设备曾被其他设备踢下线过，登录会返回错误。</li>
+</ul>
+<p>将 <code>force</code> 设置为 <code>YES</code> 表示强制登录；设置为 <code>NO</code> 表示非强制登录。例如，如果希望实现强制登录，代码可以写成：</p>
+<pre><code class="lang-objc"> self.client = [[AVIMClient alloc] initWithClientId:@&quot;Tom&quot; tag:@&quot;Mobile&quot;];
+
+AVIMClientOpenOption *option = [[AVIMClientOpenOption alloc] init];
+option.force = YES;
+
+[self.client openWithCallback:^(BOOL succeeded, NSError *error) {
+    // Your code
+}];
+</code></pre>
+<p>如果 <code>option</code> 设置为 nil，或者使用 <code>-[AVIMClient openWithCallback:]</code> 方法进行登录，默认的登录类型为非强制登录。</p>
+<p>如上述代码中，被动下线的时候，云端会告知原因，因此客户端在做展现的时候也可以做出类似于 QQ 一样友好的通知。</p>
+<h2 id="-hook">实时通信云引擎 Hook</h2>
+<p>一些应用因其特殊的业务逻辑需要在消息发送时或者消息接收时插入一定的逻辑，因此我们也提供了<a href="realtime_v2.html#云引擎_Hook">实时通信云引擎 Hook</a>。</p>
+<h2 id="-rest-api">实时通信 REST API</h2>
+<p>有些应用需要在用户登录之前就提前创建一些对话或者是针对对话进行操作，因此可以通过<a href="realtime_rest_api.html">实时通信 REST API</a>来实现。</p>
+<h2 id="-">常见问题</h2>
+<p><strong>我只想实现两个用户的私聊，是不是每次都得重复创建对话？</strong></p>
+<p>不需要重复创建。我们推荐的方式是开发者可以用<strong>自定义属性</strong>来实现对私聊和群聊的标识，并且在进行私聊之前，需要查询当前两个参与对话的 ClientId 是否之前已经存在一个私聊的对话了。另外，SDK 已经提供了创建唯一对话的接口，请查看 <a href="#创建对话">创建对话</a>。</p>
+<p><strong>某个成员退出对话之后，再加入，在他离开的这段期间内的产生的聊天记录，他还能获取么？</strong></p>
+<p>可以。目前聊天记录从属关系是属于对话的，也就是说，只要对话 Id 不变，不论人员如何变动，只要这个对话产生的聊天记录，当前成员都可以获取。</p>
+<p><strong>我自己没有云端，如何实现签名的功能？</strong></p>
+<p>LeanCloud 云引擎提供了托管 Python 和 Node.js 运行的方式，开发者可以所以用这两种语言按照签名的算法实现签名，完全可以支持开发者的自定义权限控制。</p>
+<p><strong>客户端连接被关闭</strong></p>
+<p>导致这一情况的原因很多，请参考 <a href="realtime_v2.html#云端错误码说明">云端错误码说明</a>。</p>
+<p><a id="duplicate_message_notification" name="duplicate_message_notification"></a><strong>为何离线消息重复推送了两次？</strong></p>
+<p>大部分原因是这种情况造成的：成员 A 和成员 B 同在一个对话中。A 调用了 <code>openWithCallback</code> 登录实时通信，在没有调用 <code>closeWithCallback</code> 退出登录的情况下，B 使用同一个设备也调用了 <code>openWithCallback</code> 登录了实时通信。此时应用退出到后台，其他同在这个对话中的成员向这个对话发送了消息，服务器会给不在线的 A 和 B 发送消息推送，这个设备就会收到两条消息推送。解决方案是确保 B 登录时 A 已经调用 <code>closeWithCallback</code> 成功地退出了登录。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a>
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing.html">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

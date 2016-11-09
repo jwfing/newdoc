@@ -369,7 +369,7 @@ $(function() {
     && window.location.pathname.toLowerCase() != '/index.html' ){
     $('title').text(function(){
     // do not use html()
-    return $(this).text() + ' - ' + $('.doc-content h1').first().text();
+    return $('.doc-content h1').first().text() + ' - ' + $(this).text();
   });
 }
 
