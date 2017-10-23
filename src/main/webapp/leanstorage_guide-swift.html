@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>数据存储开发指南 &middot; Swift - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,6 +440,9 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="-middot-swift">数据存储开发指南 &middot; Swift</h1>
 <p>数据存储（LeanStorage）是 LeanCloud 提供的核心功能之一，它的使用方法与传统的关系型数据库有诸多不同。下面我们将其与传统数据库的使用方法进行对比，让大家有一个初步了解。</p>
 <p>下面这条 SQL 语句在绝大数的关系型数据库都可以执行，其结果是在 Todo 表里增加一条新数据：</p>
@@ -465,14 +525,18 @@ let date       : LCDate       = LCDate()
 let data       : LCData       = LCData()
 let null       : LCNull       = LCNull()
 </code></pre>
-<p>若想了解更多有关 LeanStorage 如何解析处理数据的信息，请查看专题文档《<a href="./data_security.html">数据与安全</a>》。</p>
-<p>我们<strong>不推荐</strong>在 <code>LCObject</code> 中使用 <code>NSData</code> 来储存大块的二进制数据，比如图片或整个文件。<strong>每个 <code>LCObject</code> 的大小都不应超过 128 KB</strong>。如果需要储存更多的数据，建议使用 <a href="#文件"><code>LCFile</code></a>。</p>
+<p>注意，时间类型在云端将会以 UTC 时间格式存储，但是客户端在读取之后会做转化成本地时间。</p>
 <p>若想了解更多有关 LeanStorage 如何解析处理数据的信息，请查看专题文档《<a href="./data_security.html">数据与安全</a>》。</p>
 <h3 id="-">构建对象</h3>
 <p>构建一个 <code>LCObject</code> 可以使用如下方式：</p>
 <pre><code class="lang-swift">let todo = LCObject(className: &quot;Todo&quot;)
 </code></pre>
 <p>每个 objectId 必须有一个 Class 类名称，这样云端才知道它的数据归属于哪张数据表。</p>
+  <div class="callout callout-danger">
+  <p>Class 类名称（ClassName）必须以字母开头，只能包含字母、数字和下划线。</p>
+</div>
+
+
 <h3 id="-">保存对象</h3>
 <p>现在我们保存一个 <code>TodoFolder</code>，它可以包含多个 Todo，类似于给行程按文件夹的方式分组。我们并不需要提前去后台创建这个名为 <strong>TodoFolder</strong> 的 Class 类，而仅需要执行如下代码，云端就会自动创建这个类：</p>
 <pre><code class="lang-swift">let todoFolder = LCObject(className: &quot;TodoFolder&quot;)
@@ -489,7 +553,7 @@ todoFolder.save { result in
     }
 }
 </code></pre>
-<p>创建完成后，打开 <a href="/data.html?appid={{appid}}#/">控制台 &gt; 存储</a>，点开 <code>TodoFolder</code> 类，就可以看到刚才添加的数据。除了 name、priority（优先级）之外，其他字段都是数据表的内置属性。</p>
+<p>创建完成后，打开 <a href="/data.html?appid={{appid}}#/">控制台 &gt; 存储</a>，点开 <strong>TodoFolder</strong> 类，就可以看到刚才添加的数据。除了 name、priority（优先级）之外，其他字段都是数据表的内置属性。</p>
 <table>
 <thead>
 <tr>
@@ -512,7 +576,7 @@ todoFolder.save { result in
 <tr>
 <td><code>createdAt</code></td>
 <td>NSDate</td>
-<td>该对象被创建的 UTC 时间，控制台做了针对当地时间的展现优化。</td>
+<td>该对象被创建的 UTC 时间</td>
 </tr>
 <tr>
 <td><code>updatedAt</code></td>
@@ -523,20 +587,12 @@ todoFolder.save { result in
 </table>
 <dl>
   <dt>属性名</dt>
-  <dd>也叫键或 key，必须是由字母、数字或下划线组成的字符串；自定义的属性名，不能以 <code>__</code>（双下划线）开头。</dd>
+  <dd>也叫键或 key，必须是由字母、数字或下划线组成的字符串。<br>自定义的属性名，<span class="callout-danger" style="background-color: transparent;">不能以双下划线 <code>__</code> 开头，也不能与以下系统保留字段和内置属性重名（不区分大小写）</span>。
+  <div class="callout callout-danger monospace" style="margin-top:1em;color:#999;">
+  ACL、className、createdAt、objectId、updatedAt</div></dd>
   <dt>属性值</dt>
   <dd>可以是字符串、数字、布尔值、数组或字典。</dd>
 </dl>
-
-<div class="callout callout-danger"><p>以下为系统保留字段，不能作为属性名来使用。</p>
-<samp style="color:#666;">acl             error            pendingKeys
-ACL             fetchWhenSave    running
-className       id               updatedAt
-code            isDataReady      uuid
-createdAt       keyValues
-description     objectId
-</samp>
-</div>
 
 <p>为提高代码的可读性和可维护性，建议使用驼峰式命名法（CamelCase）为类和属性来取名。类，采用大驼峰法，如 <code>CustomData</code>。属性，采用小驼峰法，如 <code>imageUrl</code>。</p>
 <h4 id="-cql-">使用 CQL 语法保存对象</h4>
@@ -567,7 +623,7 @@ query.get(&quot;575cf743a3413100614d7d75&quot;) { result in
     }
 }
 </code></pre>
-<p>如果不想使用查询，还可以通过从本地构建一个 <code>objectId</code>，然后调用接口从云端把这个 <code>objectId</code> 的数据拉取到本地，示例代码如下：</p>
+<p>除了使用 <code>LCQuery</code>，还可以采用在本地构建一个 <code>LCObject</code> 的方式，通过接口和 objectId 把数据从云端拉取到本地：</p>
 <pre><code class="lang-swift">let todo = LCObject(className: &quot;Todo&quot;, objectId: &quot;575cf743a3413100614d7d75&quot;)
 
 todo.fetch { result in
@@ -624,14 +680,12 @@ query.get(&quot;558e20cbe4b060308e3eb36c&quot;) { result in
 <p>默认属性是所有对象都会拥有的属性，它包括 <code>objectId</code>、<code>createdAt</code>、<code>updatedAt</code>。</p>
 <dl>
   <dt><code>createdAt</code></dt>
-  <dd>对象第一次保存到云端的时间戳。该时间一旦被云端创建，在之后的操作中就不会被修改。它采用国际标准时区 UTC，开发者可能需要根据客户端当前的时区做转化。</dd>
+  <dd>对象第一次保存到云端的时间戳。该时间一旦被云端创建，在之后的操作中就不会被修改。</dd>
   <dt><code>updatedAt</code></dt>
   <dd>对象最后一次被修改（或最近一次被更新）的时间。</dd>
 </dl>
 
-
-
-
+<p>注：应用控制台对 <code>createdAt</code> 和 <code>updatedAt</code> 做了在展示优化，它们会依据用户操作系统时区而显示为本地时间；客户端 SDK 获取到这些时间后也会将其转换为本地时间；而通过 REST API 获取到的则是原始的 UTC 时间，开发者可能需要根据情况做相应的时区转换。 </p>
 <h3 id="-">更新对象</h3>
 <p>LeanStorage 上的更新对象都是针对单个对象，云端会根据<u>有没有 objectId</u> 来决定是新增还是更新一个对象。</p>
 <p>假如 <code>objectId</code> 已知，则可以通过如下接口从本地构建一个 <code>LCObject</code> 来更新这个对象：</p>
@@ -748,7 +802,7 @@ todo.delete { result in
     }
 }
 </code></pre>
-<div class="callout callout-danger">删除对象是一个较为敏感的操作。在控制台创建对象的时候，默认开启了权限保护，关于这部分的内容请阅读《<a href="acl_guide-objc.html">Objective-C 权限管理使用指南（Swift 文档待补充）</a>》。</div>
+<div class="callout callout-danger">删除对象是一个较为敏感的操作。在控制台创建对象的时候，默认开启了权限保护，关于这部分的内容请阅读《<a href="acl-guide.html">ACL 权限管理指南</a>》。</div>
 
 <h4 id="-cql-">使用 CQL 语法删除对象</h4>
 <p>LeanStorage 提供了类似 SQL 语法中的 Delete 方式删除一个对象，例如删除一个 Todo 对象可以使用下面的代码：</p>
@@ -777,11 +831,14 @@ todo.save { result in
 </code></pre>
 <p>上述用法都是提供给开发者在主线程调用用来实现后台运行的方法，因此开发者可以放心地在主线程调用这种命名方式的函数。另外，需要强调的是：<strong>回调函数的代码是在主线程执行。</strong></p>
 <h3 id="-">关联数据</h3>
-<h4 id="-lcrelation-"><code>LCRelation</code></h4>
-<div class="callout callout-danger">如果针对关联数据有查询、排序等复杂的操作，我们建议 使用 <a href="relation_guide-swift.html#使用关联表实现多对多关系">关联表</a> 来构建对象之间的关系。</div>
+<h4 id="-lcrelation-"><code>LCRelation</code>（已弃用）</h4>
+  <div class="callout callout-danger">
+  <p>以下文档仅供还在使用 Relation 的开发者做参考。对关联数据进行查询、排序等复杂操作，请使用 <a href="relation-guide.html#使用中间表实现多对多关系_推荐_">中间表</a>。</p>
+</div>
+
 
 <p>对象可以与其他对象相联系。如前面所述，我们可以把一个 <code>LCObject</code> 的实例 A，当成另一个 <code>LCObject</code> 实例 B 的属性值保存起来。这可以解决数据之间一对一或者一对多的关系映射，就像关系型数据库中的主外键关系一样。</p>
-<p>例如，一个 TodoFolder 包含多个 Todo ，可以用如下代码实现：</p>
+<p>例如，一个 TodoFolder 包含多个 Todo，可以用如下代码实现：</p>
 <pre><code class="lang-swift">// 以下代码需要同步执行
 // 新建一个 TodoFolder 对象
 let todoFolder = LCObject(className: &quot;TodoFolder&quot;)
@@ -828,7 +885,7 @@ let relation = todoFolder.get(&quot;containedTodos&quot;) as? LCRelation
 let comment = LCObject(className: &quot;Comment&quot;)
 
 // 如果点了赞就是 1，而点了不喜欢则为 -1，没有做任何操作就是默认的 0
-comment.set(&quot;like&quot;, value: 1)
+comment.set(&quot;likes&quot;, value: 1)
 
 // 留言的内容
 comment.set(&quot;content&quot;, value: &quot;这个太赞了！楼主，我也要这些游戏，咱们团购么？&quot;)
@@ -841,7 +898,9 @@ comment.set(&quot;targetTodoFolder&quot;, value: todoFolder)
 
 comment.save()
 </code></pre>
-<p>相关内容可参考 <a href="#LCRelation_查询">关联数据查询</a>。</p>
+<h5 id="-pointer-">获取 Pointer 对象</h5>
+<p>当 Todo 拥有一个字段叫做 TodoFolder 的 Pointer 类型的属性，在获取 Todo 的对象的同时，想一并把被关联的 TodoFolder 也拉取到本地：</p>
+<p>更多内容可参考 <a href="relation-guide.html#Pointers_查询">关联数据查询</a>。</p>
 <h4 id="-">地理位置</h4>
 <p>地理位置是一个特殊的数据类型，LeanStorage 封装了 <code>LCGeoPoint</code> 来实现存储以及相关的查询。</p>
 <p>首先要创建一个 <code>LCGeoPoint</code> 对象。例如，创建一个北纬 39.9 度、东经 116.4 度的 <code>LCGeoPoint</code> 对象（LeanCloud 北京办公室所在地）：</p>
@@ -951,55 +1010,174 @@ let lcDate = LCDate(date)
 // 从 LCDate 获取 NSDate
 let value = lcDate.value
 </code></pre>
+<h3 id="-">常见的文件使用场景</h3>
+<h4 id="-">文件被其他对象关联</h4>
+<p>解决方案：将 AVFile 当做 <code>Pointer</code> 类型关联 AVObject 对象的一个字段:</p>
+<p>查询的时候需要额外的 include 一下:</p>
 <h2 id="-">查询</h2>
-<p><code>LCQuery</code> 是构建针对 <code>LCObject</code> 查询的基础类。</p>
+<p><code>LCQuery</code> 是构建针对 <code>LCObject</code> 查询的基础类。每次查询默认最多返回 100 条符合条件的结果，要更改这一数值，请参考 <a href="#限定返回数量">限定结果返回数量</a>。</p>
+<h3 id="-">示例数据结构</h3>
+<p>熟悉本文所使用的相关数据表结构将有助于更好地理解后面的内容。</p>
+<p><img src="images/todo-schema.svg" alt=""></p>
+<h4 id="todo-">Todo（待办事项）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">事项的详细内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>images</code></td>
+<td style="text-align:left">AVFile</td>
+<td style="text-align:left">与事项相关的图片</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>location</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">处理该事项的地点</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>priority</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0 优先级最高，最迫切需要完成。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>reminders</code></td>
+<td style="text-align:left">Array</td>
+<td style="text-align:left">设置提醒日期和时间</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>status</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">0 未完成，1 已完成</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>title</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">事项的标题（简短描述）</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>views</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">该事项被浏览过的次数</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>whereCreated</code></td>
+<td style="text-align:left">AVGeoPoint</td>
+<td style="text-align:left">该事项被创建时的地理定位</td>
+</tr>
+</tbody>
+</table>
+<h4 id="todofolder-">TodoFolder（待办事项的分组）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>containedTodos</code></td>
+<td style="text-align:left">Relation</td>
+<td style="text-align:left">所包含的 Todo，与表 <code>Todo</code> 相关联。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">分组的名称，如家庭、会议。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>owner</code></td>
+<td style="text-align:left">Pointer</td>
+<td style="text-align:left">分组的所有者或创建人，指向表 <code>_User</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>priority</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">该分组的优先级别，0 优先级最高。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>tags</code></td>
+<td style="text-align:left">Relation</td>
+<td style="text-align:left">标签，与表 <code>Tag</code> 相关联。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="comment-">Comment（待办事项分组的评论）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>content</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">评论的内容</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>likes</code></td>
+<td style="text-align:left">Number</td>
+<td style="text-align:left">点了赞就是 1，点了不喜欢为 -1，没有做任何操作就为 0（默认）。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>targetTodoFolder</code></td>
+<td style="text-align:left">Pointer</td>
+<td style="text-align:left">相关联的待办事项分组，指向表 <code>TodoFolder</code> 的 objectId</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tag-">Tag（待办事项分组的标签）</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>name</code></td>
+<td style="text-align:left">String</td>
+<td style="text-align:left">标签的名称，如今日必做、老婆吩咐、十分重要等。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>targetTodoFolder</code></td>
+<td style="text-align:left">Pointer</td>
+<td style="text-align:left">相关联的待办事项分组，指向表 <code>TodoFolder</code> 的 objectId</td>
+</tr>
+</tbody>
+</table>
 <h3 id="-">创建查询实例</h3>
 <pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
 </code></pre>
-<h3 id="-id-">根据 id 查询</h3>
-<p>在 <a href="#获取对象">获取对象</a> 中我们介绍过如何通过 objectId 来获取对象实例，从而简单的介绍了一下 <code>LCQuery</code> 的用法，代码请参考对应的内容，不再赘述。</p>
-<h3 id="-">条件查询</h3>
-<p>在大多数情况下做列表展现的时候，都是根据不同条件来分类展现的，比如，我要查询所有优先级为 0 的 Todo，也就是做列表展现的时候，要展示优先级最高，最迫切需要完成的日程列表，此时基于 priority 构建一个查询就可以查询出符合需求的对象：</p>
-<pre><code class="lang-swift">// 构建 LCQuery 对象
-let query = LCQuery(className: &quot;Todo&quot;)
-
-// 查询所有 priority 等于 0 的 Todo
-query.whereKey(&quot;priority&quot;, .EqualTo(0))
-
-// 执行查找
-query.find { result in
-    switch result {
-    case .success(let objects):
-        break // 查询成功
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p>其实，拥有传统关系型数据库开发经验的开发者完全可以翻译成如下的 SQL：</p>
-<pre><code class="lang-sql">  select * from Todo where priority = 0
-</code></pre>
-<p>LeanStorage 也支持使用这种传统的 SQL 语句查询。具体使用方法请移步至 <a href="#CQL_查询">Cloud Query Language（CQL）查询</a>。</p>
-<p>查询默认最多返回 100 条符合条件的结果，要更改这一数值，请参考 <a href="#限定返回数量">限定结果返回数量</a>。</p>
-<p>当多个查询条件并存时，它们之间默认为 AND 关系，即查询只返回满足了全部条件的结果。建立 OR 关系则需要使用 <a href="#组合查询">组合查询</a>。</p>
-<p>注意：在简单查询中，如果对一个对象的同一属性设置多个条件，那么先前的条件会被覆盖，查询只返回满足最后一个条件的结果。例如，我们要找出优先级为 0 和 1 的所有 Todo，错误写法是：</p>
+<p>最基础的用法是根据 objectId 来查询对象：</p>
 <pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
 
-query.whereKey(&quot;priority&quot;, .EqualTo(0))
-query.whereKey(&quot;priority&quot;, .EqualTo(1))
-
-// 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
-query.find { result in
+query.get(&quot;575cf743a3413100614d7d75&quot;) { result in
     switch result {
-    case .success(let objects):
-        break // 查询成功
+    case .success(let todo):
+        print(todo.get(&quot;title&quot;))
     case .failure(let error):
         print(error)
     }
 }
 </code></pre>
-<p>正确作法是使用 <a href="#OR_查询">OR 关系</a> 来构建条件。</p>
-<h4 id="-">比较查询</h4>
+<h3 id="-">比较查询</h3>
 <table>
 <thead>
 <tr>
@@ -1038,44 +1216,59 @@ query.find { result in
 <p>例如，查询优先级小于 2 的所有 Todo ：</p>
 <pre><code class="lang-swift">query.whereKey(&quot;priority&quot;, .LessThan(2))
 </code></pre>
-<p>要查询优先级大于等于 2 的 Todo：</p>
+<div class="callout callout-info">每次查询默认最多返回 100 条符合条件的结果，要更改这一数值，请参考 <a href="#限定返回数量">限定结果返回数量</a>。</div>
+
+<p>以上逻辑用 SQL 语句表达为 <code>select * from Todo where priority &lt; 2</code>。LeanStorage 也支持使用这种传统的 SQL 语句查询。具体使用方法请移步至 <a href="#CQL_查询">CQL 查询</a>。</p>
+<p>查询优先级大于等于 2 的 Todo：</p>
 <pre><code class="lang-swift">query.whereKey(&quot;priority&quot;, .GreaterThanOrEqualTo(2))
 </code></pre>
-<p>比较查询<strong>只适用于可比较大小的数据类型</strong>，如整型、浮点等。</p>
-<h4 id="-">正则匹配查询</h4>
-<p>正则匹配查询是指在查询条件中使用正则表达式来匹配数据，查询指定的 key 对应的 value 符合正则表达式的所有对象。
-例如，要查询标题包含中文的 Todo 对象可以使用如下代码：</p>
+<h4 id="-">多个查询条件</h4>
+<p>当多个查询条件并存时，它们之间默认为 AND 关系，即查询只返回满足了全部条件的结果。建立 OR 关系则需要使用 <a href="#组合查询">组合查询</a>。</p>
+<p>在<strong>简单查询</strong>中，如果对一个对象的<strong>同一属性</strong>设置多个条件，那么先前的条件会被覆盖，查询只返回满足最后一个条件的结果。例如要找出优先级为 0 和 1 的所有 Todo，错误写法是：</p>
 <pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
 
-query.whereKey(&quot;title&quot;, .MatchedPattern(&quot;[\\u4e00-\\u9fa5]&quot;, option:nil))
+query.whereKey(&quot;priority&quot;, .EqualTo(0))
+query.whereKey(&quot;priority&quot;, .EqualTo(1))
+
+// 如果这样写，第二个条件将覆盖第一个条件，查询只会返回 priority = 1 的结果
+query.find { result in
+    switch result {
+    case .success(let objects):
+        break // 查询成功
+    case .failure(let error):
+        print(error)
+    }
+}
 </code></pre>
-<p>正则匹配查询<strong>只适用于</strong>字符串类型的数据。</p>
-<h4 id="-">包含查询</h4>
-<p>包含查询类似于传统 SQL 语句里面的 <code>LIKE %keyword%</code> 的查询，比如查询标题包含「李总」的 Todo：</p>
+<p>正确作法是使用 <a href="#OR_查询">组合查询 · OR 关系</a> 来构建这种条件。</p>
+<h3 id="-">字符串查询</h3>
+<p><strong>前缀查询</strong>类似于 SQL 的 <code>LIKE &#39;keyword%&#39;</code> 条件。因为支持索引，所以该操作对于大数据集也很高效。</p>
+<pre><code class="lang-swift">// 找出开头是「早餐」的 Todo
+let query = LCQuery(className: &quot;Todo&quot;)
+
+query.whereKey(&quot;content&quot;, .PrefixedBy(&quot;早餐&quot;))
+</code></pre>
+<p><strong>包含查询</strong>类似于 SQL 的 <code>LIKE &#39;%keyword%&#39;</code> 条件，比如查询标题包含「李总」的 Todo：</p>
 <pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
 
 query.whereKey(&quot;title&quot;, .MatchedSubstring(&quot;李总&quot;))
 </code></pre>
-<p>翻译成 SQL 语句就是：</p>
-<pre><code class="lang-sql">  select * from Todo where title LIKE &#39;%李总%&#39;
-</code></pre>
-<p>不包含查询与包含查询是对立的，不包含指定关键字的查询，可以使用 <a href="#正则匹配查询">正则匹配方法</a> 来实现。例如，查询标题不包含「机票」的 Todo，正则表达式为 <code>^((?!机票).)*$</code>：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+<p><strong>不包含查询</strong>可以使用<strong>正则匹配查询</strong>的方式来实现。例如，查询标题不包含「机票」的 Todo：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: "Todo")
 
-query.whereKey(&quot;title&quot;, .MatchedPattern(&quot;^((?!机票).)*{{body}}quot;, option: nil))
+query.whereKey("title", .MatchedPattern("^((?!机票).)*&dollar;&quot;, option: nil))
 </code></pre>
+
+
+<div class="callout callout-info">正则匹配查询<strong>只适用于</strong>字符串类型的数据。</div>
+
 <p>但是基于正则的模糊查询有两个缺点：</p>
 <ul>
 <li>当数据量逐步增大后，查询效率将越来越低。</li>
 <li>没有文本相关性排序</li>
 </ul>
-<p>因此，你还可以考虑使用 <a href="#应用内搜索">应用内搜索</a> 功能。它基于搜索引擎技术构建，提供更强大的搜索功能。</p>
-<p>还有一个接口可以精确匹配不等于，比如查询标题不等于「出差、休假」的 Todo 对象：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;title&quot;, .NotContainedIn([&quot;休假&quot;, &quot;出差&quot;]))
-</code></pre>
-<h4 id="-">数组查询</h4>
+<p>因此我们推荐使用 <a href="#应用内搜索">应用内搜索</a> 功能。它基于搜索引擎技术构建，提供更强大的搜索功能。</p>
+<h3 id="-">数组查询</h3>
 <p>当一个对象有一个属性是数组的时候，针对数组的元数据查询可以有多种方式。例如，在 <a href="#更新数组">数组</a> 一节中我们为 Todo 设置了 reminders 属性，它就是一个日期数组，现在我们需要查询所有在 8:30 会响起闹钟的 Todo 对象：</p>
 <pre><code class="lang-swift">func queryRemindersContains() {
     let dateFormatter = NSDateFormatter()
@@ -1091,7 +1284,7 @@ query.whereKey(&quot;title&quot;, .NotContainedIn([&quot;休假&quot;, &quot;出
     query.whereKey(&quot;reminders&quot;, .EqualTo(reminder))
 }
 </code></pre>
-<p>如果你要查询包含 8:30、9:30 这两个时间点响起闹钟的 Todo，可以使用如下代码：</p>
+<p>查询包含 8:30 和 9:30 这两个时间点响起闹钟的 Todo：</p>
 <pre><code class="lang-swift">func testArrayContainsAll() {
     let dateFormatter = NSDateFormatter()
 
@@ -1107,167 +1300,18 @@ query.whereKey(&quot;title&quot;, .NotContainedIn([&quot;休假&quot;, &quot;出
     query.whereKey(&quot;reminders&quot;, .ContainedAllIn([reminder1, reminder2]))
 }
 </code></pre>
-<p>注意这里是包含关系，假如有一个 Todo 会在 8:30、9:30、10:30 响起闹钟，它仍然是会被查询出来的。</p>
-<h4 id="-">字符串查询</h4>
-<p>使用 <code>whereKey:hasPrefix:</code> 可以过滤出以特定字符串开头的结果，这有点像 SQL 的 LIKE 条件。因为支持索引，所以该操作对于大数据集也很高效。</p>
-<pre><code class="lang-swift">// 找出开头是「早餐」的 Todo
-let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;content&quot;, .PrefixedBy(&quot;早餐&quot;))
+<p>注意这里是包含关系，假如有一个 Todo 会在 8:30、9:30 和 10:30 响起闹钟，它仍然是会被查询出来的。</p>
+<p>查询「全不包含」的情况：</p>
+<pre><code class="lang-swift">    query.whereKey(&quot;reminders&quot;, .NotContainedIn([reminder1, reminder2]))
 </code></pre>
-<h4 id="-">空值查询</h4>
-<p>假设我们的 Todo 允许用户上传图片用来帮助用户记录某些特殊的事项，但是有时候用户可能就记得自己给一个 Todo 附加过图片，但是具体又不记得这个 Todo 的关键字是什么，因此我们需要一个接口可以找出那些有图片的 Todo，此时就可以使用到空值查询的接口：</p>
+<h3 id="-">空值查询</h3>
+<p>假设用户可以有选择地为 Todo 上传图片来做标注，要想找出那些已有图片的 Todo：</p>
 <pre><code class="lang-swift">// 使用非空值查询获取有图片的 Todo
 query.whereKey(&quot;images&quot;, .Existed)
 
 // 使用空值查询获取没有图片的 Todo
 query.whereKey(&quot;images&quot;, .NotExisted)
 </code></pre>
-<h3 id="-">组合查询</h3>
-<p>组合查询就是把诸多查询条件合并成一个查询，再交给 SDK 去云端查询。方式有两种：OR 和 AND。</p>
-<h4 id="or-">OR 查询</h4>
-<p>OR 操作表示多个查询条件符合其中任意一个即可。 例如，查询优先级是大于等于 3 或者已经完成了的 Todo：</p>
-<pre><code class="lang-swift">let priorityQuery = LCQuery(className: &quot;Todo&quot;)
-priorityQuery.whereKey(&quot;priority&quot;, .GreaterThanOrEqualTo(3))
-
-let statusQuery = LCQuery(className: &quot;Todo&quot;)
-statusQuery.whereKey(&quot;status&quot;, .EqualTo(1))
-
-let titleQuery = LCQuery(className: &quot;Todo&quot;)
-titleQuery.whereKey(&quot;title&quot;, .MatchedSubstring(&quot;李总&quot;))
-
-let query = priorityQuery.or(statusQuery).or(titleQuery)
-
-query.find { result in
-    switch result {
-    case .success(let todos):
-        break // 返回 priority 大于等于 3 或 status 等于 1 或 title 包含李总的 Todo
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p><strong>注意：OR 查询中，子查询中不能包含地理位置相关的查询。</strong></p>
-<h4 id="and-">AND 查询</h4>
-<p>AND 操作是指只有满足了所有查询条件的对象才会被返回给客户端。例如，查询优先级小于 1 并且尚未完成的 Todo：</p>
-<pre><code class="lang-swift">let priorityQuery = LCQuery(className: &quot;Todo&quot;)
-priorityQuery.whereKey(&quot;priority&quot;, .LessThan(3))
-
-let statusQuery = LCQuery(className: &quot;Todo&quot;)
-statusQuery.whereKey(&quot;status&quot;, .EqualTo(0))
-
-let query = priorityQuery.and(statusQuery)
-
-query.find { result in
-    switch result {
-    case .success(let todos):
-        break // 返回 priority 小于 3 并且 status 等于 0 的 Todo
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p>可以对新创建的 <code>LCQuery</code> 添加额外的约束，多个约束将以 AND 运算符来联接。</p>
-<h3 id="-">查询结果</h3>
-<h4 id="-">获取第一条结果</h4>
-<p>例如很多应用场景下，只要获取满足条件的一个结果即可，例如获取满足条件的第一条 Todo：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;priority&quot;, .EqualTo(0))
-
-query.getFirst { result in
-    switch result {
-    case .success(let todo):
-        break // 查询成功
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<h4 id="-">限定返回数量</h4>
-<p>为了防止查询出来的结果过大，云端默认针对查询结果有一个数量限制，即 <code>limit</code>，它的默认值是 100。比如一个查询会得到 10000 个对象，那么一次查询只会返回符合条件的 100 个结果。<code>limit</code> 允许取值范围是 1 ~ 1000。例如设置返回 10 条结果：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;priority&quot;, .EqualTo(0))
-query.limit = 10
-
-query.find { result in
-    switch result {
-    case .success(let todos):
-        break // 查询成功
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<h4 id="-">跳过数量</h4>
-<p>设置 skip 这个参数可以告知云端本次查询要跳过多少个结果。将 skip 与 limit 搭配使用可以实现翻页效果，这在客户端做列表展现时，尤其在数据量庞大的情况下就使用技术。例如，在翻页中，一页显示的数量是 10 个，要获取第 3 页的对象：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;priority&quot;, .EqualTo(0))
-
-query.limit = 10 // 返回 10 条数据
-query.skip = 20 // 跳过 20 条数据
-
-query.find { result in
-    switch result {
-    case .success(let todos):
-        break // 每一页 10 条数据，跳过了 20 条数据，因此获取的是第 3 页的数据
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p>尽管我们提供以上接口，但是我们不建议广泛使用，因为它的执行效率比较低。取而代之，我们建议使用 <code>createdAt</code> 或者 <code>updatedAt</code> 这类的时间戳进行分段查询。</p>
-<h4 id="-">属性限定</h4>
-<p>通常列表展现的时候并不是需要展现某一个对象的所有属性，例如，Todo 这个对象列表展现的时候，我们一般展现的是 title 以及 content，我们在设置查询的时候，也可以告知云端需要返回的属性有哪些，这样既满足需求又节省了流量，也可以提高一部分的性能，代码如下：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-// 指定返回 title 属性
-query.whereKey(&quot;title&quot;, .Selected)
-
-// 指定返回 content 属性
-query.whereKey(&quot;content&quot;, .Selected)
-
-query.find { result in
-    switch result {
-    case .success(let todos):
-        // 每一页 10 条数据，跳过了 20 条数据，因此获取的是第 3 页的数据
-
-        guard let todo = todos.first else { return }
-
-        let title   = todo.get(&quot;title&quot;) // 读取 title
-        let content = todo.get(&quot;content&quot;) // 读取 content
-
-        // 如果访问没有指定返回的属性，会返回 nil
-        let location = todo.get(&quot;location&quot;)
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p>属性限定也支持 Pointer 类型的字段。例如，如果还想获取 Todo 这个对象的所有者信息（owner 属性，Pointer 类型），仅展示这个所有者的 username，可以这样限定属性：</p>
-<h4 id="-">统计总数量</h4>
-<p>通常用户在执行完搜索后，结果页面总会显示出诸如「搜索到符合条件的结果有 1020 条」这样的信息。例如，查询一下今天一共完成了多少条 Todo：</p>
-<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
-
-query.whereKey(&quot;status&quot;, .EqualTo(1))
-
-query.count()
-</code></pre>
-<h4 id="-">排序</h4>
-<p>对于数字、字符串、日期类型的数据，可对其进行升序或降序排列。</p>
-<pre><code class="lang-swift">// 按时间，升序排列
-query.whereKey(&quot;createdAt&quot;, .Ascending)
-
-// 按时间，降序排列
-query.whereKey(&quot;createdAt&quot;, .Descending)
-</code></pre>
-<p>一个查询可以附加多个排序条件，如按 priority 升序、createdAt 降序排列：</p>
-<pre><code class="lang-swift">query.whereKey(&quot;priority&quot;, .Ascending)
-query.whereKey(&quot;createdAt&quot;, .Descending)
-</code></pre>
-<!-- #### 限定返回字段 -->
 <h3 id="-">关系查询</h3>
 <p>关联数据查询也可以通俗地理解为关系查询，关系查询在传统型数据库的使用中是很常见的需求，因此我们也提供了相关的接口来满足开发者针对关联数据的查询。</p>
 <p>首先，我们需要明确关系的存储方式，再来确定对应的查询方式。</p>
@@ -1287,7 +1331,7 @@ tag.set(&quot;name&quot;, value: &quot;今日必做&quot;)
 
 tag.save()
 </code></pre>
-<p>而 Tag 的意义在于一个 TodoFolder 可以拥有多个 Tag，比如「家庭」（TodoFolder） 拥有的 Tag 可以是：今日必做，老婆吩咐，十分重要。实现创建「家庭」这个 TodoFolder 的代码如下：</p>
+<p>而 Tag 的意义在于一个 TodoFolder 可以拥有多个 Tag，比如「家庭」（TodoFolder） 拥有的 Tag 可以是：今日必做、老婆吩咐、十分重要。实现创建「家庭」这个 TodoFolder 的代码如下：</p>
 <pre><code class="lang-swift">let tag1 = LCObject(className: &quot;Tag&quot;)
 tag1.set(&quot;name&quot;, value: &quot;今日必做&quot;)
 
@@ -1338,7 +1382,7 @@ query.find { result in
     }
 }
 </code></pre>
-<p>关于关联数据的建模是一个复杂的过程，很多开发者因为在存储方式上的选择失误导致最后构建查询的时候难以下手，不但客户端代码冗余复杂，而且查询效率低，为了解决这个问题，我们专门针对关联数据的建模推出了一个详细的文档予以介绍，详情请阅读 <a href="relation_guide-objc.html">Objective-C 数据模型设计指南（Swift 文档待补充）</a>。</p>
+<p>关于关联数据的建模是一个复杂的过程，很多开发者因为在存储方式上的选择失误导致最后构建查询的时候难以下手，不但客户端代码冗余复杂，而且查询效率低，为了解决这个问题，我们专门针对关联数据的建模推出了一个详细的文档予以介绍，详情请阅读《<a href="relation-guide.html">数据模型设计指南</a>》。</p>
 <h4 id="-">关联属性查询</h4>
 <p>正如在 <a href="#Pointer">Pointer</a> 中保存 Comment 的 targetTodoFolder 属性一样，假如查询到了一些 Comment 对象，想要一并查询出每一条 Comment 对应的 TodoFolder 对象的时候，可以加上 include 关键字查询条件。同理，假如 TodoFolder 表里还有 pointer 型字段 targetAVUser 时，再加上一个递进的查询条件，形如 include(b.c)，即可一并查询出每一条 TodoFolder 对应的 AVUser 对象。代码如下：</p>
 <pre><code class="lang-swift">let query = LCQuery(className: &quot;Comment&quot;)
@@ -1369,8 +1413,25 @@ query.find { result in
     }
 }
 </code></pre>
-<h4 id="-">内嵌查询</h4>
-<p>假如现在有一个需求是展现点赞超过 20 次的 TodoFolder 的评论（Comment）查询出来，注意这个查询是针对评论（Comment），要实现一次查询就满足需求可以使用内嵌查询的接口：</p>
+<p>此外需要格外注意的是，假设对象有一个 Array 类型的字段 <code>todoArray</code> 内部是 Pointer 类型：</p>
+<pre><code>[pointer1, pointer2, pointer3]
+</code></pre><p>可以用 include 方法获取数组中的 pointer 数据，例如：</p>
+<pre><code>// object-c on iOS
+[query includeKey:@&quot;todoArray&quot;];
+// java
+query.include(&quot;todoArray&quot;);
+// js
+query.include(&#39;todoArray&#39;);
+</code></pre><p>但是 Array 类型的 include 操作只支持到第一层，不支持 <code>include(b.c)</code> 这种递进关联查询。</p>
+<p><code>select</code> 也具备使用 dot 符号 <code>.</code> 来进行级联操作：</p>
+<pre><code>// objective-c on iOS
+[query selectKeys:@&quot;targetTodoFolder.targetAVUser.username&quot;];
+// java
+query.selectKeys(Arrays.asList(&quot;targetTodoFolder.targetAVUser.username&quot;));
+// js
+query.select([&#39;targetTodoFolder.targetAVUser.username&#39;]);
+</code></pre><h4 id="-">内嵌查询</h4>
+<p>查询点赞超过 20 次的 TodoFolder 的 Comment 评论（注意查询针对的是 <a href="#Comment_待办事项分组的评论_">Comment</a>），使用内嵌查询接口就可以通过一次查询来达到目的。</p>
 <pre><code class="lang-swift">// 将内嵌查询赋予目标查询
 let query = LCQuery(className: &quot;Comment&quot;)
 
@@ -1402,43 +1463,24 @@ query.find { result in
     }
 }
 </code></pre>
-<h3 id="cql-">CQL 查询</h3>
-<p>Cloud Query Language（CQL）是 LeanStorage 独创的使用类似 SQL 语法来实现云端查询功能的语言，具有 SQL 开发经验的开发者可以方便地使用此接口实现查询。</p>
-<p>分别找出 status = 1 的全部 Todo 结果，以及 priority = 0 的 Todo 的总数：</p>
-<pre><code class="lang-swift">LCCQLClient.execute(&quot;select * from Todo where status = 1&quot;) { result in
-    switch result {
-    case .success(let result):
-        let todos = result.objects
-    case .failure(let error):
-        print(error)
-    }
-}
-
-LCCQLClient.execute(&quot;select count(*) from Todo where priority = 0&quot;) { result in
-    switch result {
-    case .success(let result):
-        let todos = result.objects
-    case .failure(let error):
-        print(error)
-    }
-}
+<p>与普通查询一样，内嵌查询默认也最多返回 100 条记录，想修改这一默认请参考 <a href="#限定返回数量">限定结果返回数量</a>。</p>
+<p><strong>如果所有返回的记录没有匹配到外层的查询条件，那么整个查询也查不到结果</strong>。例如：</p>
+<pre><code class="lang-sql">-- 找出积分高于 80、region 为 cn 的玩家记录
+SELECT * 
+FROM   player 
+WHERE  NAME IN (SELECT NAME 
+                FROM   gamescore 
+                WHERE  score &gt; 80) 
+       AND region = &#39;cn&#39;
 </code></pre>
-<p>通常查询语句会使用变量参数，为此我们提供了与 Java JDBC 所使用的 PreparedStatement 占位符查询相类似的语法结构。</p>
-<p>查询 status = 0、priority = 1 的 Todo：</p>
-<pre><code class="lang-swift">let cql = &quot;select * from Todo where status = ? and priority = ?&quot;
-let pvalues = [0, 1]
-
-LCCQLClient.execute(cql, parameters: pvalues) { result in
-    switch result {
-    case .success(let result):
-        // todos 就是满足条件（status == 0 并且 priority == 1）的 Todo 对象集合
-        let todos = result.objects
-    case .failure(let error):
-        print(error)
-    }
-}
-</code></pre>
-<p>目前 CQL 已经支持数据的更新 update、插入 insert、删除 delete 等 SQL 语法，更多内容请参考 <a href="cql_guide.html">Cloud Query Language 详细指南</a>。</p>
+<p>LeanCloud 云端使用的并非关系型数据库，无法做到真正的联表查询，所以实际的处理方式是：先执行内嵌/子查询（和普通查询一样，limit 默认为 100，最大  1000），然后将子查询的结果填入主查询的对应位置，再执行主查询。</p>
+<p>如果子查询匹配到了 100 条以上的记录（性别等区分度低的字段重复值往往较多），且主查询有其他查询条件（<code>region = &#39;cn&#39;</code>），那么可能会出现没有结果或结果不全的情况，其本质上是子查询查出的 100 条记录没有满足主查询的其他条件。</p>
+<p>我们建议采用以下方案进行改进：</p>
+<ul>
+<li>确保子查询的结果在 100 条以下，如果在 100 - 1000 条的话请在子查询末尾添加 limit 1000。</li>
+<li>将需要查询的字段冗余到主查询所在的表上；例如将 score 冗余到 Player 表上，或者将 region 添加到 GameScore 上然后只查 GameScore 表。</li>
+<li>进行多次查询，每次在子查询上添加 <a href="#跳过数量">skip</a> 来遍历所有记录（注意 skip 的值较大时可能会引发性能问题，因此不是很推荐）。</li>
+</ul>
 <h3 id="-">地理位置查询</h3>
 <p>地理位置查询是较为特殊的查询，一般来说，常用的业务场景是查询距离 xx 米之内的某个位置或者是某个建筑物，甚至是以手机为圆心，查找方圆多少范围内餐厅等等。LeanStorage 提供了一系列的方法来实现针对地理位置的查询。</p>
 <h4 id="-">查询位置附近的对象</h4>
@@ -1480,6 +1522,195 @@ query.whereKey(&quot;whereCreated&quot;, .LocatedNear(origin: point, from: from,
 <li><p>iOS 8.0 之后，使用定位服务之前，需要调用 <code>locationManager.requestWhenInUseAuthorization()</code> 或 <code>locationManager.requestAlwaysAuthorization()</code> 来获取用户的「使用期授权」或「永久授权」，而这两个请求授权需要在 <code>Info.plist</code> 里面对应添加 <code>NSLocationWhenInUseUsageDescription</code> 或 <code>NSLocationAlwaysUsageDescription</code> 的键值对，值为开启定位服务原因的描述。SDK 内部默认使用的是「使用期授权」。</p>
 </li>
 </ul>
+<h3 id="-">组合查询</h3>
+<p>组合查询就是把诸多查询条件合并成一个查询，再交给 SDK 去云端查询。方式有两种：OR 和 AND。</p>
+<h4 id="or-">OR 查询</h4>
+<p>OR 操作表示多个查询条件符合其中任意一个即可。 例如，查询优先级是大于等于 3 或者已经完成了的 Todo：</p>
+<pre><code class="lang-swift">let priorityQuery = LCQuery(className: &quot;Todo&quot;)
+priorityQuery.whereKey(&quot;priority&quot;, .GreaterThanOrEqualTo(3))
+
+let statusQuery = LCQuery(className: &quot;Todo&quot;)
+statusQuery.whereKey(&quot;status&quot;, .EqualTo(1))
+
+let titleQuery = LCQuery(className: &quot;Todo&quot;)
+titleQuery.whereKey(&quot;title&quot;, .MatchedSubstring(&quot;李总&quot;))
+
+let query = priorityQuery.or(statusQuery).or(titleQuery)
+
+query.find { result in
+    switch result {
+    case .success(let todos):
+        break // 返回 priority 大于等于 3 或 status 等于 1 或 title 包含李总的 Todo
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p><strong>注意：OR 查询中，子查询中不能包含地理位置相关的查询。</strong></p>
+<h4 id="and-">AND 查询</h4>
+<p>AND 操作将满足了所有查询条件的对象返回给客户端。例如，找到创建于 <code>2016-11-13</code> 至 <code>2016-12-02</code> 之间的 Todo：</p>
+<pre><code class="lang-swift">
+let dateFromString: (String) -&gt; Date? = { string in
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = &quot;yyyy-MM-dd&quot;
+    return dateFormatter.date(from: string)
+}
+
+let startDateQuery = LCQuery(className: &quot;Todo&quot;)
+startDateQuery.whereKey(&quot;createdAt&quot;, .GreaterThanOrEqualTo(dateFromString(&quot;2016-11-13&quot;)!)
+
+let endDateQuery = LCQuery(className: &quot;Todo&quot;)
+endDateQuery.whereKey(&quot;status&quot;, .LessThan(dateFromString(&quot;2016-12-03&quot;)!)
+
+let query = startDateQuery.and(endDateQuery)
+
+query.find { result in
+    switch result {
+    case .success(let todos):
+        break
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p>可以对新创建的 <code>LCQuery</code> 添加额外的约束，多个约束将以 AND 运算符来联接。</p>
+<h3 id="-">查询结果数量和排序</h3>
+<h4 id="-">获取第一条结果</h4>
+<p>例如很多应用场景下，只要获取满足条件的一个结果即可，例如获取满足条件的第一条 Todo：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+
+query.whereKey(&quot;priority&quot;, .EqualTo(0))
+
+query.getFirst { result in
+    switch result {
+    case .success(let todo):
+        break // 查询成功
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<h4 id="-">限定返回数量</h4>
+<p>为了防止查询出来的结果过大，云端默认针对查询结果有一个数量限制，即 <code>limit</code>，它的默认值是 100。比如一个查询会得到 10000 个对象，那么一次查询只会返回符合条件的 100 个结果。<code>limit</code> 允许取值范围是 1 ~ 1000。例如设置返回 10 条结果：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+
+query.whereKey(&quot;priority&quot;, .EqualTo(0))
+query.limit = 10
+
+query.find { result in
+    switch result {
+    case .success(let todos):
+        break // 查询成功
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<h4 id="-">跳过数量</h4>
+<p>设置 skip 这个参数可以告知云端本次查询要跳过多少个结果。将 skip 与 limit 搭配使用可以实现翻页效果，这在客户端做列表展现时，特别是在数据量庞大的情况下适合使用。例如，在翻页中每页显示数量为 10，要获取第 3 页的对象：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+
+query.whereKey(&quot;priority&quot;, .EqualTo(0))
+
+query.limit = 10 // 返回 10 条数据
+query.skip = 20 // 跳过 20 条数据
+
+query.find { result in
+    switch result {
+    case .success(let todos):
+        break // 每一页 10 条数据，跳过了 20 条数据，因此获取的是第 3 页的数据
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p>上述方法的执行效率比较低，因此不建议广泛使用。<strong>建议选用 <code>createdAt</code> 或者 <code>updatedAt</code> 这类的时间戳进行分段查询</strong>（<a href="#AND_查询">示例</a>）。</p>
+<h4 id="-">返回指定属性/字段</h4>
+<p>通常列表展现的时候并不是需要展现某一个对象的所有属性，例如，Todo 这个对象列表一般展现的是 title 以及 content，在设置查询时可以告知云端需要返回的属性或字段有哪些，这样既满足需求又节省流量，还可以提高一部分的性能：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+
+// 指定返回 title 属性
+query.whereKey(&quot;title&quot;, .Selected)
+
+// 指定返回 content 属性
+query.whereKey(&quot;content&quot;, .Selected)
+
+query.find { result in
+    switch result {
+    case .success(let todos):
+        // 每一页 10 条数据，跳过了 20 条数据，因此获取的是第 3 页的数据
+
+        guard let todo = todos.first else { return }
+
+        let title   = todo.get(&quot;title&quot;) // 读取 title
+        let content = todo.get(&quot;content&quot;) // 读取 content
+
+        // 如果访问没有指定返回的属性，会返回 nil
+        let location = todo.get(&quot;location&quot;)
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p>所指定的属性或字段也支持 Pointer 类型。例如，获取 Todo 这个对象的所有者信息（owner 属性，Pointer 类型），仅展示这个所有者的 username：</p>
+<h4 id="-">统计总数量</h4>
+<p>通常用户在执行完搜索后，结果页面总会显示出诸如「搜索到符合条件的结果有 1020 条」这样的信息。例如，查询一下今天一共完成了多少条 Todo：</p>
+<pre><code class="lang-swift">let query = LCQuery(className: &quot;Todo&quot;)
+
+query.whereKey(&quot;status&quot;, .EqualTo(1))
+
+query.count()
+</code></pre>
+<h4 id="-">排序</h4>
+<p>对于数字、字符串、日期类型的数据，可对其进行升序或降序排列。</p>
+<pre><code class="lang-swift">// 按时间，升序排列
+query.whereKey(&quot;createdAt&quot;, .Ascending)
+
+// 按时间，降序排列
+query.whereKey(&quot;createdAt&quot;, .Descending)
+</code></pre>
+<p>一个查询可以附加多个排序条件，如按 priority 升序、createdAt 降序排列：</p>
+<pre><code class="lang-swift">query.whereKey(&quot;priority&quot;, .Ascending)
+query.whereKey(&quot;createdAt&quot;, .Descending)
+</code></pre>
+<!-- #### 限定返回字段 -->
+<h3 id="cql-">CQL 查询</h3>
+<p>CQL 是 LeanStorage 独创的使用类似 SQL 语法来实现云端查询功能的语言，具有 SQL 开发经验的开发者可以方便地使用此接口实现查询。</p>
+<p>分别找出 status = 1 的全部 Todo 结果，以及 priority = 0 的 Todo 的总数：</p>
+<pre><code class="lang-swift">LCCQLClient.execute(&quot;select * from Todo where status = 1&quot;) { result in
+    switch result {
+    case .success(let result):
+        let todos = result.objects
+    case .failure(let error):
+        print(error)
+    }
+}
+
+LCCQLClient.execute(&quot;select count(*) from Todo where priority = 0&quot;) { result in
+    switch result {
+    case .success(let result):
+        let todos = result.objects
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p>通常查询语句会使用变量参数，为此我们提供了与 Java JDBC 所使用的 PreparedStatement 占位符查询相类似的语法结构。</p>
+<p>查询 status = 0、priority = 1 的 Todo：</p>
+<pre><code class="lang-swift">let cql = &quot;select * from Todo where status = ? and priority = ?&quot;
+let pvalues = [0, 1]
+
+LCCQLClient.execute(cql, parameters: pvalues) { result in
+    switch result {
+    case .success(let result):
+        // todos 就是满足条件（status == 0 并且 priority == 1）的 Todo 对象集合
+        let todos = result.objects
+    case .failure(let error):
+        print(error)
+    }
+}
+</code></pre>
+<p>目前 CQL 已经支持数据的更新 update、插入 insert、删除 delete 等 SQL 语法，更多内容请参考 <a href="cql_guide.html">CQL 详细指南</a>。</p>
 <h3 id="-">查询性能优化</h3>
 <p>影响查询性能的因素很多。特别是当查询结果的数量超过 10 万，查询性能可能会显著下降或出现瓶颈。以下列举一些容易降低性能的查询方式，开发者可以据此进行有针对性的调整和优化，或尽量避免使用。</p>
 <ul>
@@ -1508,7 +1739,7 @@ query.whereKey(&quot;whereCreated&quot;, .LocatedNear(origin: point, from: from,
 </code></pre>
 <p>请注意代码中，密码是仅仅是在注册的时候可以设置的属性（这部分代码可参照 <a href="#用户名和密码注册">用户名和密码注册</a>），它在注册完成之后并不会保存在本地（SDK 不会以明文保存密码这种敏感数据），所以在登录之后，再访问密码这个字段是为<strong>空的</strong>。</p>
 <h4 id="-">自定义属性</h4>
-<p>用户对象和普通对象一样也支持添加自定义属性。例如，为当前用户添加年龄属性：</p>
+<p>用户对象和普通对象一样也支持添加自定义属性。例如，为当前用户添加年龄属性 <code>age</code>：</p>
 <pre><code class="lang-swift">let currentUser = LCUser.current!
 
 // 修改当前用户的年龄
@@ -1523,12 +1754,12 @@ currentUser.save { result in
     }
 }
 </code></pre>
-<h4 id="-">属性的修改</h4>
-<p>很多开发者都有这样的疑问：为什么我不能修改任意一个用户的属性？原因如下。</p>
+<h4 id="-">修改属性</h4>
+<p>很多开发者会有这样的疑问：「为什么我不能修改任意一个用户的属性？」</p>
 <blockquote>
-<p>很多时候，就算是开发者也不要轻易修改用户的基本信息，例如用户的手机号、社交账号等个人信息都比较敏感，应该由用户在 App 中自行修改。所以为了保证用户的数据仅在用户自己已登录的状态下才能修改，云端对所有针对 <code>LCUser</code> 对象的数据操作都要做验证。</p>
+<p>因为很多时候，就算是开发者也不要轻易修改用户的基本信息，例如用户的手机号、社交账号等个人信息都比较敏感，应该由用户在 App 中自行修改。所以为了保证用户的数据仅在用户自己已登录的状态下才能修改，云端对所有针对 <code>LCUser</code> 对象的数据操作都要做验证。</p>
 </blockquote>
-<p>假如，刚才我们为当前用户添加了一个 age 属性，现在我们来修改它：</p>
+<p>例如，先为当前用户增加一个 age 属性，保存后再更改它的值：</p>
 <pre><code class="lang-swift">let currentUser = LCUser.current!
 
 currentUser.set(&quot;age&quot;, value: &quot;25&quot;)
@@ -1542,7 +1773,7 @@ currentUser.save { result in
     }
 }
 </code></pre>
-<p>细心的开发者应该已经发现 <code>LCUser</code> 在自定义属性上的使用与一般的 <code>LCObject</code> 没本质区别。</p>
+<p><code>LCUser</code> 的自定义属性在使用上与 <code>LCObject</code> 没有本质区别。</p>
 <h3 id="-">注册</h3>
 <h4 id="-">用户名和密码注册</h4>
 <p>采用「用户名 + 密码」注册时需要注意：密码是以明文方式通过 HTTPS 加密传输给云端，云端会以密文存储密码，并且我们的加密算法是无法通过所谓「彩虹表撞库」获取的，这一点请开发者放心。换言之，用户的密码只可能用户本人知道，开发者不论是通过控制台还是 API 都是无法获取。另外我们需要强调<u>在客户端，应用切勿再次对密码加密，这会导致重置密码等功能失效</u>。</p>
@@ -1559,9 +1790,9 @@ randomUser.signUp()
 <p>开发者也可以要求用户使用 Email 做为用户名注册，即在用户提交信息后将 <code>_User</code> 表中的 <code>username</code> 和 <code>email</code> 字段都设为相同的值，这样做的好处是用户在忘记密码的情况下可以直接使用「<a href="#重置密码">邮箱重置密码</a>」功能，无需再额外绑定电子邮件。</p>
 <p>关于自定义邮件模板和验证链接，请参考《<a href="https://blog.leancloud.cn/607/">自定义应用内用户重设密码和邮箱验证页面</a>》。</p>
 <h4 id="-">设置手机号码</h4>
-<p>微信、陌陌等流行应用都会建议用户将账号和一个手机号绑定，这样方便进行身份认证以及日后的密码找回等安全模块的使用。我们也提供了一整套发送短信验证码以及验证手机号的流程，这部分流程以及代码演示请参考 <a href="sms_guide-objc.html#注册验证">Objective-C 短信服务使用指南</a>。</p>
+<p>微信、陌陌等流行应用都会建议用户将账号和一个手机号绑定，这样方便进行身份认证以及日后的密码找回等安全模块的使用。我们也提供了一整套发送短信验证码以及验证手机号的流程，这部分流程以及代码演示请参考 <a href="sms-guide.html#注册验证">Objective-C 短信服务使用指南</a>。</p>
 <h4 id="-">验证邮箱</h4>
-<p>许多应用会通过验证邮箱来确认用户注册的真实性。如果在 <a href="https://leancloud.cn/app.html?appid={{appid}}#/permission">应用控制台 &gt; 应用设置 &gt; 应用选项</a> 中勾选了 <strong>用户注册时，发送验证邮件</strong>，那么当一个 <code>AVUser</code> 在注册时设置了邮箱，云端就会向该邮箱自动发送一封包含了激活链接的验证邮件，用户打开该邮件并点击激活链接后便视为通过了验证。有些用户可能在注册之后并没有点击激活链接，而在未来某一个时间又有验证邮箱的需求，这时需要调用如下接口让云端重新发送验证邮件：</p>
+<p>许多应用会通过验证邮箱来确认用户注册的真实性。如果在 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 应用设置 &gt; 应用选项</a> 中勾选了 <strong>用户注册时，发送验证邮件</strong>，那么当一个 <code>AVUser</code> 在注册时设置了邮箱，云端就会向该邮箱自动发送一封包含了激活链接的验证邮件，用户打开该邮件并点击激活链接后便视为通过了验证。有些用户可能在注册之后并没有点击激活链接，而在未来某一个时间又有验证邮箱的需求，这时需要调用如下接口让云端重新发送验证邮件：</p>
 <pre><code class="lang-swift">LCUser.requestVerificationMail(email: &quot;abc@xyz.com&quot;) { result in
     switch result {
     case .success:
@@ -1584,8 +1815,7 @@ randomUser.signUp()
 }
 </code></pre>
 <h4 id="-">手机号和密码登录</h4>
-<p>请确保已详细阅读了 <a href="sms_guide-objc.html#注册验证">Objective-C 短信服务使用指南</a> 这一小节的内容，才可以顺利理解手机号匹配密码登录的流程以及适用范围。</p>
-<p>用户的手机号只要经过了验证，就可以使用手机号密码登录的功能，否则登录会失败。</p>
+<p><a href="sms-guide.html#注册验证">Objective-C 短信服务使用指南</a> 可以帮助你更好地理解手机号匹配密码登录的流程以及适用范围，所以推荐详细阅读。</p>
 <pre><code class="lang-swift">LCUser.logIn(mobilePhoneNumber: &quot;13577778888&quot;, password: &quot;leancloud&quot;) { result in
     switch result {
     case .success(let user):
@@ -1595,8 +1825,8 @@ randomUser.signUp()
     }
 }
 </code></pre>
+<p>以上的手机号码即使没有经过验证，只要密码正确也可以成功登录。如果希望阻止未验证的手机号码用于登录，则需要在 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 应用设置 &gt; 应用选项</a> 中勾选 <strong>未验证手机号码的用户，禁止登录</strong>。这种方式也提高了用户账号的合法性与安全性。</p>
 <h4 id="-">手机号和验证码登录</h4>
-<p>中国电信、中国联通、中国移动，这三大运营商的官网均支持「手机号 + 密码」和「手机号 + 随机验证码」的登录方式，我们也提供了这些方式。</p>
 <p>首先，调用发送登录验证码的接口：</p>
 <pre><code class="lang-swift">LCUser.requestLoginVerificationCode(mobilePhoneNumber: &quot;13577778888&quot;) { result in
     switch result {
@@ -1618,14 +1848,15 @@ randomUser.signUp()
 }
 </code></pre>
 <h3 id="-">用户的查询</h3>
-<p>请注意，<strong>新创建的应用的用户表 <code>_User</code> 默认关闭了 find 权限</strong>。你可以通过 Class 权限设置打开 find 权限，请参考 <a href="data_security.html#Class_级别的_ACL">数据与安全 · Class 级别的权限</a>。我们推荐开发者在 <a href="leanengine_overview.html">云引擎</a> 中封装用户查询，只查询特定条件的用户，避免开放用户表的全部查询权限。</p>
+<p>为了安全起见，<strong>新创建的应用的 <code>_User</code> 表默认关闭了 find 权限</strong>，这样每位用户登录后只能查询到自己在 <code>_User</code> 表中的数据，无法查询其他用户的数据。如果需要让其查询其他用户的数据，建议单独创建一张表来保存这类数据，并开放这张表的 find 查询权限。</p>
+<p>设置数据表权限的方法，请参考 <a href="data_security.html#Class_级别的_ACL">数据与安全 · Class 级别的权限</a>。我们推荐开发者在 <a href="leanengine_overview.html">云引擎</a> 中封装用户查询，只查询特定条件的用户，避免开放 <code>_User</code> 表的全部查询权限。</p>
 <p>查询用户代码如下：</p>
 <pre><code class="lang-objc">let query = LCQuery(className: &quot;_User&quot;)
 </code></pre>
 <h3 id="-">浏览器中查看用户表</h3>
 <p>用户表是一个特殊的表，专门存储用户对象。在浏览器端，你会看到一个 <code>_User</code> 表。</p>
 <h2 id="-">角色</h2>
-<p>关于用户与角色的关系，我们有一个更为详尽的文档介绍这部分的内容，并且针对权限管理有深入的讲解，详情请点击 <a href="acl_guide-objc.html">Objective-C 权限管理使用指南（Swift 文档待补充）</a>。</p>
+<p>关于用户与角色的关系，我们有一个更为详尽的文档介绍这部分的内容，并且针对权限管理有深入的讲解，详情请阅读《<a href="acl-guide.html">ACL 权限管理指南</a>》。</p>
 <h2 id="-">子类化</h2>
 <p>子类化推荐给进阶的开发者在进行代码重构的时候做参考。 你可以用 <code>LCObject</code> 访问到所有的数据，用 <code>get</code> 方法获取任意字段。 在成熟的代码中，子类化有很多优势，包括降低代码量，具有更好的扩展性，和支持自动补全。</p>
 <p>子类化是可选的，请对照下面的例子来加深理解：</p>
@@ -1672,6 +1903,10 @@ class Student: LCObject {
 <p>这样就可以通过 <code>student.age = 19</code> 这样的方式来读写 <code>age</code> 字段了，当然也可以写成：</p>
 <pre><code class="lang-swift">student.set(&quot;age&quot;, value: 19)
 </code></pre>
+<h2 id="-">相关文档</h2>
+<ul>
+<li><a href="app-sample-restaurant.html">《教程 · 开发餐厅座位预订系统》</a></li>
+</ul>
 
 
       </div>
@@ -1693,7 +1928,7 @@ class Student: LCObject {
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -1716,12 +1951,8 @@ class Student: LCObject {
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -1763,29 +1994,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>微信公众平台开发指南 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,11 +440,14 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
         <h1 id="-">微信公众平台开发指南</h1>
 <p>随着微信逐渐开放的数据接口，开发者可以设置自定义的服务器地址，微信的服务端会把用户发送给公众号的消息转发到开发者自定义的服务器上，并且开发者可以调用接口进行回复，这就成就了基于微信进行二次开发的可能性。</p>
-<p>把微信和 LeanEngine 的网站托管（Web Hosting）功能结合起来，就可以做一个几乎零成本的微信公众号自动问答机器人。</p>
+<p>把微信和云引擎 LeanEngine 的 <a href="leanengine_webhosting_guide-node.html">网站托管（Web Hosting）功能</a> 结合起来，就可以做出一个几乎零成本的微信公众号自动问答的机器人了。</p>
 <h2 id="-">场景设定</h2>
-<p>本文的主要目的是指导开发者使用 LeanEngine 作为微信公众号的回调服务器，因此我们设定了如下场景：实现一个自动根据用户发送消息做简单回复的机器人 Bob；比如用户发送「你好」，Bob 就会自动回复「您好，大家好才是真的好！」。</p>
+<p>本文的主要目的是指导开发者使用云引擎作为微信公众号的回调服务器，因此我们设定了如下场景：实现一个自动根据用户发送消息做简单回复的机器人 Bob，当用户发送信息「你好」，Bob 就会自动回复「您好，大家好才是真的好！」。</p>
 <h2 id="-">注册微信公众号</h2>
 <p>微信公众号向个人开放，也就是所谓的自媒体。</p>
 <ul>
@@ -396,60 +456,37 @@
 </ul>
 <h2 id="-">微信控制台设置</h2>
 <p>登录到微信后台，截图如下：
-<img src="http://ac-lhzo7z96.clouddn.com/1456389898408" alt="weixin_web_management"></p>
+<img src="images/weixin-mp-console-home.png" alt="weixin_web_management"></p>
 <h3 id="-">微信的开发选项</h3>
 <p>左下角找到菜单入口：</p>
-<p><img src="http://ac-lhzo7z96.clouddn.com/1456390574175" alt="menu_config"></p>
+<p><img src="images/weixin-developer-menu.png" alt="menu_config"></p>
 <h2 id="-">创建项目</h2>
-<p>在 <code>LeanCloud 控制台</code> 中创建一个应用，暂且叫做「Wechat」，在本地创建一个文件夹，如 <code>/usr/leancloud/wechat/</code>，并在该目录下执行下列命令行工具：</p>
-<pre><code class="lang-bash">avoscloud new
+<p>在 <a href="https://leancloud.cn/applist.html#/apps">LeanCloud 控制台</a> 中创建一个应用，暂且叫做「Wechat」。在本地创建一个文件夹，如 <code>/usr/leancloud/wechat/</code>，安装 <a href="leanengine_cli.html#安装命令行工具">LeanCloud 命令行工具</a>，在该目录执行以下命令进行登录：</p>
+<pre><code class="lang-bash">lean login
 </code></pre>
-<p>然后进入 <code>LeanCloud 控制台</code>，选择刚才创建的应用 Wechat，</p>
-<p>再选择 <a href="/app.html?appid={{appid}}#/general"><strong>设置</strong> &gt; <strong>应用 Key</strong></a>，找到 App ID 以及 Master Key 并复制。</p>
-<p>回到命令行工具，它会要求你输入 App ID 以及 Master Key，输入完成之后，可以看见在 <code>/usr/leancloud/wechat/</code> 下已经创建了一个 LeanEngine 默认的模板项目，打开 <code>app.js</code> 文件。然后访问放在 GitHub 上的 <a href="https://github.com/leancloud/LeanEngine-WechatBot">LeanEngine 微信自动问答机器人</a> 项目，打开该项目下的 <code>wechatBot.js</code> 文件（建议克隆到本地）。</p>
-<h2 id="-">编写代码</h2>
-<h3 id="-">添加依赖包</h3>
-<p>打开 <code>package.json</code> 文件，替换成如下内容：</p>
-<pre><code class="lang-js">{
-  &quot;name&quot;: &quot;LeanEngine_Weixin_Sample&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;description&quot;: &quot;A sample Weixin server app using LeanEngine&quot;,
-  &quot;main&quot;: &quot;server.js&quot;,
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node server.js&quot;
-  },
-  &quot;keywords&quot;: [
-    &quot;node&quot;,
-    &quot;LeanCloud&quot;,
-    &quot;LeanEngine&quot;,
-    &quot;express&quot;,
-    &quot;Weixin&quot;
-  ],
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;dependencies&quot;: {
-    &quot;async&quot;: &quot;^1.5.2&quot;,
-    &quot;body-parser&quot;: &quot;1.12.3&quot;,
-    &quot;cookie-parser&quot;: &quot;^1.3.5&quot;,
-    &quot;ejs&quot;: &quot;2.3.1&quot;,
-    &quot;express&quot;: &quot;4.12.3&quot;,
-    &quot;leanengine&quot;: &quot;^0.4.0&quot;,
+<p>按照提示输入 LeanCloud 用户名和密码。如遇问题请参考《<a href="leanengine_cli.html#登录">命令行工具 CLI 使用指南 · 登录</a>》。接下来运行：</p>
+<pre><code class="lang-bash">lean init
+</code></pre>
+<p>根据提示选择对应的节点，应用选择 <strong>Wechat</strong>，应用模版选择 <strong>node-js-getting-started</strong>，待过程完成后，一个云引擎默认的模板项目就在 <code>/usr/leancloud/wechat/</code> 下创建好了。如遇问题请参考《<a href="leanengine_cli.html#初始化项目">命令行工具 CLI 使用指南 · 初始化项目</a>》。</p>
+<h2 id="-">添加依赖包</h2>
+<p>打开 <code>/usr/leancloud/wechat/package.json</code>，在 <code>dependencies</code> 中追加以下依赖项：</p>
+<pre><code class="lang-json">    &quot;async&quot;: &quot;^1.5.2&quot;,
     &quot;request&quot;: &quot;^2.69.0&quot;,
     &quot;strformat&quot;: &quot;0.0.7&quot;,
-    &quot;wechat&quot;: &quot;^2.0.3&quot;,// 
+    &quot;wechat&quot;: &quot;^2.0.3&quot;,
     &quot;wechat-api&quot;: &quot;^1.24.0&quot;
-  }
-}
 </code></pre>
-<h3 id="wechatbot-js">wechatBot.js</h3>
-<p>参照 <a href="https://github.com/leancloud/LeanEngine-WechatBot/blob/master/routes/wechatBot.js">wechatBot.js</a> 的代码，建议直接复制拷贝所有内容，全部覆盖本地的 <code>/usr/leancloud/wechat/routes/wechatBot.js</code> 的内容。如果没有该文件，就直接复制到对应的目录下，然后修改关键的配置项。此时需要打开微信公众号管理控制台，进行对应设置。</p>
-<p>然后下图是我用来做实验的公众号的设置，描红的部分是我的配置：
-<img src="http://ac-lhzo7z96.clouddn.com/1456390412452" alt="wexin_config"></p>
+<h2 id="wechatbot-js">wechatBot.js</h2>
+<p>参照 <a href="https://github.com/leancloud/LeanEngine-WechatBot/blob/master/routes/wechatBot.js">Github 的 wechatBot.js</a> 代码，建议直接复制拷贝所有内容，全部覆盖本地的 <code>/usr/leancloud/wechat/routes/wechatBot.js</code> 的内容。如果没有该文件，就直接复制到对应的目录下，然后修改关键的配置项。此时需要打开微信公众号管理控制台，进行对应设置。</p>
+<p>下图为本文所使用的公众号的设置页面：
+<img src="images/weixin-mp-console-config.png" alt="wexin_config"></p>
+<p>注意，在「服务器配置」中生成 <strong>EncodingAESKey(消息加密解密密钥)</strong> 之后，<u>先不要点击保存设置</u>，其中的 <strong>URL(服务器地址)</strong> 需要在这个云引擎项目 <a href="#项目部署">部署之后</a> 才可以确定。</p>
 <pre><code class="lang-js">// 引用 wechat 库，详细请查看 https://github.com/node-webot/wechat
 var wechat = require(&#39;wechat&#39;);
 var config = {
-  token: &#39;weixinDemo&#39;,
+  token: &#39;请把微信后台的 Token 填写在这里&#39;,
   appid: &#39;请把微信的 AppID 填写在这里&#39;,
-  encodingAESKey: &#39;请把微信后台为您生成的 EncodingAESKey 填写在这里&#39;
+  encodingAESKey: &#39;请把微信后台生成的 EncodingAESKey 填写在这里&#39;
 };
 </code></pre>
 <p>对应关系如下：</p>
@@ -475,37 +512,42 @@ var config = {
 </tr>
 </tbody>
 </table>
-<p>还有需要设置如下选项，把 <strong>AppID(应用ID)</strong> 和 <strong>AppSercet(应用密钥)</strong> 填入如下引号中，作为初始化参数：</p>
+<p>还需要设置初始化参数 <strong>AppID(应用ID)</strong> 和 <strong>AppSercet(应用密钥)</strong>：</p>
 <pre><code class="lang-js">var WechatAPI = require(&#39;wechat-api&#39;);
 var api = new WechatAPI(&#39;请把微信的 AppID 填写在这里&#39;,
   &#39;请把微信的 Secret Key 填写在这里&#39;);
 </code></pre>
-<h3 id="app-js">app.js</h3>
-<p>在根目录下的 <code>app.js</code> 需要配置的是两行代码，如下：</p>
-<pre><code class="lang-js">&#39;use strict&#39;;
-...
-var wechat = require(&#39;./routes/wechatBot&#39;); // 这一段必须拷贝到当前项目中，它是定义了一个路由集合
-...
+<h2 id="app-js">app.js</h2>
+<p>在根目录下的 <code>app.js</code> 需要配置以下这行代码：</p>
+<pre><code class="lang-js">// 这一段必须拷贝到当前项目中，它是定义了一个路由集合
+// 可以将一类的路由单独保存在一个文件中
+app.use(&#39;/wechat&#39;, require(&#39;./routes/wechatBot&#39;));
 </code></pre>
-<p>然后在后面引用定义过的这个路由集合：</p>
-<pre><code class="lang-js">// 可以将一类的路由单独保存在一个文件中
-app.use(&#39;/wechat&#39;, wechat);
-</code></pre>
-<p><strong>微信的配置是实时验证的，假如你的服务器上并没有正确的进行验证，是无法配置成功</strong>。因此，我们先部署到 LeanEngine 中，才能在微信这边保存设置。</p>
+<p>微信在保存「服务器配置」时会进行实时验证，所以在这之前你需要将自己的服务器配置好，让它可以提供正确的验证。<strong>这就需要将应用部署到云引擎中</strong>。</p>
 <h2 id="-">部署项目</h2>
-<p>回到 <a href="/cloud.html?appid={{appid}}#/conf">LeanCloud 控制台的中 LeanEngine 设置界面</a>，找到设置二级域名的地方：</p>
-<p><img src="http://ac-lhzo7z96.clouddn.com/1456826436084" alt="domain_setting"></p>
-<p>设置域名为：<code>wechatTest.leanapp.cn</code>。然后回到项目目录下，执行如下命令行：</p>
-<pre><code class="lang-bash">avoscloud deploy
+<p>进入 进入 <a href="/cloud.html?appid={{appid}}#/conf"><strong>LeanCloud 控制台</strong> &gt; <strong>云引擎</strong> &gt; <strong>设置</strong></a>，找到 <strong>Web 主机域名</strong>，填入自己想使用的名称，本文使用 <code>wechatTest</code>（即 <code>wechatTest.leanapp.cn</code>）：</p>
+<p><img src="images/console-webhosting-field.png" width="500" alt="domain_setting"></p>
+<p>然后回到项目目录下，执行如下命令行：</p>
+<pre><code class="lang-bash">lean deploy
 </code></pre>
-<p>这个是部署到预备环境，并没有真正发布到外网的线上，如果 <code>deploy</code> 成功之后，可以之下如下命令行：</p>
-<pre><code class="lang-bash">avoscloud publish
+<p>如果使用的是云引擎生产环境的体验实例，<code>deploy</code> 将会将项目直接发布到 <code>wechatTest.leanapp.cn</code>。</p>
+<p>如果使用的是云引擎生产环境的标准实例，<code>deploy</code> 会将其发布到 <code><strong>stg-</strong>wechatTest.leanapp.cn</code>；要发布到 <code>wechatTest.leanapp.cn</code>，还需要执行：</p>
+<pre><code class="lang-bash">lean publish
 </code></pre>
-<h2 id="-">配置验证</h2>
-<p>此时需要回到微信公众号的控制台，可以点击保存设置，此时，需要把刚才在 LeanEngine 上设置的域名填写在微信的控制台中(本例为：<code>http://wechatTest.leanapp.cn/wechat</code>)，验证一下。如果微信控制台提示验证失败，请仔细确认代码中的配置是否与控制台配置一致。</p>
-<h2 id="-">微信内验证</h2>
-<p>关注自己所注册的微信公众号，打开之后，发送「你好」，看看是否能成功按照代码执行回复指定的内容。
-（正确的回复应该是：您好，大家好才是真的好！）</p>
+<h2 id="-">验证配置</h2>
+<p>回到微信公众号的控制台，将刚才在云引擎上设置的域名填写到 <strong>URL(服务器地址)</strong> 中（本例为 <code>http://wechatTest.leanapp.cn/wechat</code>），然后保存设置进行验证。</p>
+<p>如果微信控制台提示「验证失败」，请仔细确认：</p>
+<ul>
+<li>代码中的配置是否与控制台配置一致</li>
+<li>代码是否正常运行<br>
+对于本文中的 Node.js 代码，如果访问 <code>http://wechatTest.leanapp.cn/wechat</code> 显示出 404、503、504 等服务端错误，则代表代码有错误。可以在本地执行命令行 <code>lean up</code> 访问 <code>http://localhost:3000/wechat</code>，调试后重新部署。</li>
+</ul>
+<h2 id="-">测试公众号</h2>
+<ol>
+<li>关注自己所注册的微信公众号</li>
+<li>打开该微信公众号并发送「你好」</li>
+<li>确认是否能接收到「您好，大家好才是真的好！」</li>
+</ol>
 
 
       </div>
@@ -527,7 +569,7 @@ app.use(&#39;/wechat&#39;, wechat);
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -550,12 +592,8 @@ app.use(&#39;/wechat&#39;, wechat);
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -597,29 +635,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>Android 消息推送开发指南 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,14 +440,27 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
-        <h1 id="android-">Android 消息推送开发指南</h1>
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
+        <script type="text/javascript">
+angular.module("app").run(['$rootScope', function($rootScope) {
+  $rootScope.service = 'push';
+}]);
+</script>
+
+
+
+<h1 id="android-">Android 消息推送开发指南</h1>
 <p>请先阅读 <a href="push_guide.html">消息推送概览</a> 了解相关概念。</p>
 <p>Android 推送功能除了需要必须的 <code>avoscloud.jar</code> 以外，还需要额外的 <code>avospush.jar</code>。</p>
 <p>Android 消息推送有专门的 Demo，请见 <a href="https://github.com/leancloud/android-push-demo">Android-Push-Demo</a> 项目。</p>
+<h2 id="-">消息推送流程简介</h2>
+<p><img src="images/push-workflow-android.svg" class="img-responsive" alt=""></p>
 <h2 id="installation">Installation</h2>
 <p>当应用在用户设备上安装好以后，如果要使用消息推送功能，LeanCloud SDK 会自动生成一个 Installation 对象。该对象本质上是应用在设备上生成的安装信息，也包含了推送所需要的所有数据，因此要使用它来进行消息推送。</p>
 <h3 id="-installation">保存 Installation</h3>
-<p>你可以通过以下代码保存你的 Installation id。如果你的系统之前还没有 Installation id，系统会为你自动生成一个。当你的应用卸载后，Installation id 也将会被删除。</p>
+<p>你可以通过以下代码保存你的 Installation id。如果你的系统之前还没有 Installation id，系统会为你自动生成一个。</p>
 <pre><code class="lang-java">AVInstallation.getCurrentInstallation().saveInBackground();
 </code></pre>
 <p><strong>这段代码应该在应用启动的时候调用一次</strong>，保证设备注册到 LeanCloud 云端。你可以监听调用回调，获取 installationId 做数据关联。</p>
@@ -447,6 +517,10 @@ AVInstallation.getCurrentInstallation().saveInBackground();
         &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt;
     &lt;/intent-filter&gt;
 &lt;/receiver&gt;
+</code></pre>
+<h3 id="-">推送唤醒</h3>
+<p>如果希望支持应用间的推送唤醒机制，即在同一设备上有两个使用了 LeanCloud 推送的应用，应用 A 被杀掉后，当应用 B 被唤醒时可以同时唤醒应用 A 的推送，可以这样配置：</p>
+<pre><code class="lang-xml">&lt;service android:name=&quot;com.avos.avoscloud.PushService&quot; android:exported=&quot;true&quot;/&gt;
 </code></pre>
 <h3 id="-">推送给所有的设备</h3>
 <pre><code class="lang-java">AVPush push = new AVPush();
@@ -563,7 +637,7 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
           &quot;name&quot;: &quot;LeanCloud.&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <div class="callout callout-info">如果你使用自定义的 Receiver，发送的消息必须带 action，并且其值在自定义的 Receiver 配置的 <code>&lt;intent-filter&gt;</code> 列表里存在，比如这里的 <code>&#39;com.avos.UPDATE_STATUS&#39;</code>，请使用自己的 action，尽量不要跟其他应用混淆，推荐采用域名来定义。</div>
 
@@ -582,19 +656,19 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
 <p>如果要区分应用是由「推送」打开的这种情况，则需要为从推送跳转到 MyActivity 时要使用的 <strong>intent</strong> 增加一个 <code>PUSH_INTENT_KEY</code> 参数：</p>
 <pre><code class="lang-java">intent.putExtra(AVConstants.PUSH_INTENT_KEY, 1);
 </code></pre>
-<p>然后当 MyActiviy 里 <code>getIntent()</code> 拿到这个 <strong>intent</strong> 后，执行 <code>AVAnalytics.trackAppOpened(intent);</code> 时发现 <code>PUSH_INTENT_KEY</code> 存在且为 1，则认定其来自推送。该统计可以通过 <a href="/apistat.html?appid={{appid}}#/_appOpenWithPush">请求分析 &gt; Push 打开</a> 查看。</p>
+<p>然后当 MyActiviy 里 <code>getIntent()</code> 拿到这个 <strong>intent</strong> 后，执行 <code>AVAnalytics.trackAppOpened(intent);</code> 时发现 <code>PUSH_INTENT_KEY</code> 存在且为 1，则认定其来自推送。该统计可以通过 <a href="/stat.html?appid={{appid}}#/stat/appuse">控制台 &gt; 分析 &gt; 行为分析 &gt; 应用使用</a> 查看。</p>
 <h2 id="-">混合推送</h2>
-<h3 id="-">小米推送</h3>
+<h3 id="-">小米推送（仅中国节点）</h3>
 <h4 id="-">环境配置</h4>
 <ol>
 <li><strong>注册小米账号</strong>：在 <a href="http://dev.xiaomi.com/index">小米开放平台</a> 上注册小米开发者账号并完成实名认证（<a href="http://dev.xiaomi.com/doc/?p=90">详细流程</a>）。</li>
 <li><strong>创建小米推送服务应用</strong>（<a href="http://dev.xiaomi.com/doc/?p=1621">详细流程</a>）。</li>
-<li><strong>设置小米的 AppId 及 AppSecret</strong>：在 <a href="http://dev.xiaomi.com/index">小米开放平台</a> &gt; <strong>管理控制台</strong> &gt; <strong>消息推送</strong> &gt; <strong>相关应用</strong> 可以查到具体的小米推送服务应用的 AppId 及 AppSecret。将此 AppId 及 AppSecret 通过 <a href="https://leancloud.cn/apps.html">LeanCloud 控制台</a> &gt; <strong>消息</strong> &gt; <strong>推送</strong> &gt; <strong>设置</strong> &gt; <strong>混合推送</strong>，与 LeanCloud 应用关联。</li>
+<li><strong>设置小米的 AppId 及 AppSecret</strong>：在 <a href="http://dev.xiaomi.com/index">小米开放平台</a> &gt; <strong>管理控制台</strong> &gt; <strong>消息推送</strong> &gt; <strong>相关应用</strong> 可以查到具体的小米推送服务应用的 AppId 及 AppSecret。将此 AppId 及 AppSecret 通过 <a href="/messaging.html?appid={{appid}}#/message/push/conf">LeanCloud 控制台 &gt; <strong>消息</strong> &gt; <strong>推送</strong> &gt; <strong>设置</strong> &gt; <strong>混合推送</strong></a> 与 LeanCloud 应用关联。</li>
 </ol>
 <h4 id="-sdk">接入 SDK</h4>
 <p>首先导入 <code>avoscloud-mixpush</code> 包。修改 <code>build.gradle</code> 文件，在 <strong>dependencies</strong> 中添加依赖：</p>
 <pre><code>dependencies {
-    compile (&#39;cn.leancloud.android:avoscloud-mixpush:v3.+@aar&#39;)
+    compile (&#39;cn.leancloud.android:avoscloud-mixpush:v4.4.4@aar&#39;)
 }
 </code></pre><p>注：如果是通过 jar 包导入，则需要手动下载 jar 包 <a href="http://dev.xiaomi.com/mipush/downpage/">小米 Push SDK</a>。</p>
 <p>然后配置相关 AndroidManifest。添加 Permission：</p>
@@ -662,27 +736,32 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
 &lt;/receiver&gt;
 </code></pre>
 <h4 id="-">具体使用</h4>
-<p>在 <code>AVOSCloud.initialize</code> 时调用 <code>AVMixpushManager.registerXiaomiPush(context, miAppId, miAppKey, profile)</code> 即可。参数 <code>profile</code> 的用法可以参考 <a href="push_guide.html#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。</p>
-<p>注意，LeanCloud 云端只有在以下三个条件都满足的情况下，才会使用小米推送。</p>
+<p>在 <code>AVOSCloud.initialize</code> 时调用以下函数：</p>
+<pre><code class="lang-java">AVMixpushManager.registerXiaomiPush(context, miAppId, miAppKey, profile)
+</code></pre>
+<ul>
+<li>参数 <code>miAppKey</code> 需要的是 AppKey，而在控制台的混合推送配置中 Profile 的第二个参数是 AppSecret，请注意区分，并分别正确填写。</li>
+<li>参数 <code>profile</code> 的用法可以参考 <a href="push_guide.html#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。</li>
+</ul>
+<p>LeanCloud 云端只有在<strong>满足以下全部条件</strong>的情况下才会使用小米推送：</p>
 <ul>
 <li>MIUI 系统</li>
 <li>manifest 正确填写</li>
-<li>appId、appKey 有效</li>
+<li>appId、appKey、appSecret 有效</li>
 </ul>
-<p>如果以上条件不符合，SDK 会有日志输出，开发者可以根据日志判断是什么原因导致注册失败。开发者可以通过查看控制台 <code>_Installation</code> 表的相关记录的 <strong>vendor</strong> 字段来判断是否注册成功。</p>
 <h4 id="-">小米推送通知栏消息的点击事件</h4>
 <p>当小米通知栏消息被点击后，如果已经设置了 <a href="#自定义_Receiver">自定义 Receiver</a>，则 SDK 会发送一个 action 为 <code>com.avos.avoscloud.mi_notification_action</code> 的 broadcast。如有需要，开发者可以通过订阅此消息获取点击事件，否则 SDK 会默认打开 <a href="#启动推送服务">启动推送服务</a> 对应设置的 Activity。</p>
-<h3 id="-">华为推送</h3>
+<h3 id="-">华为推送（仅中国节点）</h3>
 <h4 id="-">环境配置</h4>
 <ol>
 <li><strong>注册华为账号</strong>：在 <a href="http://developer.huawei.com/cn/consumer/">华为开发者联盟</a>注册华为开发者账号（<a href="http://developer.huawei.com/cn/consumer/wiki/index.php?title=%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95">详细流程</a>）。</li>
 <li><strong>创建华为应用</strong>：实名认证通过后，需要创建华为移动应用并配置 Push 权益（<a href="http://developer.huawei.com/cn/consumer/wiki/index.php?title=%E6%8E%A5%E5%85%A5%E8%AF%B4%E6%98%8E#2.1_.E6.B3.A8.E5.86.8C">详细流程</a>）。</li>
-<li><strong>设置华为的 AppId 及 AppKey</strong>：在 <a href="http://developer.huawei.com/cn/consumer/devunion/openPlatform/html/memberCenter.html#appManage#">华为开发者联盟控制中心</a> &gt; <strong>应用管理</strong> &gt; <strong>移动应用详情</strong>  可以查到具体的华为推送服务应用的 AppId 及  AppSecret，将此 AppId 及 AppSecret 通过 <a href="https://leancloud.cn/apps.html">LeanCloud 控制台</a> &gt; <strong>消息</strong> &gt; <strong>推送</strong> &gt; <strong>设置</strong> &gt; <strong>混合推送</strong> 与 LeanCloud 应用关联。</li>
+<li><strong>设置华为的 AppId 及 AppKey</strong>：在 <a href="http://developer.huawei.com/cn/consumer/devunion/openPlatform/html/memberCenter.html#appManage#">华为开发者联盟控制中心</a> &gt; <strong>应用管理</strong> &gt; <strong>移动应用详情</strong>  可以查到具体的华为推送服务应用的 AppId 及 AppSecret，将此 AppId 及 AppSecret 通过 <a href="/messaging.html?appid={{appid}}#/message/push/conf">LeanCloud 控制台 &gt; <strong>消息</strong> &gt; <strong>推送</strong> &gt; <strong>设置</strong> &gt; <strong>混合推送</strong></a> 与 LeanCloud 应用关联。</li>
 </ol>
 <h4 id="-sdk">接入 SDK</h4>
 <p>首先导入 <code>avoscloud-mixpush</code> 包，修改 <code>build.gradle</code> 文件，在 <code>dependencies</code> 中添加依赖：</p>
 <pre><code>dependencies {
-    compile (&#39;cn.leancloud.android:avoscloud-mixpush:v3.+@aar&#39;)
+    compile (&#39;cn.leancloud.android:avoscloud-mixpush:v4.4.4@aar&#39;)
 }
 </code></pre><p>注：如果是通过 jar 包导入，则需要手动下载 jar 包：<a href="http://developer.huawei.com/cn/consumer/wiki/index.php?title=PushSDK%E4%B8%8B%E8%BD%BD">华为 Push SDK</a>。</p>
 <p>然后配置相关 AndroidManifest，添加 Permission：</p>
@@ -743,23 +822,96 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
 </code></pre>
 <h4 id="-">具体使用</h4>
 <p>在 <code>AVOSCloud.initialize</code> 时调用 <code>registerHuaweiPush(context, profile)</code> 即可。参数 <code>profile</code> 的用法可以参考 <a href="push_guide.html#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。</p>
-<p>注意，LeanCloud 云端只有在以下两个条件都满足的情况下，才会使用华为推送。</p>
+<p>LeanCloud 云端只有在<strong>满足以下全部条件</strong>的情况下才会使用华为推送：</p>
 <ul>
 <li>EMUI 系统</li>
 <li>manifest 正确填写</li>
 </ul>
-<p>如果以上条件不符合，SDK 会有日志输出，开发者可以根据日志判断是什么原因导致注册失败。开发者可以通过查看控制台 <code>_Installation</code> 表的相关记录的 <strong>vendor</strong> 字段来判断是否注册成功。</p>
-<h3 id="gcm-">GCM 推送</h3>
+<h4 id="-">提升透传消息到达率</h4>
+<p>当使用华为推送发透传消息时，如果目标设备上 App 进程被杀，会出现推送消息无法接收的情况。这个是华为 ROM 对透传消息广播的限制导致的，需要引导用户在华为 “权限设置” 中对 App 开启自启动权限来避免。</p>
+<h3 id="-">魅族推送（仅中国节点）</h3>
+<h4 id="-">环境配置</h4>
+<ol>
+<li><strong>注册魅族账号</strong>：在 <a href="https://open.flyme.cn">Flyme开放平台</a> 上注册魅族开发者账号并完成开发者认证 (<a href="http://open-wiki.flyme.cn/index.php?title=%E6%96%B0%E6%89%8B%E6%8C%87%E5%8D%97">详细流程</a>)。</li>
+<li><strong>创建魅族推送服务应用</strong> (<a href="http://open-wiki.flyme.cn/index.php?title=%E9%AD%85%E6%97%8F%E6%8E%A8%E9%80%81%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C">详细流程</a>)。</li>
+<li><strong>设置魅族的 AppId 及 AppSecret</strong>：在 <a href="http://push.meizu.com/">魅族推送平台</a> &gt; <strong>应用列表</strong> &gt; <strong>打开应用</strong> &gt; <strong>配置管理</strong> 可以查到具体的魅族推送服务应用的 AppId 及 AppSecret。将此 AppId 及 AppSecret 通过 [LeanCloud 控制台][leancloud-console] &gt; <strong>消息</strong> &gt; <strong>推送</strong> &gt; <strong>设置</strong> &gt; <strong>混合推送</strong>，与 LeanCloud 应用关联。</li>
+</ol>
+<h4 id="-sdk">接入 SDK</h4>
+<p>首先导入 <code>avoscloud-mixpush</code> 包。修改 <code>build.gradle</code> 文件，在 <strong>dependencies</strong> 中添加依赖：</p>
+<pre><code>dependencies {
+    compile (&#39;cn.leancloud.android:avoscloud-mixpush:v4.4.4@aar&#39;)
+    compile (&#39;com.meizu.flyme.internet:push-internal-publish:3.3.170123@aar&#39;)
+}
+</code></pre><p>注：如果是通过 jar 包导入，则需要手动下载 jar 包 <a href="https://github.com/MEIZUPUSH/PushDemo-Eclipse/releases">魅族 Push SDK</a>。</p>
+<p>然后配置相关 AndroidManifest。添加 Permission：</p>
+<pre><code class="lang-xml">&lt;!-- 兼容flyme5.0以下版本，魅族内部集成pushSDK必填，不然无法收到消息--&gt;
+  &lt;uses-permission android:name=&quot;com.meizu.flyme.push.permission.RECEIVE&quot;/&gt;
+  &lt;permission android:name=&quot;&lt;包名&gt;.push.permission.MESSAGE&quot; android:protectionLevel=&quot;signature&quot;/&gt;
+  &lt;uses-permission android:name=&quot;&lt;包名&gt;.push.permission.MESSAGE&quot;/&gt;
+
+  &lt;!--  兼容flyme3.0配置权限--&gt;
+  &lt;uses-permission android:name=&quot;com.meizu.c2dm.permission.RECEIVE&quot; /&gt;
+  &lt;permission android:name=&quot;&lt;包名&gt;.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot;/&gt;
+  &lt;uses-permission android:name=&quot;&lt;包名&gt;.permission.C2D_MESSAGE&quot;/&gt;
+</code></pre>
+<p>添加 service 与 receiver。开发者要将其中的 <code>&lt;包名&gt;</code> 替换为自己的应用对应的 package：</p>
+<pre><code class="lang-xml">&lt;receiver android:name=&quot;com.avos.avoscloud.AVFlymePushMessageReceiver&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;!-- 接收 push 消息 --&gt;
+        &lt;action android:name=&quot;com.meizu.flyme.push.intent.MESSAGE&quot;/&gt;
+        &lt;!-- 接收 register 消息 --&gt;
+        &lt;action android:name=&quot;com.meizu.flyme.push.intent.REGISTER.FEEDBACK&quot;/&gt;
+        &lt;!-- 接收 unregister 消息--&gt;
+        &lt;action android:name=&quot;com.meizu.flyme.push.intent.UNREGISTER.FEEDBACK&quot;/&gt;
+        &lt;!-- 兼容低版本 Flyme3 推送服务配置 --&gt;
+        &lt;action android:name=&quot;com.meizu.c2dm.intent.REGISTRATION&quot;/&gt;
+        &lt;action android:name=&quot;com.meizu.c2dm.intent.RECEIVE&quot;/&gt;
+        &lt;category android:name=&quot;&lt;包名&gt;&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/receiver&gt;
+</code></pre>
+<h4 id="-">具体使用</h4>
+<p>在 <code>AVOSCloud.initialize</code> 时调用 <code>AVMixpushManager.registerFlymePush(context, flymeId, flymeKey, profile)</code> 即可。参数 <code>profile</code> 的用法可以参考 <a href="push_guide.html#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。</p>
+<p>注意，LeanCloud 云端只有在以下三个条件都满足的情况下，才会使用魅族推送。</p>
+<ul>
+<li>Flyme 系统</li>
+<li>manifest 正确填写</li>
+<li>flymeId、flymeKey 有效</li>
+</ul>
+<h4 id="-">魅族推送通知栏消息的点击事件</h4>
+<p>当魅族通知栏消息被点击后，如果已经设置了 <a href="#自定义_Receiver">自定义 Receiver</a>，则 SDK 会发送一个 action 为 <code>com.avos.avoscloud.flyme_notification_action</code> 的 broadcast。如有需要，开发者可以通过订阅此消息获取点击事件，否则 SDK 会默认打开 <a href="#启动推送服务">启动推送服务</a> 对应设置的 Activity。</p>
+<h3 id="-">取消混合推送注册</h3>
+<p>对于已经注册了混合推送的用户，如果想取消混合推送的注册而改走 LeanCloud 自有的 WebSocket 的话，可以调用如下函数：</p>
+<pre><code class="lang-java">AVMixpushManager.unRegisterMixPush();
+</code></pre>
+<p>此函数为异步函数，如果取消注册失败的话会有类似「unRegisterMixPush error」的日志输出。</p>
+<h3 id="-">错误排查建议</h3>
+<ul>
+<li>只要注册时有条件不符合，SDK 会在日志中输出导致注册失败的原因，例如「register error, mainifest is incomplete」代表 manifest 未正确填写。如果注册成功，<code>_Installation</code> 表中的相关记录应该具有 <strong>vendor</strong> 这个字段并且不为空值。</li>
+<li>查看华为机型的设置，并打开「信任此应用」、「开机自启动」、「自启动管理」和「权限管理」等相关选项。</li>
+<li>如果注册一直失败的话，请去论坛发帖，提供相关日志、具体机型以及系统版本号，我们会跟进协助来排查。</li>
+</ul>
+<h3 id="gcm-">GCM 推送（仅美国节点）</h3>
+  <div class="callout callout-danger">
+  <p>GCM 推送仅支持部署在 LeanCloud 美国节点上的应用使用。</p>
+</div>
+
+
 <p>GCM（Google Cloud Messaging）是 Google 提供的一项将推送通知消息发送到手机的服务。接入时后台不需要任何设置，GCM 相关的 token 由 LeanCloud SDK 来申请。</p>
 <h4 id="-">环境要求</h4>
 <p>GCM 需要系统为 Android 2.2 及以上并且安装有 Google Play 商店的设备，或者使用了 GppgleAPIs 且系统为 Android 2.2 及以上的模拟器。具体要求详见 <a href="https://developers.google.com/cloud-messaging/android/client">Google Developers &middot; Set up a GCM Client App on Android</a>。</p>
 <h4 id="-sdk">接入 SDK</h4>
-<p>首先补充 <code>AndroidManifest</code>，添加 Permission，开发者要将其中的 <code>&lt;包名&gt;</code> 替换为自己的应用对应的 package：</p>
+<p>首先导入 avoscloud-gcm 包。修改 build.gradle 文件，在 dependencies 中添加依赖：</p>
+<pre><code class="lang-xml">dependencies {
+    compile (&#39;cn.leancloud.android:avoscloud-gcm:v4.4.4@aar&#39;)
+}
+</code></pre>
+<p>然后补充 <code>AndroidManifest</code>，添加 Permission，开发者要将其中的 <code>&lt;包名&gt;</code> 替换为自己的应用对应的 package：</p>
 <pre><code class="lang-xml">&lt;permission android:name=&quot;&lt;包名&gt;.permission.C2D_MESSAGE&quot;
                     android:protectionLevel=&quot;signature&quot; /&gt;
 &lt;uses-permission android:name=&quot;&lt;包名&gt;.permission.C2D_MESSAGE&quot; /&gt;
 </code></pre>
-<p>然后添加 service 与 receiver：</p>
+<p>添加 service 与 receiver：</p>
 <pre><code class="lang-xml">&lt;receiver android:name=&quot;com.avos.avoscloud.AVBroadcastReceiver&quot;&gt;
   &lt;intent-filter&gt;
       &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
@@ -791,7 +943,7 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
 <li>调用 <code>AVOSCloud.setGcmOpen(true)</code></li>
 <li>manifest 正确填写</li>
 </ul>
-<p>开发者可以通过查看控制台 <code>_Installation</code> 表的相关记录的 <strong>vendor</strong> 字段来判断是否注册成功。</p>
+<p>如果注册成功，<code>_Installation</code> 表中的相关记录应该具有 <strong>vendor</strong> 这个字段并且不为空值。</p>
 
 
       </div>
@@ -813,7 +965,7 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -836,12 +988,8 @@ AVPush.sendMessageInBackground(&quot;message to installation&quot;,  pushQuery, 
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -883,29 +1031,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

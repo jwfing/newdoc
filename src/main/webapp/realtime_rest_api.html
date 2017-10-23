@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>实时通信 REST API 使用指南 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,6 +440,9 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
         <h1 id="-rest-api-">实时通信 REST API 使用指南</h1>
 <h2 id="-">请求格式</h2>
 <p>对于 POST 和 PUT 请求，请求的主体必须是 JSON 格式，而且 HTTP Header 的 Content-Type 需要设置为 <code>application/json</code>。</p>
@@ -420,7 +480,7 @@
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;name&quot;:&quot;My Private Room&quot;,&quot;m&quot;: [&quot;BillGates&quot;, &quot;SteveJobs&quot;]}&#39; \
-  https://api.leancloud.cn/1.1/classes/_Conversation
+  https://{{v2Domain}}/1.1/classes/_Conversation
 </code></pre>
 <p>上面的例子会创建一个最简单的对话，包括两个 client ID 为 BillGates 和 SteveJobs 的初始成员。对话创建成功会返回 objectId，即实时通信中的对话 ID，客户端就可以通过这个 ID 发送消息了。</p>
 <p>常见的聊天室的场景，需要通过 REST API 预先创建聊天室，并把对话 ID 与应用内的某个对象关联（如视频、比赛等）。创建聊天室只需要包含一个 <strong>tr</strong> 参数，设置为 true 即可。</p>
@@ -429,15 +489,15 @@
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;name&quot;: &quot;OpenConf&quot;,&quot;tr&quot;: true}&#39; \
-  https://api.leancloud.cn/1.1/classes/_Conversation
+  https://{{v2Domain}}/1.1/classes/_Conversation
 </code></pre>
 <p>系统对话通常也需要通过 REST API 预先创建，创建时需要设置关键的 <code>sys</code> 属性：</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  -d &#39;{&quot;name&quot;: &quot;Notification Channel&quot;,&quot;sys&quot;: true}&#39; \
-  https://api.leancloud.cn/1.1/classes/_Conversation
+  -d &#39;{&quot;name&quot;: &quot;系统通知&quot;, &quot;avatarURL&quot;: &quot;http://ww1.sinaimg.cn/large/006y8lVajw1faip71wtc7j30200203ya.jpg&quot;, &quot;sys&quot;: true}&#39; \
+  https://{{v2Domain}}/1.1/classes/_Conversation
 </code></pre>
 <h3 id="-">增删普通对话成员</h3>
 <p>你可以通过 REST API 操作对话数据的 <strong>m</strong> 字段来实现成员的增删。m  字段是一个数组字段，使用数组的操作符进行修改。</p>
@@ -447,7 +507,7 @@
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;m&quot;: {&quot;__op&quot;:&quot;AddUnique&quot;,&quot;objects&quot;:[&quot;LarryPage&quot;]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/_Conversation/5552c0c6e4b0846760927d5a
+  https://{{v2Domain}}/1.1/classes/_Conversation/5552c0c6e4b0846760927d5a
 </code></pre>
 <p>将不再活跃的 SteveJobs 清除出对话（以对话 id 5552c0c6e4b0846760927d5a 为例）：</p>
 <pre><code class="lang-sh">curl -X PUT \
@@ -455,20 +515,20 @@
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;m&quot;: {&quot;__op&quot;:&quot;Remove&quot;,&quot;objects&quot;:[&quot;SteveJobs&quot;]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/_Conversation/5552c0c6e4b0846760927d5a
+  https://{{v2Domain}}/1.1/classes/_Conversation/5552c0c6e4b0846760927d5a
 </code></pre>
 <p>对 <code>_Conversation</code> 表的查询等其他操作与普通表完全一致，可以参考 <a href="./rest_api.html#查询">REST API - 查询</a> 的相应说明，这里不再赘述。</p>
 <h2 id="-">获取聊天记录</h2>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  https://leancloud.cn/1.1/rtm/messages/logs
+  https://{{v2Domain}}/1.1/rtm/messages/history
 </code></pre>
 <p>该接口可以在 URL 中添加不同的参数，实现获取某对话的聊天记录、获取某用户发送的聊天记录、获取应用所有聊天记录和获取系统对话聊天记录等功能。例如：</p>
 <pre><code>curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  https://leancloud.cn/1.1/rtm/messages/logs?convid=219946ef32e40c515d33ae6975a5c593
+  https://{{v2Domain}}/1.1/rtm/messages/history?convid=219946ef32e40c515d33ae6975a5c593
 </code></pre><h3 id="-">获取某个对话的聊天记录</h3>
 <table>
 <thead>
@@ -481,13 +541,13 @@
 <tbody>
 <tr>
 <td>convid</td>
-<td><strong>必须</strong></td>
+<td><strong>必填</strong></td>
 <td>对话 id</td>
 </tr>
 <tr>
 <td>max_ts</td>
 <td>可选</td>
-<td>查询起始的时间戳，返回小于这个时间(不包含)的记录。默认是当前时间。</td>
+<td>查询起始的时间戳，返回小于这个时间(不包含)的记录。默认是当前时间，单位是毫秒。</td>
 </tr>
 <tr>
 <td>msgid</td>
@@ -498,6 +558,11 @@
 <td>limit</td>
 <td>可选</td>
 <td>返回条数限制，可选，默认 100 条，最大 1000 条。</td>
+</tr>
+<tr>
+<td>reversed</td>
+<td>可选</td>
+<td>以默认排序相反的方向返回结果。布尔值，默认为 false</td>
 </tr>
 <tr>
 <td>peerid</td>
@@ -512,19 +577,20 @@
 <tr>
 <td>signature_ts</td>
 <td>可选</td>
-<td>签名时间戳（签名参数）</td>
+<td>签名时间戳（签名参数），单位是秒。</td>
 </tr>
 <tr>
 <td>signature</td>
 <td>可选</td>
-<td>签名时间戳（签名参数）</td>
+<td>签名（签名参数）</td>
 </tr>
 </tbody>
 </table>
 <p>为了保证获取聊天记录的安全性，可以开启签名认证（<a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; <strong>应用选项</strong> &gt; <strong>聊天、推送</strong> &gt; <strong>聊天记录查询，启用签名认证</strong></a>）。了解更详细的签名规则请参考 <a href="realtime_v2.html#开启对话签名">聊天签名方法</a>。签名参数仅在开启应用选项后有效，如果没有开启选项，就不需要传签名参数。</p>
 <p>签名采用 Hmac-sha1 算法，输出字节流的十六进制字符串 (hex dump)，签名的 key 必须是应用的 master key，签名的消息格式如下：</p>
 <pre><code>appid:peerid:convid:nonce:signature_ts
-</code></pre><p>返回数据格式，JSON 数组，按消息记录从新到旧排序。<strong>注意</strong>：系统广播不会出现在消息记录 API 的结果中。</p>
+</code></pre><p>返回数据格式，JSON 数组，默认按消息记录从新到旧排序，设置请求参数 <code>reversed</code> 后以相反的方向排序。
+<strong>注意</strong>：系统广播不会出现在消息记录 API 的结果中。</p>
 <pre><code class="lang-json">[
   {
     &quot;timestamp&quot;: 1408008498571,
@@ -551,20 +617,20 @@
 </thead>
 <tbody>
 <tr>
-<td>conv-id</td>
-<td>用于查询的对话 id</td>
+<td>timestamp</td>
+<td>消息到达服务器的 Unix 时间戳（毫秒）</td>
 </tr>
 <tr>
-<td>from</td>
-<td>消息来自 id</td>
+<td>conv-id</td>
+<td>用于查询的对话 id</td>
 </tr>
 <tr>
 <td>data</td>
 <td>消息内容，字符串形式的 JSON，格式请参考 <a href="realtime_rest_api.html#富媒体消息格式说明">富媒体消息格式</a>。</td>
 </tr>
 <tr>
-<td>timestamp</td>
-<td>消息到达服务器的 Unix 时间戳（毫秒）</td>
+<td>from</td>
+<td>消息来自 id</td>
 </tr>
 <tr>
 <td>msg-id</td>
@@ -572,7 +638,19 @@
 </tr>
 <tr>
 <td>is-conv</td>
-<td>是否是 v2 中对话模型的消息</td>
+<td>是否为 v2 中对话模型的消息</td>
+</tr>
+<tr>
+<td>is-room</td>
+<td>是否为 v1 中对话模型的消息（为兼容而遗留下来的历史字段）</td>
+</tr>
+<tr>
+<td>to</td>
+<td>消息发送目标，一般是目标会话的 id</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>消息是否为二进制编码，false 表示不是。</td>
 </tr>
 <tr>
 <td>from-ip</td>
@@ -580,7 +658,7 @@
 </tr>
 <tr>
 <td>ack-at</td>
-<td>消息接收者返回的确认到达服务器的 Unix 时间戳（毫秒）</td>
+<td>消息送达到目标设备上的 Unix 时间戳（毫秒），但并不代表接收者已读该消息。如果消息未送达到设备，返回数据中<strong>不会有该字段</strong>。若消息有多个接收者，该值为送达到第一个接收者/目标设备上的时间。</td>
 </tr>
 </tbody>
 </table>
@@ -597,13 +675,13 @@
 <tbody>
 <tr>
 <td>from</td>
-<td><strong>必须</strong></td>
+<td><strong>必填</strong></td>
 <td>发送人 id</td>
 </tr>
 <tr>
 <td>max_ts</td>
 <td>可选</td>
-<td>查询起始的时间戳，返回小于这个时间（不包含）的记录。默认是当前时间。</td>
+<td>查询起始的时间戳，返回小于这个时间（不包含）的记录。默认是当前时间，单位是毫秒。</td>
 </tr>
 <tr>
 <td>msgid</td>
@@ -631,7 +709,7 @@
 <tr>
 <td>max_ts</td>
 <td>可选</td>
-<td>查询起始的时间戳，返回小于这个时间（不包含）的记录。默认是当前时间。</td>
+<td>查询起始的时间戳，返回小于这个时间（不包含）的记录。默认是当前时间，单位是毫秒。</td>
 </tr>
 <tr>
 <td>msgid</td>
@@ -658,27 +736,36 @@
   --data-urlencode &#39;convid=219946ef32e40c515d33ae6975a5c593&#39; \
   --data-urlencode &#39;msgid=PESlY&#39; \
   --data-urlencode &#39;timestamp=1408008498571&#39; \
-  https://leancloud.cn/1.1/rtm/messages/logs
+  https://{{v2Domain}}/1.1/rtm/messages/logs
 </code></pre>
 <table>
 <thead>
 <tr>
 <th>参数</th>
+<th>约束</th>
 <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>convid</td>
+<td>必填</td>
 <td>对话 id</td>
 </tr>
 <tr>
 <td>msgid</td>
+<td>必填</td>
 <td>消息 id</td>
 </tr>
 <tr>
 <td>timestamp</td>
-<td>消息时间戳</td>
+<td>必填</td>
+<td>消息时间戳（毫秒）</td>
+</tr>
+<tr>
+<td>from</td>
+<td>必填</td>
+<td>发消息用户 Client ID</td>
 </tr>
 </tbody>
 </table>
@@ -687,20 +774,136 @@
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  -d &#39;{&quot;msg-id&quot;:&quot;4XC_IHK+Ry6CXzIPq_nc7Q&quot;,&quot;conv-id&quot;:&quot;5667070f60b2298fdddb683700000000&quot;,&quot;ack-at&quot;:1449683354932,&quot;is-conv&quot;:true,&quot;from&quot;:&quot;5666d78c60b204d588fd63aa&quot;,&quot;bin&quot;:false,&quot;timestamp&quot;:1449661888571,&quot;is-room&quot;:false,&quot;from-ip&quot;:&quot;223.104.9.13&quot;,&quot;to&quot;:&quot;5667070f60b2298fdddb6837&quot;,&quot;data&quot;:&quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;\u771f\u4e0d\u61c2\&quot;}&quot;}&#39;
-  https://leancloud.cn/1.1/rtm/messages/logs
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;msg-id&quot;:&quot;4XC_IHK+Ry6CXzIPq_nc7Q&quot;,&quot;conv-id&quot;:&quot;5667070f60b2298fdddb683700000000&quot;,&quot;ack-at&quot;:1449683354932,&quot;is-conv&quot;:true,&quot;from&quot;:&quot;5666d78c60b204d588fd63aa&quot;,&quot;bin&quot;:false,&quot;timestamp&quot;:1449661888571,&quot;is-room&quot;:false,&quot;from-ip&quot;:&quot;223.104.9.13&quot;,&quot;to&quot;:&quot;5667070f60b2298fdddb6837&quot;,&quot;data&quot;:&quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;\u771f\u4e0d\u61c2\&quot;}&quot;}&#39; \
+  https://{{v2Domain}}/1.1/rtm/messages/logs
 </code></pre>
-<p>这里传入的数据格式与消息记录返回的格式完全一致，只需要按照实际的需求修改相应的字段即可。</p>
-<p>注意此处仅能修改服务器端的消息记录，并不能修改客户端缓存的消息记录。</p>
+<p>这里传入的数据格式与消息记录返回的格式完全一致，只需要按照实际的需求修改相应的字段即可。需注意修改内容时切勿修改 JSON 中的 <code>msg-id</code> 和 <code>timestamp</code> 字段，这两个字段用于标识消息，如果修改会造成消息更新失败。</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>timestamp</td>
+<td>消息到达服务器的 Unix 时间戳（毫秒）</td>
+</tr>
+<tr>
+<td>conv-id</td>
+<td>用于查询的对话 id</td>
+</tr>
+<tr>
+<td>data</td>
+<td>消息内容，字符串形式的 JSON，格式请参考 <a href="realtime_rest_api.html#富媒体消息格式说明">富媒体消息格式</a>。</td>
+</tr>
+<tr>
+<td>from</td>
+<td>消息来自 id</td>
+</tr>
+<tr>
+<td>msg-id</td>
+<td>消息 id</td>
+</tr>
+<tr>
+<td>is-conv</td>
+<td>是否为 v2 中对话模型的消息</td>
+</tr>
+<tr>
+<td>is-room</td>
+<td>是否为 v1 中对话模型的消息（为兼容而遗留下来的历史字段）</td>
+</tr>
+<tr>
+<td>to</td>
+<td>消息发送目标，一般是目标会话的 id</td>
+</tr>
+<tr>
+<td>bin</td>
+<td>消息是否为二进制编码，false 表示不是。</td>
+</tr>
+<tr>
+<td>from-ip</td>
+<td>消息的来源 IP</td>
+</tr>
+<tr>
+<td>ack-at</td>
+<td>消息送达到目标设备上的 Unix 时间戳（毫秒），但并不代表接收者已读该消息。如果消息未送达到设备，返回数据中<strong>不会有该字段</strong>。若消息有多个接收者，该值为送达到第一个接收者/目标设备上的时间。</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-info">本接口仅能修改<strong>服务器端</strong>的消息记录，并不能修改<strong>客户端缓存</strong>的消息记录。如果希望修改，请参考 <a href="#修改与撤回消息">修改与撤回消息接口</a> 的说明。</div>
+
+<h2 id="-">修改与撤回消息</h2>
+<p>从 Objective-C SDK v6.0.0、Android SDK v4.4.0、JavaScript SDK v3.5.0 开始，我们支持了新的修改与撤回消息功能。修改或撤回消息后，即使已经收到并已缓存在客户端的消息也会被修改或撤回。对于老版本的 SDK，仅能修改或撤回服务器端的消息记录，并不能修改或撤回客户端已缓存的消息记录。</p>
+<p>本接口需要 Master Key 授权。</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;from_peer&quot;:&quot;some sender&quot;,&quot;conv_id&quot;:&quot;5667070f60b2298fdddb6837&quot;,&quot;timestamp&quot;:1449661888571,&quot;msg_id&quot;:&quot;4XC_IHK+Ry6CXzIPq_nc7Q&quot;,&quot;message&quot;:&quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个修改后的纯文本消息\&quot;}&quot;, &quot;recall&quot;:true}&#39; \
+  https://{{v2Domain}}/1.1/rtm/patch/message
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>对话 id  </td>
+</tr>
+<tr>
+<td>msg_id</td>
+<td>必填</td>
+<td>消息 id  </td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>必填</td>
+<td>消息时间戳（毫秒）</td>
+</tr>
+<tr>
+<td>from_peer</td>
+<td>必填</td>
+<td>发消息用户 Client ID</td>
+</tr>
+<tr>
+<td>message</td>
+<td>必填</td>
+<td>修改后的消息体 </td>
+</tr>
+<tr>
+<td>recall</td>
+<td>可选</td>
+<td>布尔类型，代表是否撤回消息</td>
+</tr>
+</tbody>
+</table>
 <h2 id="-">未收取消息数</h2>
-<p>您可以从服务器端通过 REST API 调用获取实时通信中，某个 Client ID 的未收取的消息数。</p>
+<p>获取实时通信中某个 Client ID 的未收取的消息数：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://leancloud.cn/1.1/rtm/messages/unread/CLIENT_ID
+  https://{{v2Domain}}/1.1/rtm/messages/unread/CLIENT_ID
 </code></pre>
 <p>返回：</p>
 <pre><code class="lang-json">{&quot;count&quot;: 4}
+</code></pre>
+<p>也可以提供特定对话的 Conversation ID，来获取某个 Client ID 下特定对话内的未收取消息数：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  https://{{v2Domain}}/1.1/rtm/messages/unread/CLIENT_ID/CONVERSATION_ID
+</code></pre>
+<p>返回：</p>
+<pre><code class="lang-json">{&quot;count&quot;: 3}
 </code></pre>
 <h2 id="-rest-api-">通过 REST API 发消息</h2>
 <p>我们目前提供 REST API 允许向一个已有对话发送消息。</p>
@@ -711,7 +914,7 @@
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;from_peer&quot;: &quot;1a&quot;, &quot;message&quot;: &quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个纯文本消息\&quot;,\&quot;_lcattrs\&quot;:{\&quot;a\&quot;:\&quot;_lcattrs 是用来存储用户自定义的一些键值对\&quot;}}&quot;, &quot;conv_id&quot;: &quot;...&quot;, &quot;transient&quot;: false}&#39; \
-  https://leancloud.cn/1.1/rtm/messages
+  https://{{v2Domain}}/1.1/rtm/messages
 </code></pre>
 <table>
 <thead>
@@ -724,12 +927,12 @@
 <tbody>
 <tr>
 <td>from_peer</td>
-<td></td>
+<td>必填</td>
 <td>消息的发件人 client Id</td>
 </tr>
 <tr>
 <td>conv_id</td>
-<td></td>
+<td>必填</td>
 <td>发送到对话 id</td>
 </tr>
 <tr>
@@ -739,18 +942,29 @@
 </tr>
 <tr>
 <td>message</td>
-<td></td>
-<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br/>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
+<td>必填</td>
+<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
 </tr>
 <tr>
 <td>no_sync</td>
 <td>可选</td>
 <td>默认情况下消息会被同步给在线的 from_peer 用户的客户端，设置为 true 禁用此功能。</td>
 </tr>
+<tr>
+<td>push_data</td>
+<td>可选</td>
+<td>以消息附件方式设置本条消息的离线推送通知内容。如果目标接收者使用的是 iOS 设备并且当前不在线，我们会按照该参数填写的内容来发离线推送。请参看 <a href="./realtime_v2.html#离线推送通知">离线推送通知</a></td>
+</tr>
+<tr>
+<td>priority</td>
+<td>可选</td>
+<td>定义消息优先级，可选值为 high、normal、low，分别对应高、中、低三种优先级。该参数大小写不敏感，默认为高优先级 high。本参数仅对暂态消息或聊天室的消息有效，高优先级下在服务端与用户设备的连接拥塞时依然排队。</td>
+</tr>
 </tbody>
 </table>
 <p>返回说明：</p>
-<p>默认情况下发送消息 API 使用异步的方式，调用后直接返回空结果 <code>{}</code>。</p>
+<p>默认情况下发送消息 API 使用异步的方式，调用后返回消息 id 和接收消息的服务器时间戳，例如 <code>{&quot;msg-id&quot;:&quot;qNkRkFWOeSqP65S9fDyHJw&quot;, &quot;timestamp&quot;:1495431811151}</code>。</p>
+<h2 id="-">系统消息</h2>
 <h3 id="-">系统对话给用户发消息</h3>
 <p>利用 REST API 通过系统对话给用户发消息时，除了 conv_id 需要设置为对应系统对话的 id 以外，还需要设置 to_peers（数组）指定实际接收消息的 client id。</p>
 <p>目前你可以在一次调用中传入至多 20 个 client id。</p>
@@ -759,7 +973,7 @@
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;from_peer&quot;: &quot;1a&quot;, &quot;to_peers&quot;:[&quot;2c&quot;,&quot;3d&quot;,&quot;4f&quot;],&quot;message&quot;: &quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个纯文本消息\&quot;,\&quot;_lcattrs\&quot;:{\&quot;a\&quot;:\&quot;_lcattrs 是用来存储用户自定义的一些键值对\&quot;}}&quot;, &quot;conv_id&quot;: &quot;...&quot;, &quot;transient&quot;: false}&#39; \
-  https://leancloud.cn/1.1/rtm/messages
+  https://{{v2Domain}}/1.1/rtm/messages
 </code></pre>
 <table>
 <thead>
@@ -772,7 +986,7 @@
 <tbody>
 <tr>
 <td>from_peer</td>
-<td></td>
+<td>必填</td>
 <td>消息的发件人 client id</td>
 </tr>
 <tr>
@@ -782,7 +996,7 @@
 </tr>
 <tr>
 <td>conv_id</td>
-<td></td>
+<td>必填</td>
 <td>发送到对话 id</td>
 </tr>
 <tr>
@@ -792,13 +1006,18 @@
 </tr>
 <tr>
 <td>message</td>
-<td></td>
-<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br/>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
+<td>必填</td>
+<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
 </tr>
 <tr>
 <td>no_sync</td>
 <td>可选</td>
 <td>默认情况下消息会被同步给在线的 from_peer 用户的客户端，设置为 true 禁用此功能。</td>
+</tr>
+<tr>
+<td>push_data</td>
+<td>可选</td>
+<td>以消息附件方式设置本条消息的离线推送通知内容。如果目标接收者当前不在线，我们会按照该参数填写的内容来发离线推送。请参看 <a href="./realtime_v2.html#离线推送通知">离线推送通知</a></td>
 </tr>
 </tbody>
 </table>
@@ -809,7 +1028,7 @@
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;from_peer&quot;: &quot;1a&quot;, &quot;message&quot;: &quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个纯文本消息\&quot;,\&quot;_lcattrs\&quot;:{\&quot;a\&quot;:\&quot;_lcattrs 是用来存储用户自定义的一些键值对\&quot;}}&quot;, &quot;conv_id&quot;: &quot;...&quot;}&#39; \
-  https://leancloud.cn/1.1/rtm/broadcast
+  https://{{v2Domain}}/1.1/rtm/broadcast
 </code></pre>
 <table>
 <thead>
@@ -823,21 +1042,21 @@
 <tbody>
 <tr>
 <td>from_peer</td>
-<td></td>
+<td>必填</td>
 <td>字符串</td>
 <td>消息的发件人 id</td>
 </tr>
 <tr>
 <td>conv_id</td>
-<td></td>
+<td>必填</td>
 <td>字符串</td>
 <td>发送到对话 id，仅限于系统对话</td>
 </tr>
 <tr>
 <td>message</td>
-<td></td>
+<td>必填</td>
 <td>字符串</td>
-<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br/>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
+<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
 </tr>
 <tr>
 <td>valid_till</td>
@@ -862,36 +1081,318 @@
 }
 </code></pre><h3 id="-">删除系统对话广播消息</h3>
 <p>调用此 API 将删除已发布的广播消息。</p>
-<p>``sh
-curl -X DETELE \
+<pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -G \
   --data-urlencode &#39;mid=message-id&#39; \
-  <a href="https://leancloud.cn/1.1/rtm/broadcast">https://leancloud.cn/1.1/rtm/broadcast</a></p>
-<pre><code>
-参数 | 说明
---- | ---
-mid | 要删除的消息 id，字符串
-
-返回：
-
-空 JSON 对象。
-
-```json
-{}
-</code></pre><h3 id="-">富媒体消息格式说明</h3>
+  https://{{v2Domain}}/1.1/rtm/broadcast
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mid</td>
+<td>必填</td>
+<td>要删除的消息 id，字符串</td>
+</tr>
+</tbody>
+</table>
+<p>返回：</p>
+<p>空 JSON 对象 <code>{}</code>。</p>
+<h3 id="-">查询系统广播消息</h3>
+<p>调用此 API 可查询目前有效的广播消息。</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  https://{{v2Domain}}/1.1/rtm/broadcast
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>系统对话 id</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>可选</td>
+<td>返回消息条数</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>可选</td>
+<td>跳过消息条数，用于翻页</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">系统对话发送订阅消息</h3>
+<p>利用 REST API 发送消息给系统对话所有的订阅用户（即加入系统对话的用户）。</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;from_peer&quot;: &quot;1a&quot;, &quot;message&quot;: &quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个纯文本消息\&quot;,\&quot;_lcattrs\&quot;:{\&quot;a\&quot;:\&quot;_lcattrs 是用来存储用户自定义的一些键值对\&quot;}}&quot;, &quot;conv_id&quot;: &quot;...&quot;}&#39; \
+  https://{{v2Domain}}/1.1/rtm/broadcast/subscriber
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>from_peer</td>
+<td>必填</td>
+<td>字符串</td>
+<td>消息的发件人 id</td>
+</tr>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>发送到对话 id，仅限于系统对话</td>
+</tr>
+<tr>
+<td>message</td>
+<td>必填</td>
+<td>字符串</td>
+<td>消息内容（这里的消息内容的本质是字符串，但是我们对字符串内部的格式没有做限定，<br>理论上开发者可以随意发送任意格式，只要大小不超过 5 KB 限制即可。）</td>
+</tr>
+<tr>
+<td>push</td>
+<td>可选</td>
+<td>字符串或 JSON 对象</td>
+<td>附带的推送内容，如果设置，<strong>所有</strong> iOS 和 Windows Phone 用户会收到这条推送通知。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">订阅系统对话</h3>
+<p>为指定用户订阅指定的系统对话。</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;conv_id&quot;: &quot;...&quot;, &quot;client_id&quot;: &quot;...&quot;}&#39; \
+  https://{{v2Domain}}/1.1/rtm/conversation/subscription
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>订阅者的 client id</td>
+</tr>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>对话 id，仅限于系统对话</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">退订系统对话</h3>
+<p>为指定用户退订指定的系统对话。</p>
+<pre><code class="lang-sh">curl -X DELETE \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -G \
+  --data-urlencode &#39;conv_id=...&#39; \
+  --data-urlencode &#39;client_id=...&#39; \
+  https://{{v2Domain}}/1.1/rtm/conversation/subscription
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>退订者的 client id</td>
+</tr>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>对话 id，仅限于系统对话</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">查询是否订阅过某个系统对话</h3>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -G \
+  --data-urlencode &#39;conv_id=...&#39; \
+  --data-urlencode &#39;client_id=...&#39; \
+  https://{{v2Domain}}/1.1/rtm/conversation/subscribed
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>用户的 client id</td>
+</tr>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>对话 id，仅限于系统对话</td>
+</tr>
+</tbody>
+</table>
+<p>如果订阅过该系统对话返回<code>true</code>，否则返回<code>false</code>。</p>
+<h3 id="-">获取已订阅系统对话</h3>
+<p>因为目标用户订阅的系统对话可能会很多，一次请求无法全部获取，所以对于订阅了大量系统对话的用户，需要多次调用本接口来逐步获取到所有订阅的系统对话。</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -G \
+  --data-urlencode &#39;client_id=...&#39; \
+  --data-urlencode &#39;conv_id=...&#39; \
+  --data-urlencode &#39;timestamp=...&#39; \
+  --data-urlencode &#39;limit=...&#39; \
+  https://{{v2Domain}}/1.1/rtm/conversation/subscription
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>目标查询用户的 client id</td>
+</tr>
+<tr>
+<td>conv_id</td>
+<td>可选</td>
+<td>字符串</td>
+<td>查询起始对话 id，不填则从订阅列表起始位置开始遍历。查询结果不会再包含本对话。</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>可选</td>
+<td>数字</td>
+<td>查询起始对话被订阅时间。虽然是可选字段但当提供 conv_id 时本字段必填，值必须为订阅 conv_id 参数所指定系统对话的时间，单位是毫秒。</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>可选</td>
+<td>数字</td>
+<td>返回条数限制，默认是 50 条</td>
+</tr>
+</tbody>
+</table>
+<p>返回目标用户订阅系统对话的列表：</p>
+<pre><code>[{&quot;timestamp&quot;:1482994126561,&quot;subscriber&quot;:&quot;XXX&quot;,&quot;conv_id&quot;:&quot;convId1&quot;},
+ {&quot;timestamp&quot;:1491467945277,&quot;subscriber&quot;:&quot;XXX&quot;,&quot;conv_id&quot;:&quot;convId2&quot;}, ...]
+</code></pre><p>其中 <code>timestamp</code> 表示用户订阅系统对话的时间，<code>subscriber</code> 是订阅用户的 client id。如果一次没有获取完，需要从结果列表中取最后一个系统对话的 id 和订阅该对话的时间，分别作为 conv_id 和 timestamp 参数再次调用本接口以获取下一批订阅的系统对话。</p>
+<h3 id="-">获取系统对话的所有订阅者</h3>
+<p>因为目标系统对话的订阅者可能会很多，一次请求无法全部获取，所以对于拥有大量订阅者的系统对话，需要多次调用本接口来逐步获取到所有的订阅者。</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
+  -G \
+  --data-urlencode &#39;conv_id=...&#39; \
+  --data-urlencode &#39;client_id=...&#39; \
+  --data-urlencode &#39;limit=...&#39; \
+  https://{{v2Domain}}/1.1/rtm/conversation/subscribers
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>约束</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conv_id</td>
+<td>必填</td>
+<td>字符串</td>
+<td>对话 id，仅限于系统对话</td>
+</tr>
+<tr>
+<td>client_id</td>
+<td>可选</td>
+<td>字符串</td>
+<td>查询起始订阅者 client id，不填则从订阅者列表起始位置开始遍历。查询结果不会再包含当前指定的订阅者 client id。</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>可选</td>
+<td>数字</td>
+<td>返回条数限制，默认是 50 条</td>
+</tr>
+</tbody>
+</table>
+<p>返回目标系统对话的订阅者列表：</p>
+<pre><code>[{&quot;timestamp&quot;:1491467841116,&quot;subscriber&quot;:&quot;client id 1&quot;,&quot;conv_id&quot;:&quot;55b871&quot;},
+ {&quot;timestamp&quot;:1491467852768,&quot;subscriber&quot;:&quot;client id 2&quot;,&quot;conv_id&quot;:&quot;55b871&quot;}, ...]
+</code></pre><p>其中 <code>timestamp</code> 表示用户订阅系统对话的时间，<code>subscriber</code> 是订阅用户的 client id。如果一次没有获取完，需要从结果列表中取最后一个订阅者的 client id，作为 client_id 参数再次调用本接口以获取下一批订阅者列表。</p>
+<h2 id="-">富媒体消息格式说明</h2>
 <p>富媒体消息的参数格式相对于普通文本来说，仅仅是将 message 参数换成了一个 JSON <strong>字符串</strong>。</p>
-<blockquote>
-<p>注意：由于 LeanCloud 实时通信中所有的消息都是文本，所以这里发送 JSON 结构时<strong>需要首先序列化成字符串</strong>。</p>
-</blockquote>
+<div class="callout callout-info">由于 LeanCloud 实时通信中所有的消息都是文本，所以这里发送 JSON 结构时<strong>需要首先序列化成字符串</strong>。</div>
+
 <h4 id="-">文本消息</h4>
 <pre><code>curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;from_peer&quot;: &quot;1a&quot;, &quot;message&quot;: &quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;这是一个纯文本消息\&quot;,\&quot;_lcattrs\&quot;:{\&quot;a\&quot;:\&quot;_lcattrs 是用来存储用户自定义的一些键值对\&quot;}}&quot;, &quot;conv_id&quot;: &quot;...&quot;, &quot;transient&quot;: false}&#39; \
-  https://leancloud.cn/1.1/rtm/messages
+  https://{{v2Domain}}/1.1/rtm/messages
 </code></pre><p>发送文本消息可以按照以上的格式进行，参数说明：</p>
 <table>
 <thead>
@@ -905,7 +1406,7 @@ mid | 要删除的消息 id，字符串
 <tr>
 <td><code>_lctype</code></td>
 <td></td>
-<td>富媒体消息的类型<br/><br/><pre>文本消息 -1<br/>图像　　 -2<br/>音频　　 -3<br/>视频　　 -4<br/>地理位置 -5<br/>通用文件 -6</pre></td>
+<td>富媒体消息的类型<br><br><pre>文本消息 -1<br>图像　　 -2<br>音频　　 -3<br>视频　　 -4<br>地理位置 -5<br>通用文件 -6</pre></td>
 </tr>
 <tr>
 <td><code>_lctext</code></td>
@@ -920,7 +1421,7 @@ mid | 要删除的消息 id，字符串
 <tr>
 <td><code>_lcfile</code></td>
 <td></td>
-<td>如果是包含了文件（图像，音频，视频，通用文件）的消息 ，<br/><code>_lcfile</code> 就包含了它的文件实体的相关信息。</td>
+<td>如果是包含了文件（图像，音频，视频，通用文件）的消息 ，<br><code>_lcfile</code> 就包含了它的文件实体的相关信息。</td>
 </tr>
 <tr>
 <td><code>url</code></td>
@@ -1081,7 +1582,7 @@ mid | 要删除的消息 id，字符串
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://leancloud.cn/1.1/rtm/transient_group/onlines?gid=...
+  https://{{v2Domain}}/1.1/rtm/transient_group/onlines?gid=...
 </code></pre>
 <p>返回：</p>
 <pre><code class="lang-json">{&quot;result&quot;: 0}
@@ -1094,7 +1595,7 @@ mid | 要删除的消息 id，字符串
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;peers&quot;: [&quot;7u&quot;, &quot;8b&quot;, &quot;3h&quot;, ...]}&#39; \
-  https://leancloud.cn/1.1/rtm/online
+  https://{{v2Domain}}/1.1/rtm/online
 </code></pre>
 <table>
 <thead>
@@ -1115,15 +1616,14 @@ mid | 要删除的消息 id，字符串
 <pre><code class="lang-json">{&quot;results&quot;:[&quot;7u&quot;]}
 </code></pre>
 <h2 id="-">对话禁言</h2>
-<p>您可以利用对话禁言 API 对某个 Client ID 在某个对话中禁言一段时间。禁言期间，来自该 ID 的消息
-会被服务器拒绝，不会发给对话中的其他用户。这个功能对普通对话、暂态对话和系统对话均有效。</p>
-<p>禁言的时限以秒数为单位，最长时间为 24 小时。</p>
+<p>使用这个 API 可以让某个 Client ID 在某个对话中禁止发言一段时间。在禁言期间，来自该 ID 的消息会被服务器拒绝（返回错误代码 <a href="error_code.html#_4315">4315</a>），不会发给对话中的其他用户，适用于「拉黑」或者「黑名单」的需求场景。这个功能对普通对话、暂态对话和系统对话均有效。</p>
+<p>禁言的时限以<u>秒</u>为单位，<strong>最长时间为 24 小时</strong>。要提前解除禁言，请参考 <a href="#解除禁言">解除禁言</a>。</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;client_id&quot;: &quot;some-client-id&quot;, &quot;conv_id&quot;: &quot;some-conv-id&quot;, &quot;ttl&quot;: 50}&#39; \
-  https://leancloud.cn/1.1/rtm/conversation/blacklist
+  https://{{v2Domain}}/1.1/rtm/conversation/blacklist
 </code></pre>
 <table>
 <thead>
@@ -1152,14 +1652,14 @@ mid | 要删除的消息 id，字符串
 <pre><code class="lang-json">{}
 </code></pre>
 <h2 id="-">解除禁言</h2>
-<p>使用这个 API 可以在禁言期限到期之前，解除被禁言的 Client ID。</p>
-<pre><code class="lang-sh">curl -X DETELE \
+<p>使用这个 API 可以在禁言期限到期之前，解除被禁言的 Client ID，例如将某用户提前移出黑名单，允许其向对话中其他成员发送消息。</p>
+<pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -G \
   --data-urlencode &#39;conv_id=some-conv-id&#39; \
   --data-urlencode &#39;client_id=some-client-id&#39; \
-  https://leancloud.cn/1.1/rtm/conversation/blacklist
+  https://{{v2Domain}}/1.1/rtm/conversation/blacklist
 </code></pre>
 <table>
 <thead>
@@ -1191,7 +1691,7 @@ mid | 要删除的消息 id，字符串
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;client_id&quot;: &quot;some-client-id&quot;, &quot;reason&quot;: &quot;...&quot;}&#39; \
-  https://leancloud.cn/1.1/rtm/client/kick
+  https://{{v2Domain}}/1.1/rtm/client/kick
 </code></pre>
 <table>
 <thead>
@@ -1215,6 +1715,50 @@ mid | 要删除的消息 id，字符串
 <p>空 JSON 对象。</p>
 <pre><code class="lang-json">{}
 </code></pre>
+<h2 id="-client-">获取 Client 登录签名</h2>
+<p>本接口可以让使用了 <a href="rest_api.html#用户-1">AV.User</a> 的应用方便快捷地实现登录认证。登录认证默认关闭，可以进入 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，在「聊天、推送」模块，勾选 <strong>聊天服务，启用登录认证</strong> 进行开启。</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;session_token&quot;: &quot;AV.User 的 sessionToken&quot;&#39; \
+  https://{{v2Domain}}/1.1/rtm/sign
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>session_token</td>
+<td>AV.User 的 sessionToken</td>
+</tr>
+</tbody>
+</table>
+<p>返回：</p>
+<pre><code class="lang-json">{&quot;nonce&quot;: &quot;&quot;, &quot;timestamp&quot;: &quot;&quot;, &quot;client_id&quot;: &quot;&quot;, &quot;signature&quot;: &quot;&quot;}
+</code></pre>
+<p>返回的参数，可以参考「<a href="realtime_v2.html#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E7%9A%84%E7%AD%BE%E5%90%8D">用户登录签名</a>」与「实现签名工厂（<a href="realtime_guide-js.html#%E5%AE%9E%E7%8E%B0%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%8E%82">JavaScript</a>、<a href="realtime_guide-android.html#%E5%AE%9E%E7%8E%B0%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%8E%82">Android</a>、<a href="realtime_guide-objc.html#%E5%AE%9E%E7%8E%B0%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%8E%82">Objective-C</a>、<a href="realtime_guide-dotnet.html#%E5%AE%9E%E7%8E%B0%E7%AD%BE%E5%90%8D%E5%B7%A5%E5%8E%82">.Net</a>）」进行后续的登录。</p>
+<p>为了方便用户进行细粒度控制，实现自定义功能（如黑名单），本接口提供了一个 hook <code>_rtmClientSign</code>，在验证 sessionToken 后去调用，传入的参数为 AV.User 构成的 JSON 对象：</p>
+<pre><code class="lang-json">{
+    &quot;email&quot;: &quot;&quot;,
+    &quot;sessionToken&quot;: &quot;&quot;,
+    &quot;updatedAt&quot;: &quot;&quot;,  // 格式：2017-07-11T07:58:10.149Z
+    &quot;phone&quot;: &quot;&quot;,
+    &quot;objectId&quot;: &quot;&quot;,
+    &quot;username&quot;: &quot;&quot;,
+    &quot;createdAt&quot;: &quot;&quot;,  // 格式：2017-07-11T07:58:10.149Z
+    &quot;emailVerified&quot;: true/false,
+    &quot;mobilePhoneVerified&quot;: true/false
+}
+</code></pre>
+<p>可以返回两类结果：</p>
+<pre><code class="lang-json">{&quot;result&quot;: true} // 允许签名
+{&quot;result&quot;: false, &quot;error&quot;: &quot;error message&quot;}  // 拒绝签名
+</code></pre>
 
 
       </div>
@@ -1236,7 +1780,7 @@ mid | 要删除的消息 id，字符串
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -1259,12 +1803,8 @@ mid | 要删除的消息 id，字符串
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -1306,29 +1846,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

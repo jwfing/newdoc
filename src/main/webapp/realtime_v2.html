@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>实时通信服务总览 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,15 +440,17 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="-">实时通信服务总览</h1>
 <p>实时通信服务是 LeanCloud 消息服务中的重要一环。你不但可以为应用加入实时聊天、私信等常用功能，还能实现游戏对战等实时互动功能。</p>
 <p>目前，我们提供 Android、iOS、JavaScript、Windows Phone 四个主要平台的客户端 SDK，也提供了一些 Demo 帮助你快速入门：</p>
 <ul>
 <li><p>iOS 聊天应用：</p>
 <ul>
-<li><a href="chatkit-objc.html">ChatKit，自带 UI 的聊天工具包</a></li>
+<li><a href="chatkit-ios.html">ChatKit，自带 UI 的聊天工具包</a></li>
 <li><a href="https://github.com/leancloud/LeanMessage-Demo">LeanMessageDemo iOS 版</a></li>
-<li><a href="https://github.com/leancloud/leanchat-ios">LeanChat iOS 版</a></li>
 </ul>
 </li>
 <li><p>Android 聊天应用：</p>
@@ -413,32 +472,32 @@
 <h2 id="-">功能和特性</h2>
 <p>LeanCloud 实时通信服务定位于完美实现网络层的通讯能力，其设计目标聚焦在：</p>
 <ul>
-<li><strong>快捷</strong><br/>
+<li><strong>快捷</strong><br>
 LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时需要严格控制在毫秒以内。</li>
-<li><strong>灵活</strong><br/>
+<li><strong>灵活</strong><br>
 既要为完全依托 LeanCloud 平台的开发者考虑，也要为自有账户系统的用户设计：如果用户自己有完备的后台和账户系统，应该完全不用暴露内部数据就能使用我们的服务。而且，消息通知的手段要多样化，要让开发者有更多定制的能力。譬如聊天时对方不在线，应该能走「消息推送（Push Notification）」通道来及时提醒对方，并允许开发者对推送内容进行「私人定制」等等。</li>
-<li><strong>安全</strong><br/>
+<li><strong>安全</strong><br>
 除了简单的 appId 和 secretKey 之外，还应该赋予开发者更多的安全控制能力，来保证聊天通道的私密性。</li>
 </ul>
 <p>LeanCloud 实时通信服务的特性主要有：</p>
 <ul>
-<li><strong>与账户系统解耦合</strong><br/>
+<li><strong>与账户系统解耦合</strong><br>
 任何终端用户要加入聊天，只需要提供一个唯一标识自己的 clientId 即可，这样可以尽量避免自有账户系统的应用数据暴露，也可以促使通信服务专注做好底层的「信使」角色；</li>
-<li><strong>多账号登录</strong><br/>
+<li><strong>多账号登录</strong><br>
 支持单个设备多个账号、单个账号多个设备同时登录，实时消息同步到所有设备。</li>
-<li><strong>完整的聊天功能</strong><br/>
-支持单聊、群聊、聊天室等不同聊天形式，并且具备完善的群组管理功能。</li>
-<li><strong>支持富媒体、自定义类型消息</strong><br/>
+<li><strong>完整的聊天功能</strong><br>
+支持单聊、群聊、聊天室、订阅号等不同聊天形式，并且具备完善的群组管理功能。</li>
+<li><strong>支持富媒体、自定义类型消息</strong><br>
 支持文本、图片、音频、视频和地理位置等多种格式的富媒体消息，并且开发者还可方便地自定义扩展。</li>
-<li><strong>离线消息推送</strong><br/>
+<li><strong>离线消息推送</strong><br>
 消息在对方离线时，会自动通过 <a href="#离线推送通知">消息推送</a> 来及时送达对方，并且推送的消息文本可以由开发者自己控制。</li>
-<li><strong>敏感词过滤</strong><br/>
-实时消息中出现的敏感词，会自动被过滤掉；对于部分 VIP 客户，我们还允许自定义仅属于自己应用的敏感词列表。</li>
-<li><strong>聊天记录保存在云端</strong><br/>
+<li><strong>敏感词过滤</strong><br>
+实时消息中出现的敏感词，会自动被过滤掉；对于部分 VIP 客户，我们还允许<a href="#_messageReceived">自定义仅属于自己应用的敏感词列表</a>。</li>
+<li><strong>聊天记录保存在云端</strong><br>
 聊天记录自动保存在云端，允许开发者自由获取。</li>
-<li><strong>第三方操作鉴权机制</strong><br/>
+<li><strong>第三方操作鉴权机制</strong><br>
 为了保证信道的安全，也给开发者最大的控制自由，我们提供了操作鉴权的机制：开发者使用自己的服务器来充当鉴权服务器，对消息流向进行「许可控制」。对于消息路由过程中的重要操作（譬如登录、开启对话、邀请加入群组、从群组踢出某人等），实时消息 SDK 在发送请求之前，会先到鉴权服务器获得操作签名，LeanCloud 云端会验证签名有效性并完全按照鉴权结果来对操作放行或拒绝。</li>
-<li><strong>系统账号、机器人 Hook 和公众号后台</strong><br/>
+<li><strong>系统账号、机器人 Hook 和公众号后台</strong><br>
 支持系统中的小助手、机器人和公众号等场景，方便用户将实时通信系统和自己已有的系统无缝集成，支持二次开发机器人和消息后台。</li>
 </ul>
 <p>我们提供几个层面用户接口：</p>
@@ -512,7 +571,7 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 <td>mute</td>
 <td>Array</td>
 <td></td>
-<td>将对话设为静音的参与者，这部分参与者不会收到推送。<br/>（仅针对 iOS 以及 Windows Phone 用户有效）</td>
+<td>将对话设为静音的参与者，这部分参与者不会收到推送。<br>（仅针对 iOS 以及 Windows Phone 用户有效）</td>
 </tr>
 <tr>
 <td><strong>name</strong></td>
@@ -540,21 +599,21 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 <td>unique</td>
 <td>Boolean</td>
 <td>可选</td>
-<td>内部字段，标记根据成员原子创建的对话。<br/>（只能在 SDK 中使用。<strong>REST API 不支持此参数</strong>，传入 unique 无效)</td>
+<td>内部字段，标记根据成员原子创建的对话。<br>（只能在 SDK 中使用。<strong>REST API 不支持此参数</strong>，传入 unique 无效)</td>
 </tr>
 </tbody>
 </table>
 <p>除了在各平台的 SDK 里面可以调用 API 创建对话外，我们也提供 <a href="./realtime_rest_api.html#通过_REST_API_创建_更新_删除对话数据">REST API</a> 可以让大家预先建立对话：对话的信息存储在 _Conversation 表中，你可以直接通过 <a href="./rest_api.html#%E5%AF%B9%E8%B1%A1-1">数据存储相关的 REST API</a> 对其进行操作。</p>
 <p>这里要特别讨论一下<strong>单聊</strong>、<strong>群聊</strong>、<strong>聊天室</strong>、<strong>公众号</strong>等使用场景。</p>
 <ul>
-<li><strong>单聊</strong><br/>
+<li><strong>单聊</strong><br>
 就是两个 client 之间的对话，公开与否（能否让其他人看到这个对话存在）由应用层自己控制。一般而言，它是私密的，并且加入新的成员之后，会切换到新的对话（当然，也可以依然不离开当前对话，这一点还是由应用层来决定）。</li>
-<li><strong>群聊</strong><br/>
+<li><strong>群聊</strong><br>
 就是两个（含）以上 client 之间的对话，一般而言，可以添加和删除成员，并且会赋予群聊一个名字。随着成员的减少，群聊也可能只有两个甚至一个成员（成员的多少并不是区分群聊和单聊的关键）。群聊能否公开（譬如支持名字搜索），由应用自己决定。</li>
-<li><strong>聊天室</strong><br/>
+<li><strong>聊天室</strong><br>
 很多应用使用的聊天室、弹幕、网页直播等都可以抽象成「聊天室」，它与群聊类似，都是多人参与的群组，但是也有一些区别：其一在于聊天室人数可能远大于群聊人数；其二在于聊天室强调的是在线人数，所有参与者进入聊天界面就算加入，关闭界面就算退出，所以聊天室不需要离线消息和推送通知，在线成员数比具体成员列表更有意义。</li>
-<li><strong>公众号、机器人</strong><br/>
-对全部或者部分用户可见（由应用开发者决定）的账号，开发者可以利用这个账号给用户发广播通知，用户也可以通过这个账号反馈内容给开发者，开发者可以在后台看到消息，也可以利用 API 或 Web Hook 将自己的业务系统集成进来。</li>
+<li><strong>公众号、机器人</strong><br>
+对全部或者部分用户可见（由应用开发者决定）的账号，开发者可以利用这个账号给用户发广播通知，用户也可以通过这个账号反馈内容给开发者，开发者可以在后台看到消息，也可以利用 API 或 <a href="#Web_Hook">Web Hook</a> 将自己的业务系统集成进来。</li>
 </ul>
 <p>我们将以上场景抽象为「对话」这一概念，并分离出以下类型的对话：</p>
 <h4 id="-normal-conversation-">普通对话（Normal Conversation）</h4>
@@ -567,25 +626,25 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 <h4 id="-transient-conversation-">暂态对话（Transient Conversation）</h4>
 <p>专门用来处理「聊天室」这种需求。与普通对话一样，它支持创建、自身主动加入、自身主动退出对话等操作；消息记录会被保存并可供获取；但不同之处在于：</p>
 <ul>
-<li>没有固定成员概念，加入即为成员，断线即为退出</li>
+<li><strong>不限成员上限</strong>，没有固定成员概念，加入即为成员，断线即为退出</li>
 <li>不支持查询成员列表，你可以通过相关 API 查询在线人数。</li>
 <li>不支持离线消息、离线推送通知等功能。</li>
 <li>没有成员加入、离开的通知。</li>
 <li>不支持邀请加入、踢出成员这两个操作。</li>
 <li>一个用户一次登录只能加入一个暂态对话，加入新的暂态对话后会自动离开旧的暂态对话。</li>
 <li>加入暂态对话后半小时内断网重连会自动加入原暂态对话，超过这个时间则需要重新加入。</li>
+<li>在 <code>_Conversation</code> 表中，以 <code>tr</code> 为 <code>true</code> 来标记（<code>m</code>列在暂态对话中将被忽略）</li>
 </ul>
 <p>注意暂态对话没有持久化的成员概念，因此对普通对话的 <code>m</code> 字段的操作对暂态对话无效。</p>
 <h4 id="-system-conversation-">系统对话（System Conversation）</h4>
 <p>这是用于实现机器人、公众号、服务账号等场景的对话，也可以用作发送应用内通知的通道。这种对话具有以下特点：</p>
 <ul>
-<li>在 <code>_Conversation</code> 表中，以 <code>sys</code> 为 <code>true</code> 来标记（<code>m</code>列在系统对话中将被忽略）</li>
-<li>该对话没有成员，开发者维护用户和系统对话的订阅关系</li>
-<li>开发者可以通过 REST API 以系统对话的渠道给指定的用户发消息</li>
+<li>加入即订阅，离开即退订，支持无限的订阅人数</li>
+<li>开发者可以通过 REST API 以系统对话的渠道给所有用户、订阅用户或指定用户（不要求用户订阅）发消息</li>
 <li>用户可以给系统对话发消息，消息和相关信息会存储在数据存储中的 <code>_SysMessage</code> 表，并不会被其他订阅用户收到</li>
-<li>开发者可以配置 Web Hook 地址接收用户发给系统对话的消息，并利用 REST API 发消息回复</li>
-<li>开发者可以通过系统对话向所有用户发送特殊的全员广播消息</li>
+<li>开发者可以配置 <a href="#Web_Hook">Web Hook</a> 地址接收用户发给系统对话的消息，并利用 REST API 发消息回复</li>
 <li>在 SDK 层面，系统对话的接口与普通对话完全一致</li>
+<li>在 <code>_Conversation</code> 表中，以 <code>sys</code> 为 <code>true</code> 来标记（<code>m</code>列在系统对话中将被忽略）</li>
 </ul>
 <h4 id="-">对话类型比较</h4>
 <table>
@@ -599,34 +658,22 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 </thead>
 <tbody>
 <tr>
-<td><strong>关键字段</strong><span>*</span></td>
-<td>m</td>
-<td>tr</td>
-<td>sys</td>
+<td><strong>使用场景</strong></td>
+<td>单聊、群聊</td>
+<td>聊天室、弹幕、网页实时评论</td>
+<td>公众号、机器人、下发加好友通知、自定义消息</td>
 </tr>
 <tr>
 <td><strong>成员管理</strong></td>
-<td>成员体现在 m 字段上，<br/>持久化保存</td>
-<td>没有持久化的成员数据，<br/>随时加入随时退出</td>
-<td>没有成员概念，无法加入和退出，<br/>开发者维护订阅关系</td>
+<td>成员持久化保存，<br>最高支持 500 个成员</td>
+<td>没有持久化的成员数据，<br>但支持成员没有上限</td>
+<td>没有成员概念，<br>开发者维护订阅关系，<br>订阅人数没有上线</td>
 </tr>
 <tr>
 <td><strong>收发消息</strong></td>
 <td>只有成员可以收发消息</td>
-<td>所有用户都可以发消息，<br/>当前在线的成员可以收到消息</td>
-<td>开发者通过 API 给特定用户发消息，<br/>用户发送的消息到达数据库和 Web Hook</td>
-</tr>
-<tr>
-<td><strong>离线消息</strong></td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
-</tr>
-<tr>
-<td><strong>离线推送</strong></td>
-<td>支持</td>
-<td>不支持</td>
-<td>支持</td>
+<td>所有用户都可以发消息，<br>当前在线的成员可以收到消息</td>
+<td>开发者通过 API 给特定用户发消息，<br>用户发送的消息到达数据库和 <a href="#Web_Hook">Web Hook</a></td>
 </tr>
 <tr>
 <td><strong>消息记录</strong></td>
@@ -634,15 +681,8 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 <td>支持</td>
 <td>支持</td>
 </tr>
-<tr>
-<td><strong>用例</strong></td>
-<td>单聊、群聊</td>
-<td>聊天室、弹幕、网页实时评论</td>
-<td>公众号、机器人、下发加好友通知</td>
-</tr>
 </tbody>
 </table>
-<p><span> * </span> 指 <code>_Conversation</code> 系统表中的字段</p>
 <h4 id="-">创建对话</h4>
 <p>对话可以通过 SDK 和 <a href="./realtime_rest_api.html#创建一个对话">REST API</a> 创建。</p>
 <p>在大部分使用场景中，普通对话通过 SDK 创建，用于最终用户之间自发的通信。
@@ -655,10 +695,11 @@ LeanCloud 云端要能支持上亿终端同时在线，并且消息传递延时�
 但是暂态消息，则不会被自动保存，也不支持延迟接收，离线用户更不会收到推送通知，所以适合用来做控制协议。
 譬如聊天过程中「某某正在输入中...」这样的状态信息，就适合通过暂态消息来发送，而用户输入的正式消息，则应该用普通消息来发送。</p>
 <p>LeanCloud 对普通消息提供「至少一次」的到达保证，并且在官方 SDK 中支持对消息的去重，开发者无需关心。除了基于「推」模型的消息机制，我们还提供消息记录的机制允许
-SDK 和 REST API 通过「拉」的方式获取任意时间点前的消息。目前 LeanCloud 对消息记录提供永久存储。</p>
+SDK 和 REST API 通过「拉」的方式获取任意时间点前的消息。</p>
 <p>开发者可以通过 SDK 或 <a href="./realtime_rest_api.html#通过_REST_API_发消息">REST API</a> 发送消息。
 SDK 通常用于最终用户发送消息，而 REST API 是开发者从云端发送消息的接口。当从 REST API
 发送消息时，开发者可以指定消息的发送者、对话 ID，对于系统对话还可以指定消息的接收者。</p>
+<p>一个对话的消息记录会在云端保留 <strong>6 个月</strong>，也就是说一个对话可以查询到半年之内的历史消息记录。开发者可以付费来延长这一期限，请联系 <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x73;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#99;&#108;&#111;&#117;&#100;&#46;&#114;&#x6f;&#99;&#x6b;&#x73;">&#x73;&#x75;&#112;&#x70;&#111;&#114;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#99;&#108;&#111;&#117;&#100;&#46;&#114;&#x6f;&#99;&#x6b;&#x73;</a>。</p>
 <h4 id="-">富媒体消息</h4>
 <p>为了方便开发者的使用，我们提供了几种封装好的基于 JSON 格式的富媒体消息类型（TypedMessage），譬如：</p>
 <ul>
@@ -689,7 +730,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <div class="callout callout-danger">注意，请不要混合使用上面两种方式，比如在 iOS 平台使用默认方式获取离线消息而 Android 平台使用未读数量方式获取离线消息。这种情况可能导致离线消息无法正常获取。</div>
 
 <h4 id="-">离线推送通知</h4>
-<p>对离线的 iOS 和 Windows Phone 用户，每次有离线消息时，我们会触发一个对应平台的推送通知。</p>
+<p>对离线的 iOS 和 Windows Phone 用户，每次有离线消息时，我们会触发一个对应平台的推送通知。通知的过期时间是 7 天，也就是说，如果一个设备 7 天内没有连接到 APNs 或 MPNs，系统将不会再给这个设备推送通知。</p>
 <p>这部分平台的用户，在完成登录时，SDK 会自动关联当前的 Client ID 和设备。关联的方式是通过设备<strong>订阅</strong>名为 Client ID 的 Channel 实现的。开发者可以在数据存储的 <code>_Installation</code> 表中的 <code>channels</code> 字段查到这组关联关系。在实际离线推送时，系统根据用户 Client ID 找到对应的关联设备进行推送。由于实时通信触发的推送量比较大，内容单一， 所以云端不会保留这部分记录，在 <strong>控制台 &gt; 消息 &gt; 推送记录</strong> 中也无法找到这些记录。您有三种方式自定义推送的内容：</p>
 <h5 id="-">静态内容方式</h5>
 <p>由于不同平台的不同限制，且用户的消息正文可能还包含上层协议，所以我们允许用户在控制台中为应用设置一个静态的 APNs JSON，推送一条内容固定的通知。</p>
@@ -719,8 +760,8 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </ul>
 <h4 id="-">敏感词过滤</h4>
 <p>根据政策的要求，我们为多人的普通对话、暂态对话和系统对话进行敏感词过滤。海外节点暂未启用。</p>
-<p>过滤的词库由 LeanCloud 提供，命中的敏感词将会被替换为 <code>***</code>。如果开发者的应用中也有固定的词库需要过滤，可以联系我们进行针对应用的定制。</p>
-<p>如果开发者有较为复杂的过滤需求，我们推荐使用下文提到的云引擎 hook 来实现过滤，在 hook 中开发者对消息的内容有完全的控制力。</p>
+<p>过滤的词库由 LeanCloud 提供，命中的敏感词将会被替换为 <code>***</code>。</p>
+<p>如果开发者有较为复杂的过滤需求，我们推荐使用 <a href="#_messageReceived">云引擎 hook _messageReceived</a> 来实现过滤，在 hook 中开发者对消息的内容有完全的控制力。</p>
 <h4 id="-">广播消息</h4>
 <p>当开发者需要向所有用户发送广播消息时，可以利用广播消息的接口，而无需遍历所有的用户 ID 逐个发送。</p>
 <p>广播消息具有以下特征：</p>
@@ -732,7 +773,13 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </ul>
 <p>除此以外广播消息与普通消息的处理完全一致。广播消息的发送可以参考<a href="./realtime_rest_api.html#系统对话发送广播消息">广播消息 REST API</a></p>
 <h2 id="-">权限和认证</h2>
-<p>为了保证聊天通道的安全，我们设计了签名的概念。默认这一功能是关闭的，你可以在 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; <strong>设置</strong> &gt; <strong>应用选项</strong></a> 中勾选 <strong>聊天服务，启用签名认证</strong> 来强制启用签名。启用后，所有的用户登录、新建或加入对话、邀请/踢出对话成员等操作都需要包含签名，这样你可以对聊天过程进行充分的控制。</p>
+<p>使用签名可以保证聊天通道的安全，这一功能默认是关闭的，可以在 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; <strong>设置</strong> &gt; <strong>应用选项</strong></a> 中进行开启，有两个选项供选择：</p>
+<ul>
+<li><strong>聊天服务，启用登录认证</strong>，用于控制所有的用户登录</li>
+<li><strong>聊天服务，启用对话认证</strong>，用于控制新建或加入对话、邀请/踢出对话成员等操作</li>
+</ul>
+<p>开发者可根据实际需要进行选择。一般来说，<strong>登录认证</strong> 能够满足大部分安全需求，而且我们也强烈建议开发者开启登录认证。
+对于使用 AVUser 的应用，可使用 REST API <a href="realtime_rest_api.html#%E8%8E%B7%E5%8F%96_Client_%E7%99%BB%E5%BD%95%E7%AD%BE%E5%90%8D">获取<em>Client</em>登录签名</a> 进行登录认证。</p>
 <p><img src="images/leanmessage_signature2.png" alt="image"></p>
 <ol>
 <li>客户端进行登录或新建对话等操作，SDK 会调用 SignatureFactory 的实现，并携带用户信息和用户行为（登录、新建对话或群组操作）请求签名；</li>
@@ -742,7 +789,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </ol>
 <p>签名采用 <strong>Hmac-sha1</strong> 算法，输出字节流的十六进制字符串（hex dump）。针对不同的请求，开发者需要拼装不同组合的字符串，加上 UTC timestamp 以及随机字符串作为签名的消息。</p>
 <h3 id="-">云引擎签名范例</h3>
-<p>我们提供了一个运行在 LeanCloud <a href="leanengine_guide-cloudcode.html">云引擎</a> 上的 <a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">签名范例程序</a>
+<p>我们提供了一个运行在 LeanCloud <a href="leanengine_overview.html">云引擎</a> 上的 <a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">签名范例程序</a>
 ，它提供了基于 Web Hosting 和云函数两种方式的签名实现，你可以根据实际情况选择自己的实现。</p>
 <h3 id="-">用户登录的签名</h3>
 <p>签名的消息格式如下，注意 <code>clientid</code> 与 <code>timestamp</code> 之间是<u>两个冒号</u>：</p>
@@ -765,7 +812,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </tr>
 <tr>
 <td>timestamp</td>
-<td>当前的 UTC 时间距离 unix epoch 的<strong>秒数</strong></td>
+<td>当前的 UTC 时间距离 unix epoch 的<strong>毫秒数</strong></td>
 </tr>
 <tr>
 <td>nonce</td>
@@ -790,27 +837,30 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </code></pre><ul>
 <li>appid、clientid、sorted_member_ids、timestamp 和 nonce  的含义同上。对创建群的情况，这里 sorted_member_ids 是空字符串。</li>
 <li>convid - 此次行为关联的对话 id。</li>
-<li>action - 此次行为的动作，分为 <strong>add</strong> （加群和邀请）与 <strong>remove</strong> （踢出群）两种，但出于兼容考虑，签名时分别使用常量 <strong>invite</strong> 和 <strong>kick</strong> 来进行表示。</li>
+<li>action - 此次行为的动作，<strong>invite</strong> 表示加群和邀请，<strong>kick</strong> 表示踢出群。</li>
 </ul>
+<h3 id="-">测试签名</h3>
+<p>开发者可以在控制台中方便地测试签名。进入 <a href="/dashboard/messaging.html?appid=#/message/realtime/client">消息 &gt; 实时消息 &gt; 用户</a>，输入一个 clientId 进行查找，找到后界面会显示 <strong>测试签名</strong> 按键及更多内容。</p>
+<p><img src="images/console-im-signature-test.png" width="600" class="img-responsive"></p>
 <h2 id="-hook">云引擎 Hook</h2>
 <p>对于普通消息，如果发送时部分成员不在线，LeanCloud 提供了选项，支持将离线消息以推送形式发送到客户端。如果开发者希望修改推送的内容，可以使用「云引擎 Hook」。</p>
 <p>云引擎 Hook 允许你通过自定义的云引擎函数处理实时通信中的某些事件，修改默认的流程等等。目前开放的 hook 云函数包括：</p>
 <ul>
-<li><strong>_messageReceived</strong><br/>
+<li><strong>_messageReceived</strong><br>
 消息达到服务器，群组成员已解析完成之后，发送给收件人之前。</li>
-<li><strong>_receiversOffline</strong><br/>
+<li><strong>_receiversOffline</strong><br>
 消息发送完成，存在离线的收件人。</li>
-<li><strong>_messageSent</strong><br/>
+<li><strong>_messageSent</strong><br>
 消息发送完成。</li>
-<li><strong>_conversationStart</strong><br/>
+<li><strong>_conversationStart</strong><br>
 创建对话，在签名校验（如果开启）之后，实际创建之前。</li>
-<li><strong>_conversationStarted</strong><br/>
+<li><strong>_conversationStarted</strong><br>
 创建对话完成。</li>
-<li><strong>_conversationAdd</strong><br/>
+<li><strong>_conversationAdd</strong><br>
 向对话添加成员，在签名校验（如果开启）之后，实际加入之前，包括主动加入和被其他用户加入两种情况。</li>
-<li><strong>_conversationRemove</strong><br/>
+<li><strong>_conversationRemove</strong><br>
 从对话中踢出成员，在签名校验（如果开启）之后，实际踢出之前，用户自己退出对话不会调用。</li>
-<li><strong>_conversationUpdate</strong><br/>
+<li><strong>_conversationUpdate</strong><br>
 修改对话属性、设置或取消对话消息提醒，在实际修改之前调用。</li>
 </ul>
 <h3 id="-">使用场景</h3>
@@ -818,7 +868,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <p>与 conversation 相关的 hook 可以在应用签名之外增加额外的权限判断，控制对话是否允许被建立、某些用户是否允许被加入对话等。你可以用这一 hook 实现黑名单功能。</p>
 <h3 id="-_messagereceived-"><code>_messageReceived</code></h3>
 <p>这个 hook 发生在消息到达 LeanCloud 云端之后。如果是群组消息，我们会解析出所有消息收件人。</p>
-<p>你可以通过返回参数控制消息是否需要被丢弃，删除个别收件人，还可以修改消息内容。返回空对象（<code>response.success({})</code>）则会执行系统默认的流程。</p>
+<p>你可以通过返回参数控制消息是否需要被丢弃，删除个别收件人，还可以修改消息内容，例如过滤应用中的敏感词（<a href="leanengine_cloudfunction_guide-node.html#onIMMessageReceived">示例</a>）。返回空对象（<code>response.success({})</code>）则会执行系统默认的流程。</p>
 <div class="callout callout-info">请注意，在这个 hook 的代码实现的任何分支上<strong>请确保最终会调用 response.success 返回结果</strong>，使得消息可以尽快投递给收件人。这个 hook 将<strong>阻塞发送流程</strong>，因此请尽量减少无谓的代码调用，提升效率。</div>
 
 <p>如果你使用了 LeanCloud 默认提供的富媒体消息格式，云引擎参数中的 <code>content</code> 接收的是 JSON 结构的字符串形式。关于这个结构的详细说明，请参考 <a href="./realtime_rest_api.html#富媒体消息格式说明">实时通信 REST API 指南 - 富媒体消息格式说明</a>。</p>
@@ -1276,6 +1326,8 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <p>参考 <a href="realtime_guide-js.html">JavaScript 实时通信开发指南</a>。另外，我们已经开源了 JavaScript  Realtime SDK， 见 <a href="https://github.com/leancloud/js-realtime-sdk"> LeanCloud JavaScript Realtime SDK - Github 资源库</a> 。</p>
 <h2 id="rest-api">REST API</h2>
 <p>参考 <a href="realtime_rest_api.html">实时通信 REST API</a>。</p>
+<h2 id="-sdk">对话与消息管理 SDK</h2>
+<p>Python 与 JavaScript 的数据存储 SDK，基于 REST API 封装了一组对话及消息管理的接口，方便在服务端或者云引擎中进行对话管理、发送消息。具体文档参考：<a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a>。</p>
 <h2 id="-">系统对话</h2>
 <p>系统对话可以用于实现机器人自动回复、公众号、服务账号等功能。在我们的 <a href="http://leancloud.github.io/leanmessage-demo/">官方聊天 Demo</a> 中就有一个使用系统对话 hook 实现的机器人 MathBot，它能计算用户发送来的数学表达式并返回结果，<a href="https://github.com/leancloud/leanmessage-demo/tree/master/server">其服务端源码</a> 可以从 GitHub 上获取。</p>
 <h3 id="-">系统对话的创建</h3>
@@ -1287,7 +1339,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 关于广播消息的详细特征可以参考<a href="#广播消息">消息 - 广播消息</a>。</p>
 <h3 id="-">获取系统对话消息记录</h3>
 <p>获取系统对话给用户发送的消息记录请参考： <a href="realtime_rest_api.html#获取系统对话中某个特定用户与系统的消息记录">获取系统对话中某个特定用户与系统的消息记录</a></p>
-<p>获取用户给系统对话发送的消息记录可以通过 <code>_SysMessage</code> 表和 Web Hook 两种方式实现。<code>_SysMessage</code> 表在应用首次有用户发送消息给某系统对话时自动创建，创建后我们将所有发送到系统对话的消息都存储在该表中。Web Hook 方式需要开发者自行定义 Web Hook，用于实时接收用户发给系统对话的消息。</p>
+<p>获取用户给系统对话发送的消息记录可以通过 <code>_SysMessage</code> 表和 <a href="#Web_Hook">Web Hook</a> 两种方式实现。<code>_SysMessage</code> 表在应用首次有用户发送消息给某系统对话时自动创建，创建后我们将所有发送到系统对话的消息都存储在该表中。<a href="#Web_Hook">Web Hook</a> 方式需要开发者自行定义 <a href="#Web_Hook">Web Hook</a>，用于实时接收用户发给系统对话的消息。</p>
 <h3 id="-">系统对话消息结构</h3>
 <h4 id="-_sysmessage-"><code>_SysMessage</code></h4>
 <p>存储用户发给系统对话的消息，各字段含义如下：</p>
@@ -1300,12 +1352,20 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </thead>
 <tbody>
 <tr>
-<td>convId</td>
-<td>消息关联的系统对话 ID</td>
+<td>ackAt</td>
+<td>消息送达的时间</td>
 </tr>
 <tr>
-<td>msgId</td>
-<td>消息的内部 ID</td>
+<td>bin</td>
+<td>是否为二进制类型消息</td>
+</tr>
+<tr>
+<td>conv</td>
+<td>消息关联的系统对话 Pointer</td>
+</tr>
+<tr>
+<td>data</td>
+<td>消息内容</td>
 </tr>
 <tr>
 <td>from</td>
@@ -1316,13 +1376,17 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <td>发消息用户的 IP</td>
 </tr>
 <tr>
-<td>data</td>
-<td>消息内容</td>
+<td>msgId</td>
+<td>消息的内部 ID</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>消息创建的时间</td>
 </tr>
 </tbody>
 </table>
 <h4 id="web-hook">Web Hook</h4>
-<p>需要开发者自行在 <a href="/messaging.html?appid={{appid}}#/message/realtime/conf">控制台&gt; <strong>消息</strong> &gt; <strong>实时消息</strong> &gt; <strong>设置</strong> &gt; <strong>消息回调设置</strong></a> 定义，来实时接收用户发给系统对话的消息，消息的数据结构与上文所述的 <code>_SysMessage</code> 一致。</p>
+<p>需要开发者自行在 <a href="/messaging.html?appid={{appid}}#/message/realtime/conf">控制台&gt; <strong>消息</strong> &gt; <strong>实时消息</strong> &gt; <strong>设置</strong> &gt; <strong>系统对话消息回调设置</strong></a> 定义，来实时接收用户发给系统对话的消息，消息的数据结构与上文所述的 <code>_SysMessage</code> 一致。</p>
 <p>当有用户向系统对话发送消息时，我们会通过 HTTP POST 请求将 JSON 格式的数据发送到用户设置的 Web Hook 上。请注意，我们调用 Web Hook 时并不是一次调用只发送一条消息，而是会以批量的形式将消息发送过去。从下面的发送消息格式中能看到，JSON 的最外层是个 Array。</p>
 <p>超时时间为 5 秒，当用户 hook 地址超时没有响应，我们会重试至多 3 次。</p>
 <p>发送的消息格式为：</p>
@@ -1351,15 +1415,24 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 </code></pre>
 <h2 id="-">限制</h2>
 <ul>
-<li>对于客户端主动发起的操作会按照操作类型限制其频率。发消息操作限制为 <strong>每分钟 60 次</strong>，历史消息查询操作限制为 <strong>每分钟 120 次</strong>，其它类型操作包括加入对话、离开对话、登录服务、退出服务等均限制为 <strong>每分钟 30 次</strong>。当调用超过限制时，云端会丢弃超出的消息。</li>
-<li>应用全局发送消息的速度默认为每分钟 3 万次，如果您的应用场景可能超过此限制，请<a href="/help.html">联系我们</a>。</li>
+<li>对于客户端主动发起的操作会按照操作类型限制其频率。发消息操作限制为 <strong>每分钟 60 次</strong>，历史消息查询操作限制为 <strong>每分钟 120 次</strong>，其他类型操作包括加入对话、离开对话、登录服务、退出服务等均限制为 <strong>每分钟 30 次</strong>。当调用超过限制时，云端会拒绝响应这些超限的操作，这样如果操作本由 SDK 发起则表现为不会走回调。如果使用 REST API 发起各种操作，则不会受到上述频率的限制。</li>
+<li>应用全局发送消息的速度默认为每分钟 3 万次，如果你的应用会超过此限制，请 <a href="/help.html">联系我们</a>。</li>
 <li>客户端发送的单条消息大小不得超过 5 KB。</li>
 <li>目前单个普通对话的成员上限为 500 个，如果您通过数据存储 API 向 m 字段加入了超过 500 个 id，我们只会使用其中的前 500 个。</li>
 <li>请不要使用相同的 id 在大量设备上同时登录，如果系统检测到某个 id 同时在超过 5 个不同的 IP 上登录，会认为此 id 是重复使用的 id，之后此 id 当日的每次登录会按照 <code>id + IP</code> 的组合作为计费的独立用户。</li>
+<li>如果单个用户有超过 50 个的对话存在未接收的离线消息，那么当该用户登录时服务端只会<strong>随机</strong>下发 50 个对话的离线消息或未读消息数量。也就是说服务端不会再下发超出对话数量限制的那部分离线消息，也不会下发离线消息数量，离线消息不会丟失但需要从历史记录中拉取得到。</li>
+<li>系统广播消息一个应用一天最多发 5 条</li>
 </ul>
+<h3 id="-">对话的有效期</h3>
+<p>一个对话（包括普通、暂态、系统对话）如果 <strong>1 年内</strong>没有通过 SDK 或者 REST API 发送过新的消息，或者它在 <code>_Conversation</code> 表中的任意字段没有被更新过，即被视为<strong>不活跃对话</strong>，云端会自动将其删除。（查询对话的消息记录并不会更新 <code>_Conversation</code> 表，所以只查询不发送消息的对话仍会被视为不活跃对话。）</p>
+<p>不活跃的对话被删除后，当客户端再次通过 SDK 或 REST API 对其进行查询或发送消息时，会遇到 
+<code>4401 INVALID_MESSAGING_TARGET</code> 错误，表示该对话已经不存在了。同时，与该对话相关的消息历史也无法获取。</p>
+<p>反之，活跃的对话会一直保存在云端。</p>
+<p>相关参考 <a href="#消息的有效期">消息的有效期</a>。</p>
+<h3 id="-">消息的有效期</h3>
+<p>一个对话的消息记录会在云端保留 <strong>6 个月</strong>，也就是说一个对话可以查询到半年之内的历史消息记录。开发者可以付费来延长这一期限，请联系 <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#115;&#117;&#x70;&#x70;&#111;&#x72;&#x74;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#111;&#x75;&#x64;&#x2e;&#114;&#111;&#99;&#107;&#115;">&#115;&#117;&#x70;&#x70;&#111;&#x72;&#x74;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#111;&#x75;&#x64;&#x2e;&#114;&#111;&#99;&#107;&#115;</a>。相关参考 <a href="#对话的有效期">对话的有效期</a>。 </p>
 <h2 id="-">云端错误码说明</h2>
 <p>实时通信的错误码会以 SDK 异常或 WebSocket 关闭状态码的形式返回给客户端。当出现异常情况时，SDK 会输出状态码到日志里，以下是对部分状态码的简单说明：</p>
-<!--2015-10-27 Da Li: add <code class="text-nowrap"> to prevent unexpected line wrapping. DO NOT REMOVE -->
 <table>
 <thead>
 <tr>
@@ -1371,183 +1444,208 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <tbody>
 <tr>
 <td><code>0</code></td>
-<td></td>
-<td>websocket 正常关闭，可能发生在服务器重启，或本地网络异常的情况。SDK 会自动重连，无需人工干预。</td>
+<td><code>(无)</code></td>
+<td>WebSocket 正常关闭，可能发生在服务器重启，或本地网络异常的情况。SDK 会自动重连，无需人工干预。</td>
 </tr>
 <tr>
 <td><code class="text-nowrap">1006</code></td>
-<td></td>
-<td>websocket 连接非正常关闭，通常见于路由器配置对长连接限制的情况。SDK 会自动重连，无需人工干预。</td>
+<td><code class="text-nowrap">(无)</code></td>
+<td>WebSocket 连接非正常关闭，通常见于路由器配置对长连接限制的情况。SDK 会自动重连，无需人工干预。</td>
 </tr>
 <tr>
-<td><code>4100</code></td>
-<td><code>APP_NOT_AVAILABLE</code></td>
-<td>应用不存在或应用禁用了实时通信服务</td>
+<td><code class="text-nowrap">4100</code></td>
+<td><code class="text-nowrap">APP_NOT_AVAILABLE</code></td>
+<td>应用不存在或应用禁用了实时通信服务。</td>
 </tr>
 <tr>
-<td><code>4101</code></td>
-<td><code>DUPLICATED_LOGIN</code></td>
+<td><code class="text-nowrap">4101</code></td>
+<td><code class="text-nowrap">DUPLICATED_LOGIN</code></td>
 <td>同一个设备重复登录推送服务。该错误码与实时通信服务无关。</td>
 </tr>
 <tr>
-<td><code>4102</code></td>
-<td><code>SIGNATURE_FAILED</code></td>
-<td>登录签名验证失败</td>
+<td><code class="text-nowrap">4102</code></td>
+<td><code class="text-nowrap">SIGNATURE_FAILED</code></td>
+<td>登录签名验证失败。</td>
 </tr>
 <tr>
-<td><code>4103</code></td>
-<td><code>INVALID_LOGIN</code></td>
+<td><code class="text-nowrap">4103</code></td>
+<td><code class="text-nowrap">INVALID_LOGIN</code></td>
 <td>Client Id 格式错误，超过 64 个字符。</td>
 </tr>
 <tr>
-<td><code>4105</code></td>
-<td><code>SESSION_REQUIRED</code></td>
+<td><code class="text-nowrap">4105</code></td>
+<td><code class="text-nowrap">SESSION_REQUIRED</code></td>
 <td>Session 没有打开就发送消息，或执行其他操作。常见的错误场景是调用 open session 后直接发送消息，正确的用法是在 Session 打开的回调里执行。</td>
 </tr>
 <tr>
-<td><code>4107</code></td>
-<td><code>READ_TIMEOUT</code></td>
+<td><code class="text-nowrap">4107</code></td>
+<td><code class="text-nowrap">READ_TIMEOUT</code></td>
 <td>读超时，云端长时间没有收到客户端的数据，切断连接。SDK 包装了心跳包的机制，出现此错误通常是网络问题。SDK 会自动重连，无需人工干预。</td>
 </tr>
 <tr>
-<td><code>4108</code></td>
-<td><code>LOGIN_TIMEOUT</code></td>
+<td><code class="text-nowrap">4108</code></td>
+<td><code class="text-nowrap">LOGIN_TIMEOUT</code></td>
 <td>登录超时，连接后长时间没有完成 session open。通常是登录被拒绝等原因，出现此问题可能是使用方式有误，可以 <a href="https://leanticket.cn/t/leancloud">创建工单</a>，由我们技术顾问来给出建议。</td>
 </tr>
 <tr>
-<td><code>4109</code></td>
-<td><code>FRAME_TOO_LONG</code></td>
+<td><code class="text-nowrap">4109</code></td>
+<td><code class="text-nowrap">FRAME_TOO_LONG</code></td>
 <td>包过长。消息大小超过 5 KB，请缩短消息或者拆分消息。</td>
 </tr>
 <tr>
-<td><code>4110</code></td>
-<td><code>INVALID_ORIGIN</code></td>
+<td><code class="text-nowrap">4110</code></td>
+<td><code class="text-nowrap">INVALID_ORIGIN</code></td>
 <td>设置安全域名后，当前登录的域名与安全域名不符合。</td>
 </tr>
 <tr>
-<td><code>4111</code></td>
-<td><code>SESSION_CONFLICT</code></td>
+<td><code class="text-nowrap">4111</code></td>
+<td><code class="text-nowrap">SESSION_CONFLICT</code></td>
 <td>设置单设备登录后，客户端被其他设备挤下线。</td>
 </tr>
 <tr>
-<td><code>4113</code></td>
-<td><code>APP_QUOTA_EXCEEDED</code></td>
+<td><code class="text-nowrap">4112</code></td>
+<td><code class="text-nowrap">SESSION_TOKEN_EXPIRED</code></td>
+<td>Session 过期，请重新登录。</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">4113</code></td>
+<td><code class="text-nowrap">APP_QUOTA_EXCEEDED</code></td>
 <td>应用容量超限，当天登录用户数已经超过应用设定的最大值。</td>
 </tr>
 <tr>
-<td><code>4114</code></td>
-<td><code>UNPARSEABLE_RAW_MESSAGE</code></td>
+<td><code class="text-nowrap">4114</code></td>
+<td><code class="text-nowrap">UNPARSEABLE_RAW_MESSAGE</code></td>
 <td>客户端发送的序列化数据服务器端无法解析。</td>
 </tr>
 <tr>
-<td><code>4115</code></td>
-<td><code>KICKED_BY_APP</code></td>
+<td><code class="text-nowrap">4115</code></td>
+<td><code class="text-nowrap">KICKED_BY_APP</code></td>
 <td>客户端被 REST API 管理接口强制下线。</td>
 </tr>
 <tr>
-<td><code>4116</code></td>
-<td><code>MESSAGE_SENT_QUOTA_EXCEEDED</code></td>
+<td><code class="text-nowrap">4116</code></td>
+<td><code class="text-nowrap">MESSAGE_SENT_QUOTA_EXCEEDED</code></td>
 <td>应用单位时间内发送消息量超过限制，消息被拒绝。</td>
 </tr>
 <tr>
-<td><code>4200</code></td>
-<td><code>INTERNAL_ERROR</code></td>
+<td><code class="text-nowrap">4200</code></td>
+<td><code class="text-nowrap">INTERNAL_ERROR</code></td>
 <td>服务器内部错误，如果反复出现请收集相关线索并 <a href="https://leanticket.cn/t/leancloud">创建工单</a>，我们会尽快解决。</td>
 </tr>
 <tr>
-<td><code>4201</code></td>
-<td><code>SEND_MESSAGE_TIMEOUT</code></td>
-<td>通过 API 发送消息超时</td>
+<td><code class="text-nowrap">4201</code></td>
+<td><code class="text-nowrap">SEND_MESSAGE_TIMEOUT</code></td>
+<td>通过 API 发送消息超时。</td>
 </tr>
 <tr>
-<td><code>4301</code></td>
-<td><code>CONVERSATION_API_FAILED</code></td>
-<td>上游 API 调用异常，请查看报错信息了解错误详情</td>
+<td><code class="text-nowrap">4301</code></td>
+<td><code class="text-nowrap">CONVERSATION_API_FAILED</code></td>
+<td>上游 API 调用异常，请查看报错信息了解错误详情。</td>
 </tr>
 <tr>
-<td><code>4302</code></td>
-<td><code style="white-space:nowrap">CONVERSATION_SIGNATURE_FAILED</code></td>
+<td><code class="text-nowrap">4302</code></td>
+<td><code class="text-nowrap">CONVERSATION_SIGNATURE_FAILED</code></td>
 <td>对话相关操作签名错误</td>
 </tr>
 <tr>
-<td><code>4303</code></td>
-<td><code>CONVERSATION_NOT_FOUND</code></td>
+<td><code class="text-nowrap">4303</code></td>
+<td><code class="text-nowrap">CONVERSATION_NOT_FOUND</code></td>
 <td>发送消息，或邀请等操作对应的对话不存在。</td>
 </tr>
 <tr>
-<td><code>4304</code></td>
-<td><code>CONVERSATION_FULL</code></td>
+<td><code class="text-nowrap">4304</code></td>
+<td><code class="text-nowrap">CONVERSATION_FULL</code></td>
 <td>对话成员已满，不能再添加。</td>
 </tr>
 <tr>
-<td><code>4305</code></td>
-<td><code>CONVERSATION_REJECTED_BY_APP</code></td>
-<td>对话操作被应用的云引擎 Hook 拒绝</td>
+<td><code class="text-nowrap">4305</code></td>
+<td><code class="text-nowrap">CONVERSATION_REJECTED_BY_APP</code></td>
+<td>对话操作被应用的云引擎 Hook 拒绝。</td>
 </tr>
 <tr>
-<td><code>4306</code></td>
-<td><code>CONVERSATION_UPDATE_FAILED</code></td>
-<td>更新对话操作失败</td>
+<td><code class="text-nowrap">4306</code></td>
+<td><code class="text-nowrap">CONVERSATION_UPDATE_FAILED</code></td>
+<td>更新对话操作失败。</td>
 </tr>
 <tr>
-<td><code>4307</code></td>
-<td><code>CONVERSATION_READ_ONLY</code></td>
+<td><code class="text-nowrap">4307</code></td>
+<td><code class="text-nowrap">CONVERSATION_READ_ONLY</code></td>
 <td>该对话为只读，不能更新或增删成员。</td>
 </tr>
 <tr>
-<td><code>4308</code></td>
-<td><code>CONVERSATION_NOT_ALLOWED</code></td>
-<td>该对话禁止当前用户发送消息</td>
+<td><code class="text-nowrap">4308</code></td>
+<td><code class="text-nowrap">CONVERSATION_NOT_ALLOWED</code></td>
+<td>该对话禁止当前用户发送消息。</td>
 </tr>
 <tr>
-<td><code>4309</code></td>
-<td><code>CONVERSATION_UPDATE_REJECTED</code></td>
-<td>更新对话的请求被拒绝，当前用户不在对话中</td>
+<td><code class="text-nowrap">4309</code></td>
+<td><code class="text-nowrap">CONVERSATION_UPDATE_REJECTED</code></td>
+<td>更新对话的请求被拒绝，当前用户不在对话中。</td>
 </tr>
 <tr>
-<td><code>4310</code></td>
-<td><code>CONVERSATION_QUERY_FAILED</code></td>
-<td>查询对话失败，常见于慢查询导致的超时或受其他慢查询导致的数据库响应慢</td>
+<td><code class="text-nowrap">4310</code></td>
+<td><code class="text-nowrap">CONVERSATION_QUERY_FAILED</code></td>
+<td>查询对话失败，常见于慢查询导致的超时或受其他慢查询导致的数据库响应慢。</td>
 </tr>
 <tr>
-<td><code>4311</code></td>
-<td><code>CONVERSATION_LOG_FAILED</code></td>
-<td>拉取对话消息记录失败，常见与超时的情况</td>
+<td><code class="text-nowrap">4311</code></td>
+<td><code class="text-nowrap">CONVERSATION_LOG_FAILED</code></td>
+<td>拉取对话消息记录失败，常见与超时的情况。</td>
 </tr>
 <tr>
-<td><code>4312</code></td>
-<td><code>CONVERSATION_LOG_REJECTED</code></td>
-<td>拉取对话消息记录被拒绝，当前用户不在对话中</td>
+<td><code class="text-nowrap">4312</code></td>
+<td><code class="text-nowrap">CONVERSATION_LOG_REJECTED</code></td>
+<td>拉取对话消息记录被拒绝，当前用户不在对话中。</td>
 </tr>
 <tr>
-<td><code>4313</code></td>
-<td><code>SYSTEM_CONVERSATION_REQUIRED</code></td>
-<td>该功能仅对系统对话有效</td>
+<td><code class="text-nowrap">4313</code></td>
+<td><code class="text-nowrap">SYSTEM_CONVERSATION_REQUIRED</code></td>
+<td>该功能仅对系统对话有效。</td>
 </tr>
 <tr>
-<td><code>4314</code></td>
-<td><code>NORMAL_CONVERSATION_REQUIRED</code></td>
-<td>该功能仅对普通对话有效</td>
+<td><code class="text-nowrap">4314</code></td>
+<td><code class="text-nowrap">NORMAL_CONVERSATION_REQUIRED</code></td>
+<td>该功能仅对普通对话有效。</td>
 </tr>
 <tr>
-<td><code>4315</code></td>
-<td><code>CONVERSATION_BLACKLISTED</code></td>
-<td>当前用户被加入此对话的黑名单，无法发送消息</td>
+<td><code class="text-nowrap">4315</code></td>
+<td><code class="text-nowrap">CONVERSATION_BLACKLISTED</code></td>
+<td>当前用户被加入此对话的黑名单，无法发送消息。</td>
 </tr>
 <tr>
-<td><code>4316</code></td>
-<td><code>TRANSIENT_CONVERSATION_REQUIRED</code></td>
-<td>该功能仅对暂态对话有效</td>
+<td><code class="text-nowrap">4316</code></td>
+<td><code class="text-nowrap">TRANSIENT_CONVERSATION_REQUIRED</code></td>
+<td>该功能仅对暂态对话有效。</td>
 </tr>
 <tr>
-<td><code>4401</code></td>
-<td><code>INVALID_MESSAGING_TARGET</code></td>
-<td>发送消息的对话不存在，或当前用户不在对话中</td>
+<td><code class="text-nowrap">4317</code></td>
+<td><code class="text-nowrap">CONVERSATION_MEMBERSHIP_REQUIRED</code></td>
+<td>该操作要求用户是对话成员。</td>
 </tr>
 <tr>
-<td><code>4402</code></td>
-<td><code>MESSAGE_REJECTED_BY_APP</code></td>
-<td>发送的消息被应用的云引擎 Hook 拒绝</td>
+<td><code class="text-nowrap">4318</code></td>
+<td><code class="text-nowrap">CONVERSATION_API_QUOTA_EXCEEDED</code></td>
+<td>对话操作超出了 API 请求限制，需要提升应用级别。</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">4401</code></td>
+<td><code class="text-nowrap">INVALID_MESSAGING_TARGET</code></td>
+<td>发送消息的对话不存在，或当前用户不在对话中。</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">4402</code></td>
+<td><code class="text-nowrap">MESSAGE_REJECTED_BY_APP</code></td>
+<td>发送的消息被应用的云引擎 Hook 拒绝。</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">4403</code></td>
+<td><code class="text-nowrap">MESSAGE_OWNERSHIP_REQUIRED</code></td>
+<td>没有操作目标消息的权限</td>
+</tr>
+<tr>
+<td><code class="text-nowrap">4404</code></td>
+<td><code class="text-nowrap">MESSAGE_NOT_FOUND</code></td>
+<td>找不到被操作的消息</td>
 </tr>
 </tbody>
 </table>
@@ -1603,7 +1701,7 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -1626,12 +1724,8 @@ TextMessage  ImageMessage  AudioMessage  VideoMessage  LocationMessage   。。�
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -1673,29 +1767,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

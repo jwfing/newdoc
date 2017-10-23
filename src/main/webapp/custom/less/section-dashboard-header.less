@@ -1,4 +1,15 @@
 // dashboard-header.html
+@media (max-width: @screen-xs-max) {
+  .navbar-right {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .dashboard-subnav {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+}
+
 .notification-trigger {
   position: relative;
 }
@@ -305,9 +316,9 @@
       .nav-logo {
         display: block;
         color: @link-color;
-        background: #efefef;
+        /*background: #efefef;*/
         text-align: center;
-        font-size: 24px;
+        font-size: 22px;
 
         &:hover,
         &:focus,

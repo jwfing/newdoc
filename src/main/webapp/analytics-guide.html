@@ -1,0 +1,918 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>统计分析开发指南 - LeanCloud 文档</title>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript">
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
+        </li>
+      </ul> -->
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
+            </a>
+            <ul class="dropdown-menu">
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
+              <li role="presentation" class="divider"></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Objective-C</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios-macos-faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="weapp.html">微信小程序开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
+            <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <h1 id="-">统计分析开发指南</h1>
+<p>使用 LeanCloud 统计服务可以帮助开发者在应用上线之后及时查阅各类统计指标，它包含但不限于如下内容：</p>
+<ul>
+<li>应用趋势（实时数据、版本分布、渠道分布）</li>
+<li>行为分析（应用使用、推送统计、路径分析、使用时长、使用频率、访问页面）</li>
+<li>用户分析（用户留存、终端设备、地理位置）</li>
+<li>推广营销分析（渠道对比）</li>
+<li>错误分析（错误分析、错误统计）</li>
+</ul>
+<h2 id="-">工作原理</h2>
+<p><img src="images/analytics-workflow.svg" alt="analytics-workflow"></p>
+<h2 id="sdk-">SDK 安装与初始化</h2>
+<ul>
+<li><a href="sdk_setup-objc.html">Objective-C</a></li>
+<li><a href="sdk_setup-android.html">Android</a></li>
+<li><a href="sdk_setup-dotnet.html">Unity</a></li>
+<li><a href="sdk_setup-dotnet.html">Windows</a></li>
+</ul>
+<h2 id="-">开启统计功能</h2>
+<pre><code class="lang-cs">AVAnalytics.InitAsync(IAVAnalyticsDevice device);
+// IAVAnalyticsDevice 是一个接口，需要开发者自己实现针对当前运行平台下的一些硬件和网络等相关的数据
+// 下面是一个在 PC 实现这个接口的样例
+public class PC : IAVAnalyticsDevice
+{
+    public string network_access
+    {
+        get
+        {
+            return &quot;WIFI&quot;;
+        }
+    }
+
+    public string app_version
+    {
+        get
+        {
+            return &quot;0.12.34&quot;;
+        }
+    }
+
+    public string network_carrier
+    {
+        get
+        {
+            return &quot;China Unicom&quot;;
+        }
+    }
+
+    public string channel
+    {
+        get
+        {
+            return &quot;Market Place&quot;;
+        }
+    }
+
+    public string device_id
+    {
+        get
+        {
+            return &quot;98DD09BDFDC24E359E0426219E9FA79A&quot;;
+        }
+    }
+
+    public string device_model
+    {
+        get
+        {
+            return &quot;Windows 10&quot;;
+        }
+    }
+
+    public string device_brand
+    {
+        get
+        {
+            return &quot;ASUS&quot;;
+        }
+    }
+
+    public string iid
+    {
+        get
+        {
+            return null;
+        }
+    }
+
+    public string language
+    {
+        get
+        {
+            return &quot;zh-CN&quot;;
+        }
+    }
+
+    public string mc
+    {
+        get
+        {
+            return &quot;02:00:00:00:00:00&quot;;
+        }
+    }
+
+    public string platform
+    {
+        get
+        {
+            return &quot;Windows&quot;;
+        }
+    }
+
+    public string os_version
+    {
+        get
+        {
+            return &quot;10&quot;;
+        }
+    }
+
+    public string device_resolution
+    {
+        get
+        {
+            return &quot;1920x1080&quot;;
+        }
+    }
+
+    public string timezone
+    {
+        get
+        {
+            return &quot;8&quot;;
+        }
+    }
+}
+// 然后在初始化的时候传递给 InitAsync 即可：
+AVAnalytics.InitAsync(new PC());
+</code></pre>
+<p>上述字段的有格式要求，请遵循如下表格：</p>
+<table>
+<thead>
+<tr>
+<th>字段名称</th>
+<th>类型</th>
+<th>格式</th>
+<th>长度</th>
+<th>是否必须</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>device_id</td>
+<td>string</td>
+<td>UUID 或 GUID</td>
+<td><span class="text-nowrap">12-64</span></td>
+<td>是</td>
+<td>设备唯一 ID</td>
+<td>类似于 &quot;98DD09BDFDC24E359E0426219E9FA79A&quot; 或 &quot;820aab78-afc9-48ba-832b-55b9ee9995d3&quot;</td>
+</tr>
+<tr>
+<td>network_access</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>设备联网方式</td>
+<td>&quot;WiFi&quot;<br>&quot;4g&quot;<br>&quot;wired&quot;</td>
+</tr>
+<tr>
+<td>app_version</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>应用版本</td>
+<td>&quot;1.0.0&quot;<br>&quot;1.0.1-alpha.11&quot;<br>&quot;2.0.1-beta.1&quot;</td>
+</tr>
+<tr>
+<td>network_carrier</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>通信服务商</td>
+<td>&quot;中国移动&quot;<br>&quot;中国联通&quot;<br>&quot;中国电信&quot;<br>&quot;CMCC&quot;<br>&quot;China Unicom&quot;</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>应用分发渠道</td>
+<td>&quot;App Store&quot;<br>&quot;Google Play&quot;<br>&quot;豌豆荚&quot;<br>&quot;小米商店&quot;</td>
+</tr>
+<tr>
+<td>device_brand</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>设备生产厂商</td>
+<td>&quot;Apple&quot;<br>&quot;小米&quot;<br>&quot;魅族&quot;<br>&quot;一加&quot;</td>
+</tr>
+<tr>
+<td>device_model</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>设备型号</td>
+<td>&quot;iPhone6,2&quot;<br>&quot;XiaoMi 5x&quot;<br>&quot;Sumsang Note8&quot;</td>
+</tr>
+<tr>
+<td>iid</td>
+<td>string</td>
+<td>UUID 或 GUID 或 hex</td>
+<td>0-64</td>
+<td>否</td>
+<td>设备当前的 installation id</td>
+<td>&quot;da6c791d-c698-471f-a48d-ead3bd6f5d13&quot;</td>
+</tr>
+<tr>
+<td>language</td>
+<td>string</td>
+<td><code>[a-zA-Z-]{2,32}</code>，建议阅读 <a href="https://en.wikipedia.org/wiki/Language_localisation">Wiki</a></td>
+<td>0-64</td>
+<td>否</td>
+<td>当前设备的语言和地区</td>
+<td>&quot;zh-cn&quot;<br>&quot;zh-tw&quot;<br>&quot;en-us&quot;</td>
+</tr>
+<tr>
+<td>mc</td>
+<td>string</td>
+<td>MAC 地址</td>
+<td>0-64</td>
+<td>否</td>
+<td>设备的网卡地址</td>
+<td>&quot;02:00:00:2D:00:1E&quot;</td>
+</tr>
+<tr>
+<td>platform</td>
+<td>string</td>
+<td><code>[a-zA-Z0-9_.-]+</code></td>
+<td>0-64</td>
+<td>否</td>
+<td>操作系统名称</td>
+<td>&quot;iOS&quot;<br>&quot;Android&quot;<br>&quot;Windows&quot;<br>&quot;Linux&quot;</td>
+</tr>
+<tr>
+<td>os_version</td>
+<td>string</td>
+<td>无要求</td>
+<td>0-64</td>
+<td>否</td>
+<td>操作系统版本</td>
+<td>&quot;iOS 11.3&quot;<br>&quot;8.1&quot;<br>&quot;NT 6.X&quot;</td>
+</tr>
+<tr>
+<td>device_resolution</td>
+<td>string</td>
+<td><code>[0-9]{1,10} x [0-9]{1,10}</code></td>
+<td>0-64</td>
+<td>否</td>
+<td>设备屏幕分辨率</td>
+<td>&quot;1920x1080&quot;<br>&quot;960*640&quot;</td>
+</tr>
+<tr>
+<td>timezone</td>
+<td>int</td>
+<td>-12 到 14 之间的整数</td>
+<td>-</td>
+<td>否</td>
+<td>设备所在的相对于 GMT 的时区</td>
+<td>8 代表北京时间 <br> -8 代表 Pacific (PST) 太平洋时间 GMT-8</td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">应用打开</h2>
+<p>一般情况下应用被打开的方式有两种：</p>
+<ul>
+<li>用户主动打开</li>
+<li>设备接收到应用的推送消息，用户点击消息而打开应用。</li>
+</ul>
+<p>因此 SDK 提供了统计这两种打开方式的接口：</p>
+<pre><code class="lang-cs">// 记录本次应用的打开是用户主动打开
+AVAnalytics.Current.TrackAppOpened();
+
+// 记录本次应用的打开是来自于推送消息的点击
+AVAnalytics.Current.TrackAppOpenedWithPush();
+</code></pre>
+<h2 id="-">页面访问</h2>
+<p>用户访问一个页面是一个持续性的过程，我们关注的是用户在什么时间开始进入，在这个页面停留了多长时间，最后在什么时间结束这三个主要的参数，因此我们提供的接口如下：</p>
+<pre><code class="lang-cs">var pageId = AVAnalytics.Current.BeginPage(&quot;ChatPage&quot;);
+// pageId 是本地生成的唯一的 id，它是为了保证这一次记录是一次新的打开
+// 有可能用户同时打开了两个聊天页面，而在之后记录关闭页面的时候，需要给予一个 ID 来一一对应
+// 关闭页面代码如下：
+AVAnalytics.Current.EndPage(pageId);
+
+// 调用这两个方法的时间间隔就是访问页面的时长，SDK 会自动进行计算
+</code></pre>
+<h2 id="-">自定义事件</h2>
+<p>用户点击了某个按钮或者使用了某一个触屏手势可以使用如下代码来记录：</p>
+<pre><code class="lang-cs">// 记录登录按钮被点击
+AVAnalytics.Current.TrackEvent(&quot;LogIn_Button_Clicked&quot;);
+// 记录用户使用了手指滑动的手势
+AVAnalytics.Current.TrackEvent(&quot;Gesture_Flick&quot;);
+</code></pre>
+<h3 id="-">多标签事件</h3>
+<p>有一些事件并不是只有一个名字，它也可能有一些其他标签或者自定义属性，例如电商应用需要了解消费者下单之后是否还浏览了页面上的其他广告：</p>
+<pre><code class="lang-cs">var orderEventId = AVAnalytics.Current.BeginEvent(&quot;Order&quot;, &quot;OrderAction&quot;, new Dictionary&lt;string, object&gt;()
+{
+    { &quot;clicked_ads&quot;,&quot;left&quot; },//用户点击了左边栏的广告
+    { &quot;scorll_down&quot;,true},//用户是否拉到了页面底部
+});
+</code></pre>
+<h3 id="-">事件累计</h3>
+<p>有的时候一次购物用户可能会分批次下几次订单，因此我们也可以记录多次同名事件：</p>
+<pre><code class="lang-cs">var orderEventId1 = AVAnalytics.Current.BeginEvent(&quot;Order&quot;);
+var orderEventId2 = AVAnalytics.Current.BeginEvent(&quot;Order&quot;);
+var orderEventId3 = AVAnalytics.Current.BeginEvent(&quot;Order&quot;);
+
+...
+AVAnalytics.Current.EndEvent(orderEventId1);
+AVAnalytics.Current.EndEvent(orderEventId2);
+AVAnalytics.Current.EndEvent(orderEventId3);
+
+// 分别下单 3次，然后可以调用结束，这样就可以统计每一次下单的时间消耗
+</code></pre>
+<h2 id="-">统计数据的发送</h2>
+<p>默认情况下只要调用下面的接口，SDK 会根据 <a href="#设置数据发送策略">数据发送策略</a> 进行发送，无需开发者关心里面的发送逻辑：</p>
+<pre><code class="lang-cs">// 结束这一次统计
+AVAnalytics.Current.CloseSession();
+</code></pre>
+<h2 id="-">设置数据发送策略</h2>
+<p>你可以进入应用的 <a href="/stat.html?appid={{appid}}&amp;os=android#/statconfig/trans_strategoy">分析 &gt; 统计设置<span class="text-muted">（左下角）</span> &gt; 数据发送策略</a> 在线更改 SDK 端的数据报告发送策略。在没有取到在线配置的发送策略的情况下，会使用默认的发送策略。</p>
+<p>以下均为在线配置中的可选策略。</p>
+<h3 id="-">启动时发送</h3>
+<p>【推荐使用】应用程序每次会在启动时向服务器发送一次消息，在应用使用过程中产生的所有消息（包括自定义事件和本次使用时长）都会在下次启动时候发送。如果应用程序启动时处在不联网状态，那么消息将会缓存在本地，下次再尝试发送。</p>
+<p>发送策略默认为启动时发送。</p>
+<h3 id="-">批量发送</h3>
+<p>批量发送，默认当消息数量达到 30 条时发送一次。</p>
+<h3 id="-">按最小间隔发送</h3>
+<p>间隔一段时间发送，每隔一段时间一次性发送到服务器。</p>
+<h2 id="-">数据时效性</h2>
+<p>在控制台的 <strong>分析</strong> 页面中，有些报告可以展示实时数据，有些报告则依靠内部离线数据进行分析，因此有时你会看不到当天的数据。</p>
+<p>如果当前页面中存在 <strong>日期选择</strong> 选项（通常在页面右上角），你可以以此判断当前的统计结果是否有延迟。如果 <strong>结束日期</strong> 显示为<u>当天日期</u>或在其下拉菜单中有「今日」的选项，则为实时数据。如下图所示，菜单中无「今日」，所以可以判断这是离线数据，统计结果要延迟一天。</p>
+<p><img src="images/analytics_datepicker_for_offline_data.png" alt="" width="231" height="256"></p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a> -->
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

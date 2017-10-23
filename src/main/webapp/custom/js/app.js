@@ -1,13 +1,16 @@
 //apps data
 
 var purl = '/1/';
-angular.module("app", ['ui.gravatar']);
-angular.module("app").controller("AppCtrl", ['$scope', '$http', '$timeout','$compile','$rootScope',
+angular.module("app", ['ui.gravatar','md5']);
+angular.module("app").controller("AppCtrl", ['$scope', '$http', '$timeout','$compile','$rootScope','$filter',
 
-    function($scope, $http, $timeout, $compile,$rootScope) {
+    function($scope, $http, $timeout, $compile,$rootScope,$filter) {
         $scope.appid = "{{appid}}";
         $scope.appkey = "{{appkey}}";
         $scope.masterkey = "{{masterkey}}";
+        $scope.sign_masterkey = "{{sign_masterkey}}";
+        $scope.sign_appkey = "{{sign_appkey}}";
+        $scope.v2Domain = '{{appid 前八位}}.' + ($scope.service || 'api') + '.lncld.net';
         $rootScope.pageState = {};
         var sdkversion = 'unknown';
         if(typeof $sdk_versions != 'undefined'){
@@ -28,6 +31,9 @@ angular.module("app").controller("AppCtrl", ['$scope', '$http', '$timeout','$com
                             $scope.appid = $scope.pageState.currentApp.app_id;
                             $scope.appkey = $scope.pageState.currentApp.app_key;
                             $scope.masterkey = $scope.pageState.currentApp.master_key;
+                            $scope.sign_masterkey = $filter('signify')($scope.pageState.currentApp.master_key, 'master');
+                            $scope.sign_appkey = $filter('signify')($scope.pageState.currentApp.app_key);
+                            $scope.v2Domain = $scope.appid.slice(0, 8).toLowerCase() + '.' + ($scope.service || 'api') + '.lncld.net';
                         }
                     });
                     $scope.apps = data;
@@ -40,6 +46,15 @@ angular.module("app").controller("AppCtrl", ['$scope', '$http', '$timeout','$com
             $http.post('/1/signout').success(function(data) {
                 location.reload();
             });
+        }
+        // 2017-03-24 output undefined variables as is(surrounded by double curl braces)
+        $scope.mustache = function(val){
+          if ( typeof $scope[val] == 'undefined' ){
+            return '{{' + val + '}}';
+          }
+          else {
+            return $scope[val];
+          }
         }
 
         window.addEventListener("message", receiveMessage, false);
@@ -201,8 +216,7 @@ angular.module('app').controller('StartCtrl', [
             }
         };
 
-        $scope.selectedPlat = 'ios';
-
+        $scope.selectedPlat = 'objc';
 
         $scope.createApp = function () {
             $http.post(purl + 'clients/self/apps', { name: $scope.appname }).success(function (data) {
@@ -211,12 +225,20 @@ angular.module('app').controller('StartCtrl', [
             });
         };
 
-
-
         $scope.$watch('selectedPlat',function(){
-            $http.get('start/'+$scope.selectedPlat+'_start.html').
+            var dom = $('#start-main');
+            dom.css("visibility", 'hidden').prev().removeClass('loaded');
+            //$http.get('start/'+$scope.selectedPlat+'_start.html').
+            $http.get('sdk_setup-'+$scope.selectedPlat+'.html').
                 success(function(result){
-                    $('#start-main').html(result);
+                    //$('#start-main').html(result);
+                    var temp = $(result).find('.doc-content');
+                    
+                    dom.html(
+                      temp.find('.docs-meta').insertAfter(temp.find('h1').addClass('font-logo')).end().end()
+                      .children()
+                    );
+
                     prettyPrepare();
                     prettyPrint();
                     $("pre.prettyprint code").each(function(index, ele) {
@@ -224,8 +246,10 @@ angular.module('app').controller('StartCtrl', [
                     });
                     glueCopy();
                     $timeout(function(){
-                        $compile($('#start-main').contents())($scope);
+                        //$compile($('#start-main').contents())($scope);
+                        $compile(dom.contents())($scope);
                     },0);
+                    dom.css("visibility", 'visible').prev().addClass('loaded');
                 });
         });
 
@@ -259,4 +283,15 @@ angular.module('app').directive('lcComment',['$compile',function($compile){
 //     };
 // });
 
+// 2017-03-22 LC-X-SIGN
+angular.module('app').filter('signify', ['md5',function (md5) {
+    return function (item,type) {
+      var suffix = '';
+      var ts = Date.now() || new Date().getTime();
+      if ( type === 'master' ){
+        suffix = ',master';
+      }
+      return md5(ts + item) + ',' + ts + suffix;
+    };
+}]);
 

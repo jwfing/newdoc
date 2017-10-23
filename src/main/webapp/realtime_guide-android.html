@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>实时通信开发指南 &middot; Android - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,14 +440,12 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="-middot-android">实时通信开发指南 &middot; Android</h1>
-<h2 id="-">简介</h2>
 <p>实时通信服务可以让你一行后端代码都不用写，就能做出一个功能完备的实时聊天应用，或是一个实时对战类的游戏。所有聊天记录都保存在云端，离线消息会通过消息推送来及时送达，推送消息文本可以灵活进行定制。</p>
-<blockquote>
 <p>在继续阅读本文档之前，请先阅读<a href="./realtime_v2.html">《实时通信开发指南》</a>，了解一下实时通信的基本概念和模型。</p>
-</blockquote>
-<h3 id="-">文档贡献</h3>
-<p>我们欢迎和鼓励大家对本文档的不足提出修改建议。请访问我们的 <a href="https://github.com/leancloud/docs">Github 文档仓库</a> 来提交 Pull Request。</p>
 <h2 id="demo">Demo</h2>
 <p>相比阅读文档，如果你更喜欢从代码入手了解功能的具体实现，可以下载 Demo 来研究：</p>
 <ul>
@@ -401,13 +456,16 @@
 <h2 id="-">安装和初始化</h2>
 <p>请参考详细的 <a href="sdk_setup-android.html">Android SDK 安装指南</a>。</p>
 <h2 id="-">单聊</h2>
-<p>我们先从最简单的环节入手。此场景类似于微信的私聊、微博的私信和 QQ 单聊。我们创建了一个统一的概念来描述聊天的各种场景：<code>AVIMConversation</code>（对话），在<a href="./realtime_v2.html">《实时通信开发指南》</a> 里也有相关的详细介绍。</p>
+<p>我们先从最简单的环节入手。此场景类似于微信的私聊、微博的私信和 QQ 单聊。我们创建了 <code>AVIMConversation</code>（对话）这个统一的概念来描述聊天的各种场景，《<a href="./realtime_v2.html">实时通信开发指南</a>》也有相关介绍。</p>
 <h3 id="-">发送消息</h3>
 <p><img src="images/tom-and-jerry-avatar.png" alt="Tom and Jerry"></p>
 <p>Tom 想给 Jerry 发一条消息，实现代码如下：</p>
-<div class="callout callout-info">注意：<strong>启用实时通信一定要正确配置</strong> <code>AndroidManifest.xml</code>，请仔细阅读 <a href="sdk_setup-android.html#初始化">Android SDK 初始化配置</a>。</div>
+  <div class="callout callout-danger">
+  <p>启用实时通信一定要正确配置 <code>AndroidManifest.xml</code>，请仔细阅读 <a href="sdk_setup-android.html#初始化">Android SDK 初始化配置</a>。</p>
+</div>
 
-<pre><code>  public void sendMessageToJerryFromTom() {
+
+<pre><code class="lang-java">  public void sendMessageToJerryFromTom() {
     // Tom 用自己的名字作为clientId，获取AVIMClient对象实例
     AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
     // 与服务器连接
@@ -441,7 +499,16 @@
       }
     });
   }
-</code></pre><p>执行完以上代码，在 LeanCloud 网站的 <a href="/data.html?appid={{appid}}#/_Conversation">控制台 /（选择应用）/ 存储 / 数据 / <code>_Conversation</code> 表</a> 中多了一行数据，其字段含义如下：</p>
+</code></pre>
+  <div class="callout callout-info">
+  <p><code>AVIMClient.open(AVIMClientCallback cb)</code> 这个方法表示开始连接 LeanCloud 云端服务器（即启动实时通信服务），<strong>它在整个使用周期内只需要调用一次</strong>。用户退出实时通信服务（断开 LeanCloud 云端服务器连接）时需要在 IMClient 对象上调用 <code>AVIMClient.close(AVIMClientCallback cb)</code>。</p><p>这两个方法是成对使用的，在聊天过程中只需要调用一次，<strong>无需多次调用</strong>。</p>
+</div>
+
+
+
+
+
+<p>执行完以上代码，在 <a href="/dashboard/data.html?appid={{appid}}#/_Conversation">LeanCloud 控制台 &gt; 存储 &gt; 数据 &gt; <code>_Conversation</code></a> 中多了一行数据，其字段含义如下：</p>
 <table>
 <thead>
 <tr>
@@ -485,7 +552,7 @@
 </table>
 <h3 id="-">接收消息</h3>
 <p>要让 Jerry 收到 Tom 的消息，需要这样写：</p>
-<pre><code>public class MyApplication extends Application{
+<pre><code class="lang-java">public class MyApplication extends Application{
  public static class CustomMessageHandler extends AVIMMessageHandler{
    //接收到消息后的处理逻辑 
    @Override
@@ -521,7 +588,8 @@ public void jerryReceiveMsgFromTom(){
   });
 }
 }
-</code></pre><h4 id="messagehandler-">MessageHandler 的处理逻辑</h4>
+</code></pre>
+<h4 id="messagehandler-">MessageHandler 的处理逻辑</h4>
 <p>在 Android SDK 中接收消息的 AVIMMessageHandler 在 AVIMMessageManager 中进行注册时有两个不同的方法： <code>registerDefaultMessageHandler</code> 和 <code>registerMessageHandler</code>。</p>
 <p>当客户端收到一条消息的时候，会优先根据消息类型通知当前所有注册的对应类型的普通的 <code>messageHandler</code>,如果发现当前没有任何注册的普通的 <code>messageHandler</code>，才会去通知 <code>defaultMessageHandler</code>。</p>
 <p>在 <code>AVIMMessageManager</code> 中多次注册 <code>defaultMessageHandler</code> ，只有最后一次调用的才是有效的；而通过 <code>registerMessageHandler</code> 注册的 <code>AVIMMessageHandler</code>，则是可以同存的。</p>
@@ -535,7 +603,7 @@ public void jerryReceiveMsgFromTom(){
 <li>新建一个对话，把朋友们列为对话的参与人员</li>
 <li>发送消息</li>
 </ol>
-<pre><code>  public void sendMessageToJerryFromTom() {
+<pre><code class="lang-java">  public void sendMessageToJerryFromTom() {
     // Tom 用自己的名字作为clientId，获取AVIMClient对象实例
     AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
     // 与服务器连接
@@ -569,58 +637,102 @@ public void jerryReceiveMsgFromTom(){
       }
     });
   }
-</code></pre><h3 id="-">接收消息</h3>
+</code></pre>
+<h3 id="-">接收消息</h3>
 <p>群聊的接收消息与单聊的接收消息在代码写法上是一致的。</p>
-<pre><code>public class MyApplication extends Application{
-  public void onCreate(){
-   ...
-   AVOSCloud.initialize(this,&quot;{{appid}}&quot;,&quot;{{appkey}}&quot;);
-   //这里指定只处理AVIMTextMessage类型的消息
-   AVIMMessageManager.registerMessageHandler(AVIMTextMessage.class,new CustomMessageHanlder());
+<pre><code class="lang-java">public class MyApplication extends Application {
+  public void onCreate() {
+    ...
+    AVOSCloud.initialize(this, &quot;{{appid}}&quot;, &quot;{{appkey}}&quot;);
+    //这里指定只处理AVIMTextMessage类型的消息
+    AVIMMessageManager.registerMessageHandler(AVIMTextMessage.class, new CustomMessageHandler());
   }
 }
 
-- CustomMessageHandler.java
-public class CustomMessageHandler&lt;AVIMTextMessage&gt; implements AVIMTypedMessageHandler{
+// =========================
+// CustomMessageHandler.java
+// =========================
+public class CustomMessageHandler &lt; AVIMTextMessage &gt; implements AVIMTypedMessageHandler {
 
   @Override
-  public void onMessage(AVIMTextMessage msg,AVIMConversation conv,AVIMClient client){
-    Log.d(&quot;Tom &amp; Jerry&quot;,msg.getText();)//你们在哪儿?
+  public void onMessage(AVIMTextMessage msg, AVIMConversation conv, AVIMClient client) {
+    Log.d(&quot;Tom &amp; Jerry&quot;, msg.getText();) //你们在哪儿?
     // 收到消息之后一般的做法是做 UI 展现，示例代码在此处做消息回复，仅为了演示收到消息之后的操作，仅供参考。
     AVIMTextMessage reply = new AVIMTextMessage();
     reply.setText(&quot;Tom，我在 Jerry 家，你跟 Harry 什么时候过来？还有 William 和你在一起么？&quot;);
-    conv.sendMessage(reply,new AVIMConversationCallback(){
-         public void done(AVIMException e){
-           if(e==null){
-           //回复成功!
-           }
-         }
-       });
-  }
-
-public void onMessageReceipt(AVIMTextMessage msg,AVIMConversation conv,AVIMClient client){
-
-}
-}
-
-
-- SomeActivity.java
-public void loginAsBob(){
-    AVIMClient bob = AVIMClient.getInstance(&quot;Bob&quot;);
-    //Bob登录
-    bob.open(new AVIMClientCallback(){
-      public void done(AVIMClient client,AVIMException e){
-          if(e==null){
-              //登录成功
-          }
+    conv.sendMessage(reply, new AVIMConversationCallback() {
+      public void done(AVIMException e) {
+        if (e == null) {
+          //回复成功!
+        }
       }
     });
+  }
+
+  public void onMessageReceipt(AVIMTextMessage msg, AVIMConversation conv, AVIMClient client) {
+
+  }
 }
-</code></pre><p>以上由 Tom 和 Bob 发送的消息，William 在上线时都会收到。</p>
+
+// =================
+// SomeActivity.java
+// =================
+public void loginAsBob() {
+  AVIMClient bob = AVIMClient.getInstance(&quot;Bob&quot;);
+  //Bob登录
+  bob.open(new AVIMClientCallback() {
+    public void done(AVIMClient client, AVIMException e) {
+      if (e == null) {
+        //登录成功
+      }
+    }
+  });
+}
+</code></pre>
+<p>以上由 Tom 和 Bob 发送的消息，William 在上线时都会收到。</p>
 <p>由此可以看出，<strong>群聊和单聊本质上都是对话</strong>，只是参与人数不同。单聊是一对一的对话，群聊是多对多的对话。</p>
 <p>用户在开始聊天之前，需要先登录 LeanCloud 云端。这个登录并不需要用户名和密码认证，只是与 LeanCloud 云端建立一个长连接，所以只需要传入一个唯一标识作为当前用户的 <code>clientId</code> 即可。</p>
 <p>为直观起见，我们使用了 Tom、Jerry 等字符串作为 clientId 登录聊天系统。LeanCloud 云端只要求 clientId 在应用内唯一、不超过 64 个字符的字符串即可，具体用什么数据由应用层决定。</p>
 <p>实时通信 SDK 在内部会为每一个 clientId 创建唯一的 <code>AVIMClient</code> 实例，也就是说多次使用相同的 clientId 创建出来的实例还是同一个。因此，如果要支持同一个客户端内多账号登录，只要使用不同的 clientId 来创建多个实例即可。我们的 SDK 也支持多账户同时登录。</p>
+<h2 id="-">登录</h2>
+<h3 id="-id-">使用唯一字符串 ID 登录</h3>
+<p>登录到 LeanCloud 实时通信服务代码在 <a href="#单聊">之前</a> 已经演示过，核心的代码如下:</p>
+<pre><code class="lang-java">  public void sendMessageToJerryFromTom() {
+    // Tom 用自己的名字作为clientId，获取AVIMClient对象实例
+    AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+    // 与服务器连接
+    tom.open(new AVIMClientCallback() {
+      @Override
+      public void done(AVIMClient client, AVIMException e) {
+        if (e == null) {
+
+        }
+      }
+    });
+  }
+</code></pre>
+<p>以上代码使用了一个字符串 <code>clientId</code> 来标识一个用户，我们更推荐下面这种使用 <code>_User</code> 对象来登录的方式。</p>
+<h3 id="-_user-">使用 <code>_User</code> 对象登录</h3>
+<p>通过使用 <code>_User</code> 表，开发者能直接利用云端内置的用户鉴权系统而省掉登录签名操作，更方便地将存储和实时通信这两个模块结合起来使用。示例代码如下：</p>
+<pre><code class="lang-java">// 以 AVUser 的用户名和密码登录到 LeanCloud 存储服务
+AVUser.logInInBackground(&quot;username&quot;, &quot;password&quot;, new LogInCallback&lt;AVUser&gt;() {
+    @Override
+    public void done(AVUser user, AVException e) {
+        if (null != e) {
+          return;
+        }
+        // 与服务器连接
+        AVIMClient client = AVIMClient.getInstance(user);
+        client.open(new AVIMClientCallback() {
+          @Override
+          public void done(final AVIMClient avimClient, AVIMException e) {
+            // do something as you need.
+          }
+       });
+    }
+});
+</code></pre>
+<p>使用以上任意一种方式登录到实时通信系统之后，其他功能的用法就没有任何区别了。</p>
 <h2 id="-">消息</h2>
 <p>消息是一个对话的基本组成部分，我们支持的消息类型有：</p>
 <ul>
@@ -636,44 +748,45 @@ public void loginAsBob(){
 <p>图像可以从系统提供的拍照 API 或本地媒体库中获取，也可以用有效的图像 URL。先调用 SDK  方法构造出一个 <code>AVIMImageMessage</code> 对象，然后把它当做参数交由 <code>AVIMConversation</code> 发送出去即可。</p>
 <h5 id="-">发送图像消息</h5>
 <p>【场景一】用系统自身提供的 API 去获取本地媒体库里的照片的数据流，然后构造出 <code>AVIMImageMessage</code> 来发送：</p>
-<pre><code>public void sendImage(String filePath){
+<pre><code class="lang-java">public void sendImage(String filePath) {
   AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 
-  tom.open(new AVIMClientCallback(){
+  tom.open(new AVIMClientCallback() {
 
     @Override
-    public void done(AVIMClient client,AVIMException e){
-      if(e==null){
-      //登录成功
-      // 创建对话，默认创建者是在包含在成员列表中的
-      client.createConversation(Arrays.asList(&quot;Jerry&quot;),new AVIMConversationCreatedCallback(){
+    public void done(AVIMClient client, AVIMException e) {
+      if (e == null) {
+        //登录成功
+        // 创建对话，默认创建者是在包含在成员列表中的
+        client.createConversation(Arrays.asList(&quot;Jerry&quot;), new AVIMConversationCreatedCallback() {
 
-        @Override
-        public void done(AVIMConversation conv,AVIMException e){
-          if(e==null){
-            AVIMImageMessage picture = new AVIMImageMessage(filePath);
-            picture.setText(&quot;发自我的小米&quot;);
-            Map&lt;String,Object&gt; attributes = new HashMap&lt;String,Object&gt;();
-            attributes.put(&quot;location&quot;,&quot;旧金山&quot;);
-            picture.setAttribute(attributes);
-            conv.sendMessage(picture,new AVIMConversationCallback(){
+          @Override
+          public void done(AVIMConversation conv, AVIMException e) {
+            if (e == null) {
+              AVIMImageMessage picture = new AVIMImageMessage(filePath);
+              picture.setText(&quot;发自我的小米&quot;);
+              Map &lt; String, Object &gt; attributes = new HashMap &lt; String, Object &gt; ();
+              attributes.put(&quot;location&quot;, &quot;旧金山&quot;);
+              picture.setAttribute(attributes);
+              conv.sendMessage(picture, new AVIMConversationCallback() {
 
-              @Override
-              public void done(AVIMException e){
-                if(e==null){
-                //发送成功！
+                @Override
+                public void done(AVIMException e) {
+                  if (e == null) {
+                    //发送成功！
+                  }
                 }
-              }
-            });
+              });
+            }
           }
-        }
-      });
+        });
       }
     }
   });
 }
-</code></pre><p>【场景二】从微博上复制的一个图像链接来创建图像消息：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<p>【场景二】从微博上复制的一个图像链接来创建图像消息：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback() {
       @Override
       public void done(AVIMClient client, AVIMException e) {
@@ -702,7 +815,8 @@ tom.open(new AVIMClientCallback() {
         }
       }
 });
-</code></pre><p>以上两种场景对于 SDK 的区别为：</p>
+</code></pre>
+<p>以上两种场景对于 SDK 的区别为：</p>
 <ul>
 <li><p>场景一：SDK 获取了完整的图像数据流，先上传文件到云端，再将文件的元数据以及 URL 等一并包装，发送出去。</p>
 </li>
@@ -710,7 +824,7 @@ tom.open(new AVIMClientCallback() {
 </li>
 </ul>
 <h5 id="-">接收图像消息</h5>
-<pre><code>//注册消息处理逻辑
+<pre><code class="lang-java">//注册消息处理逻辑
 AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         new AVIMTypedMessageHandler&lt;AVIMImageMessage&gt;() {
 
@@ -748,10 +862,11 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         }
       }
     });
-</code></pre><h4 id="-">音频消息</h4>
+</code></pre>
+<h4 id="-">音频消息</h4>
 <h5 id="-">发送音频消息</h5>
 <p>发送音频消息的基本流程是：读取音频文件（或者录制音频）&gt; 构建音频消息 &gt; 消息发送。</p>
-<pre><code> AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java"> AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
     tom.open(new AVIMClientCallback() {
       @Override
       public void done(AVIMClient client, AVIMException e) {
@@ -780,8 +895,9 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         }
       }
     });
-</code></pre><p>与图像消息类似，音频消息也支持从 URL 构建：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<p>与图像消息类似，音频消息也支持从 URL 构建：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
     tom.open(new AVIMClientCallback() {
       @Override
       public void done(AVIMClient client, AVIMException e) {
@@ -809,8 +925,9 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         }
       }
     });
-</code></pre><h5 id="-">接收音频消息</h5>
-<pre><code>AVIMMessageManager.registerMessageHandler(AVIMAudioMessage.class,
+</code></pre>
+<h5 id="-">接收音频消息</h5>
+<pre><code class="lang-java">AVIMMessageManager.registerMessageHandler(AVIMAudioMessage.class,
         new AVIMTypedMessageHandler&lt;AVIMAudioMessage&gt;() {
 
           @Override
@@ -841,10 +958,11 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         }
       }
     });
-</code></pre><h4 id="-">视频消息</h4>
+</code></pre>
+<h4 id="-">视频消息</h4>
 <h5 id="-">发送视频消息</h5>
 <p>与发送音频消息的流程类似，视频的来源可以是手机录制，可以是系统中某一个具体的视频文件：</p>
-<pre><code>  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
   tom.open(new AVIMClientCallback() {
     @Override
     public void done(AVIMClient client, AVIMException e) {
@@ -872,8 +990,9 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
       }
     }
   });
-</code></pre><p>同样我们也支持从一个视频的 URL 创建视频消息，然后发送出去：</p>
-<pre><code> AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<p>同样我们也支持从一个视频的 URL 创建视频消息，然后发送出去：</p>
+<pre><code class="lang-java"> AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
     tom.open(new AVIMClientCallback() {
       @Override
       public void done(AVIMClient client, AVIMException e) {
@@ -902,15 +1021,17 @@ AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
         }
       }
     });
-</code></pre><p><strong>注：这里说的 URL 指的是视频文件自身的 URL，而不是视频网站上播放页的 URL。</strong></p>
+</code></pre>
+<p><strong>注：这里说的 URL 指的是视频文件自身的 URL，而不是视频网站上播放页的 URL。</strong></p>
 <h5 id="-">接收视频消息</h5>
 <p>视频消息的接收与图像消息一样，它的元数据都可以通过 <code>getFileMetaData()</code> 来获取。</p>
 <h4 id="-">地理位置消息</h4>
 <p>地理位置消息构建方式如下：</p>
-<pre><code>      AVIMLocationMessage m = new AVIMLocationMessage();
+<pre><code class="lang-java">      AVIMLocationMessage m = new AVIMLocationMessage();
       m.setLocation(new AVGeoPoint(45.0,34.0));
-</code></pre><h5 id="-">发送地理位置消息</h5>
-<pre><code>final AVIMLocationMessage locationMessage=new AVIMLocationMessage();
+</code></pre>
+<h5 id="-">发送地理位置消息</h5>
+<pre><code class="lang-java">final AVIMLocationMessage locationMessage=new AVIMLocationMessage();
 // 开发者更可以通过具体的设备的 API 去获取设备的地理位置，此处仅设置了 2 个经纬度常量仅做演示
 locationMessage.setLocation(new AVGeoPoint(138.12454,52.56461));
 locationMessage.setText(&quot;新开的蛋糕店！耗子咱们有福了…&quot;);
@@ -924,11 +1045,45 @@ conversation.sendMessage(locationMessage, new AVIMConversationCallback() {
         }
     }
 });
-</code></pre><h5 id="-">接收地理位置消息</h5>
+</code></pre>
+<h5 id="-">接收地理位置消息</h5>
 <p>地址消息的接收与图像消息一样，它的地址信息可以通过 <code>getLocation</code> 方法来获取</p>
-<h3 id="-">接收富媒体消息</h3>
-<p>实时通信 SDK 内部封装了对富媒体消息的支持，所有富媒体消息都是从 AVIMTypedMessage 派生出来的。发送的时候可以直接调用 <code>conversation.sendMessage()</code> 函数。在接收端，我们也专门增加了一类回调接口 AVIMTypedMessageHandler，其定义为：</p>
-<pre><code>public class AVIMTypedMessageHandler&lt;T extends AVIMTypedMessage&gt; extends MessageHandler&lt;T&gt; {
+<h4 id="-">发送流程</h4>
+<p>对于图像、音频、视频和文件这四种类型的消息，SDK 均采取如下的发送流程：</p>
+<p>如果文件是从<strong>客户端 API 读取的数据流 (Stream)</strong>，步骤为：</p>
+<ol>
+<li>从本地构造 AVFile</li>
+<li>调用 AVFile 的上传方法将文件上传到云端，并获取文件元信息（MetaData）</li>
+<li>把 AVFile 的 objectId、URL、文件元信息都封装在消息体内</li>
+<li>调用接口发送消息</li>
+</ol>
+<p>如果文件是<strong>外部链接的 URL</strong>，则：</p>
+<ol>
+<li>直接将 URL 封装在消息体内，不获取元信息，不包含 objectId</li>
+<li>调用接口发送消息</li>
+</ol>
+<h5 id="-">消息发送接口</h5>
+<p>在 Android SDK 中，发送消息的方法是：<code>AVIMConversation.sendMessage</code>，它最核心的一个重载声明如下：</p>
+<pre><code class="lang-java">/**
+ *
+ * @param message 发送的消息实体，可以是任何 AVIMMessage 子类
+ * @param AVIMMessageOption 消息发送选项
+ * @param callback 消息发送之后的回调，发送异常或者发送成功都可以在回调里进行操作
+ */
+public void sendMessage(final AVIMMessage message, final AVIMMessageOption option, final AVIMConversationCallback callback)
+</code></pre>
+<p>关于 AVIMMessageOption 可参见<a href="#消息发送选项">消息发送选项</a>，为了满足通用需求，SDK 还提供了一个更为常用的重载声明：</p>
+<pre><code class="lang-java">/**
+ *
+ * @param message 发送的消息实体，可以是任何 AVIMMessage 子类
+ * @param callback 消息发送之后的回调，发送异常或者发送成功都可以在回调里进行操作
+ */
+public void sendMessage(AVIMMessage message, AVIMConversationCallback callback)
+</code></pre>
+<p>其实本质上，调用 <code>sendMessage(message, callback)</code> 就等价于调用 <code>sendMessage(message, null, callback)</code></p>
+<h4 id="-">接收流程</h4>
+<p>所有富媒体消息都是从 AVIMTypedMessage 派生出来的。发送的时候可以直接调用 <code>conversation.sendMessage()</code> 函数。在接收端，我们也专门增加了一类回调接口 <code>AVIMTypedMessageHandler</code>，其定义为：</p>
+<pre><code class="lang-java">public class AVIMTypedMessageHandler&lt;T extends AVIMTypedMessage&gt; extends MessageHandler&lt;T&gt; {
 
   @Override
   public void onMessage(T message, AVIMConversation conversation, AVIMClient client);
@@ -936,9 +1091,10 @@ conversation.sendMessage(locationMessage, new AVIMConversationCallback() {
   @Override
   public void onMessageReceipt(T message, AVIMConversation conversation, AVIMClient client);
 }
-</code></pre><p>开发者可以编写自己的消息处理 handler，然后调用 <code>AVIMMessageManager.registerMessageHandler()</code> 函数来注册目标 handler。</p>
+</code></pre>
+<p>开发者可以编写自己的消息处理 handler，然后调用 <code>AVIMMessageManager.registerMessageHandler()</code> 函数来注册目标 handler。</p>
 <p>接收端对于富媒体消息的通知处理的示例代码如下：</p>
-<pre><code>class MsgHandler extends AVIMTypedMessageHandler&lt;AVIMTypedMessage&gt; {
+<pre><code class="lang-java">class MsgHandler extends AVIMTypedMessageHandler&lt;AVIMTypedMessage&gt; {
 
   @Override
   public void onMessage(AVIMTypedMessage message, AVIMConversation conversation, AVIMClient client) {
@@ -984,15 +1140,76 @@ conversation.sendMessage(locationMessage, new AVIMConversationCallback() {
 
 MsgHandler msgHandler = new MsgHandler();
 AVIMMessageManager.registerMessageHandler(AVIMTypedMessage.class, msgHandler);
-</code></pre><p>SDK 内部在接收消息时的处理逻辑是这样的：</p>
+</code></pre>
+<p>SDK 内部在接收消息时的处理逻辑是这样的：</p>
 <ul>
 <li>当收到新消息时，实时通信 SDK 会先解析消息的类型，然后找到开发者为这一类型所注册的处理响应 handler chain，再逐一调用这些 handler 的 onMessage 函数</li>
 <li>如果没有找到专门处理这一类型消息的 handler，就会转交给 defaultHandler 处理。</li>
 </ul>
 <p>这样一来，在开发者为 <code>AVIMTypedMessage</code>（及其子类） 指定了专门的 handler，也指定了全局的 defaultHandler 了的时候，如果发送端发送的是通用的 AVIMMessage 消息，那么接受端就是 <code>AVIMMessageManager.registerDefaultMessageHandler()</code> 中指定的 handler 被调用；如果发送的是 AVIMTypedMessage（及其子类）的消息，那么接受端就是 <code>AVIMMessageManager.registerMessageHandler()</code> 中指定的 handler 被调用。</p>
-<h3 id="-">暂态消息</h3>
+<h3 id="-">消息发送选项</h3>
+<p>AVIMMessageOption 用于在发送消息时定义消息的一些特性。包含以下特性：</p>
+<h4 id="-">消息等级</h4>
+<p>为了保证消息的时效性，当聊天室消息过多导致客户端连接堵塞时，服务器端会选择性地丢弃部分低等级的消息。目前支持的消息等级有：</p>
+<table>
+<thead>
+<tr>
+<th>消息等级</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MessagePriority.High</code></td>
+<td>高等级，针对时效性要求较高的消息，比如直播聊天室中的礼物，打赏等。</td>
+</tr>
+<tr>
+<td><code>MessagePriority.Normal</code></td>
+<td>正常等级，比如普通非重复性的文本消息。</td>
+</tr>
+<tr>
+<td><code>MessagePriority.Low</code></td>
+<td>低等级，针对时效性要求较低的消息，比如直播聊天室中的弹幕。</td>
+</tr>
+</tbody>
+</table>
+<p>消息等级在发送接口的参数中设置。以下代码演示了如何发送一个高等级的消息：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+    tom.open(new AVIMClientCallback() {
+      @Override
+      public void done(AVIMClient client, AVIMException e) {
+        if (e == null) {
+          // 创建名为“猫和老鼠”的对话
+          client.createConversation(Arrays.asList(&quot;Jerry&quot;), &quot;猫和老鼠&quot;, null,
+            new AVIMConversationCreatedCallback() {
+              @Override
+              public void done(AVIMConversation conv, AVIMException e) {
+                if (e == null) {
+                  AVIMTextMessage msg = new AVIMTextMessage();
+                  msg.setText(&quot;耗子，起床！&quot;);
+
+                  AVIMMessageOption messageOption = new AVIMMessageOption();
+                  messageOption.setPriority(AVIMMessageOption.MessagePriority.High);
+                  conv.sendMessage(msg, messageOption, new AVIMConversationCallback() {
+                    @Override
+                    public void done(AVIMException e) {
+                      if (e == null) {
+                        // 发送成功
+                      }
+                    }
+                  });
+                }
+              }
+            });
+        }
+      }
+    });
+</code></pre>
+<div class="callout callout-info">此功能仅针对<u>聊天室消息</u>有效。普通对话的消息不需要设置等级，即使设置了也会被系统忽略，因为普通对话的消息不会被丢弃。</div>
+
+<h4 id="-">暂态消息</h4>
 <p>暂态消息不会被自动保存（以后在历史消息中无法找到它），也不支持延迟接收，离线用户更不会收到推送通知，所以适合用来做控制协议。譬如聊天过程中「某某正在输入...」这样的状态信息，就适合通过暂态消息来发送；或者当群聊的名称修改以后，也可以用暂态消息来通知该群的成员「群名称被某某修改为...」。</p>
-<pre><code>//自定义的消息类型，用于发送和接收所有的用户操作消息
+<pre><code class="lang-java">//自定义的消息类型，用于发送和接收所有的用户操作消息
 - AVIMOperationMessage.java
 
 //指定type类型，可以根据实际换成其他正整数
@@ -1029,10 +1246,9 @@ tom.open(new AVIMClientCallback() {
           AVIMConversation conv = client.getConversation(&quot;551260efe4b01608686c3e0f&quot;);
           AVIMOperationMessage msg = new AVIMOperationMessage();
           msg.setOp(&quot;keyboard inputing&quot;);
-          // AVIMConversation.TRANSIENT_MESSAGE_FLAG 表示该条消息为暂态消息
-          // 
-          conv.sendMessage(msg, AVIMConversation.TRANSIENT_MESSAGE_FLAG,
-              new AVIMConversationCallback() {
+          AVIMMessageOption messageOption = new AVIMMessageOption();
+          messageOption.setTransient(true);
+          conv.sendMessage(msg, messageOption, new AVIMConversationCallback() {
                 @Override
                 public void done(AVIMException e) {
                   if (e == null) {
@@ -1043,8 +1259,9 @@ tom.open(new AVIMClientCallback() {
         }
       }
     });
-</code></pre><p>而对话中的其他成员在聊天界面中需要有以下代码做出响应：</p>
-<pre><code>//自定义的消息类型，用于发送和接收所有的用户操作消息
+</code></pre>
+<p>而对话中的其他成员在聊天界面中需要有以下代码做出响应：</p>
+<pre><code class="lang-java">//自定义的消息类型，用于发送和接收所有的用户操作消息
 - AVIMOperationMessage.java
 
 //指定type类型，可以根据实际换成其他正整数
@@ -1096,60 +1313,76 @@ jerry.open(new AVIMClientCallback() {
         }
       }
 });
-</code></pre><h3 id="-">消息的发送</h3>
-<h4 id="-">消息发送接口</h4>
-<p>在 Android SDK 中，发送消息的方法是：<code>AVIMConversation.sendMessage</code>，它最核心的一个重载声明如下：</p>
-<pre><code>/**
- *
- * @param message 发送的消息实体，可以是任何 AVIMMessage 子类
- * @param messageFlag AVIMConversation.TRANSIENT_MESSAGE_FLAG(0)：暂态消息，只有在消息发送时，对方也是在线的才能收到这条消息；
- *                    AVIMConversation.NONTRANSIENT_MESSAGE_FLAG(1)：非暂态消息，当消息发送时，对方不在线的话，消息会变成离线消息；
- *                    AVIMConversation.RECEIPT_MESSAGE_FLAG(17)：回执消息，当消息送到到对方以后，发送方会收到消息回执说明消息已经成功达到接收方
- * @param callback 消息发送之后的回调，发送异常或者发送成功都可以在回调里进行操作
- */
-public void sendMessage(final AVIMMessage message, final int messageFlag, final AVIMConversationCallback callback)
-</code></pre><p>为了满足通用需求，SDK 还提供了一个更为常用的重载声明：</p>
-<pre><code>/**
- *
- * @param message 发送的消息实体，可以是任何 AVIMMessage 子类
- * @param callback 消息发送之后的回调，发送异常或者发送成功都可以在回调里进行操作
- */
-public void sendMessage(AVIMMessage message, AVIMConversationCallback callback)
-</code></pre><p>其实本质上，调用 <code>sendMessage(message, callback)</code> 就等价于调用 <code>sendMessage(message,1, callback)</code> ，因为一般情况下消息存在的形式多以<strong>非暂态</strong>消息为主</p>
-<h4 id="-">多媒体消息发送</h4>
-<p>目前 SDK 内置的多媒体消息类如下：</p>
-<ul>
-<li>图像 <code>AVIMImageMessage</code></li>
-<li>音频 <code>AVIMAudioMessage</code></li>
-<li>视频 <code>AVIMVideoMessage</code></li>
-<li>文件 <code>AVIMFileMessage</code></li>
-</ul>
-<p>所有多媒体消息类型的发送流程如下：</p>
-<p>如果文件是从<strong>客户端 API 读取的数据流 (Stream)</strong>，步骤为：</p>
-<ol>
-<li>从本地构造 AVFile</li>
-<li>调用 AVFile 的上传方法将文件上传到云端，并获取文件元信息（MetaData）</li>
-<li>把 AVFile 的 objectId、URL ，以及文件的元信息封装在消息体内</li>
-<li>调用接口发送消息</li>
-</ol>
-<p>如果文件是<strong>外部链接的 URL</strong>，则：</p>
-<ol>
-<li>直接将 URL 封装在消息体内，不获取元信息，不包含 objectId</li>
-<li>调用接口发送消息</li>
-</ol>
-<h4 id="-">启用离线消息通知</h4>
-<p>不管是单聊还是群聊，当用户 A 发出消息后，如果目标对话的部分用户当前不在线，LeanCloud 云端可以提供离线推送的方式来提醒用户。</p>
-<blockquote>
-<p><strong>Android 聊天服务是和后台的推送服务共享连接的，所以只要有网络就永远在线，不需要专门做推送。</strong>消息达到后，你可以根据用户的设置来判断是否需要弹出通知。网络断开时，我们为每个对话保存 20 条离线消息。</p>
-</blockquote>
-<p>这一功能默认是关闭的，你可以在 LeanCloud 应用控制台中开启它。操作方法请参考 <a href="realtime_v2.html#离线推送通知">实时通信概览 &middot; 离线推送通知</a>。</p>
-<h4 id="-">消息送达回执</h4>
-<p>是指消息被对方收到之后，云端会发送一个回执通知给发送方，表明消息已经送达。
-需要注意的是：</p>
-<blockquote>
-<p>只有在发送时设置了「等待回执」标记，云端才会发送回执，默认不发送回执。该回执并不代表用户已读。</p>
-</blockquote>
-<pre><code>AVIMMessageHandler handler = new AVIMMessageHandler(){
+</code></pre>
+<h4 id="-">@ 成员提醒</h4>
+<p>发送消息的时候可以显式地指定这条消息提醒某一个或者一些人:</p>
+<pre><code class="lang-java">String content = &quot;something as you will&quot;;
+AVIMTextMessage  message = new AVIMTextMessage();
+message.setText(content);
+List&lt;String&gt; list = new ArrayList&lt;&gt;(); // 部分用户的 mention list，你可以向下面代码这样来填充
+
+list.add(&quot;Tom&quot;);
+
+AVIMMessageOption option = new AVIMMessageOption();
+option.setReceipt(true);
+
+imConversation.sendMessage(message, option, new AVIMConversationCallback() {
+   @Override
+   public void done(AVIMException e) {
+   }
+});
+</code></pre>
+<p>或者也可以提醒所有人：</p>
+<pre><code class="lang-java">String content = &quot;something as you will&quot;;
+AVIMTextMessage  message = new AVIMTextMessage();
+message.setText(content);
+
+boolean mentionAll = true;// 指示是否 mention 了所有人
+
+AVIMMessageOption option = new AVIMMessageOption();
+option.setReceipt(true);
+
+imConversation.sendMessage(message, option, new AVIMConversationCallback() {
+   @Override
+   public void done(AVIMException e) {
+   }
+});
+</code></pre>
+<p>消息的接收方，可以通过读取消息的提醒列表来获取哪些 client Id 被提醒了：</p>
+<pre><code class="lang-java">@Override
+public void onMessage(AVIMAudioMessage msg, AVIMConversation conv, AVIMClient client) {
+  // 读取消息 @ 的 client id 列表
+  List&lt;String&gt; currentMsgMentionUserList = message.getMentionList();
+}
+</code></pre>
+<p>消息有一个标识位，用来标识是否提醒了当前对话的全体成员:</p>
+<pre><code class="lang-java">@Override
+public void onMessage(AVIMAudioMessage msg, AVIMConversation conv, AVIMClient client) {
+  // 读取消息是否 @ 了对话的所有成员
+  boolean currentMsgMentionAllUsers = message.isMentionAll();
+}
+</code></pre>
+<p>消息另一个标识位用来标识当前用户是否被提醒，SDK 通过读取消息是否提醒了全体成员和当前 client id 是否在被提醒的列表里这两个条件计算出来当前用户是否被提醒：</p>
+<pre><code class="lang-java">@Override
+public void onMessage(AVIMAudioMessage msg, AVIMConversation conv, AVIMClient client) {
+  // 读取消息是否 @ 了当前 client id
+  boolean currentMsgMentionedMe = message.mentioned();
+}
+</code></pre>
+<h4 id="-">消息回执</h4>
+<p>在对方收到消息以及对方阅读了消息之后，云端可以向发送方分别发送一个回执通知。</p>
+<p>要使用消息回执功能，需要在发送消息时标记「需要回执」选项：</p>
+<pre><code class="lang-java">AVIMMessageOption messageOption = new AVIMMessageOption();
+messageOption.setReceipt(true);
+</code></pre>
+  <div class="callout callout-info">
+  <p>只有在发送时设置了「需要回执」的标记，云端才会发送回执，默认不发送回执。</p>
+</div>
+
+
+<h5 id="-">送达回执</h5>
+<p>当对方收到消息之后，云端会向发送方发出一个回执通知，表明消息已经送达，但这并<strong>不代表用户已读</strong>。送达回执<strong>仅支持单聊</strong>。</p>
+<pre><code class="lang-java">AVIMMessageHandler handler = new AVIMMessageHandler(){
 
     public void onMessageReceipt(AVIMMessage message, AVIMConversation conversation, AVIMClient client) {
      //此处就是对方收到消息以后的回调
@@ -1166,32 +1399,132 @@ AVIMClient jerry = AVIMClient.getInstance(&quot;Jerry&quot;);
 AVIMConversation conv = jerry.getConversation(&quot;551260efe4b01608686c3e0f&quot;);
 AVIMMessage msg = new AVIMMessage();
 msg.setContent(&quot;Ping&quot;);
-conv.sendMessage(msg,AVIMConversation.RECEIPT_MESSAGE_FLAG);
-</code></pre><h3 id="-">消息的接收</h3>
-<h4 id="-">未拉取的离线消息</h4>
-<p>未拉取的离线消息指的是客户端尚未主动拉取到本地的消息。</p>
-<p>SDK 默认的接收机制是：当客户端上线时，离线消息会自动通过长连接发送至客户端。如果开启了「未读消息」，消息接收机制变为：当客户端上线时，会收到其参与过的会话的离线消息数量，云端不再主动将离线消息通知发送至客户端，转而由客户端负责主动拉取。</p>
-<p>要开启未读消息，需要在 AVOSCloud 初始化语句后面加上：</p>
-<pre><code>AVIMClient.setOfflineMessagePush(true);
-</code></pre><p>然后实现 AVIMConversationEventHandler 的代理方法 <code>onOfflineMessagesUnread</code> 来从服务端取回未读消息：</p>
-<pre><code>onOfflineMessagesUnread(AVIMClient client, AVIMConversation conversation, int unreadCount) {
-  //如果有多个 conversation 有未读消息，此函数会执行多次
-  if (unreadCount &gt; 0) {
-    // 可以根据 readCount 更新 UI
-
-    // 也可以拉取对应的未读消息
-    conversation.queryMessages(unreadCount, new AVIMMessagesQueryCallback() {
+AVIMMessageOption messageOption = new AVIMMessageOption();
+messageOption.setReceipt(true);
+conv.sendMessage(msg, messageOption, new AVIMConversationCallback() {
       @Override
-      public void done(List&lt;AVIMMessage&gt; list, AVIMException e) {
+      public void done(AVIMException e) {
         if (e == null) {
-          // 获得对应的未读消息
+          // 发送成功
         }
       }
     });
-  }
+</code></pre>
+<h5 id="-">已读回执</h5>
+<p>对方阅读了消息之后，云端会向发送方发出一个回执通知，表明消息已被阅读。已读回执目前<strong>仅支持单聊</strong>。</p>
+<p>例如 Tom 和 Jerry 聊天，Tom 想知道 Jerry 是否阅读了自己发去的消息：</p>
+<ol>
+<li><p>首先，Tom 和 Jerry 都要开启「未读消息」，即在 SDK 初始化语句后面加上：</p>
+<pre><code class="lang-java">AVIMClient.setUnreadNotificationEnabled(true);
+</code></pre>
+</li>
+<li><p>Tom 向 Jerry 发送一条消息，要标记好「需要回执」：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+AVIMConversation conv = client.getConversation(&quot;551260efe4b01608686c3e0f&quot;);
+
+AVIMTextMessage textMessage = new AVIMTextMessage();
+textMessage.setText(&quot;Hello, Jerry!&quot;);
+
+AVIMMessageOption option = new AVIMMessageOption();
+option.setReceipt(true); /* 将消息设置为需要回执。 */
+
+conv.sendMessage(textMessage, option, new AVIMConversationCallback() {
+ @Override
+ public void done(AVIMException e) {
+   if (e == null) {
+     /* 发送成功 */
+   }
+ }
+});
+</code></pre>
+</li>
+<li><p>Jerry 收到 Tom 发的消息后，SDK 可以通过调用 read 方法把「对话中最近的消息」标记为已读：  </p>
+<pre><code class="lang-java">conv.read();
+</code></pre>
+</li>
+<li><p>然后实现 AVIMConversationEventHandler 的代理方法 onLastReadAtUpdated。当 Jerry 读完消息后，Tom 将收到一个已读回执，此事件会通过 onLastReadAtUpdated 回调给开发者：</p>
+<pre><code class="lang-java">onLastReadAtUpdated(AVIMClient client, AVIMConversation conversation) {
+ /* Jerry 阅读了你的消息。可以通过调用 conversation.getLastReadAt() 来获得对方已经读取到的时间点
 }
-</code></pre><p><code>AVIMConversationEventHandler</code> 的实现和定义在<a href="#自身主动加入">自身主动加入</a>里面有详细的代码和介绍。</p>
-<p>注意：客户端<u>在线上时</u>收到的消息默认为<strong>已读</strong>，不存在未读的情况。因此开发者不需要将这样的消息标记为已读。</p>
+</code></pre>
+<p><code>AVIMConversationEventHandler</code> 的实现和定义在<a href="#自身主动加入">自身主动加入</a>里面有详细的代码和介绍。</p>
+</li>
+</ol>
+<h4 id="-">自定义离线推送内容</h4>
+<p>在使用 SDK 提供的 API 之前，请先阅读 <a href="realtime_v2.html#离线推送通知">实时通信概览 &middot; 离线推送通知</a>。</p>
+<p>正如 <a href="realtime_v2.html#离线推送通知">实时通信概览 &middot; 离线推送通知</a> 小节里面介绍的，发送消息时，可以指定该消息对应的离线推送内容。如果消息接收方不在线，我们会推送您指定的内容。以下代码演示了如何自定义离线推送内容：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+    tom.open(new AVIMClientCallback() {
+      @Override
+      public void done(AVIMClient client, AVIMException e) {
+        if (e == null) {
+          // 创建名为“猫和老鼠”的对话
+          client.createConversation(Arrays.asList(&quot;Jerry&quot;), &quot;猫和老鼠&quot;, null,
+            new AVIMConversationCreatedCallback() {
+              @Override
+              public void done(AVIMConversation conv, AVIMException e) {
+                if (e == null) {
+                  AVIMTextMessage msg = new AVIMTextMessage();
+                  msg.setText(&quot;耗子，起床！&quot;);
+
+                  AVIMMessageOption messageOption = new AVIMMessageOption();
+                  messageOption.setPushData(&quot;自定义离线消息推送内容&quot;);
+                  conv.sendMessage(msg, messageOption, new AVIMConversationCallback() {
+                    @Override
+                    public void done(AVIMException e) {
+                      if (e == null) {
+                        // 发送成功
+                      }
+                    }
+                  });
+                }
+              }
+            });
+        }
+      }
+    });
+</code></pre>
+<p>这种方式被称为「附件方式」，这里有一点非常重要：如果您在 <a href="leanengine_cloudfunction_guide-node.html#_receiversOffline">云引擎实时通信离线消息推送 Hook</a>里面定义了云函数来修改离线消息的内容，云端会优先使用 Hook 函数返回的结果作为最后推送的内容</p>
+<p>除此以外，还有其他方法来自定义离线推送内容，请参考 <a href="realtime_v2.html#离线推送通知">实时通信概览 &middot; 离线推送通知</a>。</p>
+<h3 id="-">未读消息</h3>
+<p>未读消息有两种处理方式：未读消息数量通知与离线消息通知（默认）。</p>
+<h4 id="-">未读消息数更新通知</h4>
+<p>未读消息数更新通知的机制为：当客户端上线时，会收到其参与过的对话的离线消息数量，云端不会主动将离线消息通知发送至客户端，而是由客户端负责主动拉取。</p>
+<p>SDK 会在 Conversation 上维护 <code>unreadMessagesCount</code> 字段，这个字段在变化时 IMClient 会派发一个「未读消息数量更新」的事件。这个字段会在下面这些情况下发生变化：</p>
+<ul>
+<li>收到在线消息</li>
+<li>用户将对话标记为已读</li>
+<li>开发者应当监听「未读消息数量更新」 事件，在对话列表界面上更新这些对话的未读消息数量。</li>
+</ul>
+<p>要开启未读消息，需要在 AVOSCloud 初始化语句后面加上：</p>
+<pre><code class="lang-java">AVIMClient.setUnreadNotificationEnabled(true);
+</code></pre>
+<p>然后实现 AVIMConversationEventHandler 的代理方法 <code>onUnreadMessagesCountUpdated</code> 来得到未读消息的数量变更的通知：</p>
+<pre><code class="lang-java">onUnreadMessagesCountUpdated(AVIMClient client, AVIMConversation conversation) {
+    // conversation.getUnreadMessagesCount() 即该 conversation 的未读消息数量
+}
+</code></pre>
+<p><code>AVIMConversationEventHandler</code> 的实现和定义在<a href="#自身主动加入">自身主动加入</a>里面有详细的代码和介绍。</p>
+  <div class="callout callout-info">
+  <p>开启未读消息数后，即使客户端在线收到了消息，未读消息数量也会增加，因此开发者需要在合适时机重置未读消息数。</p>
+</div>
+
+
+<p>清除对话未读消息数的唯一方式是调用 Conversation#read 方法将对话标记为已读，一般来说开发者至少需要在下面两种情况下将对话标记为已读：</p>
+<ul>
+<li>在对话列表点击某对话进入到对话页面时</li>
+<li>用户正在某个对话页面聊天，并在这个对话中收到了消息时</li>
+</ul>
+<h4 id="-">离线消息推送通知</h4>
+<p>离线消息推送通知是 SDK 默认的未读消息处理方式。不管是单聊还是群聊，当用户 A 发出消息后，如果目标对话的部分用户当前不在线，LeanCloud 云端可以提供离线推送的方式将消息提醒发送至客户端。</p>
+  <div class="callout callout-info">
+  <p><strong>Android 聊天服务是和后台的推送服务共享连接的，所以只要有网络就永远在线，不需要专门做推送。</strong>消息达到后，你可以根据用户的设置来判断是否需要弹出通知。网络断开时，我们为每个对话保存 20 条离线消息。</p>
+</div>
+
+
+
+
+
 <h3 id="-">消息类详解</h3>
 <p>消息类型之间的关系</p>
 <p><img src="http://ac-lhzo7z96.clouddn.com/1440485935481" alt="消息的类图"></p>
@@ -1213,7 +1546,7 @@ conv.sendMessage(msg,AVIMConversation.RECEIPT_MESSAGE_FLAG);
 <tr>
 <td>clientId</td>
 <td>String</td>
-<td>指消息发送者的 clientId </td>
+<td>指消息发送者的 clientId</td>
 </tr>
 <tr>
 <td>conversationId</td>
@@ -1223,7 +1556,7 @@ conv.sendMessage(msg,AVIMConversation.RECEIPT_MESSAGE_FLAG);
 <tr>
 <td>messageId</td>
 <td>String</td>
-<td>消息发送成功之后，由 LeanCloud 云端给每条消息赋予的唯一 id </td>
+<td>消息发送成功之后，由 LeanCloud 云端给每条消息赋予的唯一 id</td>
 </tr>
 <tr>
 <td>timestamp</td>
@@ -1238,12 +1571,12 @@ conv.sendMessage(msg,AVIMConversation.RECEIPT_MESSAGE_FLAG);
 <tr>
 <td>status</td>
 <td>AVIMMessageStatus 枚举</td>
-<td>消息状态，有五种取值：<br/><br/><code>AVIMMessageStatusNone</code>（未知）<br/><code>AVIMMessageStatusSending</code>（发送中）<br/><code>AVIMMessageStatusSent</code>（发送成功）<br/><code>AVIMMessageStatusReceipt</code>（被接收）<br/><code>AVIMMessageStatusFailed</code>（失败）</td>
+<td>消息状态，有五种取值：<br><br><code>AVIMMessageStatusNone</code>（未知）<br><code>AVIMMessageStatusSending</code>（发送中）<br><code>AVIMMessageStatusSent</code>（发送成功）<br><code>AVIMMessageStatusReceipt</code>（被接收）<br><code>AVIMMessageStatusFailed</code>（失败）</td>
 </tr>
 <tr>
 <td>ioType</td>
 <td>AVIMMessageIOType 枚举</td>
-<td>消息传输方向，有两种取值：<br/><br/><code>AVIMMessageIOTypeIn</code>（发给当前用户）<br/><code>AVIMMessageIOTypeOut</code>（由当前用户发出）</td>
+<td>消息传输方向，有两种取值：<br><br><code>AVIMMessageIOTypeIn</code>（发给当前用户）<br><code>AVIMMessageIOTypeOut</code>（由当前用户发出）</td>
 </tr>
 </tbody>
 </table>
@@ -1285,7 +1618,7 @@ conv.sendMessage(msg,AVIMConversation.RECEIPT_MESSAGE_FLAG);
 <h3 id="-">自定义消息</h3>
 <p>在某些场景下，开发者需要在发送消息时附带上自己业务逻辑需求的自定义属性，比如消息发送的设备名称，或是图像消息的拍摄地点、视频消息的来源等等，开发者可以通过 <code>AVIMTypedMessage.attributes</code> 实现这一需求。</p>
 <p>【场景】发照片给朋友，告诉对方照片的拍摄地点：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback() {
     @Override
     public void done(AVIMClient client, AVIMException e) {
@@ -1307,8 +1640,9 @@ tom.open(new AVIMClientCallback() {
         }
       }
 });
-</code></pre><p>接收时可以读取这一属性：</p>
-<pre><code>AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
+</code></pre>
+<p>接收时可以读取这一属性：</p>
+<pre><code class="lang-java">AVIMMessageManager.registerMessageHandler(AVIMImageMessage.class,
     new AVIMTypedMessageHandler&lt;AVIMImageMessage&gt;() {
         @Override
             public void onMessage(AVIMImageMessage msg, AVIMConversation conv, AVIMClient client) {
@@ -1325,21 +1659,27 @@ friend.open(new AVIMClientCallback() {
         if (e == null) {}
     }
 });
-</code></pre><p>所有的 <code>AVIMTypedMessage</code> 消息都支持 <code>attributes</code> 这一属性。</p>
+</code></pre>
+<p>所有的 <code>AVIMTypedMessage</code> 消息都支持 <code>attributes</code> 这一属性。</p>
 <h4 id="-">创建新的消息类型</h4>
 <p>继承于 AVIMTypedMessage，开发者也可以扩展自己的富媒体消息。其要求和步骤是：</p>
 <ul>
-<li>实现新的消息类型，继承自 AVIMTypedMessage。这里需要注意两点：<ul>
-<li>在 class 上增加一个 @AVIMMessageType(type=123) 的 Annotation，具体消息类型的值（这里是 <code>123</code>）由开发者自己决定（LeanCloud 内建的 <a href="#消息类详解">消息类型使用负数</a>，所有正数都预留给开发者扩展使用）。</li>
-<li>在消息内部属性上要增加 @AVIMMessageField(name=&quot;&quot;) 的 Annotation，name 为可选字段在声明字段属性，同时自定义的字段要有对应的 getter/setter 方法。</li>
+<li>实现新的消息类型，继承自 AVIMTypedMessage。这里需要注意：<ul>
+<li>在 class 上增加一个 <code>@AVIMMessageType(type=123)</code> 的 Annotation<br>具体消息类型的值（这里是 <code>123</code>）由开发者自己决定。LeanCloud 内建的 <a href="#消息类详解">消息类型使用负数</a>，所有正数都预留给开发者扩展使用。</li>
+<li>在消息内部声明字段属性时，要增加 <code>@AVIMMessageField(name=&quot;&quot;)</code> 的 Annotation<br>name 为可选字段，同时自定义的字段要有对应的 getter/setter 方法。</li>
+<li><strong>请不要遗漏空的构造方法和 Creator 的代码</strong>（参考下面的示例代码），否则会造成类型转换失败。</li>
 </ul>
 </li>
 <li>调用 <code>AVIMMessageManager.registerAVIMMessageType()</code> 函数进行类型注册。</li>
 <li>调用 <code>AVIMMessageManager.registerMessageHandler()</code> 函数进行消息处理 handler 注册。</li>
 </ul>
 <p>AVIMTextMessage 的源码如下，可供参考：</p>
-<pre><code>@AVIMMessageType(type = -1)
+<pre><code class="lang-java">@AVIMMessageType(type = AVIMMessageType.TEXT_MESSAGE_TYPE)
 public class AVIMTextMessage extends AVIMTypedMessage {
+  // 空的构造方法，不可遗漏
+  public AVIMTextMessage() {
+
+  }
 
   @AVIMMessageField(name = &quot;_lctext&quot;)
   String text;
@@ -1361,12 +1701,79 @@ public class AVIMTextMessage extends AVIMTypedMessage {
   public void setAttrs(Map&lt;String, Object&gt; attr) {
     this.attrs = attr;
   }
+  // Creator 不可遗漏
+  public static final Creator&lt;AVIMTextMessage&gt; CREATOR = new AVIMMessageCreator&lt;AVIMTextMessage&gt;(AVIMTextMessage.class);
 }
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p><strong>什么时候需要自己创建新的消息类型？</strong></p>
 <p>譬如有一条图像消息，除了文本之外，还需要附带地理位置信息，为此开发者需要创建一个新的消息类型吗？从上面的例子可以看出，其实完全没有必要。这种情况只要使用消息类中预留的 <code>AVIMTypedMessage.attributes</code> 属性就可以保存额外的地理位置信息了。</p>
-<p>只有在我们的消息类型完全无法满足需求的时候，才需要扩展自己的消息类型。譬如「今日头条」里面允许用户发送某条新闻给好友，在展示上需要新闻的标题、摘要、图片等信息（类似于微博中的 linkcard）的话，这时候就可以扩展一个新的 NewsMessage 类。</p>
+<p>只有在我们的消息类型完全无法满足需求的时候，才需要扩展自己的消息类型。譬如一个新闻类应用，它允许用户将某条新闻转发给好友，在展示上需要新闻的标题、摘要、图片等信息（类似于微博中的 linkcard）的话，这时候就可以扩展一个新的 NewsMessage 类。</p>
 </blockquote>
+<h3 id="-">遗愿消息</h3>
+<p>遗愿消息是在一个用户突然掉线之后，系统自动通知对话的其他成员关于该成员已掉线的消息。好似在掉线后要给对话中的其他成员一个妥善的交待，所以被戏称为「遗愿」消息，如下图中的「Tom 已掉线，无法收到消息」。</p>
+<p><img src="images/lastwill-message.png" width="400" class="responsive"></p>
+<p>要发送遗愿消息，用户需要设定好消息内容（可能包含了一些业务逻辑相关的内容）发给云端，云端并不会将其马上发送给对话的成员，而是缓存下来，一旦检测到该用户掉线，云端立即将这条遗愿消息发送出去。开发者可以利用它来构建自己的断线通知的逻辑。</p>
+<pre><code class="lang-java">AVIMTextMessage message = new AVIMTextMessage();
+message.setText(&quot;我是一条遗愿消息，当发送者意外下线的时候，我会被下发给对话里面的其他成员&quot;);
+
+AVIMMessageOption option = new AVIMMessageOption();
+option.setWill(true);
+conversation.sendMessage(message, option, new AVIMConversationCallback() {
+  @Override
+  public void done(AVIMException e) {
+    if (e == null) {
+      // 发送成功
+    }
+  }
+});
+</code></pre>
+<p>客户端发送完毕之后就完全不用再关心这条消息了，云端会自动在发送方掉线后通知其他成员。</p>
+<p>遗愿消息有<strong>如下限制</strong>：</p>
+<ul>
+<li>同一时刻只对一个对话生效</li>
+<li>当 client 主动 close 时，遗愿消息不会下发，系统会认为这是计划性下线。</li>
+</ul>
+<p>接收到遗愿消息的客户端需要根据自己的消息内容来做 UI 的展现。</p>
+<h3 id="-">消息的撤回与修改</h3>
+<h4 id="-">消息的撤回</h4>
+<p>撤回一条已发送的消息：</p>
+<pre><code class="lang-java">conversation.recallMessage(message, new AVIMMessageRecalledCallback() {
+  @Override
+  public void done(AVIMRecalledMessage recalledMessage, AVException e) {
+    if (null == e) {
+      // 消息撤回成功，可以更新 UI
+    }
+  }
+});
+</code></pre>
+<p>而对话的其他成员在消息被撤回后会收到一个通知：</p>
+<pre><code class="lang-java">void onMessageRecalled(AVIMClient client, AVIMConversation conversation, AVIMMessage message) {
+  // message 即为被撤回的消息
+}
+</code></pre>
+<p><code>AVIMConversationEventHandler</code> 的实现和定义在<a href="#自身主动加入">自身主动加入</a>里面有详细的代码和介绍。</p>
+<h4 id="-">消息的修改</h4>
+<p>修改一条已经发送的消息：</p>
+<pre><code class="lang-java">AVIMTextMessage textMessage = new AVIMTextMessage();
+textMessage.setContent(&quot;修改后的消息&quot;);
+imConversation.updateMessage(oldMessage, textMessage, new AVIMMessageUpdatedCallback() {
+  @Override
+  public void done(AVIMMessage avimMessage, AVException e) {
+    if (null == e) {
+      // 消息修改成功，avimMessage 即为被修改后的最新的消息
+    }
+  }
+});
+</code></pre>
+<p>而对话的其他成员在消息被修改之后会收到一个通知：</p>
+<pre><code class="lang-java">void onMessageUpdated(AVIMClient client, AVIMConversation conversation, AVIMMessage message) {
+  // message 即为被修改的消息
+}
+</code></pre>
+<p>注意：修改和撤回会更新或删除在本地缓存和云端的对应的聊天记录。</p>
+<h3 id="-">消息的有效期</h3>
+<p>一个对话的消息记录会在云端保留 <strong>6 个月</strong>，也就是说一个对话可以查询到半年之内的历史消息记录。开发者可以付费来延长这一期限，请联系 <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x73;&#117;&#112;&#x70;&#111;&#114;&#116;&#64;&#x6c;&#101;&#97;&#x6e;&#x63;&#108;&#x6f;&#117;&#100;&#46;&#x72;&#111;&#99;&#107;&#115;">&#x73;&#117;&#112;&#x70;&#111;&#114;&#116;&#64;&#x6c;&#101;&#97;&#x6e;&#x63;&#108;&#x6f;&#117;&#100;&#46;&#x72;&#111;&#99;&#107;&#115;</a>。相关参考 <a href="#对话的有效期">对话的有效期</a>。</p>
 <h2 id="-">对话</h2>
 <p>以上章节基本演示了实时通信 SDK 的核心概念「对话」，即 <code>AVIMConversation</code>。我们将单聊和群聊（包括聊天室）的消息发送和接收都依托于 <code>AVIMConversation</code> 这个统一的概念进行操作，所以开发者需要强化理解的一个概念就是：</p>
 <blockquote>
@@ -1374,7 +1781,7 @@ public class AVIMTextMessage extends AVIMTypedMessage {
 </blockquote>
 <p>对话的管理包括「成员管理」和「属性管理」两个方面。</p>
 <p>在讲解下面的内容之前，我们先来创建一个多人对话。后面的举例都要基于这个对话，所以<strong>这一步是必须的</strong>。请将以下代码复制到 IDE 并且执行。</p>
-<pre><code>AVIMClient jerry = AVIMClient.getInstance(&quot;Jerry&quot;);
+<pre><code class="lang-java">AVIMClient jerry = AVIMClient.getInstance(&quot;Jerry&quot;);
 jerry.open(new AVIMClientCallback() {
     @Override
     public void done(AVIMClient client, AVIMException e) {
@@ -1392,9 +1799,10 @@ jerry.open(new AVIMClientCallback() {
         }
       }
 });
-</code></pre><h3 id="-">创建对话</h3>
+</code></pre>
+<h3 id="-">创建对话</h3>
 <p>创建对话的接口在 <code>AVIMClient</code> 中共有 4 个方法重写，下面我们以参数最详尽的这个重写来说明其中每个参数的意义。</p>
-<pre><code>  /**
+<pre><code class="lang-java">  /**
    * 创建或查询一个已有 conversation
    *
    * @param members 对话的成员
@@ -1410,7 +1818,8 @@ jerry.open(new AVIMClientCallback() {
   public void createConversation(final List&lt;String&gt; members, final String name,
       final Map&lt;String, Object&gt; attributes, final boolean isTransient, final boolean isUnique,
       final AVIMConversationCreatedCallback callback)
-</code></pre><p>参数说明：</p>
+</code></pre>
+<p>参数说明：</p>
 <ul>
 <li>members - 对话的初始成员列表。在对话创建成功后，这些成员会收到和邀请加入对话一样的相应通知。</li>
 <li>name - 对话的名字，主要是用于标记对话，让用户更好地识别对话。</li>
@@ -1456,7 +1865,7 @@ jerry.open(new AVIMClientCallback() {
 <p><code>AVIMConversationEventHandler</code> 的实现和定义在下一节<a href="#自身主动加入">自身主动加入</a>里面有详细的代码和介绍。</p>
 <h4 id="-">自身主动加入</h4>
 <p>Tom 想主动加入 Jerry、Bob、Harry 和 William 的对话，以下代码将帮助他实现这个功能：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -1475,9 +1884,9 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>该群的其他成员（比如 Bob）登录之后，调用 <code>AVIMMessageManager.setConversationEventHandler</code> 设置一下回调的代理，会收到该操作的事件回调：</p>
-<pre><code>AVIMMessageManager.setConversationEventHandler(new CustomConversationEventHandler());
-AVIMClient bob = AVIMClient.getInstance(&quot;Bob&quot;);
+</code></pre>
+<p>该群的其他成员（比如 Bob）登录之后，在 Application 里设置过的 AVIMMessageManager.setConversationEventHandler 代理，会收到该操作的事件回调：</p>
+<pre><code class="lang-java">AVIMClient bob = AVIMClient.getInstance(&quot;Bob&quot;);
 bob.open(new AVIMClientCallback(){
 
     @Override
@@ -1516,9 +1925,10 @@ public class CustomConversationEventHandler extends AVIMConversationEventHandler
     // 当前 ClientId(Bob) 被邀请到对话，执行此处逻辑
   }
 }
-</code></pre><h4 id="-">添加其他成员</h4>
+</code></pre>
+<h4 id="-">添加其他成员</h4>
 <p>Jerry 想再把 Mary 加入到对话中，需要如下代码帮助他实现这个功能：</p>
-<pre><code> AVIMClient jerry = AVIMClient.getInstance(&quot;Jerry&quot;);
+<pre><code class="lang-java"> AVIMClient jerry = AVIMClient.getInstance(&quot;Jerry&quot;);
     jerry.open(new AVIMClientCallback() {
 
       @Override
@@ -1542,7 +1952,8 @@ public class CustomConversationEventHandler extends AVIMConversationEventHandler
         }
       }
     });
-</code></pre><p>该对话的其他成员（例如 Harry）也会受到该项操作的影响，收到事件被响应的通知，类似于第一小节 <a href="#自身主动加入">自身主动加入</a> 中<strong>Tom 加入对话之后，Bob 受到的影响。</strong></p>
+</code></pre>
+<p>该对话的其他成员（例如 Harry）也会受到该项操作的影响，收到事件被响应的通知，类似于第一小节 <a href="#自身主动加入">自身主动加入</a> 中<strong>Tom 加入对话之后，Bob 受到的影响。</strong></p>
 <p>邀请成功以后，相关方收到通知的时序是这样的：</p>
 <table>
 <thead>
@@ -1580,7 +1991,7 @@ public class CustomConversationEventHandler extends AVIMConversationEventHandler
 <h4 id="-">自身退出对话</h4>
 <p>这里一定要区分<strong>自身退出对话</strong>的主动性，它与<strong>自身被动被踢出</strong>（下一小节）在逻辑上完全是不一样的。</p>
 <p>Tom 主动从对话中退出，他需要如下代码实现需求：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -1607,9 +2018,10 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">剔除其他成员</h4>
+</code></pre>
+<h4 id="-">剔除其他成员</h4>
 <p>Harry 被 William 从对话中删除。实现代码如下（关于 William 如何获得权限在后面的 <a href="#签名和安全">签名和安全</a> 中会做详细阐述，此处不宜扩大话题范围。）：</p>
-<pre><code>AVIMClient william = AVIMClient.getInstance(&quot;William&quot;);
+<pre><code class="lang-java">AVIMClient william = AVIMClient.getInstance(&quot;William&quot;);
 william.open(new AVIMClientCallback(){
 
     @Override
@@ -1634,7 +2046,8 @@ william.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>踢人时，相关方收到通知的时序如下：</p>
+</code></pre>
+<p>踢人时，相关方收到通知的时序如下：</p>
 <table>
 <thead>
 <tr>
@@ -1670,14 +2083,14 @@ william.open(new AVIMClientCallback(){
 </blockquote>
 <h4 id="-">查询成员数量</h4>
 <p> <code>AVIMConversation.getMemberCount</code> 这个方法返回的是实时数据：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.setLimit(1);
       query.findInBackground(new AVIMConversationQueryCallback(){
        @Override
@@ -1701,7 +2114,8 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h3 id="-">对话的属性管理</h3>
+</code></pre>
+<h3 id="-">对话的属性管理</h3>
 <p>对话实例（AVIMConversation）与控制台中 <code>_Conversation</code> 表是一一对应的，默认提供的属性的对应关系如下：</p>
 <table>
 <thead>
@@ -1747,12 +2161,52 @@ tom.open(new AVIMClientCallback(){
 <td><code>lm</code></td>
 <td>该对话最后一条消息，也可以理解为最后一次活跃时间</td>
 </tr>
+<tr>
+<td><code>lastMessage</code></td>
+<td>N/A</td>
+<td>最后一条消息，可能会空</td>
+</tr>
+<tr>
+<td><code>muted</code></td>
+<td>N/A</td>
+<td>当前用户是否静音该对话</td>
+</tr>
+<tr>
+<td><code>unreadMessagesCount</code></td>
+<td>N/A</td>
+<td>未读消息数</td>
+</tr>
+<tr>
+<td><code>lastDeliveredAt</code></td>
+<td>N/A</td>
+<td>（仅限单聊）最后一条已送达对方的消息时间</td>
+</tr>
+<tr>
+<td><code>lastReadAt</code></td>
+<td>N/A</td>
+<td>（仅限单聊）最后一条对方已读的消息时间</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>createdAt</code></td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>updatedAt</code></td>
+<td>最后更新时间</td>
+</tr>
+<tr>
+<td><code>system</code></td>
+<td><code>sys</code></td>
+<td>是否为系统对话</td>
+</tr>
 </tbody>
 </table>
 <h4 id="-">名称</h4>
 <p>这是一个全员共享的属性，它可以在创建时指定，也可以在日后的维护中被修改。</p>
 <p>Tom 想建立一个名字叫「喵星人」 对话并且邀请了好友 Black 加入对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -1772,8 +2226,9 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，他需要如下代码：</p>
-<pre><code>AVIMClient black = AVIMClient.getInstance(&quot;Black&quot;);
+</code></pre>
+<p>Black 发现对话名字不够酷，他想修改成「聪明的喵星人」 ，他需要如下代码：</p>
+<pre><code class="lang-java">AVIMClient black = AVIMClient.getInstance(&quot;Black&quot;);
 black.open(new AVIMClientCallback(){
 
     @Override
@@ -1794,7 +2249,8 @@ black.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">成员</h4>
+</code></pre>
+<h4 id="-">成员</h4>
 <p>是当前对话中所有成员的 <code>clientId</code>。默认情况下，创建者是在包含在成员列表中的，直到 TA 退出对话。</p>
 <blockquote>
 <p><strong>强烈建议开发者切勿在控制台中对其进行修改</strong>。所有关于成员的操作请参照上一章节中的 <a href="#对话的成员管理">对话的成员管理</a> 来进行。</p>
@@ -1802,7 +2258,7 @@ black.open(new AVIMClientCallback(){
 <h4 id="-">静音</h4>
 <p>假如某一用户不想再收到某对话的消息提醒，但又不想直接退出对话，可以使用静音操作，即开启「免打扰模式」。</p>
 <p>比如 Tom 工作繁忙，对某个对话设置了静音：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -1822,7 +2278,8 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><blockquote>
+</code></pre>
+<blockquote>
 <p>设置静音之后，iOS 和 Windows Phone 的用户就不会收到推送消息了。</p>
 </blockquote>
 <p>与之对应的就是取消静音的操作，即取消免打扰模式。此操作会修改云端 <code>_Conversation</code> 里面的 <code>mu</code> 属性。<strong>强烈建议开发者切勿在控制台中对 <code>mu</code> 随意进行修改</strong>。</p>
@@ -1832,7 +2289,7 @@ tom.open(new AVIMClientCallback(){
 <h4 id="-">自定义属性</h4>
 <p>通过该属性，开发者可以随意存储自己的键值对，为对话添加自定义属性，来满足业务逻辑需求。</p>
 <p>给某个对话加上两个自定义的属性：type = &quot;private&quot;（类型为私有）、isSticky = true（置顶显示）：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -1854,24 +2311,27 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p><strong>自定义属性在 SDK 级别是对所有成员可见的</strong>。如果要控制所谓的可见性，开发者需要自己维护这一属性的读取权限。要对自定义属性进行查询，请参见 <a href="#对话的查询">对话的查询</a>。</p>
+</code></pre>
+<p><strong>自定义属性在 SDK 级别是对所有成员可见的</strong>。如果要控制所谓的可见性，开发者需要自己维护这一属性的读取权限。要对自定义属性进行查询，请参见 <a href="#对话的查询">对话的查询</a>。</p>
 <h3 id="-">对话的查询</h3>
+<p>由于历史原因，AVIMConversationQuery 只能检索 _Conversation 表中 attr 列中的属性，而不能完整检索 _Conversation 表的其他自定义属性，所以在 v4.1.1 版本之后被废弃。v4.1.1 后请使用 AVIMConversation<strong>s</strong>Query 来完成相关查询。AVIMConversationsQuery 在查询属性时不会再自动添加 attr 前缀，如果开发者需要查询 _Conversation 表中 attr 列中具体属性，请自行添加 attr 前缀。</p>
 <h4 id="-">对话的有效期</h4>
-<p>一个对话（包括普通、暂态、系统对话）如果一年内没有通过 SDK 或者 REST API 发送过新的消息，或者它在 <code>_Conversation</code> 表中的任意字段没有被更新过，即被视为<strong>不活跃对话</strong>，云端会自动将其删除。（查询对话的消息记录并不会更新 <code>_Conversation</code> 表，所以只查询不发送消息的对话仍会被视为不活跃对话。）</p>
+<p>一个对话（包括普通、暂态、系统对话）如果 <strong>1 年内</strong>没有通过 SDK 或者 REST API 发送过新的消息，或者它在 <code>_Conversation</code> 表中的任意字段没有被更新过，即被视为<strong>不活跃对话</strong>，云端会自动将其删除。（查询对话的消息记录并不会更新 <code>_Conversation</code> 表，所以只查询不发送消息的对话仍会被视为不活跃对话。）</p>
 <p>不活跃的对话被删除后，当客户端再次通过 SDK 或 REST API 对其进行查询或发送消息时，会遇到 
 <code>4401 INVALID_MESSAGING_TARGET</code> 错误，表示该对话已经不存在了。同时，与该对话相关的消息历史也无法获取。</p>
 <p>反之，活跃的对话会一直保存在云端。</p>
+<p>相关参考 <a href="#消息的有效期">消息的有效期</a>。</p>
 <!-- #### 基础查询 -->
 <h4 id="-id-">根据 id 查询</h4>
 <p>假如已知某一对话的 Id，可以使用它来查询该对话的详细信息：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.whereEqualTo(&quot;objectId&quot;,&quot;551260efe4b01608686c3e0f&quot;);
       query.findInBackground(new AVIMConversationQueryCallback(){
         @Override
@@ -1886,16 +2346,17 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">对话列表</h4>
+</code></pre>
+<h4 id="-">对话列表</h4>
 <p>用户登录进应用后，获取最近的 10 个对话（包含暂态对话，如聊天室）：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.findInBackground(new AVIMConversationQueryCallback(){
         @Override
         public void done(List&lt;AVIMConversation&gt; convs,AVIMException e){
@@ -1908,8 +2369,9 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>对话的查询默认返回 10 个结果，若要更改返回结果数量，请设置 <code>limit</code> 值。</p>
-<pre><code>AVIMConversationQuery query = client.getQuery();
+</code></pre>
+<p>对话的查询默认返回 10 个结果，若要更改返回结果数量，请设置 <code>limit</code> 值。</p>
+<pre><code class="lang-java">AVIMConversationsQuery query = client.getConversationsQuery();
 query.limit(20);
 query.findInBackground(new AVIMConversationQueryCallback(){
     @Override
@@ -1920,10 +2382,11 @@ query.findInBackground(new AVIMConversationQueryCallback(){
     }
     }
 });
-</code></pre><h4 id="-">条件查询</h4>
+</code></pre>
+<h4 id="-">条件查询</h4>
 <h5 id="-">构建查询</h5>
 <p>对话的条件查询需要注意的对话属性的存储结构，在对话的属性一章节我们介绍的对话的几个基本属性，这些属性都是 SDK 提供的默认属性，根据默认属性查询的构建如下：</p>
-<pre><code>// 查询对话名称为「LeanCloud 粉丝群」的对话
+<pre><code class="lang-java">// 查询对话名称为「LeanCloud 粉丝群」的对话
 conversationQuery.whereEqualTo(&quot;name&quot;, &quot;LeanCloud 粉丝群&quot;);
 
 // 查询对话名称包含 「LeanCloud」 的对话
@@ -1933,31 +2396,27 @@ conversationQuery.whereContains(&quot;name&quot;, &quot;LeanCloud&quot;);
 Calendar yesterday= Calendar.getInstance();
 yesterday.add(Calendar.DATE, -1);
 conversationQuery.whereGreaterThan(&quot;lm&quot;, yesterday);
-</code></pre><p>针对默认属性的查询可以如上进行构建。</p>
+</code></pre>
+<p>针对默认属性的查询可以如上进行构建。</p>
 <p>相对于默认属性的查询，开发者自定义属性的查询需要在构建查询的时在关键字（key）前加上一个特殊的前缀：<code>attr</code>，不过每个 SDK 都提供相关的快捷方式帮助开发者方便的构建查询：</p>
-<pre><code>// 查询话题为 DOTA2 对话
+<pre><code class="lang-java">// 查询话题为 DOTA2 对话
 conversationQuery.whereEqualTo(&quot;attr.topic&quot;, &quot;DOTA2&quot;);
 // 查询等级大于 5 的对话
 conversationQuery.whereGreaterThan(&quot;attr.level&quot;, 5);
-</code></pre><p>在 Andorid SDK 中，如果在针对自定义查询的时候，不主动加上 <code>attr</code> 的前缀，SDK 会自动添加，比如上述的代码中查询话题为 DOTA2 的对话如下书写效果一致：</p>
-<pre><code>conversationQuery.whereEqualTo(&quot;topic&quot;, &quot;DOTA2&quot;);
-</code></pre><p>特别注意：</p>
-<blockquote>
-<p>因为 Android 会自动添加 attr 前缀进行查询构建，所以在设置自定义属性的时候，<strong>禁止</strong>使用以下：<code>name</code>,<code>lm</code>,<code>c</code>,<code>tr</code>,<code>m</code>,<code>objectId</code>等已被默认属性占用的 key 值。</p>
-</blockquote>
+</code></pre>
 <p>默认属性以及自定义属性的区分便于 SDK 后续的内建属性拓展和维护，自定义属性的开放有利于开发者在可控的范围内进行查询的构建。</p>
 <p>条件查询又分为：比较查询、正则匹配查询、包含查询、空值查询，以下会做分类演示。</p>
-<h4 id="-">比较查询</h4>
+<h5 id="-">比较查询</h5>
 <p>比较查询在一般的理解上都包含以下几种：</p>
 <p>比较查询最常用的是等于查询：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.whereEqualTo(&quot;attr.topic&quot;,&quot;movie&quot;);
       query.findInBackground(new AVIMConversationQueryCallback(){
         @Override
@@ -1972,16 +2431,17 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>目前条件查询只针对 <code>AVIMConversation</code> 对象的自定义属性进行操作，也就是针对 <code>_Conversation</code> 表中的 <code>attr</code> 字段进行 <code>AVQuery</code> 查询。</p>
+</code></pre>
+<p>目前条件查询只针对 <code>AVIMConversation</code> 对象的自定义属性进行操作，也就是针对 <code>_Conversation</code> 表中的 <code>attr</code> 字段进行 <code>AVQuery</code> 查询。</p>
 <p>下面检索一下类型不是私有的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.whereNotEqualTo(&quot;attr.type&quot;,&quot;private&quot;);
       query.setLimit(50);//limit 设为 50 ,默认为 10 个
 
@@ -1998,15 +2458,16 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>对于可以比较大小的整型、浮点等常用类型，可以参照以下示例代码进行扩展：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<p>对于可以比较大小的整型、浮点等常用类型，可以参照以下示例代码进行扩展：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.whereGreaterThan(&quot;attr.age&quot;,18);
 
       query.findInBackground(new AVIMConversationQueryCallback(){
@@ -2022,17 +2483,18 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">正则匹配查询</h4>
-<p>匹配查询是指在 <code>AVIMConversationQuery</code> 的查询条件中使用正则表达式来匹配数据。</p>
+</code></pre>
+<h5 id="-">正则匹配查询</h5>
+<p>匹配查询是指在 <code>AVIMConversationsQuery</code> 的查询条件中使用正则表达式来匹配数据。</p>
 <p>比如要查询所有 language 是中文的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
       query.whereMatches(&quot;attr.language&quot;,&quot;[\\u4e00-\\u9fa5]&quot;); //attr.language 是中文字符 
 
       query.findInBackground(new AVIMConversationQueryCallback(){
@@ -2048,16 +2510,17 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">包含查询</h4>
+</code></pre>
+<h5 id="-">包含查询</h5>
 <p>包含查询是指方法名字包含 <code>Contains</code> 单词的方法，例如查询关键字包含「教育」的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
 
       //查询attr.keywords 包含 「教育」的Conversation
       query.whereContains(&quot;attr.keywords&quot;,&quot;教育&quot;); 
@@ -2075,15 +2538,16 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>另外，包含查询还能检索与成员相关的对话数据。以下代码将帮助 Tom 查找出 Jerry 以及 Bob 都加入的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<p>另外，包含查询还能检索与成员相关的对话数据。以下代码将帮助 Tom 查找出 Jerry 以及 Bob 都加入的对话：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
 
       //查询对话成员有 Bob 和 Jerry的Conversation
       query.withMembers(Arrays.as(&quot;Bob&quot;,&quot;Jerry&quot;));
@@ -2101,46 +2565,18 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h4 id="-">空值查询</h4>
-<p>空值查询是指查询相关列是否为空值的方法，例如要查询 lm 列为空值的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
-tom.open(new AVIMClientCallback(){
-
-  @Override
-  public void done(AVIMClient client,AVIMException e){
-    if(e==null){
-    //登录成功
-    AVIMConversationQuery query = client.getQuery();
-
-    //查询 lm 列为空的 Conversation 列表
-    query.whereDoesNotExist(&quot;lm&quot;);
-
-    query.findInBackground(new AVIMConversationQueryCallback(){
-      @Override
-      public void done(List&lt;AVIMConversation&gt; convs,AVIMException e){
-        if(e==null){
-          if(convs!=null &amp;&amp; !convs.isEmpty()){
-            //获取符合查询条件的Conversation列表
-          }
-        }
-      }
-    });
-    }
-  }
-});
-</code></pre><p>如果要查询 lm 列不为空的对话，则替换为如下：</p>
-<pre><code>query.whereExists(&quot;lm&quot;);
-</code></pre><h4 id="-">组合查询</h4>
-<p>组合查询的概念就是把诸多查询条件合并成一个查询，再交给 SDK 去云端进行查询。</p>
-<p>例如，要查询年龄小于 18 岁，并且关键字包含「教育」的对话：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+</code></pre>
+<h5 id="-">组合查询</h5>
+<p>组合查询就是把诸多查询条件合并成一个查询，再交给 SDK 去云端进行查询。</p>
+<p>查询年龄小于 18 岁，并且关键字包含「教育」的对话：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
     public void done(AVIMClient client,AVIMException e){
       if(e==null){
       //登录成功
-      AVIMConversationQuery query = client.getQuery();
+      AVIMConversationsQuery query = client.getConversationsQuery();
 
       //查询 attr.keywords 包含 「教育」并且 attr.age 小于 18 的对话
       query.whereContains(&quot;attr.keywords&quot;, &quot;教育&quot;);
@@ -2159,15 +2595,171 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><p>只要查询构建得合理，开发者完全不需要担心组合查询的性能。</p>
+</code></pre>
+<p>查询自己参与过的对话，包括<strong>系统</strong>对话（对话的查询默认不返回系统对话）：</p>
+<pre><code class="lang-java">void queryAllCovnersationsIncludeSystem() {
+    AVIMClient client = AVIMClient.getInstance(&quot;Tom&quot;);
+    client.open(new AVIMClientCallback() {
+      @Override
+      public void done(AVIMClient client, AVIMException e) {
+        AVIMConversationsQuery memberQuery = client.getConversationsQuery();
+        memberQuery.whereContainsAll(&quot;m&quot;, Arrays.asList(&quot;Tom&quot;));
+
+        AVIMConversationsQuery sysQuery = client.getConversationsQuery();
+        sysQuery.whereEqualTo(&quot;sys&quot;, true);
+
+        AVIMConversationsQuery.or(Arrays.asList(memberQuery, sysQuery)).findInBackground(new AVIMConversationQueryCallback() {
+          @Override
+          public void done(List&lt;AVIMConversation&gt; conversations, AVIMException e) {
+            // conversations 返回的即是所有包含 Tom 的 conversation 以及系统回话
+          }
+        });
+      }
+    });
+  }
+</code></pre>
+<p>查询一段时间内活跃的对话：</p>
+<pre><code class="lang-java">void queryActiveConversationsBetween() {
+    AVIMClient client = AVIMClient.getInstance(&quot;Tom&quot;);
+    client.open(new AVIMClientCallback() {
+      @Override
+      public void done(AVIMClient client, AVIMException e) {
+        AVIMConversationsQuery query = client.getConversationsQuery();
+        query.whereGreaterThan(&quot;lm&quot;, getDateWithDateString(&quot;2017-01-01&quot;));
+        query.whereLessThan(&quot;lm&quot;, getDateWithDateString(&quot;2017-02-01&quot;));
+        query.findInBackground(new AVIMConversationQueryCallback() {
+          @Override
+          public void done(List&lt;AVIMConversation&gt; conversations, AVIMException e) {
+            // conversations 返回的即是在 2017-01-01 至 2017-02-01 之间活跃的 conversation
+          }
+        });
+      }
+    });
+  }
+
+  Date getDateWithDateString(String dateString) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+    Date date = dateFormat.parse(dateString);
+    return date;
+  }
+</code></pre>
+<p>只要查询构建得合理，开发者完全不需要担心组合查询的性能。</p>
+<h5 id="-">空值查询</h5>
+<p>空值查询是指查询相关列是否为空值的方法，例如要查询 lm 列为空值的对话：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+tom.open(new AVIMClientCallback(){
+
+  @Override
+  public void done(AVIMClient client,AVIMException e){
+    if(e==null){
+    //登录成功
+    AVIMConversationsQuery query = client.getConversationsQuery();
+
+    //查询 lm 列为空的 Conversation 列表
+    query.whereDoesNotExist(&quot;lm&quot;);
+
+    query.findInBackground(new AVIMConversationQueryCallback(){
+      @Override
+      public void done(List&lt;AVIMConversation&gt; convs,AVIMException e){
+        if(e==null){
+          if(convs!=null &amp;&amp; !convs.isEmpty()){
+            //获取符合查询条件的Conversation列表
+          }
+        }
+      }
+    });
+    }
+  }
+});
+</code></pre>
+<p>如果要查询 lm 列不为空的对话，则替换为如下：</p>
+<pre><code class="lang-java">query.whereExists(&quot;lm&quot;);
+</code></pre>
+<h4 id="-">结果排序</h4>
+<p>对话支持对查询结果进行排序：</p>
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+
+tom.open(new AVIMClientCallback() {
+  @Override
+  public void done(AVIMClient client, AVIMException e) {
+    if (e == null) {
+      // 登录成功
+      AVIMConversationsQuery query = client.getConversationsQuery();
+
+      // 按对话的创建时间降序
+      query.orderByDescending(&quot;createdAt&quot;);
+
+      query.findInBackground(new AVIMConversationQueryCallback() {
+        @Override
+        public void done(List&lt;AVIMConversation&gt; convs, AVIMException e) {
+          if (e == null) {
+            if(convs != null &amp;&amp; !convs.isEmpty()) {
+              // 获取符合查询条件的 conversation 列表
+            }
+          }
+        }
+      });
+    }
+  }
+});
+</code></pre>
+<h4 id="-">精简模式</h4>
+<p>普通对话最多可以容纳 500 个成员，在有些业务逻辑不需要对话的成员列表的情况下，可以使用「精简模式」进行查询，这样返回结果中不会包含成员列表（<code>members</code> 字段为空数组），有助于提升应用的性能同时减少流量消耗。</p>
+<pre><code class="lang-java">public void queryConversationCompact() {
+  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+  tom.open(new AVIMClientCallback() {
+    @Override
+    public void done(AVIMClient client, AVIMException e) {
+      if (e == null) {
+        //登录成功
+        AVIMConversationsQuery query = client.getConversationsQuery();
+        query.setCompact(true);
+        query.findInBackground(new AVIMConversationQueryCallback() {
+          @Override
+          public void done(List&lt;AVIMConversation&gt; convs, AVIMException e) {
+            if (e == null) {
+              //获取符合查询条件的 Conversation 列表
+            }
+          }
+        });
+      }
+    }
+  });
+}
+</code></pre>
+<h4 id="-">最后一条消息</h4>
+<p>对于一个聊天应用，一个典型的需求是在对话的列表界面显示最后一条消息，默认情况下，针对对话的查询结果是不带最后一条消息的，需要单独打开相关选项：</p>
+<pre><code class="lang-java">public void queryConversationWithLastMessage() {
+  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+  tom.open(new AVIMClientCallback() {
+    @Override
+    public void done(AVIMClient client, AVIMException e) {
+      if (e == null) {
+        //登录成功
+        AVIMConversationsQuery query = client.getConversationsQuery();
+        query.setWithLastMessagesRefreshed(true);
+        query.findInBackground(new AVIMConversationQueryCallback() {
+          @Override
+          public void done(List&lt;AVIMConversation&gt; convs, AVIMException e) {
+            if (e == null) {
+              //获取符合查询条件的 Conversation 列表
+            }
+          }
+        });
+      }
+    }
+  });
+}
+</code></pre>
+<p>需要注意的是，这个选项真正的意义是「刷新对话的最后一条消息」，这意味着由于 SDK 缓存机制的存在，将这个选项设置为 <code>false</code> 查询得到的对话也还是有可能会存在最后一条消息的。</p>
 <h4 id="-">缓存查询</h4>
 <p>通常，将查询结果缓存到磁盘上是一种行之有效的方法，这样就算设备离线，应用刚刚打开，网络请求尚未完成时，数据也能显示出来。或者为了节省用户流量，在应用打开的第一次查询走网络，之后的查询可优先走本地缓存。</p>
-<p>值得注意的是，默认的策略是先走本地缓存的再走网络的，缓存时间是一小时。AVIMConversationQuery 中有如下方法：</p>
-<pre><code class="lang-java">  // 设置 AVIMConversationQuery的查询策略
+<p>值得注意的是，默认的策略是先走本地缓存的再走网络的，缓存时间是一小时。AVIMConversationsQuery 中有如下方法：</p>
+<pre><code class="lang-java">  // 设置 AVIMConversationsQuery 的查询策略
   public void setQueryPolicy(AVQuery.CachePolicy policy);
 </code></pre>
 <p>有时你希望先走网络查询，发生网络错误的时候，再从本地查询，可以这样：</p>
-<pre><code class="lang-java">    AVIMConversationQuery query = client.getQuery();
+<pre><code class="lang-java">    AVIMConversationsQuery query = client.getConversationsQuery();
     query.setQueryPolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
     query.findInBackground(new AVIMConversationQueryCallback() {
       @Override
@@ -2181,7 +2773,7 @@ tom.open(new AVIMClientCallback(){
 <p>聊天室本质上就是一个对话，所以上面章节提到的<strong>所有属性、方法、操作以及管理都适用于聊天室</strong>。它仅仅在逻辑上是一种暂态、临时的对话，应用场景有弹幕、直播等等。</p>
 <p>聊天室与普通对话或群聊不一样的地方具体体现为：</p>
 <ul>
-<li><strong>无人数限制</strong>（而普通对话最多允许 500 人加入）<br/><span class="text-muted">从实际经验来看，为避免过量消息刷屏而影响用户体验，我们建议每个聊天室的<u>上限人数控制在 <strong>5000 人</strong>左右</u>。开发者可以考虑从应用层面将大聊天室拆分成多个较小的聊天室。</span></li>
+<li><strong>无人数限制</strong>（而普通对话最多允许 500 人加入）<br><span class="text-muted">从实际经验来看，为避免过量消息刷屏而影响用户体验，我们建议每个聊天室的<u>上限人数控制在 <strong>5000 人</strong>左右</u>。开发者可以考虑从应用层面将大聊天室拆分成多个较小的聊天室。</span></li>
 <li>不支持查询成员列表，但可以通过相关 API 查询在线人数。</li>
 <li>不支持离线消息、离线推送通知、消息回执等功能。</li>
 <li>没有成员加入、成员离开的通知。</li>
@@ -2191,7 +2783,7 @@ tom.open(new AVIMClientCallback(){
 <h3 id="-">创建聊天室</h3>
 <p>和建立普通对话类似，建立一个聊天室只是在 <code>AVIMClient.createConversation(conversationMembers, name, attributes, isTransient, callback)</code> 中传入 <code>isTransient=true</code>。</p>
 <p>比如喵星球正在直播选美比赛，主持人 Tom 创建了一个临时对话，与喵粉们进行互动：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
     @Override
@@ -2209,9 +2801,10 @@ tom.open(new AVIMClientCallback(){
       }
     }
 });
-</code></pre><h3 id="-">查询在线人数</h3>
+</code></pre>
+<h3 id="-">查询在线人数</h3>
 <p> <code>AVIMConversation.getMemberCount()</code>  可以用来查询普通对话的成员总数，在聊天室中，它返回的就是实时在线的人数：</p>
-<pre><code>private void TomQueryWithLimit() {
+<pre><code class="lang-java">private void TomQueryWithLimit() {
   AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
   tom.open(new AVIMClientCallback() {
 
@@ -2219,7 +2812,7 @@ tom.open(new AVIMClientCallback(){
     public void done(AVIMClient client, AVIMException e) {
       if (e == null) {
         //登录成功
-        AVIMConversationQuery query = tom.getQuery();
+        AVIMConversationsQuery query = tom.getConversationsQuery();
         query.setLimit(1);
         //获取第一个对话
         query.findInBackground(new AVIMConversationQueryCallback() {
@@ -2246,10 +2839,11 @@ tom.open(new AVIMClientCallback(){
     }
   });
 }
-</code></pre><h3 id="-">查找聊天室</h3>
-<p>开发者需要注意的是，通过 <code>AVIMClient.getQuery()</code> 这样得到的 <code>AVIMConversationQuery</code> 实例默认是查询全部对话的，也就是说，如果想查询指定的聊天室，需要额外再调用 以 <code>where</code> 开头的 方法来限定更多的查询条件：</p>
+</code></pre>
+<h3 id="-">查找聊天室</h3>
+<p>开发者需要注意的是，通过 <code>AVIMClient.getConversationsQuery()</code> 这样得到的 <code>AVIMConversationsQuery</code> 实例默认是查询全部对话的，也就是说，如果想查询指定的聊天室，需要额外再调用 以 <code>where</code> 开头的 方法来限定更多的查询条件：</p>
 <p>比如查询主题包含「奔跑吧，兄弟」的聊天室：</p>
-<pre><code>  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
   tom.open(new AVIMClientCallback() {
 
     @Override
@@ -2257,7 +2851,7 @@ tom.open(new AVIMClientCallback(){
       if (e == null) {
         //登录成功
         //查询 attr.topic 为 &quot;奔跑吧，兄弟&quot; 的暂存聊天室
-        AVIMConversationQuery query = client.getQuery();
+        AVIMConversationsQuery query = client.getConversationsQuery();
         query.whereEqualTo(&quot;attr.topic&quot;, &quot;奔跑吧，兄弟&quot;);
         query.whereEqualTo(&quot;tr&quot;, true);
         //获取第一个对话
@@ -2283,11 +2877,12 @@ tom.open(new AVIMClientCallback(){
       }
     }
   });
-</code></pre><h2 id="-">聊天记录</h2>
+</code></pre>
+<h2 id="-">聊天记录</h2>
 <p>聊天记录一直是客户端开发的一个重点，QQ 和 微信的解决方案都是依托客户端做缓存，当收到一条消息时就按照自己的业务逻辑存储在客户端的文件或者是各种客户端数据库中。</p>
 <p>我们的 SDK 会将普通的对话消息自动保存在云端，开发者可以通过 AVIMConversation 来获取该对话的所有历史消息。</p>
 <p>获取该对话中最近的 N 条（默认 20，最大值 1000）历史消息，通常在第一次进入对话时使用：</p>
-<pre><code>  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">  AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
   tom.open(new AVIMClientCallback() {
 
     @Override
@@ -2308,8 +2903,9 @@ tom.open(new AVIMClientCallback(){
       }
     }
   });
-</code></pre><p>获取某条消息之前的历史消息，通常用在翻页加载更多历史消息的场景中。</p>
-<pre><code>
+</code></pre>
+<p>获取某条消息之前的历史消息，通常用在翻页加载更多历史消息的场景中。</p>
+<pre><code class="lang-java">
   AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
   tom.open(new AVIMClientCallback(){
 
@@ -2345,14 +2941,15 @@ tom.open(new AVIMClientCallback(){
       }
     }
   });
-</code></pre><p>翻页获取历史消息的时候，LeanCloud 云端是从某条消息开始，往前查找所指定的 N 条消息来返回给客户端。为此，获取历史消息需要传入三个参数：</p>
+</code></pre>
+<p>翻页获取历史消息的时候，LeanCloud 云端是从某条消息开始，往前查找所指定的 N 条消息来返回给客户端。为此，获取历史消息需要传入三个参数：</p>
 <ul>
 <li>起始消息的 messageId</li>
 <li>起始消息的发送时间戳</li>
 <li>需要获取的消息条数</li>
 </ul>
 <p>假如每一页为 10 条信息，下面的代码将演示如何翻页：</p>
-<pre><code>  final int pageSize = 10;
+<pre><code class="lang-java">  final int pageSize = 10;
   conversation.queryMessages(pageSize, new AVIMMessagesQueryCallback() {
     @Override
     public void done(List&lt;AVIMMessage&gt; firstPage, AVIMException e) {
@@ -2370,7 +2967,8 @@ tom.open(new AVIMClientCallback(){
       }
     }
   });
-</code></pre><h3 id="-">客户端聊天记录缓存</h3>
+</code></pre>
+<h3 id="-">客户端聊天记录缓存</h3>
 <p>为了减少客户端的请求数量，以及减少用户的流量，SDK 实现了一套缓存同步策略。用户在调用获取聊天记录的接口时优先从缓存中获取，SDK 是有算法保证本地与云端聊天记录是同步的。</p>
 <p>聊天记录的缓存功能默认为<strong>开启</strong>，但如果开发者出于自身业务逻辑需求，不想在客户端使用缓存功能，可以使用如下接口将其关闭：</p>
 <pre><code class="lang-java">AVIMClient.setMessageQueryCacheEnable(false);
@@ -2394,7 +2992,7 @@ tom.open(new AVIMClientCallback(){
 <p><strong>注意：用户如果自行实现了重连逻辑可能会报出 1001 错误</strong>。</p>
 <h3 id="-">退出登录</h3>
 <p>要退出当前的登录状态或要切换账户，方法如下：</p>
-<pre><code>AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
+<pre><code class="lang-java">AVIMClient tom = AVIMClient.getInstance(&quot;Tom&quot;);
 tom.open(new AVIMClientCallback(){
 
   @Override
@@ -2412,11 +3010,12 @@ tom.open(new AVIMClientCallback(){
       }
   }
 });
-</code></pre><h2 id="-">安全与签名</h2>
+</code></pre>
+<h2 id="-">安全与签名</h2>
 <p>在继续阅读下文之前，请确保你已经对 <a href="realtime_v2.html#权限和认证">实时通信服务开发指南 &middot; 权限和认证</a> 有了充分的了解。</p>
 <h3 id="-">实现签名工厂</h3>
 <p>为了满足开发者对权限和认证的要求，我们设计了操作签名的机制。签名启用后，所有的用户登录、对话创建/加入、邀请成员、踢出成员等登录都需要验证签名，这样开发者就对消息具有了完全的掌控。</p>
-<p>我们强烈推荐启用签名，具体步骤是 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，勾选 <strong>聊天、推送</strong> 下的 <strong>聊天服务，启用签名认证</strong>。</p>
+<p>我们强烈推荐启用登录签名，具体步骤是 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，勾选 <strong>聊天、推送</strong> 下的 <strong>聊天服务，启用登录认证</strong>。</p>
 <p>客户端这边究竟该如何使用呢？我们只需要实现 SignatureFactory 接口，然后在用户登录之前，把这个接口的实例赋值给 AVIMClient 即可（<code>AVIMClient.setSignatureFactory(factory)</code>）。</p>
 <p>设定了 signatureFactory 之后，对于需要鉴权的操作，实时通信 SDK 与服务器端通讯的时候都会带上应用自己生成的 Signature 信息，LeanCloud 云端会使用 app 的 masterKey 来验证信息的有效性，保证聊天渠道的安全。</p>
 <p>对于 SignatureFactory 接口，我们只需要实现这两个函数即可：</p>
@@ -2442,7 +3041,7 @@ tom.open(new AVIMClientCallback(){
       List&lt;String&gt; targetIds, String action) throws SignatureException;
 </code></pre><p><code>createSignature</code> 函数会在用户登录、对话创建的时候被调用，<code>createConversationSignature</code> 会在对话加入成员、邀请成员、踢出成员等操作时被调用。</p>
 <p>你需要做的就是按照前文所述的签名算法实现签名，其中 <code>Signature</code> 声明如下：</p>
-<pre><code>public class Signature {
+<pre><code class="lang-java">public class Signature {
   public List&lt;String&gt; getSignedPeerIds();
   public void setSignedPeerIds(List&lt;String&gt; signedPeerIds);
 
@@ -2455,7 +3054,8 @@ tom.open(new AVIMClientCallback(){
   public String getNonce();
   public void setNonce(String nonce);
 }
-</code></pre><p>其中四个属性分别是:</p>
+</code></pre>
+<p>其中四个属性分别是:</p>
 <ul>
 <li>signature 签名</li>
 <li>timestamp 时间戳，单位秒</li>
@@ -2463,7 +3063,7 @@ tom.open(new AVIMClientCallback(){
 <li>signedPeerIds 放行的 clientId 列表，v2 中已经<strong>废弃不用</strong></li>
 </ul>
 <p>下面的代码展示了基于 LeanCloud 云引擎进行签名时，客户端的实现片段，你可以参考它来完成自己的逻辑实现：</p>
-<pre><code>public class KeepAliveSignatureFactory implements SignatureFactory {
+<pre><code class="lang-java">public class KeepAliveSignatureFactory implements SignatureFactory {
  @Override
  public Signature createSignature(String peerId, List&lt;String&gt; watchIds) {
    Map&lt;String,Object&gt; params = new HashMap&lt;String,Object&gt;();
@@ -2510,10 +3110,16 @@ tom.open(new AVIMClientCallback(){
    return null;
   }
 }
-</code></pre><blockquote>
-<p>需要强调的是：开发者切勿在客户端直接使用 MasterKey 进行签名操作，因为 MaterKey 一旦泄露，会造成应用的数据处于高危状态，后果不容小视。因此，强烈建议开发者将签名的具体代码托管在安全性高稳定性好的云端服务器上（例如 LeanCloud 云引擎）。</p>
-</blockquote>
+</code></pre>
+  <div class="callout callout-danger">
+  <p>需要强调的是：开发者切勿在客户端直接使用 MasterKey 进行签名操作，因为 MaterKey 一旦泄露，会造成应用的数据处于高危状态，后果不容小视。因此，强烈建议开发者将签名的具体代码托管在安全性高稳定性好的云端服务器上（例如 LeanCloud 云引擎）。</p>
+</div>
+
+
 <p>为了帮助开发者理解云端签名的算法，我们开源了一个用 Node.js + 云引擎实现签名的云端，供开发者学习和使用：<a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">LeanCloud 实时通信云引擎签名 Demo</a>。</p>
+<h3 id="-">测试签名</h3>
+<p>开发者可以在控制台中方便地测试签名。进入 <a href="/dashboard/messaging.html?appid=#/message/realtime/client">消息 &gt; 实时消息 &gt; 用户</a>，输入一个 clientId 进行查找，找到后界面会显示 <strong>测试签名</strong> 按键及更多内容。</p>
+<p><img src="images/console-im-signature-test.png" width="600" class="img-responsive"></p>
 <h3 id="-">单点登录</h3>
 <p>一款聊天应用，随着不断的发展，会衍生出多个平台的不同客户端。以 QQ 为例，目前它所提供的客户端如下：</p>
 <ul>
@@ -2567,6 +3173,28 @@ public class AVImClientManager extends AVIMClientEventHandler {
   ...
 }
 </code></pre>
+<p>为了更灵活地控制登录过程，我们在登录接口上增加了一个选项，以下是方法签名：</p>
+<pre><code class="lang-java">open(AVIMClientOpenOption operation, final AVIMClientCallback callback){}
+</code></pre>
+<p>登录选项由 <code>AVIMClientOpenOption</code> 对象表示，其中的每一个属性表示具体的选项，目前支持以下选项：</p>
+<pre><code class="lang-java">public void setForceSingleLogin(boolean forceSingleLogin) {}
+</code></pre>
+<p>登录动作区分成两种不同的类型，强制登录和非强制登录。<code>forceSingleLogin</code> 选项设置登录是否为强制登陆。</p>
+<ul>
+<li><strong>强制登录</strong>：无论当前设备是否曾被其他设备踢下线，都强制登录。</li>
+<li><strong>非强制登录</strong>：如果当前设备曾被其他设备踢下线，则登录时返回错误。</li>
+</ul>
+<p>将 <code>forceSingleLogin</code> 设置为 <code>true</code> 表示强制登录；设置为 <code>false</code> 表示非强制登录。例如，如果希望实现强制登录，代码可以写成：</p>
+<pre><code class="lang-java">AVIMClientOpenOption openOption = new AVIMClientOpenOption();
+openOption.setForceSingleLogin(true);
+AVIMClient client = AVIMClient.getInstance(&quot;Tom&quot;);
+client.open(openOption, new AVIMClientCallback() {
+  @Override
+  public void done(AVIMClient client, AVIMException e) {
+  }
+});
+</code></pre>
+<p>如果 <code>openOption</code> 设置为 <code>null</code>，或者使用 <code>client.open(AVIMClientCallback callback)</code> 方法进行登录，默认的登录类型为非强制登录。</p>
 <p>如上述代码中，被动下线的时候，云端会告知原因，因此客户端在做展现的时候也可以做出类似于 QQ 一样友好的通知。</p>
 <h3 id="-">自动登录</h3>
 <p>如果开发者希望控制 App 重新启动后是否由 SDK 自动登录实时通讯，这可通过如下接口实现：</p>
@@ -2607,7 +3235,7 @@ public class AVImClientManager extends AVIMClientEventHandler {
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -2630,12 +3258,8 @@ public class AVImClientManager extends AVIMClientEventHandler {
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -2677,29 +3301,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

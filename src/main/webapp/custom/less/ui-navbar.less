@@ -4,11 +4,9 @@
 }
 
 .navbar-brand {
-  padding-top: 19px;
-  padding-bottom: 18px;
   height: @navbar-height;
-  font-size: 24px;
-  color: @text-color;
+  font-size: 20px;
+  color: @brand-primary;
 
   &:hover,
   &:focus {
@@ -27,6 +25,26 @@
 }
 
 .navbar-toggle {
-  margin-top: 13px;
-  margin-bottom: 13px;
+  /*margin-top: 13px;
+  margin-bottom: 13px;*/
+  border:0;
+}
+
+.navbar-default {
+  .navbar-toggle {
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: @brand-primary;
+
+      .icon-bar {
+        background-color: @brand-primary;
+      }
+
+    }
+
+    .icon-bar {
+      width: 18px;
+    }
+  }
 }

@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>REST API 使用详解 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,6 +440,9 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="rest-api-">REST API 使用详解</h1>
 <p>REST API 可以让你用任何支持发送 HTTP 请求的设备来与 LeanCloud 进行交互，你可以使用 REST API 做很多事情，比如：</p>
 <ul>
@@ -413,7 +473,7 @@
 </tbody>
 </table>
 <h3 id="-">在线测试</h3>
-<p><a href="https://leancloud.cn/apionline/">API 在线测试工具</a>，目前仅支持调试<strong>中国节点</strong>下的应用。</p>
+<p><a href="/dashboard/apionline/index.html">API 在线测试工具</a>，目前仅支持调试<strong>中国节点</strong>下的应用。</p>
 <h3 id="-">对象</h3>
 <table>
   <thead>
@@ -475,7 +535,7 @@
     <tr>
       <td>/1.1/users</td>
       <td>POST</td>
-      <td>用户注册<br/>用户连接</td>
+      <td>用户注册<br>用户连接</td>
     </tr>
     <tr>
       <td>/1.1/usersByMobilePhone</td>
@@ -484,7 +544,7 @@
     </tr>
     <tr>
       <td>/1.1/login</td>
-      <td>GET</td>
+      <td>POST</td>
       <td>用户登录</td>
     </tr>
     <tr>
@@ -498,6 +558,11 @@
       <td>根据 <a href="leanstorage_guide-js.html#SessionToken">sessionToken</a> 获取用户信息</td>
     </tr>
     <tr>
+      <td>/1.1/users/&lt;objectId&gt;/refreshSessionToken</td>
+      <td>PUT</td>
+      <td>重置用户 sessionToken。</td>
+    </tr>
+    <tr>
       <td>/1.1/users/&lt;objectId&gt;/updatePassword</td>
       <td>PUT</td>
       <td>更新密码，要求输入旧密码。</td>
@@ -505,7 +570,7 @@
     <tr>
       <td>/1.1/users/&lt;objectId&gt;</td>
       <td>PUT</td>
-      <td>更新用户<br/>用户连接<br/>验证Email</td>
+      <td>更新用户<br>用户连接<br>验证Email</td>
     </tr>
     <tr>
       <td>/1.1/users</td>
@@ -527,6 +592,7 @@
       <td>POST</td>
       <td>请求验证用户邮箱</td>
     </tr>
+
     <tr>
       <td>/1.1/requestMobilePhoneVerify</td>
       <td>POST</td>
@@ -552,6 +618,7 @@
       <td>PUT</td>
       <td>验证手机短信验证码并重置密码。</td>
     </tr>
+
   </tbody>
 </table>
 
@@ -826,7 +893,7 @@
   -H &quot;X-LC-Key: UtOCzqb67d3sN12Kts4URwy8&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;content&quot;: &quot;更新一篇博客的内容&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><p>对于 JavaScript 使用，LeanCloud 支持跨域资源共享，所以你可以将这些 header 同 XMLHttpRequest 一同使用。</p>
 <h4 id="-">更安全的鉴权方式</h4>
 <p>我们还支持一种新的 API 鉴权方式，即在 HTTP header 中使用 <strong>X-LC-Sign</strong> 来代替 <strong>X-LC-Key</strong>，以降低 App Key 的泄露风险。例如：</p>
@@ -835,7 +902,7 @@
   -H &quot;X-LC-Sign: d5bcbb897e19b2f6633c716dfdfaf9be,1453014943466&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;content&quot;: &quot;在 HTTP header 中使用 X-LC-Sign 来更新一篇博客的内容&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><p><strong>X-LC-Sign</strong> 的值是由 <code>sign,timestamp[,master]</code> 组成的字符串：</p>
 <table>
 <thead>
@@ -891,14 +958,14 @@
 
 <p><strong>使用 App Key 来计算 sign</strong>：</p>
 <blockquote>
-<p>md5( timestamp + App Key ) <br/>
-= md5( <code><u>1453014943466</u>UtOCzqb67d3sN12Kts4URwy8</code> )<br/>= d5bcbb897e19b2f6633c716dfdfaf9be</p>
+<p>md5( timestamp + App Key ) <br>
+= md5( <code><u>1453014943466</u>UtOCzqb67d3sN12Kts4URwy8</code> )<br>= d5bcbb897e19b2f6633c716dfdfaf9be</p>
 </blockquote>
 <pre><code class="lang-sh">  -H &quot;X-LC-Sign: d5bcbb897e19b2f6633c716dfdfaf9be,1453014943466&quot; \
 </code></pre>
 <p><strong>使用 Master Key 来计算 sign</strong>：</p>
 <blockquote>
-<p>md5( timestamp + Master Key )<br/>
+<p>md5( timestamp + Master Key )<br>
 = md5( <code><u>1453014943466</u>DyJegPlemooo4X1tg94gQkw1</code> ) <br>
 = e074720658078c898aa0d4b1b82bdf4b</p>
 </blockquote>
@@ -941,23 +1008,23 @@
 </code></pre>
 <p>createdAt 和 updatedAt 都是 UTC 时间戳，以 ISO 8601 标准和毫秒级精度储存：<code>YYYY-MM-DDTHH:MM:SS.MMMZ</code>。objectId 是一个字符串，在类中可以唯一标识一个实例。
 在 REST API 中，class 级的操作都是通过一个带类名的资源路径（URL）来标识的。例如，如果类名是 Post，那么 class 的 URL 就是：</p>
-<pre><code>https://api.leancloud.cn/1.1/classes/Post
+<pre><code>https://{{v2Domain}}/1.1/classes/Post
 </code></pre><p>对于<strong>用户账户</strong>这种对象，有一个特殊的 URL：</p>
-<pre><code>https://api.leancloud.cn/1.1/users
+<pre><code>https://{{v2Domain}}/1.1/users
 </code></pre><p>针对于一个特定的对象的操作可以通过组织一个 URL 来做。例如，对 Post 中的一个 objectId 为 <code>558e20cbe4b060308e3eb36c</code> 的对象的操作应使用如下 URL：</p>
-<pre><code>https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+<pre><code>https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><h3 id="-">创建对象</h3>
-<p>为了在 LeanCloud 上创建一个新的对象，应该向 class 的 URL 发送一个 <strong>POST</strong> 请求，其中应该包含对象本身。例如，要创建如上所说的对象：</p>
+<p>为了在 LeanCloud 上创建一个新的对象，应该向 class 的 URL 发送一个 <strong>POST</strong> 请求，其中应该包含对象本身。<span class="callout-danger" style="background-color: transparent;">class 的名称必须以字母开头，只能包含字母、数字和下划线。</span>例如，要创建如上所说的对象：</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;content&quot;: &quot;每个 Java 程序员必备的 8 个开发工具&quot;,&quot;pubUser&quot;: &quot;LeanCloud官方客服&quot;,&quot;pubTimestamp&quot;: 1435541999}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>当创建成功时，HTTP 的返回是 <strong>201 Created</strong>，而 header 中的 Location 表示新的 object 的 URL：</p>
 <pre><code class="lang-sh">Status: 201 Created
-Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+Location: https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <p>响应的主体是一个 JSON 对象，包含新的对象的 objectId 和 createdAt 时间戳。</p>
 <pre><code class="lang-json">{
@@ -965,15 +1032,26 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   &quot;objectId&quot;: &quot;558e20cbe4b060308e3eb36c&quot;
 }
 </code></pre>
-<blockquote>
-<p>注意：<strong>我们对单个 class 的记录数目没有做限制，但是单个应用的总 class 数目限定为 500 个以内</strong>。也就是说单个应用里面，对象的类别不超过 500 个，但是单个类别下的实例数量则没有限制。</p>
-</blockquote>
+<p>如果希望返回新创建的对象的完整信息，可以在 URL 里加上 <code>fetchWhenSave</code> 选项，并且设置为 true：</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{&quot;content&quot;: &quot;每个 Java 程序员必备的 8 个开发工具&quot;,&quot;pubUser&quot;: &quot;LeanCloud官方客服&quot;,&quot;pubTimestamp&quot;: 1435541999}&#39; \
+  https://{{v2Domain}}/1.1/classes/Post?fetchWhenSave=true
+</code></pre>
+<p>fetchWhenSave 选项对更新对象也同样有效，但是它仅返回已被更新的字段，而非全部字段。</p>
+  <div class="callout callout-info">
+  <p><strong>每个应用最多可以创建 500 个 class</strong>，但每个 class 中的记录数量没有限制。</p>
+</div>
+
+
 <h3 id="-">获取对象</h3>
 <p>当你创建了一个对象时，你可以通过发送一个 GET 请求到返回的 header 的 Location 以获取它的内容。例如，为了得到我们上面创建的对象：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <p>返回的主体是一个 JSON 对象包含所有用户提供的 field 加上 createdAt、updatedAt 和 objectId 字段：</p>
 <pre><code class="lang-json">{
@@ -991,7 +1069,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;include=author&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <h3 id="-">更新对象</h3>
 <p>为了更改一个对象已经有的数据，你可以发送一个 PUT 请求到对象相应的 URL 上，任何你未指定的 key 都不会更改，所以你可以只更新对象数据的一个子集。例如，我们来更改我们对象的一个 content 字段：</p>
@@ -1000,7 +1078,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;content&quot;: &quot;每个 JavaScript 程序员必备的 8 个开发工具: http://buzzorange.com/techorange/2015/03/03/9-javascript-ide-editor/&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <p>返回的 JSON 对象只会包含一个 updatedAt 字段，表明更新发生的时间：</p>
 <pre><code class="lang-json">{
@@ -1008,120 +1086,170 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
 }
 </code></pre>
 <h4 id="-">计数器</h4>
-<p>为了存储一个计数器类型的数据, LeanCloud 提供对任何数字字段进行原子增加（或者减少）的功能。比如一条微博，我们需要记录有多少人喜欢或者转发了它。但可能很多次喜欢都是同时发生的，如果在每个客户端都直接把它们读到的计数值增加之后再写回去，那么极容易引发冲突和覆盖，导致最终结果不准。这时候怎么办？LeanCloud 提供了便捷的原子操作来实现计数器：</p>
+<p>比如一条微博，我们需要记录有多少人喜欢或者转发了它，但可能很多次喜欢都是同时发生的，如果每个客户端都直接把读到的计数值更改之后再写回去，那么极容易引发冲突和覆盖，导致最终结果不准。LeanCloud 提供了对数字类型字段进行原子增加或者减少的功能，稳妥地实现对计数器类型数据的更新：</p>
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;upvotes&quot;:{&quot;__op&quot;:&quot;Increment&quot;,&quot;amount&quot;:1}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
-<p>这样就将对象里的 <strong>upvotes</strong>（表示被用户点赞的次数）分数加 1，其中 <strong>amount</strong> 指定递增的数字大小，如果为负数，就变成递减。</p>
-<p>除了 Increment，我们也提供了 Decrement 操作用于递减（等价于 Increment 一个负数）。</p>
+<p>这样就将对象的 <strong>upvotes</strong> 属性值（被用户点赞的次数）加上 1，其中 <strong>amount</strong> 为递增的数字大小，如果为负数，则为递减。</p>
+<p>除了 Increment，我们也提供了 Decrement 用于递减，等价于 Increment 一个负数。</p>
 <h4 id="-">位运算</h4>
-<p>如果文档的某个列是整型，可以使用我们提供的位运算操作符，来对这个列做原子的位运算：</p>
+<p>如果数据表的某一列是整型，可以使用位运算操作符该列进行原子的位运算：</p>
 <ul>
-<li>BitAnd 与运算。</li>
-<li>BitOr 或运算。</li>
-<li>BitXor 异或运算。</li>
+<li>BitAnd 与运算</li>
+<li>BitOr 或运算</li>
+<li>BitXor 异或运算</li>
 </ul>
-<p>例如:</p>
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;flags&quot;:{&quot;__op&quot;:&quot;BitOr&quot;,&quot;value&quot;: 0x0000000000000004}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <h4 id="-">数组</h4>
-<p>为了存储数组型数据，LeanCloud 提供 3 种操作来原子性地更改一个数组字段：</p>
+<p>LeanCloud 提供 3 种原子性操作来存储和更改数组类型的字段：</p>
 <ul>
 <li><strong>Add</strong>：在一个数组字段的后面添加一些指定的对象（包装在一个数组内）</li>
 <li><strong>AddUnique</strong>：只会在数组内原本没有这个对象的情形下才会添加入数组，插入的位置不定。</li>
 <li><strong>Remove</strong>：从一个数组内移除所有的指定的对象</li>
 </ul>
-<p>每一种方法都会有一个 key 是 <code>objects</code> 即被添加或删除的对象列表。举个例子，我们可以为每条微博增加一个 tags （标签）属性，然后往里面加入一些标签值：</p>
+<p>每种操作都有一个 key <code>objects</code>，其值为被添加或删除的对象列表。例如为每条微博增加一个「标签」属性 tags，然后往里面加入一些值：</p>
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;tags&quot;:{&quot;__op&quot;:&quot;AddUnique&quot;,&quot;objects&quot;:[&quot;Frontend&quot;,&quot;JavaScript&quot;]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
-</code></pre>
-<h4 id="-">关系</h4>
-<p>为了更新 Relation 的类型，LeanCloud 提供特殊的操作来原子地添加和删除一个关系，所以我们可以像这样添加一个关系（某个用户喜欢了这条微博）：</p>
-<pre><code class="lang-sh">curl -X PUT \
-  -H &quot;X-LC-Id: {{appid}}&quot; \
-  -H &quot;X-LC-Key: {{appkey}}&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#39;{&quot;likes&quot;:{&quot;__op&quot;:&quot;AddRelation&quot;,&quot;objects&quot;:[{&quot;__type&quot;:&quot;Pointer&quot;,&quot;className&quot;:&quot;_User&quot;,&quot;objectId&quot;:&quot;51c3ba67e4b0f0e851c16221&quot;}]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
-</code></pre>
-<p>或者可以在一个对象中删除一个关系（某个用户取消喜欢了这条微博）：</p>
-<pre><code class="lang-sh">curl -X PUT \
-  -H &quot;X-LC-Id: {{appid}}&quot; \
-  -H &quot;X-LC-Key: {{appkey}}&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#39;{&quot;likes&quot;:{&quot;__op&quot;:&quot;RemoveRelation&quot;,&quot;objects&quot;:[{&quot;__type&quot;:&quot;Pointer&quot;,&quot;className&quot;:&quot;_User&quot;,&quot;objectId&quot;:&quot;51fa3f64e4b05df1766cfb90&quot;}]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <h4 id="-">按条件更新对象</h4>
-<p>假设我们要从某个账户对象 Account 的余额扣除一定金额，但是要求余额要大于等于被扣除的金额，那么就需要在更新的时候加上条件 <code>balance &gt;= amount</code>，并通过 <code>where</code> 参数来实现：</p>
+<p>假设从某个账户对象 Account 的余额中扣除一定金额，但是要求余额要大于等于被扣除的金额才允许操作，那么就需要通过 <code>where</code> 参数为更新操作加上限定条件 <code>balance &gt;= amount</code>：</p>
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;balance&quot;:{&quot;__op&quot;:&quot;Decrement&quot;,&quot;amount&quot;: 30}}&#39; \
-  &quot;https://api.leancloud.cn/1.1/classes/Account/558e20cbe4b060308e3eb36c?where=%7B%22balance%22%3A%7B%22%24gte%22%3A%2030%7D%7D&quot;
+  &quot;https://{{v2Domain}}/1.1/classes/Account/558e20cbe4b060308e3eb36c?where=%7B%22balance%22%3A%7B%22%24gte%22%3A%2030%7D%7D&quot;
 </code></pre>
-<p>可以看到 URL 里多了个参数 where，值是 <code>%7B%22balance%22%3A%7B%22%24gte%22%3A%2030%7D%7D</code>，其实是 <code>{&quot;balance&quot;:{&quot;$gte&quot;: 30}}</code> 做了 url encode 的结果。更多 where 查询的例子参见下文的 <a href="#查询">查询</a> 一节。</p>
+<p>URL 中 where 参数的值是 <code>%7B%22balance%22%3A%7B%22%24gte%22%3A%2030%7D%7D</code>，其实这是 <code>{&quot;balance&quot;:{&quot;$gte&quot;: 30}}</code> 被 URL 编码后的结果。更多 where 查询的例子请参考 <a href="#查询">查询</a>。</p>
 <p>如果条件不满足，更新将失败，同时返回错误码 <code>305</code>：</p>
 <pre><code class="lang-json">{
   &quot;code&quot; : 305,
   &quot;error&quot;: &quot;No effect on updating/deleting a document.&quot;
 }
 </code></pre>
-<p><strong>特别强调， where 一定要作为 URL 的 Query Parameters 传入。</strong></p>
+<p><strong>特别强调：where 一定要作为 URL 的 Query Parameters 传入。</strong></p>
+<h4 id="__op-">__op 操作汇总</h4>
+<p>使用 <code>__op(&quot;操作名称&quot;, {JSON 参数})</code> 函数可以完成原子性操作，确保数据的一致性。  </p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Delete</td>
+<td>删除对象的一个属性</td>
+<td><code>__op(&#39;Delete&#39;, {})</code></td>
+</tr>
+<tr>
+<td>Add</td>
+<td>在数组末尾添加对象</td>
+<td><code>__op(&#39;Add&#39;,{&#39;objects&#39;:[&#39;Apple&#39;,&#39;Google&#39;]})</code></td>
+</tr>
+<tr>
+<td>AddUnique</td>
+<td>在数组末尾添加不会重复的对象，插入位置不定。</td>
+<td><code>__op(&#39;AddUnique&#39;, {&#39;objects&#39;:[&#39;Apple&#39;,&#39;Google&#39;]})</code></td>
+</tr>
+<tr>
+<td>Remove</td>
+<td>从数组中删除对象</td>
+<td><code>__op(&#39;Remove&#39;,{&#39;objects&#39;:[&#39;Apple&#39;,&#39;Google&#39;]})</code></td>
+</tr>
+<tr>
+<td>AddRelation</td>
+<td>添加一个关系</td>
+<td><code>__op(&#39;AddRelation&#39;, {&#39;objects&#39;:[pointer(&#39;_User&#39;,&#39;558e20cbe4b060308e3eb36c&#39;)]})</code></td>
+</tr>
+<tr>
+<td>RemoveRelation</td>
+<td>删除一个关系</td>
+<td><code>__op(&#39;RemoveRelation&#39;, {&#39;objects&#39;:[pointer(&#39;_User&#39;,&#39;558e20cbe4b060308e3eb36c&#39;)]})</code></td>
+</tr>
+<tr>
+<td>Increment</td>
+<td>递增</td>
+<td><code>__op(&#39;Increment&#39;, {&#39;amount&#39;: 50})</code></td>
+</tr>
+<tr>
+<td>Decrement</td>
+<td>递减</td>
+<td><code>__op(&#39;Decrement&#39;, {&#39;amount&#39;: 50})</code></td>
+</tr>
+<tr>
+<td>BitAnd</td>
+<td>与运算</td>
+<td><code>__op(&#39;BitAnd&#39;, {&#39;value&#39;: 0x0000000000000004})</code></td>
+</tr>
+<tr>
+<td>BitOr</td>
+<td>或运算</td>
+<td><code>__op(&#39;BitOr&#39;, {&#39;value&#39;: 0x0000000000000004})</code></td>
+</tr>
+<tr>
+<td>BitXor</td>
+<td>异或运算</td>
+<td><code>__op(&#39;BitXor&#39;, {&#39;value&#39;: 0x0000000000000004})</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="-">删除对象</h3>
 <p>为了在 LeanCloud 上删除一个对象，可以发送一个 DELETE 请求到指定的对象的 URL，比如：</p>
 <pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
-<p>你也可以在一个对象中删除一个字段，通过 Delete 操作（注意：<strong>这时候 HTTP Method 还是 PUT</strong>）：</p>
+<p>还可以使用 Delete 操作删除一个对象的一个字段（注意此时<strong> HTTP Method 还是 PUT</strong>）：</p>
 <pre><code class="lang-sh">curl -X PUT \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;downvotes&quot;:{&quot;__op&quot;:&quot;Delete&quot;}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <h4 id="-">按条件删除对象</h4>
-<p>为请求增加 <code>where</code> 参数即可以按指定的条件来删除对象：</p>
+<p>为请求增加 <code>where</code> 参数即可以按指定的条件来删除对象。例如删除点击量 clicks 为 0 的帖子：</p>
 <pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  &quot;https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c?where=%7B%22clicks%22%3A%200%7D&quot;
+  &quot;https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c?where=%7B%22clicks%22%3A%200%7D&quot;
 </code></pre>
-<p>可以看到 URL 里多了个参数 where，值是 <code>%7B%22clicks%22%3A%200%7D</code>，其实是 <code>{&quot;clicks&quot;: 0}</code> 做了 url encode 的结果，这里的意思是我们只有当这个帖子的点击量 clicks 为 0 才删除。更多 where 查询的例子参见 <a href="#查询">查询</a> 一节。</p>
+<p>URL 中 where 参数的值是 <code>%7B%22clicks%22%3A%200%7D</code>，其实这是 <code>{&quot;clicks&quot;: 0}</code> 被 URL 编码后的结果。更多 where 查询的例子请参考 <a href="#查询">查询</a>。</p>
 <p>如果条件不满足，删除将失败，同时返回错误码 <code>305</code>：</p>
 <pre><code class="lang-json">{
   &quot;code&quot; : 305,
   &quot;error&quot;: &quot;No effect on updating/deleting a document.&quot;
 }
 </code></pre>
-<p><strong>特别强调， where 一定要作为 URL 的 Query Parameters 传入。</strong></p>
+<p><strong>特别强调：where 一定要作为 URL 的 Query Parameters 传入。</strong></p>
 <h3 id="-class">遍历 Class</h3>
 <p>因为更新和删除都是基于单个对象的，都要求提供 objectId，但是有时候用户需要高效地遍历一个 Class，做一些批量的更新或者删除的操作。</p>
-<p>通常情况下，如果 Class 的数量规模不大，使用查询加上 <code>skip</code> 和 <code>limit</code> 分页配合排序 <code>order</code> 就可以遍历所有数据。但是当 Class 数量规模比较大的时候， <code>skip</code> 的效率就非常低了（这跟 MySQL 等关系数据库的原因一样，深度翻页比较慢），因此我们提供了 <code>scan</code> 协议，可以按照特定字段排序来高效地遍历一张表，默认这个字段是 <code>createdAt</code>，也就是按照创建时间排序，同时支持设置 <code>limit</code>  限定每一批次的返回数量：</p>
+<p>通常情况下，如果 Class 的数量规模不大，使用查询加上 <code>skip</code> 和 <code>limit</code> 分页配合排序 <code>order</code> 就可以遍历所有数据。但是当 Class 数量规模比较大的时候， <code>skip</code> 的效率就非常低了（这跟 MySQL 等关系数据库的原因一样，深度翻页比较慢），因此我们提供了 <code>scan</code> 协议，可以按照特定字段排序来高效地遍历一张表，默认这个字段是 <code>objectId</code> 升序，同时支持设置 <code>limit</code>  限定每一批次的返回数量，默认 limit 为 100，最大可设置为 1000：</p>
 <pre><code class="lang-sh">curl -X GET \
    -H &quot;X-LC-Id: {{appid}}&quot; \
    -H &quot;X-LC-Key: {{masterkey}},master&quot; \
    -G \
    --data-urlencode &#39;limit=10&#39; \
-   https://api.leancloud.cn/1.1/scan/classes/Article
+   https://{{v2Domain}}/1.1/scan/classes/Article
 </code></pre>
 <p><code>scan</code> 强制要求使用 master key。</p>
 <p>返回：</p>
@@ -1135,7 +1263,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
         &quot;title&quot;    :  &quot;clojure persistent vector&quot;,
         &quot;objectId&quot; :  &quot;577e18b50a2b580057469a5e&quot;
        },
-       ......
+       ...
     ],
     &quot;cursor&quot;: &quot;pQRhIrac3AEpLzCA&quot;}
 </code></pre>
@@ -1146,7 +1274,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
    -G \
    --data-urlencode &#39;limit=10&#39; \
    --data-urlencode &#39;cursor=pQRhIrac3AEpLzCA&#39; \
-   https://api.leancloud.cn/1.1/scan/classes/Article
+   https://{{v2Domain}}/1.1/scan/classes/Article
 </code></pre>
 <p>每次返回的 <code>cursor</code> 的有效期是 10 分钟。</p>
 <p>遍历还支持过滤条件，加入 where 参数：</p>
@@ -1156,17 +1284,19 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
    -G \
    --data-urlencode &#39;limit=10&#39; \
    --data-urlencode &#39;where={&quot;score&quot;: 100}&#39; \
-   https://api.leancloud.cn/1.1/scan/classes/Article
+   https://{{v2Domain}}/1.1/scan/classes/Article
 </code></pre>
-<p>按照其他字段排序（默认为  <code>createdAt</code>），可以传入 <code>scan_key</code> 参数：</p>
+<p>默认情况下系统按 <code>objectId</code> 升序排序，增加 <code>scan_key</code> 参数可以使用其他字段来排序：</p>
 <pre><code class="lang-sh">curl -X GET \
    -H &quot;X-LC-Id: {{appid}}&quot; \
    -H &quot;X-LC-Key: {{masterkey}},master&quot; \
    -G \
    --data-urlencode &#39;limit=10&#39; \
    --data-urlencode &#39;scan_key=score&#39; \
-   https://api.leancloud.cn/1.1/scan/classes/Article
+   https://{{v2Domain}}/1.1/scan/classes/Article
 </code></pre>
+<p>scan_key 也支持倒序，前面加个减号即可，例如 <code>-score</code>。</p>
+<p><strong>自定义的 scan_key 需要满足严格单调递增的条件，并且 scan_key 不可作为 where 查询条件存在。</strong></p>
 <h3 id="-">批量操作</h3>
 <p>为了减少网络交互的次数太多带来的时间浪费，你可以在一个请求中对多个对象进行 create、update、delete 操作。</p>
 <p>在一个批次中每一个操作都有相应的方法、路径和主体，这些参数可以代替你通常会使用的 HTTP 方法。这些操作会以发送过去的顺序来执行，比如我们要一次发布一系列的微博：</p>
@@ -1194,24 +1324,26 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
           }
         ]
       }&#39; \
-  https://api.leancloud.cn/1.1/batch
+  https://{{v2Domain}}/1.1/batch
 </code></pre>
 <p>我们对每一批次中所包含的操作数量（requests 数组中的元素个数）暂不设限，但考虑到云端对每次请求的 body 内容大小有 20 MB 的限制，因此建议将每一批次的操作数量控制在 100 以内。</p>
-<p>批量操作的响应会是一个列表，列表的元素数量和顺序与给定的操作请求是一致的。每一个在列表中的元素都有一个字段是 success 或者 error。</p>
-<p><strong>success</strong> 的值是通常是进行其他 REST 操作会返回的值：</p>
-<pre><code class="lang-json">[
-  {&quot;success&quot;:{&quot;createdAt&quot;:&quot;2015-07-13T10:43:00.282Z&quot;,&quot;objectId&quot;:&quot;55a39634e4b0ed48f0c1845b&quot;}},
-  {&quot;success&quot;:{&quot;createdAt&quot;:&quot;2015-07-13T10:43:00.293Z&quot;,&quot;objectId&quot;:&quot;55a39634e4b0ed48f0c1845c&quot;}}
-]
-</code></pre>
-<p><strong>error</strong> 的值会是一个对象有返回码和 error 字符串：</p>
-<pre><code class="lang-json">{
-  &quot;error&quot;: {
-    &quot;code&quot;: 101,
-    &quot;error&quot;: &quot;object not found for delete&quot;
+<p>批量操作的响应 body 会是一个列表，列表的元素数量和顺序与给定的操作请求是一致的。每一个在列表中的元素都有一个字段是 success 或者 error。</p>
+<pre><code>[
+  {
+    &quot;error&quot;: {
+      &quot;code&quot;: 1,
+      &quot;error&quot;: &quot;Could not find object by id &#39;558e20cbe4b060308e3eb36c&#39; for class &#39;Post&#39;.&quot;
+    }
+  },
+  {
+    &quot;success&quot;: {
+      &quot;updatedAt&quot;: &quot;2017-02-22T06:35:29.419Z&quot;,
+      &quot;objectId&quot;: &quot;58ad2e850ce463006b217888&quot;
+    }
   }
-}
-</code></pre>
+]
+</code></pre><p>需要注意，即使一个 batch 请求返回的响应码为 200，这仅代表服务端已收到并处理了这个请求，但并不说明该 
+batch 中的所有操作都成功完成，只有当返回 body 的列表中<strong>不存在 error 元素</strong>，开发者才可以认为所有操作都已成功完成。</p>
 <p>在 batch 操作中 update 和 delete 同样是有效的：</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
@@ -1232,7 +1364,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
           }
         ]
       }&#39; \
-  https://api.leancloud.cn/1.1/batch
+  https://{{v2Domain}}/1.1/batch
 </code></pre>
 <h3 id="-">数据类型</h3>
 <p>到现在为止我们只使用了可以被标准 JSON 编码的值，LeanCloud 移动客户端 SDK library 同样支持日期、二进制数据和关系型数据。在 REST API 中，这些值都被编码了，同时有一个 <code>__type</code> 字段（注意：<strong>前缀是两个下划线</strong>）来标示出它们的类型，所以如果你采用正确的编码的话就可以读或者写这些字段。</p>
@@ -1249,7 +1381,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;createdAt&quot;:{&quot;$gte&quot;:{&quot;__type&quot;:&quot;Date&quot;,&quot;iso&quot;:&quot;2015-06-21T18:02:52.249Z&quot;}}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p><strong>Byte</strong> 类型包含了一个 base64 字段，这个字段是一些二进制数据编码过的 base64 字符串。base64 是 MIME 使用的标准，不包含空白符：</p>
 <pre><code class="lang-json">{
@@ -1265,7 +1397,12 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
 }
 </code></pre>
 <p>指向用户对象的 Pointer 的 className 为 <code>_User</code>，前面加一个下划线表示开发者不能定义的类名，而且所指的类是 LeanCloud 平台内置的。</p>
-<p><strong>Relation</strong> 类型被用在多对多的类型上，移动端使用 AVRelation 作为值，它有一个 className 字段表示目标对象的类名.</p>
+<p><strong>Relation</strong> 类型被用在多对多的类型上，移动端使用 AVRelation 作为值，它有一个 className 字段表示目标对象的类名。</p>
+  <div class="callout callout-danger">
+  <p>Relation 类型已被弃用。请使用 <a href="relation-guide.html#使用中间表实现多对多关系_推荐_">中间表</a> 来完成对关联数据的查询、排序等复杂操作。</p>
+</div>
+
+
 <pre><code class="lang-json">{
   &quot;__type&quot;: &quot;Relation&quot;,
   &quot;className&quot;: &quot;Post&quot;
@@ -1280,7 +1417,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>返回的值就是一个 JSON 对象包含了 results 字段，它的值就是对象的列表：</p>
 <pre><code class="lang-json">{
@@ -1303,6 +1440,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   ]
 }
 </code></pre>
+<p>注：应用控制台对 <code>createdAt</code> 和 <code>updatedAt</code> 做了在展示优化，它们会依据用户操作系统时区而显示为本地时间；客户端 SDK 获取到这些时间后也会将其转换为本地时间；而通过 REST API 获取到的则是原始的 UTC 时间，开发者可能需要根据情况做相应的时区转换。 </p>
 <h3 id="-">查询约束</h3>
 <p>通过 <code>where</code> 参数的形式可以对查询对象做出约束。</p>
 <p><code>where</code> 参数的值应该是 JSON 编码过的。就是说，如果你查看真正被发出的 URL 请求，它应该是先被 JSON 编码过，然后又被 URL 编码过。最简单的使用 <code>where</code> 参数的方式就是包含应有的 key 和 value。例如，如果我们想要看到「LeanCloud官方客服」发布的所有微博，我们应该这样构造查询:</p>
@@ -1312,105 +1450,160 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;pubUser&quot;:&quot;LeanCloud官方客服&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>除了完全匹配一个给定的值以外，<code>where</code> 也支持比较的方式。而且，它还支持对 key 的一些 hash 操作（譬如包含）。<code>where</code> 参数支持下面一些选项：</p>
+<p>除了完全匹配一个给定的值以外，<code>where</code> 也支持比较的方式，而且它还支持对 key 的一些 hash 操作，比如包含。<code>where</code> 参数支持如下选项：</p>
 <table>
-  <tr><th>Key</th><th>Operation</th></tr>
-  <tr><td>$lt</td><td>小于</td></tr>
-  <tr><td>$lte</td><td>小于等于</td></tr>
-  <tr><td>$gt</td><td>大于</td></tr>
-  <tr><td>$gte</td><td>大于等于</td></tr>
-  <tr><td>$ne</td><td>不等于</td></tr>
-  <tr><td>$in</td><td>包含</td></tr>
-  <tr><td>$nin</td><td>不包含</td></tr>
-  <tr><td>$exists</td><td>这个Key有值</td></tr>
-  <tr><td>$select</td><td>匹配另一个查询的返回值</td></tr>
-  <tr><td>$dontSelect</td><td>排除另一个查询的返回值</td></tr>
-  <tr><td>$all</td><td>包括所有的给定的值</td></tr>
+<thead>
+<tr>
+<th>Key</th>
+<th>Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$ne</code></td>
+<td>不等于</td>
+</tr>
+<tr>
+<td><code>$lt</code></td>
+<td>小于</td>
+</tr>
+<tr>
+<td><code>$lte</code></td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td><code>$gt</code></td>
+<td>大于</td>
+</tr>
+<tr>
+<td><code>$gte</code></td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td><code>$regex</code></td>
+<td>正则表达式。<code>$options</code> 指定 <a href="#regex-options">全局修饰符</a></td>
+</tr>
+<tr>
+<td><code>$in</code></td>
+<td>包含任意一个数组值</td>
+</tr>
+<tr>
+<td><code>$nin</code></td>
+<td>不包含任意一个数组值</td>
+</tr>
+<tr>
+<td><code>$all</code></td>
+<td>包括所有的数组值</td>
+</tr>
+<tr>
+<td><code>$exists</code></td>
+<td>指定 Key 有值</td>
+</tr>
+<tr>
+<td><code>$select</code></td>
+<td>匹配另一个查询的返回值</td>
+</tr>
+<tr>
+<td><code>$dontSelect</code></td>
+<td>排除另一个查询的返回值</td>
+</tr>
+</tbody>
 </table>
-
-<p>例如，为了获取在 2015-06-29 当天发布的微博，我们应该这样请求：</p>
+<p>例如获取在 <strong>2015-06-29</strong> 当天发布的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;createdAt&quot;:{&quot;$gte&quot;:{&quot;__type&quot;:&quot;Date&quot;,&quot;iso&quot;:&quot;2015-06-29T00:00:00.000Z&quot;},&quot;$lt&quot;:{&quot;__type&quot;:&quot;Date&quot;,&quot;iso&quot;:&quot;2015-06-30T00:00:00.000Z&quot;}}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>求点赞次数少于 10 次，且该次数还是奇数的微博，查询条件要这样写：</p>
+<p>求点赞次数少于 10 次，且该次数还是奇数的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;upvotes&quot;:{&quot;$in&quot;:[1,3,5,7,9]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>为了获取不是「LeanCloud官方客服」发布的微博，我们可以:</p>
+<p>获取不是「LeanCloud官方客服」发布的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;pubUser&quot;:{&quot;$nin&quot;:[&quot;LeanCloud官方客服&quot;]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>为了获取有人喜欢的微博，我们应该用:</p>
+<p>获取有人喜欢的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;upvotes&quot;:{&quot;$exists&quot;:true}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>为了获取没有被人喜欢过的微博：</p>
+<p>获取没有被人喜欢过的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
   --data-urlencode &#39;where={&quot;upvotes&quot;:{&quot;$exists&quot;:false}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>我们都知道，微博里面有用户互相关注的功能，如果我们用 <code>_Followee</code> 和 <code>_Follower</code> 这两个类来存储用户之间的关注关系（<code>_Follower</code> 记录用户的粉丝，<code>_Followee</code> 记录用户关注的人，我们的 <a href="./status_system.html">应用内社交组件</a> 已经实现了这样的模型，这里直接使用其后台表结构），我们可以创建一个查询来找到某个用户关注的人发布的微博（<code>Post</code> 表中有一个字段 <code>author</code> 指向发布者），查询看起来应该是这样：</p>
+<p>微博有用户互相关注的功能，如果我们用 <code>_Followee</code>（用户关注的人） 和 <code>_Follower</code>（用户的粉丝） 这两个类来存储用户之间的关注关系（我们的 <a href="./status_system.html">应用内社交组件</a> 已经实现了这样的模型），我们可以创建一个查询来找到某个用户关注的人发布的微博（<code>Post</code> 表中有一个字段 <code>author</code> 指向发布者）：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -G \
-  --data-urlencode &#39;where={&quot;author&quot;:{&quot;$select&quot;:{&quot;query&quot;:{&quot;className&quot;:&quot;_Followee&quot;,&quot;where&quot;:{&quot;user&quot;:{
-  &quot;__type&quot;: &quot;Pointer&quot;,
-  &quot;className&quot;: &quot;_User&quot;,
-  &quot;objectId&quot;: &quot;55a39634e4b0ed48f0c1845c&quot;
-}}, &quot;key&quot;:&quot;followee&quot;}}}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  --data-urlencode &#39;where={
+    &quot;author&quot;: {
+      &quot;$select&quot;: {
+        &quot;query&quot;: { 
+          &quot;className&quot;:&quot;_Followee&quot;,
+           &quot;where&quot;: {
+             &quot;user&quot;:{
+               &quot;__type&quot;: &quot;Pointer&quot;,
+               &quot;className&quot;: &quot;_User&quot;,
+               &quot;objectId&quot;: &quot;55a39634e4b0ed48f0c1845c&quot; 
+             }
+           }
+        }, 
+        &quot;key&quot;:&quot;followee&quot; 
+      }
+    }
+  }&#39; \
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>你可以用 <code>order</code> 参数来指定一个字段来排序，前面加一个负号的前缀表示逆序。这样返回的微博会按发布时间呈升序排列：</p>
+<p><code>order</code> 参数指定一个字段的排序方式，前面加一个负号表示逆序。返回 Post 记录并按发布时间升序排列：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;order=createdAt&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>而这样会呈降序：</p>
+<p>降序排列：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;order=-createdAt&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>你可以用多个字段进行排序，只要用一个逗号隔开的列表就可以。为了获取 Post 以 createdAt  的升序和 pubUser 的降序进行排序：</p>
+<p>对多个字段进行排序，要使用逗号分隔的列表。将 Post 以 createdAt 升序和 pubUser 降序进行排序：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;order=createdAt,-pubUser&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>你可以用 <code>limit</code> 和 <code>skip</code> 来做分页。<code>limit</code> 的默认值是 100，任何 1 到 1000 之间的值都是可选的，在 1 到 1000 范围之外的都强制转成默认的 100。比如为了获取排序在 400 到 600 之间的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -1419,7 +1612,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -G \
   --data-urlencode &#39;limit=200&#39; \
   --data-urlencode &#39;skip=400&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>你可以限定返回的字段通过传入 <code>keys</code> 参数和一个逗号分隔列表。为了返回对象只包含 <code>pubUser</code> 和 <code>content</code> 字段（还有特殊的内置字段比如 objectId、createdAt 和 updatedAt）：</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -1427,7 +1620,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;keys=pubUser,content&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p><code>keys</code> 还支持反向选择，也就是不返回某些字段，字段名前面加个减号即可，比如我不想查询返回 <code>author</code>：</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -1435,25 +1628,81 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;keys=-author&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>所有以上这些参数都可以和其他的组合进行使用。</p>
-<h3 id="-">对数组的查询</h3>
-<p>对于 key 的值是一个数组的情况，可以通过如下方式查找 key 的值中有 2 的对象：</p>
+<h3 id="-">正则查询</h3>
+<p>获取标题以大写「WTO」开头的微博：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -G \
+  --data-urlencode &#39;where={&quot;title&quot;:{&quot;$regex&quot;:&quot;^WTO.*&quot;,&quot;$options&quot;:&quot;i&quot;}}&#39; \
+  https://{{v2Domain}}/1.1/classes/Post
+</code></pre>
+<p><a name="regex-options"></a>我们使用以下数据来演示如何使用 <code>$options</code> 匹配 <strong>title</strong> 字段值：</p>
+<pre><code>{ &quot;_id&quot; : 100, &quot;title&quot; : &quot;Single line description.&quot; },
+{ &quot;_id&quot; : 101, &quot;title&quot; : &quot;First line\nSecond line&quot; },
+{ &quot;_id&quot; : 102, &quot;title&quot; : &quot;Many spaces before     line&quot; },
+{ &quot;_id&quot; : 103, &quot;title&quot; : &quot;Multiple\nline description&quot; },
+{ &quot;_id&quot; : 103, &quot;title&quot; : &quot;abc123&quot; }
+</code></pre><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i</code></td>
+<td><strong>忽略大小写</strong></td>
+<td><code>{&quot;$regex&quot;:&quot;single&quot;, &quot;$options&quot;:&quot;i&quot;}</code> 将匹配<br><br><pre><code>{ &quot;_id&quot; : 100, &quot;title&quot; : &quot;Single line description.&quot; }</code></pre></td>
+</tr>
+<tr>
+<td><code>m</code></td>
+<td><strong>多行匹配</strong><br>比如文本中包含了换行符 <code>\n</code></td>
+<td><code>{&quot;$regex&quot;:&quot;^S&quot;, &quot;$options&quot;:&quot;m&quot;}</code>（以大写字母 S 开头）将匹配 <br><br><pre><code>{ &quot;_id&quot; : 100, &quot;title&quot; : &quot;Single line description.&quot; },<br>{ &quot;_id&quot; : 101, &quot;title&quot; : &quot;First line\nSecond line&quot; }</code></pre></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td><strong>忽略空白字符</strong><br>包括空格、tab、<code>\n</code>、<code>#</code> 注释等，<br>但对 vertical tab（ASCII 码为 11）无效。</td>
+<td><code>{&quot;$regex&quot;:&quot;abc #category code\n123 #item number&quot;, &quot;$options&quot;:&quot;x&quot;}</code>（# 后面为注释）将匹配 <br><br><pre><code>{ &quot;_id&quot; : 103, &quot;title&quot; : &quot;abc123&quot; }</code></pre></td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td><strong>允许 <code>.</code> 匹配任意字符和换行</strong></td>
+<td><code>{&quot;$regex&quot;:&quot;m.*line&quot;, &quot;$options&quot;:&quot;si&quot;}</code> 将匹配 <br><br><pre><code>{ &quot;_id&quot; : 102, &quot;title&quot; : &quot;Many spaces before     line&quot; },<br>{ &quot;_id&quot; : 103, &quot;title&quot; : &quot;Multiple\nline description&quot; }</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>以上参数可以组合使用，如 <code>&quot;$options&quot;:&quot;sixm&quot;</code>。</p>
+<h3 id="-">数组查询</h3>
+<p>如果 key 的值是数组类型，查找 key 值中有 2 的对象：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;arrayKey&quot;:2}&#39; \
-  https://api.leancloud.cn/1.1/classes/TestObject
+  https://{{v2Domain}}/1.1/classes/TestObject
 </code></pre>
-<p>你同样可以使用 <code>$all</code> 操作符来找到 key 的值中有 2、3 和 4 的对象：</p>
+<p>查找 key 值中有 2 或 3 或 4 的对象：</p>
+<pre><code class="lang-sh">curl -X GET \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -G \
+  --data-urlencode &#39;where={&quot;arrayKey&quot;:{&quot;$in&quot;:[2,3,4]}}&#39; \
+  https://{{v2Domain}}/1.1/classes/TestObject
+</code></pre>
+<p>使用 <code>$all</code> 操作符来找到 key 值中<strong>同时</strong>有 2 和 3 和 4 的对象：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;arrayKey&quot;:{&quot;$all&quot;:[2,3,4]}}&#39; \
-  https://api.leancloud.cn/1.1/classes/TestObject
+  https://{{v2Domain}}/1.1/classes/TestObject
 </code></pre>
 <h3 id="-">关系查询</h3>
 <p>有几种方式来查询对象之间的关系数据。如果你想获取对象，而这个对象的一个字段对应了另一个对象，你可以用一个 <code>where</code> 查询，自己构造一个 Pointer，和其他数据类型一样。例如，每条微博都会有很多人评论，我们可以让每一个 Comment 将它对应的 Post 对象保存到 post 字段上，这样你可以取得一条微博下所有 Comment：</p>
@@ -1462,7 +1711,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;post&quot;:{&quot;__type&quot;:&quot;Pointer&quot;,&quot;className&quot;:&quot;Post&quot;,&quot;objectId&quot;:&quot;558e20cbe4b060308e3eb36c&quot;}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Comment
+  https://{{v2Domain}}/1.1/classes/Comment
 </code></pre>
 <p>如果你想获取对象，这个对象的一个字段指向的对象需要另一个查询来指定，你可以使用 <code>$inQuery</code> 操作符。注意 <code>limit</code> 的默认值是 100 且最大值是 1000，这个限制同样适用于内部的查询，所以对于较大的数据集你可能需要细心地构建查询来获得期望的结果。</p>
 <p>如上面的例子，假设每条微博还有一个 <code>image</code> 的字段，用来存储配图，你可以这样列出带图片的微博的评论数据：</p>
@@ -1471,15 +1720,21 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;post&quot;:{&quot;$inQuery&quot;:{&quot;where&quot;:{&quot;image&quot;:{&quot;$exists&quot;:true}},&quot;className&quot;:&quot;Post&quot;}}}&#39; \
-  https://api.leancloud.cn/1.1/classes/Comment
+  https://{{v2Domain}}/1.1/classes/Comment
 </code></pre>
-<p>如果你想获取作为其父对象的关系成员的对象，你可以使用 <code>$relatedTo</code> 操作符。例如对于微博这种社交类应用来讲，每一条微博都可以被不同的用户点赞，我们可以设计 Post 类下面有一个 key 是 Relation 类型，叫做 <code>likes</code>，存储了喜欢这个 Post 的所有 User。你可以通过下面的方式找到喜欢某条 Post 的所有用户（<strong>请注意，新创建应用的 <code>_User</code> 表的查询权限默认是关闭的，你可以通过 class 权限设置打开，请参考 <a href="data_security.html#Class_级别的_ACL">数据与安全 - Class 级别的权限</a>。</strong>）：</p>
+<p>如果你想获取作为其父对象的关系成员的对象，你可以使用 <code>$relatedTo</code> 操作符。例如对于微博这种社交类应用来讲，每一条微博都可以被不同的用户点赞，我们可以设计 Post 类下面有一个 key 是 Relation 类型，叫做 <code>likes</code>，存储了喜欢这个 Post 的所有 User。</p>
+  <div class="callout callout-danger">
+  <p>Relation 类型已被弃用。请使用 <a href="relation-guide.html#使用中间表实现多对多关系_推荐_">中间表</a> 来完成对关联数据的查询、排序等复杂操作。</p>
+</div>
+
+
+<p>你可以通过下面的方式找到喜欢某条 Post 的所有用户（<strong>请注意，新创建应用的 <code>_User</code> 表的查询权限默认是关闭的，你可以通过 class 权限设置打开，请参考 <a href="data_security.html#Class_级别的_ACL">数据与安全 - Class 级别的权限</a>。</strong>）：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;$relatedTo&quot;:{&quot;object&quot;:{&quot;__type&quot;:&quot;Pointer&quot;,&quot;className&quot;:&quot;Post&quot;,&quot;objectId&quot;:&quot;558e20cbe4b060308e3eb36c&quot;},&quot;key&quot;:&quot;likes&quot;}}&#39; \
-  https://api.leancloud.cn/1.1/users
+  https://{{v2Domain}}/1.1/users
 </code></pre>
 <p>有时候，你可能需要在一个查询之中返回多种类型，你可以通过传入字段到 <code>include</code> 参数中。比如，我们想获得最近的 10 篇评论，而你想同时得到它们关联的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -1489,7 +1744,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   --data-urlencode &#39;order=-createdAt&#39; \
   --data-urlencode &#39;limit=10&#39; \
   --data-urlencode &#39;include=post&#39; \
-  https://api.leancloud.cn/1.1/classes/Comment
+  https://{{v2Domain}}/1.1/classes/Comment
 </code></pre>
 <p>不是作为一个 Pointer 表示，<code>post</code> 字段现在已经被展开为一个完整的对象：<code>__type</code> 被设置为 Object 而 <code>className</code> 同样也被提供了。例如，一个指向 Post 的 Pointer 可能被展示为：</p>
 <pre><code class="lang-json">{
@@ -1516,7 +1771,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   --data-urlencode &#39;order=-createdAt&#39; \
   --data-urlencode &#39;limit=10&#39; \
   --data-urlencode &#39;include=post.author&#39; \
-  https://api.leancloud.cn/1.1/classes/Comment
+  https://{{v2Domain}}/1.1/classes/Comment
 </code></pre>
 <p>如果你要构建一个查询，这个查询要 include 多个类，此时用逗号分隔列表即可。</p>
 <h3 id="-">对象计数</h3>
@@ -1528,7 +1783,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   --data-urlencode &#39;where={&quot;pubUser&quot;:&quot;LeanCloud官方客服&quot;}&#39; \
   --data-urlencode &#39;count=1&#39; \
   --data-urlencode &#39;limit=0&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>因为这个 request 请求了 <code>count</code> 而且把 <code>limit</code> 设为了 0，返回的值里面只有计数，没有 <code>results</code>：</p>
 <pre><code class="lang-json">{
@@ -1540,16 +1795,22 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre>
 <p>如果有一个非 0 的 <code>limit</code> 的话，则既会返回 <code>results</code> 也会返回 <code>count</code>。</p>
 <h3 id="-">复合查询</h3>
-<p>如果你想查询对象符合几种查询之一，你可以使用 <code>$or</code> 操作符，带一个 JSON 数组作为它的值。例如，你想查询出企业官方账号和个人账号的微博，可以这样：</p>
+<p><code>$or</code> 操作符用于查询<strong>符合任意一种条件</strong>的对象，它的值为一个 JSON 数组。例如，查询企业账号和个人账号的微博：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;where={&quot;$or&quot;:[{&quot;pubUserCertificate&quot;:{&quot;$gt&quot;:2}},{&quot;pubUserCertificate&quot;:{&quot;$lt&quot;:3}}]}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
-<p>任何在查询上的其他的约束都会对返回的对象生效，所以你可以用 <code>$or</code> 对其他的查询添加约束。</p>
-<p>注意我们不会在组合查询的子查询中支持非过滤型的约束（例如 limit、skip、order、include）。</p>
+<p>任何在查询上的其他约束都会对返回的对象生效，所以你可以用 <code>$or</code> 对其他的查询添加约束。</p>
+<p><code>$and</code> 操作符用于查询<strong>符合全部条件</strong>的对象，它的值为一个 JSON 数组。例如查找存在 price 字段且 price != 199 的对象：</p>
+<pre><code>--data-urlencode &#39;where={&quot;$and&quot;:[{&quot;price&quot;: {&quot;$ne&quot;:199}},{&quot;price&quot;:{&quot;$exists&quot;:true}}]}&#39; \
+</code></pre>  <div class="callout callout-danger">
+  <p>在组合查询的子查询中不支持使用 limit、skip、order、include 等非过滤型的约束。</p>
+</div>
+
+
 <h3 id="-cql-">使用 CQL 查询</h3>
 <p>我们还提供类 SQL 语法的 CQL 查询语言，查询应用内数据，例如：</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -1557,7 +1818,7 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -G \
   --data-urlencode &#39;cql=select * from Post limit 0,100 order by pubUser&#39; \
-  https://api.leancloud.cn/1.1/cloudQuery
+  https://{{v2Domain}}/1.1/cloudQuery
 </code></pre>
 <p>更多请参考 <a href="./cql_guide.html">CQL 详细指南</a>。</p>
 <p>CQL 还支持占位符查询，<code>where</code> 和 <code>limit</code> 子句的条件参数可以使用问号替换，然后通过 <code>pvalues</code> 数组传入：</p>
@@ -1567,8 +1828,26 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -G \
   --data-urlencode &#39;cql=select * from Post where pubUser=? limit ?,? order by createdAt&#39; \
    --data-urlencode &#39;pvalues=[&quot;dennis&quot;, 0, 100]&#39;
-  https://api.leancloud.cn/1.1/cloudQuery
+  https://{{v2Domain}}/1.1/cloudQuery
 </code></pre>
+<h4 id="-">子查询的局限</h4>
+<p>使用子查询可能会遇到查不到记录或查到的记录不全的情况。例如：</p>
+<pre><code class="lang-sql">-- 找出积分高于 80、region 为 cn 的玩家记录
+SELECT * 
+FROM   player 
+WHERE  NAME IN (SELECT NAME 
+                FROM   gamescore 
+                WHERE  score &gt; 80) 
+       AND region = &#39;cn&#39;
+</code></pre>
+<p>LeanCloud 云端使用的并非关系型数据库，无法做到真正的联表查询，所以实际的处理方式是：先执行内嵌/子查询（和普通查询一样，limit 默认为 100，最大  1000），然后将子查询的结果填入主查询的对应位置，再执行主查询。</p>
+<p>如果子查询匹配到了 100 条以上的记录（性别等区分度低的字段重复值往往较多），且主查询有其他查询条件（<code>region = &#39;cn&#39;</code>），那么可能会出现没有结果或结果不全的情况，其本质上是子查询查出的 100 条记录没有满足主查询的其他条件。</p>
+<p>我们建议采用以下方案进行改进：</p>
+<ul>
+<li>确保子查询的结果在 100 条以下，如果在 100 - 1000 条的话请在子查询末尾添加 limit 1000。</li>
+<li>将需要查询的字段冗余到主查询所在的表上；例如将 score 冗余到 Player 表上，或者将 region 添加到 GameScore 上然后只查 GameScore 表。</li>
+<li>进行多次查询，每次在子查询上添加 skip 来遍历所有记录（注意 skip 的值较大时可能会引发性能问题，因此不是很推荐）。</li>
+</ul>
 <h2 id="-">用户</h2>
 <p>不仅在移动应用上，还在其他系统中，很多应用都有一个统一的登录流程。通过 REST API 访问用户的账户让你可以在 LeanCloud 上简单实现这一功能。</p>
 <p>通常来说，<strong>用户</strong>（类名 <code>_User</code>）这个类的功能与其他的对象是相同的，比如都没有限制模式（Schema free）。User 对象和其他对象不同的是一个用户必须有用户名（username）和密码（password），密码会被自动地加密和存储。LeanCloud 强制要求 username 和 email 这两个字段必须是没有重复的。</p>
@@ -1582,11 +1861,11 @@ Location: https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;username&quot;:&quot;hjiang&quot;,&quot;password&quot;:&quot;f32@ds*@&amp;dsa&quot;,&quot;phone&quot;:&quot;18612340000&quot;}&#39; \
-  https://api.leancloud.cn/1.1/users
+  https://{{v2Domain}}/1.1/users
 </code></pre>
 <p>当创建成功时，HTTP返回为 201 Created，Location 头包含了新用户的 URL：</p>
 <pre><code class="lang-sh">Status: 201 Created
-Location: https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+Location: https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <p>返回的主体是一个 JSON 对象，包含 objectId、createdAt 时间戳表示创建对象时间，sessionToken 可以被用来认证这名用户随后的请求：</p>
 <pre><code>{
@@ -1601,7 +1880,7 @@ Location: https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
 -H &quot;X-LC-Id: {{appid}}&quot; \
 -H &quot;X-LC-Key: {{appkey}}&quot; \
 -d &#39;{&quot;username&quot;:&quot;hjiang&quot;,&quot;password&quot;:&quot;f32@ds*@&amp;dsa&quot;}&#39; \
-https://api.leancloud.cn/1.1/login
+https://{{v2Domain}}/1.1/login
 </code></pre>
 <p>返回的主体是一个 JSON 对象包括所有除了 password 以外的自定义字段。它同样包含了 createdAt、updateAt、objectId 和 sessionToken 字段。</p>
 <pre><code class="lang-json">{
@@ -1615,16 +1894,44 @@ https://api.leancloud.cn/1.1/login
   &quot;mobilePhoneVerified&quot;:false
 }
 </code></pre>
+<p>可以将 sessionToken 理解为用户的登录凭证，每个用户的 sessionToken 在同一个应用内都是唯一的， 类似于 Cookie 的概念。</p>
+<p>正常情况下，用户的 sessionToken 是固定不变的，但在以下情况下会发生改变：</p>
+<ul>
+<li>用户调用了忘记密码功能，重设了密码。</li>
+<li>用户在控制台的 <a href="/app.html?appid={{appid}}#/permission">应用选项</a> 中勾选了 <strong>密码修改后，强制客户端重新登录</strong>，那么在修改密码后 sessionToken 也将强制更换。</li>
+<li>调用 <a href="#重置登录_sessionToken"><code>refreshSessionToken</code></a> 主动重置。</li>
+</ul>
+<p>在 sessionToken 变化后，已有的登录如果调用到用户相关权限受限的 API，将返回 403 权限错误。</p>
 <h3 id="-">已登录的用户信息</h3>
 <p>用户成功注册或登录后，服务器会返回 sessionToken 并保存在本地，后续请求可以通过传递 sessionToken 来获取该用户信息（如访问权限等）。更多说明请参考 <a href="leanstorage_guide-js.html#SessionToken">存储 &middot; sessionToken</a>。</p>
 <pre><code>curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
-  https://api.leancloud.cn/1.1/users/me
+  https://{{v2Domain}}/1.1/users/me
 </code></pre><p>返回的 JSON 数据与 <a href="#登录"><code>/login</code></a> 登录请求所返回的相同。</p>
+<h3 id="-sessiontoken">重置登录 sessionToken</h3>
+<p>可以主动重置用户的 sessionToken：</p>
+<pre><code class="lang-sh">curl -X PUT \
+  -H &quot;X-LC-Id: {{appid}}&quot; \
+  -H &quot;X-LC-Key: {{appkey}}&quot; \
+  -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
+  https://{{v2Domain}}/1.1/users/57e3bcca67f35600577c3063/refreshSessionToken
+</code></pre>
+<p>调用这个 API 要求传入登录返回的 <code>X-LC-Session</code> 作为认证，或者使用 Master Key。</p>
+<p>重置成功将返回新的 sessionToken 及用户信息：</p>
+<pre><code class="lang-json">{
+ &quot;sessionToken&quot;:&quot;5frlikqlwzx1nh3wzsdtfr4q7&quot;,
+ &quot;updatedAt&quot;:&quot;2016-10-20T03:10:57.926Z&quot;,
+ &quot;objectId&quot;:&quot;57e3bcca67f35600577c3063&quot;,
+ &quot;username&quot;:&quot;leancloud&quot;,
+ &quot;createdAt&quot;:&quot;2016-09-22T11:13:14.842Z&quot;,
+ &quot;emailVerified&quot;:false,
+ &quot;mobilePhoneVerified&quot;:false
+}
+</code></pre>
 <h4 id="-">账户锁定</h4>
-<p>输入错误的密码或验证码会导致用户登录失败。如果在 15 分钟内，同一个用户登录失败的次数大于 6 次，该用户账户即被云端暂时锁定，此时云端会返回错误码 <code>{&quot;code&quot;:1,&quot;error&quot;:&quot;登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码。&quot;}</code>，开发者可在客户端进行必要提示。</p>
+<p>输入错误的密码或验证码会导致用户登录失败。如果在 15 分钟内，同一个用户登录失败的次数大于 6 次，该用户账户即被云端暂时锁定，此时云端会返回错误码 <code>{&quot;code&quot;:219,&quot;error&quot;:&quot;登录失败次数超过限制，请稍候再试，或者通过忘记密码重设密码。&quot;}</code>，开发者可在客户端进行必要提示。</p>
 <p>锁定将在最后一次错误登录的 15 分钟之后由云端自动解除，开发者无法通过 SDK 或 REST API 进行干预。在锁定期间，即使用户输入了正确的验证信息也不允许登录。这个限制在 SDK 和云引擎中都有效。</p>
 <h3 id="-">使用手机号码注册或登录</h3>
 <p>请参考 <a href="rest_sms_api.html#使用手机号码注册或登录">短信服务 REST API 详解 &middot; 使用手机号码注册或登录</a>。</p>
@@ -1644,7 +1951,7 @@ https://api.leancloud.cn/1.1/login
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;email&quot;:&quot;hang@leancloud.rocks&quot;}&#39; \
-  https://api.leancloud.cn/1.1/requestEmailVerify
+  https://{{v2Domain}}/1.1/requestEmailVerify
 </code></pre>
 <h3 id="-">请求密码重设</h3>
 <p>在用户将 email 与他们的账户关联起来之后，你可以通过邮件来重设密码。操作方法为，发送一个 POST 请求到 <code>/1.1/requestPasswordReset</code>，同时在 request 的 body 部分带上 email 字段。</p>
@@ -1653,7 +1960,7 @@ https://api.leancloud.cn/1.1/login
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;email&quot;:&quot;hang@leancloud.rocks&quot;}&#39; \
-  https://api.leancloud.cn/1.1/requestPasswordReset
+  https://{{v2Domain}}/1.1/requestPasswordReset
 </code></pre>
 <p>如果成功的话，返回的值是一个 JSON 对象。</p>
 <p>关于自定义邮件模板和验证链接请看这篇博客文章<a href="https://blog.leancloud.cn/607/">《自定义应用内用户重设密码和邮箱验证页面》</a>。</p>
@@ -1664,7 +1971,7 @@ https://api.leancloud.cn/1.1/login
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <p>返回的 body 是一个 JSON 对象，包含所有用户提供的字段，除了密码以外，也包括了 createdAt、 updatedAt 和 objectId 字段.</p>
 <pre><code class="lang-json">{
@@ -1687,7 +1994,7 @@ https://api.leancloud.cn/1.1/login
   -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;phone&quot;:&quot;18600001234&quot;}&#39; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <p>返回的 body 是一个 JSON 对象，只有一个 <code>updatedAt</code> 字段表明更新发生的时间.</p>
 <pre><code class="lang-json">{
@@ -1702,7 +2009,7 @@ https://api.leancloud.cn/1.1/login
   -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;old_password&quot;:&quot;the_old_password&quot;, &quot;new_password&quot;:&quot;the_new_password&quot;}&#39; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f/updatePassword
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f/updatePassword
 </code></pre>
 <ul>
 <li><strong>old_password</strong>：用户的老密码</li>
@@ -1715,7 +2022,7 @@ https://api.leancloud.cn/1.1/login
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/users
+  https://{{v2Domain}}/1.1/users
 </code></pre>
 <p>返回的值是一个 JSON 对象包括一个 <code>results</code> 字段，值是包含了所有对象的一个 JSON 数组。</p>
 <pre><code class="lang-json">{
@@ -1739,18 +2046,18 @@ https://api.leancloud.cn/1.1/login
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <h3 id="-">连接用户账户和第三方平台</h3>
-<p>LeanCloud 允许你连接你的用户到其他服务，比如新浪微博和腾讯微博，这样就允许你的用户直接用他们现有的账号 id 来登录你的 App。通过 <code>signup</code> 或者更新的 endpoint，并使用 <code>authData</code> 字段来提供你希望连接的服务的授权信息就可以做到。一旦关联了某个服务，<code>authData</code> 将被存储到你的用户信息里，并通过登录即可重新获取。</p>
+<p>LeanCloud 允许你连接你的用户到其他服务，比如新浪微博和腾讯微博，这样就允许你的用户直接用他们现有的账号 id 来登录你的 App。通过 <code>signup</code> 或者更新的 endpoint，并使用 <code>authData</code> 字段来提供你希望连接的服务的授权信息就可以做到。一旦关联了某个服务，<code>authData</code> 将被存储到你的用户信息里。如需重新获取该内容，请参考 <a href="获取_authData">获取 authData</a>。</p>
 <p><code>authData</code> 是一个普通的 JSON 对象，它所要求的 key 根据 service 不同而不同，具体要求见下面。每种情况下，你都需要自己负责完成整个授权过程(一般是通过 OAuth 协议，1.0 或者 2.0) 来获取授权信息，提供给连接 API。</p>
 <p><a href="http://weibo.com/">新浪微博</a> 的 authData 内容：</p>
 <pre><code class="lang-json">{
   &quot;authData&quot;: {
     &quot;weibo&quot;: {
       &quot;uid&quot;: &quot;123456789&quot;,
-            &quot;access_token&quot;: &quot;2.00vs3XtCI5FevCff4981adb5jj1lXE&quot;,
-            &quot;expiration_in&quot;: &quot;36000&quot;
+      &quot;access_token&quot;: &quot;2.00vs3XtCI5FevCff4981adb5jj1lXE&quot;,
+      &quot;expiration_in&quot;: &quot;36000&quot;
     }
   }
 }
@@ -1794,6 +2101,9 @@ https://api.leancloud.cn/1.1/login
      }
   }
 </code></pre>
+<p>要保证一个第三方账号只绑定到一个 LeanCloud 应用内用户上，就需要为 <code>_User</code> 表中的 <code>authData.第三方平台名称.uid</code> 建立唯一索引；另外当 <code>_User</code> 表的记录数量超过了 1 万条，用户也无法自行创建该索引。这两种操作都需要提交工单或联系 <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#x63;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#x63;&#107;&#x73;">&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#x63;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#x63;&#107;&#x73;</a> 来创建。</p>
+<h4 id="-authdata">获取 authData</h4>
+<p>authData 的数据<u>默认为不可查询</u>，也就是说它既不包含在当前登录用户的数据中，也无法在 query 中以 include 或 fetch 来获取。要更改这一默认行为，需要进入 <a href="/dashboard/data.html?appid={{appid}}#/_User">应用控制台 &gt; 存储 &gt; _User 表</a>，点击 authData 字段右侧的箭头，选择 <strong>编辑</strong>，关掉「列属性」里的「客户端不可见」选项才能获取到。</p>
 <h4 id="-">注册和登录</h4>
 <p>使用一个连接服务来注册用户并登录，同样使用 POST 请求 users，只是需要提供 <code>authData</code> 字段。例如，使用新浪微博账户注册或者登录用户：</p>
 <pre><code class="lang-sh">curl -X POST \
@@ -1809,11 +2119,11 @@ https://api.leancloud.cn/1.1/login
          }
     }
     }&#39; \
-  https://api.leancloud.cn/1.1/users
+  https://{{v2Domain}}/1.1/users
 </code></pre>
 <p>LeanCloud 会校验提供的 <code>authData</code> 是否有效，并检查是否已经有一个用户连接了这个 <code>authData</code> 服务。如果已经有用户存在并连接了同一个 <code>authData</code>，那么返回 200 OK 和详细信息（包括用户的 <code>sessionToken</code>）：</p>
 <pre><code class="lang-sh">Status: 200 OK
-Location: https://api.leancloud.cn/1.1/users/75a4800fe4b05001a7745c41
+Location: https://{{v2Domain}}/1.1/users/75a4800fe4b05001a7745c41
 </code></pre>
 <p>应答的 body 类似：</p>
 <pre><code class="lang-json">{
@@ -1833,7 +2143,7 @@ Location: https://api.leancloud.cn/1.1/users/75a4800fe4b05001a7745c41
 </code></pre>
 <p>如果用户还没有连接到这个账号，则你会收到 201 Created 的应答状态码，标识新的用户已经被创建：</p>
 <pre><code class="lang-sh">Status: 201 Created
-Location: https://api.leancloud.cn/1.1/users/55a4800fe4b05001a7745c41
+Location: https://{{v2Domain}}/1.1/users/55a4800fe4b05001a7745c41
 </code></pre>
 <p>应答内容包括 objectId、createdAt、sessionToken 以及一个自动生成的随机 username，例如：</p>
 <pre><code class="lang-json">{
@@ -1859,7 +2169,7 @@ Location: https://api.leancloud.cn/1.1/users/55a4800fe4b05001a7745c41
           }
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <p>完成连接后，你可以使用匹配的 <code>authData</code> 来认证他们。</p>
 <h4 id="-">断开连接</h4>
@@ -1874,7 +2184,7 @@ Location: https://api.leancloud.cn/1.1/users/55a4800fe4b05001a7745c41
       &quot;weibo&quot; : null
     }
       }&#39; \
-  https://api.leancloud.cn/1.1/users/55a47496e4b05001a7732c5f
+  https://{{v2Domain}}/1.1/users/55a47496e4b05001a7732c5f
 </code></pre>
 <h3 id="-">安全</h3>
 <p>当你用 REST API key 来访问 LeanCloud 时，访问可能被 ACL 所限制，就像 iOS 和 Android SDK 上所做的一样。你仍然可以通过 REST API 来读和修改，只需要通过 <code>ACL</code> 的 key 来访问一个对象。</p>
@@ -1932,7 +2242,7 @@ Location: https://api.leancloud.cn/1.1/users/55a4800fe4b05001a7745c41
           }
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/roles
+  https://{{v2Domain}}/1.1/roles
 </code></pre>
 <p>其返回值类似于：</p>
 <pre><code class="lang-json">{
@@ -1973,18 +2283,18 @@ Location: https://api.leancloud.cn/1.1/users/55a4800fe4b05001a7745c41
           ]
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/roles
+  https://{{v2Domain}}/1.1/roles
 </code></pre>
 <p>当创建成功时，HTTP 返回是 <strong>201 Created</strong> 而 Location header 包含了新的对象的 URL：</p>
 <pre><code class="lang-sh">Status: 201 Created
-Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
+Location: https://{{v2Domain}}/1.1/roles/55a483f0e4b05001a774b837
 </code></pre>
 <h3 id="-">获取角色</h3>
 <p>你可以同样通过发送一个 GET 请求到 Location header 中返回的 URL 来获取这个对象，比如我们想要获取上面创建的对象：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
+  https://{{v2Domain}}/1.1/roles/55a483f0e4b05001a774b837
 </code></pre>
 <p>响应的 body 是一个 JSON 对象包含角色的所有字段：</p>
 <pre><code class="lang-json">{
@@ -2022,7 +2332,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
           ]
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/roles/55a48351e4b05001a774a89f
+  https://{{v2Domain}}/1.1/roles/55a48351e4b05001a774a89f
 </code></pre>
 <p>相似的，我们可以删除一个 Manager 的子角色：</p>
 <pre><code class="lang-sh">curl -X PUT \
@@ -2041,7 +2351,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
           ]
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/roles/55a48351e4b05001a774a89f
+  https://{{v2Domain}}/1.1/roles/55a48351e4b05001a774a89f
 </code></pre>
 <h3 id="-">删除对象</h3>
 <p>为了从 LeanCloud 上删除一个角色，只需要发送 DELETE 请求到它的 URL 就可以了。</p>
@@ -2050,7 +2360,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;X-LC-Session: qmdj8pdidnmyzp0c7yqil91oc&quot; \
-  https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
+  https://{{v2Domain}}/1.1/roles/55a483f0e4b05001a774b837
 </code></pre>
 <h3 id="-">安全性</h3>
 <p>当你通过 REST API key 访问 LeanCloud 的时候，访问同样可能被 ACL 所限制，就像 iOS 和 Android SDK 上一样。你仍然可以通过 REST API 来读和修改 ACL，只用通过访问「ACL」键就可以了。</p>
@@ -2089,7 +2399,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
           ]
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/roles/&lt;ModeratorsRoleObjectId&gt;
+  https://{{v2Domain}}/1.1/roles/&lt;ModeratorsRoleObjectId&gt;
 </code></pre>
 <h2 id="-">文件</h2>
 <p>对于文件上传，我们推荐使用各个客户端的 SDK 进行操作，或者使用<a href="./leanengine_cli.html">命令行工具</a>。</p>
@@ -2101,13 +2411,18 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
 </ul>
 <p><strong>而使用 SDK 或者命令行上传没有这些限制</strong>。</p>
 <h3 id="-">上传文件</h3>
+  <div class="callout callout-danger">
+  <p>北美和华东节点不支持通过 REST API 上传文件，请使用 SDK 提供的文件相关接口上传文件。</p>
+</div>
+
+
 <p>上传文件到  LeanCloud  通过 POST 请求，注意必须指定文件的 content-type，例如上传一个文本文件 hello.txt 包含一行字符串：</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: text/plain&quot; \
   -d &#39;Hello, World!&#39; \
-  https://api.leancloud.cn/1.1/files/hello.txt
+  https://{{v2Domain}}/1.1/files/hello.txt
 </code></pre>
 <p>文件上传成功后，返回 <strong>201 Created</strong> 的应答和创建的文件对象（可以在 _File 表看到）：</p>
 <pre><code class="lang-json">{  &quot;size&quot;:13,
@@ -2125,7 +2440,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
   -H &quot;X-LC-Key: {{appkey}}&quot; \
   -H &quot;Content-Type: image/png&quot; \
   --data-binary &#39;@test.png&#39;  \
-  https://api.leancloud.cn/1.1/files/test.png
+  https://{{v2Domain}}/1.1/files/test.png
 </code></pre>
 <h3 id="-">关联文件到对象</h3>
 <p>一个文件上传后，你可以关联该文件到某个 AVObject 对象上：</p>
@@ -2140,7 +2455,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
           &quot;__type&quot;: &quot;File&quot;
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/classes/Staff
+  https://{{v2Domain}}/1.1/classes/Staff
 </code></pre>
 <p>其中 <code>id</code> 就是文件对象的 objectId。</p>
 <h3 id="-">删除文件</h3>
@@ -2148,7 +2463,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
 <pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/files/543cbaede4b07db196f50f3c
+  https://{{v2Domain}}/1.1/files/543cbaede4b07db196f50f3c
 </code></pre>
 <h2 id="push-">Push 通知</h2>
 <p>请查看我们的 <a href="./push_guide.html#使用_REST_API_推送消息">消息推送开发指南 &middot; 使用 REST API 推送消息</a>。</p>
@@ -2177,7 +2492,7 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
 </tr>
 <tr>
 <td>deviceType</td>
-<td>必须被设置为&quot;ios&quot;、&quot;android&quot;、&quot;wp&quot;、&quot;web&quot;中的一种，而且自这个对象生成以后就不能变化。</td>
+<td>必须被设置为 &quot;ios&quot;、&quot;android&quot;、&quot;wp&quot;、&quot;web&quot;中的一种，而且自这个对象生成以后就不能变化。</td>
 </tr>
 <tr>
 <td>installationId</td>
@@ -2203,11 +2518,11 @@ Location: https://api.leancloud.cn/1.1/roles/55a483f0e4b05001a774b837
           &quot;&quot;
         ]
       }&#39; \
-  https://api.leancloud.cn/1.1/installations
+  https://{{v2Domain}}/1.1/installations
 </code></pre>
 <p>当创建成功后，HTTP的返回值为 <strong>201 Created</strong>，Location header 包括了新的安装的 URL：</p>
 <pre><code class="lang-sh">Status: 201 Created
-Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
+Location: https://{{v2Domain}}/1.1/installations/51ff1808e4b074ac5c34d7fd
 </code></pre>
 <p>返回的 body 是一个 JSON 对象，包括了 objectId 和 createdAt 这个创建对象的时间戳。</p>
 <pre><code class="lang-json">{
@@ -2220,7 +2535,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
+  https://{{v2Domain}}/1.1/installations/51ff1808e4b074ac5c34d7fd
 </code></pre>
 <p>返回的 JSON 对象所有用户提供的字段，加上 createdAt、updatedAt 和 objectId 字段：</p>
 <pre><code class="lang-json">{
@@ -2248,7 +2563,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
           &quot;foo&quot;
         ]
       }&#39; \
-  https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
+  https://{{v2Domain}}/1.1/installations/51ff1808e4b074ac5c34d7fd
 </code></pre>
 <h3 id="-">查询安装对象</h3>
 <p>你可以一次通过 GET 请求到 installations 的根 URL 来获取多个安装对象。这项功能在 SDK 中不可用。</p>
@@ -2256,7 +2571,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/installations
+  https://{{v2Domain}}/1.1/installations
 </code></pre>
 <p>返回的 JSON 对象的 results 字段包含了所有的结果：</p>
 <pre><code class="lang-json">{
@@ -2290,7 +2605,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X DELETE \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/installations/51fcb74ee4b074ac5c34cf85
+  https://{{v2Domain}}/1.1/installations/51fcb74ee4b074ac5c34cf85
 </code></pre>
 <h2 id="-schema">数据 Schema</h2>
 <p>为了方便开发者使用、自行研发一些代码生成工具或者内部使用的管理平台。我们提供了获取数据 Class Schema 的开放 API，基于安全考虑，强制要求使用 Master Key 才可以访问。</p>
@@ -2298,7 +2613,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
    -H &quot;X-LC-Id: {{appid}}&quot; \
    -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-   https://api.leancloud.cn/1.1/schemas
+   https://{{v2Domain}}/1.1/schemas
 </code></pre>
 <p>返回的 JSON 数据包含了每个 Class 对应的 Schema:</p>
 <pre><code class="lang-json">{
@@ -2319,41 +2634,10 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
    -H &quot;X-LC-Id: {{appid}}&quot; \
    -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-   https://api.leancloud.cn/1.1/schemas/_User
+   https://{{v2Domain}}/1.1/schemas/_User
 </code></pre>
 <h2 id="-">云函数</h2>
-<p>云函数可以通过 REST API 来使用，比如调用一个叫 hello 的云函数：</p>
-<pre><code class="lang-sh">curl -X POST \
-  -H &quot;X-LC-Id: {{appid}}&quot; \
-  -H &quot;X-LC-Key: {{appkey}}&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#39;{}&#39; \
-  https://api.leancloud.cn/1.1/functions/hello
-</code></pre>
-<p>通过 <code>POST /functions/:name</code> 这个 API 调用时，参数和结果都是 JSON 格式，不会对其中的 AVObject 进行特殊处理。</p>
-<p>因此我们在新版云引擎 SDK 中增加了 <code>POST /1.1/call/:name</code> 这个 API，参数中的 AVObject 会在云引擎中被自动转换为对应的类，结果中的 AVObject 会携带用于客户端 SDK 识别的元信息：</p>
-<pre><code class="lang-sh">curl -X POST \
-  -H &quot;X-LC-Id: {{appid}}&quot; \
-  -H &quot;X-LC-Key: {{appkey}}&quot; \
-  -H &quot;Content-Type: application/json&quot; \
-  -d &#39;{&quot;__type&quot;: &quot;Object&quot;, &quot;className&quot;: &quot;Post&quot;, &quot;pubUser&quot;: &quot;LeanCloud官方客服&quot;}&#39; \
-  https://api.leancloud.cn/1.1/call/hello
-</code></pre>
-<p>响应：</p>
-<pre><code class="lang-json">{
-  &quot;__type&quot;: &quot;Object&quot;,
-  &quot;className&quot;: &quot;Post&quot;,
-  &quot;pubUser&quot;: &quot;LeanCloud官方客服&quot;
-}
-</code></pre>
-<p><strong>注意：<code>POST /1.1/call/:name</code> 需要你在云引擎中使用最新版的 SDK，Node.js 需要 0.2 版本以上的云引擎</strong></p>
-<p>你还可以阅读以下云引擎开发指南来获取更多的信息。</p>
-<ul>
-<li><a href="leanengine_cloudfunction_guide-node.html">云引擎 Node.js 环境</a></li>
-<li><a href="leanengine_cloudfunction_guide-python.html">云引擎 Python 环境</a></li>
-<li><a href="leanengine_cloudfunction_guide-php.html">云引擎 PHP 环境</a></li>
-<li><a href="leanengine_cloudfunction_guide-java.html">云引擎 Java 环境</a></li>
-</ul>
+<p>请查看我们的 <a href="leanengine-rest-api.html">云引擎 REST API 使用指南</a>。</p>
 <h2 id="-">地理查询</h2>
 <p>假如在发布微博的时候，我们也支持用户加上当时的位置信息（新增一个 <code>location</code> 字段），如果想看看指定的地点附近发生的事情，可以通过 GeoPoint 数据类型加上在查询中使用 <code>$nearSphere</code> 做到。获取离当前用户最近的 10 条微博应该看起来像下面这个样子:</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -2370,7 +2654,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
           }
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>这会按照距离纬度 39.9、经度 116.4（当前用户所在位置）的远近排序返回一系列结果，第一个就是最近的对象。(注意：<strong>如果指定了 order 参数的话，它会覆盖按距离排序。</strong>）</p>
 <p>为了限定搜索的最大距离，需要加入 <code>$maxDistanceInMiles</code> 和 <code>$maxDistanceInKilometers</code>或者 <code>$maxDistanceInRadians</code> 参数来限定。比如要找的半径在 10 英里内的话：</p>
@@ -2388,7 +2672,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
           &quot;$maxDistanceInMiles&quot;: 10.0
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <p>同样做查询寻找在一个特定的范围里面的对象也是可以的，为了找到在一个矩形的区域里的对象，按下面的格式加入一个约束 <code>{&quot;$within&quot;: {&quot;$box&quot;: [southwestGeoPoint, northeastGeoPoint]}}</code>。</p>
 <pre><code class="lang-sh">curl -X GET \
@@ -2413,7 +2697,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
           }
         }
       }&#39; \
-  https://api.leancloud.cn/1.1/classes/Post
+  https://{{v2Domain}}/1.1/classes/Post
 </code></pre>
 <h3 id="-">警告</h3>
 <p>这是有一些问题是值得留心的:</p>
@@ -2422,7 +2706,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <li>Points 不应该等于或者超出它的界. 纬度不应该是 -90.0 或者 90.0，经度不应该是 -180.0 或者 180.0。试图在 GeoPoint 上使用超出范围内的经度和纬度会导致问题.</li>
 </ol>
 <h2 id="-api">用户反馈组件 API</h2>
-<p>如果使用我们的用户反馈组件，可以通过下列 API 来提交一条新的用户反馈：</p>
+<p>提交一条新的用户反馈：</p>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
@@ -2432,22 +2716,50 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
          &quot;content&quot; : &quot;反馈的文字内容&quot;,
          &quot;contact&quot; : &quot;联系方式、QQ 或者邮箱手机等&quot;
        }&#39; \
-  https://api.leancloud.cn/1.1/feedback
+  https://{{v2Domain}}/1.1/feedback
 </code></pre>
-<p>提交后的用户反馈在可以在组件菜单的用户反馈里看到。</p>
-<h2 id="-api">短信验证 API</h2>
+<p>提交后的用户反馈在可以在 <a href="/dashboard/devcomponent.html?appid={{appid}}#/component/feedback">控制台 &gt;（选择应用）&gt; 组件 &gt; 用户反馈</a> 里看到。</p>
+<p>获取所有的反馈：</p>
+<pre><code>curl -X GET \
+-H &quot;X-LC-Id:&quot; \
+-H &quot;X-LC-Key:&quot; \
+-H &quot;Content-Type: application/json&quot; \
+https://{{v2Domain}}/1.1/feedback
+</code></pre><p>获取一条反馈里面的信息：</p>
+<pre><code>curl -X GET \
+-H &quot;X-LC-Id:&quot; \
+-H &quot;X-LC-Key:&quot; \
+-H &quot;Content-Type: application/json&quot; \
+https://{{v2Domain}}/1.1/feedback/&lt;:feedback_objectId&gt;/threads
+</code></pre><p>将 <code>&lt;:feedback_objectId&gt;</code> 替换为 feedback 的 objectId（可以从上述的「获取所有的反馈」这个查询中得到 objectId）。 </p>
+<p>客服为一条已经存在的反馈增加一条回复：</p>
+<pre><code>curl -X POST \
+-H &quot;X-LC-Id:&quot; \
+-H &quot;X-LC-Key:&quot;\
+ -H &quot;Content-Type: application/json&quot; \
+-d &#39;{&quot;type&quot;:&quot;dev&quot;,&quot;content&quot;:&quot;感谢您的反馈！我们正在修复您所述的问题，修复后再通知您。&quot;, &quot;attachment&quot;:&quot;&quot;}&#39; \ 
+https://{{v2Domain}}/1.1/feedback/&lt;:feedback_objectId&gt;/threads
+</code></pre><p>用户为一条已经存在的反馈增加一条回复：</p>
+<pre><code>curl -X POST \
+-H &quot;X-LC-Id:&quot; \
+-H &quot;X-LC-Key:&quot;\
+ -H &quot;Content-Type: application/json&quot; \
+-d &#39;{&quot;type&quot;:&quot;user&quot;,&quot;content&quot;:&quot;我刚才又试了下，现在没问题了！耶~&quot;, &quot;attachment&quot;:&quot;&quot;}&#39; \ 
+https://{{v2Domain}}/1.1/feedback/&lt;:feedback_objectId&gt;/threads
+</code></pre><h2 id="-api">短信验证 API</h2>
 <p>请参考 <a href="rest_sms_api.html">短信服务 REST API 详解</a>。</p>
 <h2 id="-api">实时通信 API</h2>
 <p>请参考 <a href="./realtime_rest_api.html">实时通信 REST API</a>。</p>
 <h2 id="-api">统计数据 API</h2>
 <h3 id="-api">数据查询 API</h3>
-<p>统计 API 可以获取一个应用的统计数据。因为统计数据的隐私敏感性，统计数据查询 API 必须使用 master key 的签名方式鉴权，请参考 <a href="#更安全的鉴权方式">更安全的鉴权方式</a> 一节。</p>
-<p>获取某个应用的基本信息，包括各平台的应用版本，应用发布渠道。（注意：下面示例直接使用带 <code>master</code> 标识的 X-LC-Key，不过我们推荐在实际使用中采用 <a href="rest_api.html#更安全的鉴权方式">新鉴权方式</a> 加密，不要明文传递 Key。）</p>
+<p>统计 API 可以获取一个应用的统计数据。因为统计数据的隐私敏感性，统计数据查询 API 必须使用 master key 的签名方式鉴权。</p>
+<p>获取某个应用的基本信息，包括各平台的应用版本，应用发布渠道：</p>
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
-  -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  https://api.leancloud.cn/1.1/stats/appinfo
+  -H &quot;X-LC-Sign: {{sign_masterkey}}&quot; \
+  https://{{v2Domain}}/1.1/stats/appinfo
 </code></pre>
+<p>注意：上面示例直接使用了更加安全的 <a href="#更安全的鉴权方式">X-LC-Sign 鉴权方式</a>，避免以明文来传递 Key。</p>
 <p>返回的 JSON 数据：</p>
 <pre><code class="lang-json">{
   &quot;iOS&quot;: {
@@ -2464,7 +2776,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  &quot;https://api.leancloud.cn/1.1/stats/appmetrics?platform=iOS&amp;start=20140301&amp;end=20140315&amp;metrics=active_user&quot;
+  &quot;https://{{v2Domain}}/1.1/stats/appmetrics?platform=iOS&amp;start=20140301&amp;end=20140315&amp;metrics=active_user&quot;
 </code></pre>
 <p>具体支持的参数：</p>
 <table>
@@ -2475,6 +2787,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
   <tr><td>platform</td><td>应用平台：iOS、Android，可选，默认是全部。</td></tr>
   <tr><td>appversion</td><td>选择应用版本，可选，默认是全部。一次取多个版本数据半角逗号（,）分隔，如：1.0,2.0,2.5</td></tr>
   <tr><td>channel</td><td>选择发布渠道，可选，默认是全部。一次取多个渠道数据请用半角逗号（,）分隔，如：Xiaomi,Meizu</td></tr>
+  <tr><td>conv_id</td><td>选择对话 ID，可选，只在查询实时通信某个对话相关的统计信息时使用</td></tr>
 </table>
 
 <p>metrics 参数可选项解释：</p>
@@ -2515,6 +2828,10 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
   <tr><td>event_user</td><td>自定义事件用户数，请求参数需增加 event 参数。</td></tr>
   <tr><td>event_duration</td><td>自定义事件时长，请求参数需增加 event 参数。</td></tr>
   <tr><td>event_label_count</td><td>自定义事件标签分布，请求参数需增加 event， event_label 参数。</td></tr>
+  <tr><td>rtm_tr_sender</td><td>单日某暂态对话内有发出过消息的独立用户数，请求参数需增加 conv_id 参数。</td></tr>
+  <tr><td>rtm_tr_msg_down</td><td>单日某暂态对话下行消息总数，请求参数需增加 conv_id 参数。</td></tr>
+  <tr><td>rtm_tr_msg_up</td><td>单日某暂态对话的上行消息总数，请求参数需增加 conv_id 参数。</td></tr>
+  <tr><td>rtm_tr_conv_m</td><td>单日加入某暂态对话的独立用户数，请求参数需增加 conv_id 参数。</td></tr>
 </table>
 
 <p>返回的json数据</p>
@@ -2543,7 +2860,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  &quot;https://api.leancloud.cn/1.1/stats/rtmetrics?platform=iOS&amp;metrics=current_active&quot;
+  &quot;https://{{v2Domain}}/1.1/stats/rtmetrics?platform=iOS&amp;metrics=current_active&quot;
 </code></pre>
 <p>具体支持的参数：</p>
 <table>
@@ -2578,7 +2895,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  &quot;https://api.leancloud.cn/1.1/stats/appmetrics?platform=iOS&amp;start=20140301&amp;end=20140315&amp;metrics=new_user,retention_1&quot;
+  &quot;https://{{v2Domain}}/1.1/stats/appmetrics?platform=iOS&amp;start=20140301&amp;end=20140315&amp;metrics=new_user,retention_1&quot;
 </code></pre>
 <p>将返回</p>
 <pre><code class="lang-json">[
@@ -2619,7 +2936,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
 <pre><code class="lang-sh">curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{appkey}}&quot; \
-  https://api.leancloud.cn/1.1/statistics/apps/{{appid}}/sendPolicy
+  https://{{v2Domain}}/1.1/statistics/apps/{{appid}}/sendPolicy
 </code></pre>
 <p>返回结果：</p>
 <pre><code class="lang-json">{
@@ -2663,7 +2980,7 @@ Location: https://api.leancloud.cn/1.1/installations/51ff1808e4b074ac5c34d7fd
     }
   ]
  }&#39; \
-https://api.leancloud.cn/1.1/stats/open/collect
+https://{{v2Domain}}/1.1/stats/open/collect
 </code></pre><p>统计发送的数据格式包括 3 个节点。</p>
 <h4 id="client-">client 节点</h4>
 <p>包括了用户设备和应用的相关信息，这个节点是必选节点。有了这个节点的数据就可以统计出每天的新增、活跃和累计用户，以及用户留存率、流失率等关键数据。</p>
@@ -2679,7 +2996,7 @@ https://api.leancloud.cn/1.1/stats/open/collect
 <tr>
 <td>id</td>
 <td>必选</td>
-<td>用户的唯一 id（系统将根据这个 id 来区分新增用户，活跃用户，累计用户等用户相关数据）</td>
+<td>用户的唯一 id，这是由  SDK 从系统中获取的设备 ID（系统将根据这个 id 来区分新增用户、活跃用户、累计用户等用户相关数据）</td>
 </tr>
 <tr>
 <td>platform</td>
@@ -2802,7 +3119,7 @@ https://api.leancloud.cn/1.1/stats/open/collect
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{}&#39; \
-  https://api.leancloud.cn/1.1/exportData
+  https://{{v2Domain}}/1.1/exportData
 </code></pre><p><code>exportData</code> 要求使用 master key 来授权。</p>
 <p>你还可以指定导出数据的起始时间：</p>
 <pre><code>curl -X POST \
@@ -2810,21 +3127,21 @@ https://api.leancloud.cn/1.1/stats/open/collect
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;from_date&quot;:&quot;2015-09-20&quot;, &quot;to_date&quot;:&quot;2015-09-25&quot;}&#39; \
-  https://api.leancloud.cn/1.1/exportData
+  https://{{v2Domain}}/1.1/exportData
 </code></pre><p>还可以指定具体的 class 列表，使用逗号隔开：</p>
 <pre><code>curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;classes&quot;:&quot;_User,GameScore,Post&quot;}&#39; \
-  https://api.leancloud.cn/1.1/exportData
+  https://{{v2Domain}}/1.1/exportData
 </code></pre><p>增加 <code>only-schema</code> 选项就可以只导出 schema:</p>
 <pre><code>curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;only-schema&quot;:&quot;true&quot;}&#39; \
-  https://api.leancloud.cn/1.1/exportData
+  https://{{v2Domain}}/1.1/exportData
 </code></pre><p>导出的 Schema 文件同样可以使用数据导入功能来导入到其他应用。</p>
 <p>默认导出的结果将发送到应用的创建者邮箱，你也可以指定接收邮箱：</p>
 <pre><code>curl -X POST \
@@ -2832,7 +3149,7 @@ https://api.leancloud.cn/1.1/stats/open/collect
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;email&quot;:&quot;username@exmaple.com&quot;}&#39; \
-  https://api.leancloud.cn/1.1/exportData
+  https://{{v2Domain}}/1.1/exportData
 </code></pre><p>调用结果将返回本次任务的 id 和状态：</p>
 <pre><code class="lang-json">{
   &quot;status&quot;:&quot;running&quot;,
@@ -2844,7 +3161,7 @@ https://api.leancloud.cn/1.1/stats/open/collect
 <pre><code>curl -X GET \
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
-  https://api.leancloud.cn/1.1/exportData/1wugzx81LvS5R4RHsuaeMPKlJqFMFyLwYDNcx6LvCc6MEzQ2
+  https://{{v2Domain}}/1.1/exportData/1wugzx81LvS5R4RHsuaeMPKlJqFMFyLwYDNcx6LvCc6MEzQ2
 </code></pre><p>如果导出完成，将返回导出结果的下载链接：</p>
 <pre><code class="lang-json">{
   &quot;status&quot;:&quot;done&quot;,
@@ -2855,11 +3172,12 @@ https://api.leancloud.cn/1.1/stats/open/collect
 </code></pre>
 <p>如果任务还没有完成， <code>status</code> 仍然将为 <code>running</code> 状态，<strong>请间隔一段时间后再尝试查询。</strong></p>
 <h2 id="-api">其他 API</h2>
+<h3 id="-">服务器时间</h3>
 <p>获取服务端当前日期时间可以通过 <code>/date</code> API:</p>
 <pre><code>curl -i -X GET \
     -H &quot;X-LC-Id: {{appid}}&quot; \
     -H &quot;X-LC-Key: {{appkey}}&quot; \
-    https://api.leancloud.cn/1.1/date
+    https://{{v2Domain}}/1.1/date
 </code></pre><p>返回 UTC 日期:</p>
 <pre><code class="lang-json">{
   &quot;iso&quot;: &quot;2015-08-27T07:38:33.643Z&quot;,
@@ -2867,6 +3185,11 @@ https://api.leancloud.cn/1.1/stats/open/collect
 }
 </code></pre>
 <h2 id="-api">离线数据分析 API</h2>
+  <div class="callout callout-danger">
+  <p>该项功能仅向<strong>商业版</strong>和<strong>企业版</strong>应用开放。因此，开发版应用如果调用该 API 会收到错误响应。</p>
+</div>
+
+
 <h3 id="-job-api">创建分析 job API</h3>
 <p>离线数据分析 API 可以获取一个应用的备份数据。因为应用数据的隐私敏感性，离线数据分析 API 必须使用 master key 的签名方式鉴权，请参考 <a href="#更安全的鉴权方式">更安全的鉴权方式</a> 一节。</p>
 <p>创建分析 job。（注意：下面示例直接使用带 <code>master</code> 标识的 <code>X-LC-Key</code>，不过我们推荐你在实际使用中采用 <a href="rest_api.html#更安全的鉴权方式">新鉴权方式</a> 加密，不要明文传递 Key。）</p>
@@ -2875,7 +3198,7 @@ https://api.leancloud.cn/1.1/stats/open/collect
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
   -d &#39;{&quot;jobConfig&quot;:{&quot;sql&quot;:&quot;select count(*) from table&quot;}}&#39; \
-  https://api.leancloud.cn/1.1/bigquery/jobs
+  https://{{v2Domain}}/1.1/bigquery/jobs
 </code></pre><p>需要特别说明的是，<code>jobConfig</code> 不仅可以提供查询分析 <code>sql</code>，还可以增加其他配置项：</p>
 <ul>
 <li>查询结果自动另存为：</li>
@@ -2919,7 +3242,7 @@ Strict-Transport-Security: max-age=31536000
   -H &quot;X-LC-Id: {{appid}}&quot; \
   -H &quot;X-LC-Key: {{masterkey}},master&quot; \
   -H &quot;Content-Type: application/json&quot; \
-  https://api.leancloud.cn/1.1/bigquery/jobs/:jobId
+  https://{{v2Domain}}/1.1/bigquery/jobs/:jobId
 </code></pre><p>对应的输出：</p>
 <pre><code>HTTP/1.1 200 OK
 Server Tengine is not blacklisted
@@ -2940,7 +3263,7 @@ Strict-Transport-Security: max-age=31536000
   &#39;{&quot;_method&quot;:&quot;GET&quot;,
     &quot;_ApplicationId&quot;:&quot;{{appid}}&quot;,
     &quot;_ApplicationKey&quot;:&quot;{{appkey}}&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><p>对应的输出：</p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx
@@ -2968,7 +3291,7 @@ Strict-Transport-Security: max-age=31536000
     &quot;_ApplicationId&quot;:&quot;{{appid}}&quot;,
     &quot;_ApplicationKey&quot;:&quot;{{appkey}}&quot;,
     &quot;upvotes&quot;:99}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><p>对应的输出：</p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx
@@ -2988,7 +3311,7 @@ Strict-Transport-Security: max-age=31536000
   &#39;{&quot;_method&quot;:  &quot;DELETE&quot;,
     &quot;_ApplicationId&quot;:&quot;{{appid}}&quot;,
     &quot;_ApplicationKey&quot;:&quot;{{appkey}}&quot;}&#39; \
-  https://api.leancloud.cn/1.1/classes/Post/558e20cbe4b060308e3eb36c
+  https://{{v2Domain}}/1.1/classes/Post/558e20cbe4b060308e3eb36c
 </code></pre><p>对应的输出是：</p>
 <pre><code>HTTP/1.1 200 OK
 Server: nginx
@@ -3023,7 +3346,7 @@ Strict-Transport-Security: max-age=31536000
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -3046,12 +3369,8 @@ Strict-Transport-Security: max-age=31536000
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -3093,29 +3412,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

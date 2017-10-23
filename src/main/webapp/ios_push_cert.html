@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>iOS 推送证书设置指南 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,6 +440,9 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="ios-">iOS 推送证书设置指南</h1>
 <h2 id="-app-id">注册 App ID</h2>
 <p>首先注册 App ID。如果你已经注册过带有推送通知 App ID，可以跳过以下步骤：</p>
@@ -405,18 +465,86 @@
 <p>为已有的 App ID 开启推送通知的步骤如下：</p>
 <ol>
 <li>选择要开启推送通知的 App ID</li>
-<li>勾选 <strong>Push Notifications</strong> 复选框。
+<li>勾选 <strong>Push Notifications</strong> 复选框
 <img src="images/ios_cert_v2/edit_push_notification.png" alt="Edit push notification"></li>
 <li>如果弹出警告对话框，点击 <strong>OK</strong>。</li>
 <li>点击 <strong>Done</strong></li>
 </ol>
-<h2 id="-">创建推送证书</h2>
+<h2 id="-token-authentication">创建 Token Authentication</h2>
+<p><strong>Token Authentication</strong> 是 APNs 新推出的推送鉴权方式。它相对老的证书鉴权方式有如下优势：</p>
+<ul>
+<li>同一个账户下所有 App 无论是测试 App 还是正式版 App，都能使用同一个 key 来发推送消息和 voice-over-Internet Protocol (VoIP) 消息，不再需要为每个 App 生成一个证书。</li>
+<li>生成的 Auth Key 不再有过期时间，无需像证书那样每年需要重新生成一次。</li>
+<li>生成过程简单，不需要繁琐、易错的证书导出操作。</li>
+</ul>
+<p>想进一步了解其相关内容请参看 <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1">APNs 文档</a>。</p>
+<p><strong>我们推荐所有用户都使用这种新的鉴权方式来发推送消息。</strong></p>
+<h3 id="-team-id">获取 Team ID</h3>
+<ol>
+<li>前往 <a href="https://developer.apple.com">Apple Developer Center</a></li>
+<li><p>点击 <strong>Membership</strong></p>
+<p><img src="images/ios_cert_v2/find_team_id.png" alt="Membership"></p>
+<p>找到 Team ID 一栏，将其记下来以备后用。</p>
+</li>
+</ol>
+<h3 id="-token-authentication-key">创建 Token Authentication Key</h3>
+<ol>
+<li>前往 <a href="https://developer.apple.com">Apple Developer Center</a></li>
+<li><p>点击 <strong>Certificates, Identifiers &amp; Profiles</strong></p>
+<p><img src="images/ios_cert_v2/enter_certificates_identifiers_profiles.png" alt="enter Certificates, Identifiers &amp; Profiles"></p>
+</li>
+<li>选择在 <strong>Keys</strong> 栏下的 <strong>All</strong></li>
+<li><p>点击下图中红色边框内的加号按钮</p>
+<p><img src="images/ios_cert_v2/create_auth_keys.png" alt="Create Auth Keys"></p>
+</li>
+<li><p>根据您的需要自行填写 <strong>Key Description</strong> 并勾选 <strong>APNs</strong> 后点击最下面的 Continue 按钮。</p>
+<p><img src="images/ios_cert_v2/create_new_key.png" alt="Create New Key"></p>
+</li>
+<li><p>点击 Confirm 按钮继续下一步。</p>
+<p><img src="images/ios_cert_v2/confirm_new_key.png" alt="Confirm Key"></p>
+</li>
+<li><p>点击 Download 将生成好的 Auth Key 下载到本地，并记录 Key ID 备用。</p>
+<p><img src="images/ios_cert_v2/download_key_id.png" alt="Download Key ID"></p>
+</li>
+</ol>
+<h3 id="-token-authentication-key">上传 Token Authentication Key</h3>
+<ol>
+<li><p>进入 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 推送 &gt; 设置</a>，然后就可以看到下面的页面：</p>
+<p><img src="images/ios_cert_v2/push_token_auth_config.png" alt="Push token auth configure"></p>
+</li>
+<li><p>点击 <strong>新增 Token Authentication</strong> 后弹出对话框：</p>
+<p><img src="images/ios_cert_v2/upload_token_auth_key.png" alt="Upload token auth key"></p>
+<p>在弹出的对话框内填入 Team ID、Key ID、Topics，并将上一步下载到本地的 Auth Key 文件上传。</p>
+<ul>
+<li>Topics 是 App 的 Bundle ID，有几个要用该 Token Authentication Key 发消息的 App 就可以在 Topics 下填写几个 Bundle ID，每个 Bundle ID 用<u>英文半角逗号</u>分隔。</li>
+<li>需要注意填写的 App Bundle ID 必须从属于同一个 Team ID 之下。如果有多个 Team ID 或多个 Token Authentication Key，请再点击 <strong>新增 Token Authentication</strong> 按钮以配置多个 Token Authentication Key。</li>
+</ul>
+<p>点击 <strong>创建</strong> 之后就完成了上传 Token Authentication Key 的工作。</p>
+</li>
+<li>推送测试可以在这里进行：
+<img src="images/ios_cert_v2/push_test.png" alt="push_test"></li>
+</ol>
+  <div class="callout callout-danger">
+  <p>在 LeanCloud 平台，Token Authentication 鉴权方式和老的证书鉴权方式是互斥的，一旦配置了 Token Authentication 则应用下所有推送均会使用 Token Authentication 方式进行，所以请确保为所有需要发推送的 App 都添加了 Token Authentication 配置。</p>
+</div>
+
+
+  <div class="callout callout-danger">
+  <p>如果目标推送设备中有使用版本低于 v4.2.0 的 iOS SDK，请在调用推送接口发推送时主动带上 topic 参数。用法请参考 <a href="push_guide.html#推送消息">推送消息接口</a>。</p>
+</div>
+
+
+<h2 id="-">创建推送证书（不推荐使用）</h2>
 <p>每个 App ID 都需要单独的客户端 SSL 证书来和 APNs 通信。从 2015 年 12 月 17 日起，APNs 服务全面支持 HTTP/2 协议，推送证书也进行了相应的调整，即推出了 Universal Push Notification Client SSL 证书，以下简称 <strong>Universal 推送证书</strong>。通过下图中红框标注的 <strong>Apple Push Notification service SSL (Sandbox &amp; Production)</strong> 这种方式创建的推送证书就是「Universal 推送证书」。</p>
 <p>我们推荐使用「Universal 推送证书」来进行推送服务。</p>
 <p>   <img src="images/ios_cert_v2/what_is_universal_push_notification_client_ssl_certificate.png" alt="what is Universal Push Notification Client SSL Certificate"></p>
 <p>  图中其他方式就叫做「非 Universal 方式」，以下简称 <strong>非 Universal 推送证书</strong>：</p>
 <p>  <img src="images/ios_cert_v2/what_is_not_universal_push_notification_client_ssl_certificate.png" alt="what is not Universal Push Notification Client SSL Certificate"></p>
-<p><strong>注意：</strong>要使用 Universal 推送证书，LeanCloud iOS SDK 需要更新到 v3.2.8 以上的版本，以获得更快速的推送效果。</p>
+  <div class="callout callout-danger">
+  <p>要使用 Universal 推送证书，LeanCloud iOS SDK 需要更新到 v3.2.8 以上的版本，以获得更快速的推送效果。</p>
+</div>
+
+
 <h3 id="-universal-">创建 Universal 推送证书</h3>
 <p>请按以下步骤创建「Universal 推送证书」：</p>
 <ol>
@@ -450,41 +578,33 @@
 </li>
 </ol>
 <p>「非 Universal 推送证书」的申请步骤与以上类似。</p>
-<h2 id="-">验证推送服务状态</h2>
-<p>按以下步骤来验证 App ID 的推送服务是否打开：</p>
-<ol>
-<li>点击 <strong>Identifiers</strong> 下的 <strong>App IDs</strong></li>
-<li>选择与应用 Bundle ID 匹配的 App ID</li>
-<li><p>如果下图中红色方框中显示 <strong>Enabled</strong>，表示 App ID 的推送证书已配置好。</p>
-<p><img src="images/ios_cert_v2/verify_push_notification.png" alt="Verify push notification"></p>
-</li>
-</ol>
-<h2 id="-">导出证书</h2>
+<h3 id="-">导出证书</h3>
 <ol>
 <li>打开 <strong>Keychain Access</strong>，找到要导出的证书（证书名有前缀 <strong>Apple Push Services</strong>）。</li>
-<li>右键点击证书，选择 <strong>导出 / Export</strong>，选择保存格式为 <code>.p12</code>。这时程序会提示你输入密码来保护导出的证书，<strong>请不要输入密码</strong>，让两个输入框为空，点击  <strong>OK</strong>。接着又会弹出一个对话框，要求输入 macOS 账户的密码来允许从 Keychain Access 中导出，请填写密码并点击 <strong>允许 / Allow</strong>。</li>
-<li>在 Xcode 工程中开启推送权限：具体步骤如下： <img src="images/ios_cert_v2/open_push_auth.png" alt="open_push_auth"></li>
+<li><p>右键点击证书，这里请注意确认右键点击的是<u>证书</u>，<strong>不要</strong> 展开证书后右键点击证书的专用密钥。</p>
+<p>选择 <strong>导出 / Export</strong>，选择保存格式为 <code>.p12</code>。这时程序会提示你输入密码来保护导出的证书，<strong>请不要输入密码</strong>，让两个输入框为空，点击  <strong>OK</strong>。</p>
+<p>接着又会弹出一个对话框，要求输入 macOS 账户的密码来允许从 Keychain Access 中导出，请填写密码并点击 <strong>允许 / Allow</strong>。</p>
+</li>
+<li><p>在 Xcode 工程中开启推送权限：</p>
+<p><img src="images/ios_cert_v2/open_push_auth.png" alt="open_push_auth"></p>
+</li>
 </ol>
-<h2 id="-">上传证书</h2>
+<h3 id="-">上传证书</h3>
 <ol>
-<li>进入 <a href="/messaging.html?appid={{appid}}#/message/push/conf">LeanCloud 应用控制台 &gt; 消息 &gt; 推送 &gt; 设置</a>，然后就可以看到下面的页面：</li>
-</ol>
-<p>  <img src="images/ios_cert_v2/push_certificate_config.png" alt="Push certificate configure"></p>
-<ol>
+<li><p>进入 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 推送 &gt; 设置</a>，然后就可以看到下面的页面：</p>
+<p><img src="images/ios_cert_v2/push_certificate_config.png" alt="Push certificate configure"></p>
+</li>
 <li><p>将「Universal 推送证书」上传到图中的 <strong>生产证书</strong> 中。</p>
-<p> <strong>根据你的证书类别进行上传。这里请注意区分证书的类别，<u>测试环境</u>证书和<u>生产环境</u>证书请勿混淆。</strong></p>
+<p><strong>根据你的证书类别进行上传。这里请注意区分证书的类别，<u>测试环境</u>证书和<u>生产环境</u>证书请勿混淆。</strong></p>
 </li>
 <li><p>配置推送证书，最简单的方式就是将刚才生成的「Universal 推送证书」直接上传。当然也可以自己生成一个测试证书。</p>
+<p>上传测试证书后，那么就可以在控制台看到生产证书和测试证书都上传完成：
+<img src="images/ios_cert_v2/prod_dev_push_cer_preview.png" alt="prod_dev_push_cer_preview"></p>
 </li>
+<li>推送测试可以在这里进行：
+<img src="images/ios_cert_v2/push_test.png" alt="push_test"></li>
 </ol>
-<p>上传测试证书后，那么就可以在控制台看到生产证书和测试证书都上传完成：</p>
-<pre><code>![prod_dev_push_cer_preview](images/ios_cert_v2/prod_dev_push_cer_preview.png)
-</code></pre><ol>
-<li><p>推送测试可以在这里进行：</p>
-<p> <img src="images/ios_cert_v2/push_test.png" alt="push_test"></p>
-</li>
-</ol>
-<h2 id="-">上传证书失败</h2>
+<h3 id="-">上传证书失败</h3>
 <p>如果无法上传推送证书，通常是因为证书有问题，一般由下列原因导致：</p>
 <ol>
 <li>证书不是推送证书</li>
@@ -505,6 +625,19 @@
 </ul>
 <p>如果程序发现证书的名字中不包含以上前缀，则校验失败，证书将无法上传。</p>
 <p>Apple 未来可能会修改推送证书的名字前缀，我们会及时更新前缀列表，同时也欢迎大家来补充。</p>
+<h3 id="-">证书过期</h3>
+<p>开发者如果使用过期证书进行推送，会遇到「The iOS certificate file is expired or disabled」的错误提示。</p>
+<p>LeanCloud 后端在收到推送请求时都会去检查 <code>prod</code> 参数指明的证书是否过期，没有 <code>prod</code> 则默认检查正式环境证书，如果发现过期并且 query 条件查出的目标设备可能存在 iOS 设备，就直接拒绝本次推送。</p>
+<p>一种解决方法是替换过期的证书，另一种方法是在 query 条件中通过 <code>deviceType</code> 字段明确指定 <code>_Installation</code> 表中设备类型为非 iOS 设备来推送，方法参见 <a href="push_guide.html#发送给特定的用户">消息推送总览 · 发送给特定的用户</a>。</p>
+<h2 id="-">验证推送服务状态</h2>
+<p>按以下步骤来验证 App ID 的推送服务是否打开：</p>
+<ol>
+<li>点击 <strong>Identifiers</strong> 下的 <strong>App IDs</strong></li>
+<li>选择与应用 Bundle ID 匹配的 App ID</li>
+<li><p>如果下图中红色方框中显示 <strong>Enabled</strong>，表示 App ID 的推送证书已配置好。</p>
+<p><img src="images/ios_cert_v2/verify_push_notification.png" alt="Verify push notification"></p>
+</li>
+</ol>
 
 
       </div>
@@ -526,7 +659,7 @@
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -549,12 +682,8 @@
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -596,29 +725,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

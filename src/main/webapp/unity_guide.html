@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>数据存储开发指南 &middot; Unity - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,19 +440,25 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
         <h1 id="-middot-unity">数据存储开发指南 &middot; Unity</h1>
-<p>如果还没有安装 LeanCloud Unity SDK，请阅读 <a href="./start.html">快速入门</a> 来获得该 SDK。我们的 SDK 兼容 Unity 4.2 及更高版本，支持使用 Unity 开发的 iOS、Android、Windows Phone 8、Windows Store、Windows Desktop，以及网页游戏。</p>
+<p>如果还没有安装 LeanCloud Unity SDK，请阅读 <a href="./sdk_down.html">SDK 下载</a> 来获得该 SDK。我们的 SDK 兼容 Unity 5 及更高版本，支持使用 Unity 开发的 iOS、Android、Windows Phone 8、Windows Store、Windows Desktop，以及网页游戏。</p>
 <p>如果希望从演示项目中学习，请访问我们的 GitHub 资源库，下载 <a href="https://github.com/leancloud/unity-sdk-demos">Unity SDK Demos</a> 。</p>
 <h2 id="-">介绍</h2>
 <p>Unity 支持 Mono 使用 .NET 语言来实现跨平台开发的解决方案，所以 LeanCloud 采用了 C# 来实现客户端的 SDK。如果你有 .NET 方面的编程经验，就很容易掌握 LeanCloud Unity SDK 接口的风格和用法。</p>
 <p>LeanCloud Unity SDK 在很多重要的功能点上都采用了微软提供的 <a href="http://msdn.microsoft.com/zh-cn/library/hh873175.aspx">基于任务的异步模式 (TAP)</a>，所以如果你具备 .NET Framework 4.5 的开发经验，或对 .NET Framework 4.5 的 新 API  有所了解，将有助于快速上手。</p>
 <h2 id="-">快速入门</h2>
-<p>建议在阅读本文之前，先阅读 <a href="./start.html">快速入门</a>，了解如何配置和使用 LeanCloud。</p>
+<p>建议在阅读本文之前，先阅读 <a href="start.html">SDK 安装指南</a>，了解如何配置和使用 LeanCloud。</p>
 <h2 id="-">应用</h2>
 <p>部署在 LeanCloud 云端的每个应用都有自己的 ID 和客户端密钥，客户端代码应该使用它们来初始化 SDK。</p>
 <p>LeanCloud 的每一个账户都可以创建多个应用。同一个应用可分别在测试环境和生产环境，部署不同的版本。</p>
 <h3 id="-">初始化</h3>
-<p>目前 Unity 的初始化只推荐用 <code>GameObject</code> 绑定 <code>AVOSCloudInitializeBehaviour</code> 脚本的方法，不推荐使用显式调用 <code>AVClient.Initialize</code> 的方法。</p>
+<p>在 <code>LeanCloud.Core.dll</code> 中有一个 <code>AVInitializeBehaviour</code> 把它拖拽到任意一个 <code>GameObject</code> 上然后根据下图填写 Application ID 以及 Application Key：</p>
+<p>  <img src="images/unity-init.png" alt="unity-init"></p>
+<p>默认中国大陆节点对应的 <code>Region</code> 是 <code>Public_CN</code>,如果是北美节点请选择 <code>Public_US</code>。</p>
+<p>目前 Unity 的初始化<strong>只允许</strong>用 <code>GameObject</code> 绑定 <code>AVInitializeBehaviour</code> 脚本的方法，<strong>不可以</strong>使用其他方式显式调用 <code>AVClient.Initialize</code> 的方法。</p>
 <h2 id="-">对象</h2>
 <h3 id="avobject">AVObject</h3>
 <p>在 LeanCloud 上，数据存储是围绕 <code>AVObject</code> 进行的。每个 <code>AVObject</code> 都包含与 JSON 兼容的键值对（key-value）数据。该数据不需要定义结构（schema），因此不用提前指定 <code>AVObject</code> 都有哪些键，只要直接设定键值对即可。</p>
@@ -470,6 +533,65 @@ gameScore.SaveAsync().ContinueWith(t =&gt;//第一次调用 SaveAsync 是为了�
 ### 计数器
 ### 数组
 -->
+<h3 id="avobject-">AVObject 的子类化</h3>
+<p>子类化的目的是为了使用给自己自定义的强类型来使用云存储而不需要在自己的代码里面拘泥于 AVObject 提供的默认的操作接口，</p>
+<p>例如我们现在有一个公司内部的员工管理系统，之前是使用传统的 SQL Server 数据库做存储的，因此在系统里面存在了如下 <code>Employee</code> 类:</p>
+<pre><code class="lang-cs">public class Employee
+{
+    public string DisplayName
+    {
+        get;
+        set;
+    }
+
+    public List&lt;string&gt; Positions
+    {
+        get;
+        set;
+    }
+}
+</code></pre>
+<p>而现在改用 LeanCloud 云存储服务之后的代码改成如下即可：</p>
+<pre><code class="lang-cs">[AVClassName(&quot;Employee&quot;)]
+public class Employee : AVObject
+{
+    [AVFieldName(&quot;displayName&quot;)]
+    public string DisplayName
+    {
+        get { return GetProperty&lt;string&gt;(); }
+        set { SetProperty&lt;string&gt;(value); }
+    }
+
+    [AVFieldName(&quot;positions&quot;)]
+    public List&lt;string&gt; Positions
+    {
+        get { return GetProperty&lt;List&lt;string&gt;&gt;(); }
+        set { SetProperty&lt;List&lt;string&gt;&gt;(value); }
+    }
+}
+</code></pre>
+<p>然后在系统启动之后，注册子类:</p>
+<pre><code class="lang-cs">AVObject.RegisterSubclass&lt;Employee&gt;();
+</code></pre>
+<h4 id="-">使用子类</h4>
+<h5 id="-">新增和修改</h5>
+<pre><code class="lang-cs">var tom = new Employee();
+var className = tom.ClassName;
+tom.Positions = new List&lt;string&gt;() { &quot;manager&quot;, &quot;vp&quot; };
+tom.DisplayName = &quot;Tom&quot;;
+return tom.SaveAsync();
+</code></pre>
+<h5 id="-">查询</h5>
+<pre><code class="lang-cs">var query = new AVQuery&lt;Employee&gt;();
+return query.FindAsync().ContinueWith(t =&gt; 
+{
+    var first = t.Result.FirstOrDefault();
+});
+</code></pre>
+<h5 id="-">删除</h5>
+<pre><code class="lang-cs">tom.DeleteAsync();
+</code></pre>
+<p>因为 <code>Employee</code> 的继承自 <code>AVObject</code>，因此它具备了所有 <code>AVObject</code> 的灵活性又具备了当前业务系统的特殊性。</p>
 <h3 id="-">删除对象</h3>
 <p>要删除某个对象，使用 <code>AVObject</code> 的 <code>DeleteAsync</code> 方法。</p>
 <pre><code class="lang-c#">Task deleteTask = myObject.DeleteAsync();
@@ -857,8 +979,8 @@ AVUser.LogInAsync(userName, pwd).ContinueWith(t =&gt;
 </code></pre>
 <h4 id="-">手机号和短信验证码登录</h4>
 <p>在对客户端验证要求比较高的应用里面，也许有些应用要求支持短信随机的验证码作为临时的密码登录，这个应用场景在现在已经被普遍的采用了，这种验证机制被认为是安全性高的一种机制，自然 LeanCloud 也给予了支持。它比前2种静态登录的方法多了<code>发送短信验证码</code>这一步，具体代码如下：</p>
-<pre><code class="lang-javascript">//第一步，请求服务端发送6为数字的验证码到指定mobilePhoneNumber上。
-try
+<p>第一步，请求服务端发送6为数字的验证码到指定mobilePhoneNumber上。</p>
+<pre><code class="lang-javascript">try
 {
     AVUser.RequestLoginSmsCodeAsync(mobilePhoneNumber).ContinueWith(t =&gt;
        {
@@ -871,7 +993,8 @@ catch(AVException avException)
 {
 }
 </code></pre>
-<pre><code class="lang-javascript">//第二步，直接使用验证码登录，如果验证码输入错误也会抛出异常。
+<p>第二步，直接使用验证码登录，如果验证码输入错误也会抛出异常。</p>
+<pre><code class="lang-javascript">
 try
 {
     AVUser.LoginBySmsCodeAsync (mobilePhoneNumber, code).ContinueWith(t=&gt;
@@ -884,9 +1007,7 @@ catch(AVException avException)
 }
 </code></pre>
 <h3 id="-">邮箱认证</h3>
-<p>在移动互联时代，任何一个用户信息都是必须在双方统一认证之后才会被视为一种安全机制，比如邮箱的认证，同样，在<code>AVUser</code>这个特殊的<code>AVObject</code>拥有一个特殊字段<code>email</code>，可以在<a href="/data.html?appid={{appid}}">数据管理</a>的<code>_User</code>表看到这个默认的字段，这就是在注册是提供的邮箱，当在<a href="/app.html?appid={{appid}}#/permission">应用设置</a>中勾选了</p>
-<pre><code class="lang-javascript">启用注册用户邮箱验证
-</code></pre>
+<p>在移动互联时代，任何一个用户信息都是必须在双方统一认证之后才会被视为一种安全机制，比如邮箱的认证，同样，在<code>AVUser</code>这个特殊的 <code>AVObject</code> 拥有一个特殊字段 <code>email</code>，可以在 <a href="/data.html?appid={{appid}}">数据管理</a> 的 <code>_User</code> 表看到这个默认的字段，这就是在注册是提供的邮箱，当在 <a href="/app.html?appid={{appid}}#/permission">应用设置</a> 中勾选了 <strong>启用注册用户邮箱验证</strong>。</p>
 <p>这样在注册用户的时候，LeanCloud默认就会发送一封邮件，进行验证，邮件的模板也可以在<a href="/app.html?appid={{appid}}#/email">邮件模板</a>中进行设置。</p>
 <p>注意，验证过的用户，TA的<code>emailVerified</code>将会置成<code>true</code>，反之<code>false</code>，但是如果<strong>未启用注册用户邮箱验证</strong>，这个字段会为空。</p>
 <p>用户邮箱验证后，会调用<code>AV.Cloud.onVerified(&#39;email&#39;,function)</code>的云引擎回调函数，方便您做一些后处理。</p>
@@ -900,7 +1021,7 @@ AVUser.RequestMobilePhoneVerifyAsync (&quot;18688888888&quot;).ContinueWith(t=&g
 </code></pre>
 <p>回调认证的接口与<code>手机号注册</code>小节的第二步一样。</p>
 <p>验证成功后，用户的<code>mobilePhoneVerified</code>属性变为true，并且调用云引擎的<code>AV.Cloud.onVerifed(&#39;sms&#39;, function)</code>方法。</p>
-<p><strong>以上只是针对_User表的一个属性mobilePhoneNumber进行验证，但是存在另一种需求，类似于支付宝在进行交易的时候会要求进行实时的短信认证，这一机制现在已经普遍存在于各种应用中进行敏感操作的首选，LeanCloud 也提供了这一机制</strong></p>
+<p><strong>以上只是针对_User表的一个属性mobilePhoneNumber进行验证，但是存在另一种需求，类似于支付宝在进行交易的时候会要求进行实时的短信认证，这一机制现在已经普遍存在于各种应用中进行敏感操作的首选，LeanCloud 也提供了这一机制。</strong></p>
 <h4 id="-">手机短信针对应用自定义操作的验证</h4>
 <p><code>AVCloud</code>类包含了相关的静态方法，实例如下：</p>
 <pre><code class="lang-javascript">//第一步，先请求发送，如果手机号无效则会发送失败。
@@ -928,8 +1049,7 @@ public void RequestSMSCode()
 }
 </code></pre>
 <p>用户就会收到如下短信：</p>
-<pre><code class="lang-javascript">您正在使用 PP打车 服务进行 叫车服务，您的验证码是012345，请在8分钟之内完成验证。
-</code></pre>
+<p><samp class="bubble">您正在使用 PP打车 服务进行 叫车服务，您的验证码是012345，请在8分钟之内完成验证。</samp></p>
 <p>以上是调用发送，下一步就是验证。</p>
 <pre><code class="lang-javascript">public void VerifySMSCode(string code)
 {
@@ -964,10 +1084,10 @@ var user = AVUser.CurrentUser;    //如此做就会抛出异常，因为登出�
 <h4 id="-">短信验证码重置</h4>
 <p>如果用户的手机是有效地，并且已经通过了验证码验证手机的有效性，那么开发者可以提供另一种在手机上体验较好的方式：通过短信验证码重置密码。具体实例如下：
 首先，需要发送一个请求到服务端去发送6位数的验证码：</p>
-<pre><code class="lang-javascript">var smsCodeResetPasswordTask =    AVUser.RequestPasswordResetBySmsCode (&quot;138012345678&quot;);//只需要手机号即可，服务端会自动寻找与之匹配的用户，如果没有用户与此手机号绑定，将会提示错误信息。
+<pre><code class="lang-javascript">var smsCodeResetPasswordTask =    AVUser.RequestPasswordResetBySmsCodeAsync (&quot;138012345678&quot;);//只需要手机号即可，服务端会自动寻找与之匹配的用户，如果没有用户与此手机号绑定，将会提示错误信息。
 </code></pre>
 <p>发送之后，再给一个界面给用户，让用户输入6位数的短信验证码，并且同时输入新的密码，然后如下调用：</p>
-<pre><code class="lang-javascript">var resetTask = AVUser.ResetPasswordBySmsCode(NewPassword,SMSCode);//第一个参数是新密码（明文传递，请放心我们传输的时候做了加密，并且在服务端也绝不可能明文存储），第二个参数是上一步发送到用户手机的6位数验证码。
+<pre><code class="lang-javascript">var resetTask = AVUser.ResetPasswordBySmsCodeAsync(NewPassword,SMSCode);//第一个参数是新密码（明文传递，请放心我们传输的时候做了加密，并且在服务端也绝不可能明文存储），第二个参数是上一步发送到用户手机的6位数验证码。
 </code></pre>
 <p>这样2步就可以重置密码，这项功能我们建议在一些应用内操作比较频繁的应用使用，邮箱重置的话可能需要用户去单独打开一个邮箱应用或者用浏览器跳转。</p>
 <h3 id="-">查询用户</h3>
@@ -977,7 +1097,7 @@ var user = AVUser.CurrentUser;    //如此做就会抛出异常，因为登出�
      IEnumerable&lt;AVUser&gt; women = t.Result;
 });
 </code></pre>
-<p>当然，也可以通过<code>GetAsync</code>方法通过<code>objectId</code>获取特定的一个<code>AVUser</code>。</p>
+<p>当然，也可以通过 <code>GetAsync</code> 方法通过 <code>objectId</code> 获取特定的一个<code>AVUser</code>。</p>
 <h3 id="-">用户安全数据的认证规则</h3>
 <p>很多时候，就算是开发者也不要轻易修改用户的基本信息，比如用户的一些比较敏感的个人信息，例如手机号，社交账号等，这些都应该让用户在App中自行修改，所以为了用户数据的数据有且仅有自己在登录的情况下得以修改，LeanCloud服务端对所有针对<code>AVUser</code>对象的数据做了验证。</p>
 <pre><code class="lang-javascript">AVUser user = null;
@@ -1242,22 +1362,9 @@ if (GUI.Button(new Rect(50, 50, 200, 50), &quot;Upload a screenshot&quot;))
 <pre><code class="lang-javascript"> file.MetaData.Add(&quot;width&quot;, 100);
  file.MetaData.Add(&quot;height&quot;, 100);
 </code></pre>
-<h3 id="-">下载文件</h3>
-<p>下载文件其实跟获取单个普通对象一样，首先必须知道这个文件的<code>objectdId</code>，或者你可以通过条件查询先获取这个<code>objectdId</code>，然后调用<code>AVFile.GetFileWithObjectIdAsync</code>方法首先实例化文件对象，然后就可以下载：</p>
-<pre><code class="lang-javascript">if (GUI.Button(new Rect(50, 50, 200, 50), &quot;Download file&quot;))
-{
-   AVFile.GetFileWithObjectIdAsync(&quot;538ed669e4b0e335f6102809&quot;).ContinueWith(t =&gt;
-   {
-       var file = t.Result;
-       file.DownloadAsync().ContinueWith(s =&gt;
-       {
-           var dataByte = file.DataByte;//获取文件流的byte数组，之后可以做保存，发送等操作。
-       });
-   });
-}
-</code></pre>
-<h4 id="-">更推荐的下载方式</h4>
-<p>对 Unity 有经验的开发者，我们更推荐用  Unity 自带的 WWW 类解决文件下载的问题，如下：</p>
+<h4 id="-">文件下载</h4>
+<p>因为多平台适配会造成困扰，因此 Unity SDK 不提供直接下载文件的方式。</p>
+<p>对 Unity 有经验的开发者，我们推荐用  Unity 自带的 WWW 类或者 UnityWebRequest 类解决文件下载的问题，如下：</p>
 <pre><code class="lang-javascript">var req = new WWW(file.Url.AbsoluteUri);
 yield return req;
 string text = req.text;
@@ -1307,44 +1414,41 @@ var task = push.SendAsync();
 <ol>
 <li>基于 Unity 自身的 WWW 类发送 Http 请求的限制，单个请求的大小不能超过 2MB，所以在使用 Unity SDK 时，开发者需要注意存储数据，构建查询等操作时，需要做到简洁高效。</li>
 <li>Unity 中请将 <code>Optimization</code> 中的 <code>Stripping Level</code> 设置为 <code>Disabled</code>。</li>
-<li>从官网上下载的 SDK ，在 Unity 4.3 以后的版本都需要重命名，把版本号去掉，例如下载的文件叫做 <code>AVOSCloud.Unity-v1.1.5.dll</code>，请重命名为 <code>AVOSCloud.Unity.dll</code>，否则会出现引入脚本失败的错误。</li>
-<li><p>Unity 自从升级到 5.0 之后就会出现一个 iOS 上访问 HTTPS 请求时的 SSL 证书访问错误：NSURLErrorDomain error -1012.
-解决方案是：
-在 Unity 构建完成 iOS 项目之后，使用 XCode 打开项目，找到 Classes/Unity/WWWConnection.mm 文件
-找到这个方法：</p>
-<pre><code>(void)connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
-</code></pre><p>把该方法按照如下代码修改即可：</p>
-<p>```</p>
-</li>
-<li><p>(void)connection:(NSURLConnection<em>)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge</em>)challenge
+<li>从官网上下载的 SDK，在 Unity 4.3 以后的版本都需要重命名，把版本号去掉，例如下载的文件叫做 <code>AVOSCloud.Unity-v1.1.5.dll</code>，请重命名为 <code>AVOSCloud.Unity.dll</code>，否则会出现引入脚本失败的错误。</li>
+<li><p>Unity 自从升级到 5.0 之后就会出现一个 iOS 上访问 HTTPS 请求时的 SSL 证书访问错误：<strong>NSURLErrorDomain error -1012</strong>。解决方案是：在 Unity 构建完成 iOS 项目之后，使用 XCode 打开项目，找到 <code>Classes/Unity/WWWConnection.mm</code> 文件，找到这个方法：</p>
+<pre><code class="lang-objc">-(void)connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
+</code></pre>
+<p>把该方法按照如下代码修改即可：</p>
+<pre><code class="lang-objc">-(void)connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
 {
-  if ([[challenge protectionSpace] authenticationMethod] == NSURLAuthenticationMethodServerTrust) {</p>
-<pre><code>  [challenge.sender performDefaultHandlingForAuthenticationChallenge:challenge];
-</code></pre><p>  }
-  else
-  {</p>
-<pre><code>  BOOL authHandled = [self connection:connection handleAuthenticationChallenge:challenge];
+ if ([[challenge protectionSpace] authenticationMethod] == NSURLAuthenticationMethodServerTrust) {
+     [challenge.sender performDefaultHandlingForAuthenticationChallenge:challenge];
+ }
+ else
+ {
 
-  if(authHandled == NO)
-  {
-      self-&gt;_retryCount++;
+     BOOL authHandled = [self connection:connection handleAuthenticationChallenge:challenge];
 
-      // Empty user or password
-      if(self-&gt;_retryCount &gt; 1 || self.user == nil || [self.user length] == 0 || self.password == nil || [self.password length]  == 0)
-      {
-          [[challenge sender] cancelAuthenticationChallenge:challenge];
-          return;
-      }
+     if(authHandled == NO)
+     {
+         self-&gt;_retryCount++;
 
-      NSURLCredential* newCredential =
-      [NSURLCredential credentialWithUser:self.user password:self.password persistence:NSURLCredentialPersistenceNone];
+         // Empty user or password
+         if(self-&gt;_retryCount &gt; 1 || self.user == nil || [self.user length] == 0 || self.password == nil || [self.password length]  == 0)
+         {
+             [[challenge sender] cancelAuthenticationChallenge:challenge];
+             return;
+         }
 
-      [challenge.sender useCredential:newCredential forAuthenticationChallenge:challenge];
-  }
-</code></pre><p>  }
+         NSURLCredential* newCredential =
+         [NSURLCredential credentialWithUser:self.user password:self.password persistence:NSURLCredentialPersistenceNone];
+
+         [challenge.sender useCredential:newCredential forAuthenticationChallenge:challenge];
+     }
+ }
 }
-```
-目前 Unity 官方还在修复此问题，截止到 V5.0.1f1 该问题一直存在，因此所有升级到 Unity 5.0 的开发者都需要如此修改，才能确保 iOS 正确运行。</p>
+</code></pre>
+<p>目前 Unity 官方还在修复此问题，截止到 V5.0.1f1 该问题一直存在，因此所有升级到 Unity 5.0 的开发者都需要如此修改，才能确保 iOS 正确运行。</p>
 </li>
 </ol>
 
@@ -1368,7 +1472,7 @@ var task = push.SendAsync();
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -1391,12 +1495,8 @@ var task = push.SendAsync();
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -1438,29 +1538,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

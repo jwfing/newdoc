@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>云引擎常见问题和解答 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,46 +440,114 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
         <h1 id="-">云引擎常见问题和解答</h1>
+<h2 id="-">云引擎都支持哪些语言</h2>
+<p>目前支持 Node.js、Python、Java 和 PHP 运行环境，未来可能还会引入其他语言。</p>
+<h2 id="-">云引擎的二级域名多久生效</h2>
+<p>我们设置的 TTL 是 5 分钟，但各级 DNS 服务都有可能对其进行缓存，实际生效会有一定延迟。</p>
+<h2 id="-https-">云引擎支持 HTTPS 吗</h2>
+<ul>
+<li>对于 <code>.leanapp.cn</code> 的二级域名我们默认支持 HTTPS，如需配置自动跳转，请看 <a href="leanengine_webhosting_guide-node.html#重定向到_HTTPS">重定向到 HTTPS</a>。</li>
+<li>自定义的域名需要在进行 <a href="leanengine_webhosting_guide-node.html#备案和自定义域名">域名绑定</a> 时上传 HTTPS 证书。</li>
+</ul>
+<h2 id="-class-hook-">为什么在控制台通过在线定义函数或项目定义函数中的 Class Hook 没有被运行？</h2>
+<p>首先确认一下 Hook 被调用的时机是否与你的理解一致：</p>
+<ul>
+<li><code>beforeSave</code>：对象保存或创建之前</li>
+<li><code>afterSave</code>：对象保存或创建之后</li>
+<li><code>beforeUpdate</code>：对象更新之前</li>
+<li><code>afterUpdate</code>：对象更新之后</li>
+<li><code>beforeDelete</code>：对象删除之前</li>
+<li><code>afterDelete</code>：对象删除之后</li>
+<li><code>onVerified</code>：用户通过邮箱或手机验证后</li>
+<li><code>onLogin</code>：用户在进行登录操作时</li>
+</ul>
+<p>还需注意在本地进行云引擎调试时，运行的会是线上预备环境的 Hook，如果没有预备环境则不会运行。</p>
+<p>然后检查 Hook 函数是否被执行过：</p>
+<p>可以先在 Hook 函数的入口打印一行日志，然后进行操作，再到 <a href="/cloud.html?appid={{appid}}#/log">云引擎日志</a> 中检查该行日志是否被打印出来，如果没有看到日志原因可能包括：</p>
+<ul>
+<li>代码没有被部署到正确的应用</li>
+<li>代码没有被部署到生产环境（或没有部署成功）</li>
+<li>Hook 的类名不正确</li>
+</ul>
+<p>如果日志已打出，则继续检查函数是否成功，检查控制台上是否有错误信息被打印出。如果是 before 类 Hook，需要保证 Hook 函数在 15 秒内结束，否则会被系统认为超时。</p>
+<blockquote>
+<p>after 类 Hook 超时时间为 3 秒，如果你的体验实例已经休眠，很可能因为启动时间过长无法收到 after 类 Hook，建议升级到云引擎的标准实例避免休眠。</p>
+</blockquote>
+<p>相关文档：<a href="leanengine_cloudfunction_guide-node.html#Hook_函数">云引擎指南：Hook 函数</a></p>
+<h2 id="-error-listen-eaddrinuse-3000-">命令行工具在本地调试时提示 <code>Error: listen EADDRINUSE :::3000</code>，无法访问应用</h2>
+<p><code>listen EADDRINUSE :::3000</code> 表示你的程序默认使用的 3000 端口被其他应用占用了，可以按照下面的方法找到并关闭占用 3000 端口的程序：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/3855127/find-and-kill-process-locking-port-3000-on-mac">macOS 使用 <code>lsof</code> 和 <code>kill</code></a></li>
+<li><a href="http://stackoverflow.com/questions/11583562/how-to-kill-a-process-running-on-particular-port-in-linux">Linux 使用 <code>fuser</code></a></li>
+<li><a href="http://stackoverflow.com/questions/6204003/kill-a-process-by-looking-up-the-port-being-used-by-it-from-a-bat">Windows 使用 <code>netstat</code> 和 <code>taskkill</code></a></li>
+</ul>
+<p>也可以修改命令行工具默认使用的 3000 端口：</p>
+<pre><code>lean -p 3002
+</code></pre><h2 id="application-not-found-">Application not found 错误</h2>
+<p>访问云引擎服务时，服务端返回错误「Application not found」或在云引擎日志中出现同一错误。</p>
+<ul>
+<li>调用错了环境。最常见的情况是，免费的体验实例是没有预备环境，开发者却主动设置去调用预备环境。</li>
+<li><code>???.leanapp.cn</code> 二级域名填错了，比如微信回调地址。请确认与 <code>???</code> 的拼写完全一致。</li>
+</ul>
+<h2 id="-header-get-">云函数如何获取 Header、如何响应 GET 方法？</h2>
+<p>不建议在 Header 中传递信息，云函数可以说是 LeanCloud 所提供的一种 RPC 的封装，这种封装的目的是隐藏掉底层使用 HTTP 协议的细节，所以建议将所有的参数都放在 Body 中、只使用 POST 方法请求。</p>
+<p>如果希望能够充分利用 HTTP 提供的语义化特征，可以考虑使用云引擎的「<a href="leanengine_webhosting_guide-node.html#Web_框架">网站托管</a>」功能，自行来处理 HTTP 请求。</p>
 <h2 id="-">如何判断当前是预备环境还是生产环境？</h2>
 <p>请参考 <a href="leanengine_webhosting_guide-node.html#预备环境和生产环境">网站托管开发指南 · 预备环境和生产环境</a> / <a href="leanengine_webhosting_guide-python.html#预备环境和生产环境">Python · 运行环境区分</a>。</p>
 <h2 id="-">怎么添加第三方模块</h2>
-<p>云引擎 2.0 开始支持添加第三方模块（请参考 <a href="leanengine_guide-cloudcode.html#云引擎_2_0_版">云引擎指南 - 升级到 2.0</a>），只需要像普通的 Node.js 项目那样，在项目根目录创建文件 <code>package.json</code>，下面是一个范例：</p>
+<p>只需要像普通的 Node.js 项目那样，在项目根目录的 <code>package.json</code> 中添加依赖即可：</p>
 <pre><code>{
-  &quot;name&quot;: &quot;cloud-engine-test&quot;,
-  &quot;description&quot;: &quot;Cloud Engine test project.&quot;,
-  &quot;version&quot;: &quot;0.0.1&quot;,
-  &quot;private&quot;: true,
   &quot;dependencies&quot;: {
     &quot;async&quot;: &quot;0.9.0&quot;,
     &quot;moment&quot;: &quot;2.9.0&quot;
   }
 }
-</code></pre><p><code>dependencies</code> 内的内容表明了该项目依赖的三方模块（比如示例中的 <code>async</code> 和 <code>moment</code>）。</p>
-<p>然后在项目根目录执行：</p>
-<pre><code>npm install
-</code></pre><p>即可下载相关三方包到 <code>node_modules</code> 目录。</p>
-<p>然后即可在代码中引入三方包：</p>
-<pre><code>var async = require(&#39;async&#39;);
-</code></pre><p><strong>注意</strong>：命令行工具部署时是不会上传 <code>node_modules</code> 目录，因为云引擎服务器会根据 <code>package.json</code> 的内容自动下载三方包。所以也建议将 <code>node_modules</code> 目录添加到 <code>.gitignore</code> 中，使其不加入版本控制。</p>
+</code></pre><p><code>dependencies</code> 内的内容表明了该项目依赖的三方模块（比如示例中的 <code>async</code> 和 <code>moment</code>）。关于 <code>package.json</code> 的更多信息见 <a href="leanengine_webhosting_guide-node.html#package_json">网站托管开发指南 · package.json</a>。</p>
+<p>然后即可在代码中使用第三方包（<code>var async = require(&#39;async&#39;)</code>），如需在本地调试还需运行 <code>npm install</code> 来安装这些包。</p>
+<p><strong>注意</strong>：命令行工具部署时是不会上传 <code>node_modules</code> 目录，因为云引擎服务器会根据 <code>package.json</code> 的内容自动下载三方包。所以也建议将 <code>node_modules</code> 目录添加到 <code>.gitignore</code> 中，使其不加入版本控制。</p>
 <h2 id="maximum-call-stack-size-exceeded-">Maximum call stack size exceeded 如何解决？</h2>
+<blockquote>
+<p>将 JavaScript SDK 和 Node SDK 升级到 1.2.2 以上版本可以彻底解决该问题。  </p>
+</blockquote>
 <p>如果你的应用时不时出现 <code>Maximum call stack size exceeded</code> 异常，可能是因为在 hook 中调用了 <code>AV.Object.extend</code>。有两种方法可以避免这种异常：</p>
 <ul>
 <li>升级 leanengine 到 v1.2.2 或以上版本</li>
 <li>在 hook 外定义 Class（即定义在 <code>AV.Cloud.define</code> 方法之外），确保不会对一个 Class 执行多次 <code>AV.Object.extend</code></li>
 </ul>
 <p>我们在 <a href="./leanstorage_guide-js.html#AV_Object">JavaScript 指南 - AV.Object</a> 章节中也进行了描述。</p>
+<h2 id="-node-js-">云引擎 Node.js 内存泄漏排查</h2>
+<p>如果对内存增长有疑问，可以在 <code>package.json</code> 中添加如下配置，开启 GC 日志来调试：</p>
+<pre><code class="lang-json">···
+&quot;start&quot;: &quot;node --trace_gc server.js&quot;,
+···
+</code></pre>
+<p>增加参数 <code>--trace_gc</code>，这样每次 GC 会在本地的 Console 或在控制台的云引擎日志中输出。</p>
 <h2 id="-">如何进行域名备案和域名绑定？</h2>
 <p>只有网站类的才需要备案，并且在主域名已备案的情况下，二级子域名不需要备案。如果主站需要托管在我们这边，且还没有备案过，请进入 <strong>应用控制台 &gt; 账号设置 &gt;</strong> <a href="/settings.html#/setting/domainrecord">域名备案</a> 和 <a href="/settings.html#/setting/domainbind">域名绑定</a>，按照步骤提示操作即可。</p>
 <h2 id="-">调用云引擎方法如何收费？</h2>
-<p>云引擎中如果有 LeanCloud 的存储等 API 调用，按 <a href="faq.html#API_调用次数的计算">API 收费策略</a> 收费。另外如果使用的是云引擎专业版，该服务也会产生使用费，具体请参考 <a href="leanengine_plan.html#价格">云引擎运行方案</a>。</p>
+<p>云引擎中如果有 LeanCloud 的存储等 API 调用，按 <a href="faq.html#API_调用次数的计算">API 收费策略</a> 收费。另外如果使用的是云引擎 <a href="leanengine_plan.html#标准实例">标准实例</a> 也会产生使用费，具体请参考 <a href="leanengine_plan.html#价格">云引擎运行方案</a>。</p>
 <h2 id="-git-">「定义函数」和「Git 部署」可以混用吗？</h2>
 <p>「定于函数」的产生是为了方便大家初次体验云引擎，或者只是需要一些简单 hook 方法的应用使用。我们的实现方式就是把定义的函数拼接起来，生成一个云引擎项目然后部署。</p>
-<p>所以可以认为「定义函数」和 「git 部署」最终是一样的，都是一个完整的项目。</p>
+<p>所以可以认为「定义函数」和 「Git 部署」最终是一样的，都是一个完整的项目。</p>
 <p>是一个单独功能，可以不用使用基础包，git 等工具快速的生成和编辑云引擎。</p>
 <p>当然，你也可以使用基础包，自己写代码并部署项目。</p>
 <p>这两条路是分开的，任何一个部署，就会导致另一种方式失效掉。</p>
+<h2 id="-">如何从「在线编辑」迁移到项目部署？</h2>
+<ol>
+<li>按照 <a href="leanengine_cli.html">命令行工具使用指南</a> 安装命令行工具，使用 <code>lean init</code> 初始化项目，模板选择 <code>node-js-getting-started</code>（我们的 Node.js 示例项目）。</li>
+<li>在 <a href="https://leancloud.cn/cloud.html?appid={{appid}}#/deploy/online">应用控制台 &gt; 云引擎 &gt; 部署 &gt; 在线编辑</a> 中点击 <strong>预览</strong>，将全部函数的代码拷贝到新建项目中的 <code>cloud.js</code>（替换掉原有内容）。</li>
+<li>检查 <code>cloud.js</code> 的代码，将 <code>AV.User.current()</code> 改为 <code>request.currentUser</code> 以便从 Node SDK 的 0.x 版本升级到 1.x，有关这个升级的更多信息见 <a href="leanengine-node-sdk-upgrade-1.html">升级到云引擎 Node.js SDK 1.0</a>。</li>
+<li>运行 <code>lean up</code>，在 <a href="http://localhost:3001">http://localhost:3001</a> 的调试界面中测试云函数和 Hook，然后运行 <code>lean deploy</code> 部署代码到云引擎（使用标准实例的用户还需要执行 <code>lean publish</code>）。</li>
+<li>部署后请留意云引擎控制台上是否有错误产生。</li>
+</ol>
 <h2 id="-include-">为什么查询 include 没有生效？</h2>
+<blockquote>
+<p>将 JavaScript SDK 和 Node SDK 升级到 3.0 以上版本可以彻底解决该问题。  </p>
+</blockquote>
 <p>以 JavaScript 云引擎为例子，很多时候，经常会定义一个云函数，在里面使用 <code>AV.Query</code> 查询一张表，并 include 其中一个 pointer 类型的字段，然后返回给客户端:</p>
 <pre><code class="lang-javascript">AV.Cloud.define(&#39;querySomething&#39;, function(req, res) {
   var query = new AV.Query(&#39;Something&#39;);
@@ -479,7 +604,30 @@
 <pre><code>App dxzag3zdjuxbbfufuy58x1mvjq93udpblx7qoq0g27z51cx3&#39;s cloud code deploy key
 </code></pre><p>就是 comment，删除这段字符串后的 deploy key（如果没有这个字样的comment无需删除）保存到 gitlab 即可正常使用：</p>
 <pre><code>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA5EZmrZZjbKb07yipeSkL+Hm+9mZAqyMfPu6BTAib+RVy57jAP/lZXuosyPwtLolTwdyCXjuaDw9zNwHdweHfqOX0TlTQQSDBwsHL+ead/p6zBjn7VBL0YytyYIQDXbLUM5d1f+wUYwB+Cav6nM9PPdBckT9Nc1slVQ9ITBAqKZhNegUYehVRqxa+CtH7XjN7w7/UZ3oYAvqx3t6si5TuZObWoH/poRYJJ+GxTZFBY+BXaREWmFLbGW4O1jGW9olIZJ5/l9GkTgl7BCUWJE7kLK5m7+DYnkBrOiqMsyj+ChAm+o3gJZWr++AFZj/pToS6Vdwg1SD0FFjUTHPaxkUlNw==
-</code></pre>
+</code></pre><h2 id="exceeded-limit">Exceeded Limit</h2>
+<p>很多用户使用云引擎时会遇到 http 响应码为 <code>529</code> 的错误页面：</p>
+<pre><code>Exceeded Limit
+当前 IP [118.186.7.27] 超过并发限制。
+</code></pre><p>这是因为云引擎的网站托管服务对每个广域网 IP 有 60 个连接的限制，来防止恶意用户使用较低的成本对云引擎应用发起较大的攻击。</p>
+<p>如果正常使用时遇到这个问题，一般是由以下场景所触发：</p>
+<ul>
+<li>一个办公室很多人都访问同一个云引擎应用：因为整个办公室出口 IP 是一样的，所以相对比较容易达到限制。</li>
+<li>自有服务器与云引擎通信：可能短时间产生大量请求，导致达到限制。</li>
+<li>应用响应很慢：导致请求不能迅速释放，请求堆积导致达到限制。</li>
+</ul>
+<p>解决办法：</p>
+<ul>
+<li>对于前两种情况，建议使用 <a href="leanengine_webhosting_guide-node.html#备案和自定义域名">自定义域名</a> 绑定到云引擎，这样限制会扩大到每个 IP 允许 300 个连接。</li>
+<li>如果是最后一种情况，建议优化云引擎的业务降低响应时间，或者绑定 <a href="leanengine_webhosting_guide-node.html#备案和自定义域名">自定义域名</a>。</li>
+</ul>
+<h2 id="-npm-err-peer-dep-missing-"><code>npm ERR! peer dep missing</code> 错误</h2>
+<p>部署时出现类似错误：</p>
+<pre><code>npm ERR! peer dep missing: graphql@^0.10.0 || ^0.11.0, required by express-graphql@0.6.11
+</code></pre><p>说明有一部分 peer dependency 没有安装成功，因为线上只会安装 dependencies 部分的依赖，所以请确保 dependencies 部分依赖所需要的所有依赖也都列在了 dependencies 部分（而不是 devDependencies）。</p>
+<p>你可以在本地删除 node_modules，然后用 <code>npm install --production</code> 重新安装依赖来重现这个问题。</p>
+<h2 id="-">在线上无法读取到项目中的文件</h2>
+<p>建议先检查文件大小写是否正确，线上的文件系统是区分大小写的，而 Windows 和 macOS 通常不区分大小写。</p>
+
 
       </div>
     </div>
@@ -500,7 +648,7 @@
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -523,12 +671,8 @@
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -570,29 +714,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>

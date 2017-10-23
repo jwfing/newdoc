@@ -1,0 +1,1062 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>实时数据同步 LiveQuery 开发指南 - LeanCloud 文档</title>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript">
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
+        </li>
+      </ul> -->
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
+            </a>
+            <ul class="dropdown-menu">
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
+              <li role="presentation" class="divider"></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Objective-C</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios-macos-faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="weapp.html">微信小程序开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
+            <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
+        <h1 id="-livequery-">实时数据同步 LiveQuery 开发指南</h1>
+<p>LiveQuery 的使用场景有：</p>
+<ul>
+<li>多端数据同步</li>
+<li>数据的实时展现</li>
+<li>客户端与服务端之间的数据传递实现推拉结合</li>
+</ul>
+<p>下面是在使用了 LiveQuery 的网页应用和手机应用中分别操作，数据保持同步的效果：</p>
+<div style="border:2px solid #ccc; margin-bottom:1em;">
+  <video src="https://dn-lhzo7z96.qbox.me/1496988080458" controls autoplay muted preload="auto" width="100%" height="100%">
+HTML5 Video is required for this demo. 您的浏览器不支持播放 HTML5 视频。
+  </video>
+</div>
+
+<p>使用我们的「LeanTodo」微信小程序和网页应用，可以实际体验以上视频所演示的效果，步骤如下：</p>
+<ol>
+<li>微信扫码，添加小程序「LeanTodo」；<br>
+<img src="images/leantodo-weapp-qr.png" width="150" height="150"> </li>
+<li>进入小程序，点击首页左下角 <strong>设置</strong> &gt; <strong>账户设置</strong>，输入便于记忆的用户名和密码；</li>
+<li>使用浏览器访问 <a href="https://leancloud.github.io/leantodo-vue/">https://leancloud.github.io/leantodo-vue/</a>，输入刚刚在小程序中更新好的账户信息，点击 <strong>Login</strong>；</li>
+<li>随意添加更改数据，查看两端的同步状态。</li>
+</ol>
+  <div class="callout callout-info">
+  <p>注意按以上顺序操作。在网页应用中使用 Signup 注册的账户无法与小程序创建的账户相关联，所以如果颠倒以上操作顺序，则无法观测到数据同步效果。 </p>
+</div>
+
+
+<p><a href="http://www.bilibili.com/video/av11291992/">LiveQuery 公开课</a> 涵盖了许多开发者关心的问题和解答。</p>
+<h2 id="-livequery">启用 LiveQuery</h2>
+<p>进入 <a href="/dashboard/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项 &gt; 其他</a>，勾选 「启用 LiveQuery」才可以在 SDK 中创建和使用，否则会报错。</p>
+<pre><code class="lang-objc">// LiveQuery 需要依赖实时通信模块，接入该模块的方法请参考安装指南：
+// https://leancloud.cn/docs/sdk_setup-objc.html
+// 请在 Podfile 中添加 pod &#39;AVOSCloudLiveQuery&#39;，并执行 pod install 来集成。
+[AVOSCloud setApplicationId:@&quot;{{appid}}&quot;
+                  clientKey:@&quot;{{appkey}}&quot;];
+</code></pre>
+<pre><code class="lang-java">// LiveQuery 需要依赖实时通信模块，所以需要在 AndroidManifest.xml 文件里面配置如下内容：
+ &lt;!-- 实时通信模块、推送、LiveQuery（均需要加入以下声明） START --&gt;
+  &lt;!-- 实时通信模块、推送都要使用 PushService --&gt;
+  &lt;service android:name=&quot;com.avos.avoscloud.PushService&quot;/&gt;
+  &lt;receiver android:name=&quot;com.avos.avoscloud.AVBroadcastReceiver&quot;&gt;
+    &lt;intent-filter&gt;
+      &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+      &lt;action android:name=&quot;android.intent.action.USER_PRESENT&quot;/&gt;
+      &lt;action android:name=&quot;android.net.conn.CONNECTIVITY_CHANGE&quot; /&gt;
+    &lt;/intent-filter&gt;
+  &lt;/receiver&gt;
+  &lt;!-- 实时通信模块、推送 END --&gt;
+
+// 然后再调用初始化接口
+AVOSCloud.initialize(this,&quot;{{appid}}&quot;,&quot;{{appkey}}&quot;);
+</code></pre>
+<pre><code class="lang-js">// 如果在支持 CommonJS 环境中（如 Node.js，Webpack）使用：
+// var AV = require(&#39;leancloud-storage/live-query&#39;);
+
+// 如果在浏览器中使用 script 标签的方式，需要引入 av-live-query-min.js：
+// 推荐使用 CDN：
+&lt;script src=&quot;//cdn1.lncld.net/static/js/3.2.1/av-live-query-min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code class="lang-cs">// LiveQuery 需要依赖实时通信模块，接入该模块的方法请参考安装指南： 
+// C# SDK 安装指南：https://leancloud.cn/docs/sdk_setup-dotnet.html#_NET_Framework
+// Unity SDK 安装指南：https://leancloud.cn/docs/sdk_setup-dotnet.html#Mono_for_Unity
+
+string appId = &quot;{{appid}}&quot;;
+string appKey = &quot;{{appkey}}&quot;;
+Websockets.Net.WebsocketConnection.Link();
+var realtime = new AVRealtime(appId, appKey);
+AVRealtime.WebSocketLog(Console.WriteLine);
+AVClient.HttpLog(Console.WriteLine);
+</code></pre>
+<h2 id="-">构建查询</h2>
+<p>LiveQuery 基于 AVQuery 的查询条件来精准同步数据。下面以一个 Todo 应用为例，当在网页上勾选了一条 Todo 将它标记为已完成状态，手机上将立刻同步这个操作。</p>
+<p>首先创建 2 个针对 Todo 的查询，一个查询正在进行中的 Todo，而另一个是查询已完成的：</p>
+<pre><code class="lang-objc">AVQuery *doingQuery = [AVQuery queryWithClassName:@&quot;Todo&quot;];
+AVQuery *doneQuery  = [AVQuery queryWithClassName:@&quot;Todo&quot;];
+[doingQuery whereKey:@&quot;state&quot; equalTo:@&quot;doing&quot;];
+[doneQuery  whereKey:@&quot;state&quot; equalTo:@&quot;done&quot;];
+</code></pre>
+<pre><code class="lang-java">// 正在进行中的 Todo
+AVQuery&lt;AVObject&gt; doingQuery = new AVQuery&lt;&gt;(&quot;Todo&quot;);
+doingQuery.whereEqualTo(&quot;state&quot;, &quot;doing&quot;);
+
+// 已完成的 Todo
+AVQuery&lt;AVObject&gt; doneQuery = new AVQuery&lt;&gt;(&quot;Todo&quot;);
+doneQuery.whereEqualTo(&quot;state&quot;, &quot;done&quot;);
+</code></pre>
+<pre><code class="lang-js">// 正在进行中的 Todo
+var doingQuery = new AV.Query(&#39;Todo&#39;).equalTo(&#39;state&#39;, &#39;doing&#39;);
+// 已完成的 Todo
+var doneQuery = new AV.Query(&#39;Todo&#39;).equalTo(&#39;state&#39;, &#39;done&#39;);
+</code></pre>
+<pre><code class="lang-cs">// 正在进行中的 Todo
+var doingQuery = new AVQuery&lt;AVObject&gt;(&quot;Todo&quot;).WhereEqualTo(&quot;state&quot;, &quot;doing&quot;);
+// 已完成的 Todo
+var doneQuery = new AVQuery&lt;AVObject&gt;(&quot;Todo&quot;).WhereEqualTo(&quot;state&quot;, &quot;done&quot;);
+</code></pre>
+<h2 id="-">主动拉取</h2>
+<p>一般来说用户打开页面之后，客户端第一次需要主动执行一次查询，用来做列表展示：</p>
+<pre><code class="lang-objc">[doingQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+    /* Doing list did fetch. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVQuery&lt;AVObject&gt; doingQuery = new AVQuery&lt;&gt;(&quot;Todo&quot;);
+doingQuery.whereEqualTo(&quot;state&quot;, &quot;doing&quot;);
+doingQuery.findInBackground(new FindCallback&lt;AVObject&gt;() {
+  @Override
+  public void done(List&lt;AVObject&gt; parseObjects, AVException parseException) {
+    // 符合查询条件的 Todo
+  }
+});
+</code></pre>
+<pre><code class="lang-js">doingQuery.find(function(doingList) {
+  // 展示 doingList
+});
+</code></pre>
+<pre><code class="lang-cs">// 假设 doingList 对应的是某一个列表控件绑定的数据源
+var doingList = new List&lt;AVObject&gt;();
+var doing = await doingQuery.FindAsync();
+doingList = doing.ToList();
+</code></pre>
+<h2 id="-">订阅数据变更 - 核心用法</h2>
+<p>LiveQuery 的核心用法就是定义了一个查询，然后订阅符合这个查询条件的对象的变化。例如，将一个叫 「购买移动电源」的Todo 从正在进行变为已完成，需要这两步：</p>
+<p>第一、从正在进行的列表里面移除「购买移动电源」
+第二、将「购买移动电源」添加到已完成</p>
+<p>没有 LiveQuery 之前，我们需要让客户端定时拉取或者提醒用户主动刷新来更新界面，而用了 LiveQuery 之后，通过其提供的订阅方式就可以依赖服务端发起的数据同步来刷新界面，这样既减少了界面上的提示，也降低了设置定时器的麻烦。</p>
+<pre><code class="lang-objc">/* 导入 LiveQuery 模块 */
+#import &lt;AVOSCloudLiveQuery/AVOSCloudLiveQuery.h&gt;
+
+self.doingLiveQuery = [[AVLiveQuery alloc] initWithQuery:doingQuery];
+self.doingLiveQuery.delegate = self;
+[self.doingLiveQuery subscribeWithCallback:^(BOOL succeeded, NSError * _Nonnull error) {
+    /* Subscribed. */
+}];
+#pragma mark - LiveQuery delegate methods
+- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidCreate:(id)object {
+    if (liveQuery == self.doingLiveQuery) {
+        /* A new doing task did create. */
+    }
+}
+</code></pre>
+<pre><code class="lang-java">AVLiveQuery doingLiveQuery = AVLiveQuery.initWithQuery(doingQuery);
+doingLiveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void done(AVLiveQuery.EventType eventType, AVObject avObject, List&lt;String&gt; updateKeyList) {
+    // 事件回调，有更新后会调用此回调函数
+  }
+});
+doingLiveQuery.subscribeInBackground(new AVLiveQuerySubscribeCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 订阅成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">doingQuery.subscribe().then(function(liveQuery) {
+  liveQuery.on(&#39;create&#39;, function(newDoingItem) {
+    // add newDoingItem to doingList
+  });
+});
+</code></pre>
+<pre><code class="lang-cs">var livequery = await doingQuery.SubscribeAsync();
+livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if(e.Scope == &quot;create&quot;)
+    {
+        doingList.Add(e.Payload);
+    }
+};
+</code></pre>
+<p>请注意上述的关键代码是订阅操作：</p>
+<pre><code class="lang-objc">[self.doingLiveQuery subscribeWithCallback:^(BOOL succeeded, NSError * _Nonnull error) {
+    /* Subscribed. */
+}];
+</code></pre>
+<pre><code class="lang-java">doingLiveQuery.subscribeInBackground(new AVLiveQuerySubscribeCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 订阅成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">doingQuery.subscribe().then(function(liveQuery) {
+    // liveQuery 是 doingQuery 的订阅
+});
+</code></pre>
+<pre><code class="lang-cs">var livequery = await doingQuery.SubscribeAsync();
+</code></pre>
+<p>开启订阅之后，符合查询条件的数据产生的变化类型有以下几种：</p>
+<ul>
+<li><code>create</code>： 符合查询条件的对象创建</li>
+<li><code>update</code>： 符合查询条件的对象属性修改</li>
+<li><code>enter</code> ： 对象被修改后，从不符合查询条件变成符合。</li>
+<li><code>leave</code> ： 对象被修改后，从符合查询条件变成不符合。</li>
+<li><code>delete</code>： 对象删除</li>
+<li><code>login</code> ： 只对 <code>_User</code> 对象有效，表示用户登录</li>
+</ul>
+<p>因此在得到 LiveQuery 的消息通知的时候一定要区分变化类型。</p>
+<h3 id="-create">新增一条未完成 - create</h3>
+<p>首先启动 app 之后，页面上已经显示了当前已完成的一些 Todo，当另一客户端恰巧在这个时候添加一条全新的未完成的 Todo：</p>
+<pre><code class="lang-objc">AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot;];
+todo[@&quot;state&quot;] = @&quot;doing&quot;;
+[todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    /* Saved. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVObject todo = new AVObject(&quot;Todo&quot;);
+todo.put(&quot;state&quot;, &quot;doing&quot;);
+todo.saveInBackground(new SaveCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 保存成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">var testObj = new AV.Object(&#39;Todo&#39;);
+testObj.set(&#39;state&#39;,&#39;doing&#39;);
+testObj.save();
+</code></pre>
+<pre><code class="lang-cs">var testObj = new AVObject(&quot;Todo&quot;);
+testObj[&quot;state&quot;] = &quot;doing&quot;;
+await testObj.SaveAsync();
+</code></pre>
+<p>那么当前客户端就会接收到 <code>create</code> 的数据同步：</p>
+<pre><code class="lang-objc">#pragma mark - LiveQuery delegate methods
+- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidCreate:(id)object {
+    if (liveQuery == self.doingLiveQuery) {
+        /* A new doing task did create. */
+    }
+}
+</code></pre>
+<pre><code class="lang-java">liveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void onObjectCreated(AVObject avObject) {
+    // avObject 即为新添加的数据
+  }
+});
+</code></pre>
+<pre><code class="lang-js">doingQuery.subscribe().then(function(liveQuery) {
+  liveQuery.on(&#39;create&#39;, function(newDoingItem) {
+    // add newDoingItem to doingList
+  });
+});
+</code></pre>
+<pre><code class="lang-cs">livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if(e.Scope == &quot;create&quot;)
+    {
+        doingList.Add(e.Payload);
+    }
+};
+</code></pre>
+<h3 id="-update">标题修改 - update</h3>
+<p>我们订阅了未完成的 Todo，但是在另一端某一条未完成的标题修改了，但是它仍然处于未完成状态，状态 state 字段并未修改，因此不影响它依然属于符合订阅的查询条件：</p>
+<pre><code class="lang-objc">AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot; objectId:@&quot;5915bb92a22b9d005804a4ee&quot;];
+todo[@&quot;title&quot;] = @&quot;新的标题&quot;;
+[todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    /* Saved. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVObject todo = AVObject.createWithoutData(&quot;Todo&quot;, &quot;5915bb92a22b9d005804a4ee&quot;);
+todo.put(&quot;title&quot;, &quot;新的标题&quot;);
+todo.saveInBackground(new SaveCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 保存成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">var oneDoing = AV.Object.createWithoutData(&#39;Todo&#39;,&#39;5915bb92a22b9d005804a4ee&#39;);
+oneDoing.set(&#39;title&#39;,&#39;新的标题&#39;);
+oneDoing.save();
+</code></pre>
+<pre><code class="lang-cs">// 假设有一条未完成的 Todo 的 objectId 5915bb92a22b9d005804a4ee
+var oneDoing = AVObject.CreateWithoutData(&quot;Todo&quot;, &quot;5915bb92a22b9d005804a4ee&quot;);
+oneDoing[&quot;title&quot;] = &quot;修改标题&quot;;
+await oneDoing.SaveAsync();
+</code></pre>
+<p>当前客户端只需要监听 <code>update</code> 类型事件就可以实现数据同步：</p>
+<pre><code class="lang-objc">- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidUpdate:(id)object updatedKeys:(NSArray&lt;NSString *&gt; *)updatedKeys {
+    for (NSString *key in updatedKeys) {
+        NSLog(@&quot;%@: %@&quot;, key, object[key]);
+    }
+}
+</code></pre>
+<pre><code class="lang-java">liveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void onObjectUpdated(AVObject avObject, List&lt;String&gt; updateKeyList) {
+      // avObject 即为被修改的 AVObject，updateKeyList 为被修改的 key 值
+  }
+});
+</code></pre>
+<pre><code class="lang-js">liveQuery.on(&#39;update&#39;, function(updatedDoingItem, updatedKeys) {
+  // 将 doingList 中对应的 doingItem 替换成 updatedDoingItem
+});
+</code></pre>
+<pre><code class="lang-cs">livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if(e.Scope == &quot;update&quot;)
+    {
+        foreach(var key in e.Keys)
+        {
+            // 变更的列名
+            if(key == &quot;title&quot;)
+            {
+                // 获取对应的标题
+                var title = e.Payload.Get&lt;string&gt;(key);
+            }
+        }
+    }
+};
+</code></pre>
+<h3 id="-enter">已完成转为未完成 - enter</h3>
+<p>另一端将一条<strong>已完成</strong>修改为<strong>未完成</strong>：</p>
+<pre><code class="lang-objc">AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot; objectId:@&quot;591672df2f301e006b9b2829&quot;];
+todo[@&quot;state&quot;] = @&quot;doing&quot;;
+[todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    /* Saved. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVObject todo = AVObject.createWithoutData(&quot;Todo&quot;, &quot;591672df2f301e006b9b2829&quot;);
+todo.put(&quot;state&quot;, &quot;doing&quot;);
+todo.saveInBackground(new SaveCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 保存成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">var todo = new AV.Object.createWithoutData(&#39;Todo&#39;,&#39;591672df2f301e006b9b2829&#39;);
+todo.set(&#39;state&#39;,&#39;doing&#39;);
+todo.save();
+</code></pre>
+<pre><code class="lang-cs">// 假设有一条已完成的 objectId 591672df2f301e006b9b2829 
+var anotherDone = AVObject.CreateWithoutData(&quot;Todo&quot;, &quot;591672df2f301e006b9b2829&quot;);
+anotherDone[&quot;state&quot;] = &quot;doing&quot;;
+await anotherDone.SaveAsync();
+</code></pre>
+<p>当前客户端需要监听 <code>enter</code> 类型事件来实现数据同步：</p>
+<pre><code class="lang-objc">#pragma mark - LiveQuery delegate methods
+- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidEnter:(id)object updatedKeys:(nonnull NSArray&lt;NSString *&gt; *)updatedKeys {
+    if (liveQuery == self.doingLiveQuery) {
+        /* A todo did change to doing from other state. */
+    }
+}
+</code></pre>
+<pre><code class="lang-java">liveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void onObjectEnter(AVObject avObject, List&lt;String&gt; updateKeyList) {
+    // avObject 即为被修改的 AVObject，updateKeyList 为被修改的 key 值
+  }
+});
+</code></pre>
+<pre><code class="lang-js">liveQuery.on(&#39;update&#39;, function(updatedDoingItem, updatedKeys) {
+  // 将 doingList 中对应的 doingItem 替换成 updatedDoingItem
+});
+</code></pre>
+<pre><code class="lang-cs">livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if (e.Scope == &quot;enter&quot;)
+    {
+      doingList.Add(e.Payload);
+    }
+};
+</code></pre>
+<p>请明确区分 <code>create</code> 和 <code>enter</code> 的不同行为：</p>
+<ul>
+<li><code>create</code>：对象从无到创建，并且符合查询条件。</li>
+<li><code>enter</code>：对象原来就存在，但是修改之前不符合查询条件，修改之后符合了查询条件。</li>
+</ul>
+<h3 id="-leave">未完成标记为已完成 - leave</h3>
+<p>另一端将一条<strong>未完成</strong>修改为<strong>已完成</strong>：</p>
+<pre><code class="lang-objc">AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot; objectId:@&quot;591672df2f301e006b9b2829&quot;];
+todo[@&quot;state&quot;] = @&quot;done&quot;;
+[todo saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    /* Saved. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVObject todo = AVObject.createWithoutData(&quot;Todo&quot;, &quot;591672df2f301e006b9b2829&quot;);
+todo.put(&quot;state&quot;, &quot;done&quot;);
+todo.saveInBackground(new SaveCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 保存成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">var todo = new AV.Object.createWithoutData(&#39;Todo&#39;,&#39;591672df2f301e006b9b2829&#39;);
+todo.set(&#39;state&#39;,&#39;done&#39;);
+todo.save();
+</code></pre>
+<pre><code class="lang-cs">var willDone = AVObject.CreateWithoutData(&quot;Todo&quot;, &quot;591672df2f301e006b9b2829&quot;);
+willDone[&quot;state&quot;] = &quot;done&quot;;
+await willDone.SaveAsync();
+</code></pre>
+<p>与 <code>enter</code> 相反，当对象从符合条件变为不符合条件的时候，LiveQuery 会得到一条数据同步：</p>
+<pre><code class="lang-objc">#pragma mark - LiveQuery delegate methods
+- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidLeave:(id)object updatedKeys:(nonnull NSArray&lt;NSString *&gt; *)updatedKeys {
+    if (liveQuery == self.doingLiveQuery) {
+        /* A todo did change to other state from doing. */
+    }
+}
+</code></pre>
+<pre><code class="lang-java">liveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void onObjectLeave(AVObject avObject, List&lt;String&gt; updateKeyList) {
+    // avObject 即为被修改的 AVObject，updateKeyList 为被修改的 key 值
+  }
+});
+</code></pre>
+<pre><code class="lang-js">liveQuery.on(&#39;leave&#39;, function(leftDoingItem, updatedKeys) {
+  // remove leftDoingItem from doingList
+});
+</code></pre>
+<pre><code class="lang-cs">livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if(e.Scope == &quot;leave&quot;)
+    {
+        var done = doingList.First(todo =&gt; todo.ObjectId == e.Payload.ObjectId);
+        if(done != null)
+        {
+            doingList.Remove(done);
+        }
+    }
+}
+</code></pre>
+<h3 id="-delete">删除一个符合查询条件的对象 - delete</h3>
+<p>另一端将一条<strong>未完成</strong>直接删除，代码如下：</p>
+<pre><code class="lang-objc">AVObject *todo = [AVObject objectWithClassName:@&quot;Todo&quot; objectId:@&quot;591d9b302f301e006be22c83&quot;];
+[todo deleteInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+    /* Deleted. */
+}];
+</code></pre>
+<pre><code class="lang-java">AVObject todo = AVObject.createWithoutData(&quot;Todo&quot;, &quot;591672df2f301e006b9b2829&quot;);
+todo.deleteInBackground(new DeleteCallback() {
+  @Override
+  public void done(AVException e) {
+    if (null == e) {
+      // 保存成功
+    }
+  }
+});
+</code></pre>
+<pre><code class="lang-js">var todo = new AV.Object.createWithoutData(&#39;Todo&#39;,&#39;591d9b302f301e006be22c83&#39;);
+todo.delete();
+</code></pre>
+<pre><code class="lang-cs">var willDelete = AVObject.CreateWithoutData(&quot;Todo&quot;, &quot;591d9b302f301e006be22c83&quot;);
+await willDelete.DeleteAsync();
+</code></pre>
+<p>LiveQuery 会得到一条数据同步：</p>
+<pre><code class="lang-objc">#pragma mark - LiveQuery delegate methods
+- (void)liveQuery:(AVLiveQuery *)liveQuery objectDidDelete:(id)object {
+    /* A todo has been deleted. */
+}
+</code></pre>
+<pre><code class="lang-java">liveQuery.setEventHandler(new AVLiveQueryEventHandler() {
+  @Override
+  public void onObjectDeleted(String objectId) {
+    // objectId 即为被删除的 AVObject 的 id
+  }
+});
+</code></pre>
+<pre><code class="lang-js">liveQuery.on(&#39;delete&#39;, function(deletedDoingItem, updatedKeys) {
+  // remove deletedDoingItem from doingList
+});
+</code></pre>
+<pre><code class="lang-cs">livequery.OnLiveQueryReceived += (sender, e) =&gt; 
+{
+    if(e.Scope == &quot;delete&quot;)
+    {
+        var done = doingList.First(todo =&gt; todo.ObjectId == e.Payload.ObjectId);
+        if(done != null)
+        {
+            doingList.Remove(done);
+        }
+    }
+}
+</code></pre>
+<h2 id="-">常见问题</h2>
+<ul>
+<li><p>开发者对 LiveQuery 的用法容易产生哪些误解？</p>
+<p>因为 LiveQuery 的实时性，很多用户会陷入一个误区，试着用 LiveQuery 来实现一个简单的聊天功能。我们不建议这样做，因为使用 LiveQuery 构建聊天服务会承担额外的存储成本，产生的费用会增加，并且后期维护的难度非常大（聊天记录，对话维护之类的代码会很混乱），并且 LeanCloud 已经提供了实时通信的服务。LiveQuery 的核心还是提供一个针对查询的推拉结合的用法，脱离设计初衷容易造成前端的模块混乱。</p>
+</li>
+</ul>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a> -->
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,1618 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>实时通信开发指南 · Unity（C#） - LeanCloud 文档</title>
+<!-- build:js custom/js/docs-all.js -->
+<script src="custom/js/lib/jquery.min.js"></script>
+<script src="custom/js/lib/bootstrap.min.js"></script>
+<script src="custom/js/lib/bootstrap-hover-dropdown.js"></script>
+<script src="custom/js/lib/pretty/prettify.js"></script>
+<script src="custom/js/lib/jquery.scrollTo.min.js"></script>
+<script src="custom/js/lib/angular/angular.min.js"></script>
+<script src="custom/js/lib/zeroclipboard/zeroclipboard.js"></script>
+<script src="custom/js/lib/markdown.min.js"></script>
+<script src="custom/js/lib/md5.js"></script>
+
+<script src="custom/js/lib/angular-gravatar.js"></script>
+<script src="custom/js/prepare-dom.js"></script>
+<script src="custom/js/app.js"></script>
+<script src="custom/js/common.js"></script>
+<script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript">
+      var _vds = _vds || [];
+      window._vds = _vds;
+      (function(){
+        _vds.push(['setAccountId', 'a268202b003f2516']);
+        (function() {
+          var vds = document.createElement('script');
+          vds.type='text/javascript';
+          vds.async = true;
+          vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(vds, s);
+        })();
+      })();
+  </script>
+
+<link rel="stylesheet" type="text/css" href="custom/css/app-docs.css?githubv1">
+
+
+</head>
+
+
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
+
+
+
+
+  <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
+        <li>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
+        </li>
+      </ul> -->
+      <div class="navbar-app-actions-wrap">
+        <ul class="nav navbar-nav navbar-app-actions">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="index.html">
+              <i class="icon icon-dashbd-icon icon-home"></i>
+              <div class="name">文档首页</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
+              <i class="icon icon-dashbd-icon icon-package"></i>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
+            </a>
+            <ul class="dropdown-menu">
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
+              <li><a href="http://forum.leancloud.cn">社区</a></li>
+              <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+              <li role="presentation" class="divider"></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
+              <li role="presentation" class="divider"></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <!-- hide search input on the home page -->
+        
+          <form role="search" action="/search.html" method="get">
+            <div class="app-search">
+              <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
+            </div>
+          </form>
+        
+      </div>
+
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
+
+        <li class="dropdown" ng-show="user.username">
+          <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
+            <span class="user-gravatar">
+              <img gravatar-src="user.email" gravatar-size="64">
+            </span>
+            <span class="user-name-text">{{user.username}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="/settings.html">账号设置</a></li>
+            <li><a href="/applist.html">控制台</a></li>
+            
+            <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
+            <li><a href="/bill.html#/bill/general">财务</a></li>
+            <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
+            <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
+          </ul>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signin">登录</a>
+        </li>
+        <li ng-hide="user.username">
+          <a href="/login.html#/signup">注册</a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+  <!-- .container-fluid -->
+</nav>
+
+
+
+<header class="doc-subnav" role="banner">
+  <div class="container-fluid">
+    <nav class="" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
+          <ul class="dropdown-menu">
+            <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
+            <li><a href="push_guide.html">消息推送服务总览</a></li>
+            <li><a href="realtime_v2.html">实时通信服务总览</a></li>
+            <li><a href="dashboard_guide.html">控制台使用指南</a></li>
+            <li><a href="data_security.html">数据安全</a></li>
+            <li><a href="error_code.html">错误码详解</a></li>
+            <li><a href="faq.html">常见问题</a></li>
+            <li><a href="tool_tips.html">常见功能提示</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Objective-C</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
+            <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="ios_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
+            <li><a href="ios-macos-faq.html">FAQ</a></li>
+            <li><a href="/api-docs/iOS/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-swift.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-swift.html">数据存储开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Android</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="android_push_guide.html">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
+            <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            <li><a href="android_statistics.html">统计分析开发指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="android_faq.html">FAQ</a></li>
+            <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">JavaScript</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
+            <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="weapp.html">微信小程序开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
+            
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
+            
+            <li><a href="js_analytics.html">统计分析开发指南</a></li>
+            <!-- <li><a href="js_faq.html">FAQ</a></li> -->
+            <li role="separator" class="divider"></li>
+            <li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">数据存储 SDK API</a></li>
+            <li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">实时通信 SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
+            <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
+            <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Python</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
+            <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
+            <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
+            <li role="separator" class="divider"></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">Java</a>
+          <ul class="dropdown-menu">
+            <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
+            <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
+            <li class="dropdown-header">云引擎</li>
+            <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+            <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
+          <ul class="dropdown-menu">
+            <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
+            <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
+            <li><a href="realtime_rest_api.html">实时通信 API</a></li>
+            
+            <li><a href="rest_sms_api.html">短信验证 API</a></li>
+            
+            <li><a href="rest_api.html#统计数据_API">数据统计 API</a></li>
+            <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
+            <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
+            <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
+            <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">云引擎</a>
+          <ul class="dropdown-menu">
+          <li><a href="leanengine_overview.html">云引擎总览</a></li>
+          <li><a href="leanengine_quickstart.html">云引擎快速入门</a></li>
+          <li><a href="leanengine_plan.html">云引擎运行方案</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="dropdown-header">Node.js</li>
+          <li><a href="leanengine_webhosting_guide-node.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-node.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Python</li>
+          <li><a href="leanengine_webhosting_guide-python.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-python.html">云函数开发指南</a></li>
+          <li class="dropdown-header">PHP</li>
+          <li><a href="leanengine_webhosting_guide-php.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-php.html">云函数开发指南</a></li>
+          <li class="dropdown-header">Java</li>
+          <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
+          <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
+          <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
+          <li><a href="leanengine_faq.html">FAQ</a></li>
+          <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">更多</a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="status_system.html">应用内社交使用指南</a></li>
+            <li><a href="sns.html">第三方平台账号登录 SNS 开发指南</a></li>
+            <li><a href="feedback.html">用户反馈开发指南</a></li>
+            
+            <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
+            <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
+            <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
+            <li class="divider"></li>
+            <li><a href="tutorials.html">教程</a></li>
+           <li><a href="demo.html">Demo</a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form action="/search.html" method="get" target="_blank" class="search-form">
+            <input name="q" class="search-input" placeholder="搜索&hellip;">
+          </form>
+        </li>
+      </ul> -->
+    </nav>
+  </div>
+</header>
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="sidebar-gruntfile-trigger  col-sm-3" id="left-nav">
+
+      <div class="sidebar-affix-shadow sidebar-hover-off">
+
+        <div class="sidebar-wrapper" id="toc-wrapper">
+
+        </div>
+        <!-- .sidebar-wrapper -->
+
+      </div>
+      <!-- .sidebar-affix-shadow -->
+
+    </div>
+    <!-- .col-md-3 -->
+
+    <div class="col-sm-9 sidebar-gruntfile-trigger">
+      <div class="doc-content with-comment" id="content">
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年9月26日下午2点53分">更新于 <time datetime="2017-09-26T14:53:09+08:00">2017-09-26</time></span></div>
+        <h1 id="-unity-c-">实时通信开发指南 · Unity（C#）</h1>
+<h2 id="-">准备工作</h2>
+<h3 id="-">开发工具</h3>
+<p><dl><dt>Unity 5.3.x 以上的版本</dt></dl></p>
+<dd>这个是因为在 Unity 5.3 之后，官方使用 UnityWebRequest 取代了原有的 WWW 类作为 HTTP 请求的客户端，因此 LeanCloud SDK 在实时通信上是使用了 UnityWebRequest 来获取云端分配的 WebSocket 链接地址。</dd>
+<dt>Visual Studio 2015 以上的版本</dt>
+<dd>微软针对 Unity 有一个工具包可以让 Unity 和 Visual Studio 联调，详细请看<a href="https://msdn.microsoft.com/zh-cn/library/dn940020.aspx">使用 Visual Studio Tools for Unity</a>，因此建议用户在 Windows 上开发 Unity 的体验会更好，当然在 Mac OS 以及其他操作系统上开发也没有任何问题。</dd>
+
+<h3 id="-net-4-5-">.NET 4.5+ 编程知识</h3>
+<p>Unity 支持 Mono 使用 .NET 语言来实现跨平台开发的解决方案，所以 LeanCloud 采用了 C# 来实现客户端的 SDK。如果你有 .NET 方面的编程经验，就很容易掌握 LeanCloud Unity SDK 接口的风格和用法。</p>
+<p>LeanCloud Unity SDK 在很多重要的功能点上都采用了微软提供的<a href="https://msdn.microsoft.com/zh-cn/library/hh873175.aspx">基于任务的异步模式 (TAP)</a>，所以如果你具备 .NET Framework 4.5 的开发经验，或对 .NET Framework 4.5 的 新 API 有所了解，将有助于快速上手。</p>
+<h3 id="leancloud-">LeanCloud 实时通信概览</h3>
+<p>在继续阅读本文档之前，请先阅读<a href="realtime_v2.html">《实时通信概览》</a>，了解一下实时通信的基本概念和模型。</p>
+<h3 id="websocket-">WebSocket 协议</h3>
+<p>LeanCloud 实时消息是基于 WebSocket 和私有通讯协议实现的一套聊天系统，因此开发者最好提前了解一下 WebSocket 协议的相关内容。推荐没有接触过的开发者可以阅读《<a href="http://zhihu.com/question/20215561/answer/40316953">WebSocket 是什么原理？为什么可以实现持久连接？- Ovear 的回答</a>》。</p>
+<h2 id="-sdk">安装 SDK</h2>
+<h3 id="-">下载和导入</h3>
+<p>最新版本的 SDK 下载地址：<a href="https://github.com/leancloud/realtime-SDK-dotNET/">https://github.com/leancloud/realtime-SDK-dotNET/</a> 或选择 <a href="https://releases.leanapp.cn/#/leancloud/realtime-SDK-dotNET/releases">SDK 镜像地址</a>，下载时请选择最新版本即可。例如 <code>LeanCloud-Unity-Realtime-SDK-20170330.3.zip</code>，代表这个版本是 2017 年 3 月 30 日当天的第 3 次自动化发布。</p>
+<p>下载之后解压，把里面包含的所有的 Dll 文件（除去 <code>UnityEngine.dll</code>）都引入到 Unity 的 <code>Assets/LeanCloud</code> 文件夹（在 <code>Assets</code> 下面新建一个 <code>LeanCloud</code> 文件夹用来存放 LeanCloud SDK）下即可。</p>
+<h3 id="-">初始化</h3>
+<p>初始化<strong>必须</strong>在 Unity Editor 上将 <code>AVInitializeBehaviour</code>(在 LeanCloud.Core 命名空间下) 以及 <code>AVRealtimeBehavior</code>(在 LeanCloud.Realtime 命名空间下) 挂载在某一个 GameObject 下，如下图：</p>
+<p><img src="https://dn-lhzo7z96.qbox.me/1497505703771" alt="AVInitializeBehaviour&amp;AVRealtimeBehavior"></p>
+<p><img src="https://dn-lhzo7z96.qbox.me/1497505560763" alt="mount"></p>
+<h3 id="-">打开调试日志</h3>
+<pre><code class="lang-cs">AVRealtime.WebSocketLog(UnityEngine.Debug.Log);
+</code></pre>
+<h2 id="-">核心概念</h2>
+<h3 id="-avimconversation">对话 - AVIMConversation</h3>
+<p>对话（AVIMConversation）是 LeanCloud 实时消息服务定义的一个抽象概念，它是一个聊天的载体，例如微信的私聊是一个对话，群聊也是一个对话，唯一的区别就是私聊是两个人的对话，群聊是多人的对话，本文之后所有针对聊天的模型描述里面使用了对话都特指 LeanCloud 实时消息定义的这个抽象概念——对话（AVIMConversation）。</p>
+<h4 id="-">对话的种类</h4>
+<p>LeanCloud 内置了三种对话类别：</p>
+<ul>
+<li><strong>普通对话</strong>：类似于微信的私聊和群聊</li>
+<li><strong>暂态对话</strong>：类似于直播间的聊天室</li>
+<li><strong>系统对话</strong>：类似于系统广播，GM 群发消息</li>
+</ul>
+<h3 id="-avimclient">客户端 - AVIMClient</h3>
+<p>LeanCloud 实时消息中的客户端是指游戏中客户端与云端之间的单个长连接，而不局限于一个用户（玩家）。例如 QQ 里面有一种机制，一个 QQ 号支持同时在一台手机设备和一台电脑设备上登录，在 LeanCloud 实时消息中就把这两个登录的设备视为两个客户端，但是它们共享了一个客户端 ID（ClientId） ，只要是同一个 ClientId，不管多少个设备，LeanCloud 云端都可以支持。</p>
+<h4 id="-">客户端的互斥</h4>
+<p>当然，游戏中更多的情况是，玩家在 iOS 上登录之后，他在其他设备上较早前的登录就会被踢下线，这是游戏的客户端独占性，因此游戏开发者可以完全将 AVIMClient 理解为一个玩家，他们之间是一对一的关系。LeanCloud 将这种行为定义为「单点登录」，实现方法请参考 <a href="#单点登录">单点登录</a>。</p>
+<h2 id="-">常见的游戏聊天模型</h2>
+<p>游戏中常见的聊天场景有：</p>
+<ul>
+<li>帮派或者公会群聊频道</li>
+<li>游戏中好友一对一的私聊</li>
+<li>战场或副本内的临时群聊</li>
+</ul>
+<h3 id="-">帮派和工会案例 - 桃园三结义</h3>
+<p>帮派（公会）是一个持久存在的、某些玩家共有的一个频道，它具备以下特点：</p>
+<ul>
+<li>持久化存储</li>
+<li>玩家加入或者离开时的通知送达</li>
+<li>管理员可以加人和删人</li>
+</ul>
+<p>经过分析，我们给出一个符合编程语义的定义，即帮派或公会本质上是一个对话，这个对话具备如下特征：</p>
+<ul>
+<li>非暂态对话</li>
+<li>成员的变动通知</li>
+<li>某一个特殊权限的客户端可以邀请或者踢出其他客户端</li>
+</ul>
+<p>假设开发一款三国题材的游戏，每一个玩家是三国时期的一位名将，游戏的第一个剧情就是桃园结义，有三个玩家分别叫<strong>刘备</strong>（ID 1001）、<strong>关羽</strong>（ID 1002）、<strong>张飞</strong>（ID 1003）。当这三个玩家进入了游戏，他们偶然相遇，刘备一时兴起说道「我们结拜吧」，于是他们新建了一个帮派叫做「桃园」，下面以刘备作为玩家视角开始构建 AVIMClient，并打开与 LeanCloud 云端的长链接，创建「桃园」聊天频道。</p>
+<h4 id="-">初始化聊天服务</h4>
+<pre><code class="lang-cs">AVRealtime avRealtime;
+
+void Start()
+{
+    // 使用 AppId 和 App Key 初始化 SDK
+    avRealtime = new AVRealtime(&quot;uay57kigwe0b6f5n0e1d4z4xhydsml3dor24bzwvzr57wdap&quot;, &quot;kfgz7jjfsk55r5a8a3y4ttd3je1ko11bkibcikonk32oozww&quot;);
+    // 方便调试将 WebSocket 日志打印在 Debug.Log 控制台上
+    AVRealtime.WebSocketLog(Debug.Log);
+}
+</code></pre>
+<h4 id="-">登录</h4>
+<p>然后以刘备的游戏 ID 作为 Client Id 登录到 LeanCloud 实时消息的云端：</p>
+<pre><code class="lang-cs">AVIMClient liubei = null;
+// 以刘备的游戏 ID 1001 作为 client Id 构建 AVIMClient
+avRealtime.CreateClient(&quot;1001&quot;).ContinueWith(t =&gt; 
+{
+    liubei = t.Result;
+});
+</code></pre>
+<p>紧接着，关羽登录到了系统，而张飞因为喝酒睡过了，暂时没有上线。</p>
+<h4 id="-">创建对话</h4>
+<p>此时，三个人之间是没有任何联系的，他们之间暂时无法通讯，因此我们需要创建一个对话，让这三个人成为该对话的成员，然后开始三个人之间的群聊，群聊的名称就用之前提到的「桃园」：</p>
+<pre><code class="lang-cs">AVIMClient liubei = null;
+// 以刘备的游戏 ID 1001 作为 client Id 构建 AVIMClient
+avRealtime.CreateClient(&quot;1001&quot;).ContinueWith(t =&gt;
+{
+    liubei = t.Result;
+}).ContinueWith(s =&gt;
+{
+    // 以关羽、张飞的游戏 ID 作为受邀进入对话的成员列表
+    var memberList = new List&lt;string&gt;()
+    {
+        &quot;1002&quot;,
+        &quot;1003&quot;
+    };
+
+    // 以「桃园」作为帮派的名称 
+    var name = &quot;桃园&quot;;
+
+    // 以「桃园」作为名称，以关羽、张飞作为成员，建立对话
+    // 对话的创建者刘备（client id：1001）会默认加入对话，因此无需重复添加到 memberList 里面去
+    return liubei.CreateConversationAsync(name: name, members: memberList);
+});
+</code></pre>
+<h4 id="-">成员变更通知</h4>
+<p>刘备新建了一个聊天频道，关羽此时也在线，只要关羽订阅了通知事件，当刘备邀请他加入「桃园」聊天时，他就可以收到通知。以下是关羽登录的代码，需注意其中与刘备不同的地方：</p>
+<pre><code class="lang-cs">public void GuanYULogIn()
+{
+    AVIMClient guanyu = null;
+    // 以关羽的游戏 ID 1002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1002&quot;).ContinueWith(t =&gt;
+    {
+        guanyu = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        guanyu.OnInvited += Guanyu_OnInvited;
+    });
+}
+
+private void Guanyu_OnInvited(object sender, AVIMOnInvitedEventArgs e)
+{
+    // e.InvitedBy 是该项操作的发起人, e.ConversationId 是该项操作针对的对话 Id
+    Debug.Log(string.Format(&quot;你被 {0} 邀请加入了 {1} 对话&quot;, e.InvitedBy, e.ConversationId));
+}
+</code></pre>
+<p>注意，此时张飞正在睡觉，尽管他也会受邀加入对话，但是成员变更操作只针对在线人员进行通知，类似于 QQ 你多年没有上线，有一天你上线了，发现自己被某个群踢了，其实这个通知并不是在踢你的时候产生的，而是 QQ 根据你之前的群组记录对比你现在的群组列表，做了合并操作，发现你被踢了，就生成一个通知给你。</p>
+<p>上述代码实现了关羽可以监听自己被邀请进入对话之后的通知。</p>
+<h4 id="-">发送消息</h4>
+<p>刘备想在「桃园」频道发一条消息「兄弟们，睡什么睡，起来嗨！」，只需要在刘备的客户端代码做如下修改：</p>
+<pre><code class="lang-cs">AVIMClient liubei = null;
+// 以刘备的游戏 ID 1001 作为 client Id 构建 AVIMClient
+avRealtime.CreateClient(&quot;1001&quot;).ContinueWith(t =&gt;
+{
+    liubei = t.Result;
+}).ContinueWith(s =&gt;
+{
+    // 以关羽、张飞的游戏 ID 作为受邀进入对话的成员列表
+    var memberList = new List&lt;string&gt;()
+    {
+        &quot;1002&quot;,
+        &quot;1003&quot;
+    };
+
+    // 以「桃园」作为帮派的名称 
+    var name = &quot;桃园&quot;;
+
+    // 以「桃园」作为名称，以关羽、张飞作为成员，建立对话 
+    return liubei.CreateConversationAsync(name: name, members: memberList);
+}).Unwrap().ContinueWith(x =&gt; 
+{
+    // 「桃园」是一个 AVIMConversation 实例
+    var TaoYuanConversation = x.Result;
+    // 创建一个文本消息
+    var textMessage = new AVIMTextMessage(&quot;兄弟们，睡什么睡，起来嗨！&quot;);
+    // 将该文本消息发送出去
+    return TaoYuanConversation.SendMessageAsync(textMessage);
+});
+</code></pre>
+<h4 id="-">接收消息</h4>
+<p>关羽此时已经登录了，并知晓自己已经加入了「桃园」这个对话，因此他需要继续订阅接收消息的事件通知：</p>
+<pre><code class="lang-cs">public void GuanYULogIn()
+{
+    AVIMClient guanyu = null;
+    // 以关羽的游戏 ID 1002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1002&quot;).ContinueWith(t =&gt;
+    {
+        guanyu = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 监听自己被邀请加入对话
+        guanyu.OnInvited += Guanyu_OnInvited;
+        // 监听接收消息
+        guanyu.OnMessageReceived += Guanyu_OnMessageReceived;
+    });
+}
+
+private void Guanyu_OnMessageReceived(object sender, AVIMMessageEventArgs e)
+{
+    if (e.Message is AVIMTextMessage)
+    {
+        var textMessage = (AVIMTextMessage)e.Message;
+        // textMessage.ConversationId 是该条消息所属于的对话 Id
+        // textMessage.TextContent 是该文本消息的文本内容
+        // textMessage.FromClientId 是消息发送者的 client Id
+        Debug.Log(string.Format(&quot;你收到来自于 Id 为 {0} 的对话的文本消息，消息内容是： {1}，发送者的 client Id 是 {2}&quot;, textMessage.ConversationId, textMessage.TextContent, textMessage.FromClientId));
+    }
+}
+
+private void Guanyu_OnInvited(object sender, AVIMOnInvitedEventArgs e)
+{
+    // e.InvitedBy 是该项操作的发起人,e.ConversationId 是该项操作针对的对话的 Id
+    Debug.Log(string.Format(&quot;你被 {0} 邀请加入了 {1} 对话&quot;, e.InvitedBy, e.ConversationId));
+}
+</code></pre>
+<h4 id="-">获取对话</h4>
+<p>至此，刘备向对话中发送消息的功能已经实现了，关羽作为受邀加入对话的成员，他可以通过获取自己所在的对话实例，然后调用对话实例的发送消息的接口，回发消息给刘备：</p>
+<pre><code class="lang-cs">public void GuanYULogIn()
+{
+    AVIMClient guanyu = null;
+    // 以关羽的游戏 ID 1002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1002&quot;).ContinueWith(t =&gt;
+    {
+        guanyu = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 监听自己被邀请加入对话
+        guanyu.OnInvited += Guanyu_OnInvited;
+        // 监听接收消息
+        guanyu.OnMessageReceived += Guanyu_OnMessageReceived;
+        // 构建对话的查询
+        var query = guanyu.GetQuery();
+        // 查询我所在的对话列表，默认返回的是最近活跃的 20 个，这个数量可以更改，最大支持 1000
+        return query.FindAsync();
+    }).Unwrap().ContinueWith(x =&gt; 
+    {
+        // 从对话列表中找出「桃园」 这个对话
+        AVIMConversation TaoYuanConversation = null;
+        var conversationList = x.Result;
+        // 搜索「桃园」这个对话 
+        TaoYuanConversation = conversationList.First(conversation =&gt; conversation.Name == &quot;桃园&quot;);
+        // 同样的，关羽也创建一个文本消息
+        var textMessage = new AVIMTextMessage(&quot;大哥，我在郊外打猎，三弟昨晚喝多了，他还在睡，要不你到城外，我们一起骑马打猎啊？&quot;);
+        return TaoYuanConversation.SendMessageAsync(textMessage);
+    });
+}
+
+private void Guanyu_OnMessageReceived(object sender, AVIMMessageEventArgs e)
+{
+    // 如果是文本消息
+    if (e.Message is AVIMTextMessage)
+    {
+        var textMessage = (AVIMTextMessage)e.Message;
+        // textMessage.ConversationId 是该条消息所属于的对话 Id
+        // textMessage.TextContent 是该文本消息的文本内容
+        // textMessage.FromClientId 是消息发送者的 client Id
+        Debug.Log(string.Format(&quot;你收到来自于 Id 为 {0} 的对话的文本消息，消息内容是： {1}，发送者的 client Id 是 {2}&quot;, textMessage.ConversationId, textMessage.TextContent, textMessage.FromClientId));
+    }
+}
+
+private void Guanyu_OnInvited(object sender, AVIMOnInvitedEventArgs e)
+{
+    // e.InvitedBy 是该项操作的发起人,e.ConversationId 是该项操作针对的对话的 Id
+    Debug.Log(string.Format(&quot;你被 {0} 邀请加入了 {1} 对话&quot;, e.InvitedBy, e.ConversationId));
+}
+</code></pre>
+<p>同样，刘备也需要监听 <code>AVIMClient.OnMessageReceived</code> 这个事件通知，就能收到关羽发送的消息了。</p>
+<h4 id="-">离线消息</h4>
+<p>假设刚才在所有操作发生的时候，张飞依然在呼呼大睡，他完全不知道大哥创建了一个对话，并且大哥和二哥已经在对话里面聊了起来，此时他上线，就会收到许多离线消息。在张飞登录的时候，需要再监听一下离线消息的事件通知，这样他就不会丢失消息：</p>
+<pre><code class="lang-cs">public void ZhangFeiLogIn()
+{
+    AVIMClient zhangfei = null;
+    // 以张飞的游戏 ID 1002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1003&quot;).ContinueWith(t =&gt;
+    {
+        zhangfei = t.Result;
+    }).ContinueWith(s =&gt; 
+    {
+        // 张飞监听自己离线消息
+        zhangfei.OnOfflineMessageReceived += Zhangfei_OnOfflineMessageReceived;
+    });
+}
+
+private void Zhangfei_OnOfflineMessageReceived(object sender, AVIMMessageEventArgs e)
+{
+    if (e.Message is AVIMTextMessage)
+    {
+        var textMessage = (AVIMTextMessage)e.Message;
+        // textMessage.ConversationId 是该条消息所属于的对话 Id
+        // textMessage.TextContent 是该文本消息的文本内容
+        // textMessage.FromClientId 是消息发送者的 client Id
+        Debug.Log(string.Format(&quot;你收到来自于 Id 为 {0} 的对话的离线文本消息，消息内容是：{1}，发送者的 client Id 是 {2}&quot;, textMessage.ConversationId, textMessage.TextContent, textMessage.FromClientId));
+    }
+}
+</code></pre>
+<h4 id="-">邀请其他成员加入</h4>
+<p>刘备、关羽和张飞后来遇上了五虎上将的另一位赵云，刘备将赵云加入「桃园」中 ，首先需要获取「桃园」这个实例，第一种方法是上述关羽通过 <code>AVIMClient.GetQuery</code> 的方法来获取查询，然后通过名称比对来找出「桃园」。这个方法我们推荐在展现列表页的时候使用。</p>
+<p>如果一个对话很活跃，我们推荐开发者在客户端缓存对话的 ID(<code>AVIMConversation.ConversationId</code>)，然后通过 <code>AVIMConversation.CreateWithoutData</code> 来构建一个对话，这样效率更高，用法更友好： </p>
+<pre><code class="lang-cs">public void InviteZhaoYun()
+{
+    // 假设刘备缓存了「桃园」的 ID 
+    var TaoYuanConversationId = &quot;58dca69e2e9af6631e113d8a&quot;;
+
+    // 赵云的 client Id
+    var zhaoyun_ClintId = &quot;1004&quot;;
+
+    AVIMClient liubei = null;
+    // 以刘备的游戏 ID 1001 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1001&quot;).ContinueWith(t =&gt;
+    {
+        liubei = t.Result;
+    }).ContinueWith(s =&gt; 
+    {
+        // 构建对话的时候需要指定一个 AVIMClient 实例做关联
+        var TaoYuanConversation = AVIMConversation.CreateWithoutData(TaoYuanConversationId, liubei);
+        // 直接邀请赵云加入对话
+        return liubei.InviteAsync(TaoYuanConversation, zhaoyun_ClintId);
+    });
+}
+</code></pre>
+<p>而其他在线成员就会收到 <code>AVIMClient.OnMembersJoined</code> 的通知，而赵云本人会收到<code>AVIMClient.OnInvited</code> 的通知。</p>
+<h4 id="-">删除其他成员</h4>
+<p>等到后来在新野的时候，徐庶前来相投，刘备也将徐庶加入了「桃园」，但无奈的是，曹操俘虏了徐庶的母亲，徐庶只能含泪告别刘备，在徐庶离开新野北上之后，刘备将徐庶从「桃园」中删除。代码如下：</p>
+<pre><code class="lang-cs">public void KickXuShu()
+{
+    // 假设刘备缓存了「桃园」的 ID 
+    var TaoYuanConversationId = &quot;58dca69e2e9af6631e113d8a&quot;;
+    AVIMClient liubei = null;
+    // 以刘备的游戏 ID 1001 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;1001&quot;).ContinueWith(t =&gt;
+    {
+        liubei = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 构建对话的时候需要指定一个 AVIMClient 实例做关联
+        var TaoYuanConversation = AVIMConversation.CreateWithoutData(TaoYuanConversationId, liubei);
+        // 刘备将徐庶从对话中删除
+        return liubei.KickAsync(TaoYuanConversation, &quot;1005&quot;);
+    });
+}
+</code></pre>
+<p>其他在线成员会收到 <code>AVIMClient.OnMembersLeft</code>，而徐庶本人会收到 <code>AVIMClient.OnKicked</code>。</p>
+<h3 id="-">私聊案例 - 曹操三问谋士</h3>
+<p>相对于刘备来说，曹操不太喜欢群聊，因此他总是单独约见某一个手下的谋士进行私聊，这里我们拿曹操与程昱、荀彧以及郭嘉的私聊来举例。</p>
+<p>前面我们说过，在 LeanCloud 中并没有限制对话的类型，群聊和私聊的本质区别就是成员的数量。那么假设曹操的 Client ID 是 2001，程昱是 2002，荀彧是 2003，郭嘉是 2004。</p>
+<h4 id="-">创建私聊</h4>
+<p>曹操麻利地创建了一个私聊：</p>
+<pre><code class="lang-cs">public void CreatePrivateConversation()
+{
+    AVIMClient caocao = null;
+    // 以曹操的游戏 ID 2001 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;2001&quot;).ContinueWith(t =&gt;
+    {
+        caocao = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 曹操建立与程昱的私聊
+        caocao.CreateConversationAsync(member: &quot;2002&quot;, name: &quot;曹操与程昱的私聊&quot;);
+    });
+}
+</code></pre>
+<p>上述代码跟刘备创建「桃园」时的区别只有一个，刘备传入的是关羽和张飞两个人的 client Id  作为一个集合参数，曹操传入的是程昱一人的 client Id，因此本质上我们依然只能通过成员数量来判断是群聊还是单聊。</p>
+  <div class="callout callout-info">
+  <p>为了日后更好区分单聊和私聊，我们推荐开发者在创建对话的时候给对话赋予一个自定义的属性，来标记这个对话的类型。</p>
+</div>
+
+
+<pre><code class="lang-cs">caocao.CreateConversationAsync(member: &quot;2002&quot;,
+    name: &quot;曹操与程昱的私聊&quot;,
+    options: new Dictionary&lt;string, object&gt;()
+    {
+        { &quot;category&quot;,&quot;private&quot;}
+    });
+</code></pre>
+<p>增加 <code>category</code> 的标签，是为了日后在构建查询的时候，方便传入这个条件，这样曹操就可以迅速找到自己所有的私聊，实现代码如下：</p>
+<h4 id="-">获取私聊</h4>
+<pre><code class="lang-cs">public void QueryPrivateConversations()
+{
+    AVIMClient caocao = null;
+    // 以曹操的游戏 ID 2001 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;2001&quot;).ContinueWith(t =&gt;
+    {
+        caocao = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        var query = caocao.GetQuery().WhereEqualTo(&quot;category&quot;, &quot;private&quot;);
+        return query.FindAsync();
+    }).Unwrap().ContinueWith(x =&gt; 
+    {
+        var privateConversations = x.Result;
+        foreach (var conv in privateConversations)
+        {
+            //这就找到了所有曹操所在的私聊
+        }
+    });
+}
+</code></pre>
+<p>其他关于成员操作的通知和离线消息，与刘备的「桃园」这个群聊没任何区别。</p>
+<h4 id="-">私聊和群聊的隔离</h4>
+<p>假设曹操需要一个群聊来发布一些政令，他可以沿用上述创建群聊的代码。多数情况下，我们推荐用户创建一个新的对话，而不建议直接向原来的私聊添加成员，因为这会让聊天记录的获取显得比较尴尬——假设向私聊里面加入一个新成员，那么这个新成员是无权获取他加入之前的聊天记录的，因此我们十分建议用户将私聊和群聊从创建开始就区分开了，这样会在日后的开发中节省很多理解成本。</p>
+<h3 id="-">战场和副本案例 - 赤壁之战</h3>
+<p>时间来到赤壁之战，孙刘联盟，蔡中蔡和两兄弟假意投降，将干也被曹操派来做间谍，因此周瑜需要一个特殊的对话来实现临时的聊天需求——暂态对话；通俗地说就是聊天室。在这个聊天室里面有诸葛亮、黄盖、将干、蔡中蔡和。周瑜是这个对话的创建人，因此他需要如下代码来实现这个需求：</p>
+<h4 id="-">创建暂态对话</h4>
+<pre><code class="lang-cs">public void CreateChatRoom()
+{
+    AVIMClient zhouyu = null;
+    // 以周瑜的游戏 ID 3002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;3002&quot;).ContinueWith(t =&gt;
+    {
+        zhouyu = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 关键参数是 isTransient: true
+        zhouyu.CreateConversationAsync(member: &quot;2002&quot;,
+            name: &quot;江东讨贼大联盟&quot;,
+            isTransient: true,
+            options: new Dictionary&lt;string, object&gt;()
+            {
+                {&quot;topic&quot;,&quot;如何击败曹操的 80 万大军&quot;}
+            });
+    });
+}
+</code></pre>
+<p>这样创建出来的对话就是暂态对话。</p>
+<p>暂态对话和普通对话有如下不同的设定：</p>
+<ul>
+<li>无人数限制，而普通对话最多允许 500 人加入。</li>
+<li>不支持查询成员列表，但可以通过相关 API 查询在线人数。</li>
+<li>不支持离线消息、离线推送通知、消息回执等功能。</li>
+<li>没有成员加入、成员离开的通知。</li>
+<li>一个用户一次登录只能加入一个聊天室，加入新的聊天室后会自动离开原来的聊天室。</li>
+<li>加入后半小时内断网重连会自动加入原聊天室，超过这个时间则需要重新加入。</li>
+</ul>
+<h4 id="-">获取暂态对话</h4>
+<p>在介绍 <a href="#获取私聊">查询私聊</a> 时我们构建了一个对话的查询，我们可以继续使用该查询，只要修改查询条件就可以找出当前 client 所参与的所有暂态对话：</p>
+<pre><code class="lang-cs">public void QueryTransientConversations()
+{
+    AVIMClient caocao = null;
+    // 以周瑜的游戏 ID 3002 作为 client Id 构建 AVIMClient
+    avRealtime.CreateClient(&quot;2001&quot;).ContinueWith(t =&gt;
+    {
+        caocao = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        var query = caocao.GetQuery().WhereEqualTo(&quot;tr&quot;, true);
+        return query.FindAsync();
+    }).Unwrap().ContinueWith(x =&gt; 
+    {
+        var privateConversations = x.Result;
+        foreach (var conv in privateConversations)
+        {
+            //这就找到了所有周瑜所在的所有聊天室
+        }
+    });
+}
+</code></pre>
+<h2 id="-">单点登录</h2>
+<p>游戏对应着多个客户端，例如 Android 客户端和 iOS 客户端。每一个客户端是互斥的，换言之，较早前登录的客户端会被新登录的设备踢下线，这在聊天系统里面也很常见，因此我们提供了实现这个需求的机制，具体代码如下：</p>
+<pre><code class="lang-cs">avRealtime.CreateClient(&quot;1001&quot;, tag: &quot;Unity&quot;, deviceId: &quot;iOS-Device-Id&quot;);
+</code></pre>
+<p>需要理解的参数含义：</p>
+<ul>
+<li><code>tag</code>：标记这次登录的标签</li>
+<li><code>deviceId</code>：当前登录的设备绝对不变的 Id。开发者可以自行维护这个 id，也可以通过 API  来获取，云端不做校验。</li>
+</ul>
+<p>为了让开发者更好地理解这些参数，我们以 QQ 来举例。假设当前开发者在 Windows 上登录 QQ 桌面版客户端，那么在 SDK 中可以用如下代码模拟 QQ 的登录：</p>
+<pre><code class="lang-cs">// 假设 QQ 号位 123456789，tag 是桌面版，deviceId 是 33C46106-4EE2-4084-9547-56AC8D778E6D
+avRealtime.CreateClient(&quot;123456789&quot;, tag: &quot;Desktop&quot;, deviceId: &quot;33C46106-4EE2-4084-9547-56AC8D778E6D&quot;);
+</code></pre>
+<p>而当同一个 Client Id 使用相同的 tag 登录的时候，较早前登录的就会被云端强制踢下线：</p>
+<pre><code class="lang-cs">// 新的登录
+avRealtime.CreateClient(&quot;123456789&quot;, tag: &quot;Desktop&quot;, deviceId: &quot;50904E08-3DC0-42C4-810C-DEC64D033EF3&quot;);
+</code></pre>
+<p>而使用不同 Tag 登录的不会产生冲突，这是为了方便用户实现多端同步，类似于 QQ 手机版和 QQ 电脑版是可以同时登录：</p>
+<pre><code class="lang-cs">avRealtime.CreateClient(&quot;123456789&quot;, tag: &quot;Mobile&quot;, deviceId: &quot;201113D4-D329-4971-81EE-A2F2E526BE31&quot;);
+</code></pre>
+<h4 id="-">监听单点登录被踢下线</h4>
+<p>通过订阅 <code>AVIMRealtime.OnSessionClosed</code> 可以监听云端关闭连接的原因：</p>
+<pre><code class="lang-cs">public void SessionConflicted()
+{
+    AVIMClient liubei = null;
+    AVIMRealtime.OnSessionClosed += Liubei_OnSessionClosed;
+    avRealtime.CreateClient(&quot;1001&quot;, tag: &quot;Unity&quot;, deviceId: &quot;iOS-Device-Id&quot;).ContinueWith(t =&gt;
+    {
+        // 登录成功
+        liubei = t.Result;
+    });
+}
+
+private void Liubei_OnSessionClosed(object sender, AVIMSessionClosedEventArgs e)
+{
+    // 云端错误码
+    if (e.Code == 4111)
+    {
+        Debug.Log(&quot;你的 client Id 在别处登录，当前登录失效，连接已断开。&quot;);
+    }
+}
+</code></pre>
+<p>错误码可以参考：<a href="realtime_v2.html#云端错误码说明">云端错误码</a>。</p>
+<h2 id="-">消息</h2>
+<h3 id="-">自定义消息类型</h3>
+<p>之前的代码和示例仅演示了文本消息类型的发送和接收，在游戏中文本消息固然是一种主要类型，但更为普遍的是表情消息，一般情况下实现表情消息的步骤如下：</p>
+<ol>
+<li>客户端将表情图片事先按照编号（类似于 #1、#2）存储在客户端的资源包里</li>
+<li>消息发送的时候，从本地资源包内加载表情列表，然后用户选择一个表情，点击发送</li>
+<li>发送的时候，并没有实际发送这个表情的物理文件，而是将编号发送给对方接收端</li>
+<li>接收端收到编号之后，在加载消息详情时，根据编号读取物理文件，显示出来</li>
+</ol>
+<p>这是传统网游在实现表情消息的逻辑，实际上可以看出，表情消息在代码层面本质上依然是个文本消息，接下来我们就来自定义一个表情消息。</p>
+<h4 id="-">类型编码</h4>
+<p>在介绍自定义消息之前，开发者可以在调试过程中打开日志打印的功能<a href="#打开调试日志">打开调试日志</a>，每一次客户端和云端的相互发送 WebSocket 消息的内容会打印在控制台上</p>
+<p>然后可以运行一下发送消息的代码，在控制台就能看到如下日志内容：</p>
+<pre><code class="lang-json">websocket=&gt;{&quot;msg&quot;:&quot;{\&quot;_lctype\&quot;:-1,\&quot;_lctext\&quot;:\&quot;兄弟们，睡什么睡，起来嗨！\&quot;}&quot;,&quot;cid&quot;:&quot;58ddc56e92509726c3dc3322&quot;,&quot;r&quot;:true,&quot;i&quot;:-65533,&quot;cmd&quot;:&quot;direct&quot;,&quot;appId&quot;:&quot;uay57kigwe0b6f5n0e1d4z4xhydsml3dor24bzwvzr57wdap&quot;,&quot;peerId&quot;:&quot;1001&quot;}
+websocket&lt;={&quot;uid&quot;:&quot;_6jfc+4KT7KtkEgw8lJnAA&quot;,&quot;t&quot;:1490929028400,&quot;i&quot;:-65533,&quot;cmd&quot;:&quot;ack&quot;,&quot;appId&quot;:&quot;uay57kigwe0b6f5n0e1d4z4xhydsml3dor24bzwvzr57wdap&quot;,&quot;peerId&quot;:&quot;1001&quot;}
+</code></pre>
+<ul>
+<li><code>websocket=&gt;</code> 后面的内容是：由客户端发往 LeanCloud 云端。</li>
+<li><code>websocket&lt;=</code> 则代表：由云端发往客户端的内容。</li>
+</ul>
+<p>从上面的日志可以看出，一条文本消息的主要内容就是 msg 这个字段里面的内容：</p>
+<pre><code class="lang-json">{&quot;msg&quot;:{&quot;_lctype&quot;:-1,&quot;_lctext&quot;:&quot;兄弟们，睡什么睡，起来嗨！&quot;}}
+</code></pre>
+<p>一条文本消息由两个字段组成：类型和文本内容。在 LeanCloud 实时通讯私有协议里面，带有下划线 <code>_lc</code> 是受保护字段，SDK 都会主动识别这个字段的含义。</p>
+<p>因此要实现一个表情消息，开发者可以自定义使用 <code>AVIMTypedMessageTypeIntAttribute</code> 标注一个 <code>AVIMTypedMessage</code> 的子类，SDK 在发送消息的时候会自动的在消息体内部把它的值转化为 <code>_lctype</code> 的值，比如设置成 2：</p>
+<pre><code class="lang-cs">[AVIMMessageClassName(&quot;MyTypedMessage&quot;)]
+[AVIMTypedMessageTypeIntAttribute(2)]// 加了这个标记之后，2 会被自动添加为 `_lctype` 的类型值
+public class MyTypedMessage: AVIMTypedMessage {
+    public MyTypedMessage()
+    {
+
+    }
+}
+</code></pre>
+<p>控制台可以看见如下的日志：</p>
+<pre><code class="lang-json">websocket=&gt;{&quot;msg&quot;:&quot;{\&quot;...\&quot;:\&quot;...\&quot;,\&quot;_letype\&quot;:2}&quot;,&quot;cid&quot;:&quot;58d4c2472e9af6631e10092f&quot;,&quot;r&quot;:true,&quot;i&quot;:-65532,&quot;cmd&quot;:&quot;direct&quot;,&quot;appId&quot;:&quot;021h1hbtd5shlz38pegnpkmq9d3qf8os1vt0nef4f2lxjru8&quot;,&quot;peerId&quot;:&quot;1002&quot;}
+</code></pre>
+  <div class="callout callout-danger">
+  <p>注意：不建议开发者对 <code>_lctype</code> 使用负数值，而建议使用从 1 开始的正数。</p>
+</div>
+
+
+<h3 id="1-">1. 消息子类化</h3>
+<h4 id="1-1-avimtypedmessage">1.1 继承 AVIMTypedMessage</h4>
+<p>定义一个 <code>Emoji</code> 类:</p>
+<pre><code class="lang-cs">/// &lt;summary&gt;
+/// 自定义表情消息
+/// &lt;/summary&gt;
+[AVIMMessageClassName(&quot;Emoji&quot;)]
+[AVIMTypedMessageTypeIntAttribute(2)]// 加了这个标记之后，2 会被自动添加为 `_lctype` 的类型值
+public class Emoji: AVIMTypedMessage
+{
+    [AVIMMessageFieldName(&quot;Ecode&quot;)]
+    public string Ecode { get; set; }
+}
+</code></pre>
+<p>然后在程序初始化的时候一定要注册这个子类：</p>
+<pre><code class="lang-cs">avRealtime.RegisterMessageType&lt;Emoji&gt;();
+</code></pre>
+<p>发送的时候如下：</p>
+<pre><code class="lang-cs">var emojiMessage = new Emoji()
+{
+    Ecode = &quot;#e001&quot;,// 应用内置的表情编码
+};
+currentConveration.SendMessageAsync(emojiMessage);
+</code></pre>
+<p>接收方代码如下：</p>
+<pre><code class="lang-cs">private void OnMessageReceived(object sender, AVIMMessageEventArgs e)
+{
+    if (e.Message is Emoji)
+    {
+        var emojiMessage = (Emoji)e.Message;
+        var ecode = emojiMessage.Ecode;
+        Debug.Log(string.Format(&quot;received emoji with code is {0}&quot;, ecode));
+        // 当接收方接收到了这条表情消息，可以在客户端做一些酷炫的 UI 展现
+    }
+}
+</code></pre>
+<p>注意：接收方也一定要注册子类。</p>
+<p>可以打开日志查看：</p>
+<pre><code class="lang-json">websocket=&gt;{&quot;msg&quot;:&quot;{\&quot;ECode\&quot;:\&quot;#e001\&quot;,\&quot;_letype\&quot;:2}&quot;,&quot;cid&quot;:&quot;58d4c2472e9af6631e10092f&quot;,&quot;r&quot;:true,&quot;i&quot;:-65532,&quot;cmd&quot;:&quot;direct&quot;,&quot;appId&quot;:&quot;021h1hbtd5shlz38pegnpkmq9d3qf8os1vt0nef4f2lxjru8&quot;,&quot;peerId&quot;:&quot;1002&quot;}
+</code></pre>
+<h4 id="avimtypedmessage-">AVIMTypedMessage 详解</h4>
+<p><code>AVIMTypedMessage</code> 的设计目的是为了提供默认的基于 JSON 消息体的基类，例如 <code>AVIMTextMessage</code> 类对应为文本消息，它的消息体是如下格式的 JSON 字符串：</p>
+<pre><code class="lang-json">{\&quot;_lctext\&quot;:\&quot;text content\&quot;,\&quot;_lctype\&quot;:-1}
+</code></pre>
+<p>而加了 <code>AVIMTypedMessageTypeIntAttribute</code> 标记之后会自动的被 SDK 识别为 <code>_lctype</code> 发送到对话中，例如上面的 <code>Emoji</code> 消息：</p>
+<pre><code class="lang-json">{\&quot;ECode\&quot;:\&quot;#e001\&quot;,\&quot;_letype\&quot;:2}
+</code></pre>
+<p>因此 <code>AVIMTypedMessage</code> 的子类都会对 msg 字段进行 JSON 序列化和反序列化。</p>
+<h4 id="1-2-avimmessage">1.2 继承 AVIMMessage</h4>
+<p>为了更加开放地允许开发者自定义自己的消息类，SDK 提供了一个接口，只要开发者实现自定义的消息类实现了这个接口，这个消息就可以在 SDK 中发送，并且在接收时返回的也是这个消息的实例。继续以上面的表情消息做例子，这次我们定义为一个 V2 版本的表情消息：</p>
+<pre><code class="lang-cs">[AVIMMessageClassName(&quot;EmojiV2&quot;)]
+public class EmojiV2 : AVIMMessage
+{
+    // 默认构造函数
+    public EmojiV2()
+    {
+
+    }
+    public EmojiV2(string ecode)
+    {
+        Content = ecode;
+    }
+}
+</code></pre>
+<p>十分重要的细节：<strong>子类化的时候，子类必须有一个默认的构造函数，否则在注册的时候会跑出 ArgumentException 的错误</strong>。</p>
+<p>注册子类：</p>
+<pre><code class="lang-cs">avRealtime.RegisterMessageType&lt;EmojiV2&gt;();
+</code></pre>
+<p>发送的代码如下：</p>
+<pre><code class="lang-cs">var emojiV2Message = new EmojiV2(&quot;#e001&quot;);
+conversation.SendMessageAsync(emojiV2Message);
+</code></pre>
+<p>在日志中可以看到它实际发送的内容：</p>
+<pre><code class="lang-json">websocket=&gt;{&quot;msg&quot;:&quot;#e001&quot;,&quot;cid&quot;:&quot;58d4c2472e9af6631e10092f&quot;,&quot;r&quot;:true,&quot;i&quot;:-65532,&quot;cmd&quot;:&quot;direct&quot;,&quot;appId&quot;:&quot;021h1hbtd5shlz38pegnpkmq9d3qf8os1vt0nef4f2lxjru8&quot;,&quot;peerId&quot;:&quot;1001&quot;}
+</code></pre>
+<h3 id="2-free-schema-">2. Free-Schema 消息体（非子类化）</h3>
+<p>我们了解到诸多限制会让游戏开发者选择一种自由的格式去收发自定义的消息体，子类化只是满足了一部分需求，因此我们也设计了一种方式，让开发者可以自由定义消息格式而并不一定要继承自 <code>AVIMMessage</code>，比如在游戏当中需要发送一个二进制格式的消息，我们按照自定义消息类型声明、发送消息、以及接收消息三个步骤来实现这个需求。</p>
+<h4 id="2-1-iavimmessage-">2.1 实现 IAVIMMessage 接口</h4>
+<p>参考如下定义，我们声明了一个二进制消息：</p>
+<pre><code class="lang-cs"> /// &lt;summary&gt;
+/// 二进制消息
+/// &lt;/summary&gt;
+[AVIMMessageClassName(&quot;BinaryMessage&quot;)]
+public class BinaryMessage : IAVIMMessage
+{
+    public BinaryMessage()
+    {
+
+    }
+    /// &lt;summary&gt;
+    /// 从 bytes[] 构建一条消息
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;data&quot;&gt;&lt;/param&gt;
+    public BinaryMessage(byte[] data)
+    {
+        BinaryData = data;
+    }
+
+    public byte[] BinaryData { get; set; }
+
+    public string ConversationId
+    {
+        get; set;
+    }
+
+    public string FromClientId
+    {
+        get; set;
+    }
+
+    public string Id
+    {
+        get; set;
+    }
+
+    public long RcpTimestamp
+    {
+        get; set;
+    }
+
+    public long ServerTimestamp
+    {
+        get; set;
+    }
+
+    public IAVIMMessage Deserialize(string msgStr)
+    {
+        var spiltStrs = msgStr.Split(&#39;:&#39;);
+        this.BinaryData = System.Convert.FromBase64String(spiltStrs[1]);
+        return this;
+    }
+
+    public string Serialize()
+    {
+        return &quot;bin:&quot; + System.Convert.ToBase64String(this.BinaryData);
+    }
+
+    public bool Validate(string msgStr)
+    {
+        var spiltStrs = msgStr.Split(&#39;:&#39;);
+        return spiltStrs[0] == &quot;bin&quot;;
+    }
+</code></pre>
+<p>注册子类:</p>
+<pre><code class="lang-cs">realtime.RegisterMessageType&lt;BinaryMessage&gt;();
+</code></pre>
+<h5 id="-">发送自定义消息</h5>
+<p>假设我们发送的二进制内容是一个字符串「I love Unity」，那么使用这个类型并且发送这个类型消息的代码为：</p>
+<pre><code class="lang-cs">private Task SendBinaryMessageAsync()
+{
+    var text = &quot;I love Unity&quot;;
+    var textBytes = System.Text.Encoding.UTF8.GetBytes(text);
+    var binaryMessage = new BinaryMessage(textBytes);
+    convsersation.SendMessageAsync(binaryMessage);
+}
+</code></pre>
+<p>打开日志监听可以看见 websocket 发送的内容如下：</p>
+<pre><code class="lang-json">{&quot;msg&quot;:&quot;bin:SSBsb3ZlIFVuaXR5&quot;,&quot;cid&quot;:&quot;58d4c2472e9af6631e10092f&quot;,&quot;r&quot;:true,&quot;i&quot;:-65531,&quot;cmd&quot;:&quot;direct&quot;,&quot;appId&quot;:&quot;021h1hbtd5shlz38pegnpkmq9d3qf8os1vt0nef4f2lxjru8&quot;,&quot;peerId&quot;:&quot;1001&quot;}
+</code></pre>
+<h5 id="-">接收方获取自定义消息</h5>
+<p>接收方通过订阅 <code>AVIMClient.OnMessageReceived</code> 事件来监听消息的接收:</p>
+<pre><code class="lang-cs">private void AVIMClient_OnMessageReceived(object sender, AVIMMessageEventArgs e)
+{
+    if (e.Message is BinaryMessage)
+    {
+        var binaryMessage = e.Message as BinaryMessage;
+        var binaryData = binaryMessage.BinaryData;
+        // 下面的字符串内容就是 I love Unity
+        var text = System.Text.Encoding.UTF8.GetString(binaryData);
+    } 
+}
+</code></pre>
+<h3 id="will-">Will 消息类型</h3>
+<p>Will 消息解决的问题是：当一个用户希望自己突然掉线之后，对话的其他成员能够得到通知。</p>
+<p>Will 消息的本质是一个用户自己定一个 Will 消息（可能包含了一些业务逻辑相关的内容），发给云端，云端会将其缓存在云端，并不会马上发送给对话的成员，而是当云端检测到当前用户掉线了，则会立即将这条 Will 消息发送给对话的其他成员，这样可以方便开发者构建自己的断线通知的逻辑。</p>
+<p>发送 Will 消息的代码如下：</p>
+<pre><code class="lang-cs">var textMessage = new AVIMTextMessage(&quot;我是一条 will 消息，当发送者意外下线的时候，我会被下发给对话里面的其他成员&quot;);
+conversation.SendMessageAsync(textMessage, will: true).OnSuccess(tag =&gt;
+{
+
+});
+</code></pre>
+<p>客户端发送完毕之后就完全不用再关心这个消息了，云端会自动的在发送方掉线之后，立即发送给对话的其他成员。
+需要格外注意的 will 消息类型有如下限制：</p>
+<ul>
+<li>同一时刻只对一个对话生效</li>
+<li>当 client 主动 close 时，will 消息不会下发，系统会认为这是计划性下线。</li>
+</ul>
+<p>Will 消息可以针对场景的不同可以有如下用法：</p>
+<h4 id="-">协同办公聊天工具</h4>
+<p>可以使用 will 消息通知某位用户忽然下线了，可以在其他人的页面上将其头像变成灰色或者其他展现方式。</p>
+<h4 id="-">直播聊天室</h4>
+<p>直播聊天室中，可以显示某一位用户忽然掉线了，此时展示比较有个性的掉线宣言，比如发送的 will 消息体内的数据为「如果你看到了这句话，就说明我掉线了，你别急，我马上回来」之类的。</p>
+<h2 id="-">聊天记录</h2>
+<p>首先我们需要十分谨慎地对待聊天记录。我们要明确一个重要的设定：Unity 目前没有针对聊天记录做本地缓存，根据一般的游戏场景需求，每一次登录，一般情况下，除了一些极少数的游戏提供了可以搜索私聊的聊天记录之外，允许玩家大量搜索聊天记录或者展现聊天记录的需求很少，加之将 Unity 操作 sqlite 的能力集成在 SDK 这一层并不是很方便，因此 LeanCloud Unity 实时通讯 SDK 没有实现缓存功能。</p>
+<p>我们提供了实时获取聊天记录的功能，但是因为这个功能很消耗服务端的性能，因此我们建议开发者可以自行实现本地缓存的功能（假设有需求的情况下），另外我们需要声明：我们暂时不限制用户应用中聊天记录的保存时间和条数。未来如有变化我们会提前通知用户，开发者可以随时通过 REST API 将聊天记录同步到自己的服务器上。</p>
+<p>获取聊天记录的接口如下：</p>
+<pre><code class="lang-cs">public void QueryMessageHistory() 
+{
+    avRealtime.CreateClient(&quot;junwu&quot;).ContinueWith(t =&gt;
+    {
+        avIMClient = t.Result;
+    }).ContinueWith(s =&gt;
+    {
+        // 通过 Id 和 AVIMClient 构建 AVIMConversation 实例
+        AVIMConversation conversation = AVIMConversation.CreateWithoutData(&quot;58be1f5392509726c3dc1c8b&quot;, avIMClient);
+        return conversation.QueryMessageAsync();
+    }).Unwrap().ContinueWith(x =&gt; 
+    {
+        var history = x.Result;
+        foreach (var message in history) 
+        {
+            if (message is AVIMTextMessage) 
+            {
+                var textMessage = message as AVIMTextMessage;
+                Debug.Log(textMessage.TextContent);
+            }
+        }
+    });
+}
+</code></pre>
+<p>要实现翻页效果需要额外传入其他参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数名</th>
+<th>类型</th>
+<th>说明</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>beforeMessageId</code></td>
+<td>string</td>
+<td>从 <code>beforeMessageId</code> 开始向前查询（和 <code>beforeTimeStampPoint</code> 共同使用，为防止某毫秒时刻有重复消息）</td>
+<td><code>conversation.QueryMessageAsync(&quot;某一条消息的 Id&quot;)</code></td>
+</tr>
+<tr>
+<td><code>afterMessageId</code></td>
+<td>string</td>
+<td>截止到某个 afterMessageId (不包含)</td>
+<td><code>conversation.QueryMessageAsync(afterMessageId:&quot;某一条消息的 Id&quot;)</code></td>
+</tr>
+<tr>
+<td><code>beforeTimeStampPoint</code></td>
+<td>DateTime?</td>
+<td>从 <code>beforeTimeStampPoint</code> 开始向前查询</td>
+<td><code>conversation.QueryMessageAsync(beforeTimeStampPoint:DateTime.Now)</code></td>
+</tr>
+<tr>
+<td><code>afterTimeStampPoint</code></td>
+<td>DateTime?</td>
+<td>拉取截止到 <code>afterTimeStampPoint</code> 时间戳（不包含）</td>
+<td><code>conversation.QueryMessageAsync(afterTimeStampPoint:DateTime.Now.AddDays(2))</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="-">鉴权与签名</h2>
+<p>实时通讯系统中往往会存在一定的管理需求，例如游戏中 GM 会禁言某一些不良行为的玩家，或者说不允许某一个玩家加入到某个频道。LeanCloud 实时通讯采用签名鉴权的方式，请开发者务必详细了解 <a href="realtime_v2.html#权限和认证">权限和认证</a>。而在 SDK 中，开发者需要通过实现 <code>ISignatureFactory</code> 接口，并且在初始化的时候指定给 <code>AVRealtime</code>：</p>
+<h3 id="-">云引擎签名实例</h3>
+<p>为了配合如下代码的运行，首先开发者需要部署 <a href="https://github.com/leancloud/realtime-messaging-signature-cloudcode">LeanCloud 实时通信云引擎签名 Demo</a> 到你应用的云引擎中。</p>
+<pre><code class="lang-cs">public class LeanEngineSignatureFactory : ISignatureFactory
+{
+    public Task&lt;AVIMSignature&gt; CreateConnectSignature(string clientId)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+        data.Add(&quot;client_id&quot;, clientId);
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string,object&gt;&gt;(&quot;sign2&quot;, data).OnSuccess(_ =&gt; 
+        {
+            var jsonData = _.Result;
+            var s = jsonData[&quot;signature&quot;].ToString();
+            var n = jsonData[&quot;nonce&quot;].ToString();
+            var t = long.Parse(jsonData[&quot;timestamp&quot;].ToString());
+            var signature = new AVIMSignature(s,t,n);
+            return signature;
+        });
+    }
+
+    public Task&lt;AVIMSignature&gt; CreateConversationSignature(string conversationId, string clientId, IEnumerable&lt;string&gt; targetIds, ConversationSignatureAction action)
+    {
+        var actionList = new string[] { &quot;invite&quot;, &quot;kick&quot; };
+        var data = new Dictionary&lt;string, object&gt;();
+        data.Add(&quot;client_id&quot;, clientId);
+        data.Add(&quot;conv_id&quot;, conversationId);
+        data.Add(&quot;members&quot;, targetIds.ToList());
+        data.Add(&quot;action&quot;, actionList[(int)action]);
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;sign2&quot;, data).OnSuccess(_ =&gt;
+        {
+            var jsonData = _.Result;
+            var s = jsonData[&quot;signature&quot;].ToString();
+            var n = jsonData[&quot;nonce&quot;].ToString();
+            var t = long.Parse(jsonData[&quot;timestamp&quot;].ToString());
+            var signature = new AVIMSignature(s, t, n);
+            return signature;
+        });
+    }
+
+    public Task&lt;AVIMSignature&gt; CreateQueryHistorySignature(string clientId, string conversationId)
+    {
+        return Task.FromResult&lt;AVIMSignature&gt;(null);
+    }
+
+    public Task&lt;AVIMSignature&gt; CreateStartConversationSignature(string clientId, IEnumerable&lt;string&gt; targetIds)
+    {
+        var data = new Dictionary&lt;string, object&gt;();
+        data.Add(&quot;client_id&quot;, clientId);
+        data.Add(&quot;members&quot;, targetIds.ToList());
+        return AVCloud.CallFunctionAsync&lt;IDictionary&lt;string, object&gt;&gt;(&quot;sign2&quot;, data).OnSuccess(_ =&gt;
+        {
+            var jsonData = _.Result;
+            var s = jsonData[&quot;signature&quot;].ToString();
+            var n = jsonData[&quot;nonce&quot;].ToString();
+            var t = long.Parse(jsonData[&quot;timestamp&quot;].ToString());
+            var signature = new AVIMSignature(s, t, n);
+            return signature;
+        });
+    }
+}
+</code></pre>
+<p>然后在初始化的时候指定给 <code>AVRealtime</code>：</p>
+<pre><code class="lang-cs">var config = new AVRealtime.Configuration()
+{
+    ApplicationId = &quot;&quot;,
+    ApplicationKey = &quot;&quot;,
+    SignatureFactory = new LeanEngineSignatureFactory()
+};
+var realtime = new AVRealtime(config);
+</code></pre>
+<p>按照以上步骤就能实现云引擎对聊天签名鉴权的操作。</p>
+<p>开发者可以使用云引擎的云函数来实现自己的鉴权逻辑，比如谁可以加入对话、谁可以踢人加人，都由云函数返回的签名是否正确来判断——如果允许就返回一个符合算法的签名，LeanCloud 云端比对过签名就可以放行，而开发者的云函数返回了一个错误签名时，比如随便一个字符串「no!」，SDK 带着这个签名去 LeanCloud 云端请求，云端发现签名不匹配便会拒绝这次请求。</p>
+<h3 id="-leancloud-">游戏中常见的鉴权和 LeanCloud 签名结合</h3>
+<p>根据开发者反馈，游戏中常见的鉴权流程如下：</p>
+<ol>
+<li>玩家登录到游戏的鉴权服务器，鉴权服务器下发这个玩家在游戏内很多子系统的鉴权信息，甚至是真正的游戏服务器的地址；</li>
+<li>然后玩家登录到游戏服务器，直到玩家下线之前，玩家不会再去与其他服务器进行交互。</li>
+</ol>
+<p>而在 LeanCloud 标准的签名流程中，每一次登录到聊天服务器，或是创建对话、查询聊天记录的时候都需要真正去请求服务器的接口返回一个实时的签名。为了提高游戏开发者的体验，我们建议采用如下步骤来整合当前游戏的鉴权逻辑和 LeanCloud 签名鉴权：</p>
+<ol>
+<li>玩家登录到鉴权服务器之后，统一下发该玩家的如下登录签名 <code>CreateConnectSignature</code>，保存到全局的一个静态变量中；</li>
+<li>然后在签名工厂里面实现 <code>CreateConnectSignature</code> 就直接返回这个值即可。</li>
+</ol>
+<p>「创建对话签名」和「对话人员操作签名」的操作都需要在运行时传入动态的参数，因而必须要求每一次都实时获取签名才能确保整个操作的安全性，因此还是建议开发者使用云引擎进行签名。</p>
+<h2 id="-">对话的管理</h2>
+<p>对话的相关数据会被持久化存储在 LeanCloud 云端，因此许多开发者会在自己的游戏内部维护一个玩家和频道的多对多关系。对话本身也支持这种模式。对话有一个 <code>Members</code> 属性，它保存了所有参与了当前对话的 <code>Client Id</code>，因此开发者可以很方便地使用 <code>AVIMConversationQuery</code> 来查询当前 <code>Client Id</code> 所在的对话，例如：</p>
+<pre><code class="lang-cs">AVIMClient guanyu = null;
+// 以关羽的游戏 ID 1002 作为 client Id 构建 AVIMClient
+avRealtime.CreateClient(&quot;1002&quot;).ContinueWith(t =&gt;
+{
+    guanyu = t.Result;
+}).ContinueWith(s =&gt;
+{
+    // 监听自己被邀请加入对话
+    guanyu.OnInvited += Guanyu_OnInvited;
+    // 监听接收消息
+    guanyu.OnMessageReceived += Guanyu_OnMessageReceived;
+    // 构建对话的查询
+    var query = guanyu.GetQuery();
+    // 查询我所在的对话列表，默认返回的是最近活跃的 20 个，这个数量可以更改，最大支持 1000
+    return query.FindAsync();
+}).Unwrap().ContinueWith(x =&gt; 
+{
+    // 从对话列表中找出「桃园」 这个对话
+    AVIMConversation TaoYuanConversation = null;
+    var conversationList = x.Result;
+    // 搜索「桃园」这个对话 
+    TaoYuanConversation = conversationList.First(conversation =&gt; conversation.Name == &quot;桃园&quot;);
+    // 同样，关羽也创建一个文本消息
+    var textMessage = new AVIMTextMessage(&quot;大哥，我在郊外打猎，三弟昨晚喝多了，他还在睡，要不你到城外，我们一起骑马打猎啊？&quot;);
+    return TaoYuanConversation.SendMessageAsync(textMessage);
+});
+</code></pre>
+<p>这段代码在前文出现过，需要注意以下两行代码：</p>
+<pre><code class="lang-cs">var query = guanyu.GetQuery();
+// 查询我所在的对话列表，默认返回的是最近活跃的 20 个，这个数量可以更改，最大支持 1000
+return query.FindAsync();
+</code></pre>
+<p>这个查询仅通过默认方式对 <code>_Conversation</code> 表中的 <code>m</code> 字段（客户端 SDK 显示为 <code>Members</code> 属性）进行匹配查找，一旦一个对话的成员太多，查询性能必然会出现瓶颈。换言之，将对话的成员设计成一个数组存储，仅仅是为了在发送消息时，服务端可以方便地遍历每一位成员来送达消息。因此我们强烈建议游戏开发者在自己的数据模型中管理玩家和对话之间的关系。</p>
+<p>例如开发者可以用如下 3 张关系表来实现自己的数据关联。</p>
+<h3 id="-player">玩家表 Player</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1001</td>
+<td>刘备</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>关羽</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>张飞</td>
+</tr>
+<tr>
+<td>2001</td>
+<td>曹操</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>程昱</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-channel">频道表 Channel</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>lcConversationId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c0000001</td>
+<td>世界</td>
+<td>58f06ec42e9af6631e140de7</td>
+</tr>
+<tr>
+<td>c0000002</td>
+<td>桃园</td>
+<td>58d4c2472e9af6631e10092f</td>
+</tr>
+<tr>
+<td>c0000003</td>
+<td>曹操与程昱私聊</td>
+<td>58d9d5012e9af6631e10e551</td>
+</tr>
+<tr>
+<td>c0000004</td>
+<td>孙刘讨贼大联盟</td>
+<td>58dca69e2e9af6631e113d8a</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<p><code>lcConversationId</code> 对应的是 <code>_Conversation</code> 表的 <code>objectId</code>。</p>
+<h3 id="-player-channel">关联表 Player-Channel</h3>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>playerId</th>
+<th>channelId</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>..</td>
+<td>1001</td>
+<td>c0000002</td>
+</tr>
+<tr>
+<td>..</td>
+<td>1002</td>
+<td>c0000002</td>
+</tr>
+<tr>
+<td>..</td>
+<td>1003</td>
+<td>c0000002</td>
+</tr>
+<tr>
+<td>..</td>
+<td>2001</td>
+<td>c0000003</td>
+</tr>
+<tr>
+<td>..</td>
+<td>2002</td>
+<td>c0000003</td>
+</tr>
+</tbody>
+</table>
+<p>开发者可以在自己的数据库中用 Player-Channel 这张关系表来管理玩家和频道之间的关系。</p>
+<h2 id="-">异常处理</h2>
+<p>在所有 SDK 内部的异步方法中(返回值为<code>Task</code>类型的接口)，异常都不会直接抛出而是会在 <code>Task.Exception</code> 里面获取，参考如下处理方式。</p>
+<p>假设场景是因为意外情况短断线，但是用户恰巧在断线的时候点击发送消息，那么 SDK 会抛出一个异常</p>
+<pre><code class="lang-cs">conversation.SendMessageAsync(new AVIMTextMessage(&quot;兄弟们，睡什么睡，起来嗨！&quot;)).ContinueWith(s =&gt;
+{
+    if (s.Exception != null)
+    {
+        // 通过获取异常集合来判断该项操作所可能导致了多种异常
+        var inners = s.Exception.InnerExceptions;
+
+        if (inners != null)
+        {
+            Debug.Log(&quot;inners&quot;);
+            foreach (var e in inners)
+            {
+                // 这里一定会有一个异常消息为：未能连接到服务器，无法发送消息。
+                Debug.Log(e.Message);
+            }
+        }
+    }
+});
+</code></pre>
+<p>更为直接的方式是直接判断 <code>Task.IsFaulted</code> 就可以知道 <code>Task</code> 是否在执行的时候存在错误:</p>
+<pre><code class="lang-cs">conversation.SendMessageAsync(new AVIMTextMessage(&quot;兄弟们，睡什么睡，起来嗨！&quot;)).ContinueWith(s =&gt;
+{
+    if (s.IsFaulted)
+    {
+        Debug.Log(&quot;发送失败&quot;);
+    }
+});
+</code></pre>
+<h2 id="-">常见问题</h2>
+<h3 id="-leancloud-">游戏中的「世界频道」对应 LeanCloud 聊天的哪个类型的对话？</h3>
+<p>世界频道的特点是：</p>
+<ul>
+<li>几乎无上限数量的参与人员（服务器最大承受能力的玩家数量）</li>
+<li>没有离线消息的概念，玩家在线就能收到，不在线就收不到</li>
+</ul>
+<p>显然世界频道就是聊天室，请使用<strong>暂态对话</strong>来解决这个需求。</p>
+
+
+      </div>
+    </div>
+    <!-- .col-md-9 -->
+  </div>
+  <!-- .row -->
+
+</div>
+<!-- .container-fluid -->
+<div id="comment-container" ng-class="{'no-comments': currentComments.length<1}">
+  <div class="comment-head">
+    {{allComment[version]}}
+    <span class="close" ng-click="closeCommentModal()">&times;</span>
+  </div>
+  <div class="comment-body">
+    <div class="comment-list" ng-class="{'no-login': !currentCommentUser.username}">
+      <ul>
+        <li ng-show="currentComments.length<1">暂无评论</li>
+        <li ng-repeat="comment in currentComments">
+          <div class="comment-author">{{comment.author}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-content">{{comment.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="comment-compose" ng-show="currentCommentUser.username">
+    <div class="form-group"> <textarea class="form-control comment-content" ng-model="commentContent"></textarea></div>
+    <div class="form-meta">
+      <!-- 您已登录为 <b>{{currentCommentUser.username}}</b> -->
+      <button class="btn btn-sm btn-default create-comment pull-right" ng-click="createComment($event)">
+        <i class="icon icon-chat-bold"></i> 评论
+      </button>
+    </div>
+  </div>
+  <div class="comment-compose no-login" ng-show="!currentCommentUser.username">
+    您需要 <a class="comment-login" ng-click="loginComment()">授权</a> 后才能评论
+  </div>
+</div>
+
+<script src="https://download.leancloud.cn/sdk/latest.js"></script>
+
+
+<script src="custom/js/lib/contents.js"></script>
+<script src="custom/js/md.js"></script>
+
+
+<script type="text/javascript">
+ZeroClipboard.setDefaults({
+    moviePath: 'custom/js/lib/zeroclipboard/zeroclipboard.swf'
+});
+$(function(){
+    // $('#content [version]').each(function(k,v){
+    //     var version = $(v).attr('version');
+    //     $(v).append('<div class="toggle-comment" ng-click="showCommentDialog(\''+version+'\''+',$event)">+ <span> {{}}</span> </div>');
+    // })
+
+    $('#content [version]').each(function(k,v){
+        var version = $(v).attr('version');
+        $(v).append('<div class="inline-comment-wrap" version="'+version+'" all-comment="allComment" showDialogMethod="showCommentDialog()" lc-comment> </div>');
+    });
+
+    angular.element(document).ready(function() {
+
+      angular.bootstrap(document, ['app']);
+
+    });
+});
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42629236-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+  <footer class="footer" role="contentinfo">
+  <div class="container-fluid">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+      LeanCloud
+    </a> -->
+
+    <ul class="footer-links pull-right">
+      <li class="muted">·</li>
+      <li><a href="/pricing">价格</a></li>
+      <li class="muted">·</li>
+      <li><a href="/docs/sdk_down.html">下载</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
+      <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
+      <li class="muted">·</li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://forum.leancloud.cn/">社区</a></li>
+      <li class="muted">·</li>
+      <li><a href="http://blog.leancloud.cn/">Blog</a></li>
+      <li class="muted">·</li>
+      <li><a href="https://github.com/leancloud/docs">文档源码</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>

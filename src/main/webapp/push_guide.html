@@ -7,8 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LeanCloud 文档</title>
-<script src="//cdn1.lncld.net/static/js/av-mini-0.5.4.js"></script>
+<title>消息推送服务总览 - LeanCloud 文档</title>
 <!-- build:js custom/js/docs-all.js -->
 <script src="custom/js/lib/jquery.min.js"></script>
 <script src="custom/js/lib/bootstrap.min.js"></script>
@@ -25,9 +24,10 @@
 <script src="custom/js/app.js"></script>
 <script src="custom/js/common.js"></script>
 <script src="custom/js/demo.js"></script>
+<script src="custom/js/weapp-domains.js"></script>
 <!-- endbuild -->
 
-<script type='text/javascript'>
+<script type="text/javascript">
       var _vds = _vds || [];
       window._vds = _vds;
       (function(){
@@ -49,51 +49,89 @@
 </head>
 
 
-<body  class="dashboard-init" data-offset="0" ng-cloak ng-controller="AppCtrl">
+<body class="dashboard-init" data-offset="0" ng-cloak="" ng-controller="AppCtrl">
 
 
 
 
   <nav class="dashboard-subnav navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-collapse" id="app-options">
-      <ul class="nav navbar-nav navbar-app-select">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-options" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand nav-logo font-logo" title="LeanCloud 官网">LeanCloud</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-options">
+      <!-- <ul class="nav navbar-nav navbar-app-select">
         <li>
-          <a href="/applist.html" class="nav-logo font-logo">L<span class="visible-xs-inline">eanCloud</span></a>
+          <a href="/dashboard/applist.html" class="nav-logo font-logo" title="LeanCloud 控制台">LeanCloud</a>
         </li>
-      </ul>
+      </ul> -->
       <div class="navbar-app-actions-wrap">
         <ul class="nav navbar-nav navbar-app-actions">
+          
           <li class="dropdown dropdown-toggle-app-name">
             <a href="index.html">
               <i class="icon icon-dashbd-icon icon-home"></i>
               <div class="name">文档首页</div>
             </a>
           </li>
-          <li>
-            <a href="/docs/sdk_down.html">
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="sdk_down.html" title="SDK 下载">
               <i class="icon icon-dashbd-icon icon-package"></i>
-              <div class="dashboard-subnav-text">SDK 下载</div>
+              <div class="name"><span class="mobile-hide">SDK </span>下载</div>
             </a>
           </li>
-          <li ng-class="{active:currentHtmlPage=='help.html'}">
-            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
-              <i class="icon icon-dashbd-icon icon-question"></i>
-              <i class="dashboard-subnav-text">帮助</i>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="demo.html" title="Demos">
+              <i class="icon icon-dashbd-icon icon-magic"></i>
+              <div class="name">Demos</div>
+            </a>
+          </li>
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="API Docs" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-log"></i>
+              <div class="name">API 文档</div>
             </a>
             <ul class="dropdown-menu">
-              
-              <!-- <li><a href="start.html">快速入门</a></li> -->
-              
+            <li><a href="/api-docs/android/index.html" target="_blank">Android SDK API</a></li>
+<li><a href="/api-docs/iOS/index.html" target="_blank">Objective-C SDK API</a></li>
+<li><a href="https://leancloud.github.io/javascript-sdk/docs/" target="_blank">JavaScript 数据存储 SDK API</a></li>
+<li><a href="https://leancloud.github.io/js-realtime-sdk/docs/" target="_blank">JavaScript 实时通信 SDK API</a></li>
+<li><a href="https://leancloud.readthedocs.io/">Python SDK API</a></li>
+<li><a href="/api-docs/php/" target="_blank">PHP SDK API</a></li>
+<li><a href="/api-docs/dotnet/Help/index.html">.NET SDK API</a></li>
+
+            </ul>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a href="opencourse.html">
+              <i class="icon icon-dashbd-icon icon-play"></i>
+              <div class="name">公开课</div>
+            </a>
+          </li>
+          
+          <li class="dropdown dropdown-toggle-app-name">
+            <a class="nav-key-6 dropdown-toggle" title="帮助" data-toggle="dropdown">
+              <i class="icon icon-dashbd-icon icon-question"></i>
+              <div class="name">帮助</div>
+            </a>
+            <ul class="dropdown-menu">
               <li><a href="https://leanticket.cn/t/leancloud">技术支持</a></li>
               <li><a href="http://forum.leancloud.cn">社区</a></li>
               <li><a href="http://blog.leancloud.cn/">Blog</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="https://leancloud.cn/apionline/">在线 API 工具</a></li>
-              <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
+              <li><a href="/dashboard/apionline/index.html">在线 API 工具</a></li>
               <li role="presentation" class="divider"></li>
-              <li><a href="/apps.html">LeanCloud App</a></li>
-              <li><a href="/pricing.html">价格</a></li>
+              <!-- <li><a href="/apps.html">LeanCloud App</a></li> -->
+              <li><a href="/pricing">价格</a></li>
               <!-- <li><a href="#" data-toggle="modal" data-target="#modal-shortcuts">快捷键</a></li> -->
             </ul>
           </li>
@@ -108,7 +146,7 @@
         
       </div>
 
-      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak>
+      <ul class="nav navbar-nav navbar-user-actions navbar-right" ng-cloak="">
 
         <li class="dropdown" ng-show="user.username">
           <a role="button" class="dropdown-toggle user-name" data-toggle="dropdown">
@@ -120,7 +158,9 @@
           <ul class="dropdown-menu">
             <li><a href="/settings.html">账号设置</a></li>
             <li><a href="/applist.html">控制台</a></li>
+            
             <li><a href="/settings.html#/setting/team">团队管理</a></li>
+            
             <li><a href="/bill.html#/bill/general">财务</a></li>
             <!-- <li><a href="settings.html#/setting/invite">邀请好友</a></li> -->
             <li ng-show="user.username" style=""><a ng-click="signout()">登出</a></li>
@@ -145,11 +185,11 @@
     <nav class="" role="navigation">
       <ul class="nav navbar-nav">
         
-        <li><a href="start.html">快速入门</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">功能概览</a>
           <ul class="dropdown-menu">
             <li><a href="storage_overview.html">数据存储服务总览</a></li>
+            <li><a href="leanengine_overview.html">云引擎总览</a></li>
             <li><a href="push_guide.html">消息推送服务总览</a></li>
             <li><a href="realtime_v2.html">实时通信服务总览</a></li>
             <li><a href="dashboard_guide.html">控制台使用指南</a></li>
@@ -165,17 +205,19 @@
             <li><a href="sdk_setup-objc.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-objc.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-objc.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="ios_push_guide.html">消息推送开发指南</a></li>
             <li><a href="ios_push_cert.html">iOS 推送证书设置指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-objc.html">实时通信开发指南</a></li>
-            <li><a href="chatkit-objc.html">ChatKit 使用指南</a></li>
+            <li><a href="chatkit-ios.html">ChatKit 使用指南</a></li>
+            <li><a href="livekit-ios.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-objc.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-objc.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="ios_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-objc.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="ios_crashreporting_guide.html">崩溃报告使用指南</a></li>
             <li><a href="ios-macos-faq.html">FAQ</a></li>
@@ -195,17 +237,18 @@
             <li><a href="sdk_setup-android.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-android.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-android.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="android_push_guide.html">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-android.html">实时通信开发指南</a></li>
             <li><a href="chatkit-android.html">ChatKit 使用指南</a></li>
             <li><a href="livekit-android.html">LiveKit 使用指南</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="relation_guide-android.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-android.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             <li><a href="android_statistics.html">统计分析开发指南</a></li>
             
-            <li><a href="sms_guide-android.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="android_faq.html">FAQ</a></li>
             <li><a href="/api-docs/android/index.html" target="_blank">SDK API</a></li>
@@ -217,14 +260,15 @@
             <li><a href="sdk_setup-js.html">SDK 安装指南</a></li>
             <li><a href="leanstorage-started-js.html">数据存储快速入门</a></li>
             <li><a href="leanstorage_guide-js.html">数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
             <li><a href="weapp.html">微信小程序开发指南</a></li>
-            <li><a href="js_push.html">消息推送开发指南</a></li>
+            <li><a href="leanstorage_guide-js.html#Push_通知">消息推送开发指南</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="realtime_guide-js.html">实时通信开发指南</a></li>
-            <li><a href="relation_guide-js.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-js.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="acl-guide.html">ACL 权限管理指南</a></li>
             
-            <li><a href="sms_guide-js.html">短信服务使用指南</a></li>
+            <li><a href="sms-guide.html">短信服务使用指南</a></li>
             
             <li><a href="js_analytics.html">统计分析开发指南</a></li>
             <!-- <li><a href="js_faq.html">FAQ</a></li> -->
@@ -240,12 +284,18 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">.NET / Unity3D</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-dotnet.html">.NET SDK 安装指南</a></li>
             <li><a href="dotnet_guide.html">.NET 数据存储开发指南</a></li>
+            <li><a href="livequery-guide.html">LiveQuery 开发指南</a></li>
+            <li><a href="analytics-guide.html">.NET 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="unity_guide.html">Unity3D 数据存储开发指南</a></li>
+            <li><a href="realtime-unity.html">Unity3D 实时通信开发指南</a></li>
+            <li><a href="analytics-guide.html">Unity3D 统计开发指南</a></li>
+            <li role="separator" class="divider"></li>
             <li><a href="dotnet_push_guide.html">WP8.0 消息推送开发指南</a></li>
-            <li><a href="realtime_guide-dotnet.html">实时通信开发指南</a></li>
-            <li><a href="unity_statistics.html">Unity3D 统计开发指南</a></li>
-            <li><a href="dotnet_faq.html">FAQ</a></li>
+            <li role="separator" class="divider"></li>
+            <!-- <li><a href="dotnet_faq.html">FAQ</a></li> -->
             <li><a href="/api-docs/dotnet/Help/index.html" target="_blank">.NET SDK API</a></li>
           </ul>
         </li>
@@ -255,8 +305,8 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-python.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-python.html">数据存储开发指南</a></li>
-            <li><a href="relation_guide-python.html">数据模型设计指南</a></li>
-            <li><a href="acl_guide-python.html">权限管理使用指南</a></li>
+            <li><a href="relation-guide.html">数据模型设计指南</a></li>
+            <li><a href="im-servermgmt-guide-python.html">实时通讯服务端管理开发指南</a></li>
             <li><a href="https://leancloud.readthedocs.io/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
             <li class="dropdown-header">云引擎</li>
@@ -267,6 +317,7 @@
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">PHP</a>
           <ul class="dropdown-menu">
+            <li><a href="sdk_setup-php.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-php.html">数据存储开发指南</a></li>
             <li><a href="/api-docs/php/" target="_blank">SDK API</a></li>
             <li role="separator" class="divider"></li>
@@ -280,6 +331,7 @@
           <ul class="dropdown-menu">
             <li><a href="sdk_setup-java.html">SDK 安装指南</a></li>
             <li><a href="leanstorage_guide-java.html">数据存储开发指南</a></li>
+            <li><a href="sms-guide.html">短信 SMS 服务使用指南</a></li>
             <li class="dropdown-header">云引擎</li>
             <li><a href="leanengine_webhosting_guide-java.html">网站托管开发指南</a></li>
             <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
@@ -289,6 +341,7 @@
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" data-hover="dropdown" href="#">REST API</a>
           <ul class="dropdown-menu">
             <li><a href="rest_api.html">数据存储 API</a></li>
+            <li><a href="leanengine-rest-api.html">云引擎 API</a></li>
             <li><a href="rest_api.html#Push_通知">消息推送 API</a></li>
             <li><a href="realtime_rest_api.html">实时通信 API</a></li>
             
@@ -298,7 +351,7 @@
             <li><a href="status_system.html#REST_API">应用内社交 API</a></li>
             <li><a href="app_search_guide.html#搜索_API">应用内搜索 API</a></li>
             <li><a href="cql_guide.html">CQL 查询语言详解</a></li>
-            <li><a href="oauth2_provider.html">开放平台接入</a></li>
+            <!--<li><a href="oauth2_provider.html">开放平台接入</a></li>-->
             <!-- <li><a href="rest_faq.html">FAQ</a></li> -->
           </ul>
         </li>
@@ -324,8 +377,9 @@
           <li><a href="leanengine_cloudfunction_guide-java.html">云函数开发指南</a></li>
           <li role="separator" class="divider"></li>
           <li><a href="leanengine_examples.html">云引擎项目示例</a></li>
-          <li><a href="leanengine_cli.html">云引擎命令行工具</a></li>
+          <li><a href="leanengine_cli.html">命令行工具 CLI</a></li>
           <li><a href="acl_guide_leanengine.html">在云引擎中管理 ACL</a></li>
+          <li><a href="push-guide-leanengine.html">在云引擎中使用 Push 推送服务</a></li>
           <li><a href="leanengine_faq.html">FAQ</a></li>
           <li><a href="leancache_guide.html">LeanCache 使用指南</a></li>
           </ul>
@@ -341,12 +395,15 @@
             
             <li><a href="app_search_guide.html">应用内搜索和 DeepLink 开发指南</a></li>
             <li><a href="app_data_share.html">应用之间数据共享（Class 绑定）</a></li>
-            <li><a href="user_groups.html">用户群分析指南</a></li>
+            <!-- <li><a href="user_groups.html">用户群分析指南</a></li> -->
+            
             <li><a href="leaninsight_guide.html">离线数据分析使用指南</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="kb-network-connectivity-diagnosis.html">网络连通性诊断流程</a></li>
             <li class="divider"></li>
             <li><a href="tutorials.html">教程</a></li>
            <li><a href="demo.html">Demo</a></li>
-           <li><a href="http://leancloud.sexy" target="_blank">第三方库</a></li>
           </ul>
         </li>
       </ul>
@@ -383,11 +440,20 @@
 
     <div class="col-sm-9 sidebar-gruntfile-trigger">
       <div class="doc-content with-comment" id="content">
-        <h1 id="-">消息推送服务总览</h1>
+        <div class="docs-meta">
+          <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <script type="text/javascript">
+angular.module("app").run(['$rootScope', function($rootScope) {
+  $rootScope.service = 'push';
+}]);
+</script>
+
+
+
+<h1 id="-">消息推送服务总览</h1>
 <p>消息推送，使得开发者可以即时地向其应用程序的用户推送通知或者消息，与用户保持互动，从而有效地提高留存率，提升用户体验。平台提供整合了 Android 推送、iOS 推送、Windows Phone 推送和 Web 网页推送的统一推送服务。</p>
-<p>除了 iOS、Android SDK 做推送服务之外，你还可以通过我们的 REST API 来发送推送请求。</p>
-<h2 id="-">文档贡献</h2>
-<p>我们欢迎和鼓励大家对本文档的不足提出修改建议。请访问我们的 <a href="https://github.com/leancloud/docs">Github 文档仓库</a> 来提交 Pull Request。</p>
+<p>除了 iOS、Android SDK 做推送服务之外，你还可以通过 <a href="#使用_REST_API_推送消息">REST API</a> 来发送推送请求。</p>
 <h2 id="-">基本概念</h2>
 <h3 id="installation">Installation</h3>
 <p>Installation 表示一个允许推送的设备的唯一标示，对应 <a href="/data.html?appid={{appid}}">数据管理</a> 平台中的 <code>_Installation</code> 表。它就是一个普通的对象，主要属性包括:</p>
@@ -413,7 +479,7 @@
 <tr>
 <td>deviceProfile</td>
 <td></td>
-<td>在应用有多个 iOS 推送证书或多个 Android 混合推送配置的场景下，deviceProfile 用于指定当前设备使用的证书名或配置名。其值需要与 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 设置</a> 内配置的证书名或配置名对应，否则将无法完成推送。使用方法请参考 <a href="#iOS_测试和生产证书区分">iOS 测试和生产证书区分</a> 和 <a href="#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。</td>
+<td>在应用有多个 iOS 推送证书或多个 Android 混合推送配置的场景下，deviceProfile 用于指定当前设备使用的证书名或配置名。其值需要与 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 设置</a> 内配置的证书名或配置名对应，否则将无法完成推送。使用方法请参考 <a href="#iOS_测试和生产证书区分">iOS 测试和生产证书区分</a> 和 <a href="#Android_混合推送多配置区分">Android 混合推送多配置区分</a>。<br><br><code>deviceProfile</code> 的值必须以字母开头，由大小写字母、数字和下划线组成的字符串，或为空值。</td>
 </tr>
 <tr>
 <td>deviceToken</td>
@@ -482,7 +548,7 @@
 <tr>
 <td>devices</td>
 <td></td>
-<td>本次推送待发送设备总数。这个数字不是实际送达数，而是处理本次推送请求时在 <code>_Installation</code> 表中符合查询条件的总设备数。其中可能会包含大量的非活跃用户(如已卸载 App 的用户)，这部分用户可能无法收到推送。</td>
+<td>本次推送目标设备数。这个数字不是实际送达数，而是处理本次推送请求时在 <code>_Installation</code> 表中符合查询条件且有效的总设备数。有效是指 <code>_Installation</code> 表的 valid 字段为 true 且 updatedAt 字段时间在最近三个月以内。目标设备数可能会包含大量的非活跃用户(如已卸载 App 的用户)，这部分用户可能无法收到推送。</td>
 </tr>
 <tr>
 <td>successes</td>
@@ -510,14 +576,14 @@
 <h2 id="android-">Android 消息推送</h2>
 <p>请阅读 <a href="./android_push_guide.html">Android 推送开发文档</a>。</p>
 <h2 id="android-">Android 混合推送</h2>
-<p>在部分 Android ROM 上，由于系统对后台进程控制较严，Android  推送的到达率会受到影响。为此我们专门设计了一套称为「混合推送」的高级推送机制，用以提高在这部分 Android ROM  上推送的到达率。</p>
-<p>目前 Android 混合推送功能处于免费试用阶段，如果希望试用该功能，请进入 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt;  应用选项</a> 下，选择 <strong>聊天、推送</strong> &gt; <strong>开启混合推送</strong>。</p>
+<p>在部分 Android ROM 上，由于系统对后台进程控制较严，Android 推送的到达率会受到影响。为此我们专门设计了一套称为「混合推送」的高级推送机制，用以提高在这部分 Android ROM 上推送的到达率。</p>
+<p>目前 Android 混合推送功能仅对商用版应用开放，如果希望使用该功能，请进入 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a>，选择 <strong>聊天、推送</strong> &gt; <strong>开启混合推送</strong>。</p>
+<p>请注意，<strong>开启混合推送</strong> 选项可以根据需要随时进行切换，这样做并不会产生不良影响。当该选项关闭后，下一次 Android 推送会与普通推送一样自动选择 LeanCloud 自有通道送达客户端，除了会再次遇到上面提到的自有通道在部分 ROM 上会受到限制的问题之外，不会有别的影响。而当该选项再次开启后，Android 推送又会去选择第三方推送渠道。</p>
 <p>关于混合推送的接入方法和使用方式请阅读 <a href="./android_push_guide.html#混合推送">Android 混合推送使用文档</a>。</p>
 <h2 id="windows-phone-">Windows Phone 消息推送</h2>
 <p>请阅读 <a href="./dotnet_push_guide.html">Windows Phone 推送开发文档</a>。</p>
 <h2 id="-javascript-">云引擎和 JavaScript 创建推送</h2>
-<p>请阅读 <a href="./leanstorage_guide-js.html#Push_通知">JavaScript SDK 指南 &middot; Push 通知</a>。
-我们还提供单独的 <a href="https://github.com/leancloud/js-push-sdk/">JavaScript 推送客户端</a> 用于在网页中收发推送。</p>
+<p>请阅读 <a href="./leanstorage_guide-js.html#Push_通知">JavaScript SDK 指南 &middot; Push 通知</a>。</p>
 <h2 id="-rest-api-">使用 REST API 推送消息</h2>
 <h3 id="installation">Installation</h3>
 <p>当 App 安装到用户设备后，如果要使用消息推送功能，LeanCloud SDK 会自动生成一个 Installation 对象。Installation 对象包含了推送所需要的所有信息。你可以使用 REST API，通过 Installation 对象进行消息推送。</p>
@@ -535,7 +601,7 @@
           &quot;public&quot;, &quot;protected&quot;, &quot;private&quot;
         ]
       }&#39; \
-  https://leancloud.cn/1.1/installations
+  https://{{v2Domain}}/1.1/installations
 </code></pre>
 <h5 id="installationid">installationId</h5>
 <p>对于 Android 设备，LeanCloud SDK 会自动生成 uuid 作为 installationId 保存到云端。使用 REST API 来保存  installationId 的方法如下：</p>
@@ -550,7 +616,7 @@
           &quot;public&quot;, &quot;protected&quot;, &quot;private&quot;
         ]
       }&#39; \
-  https://leancloud.cn/1.1/installations
+  https://{{v2Domain}}/1.1/installations
 </code></pre>
 <p><code>installationId</code> 必须在应用内唯一。</p>
 <h5 id="-">订阅和退订频道</h5>
@@ -564,7 +630,7 @@
           &quot;customer&quot;
         ]
       }&#39; \
-  https://leancloud.cn/1.1/installations/mrmBZvsErB
+  https://{{v2Domain}}/1.1/installations/mrmBZvsErB
 </code></pre>
 <p>退订一个频道：</p>
 <pre><code>curl -X PUT \
@@ -577,7 +643,7 @@
            &quot;objects&quot;:[&quot;customer&quot;]
         }
        }&#39; \
-  https://leancloud.cn/1.1/installations/mrmBZvsErB
+  https://{{v2Domain}}/1.1/installations/mrmBZvsErB
 </code></pre><p><code>channels</code> 本质上是数组属性，因此可以使用标准 <a href="./rest_api.html#数组">REST API</a> 操作。</p>
 <h4 id="-">添加自定义属性</h4>
 <p>假设 <code>mrmBZvsErB</code> 是待操作 Installation 对象的 objectId，待添加的自定义属性是 <strong>userObjectId</strong>，值为 <code>&lt;用户的 objectId&gt;</code>：</p>
@@ -588,7 +654,7 @@
   -d &#39;{
         &quot;userObjectId&quot;: &quot;&lt;用户的 objectId&gt;&quot;
       }&#39; \
-  https://leancloud.cn/1.1/installations/mrmBZvsErB
+  https://{{v2Domain}}/1.1/installations/mrmBZvsErB
 </code></pre>
 <h3 id="-">推送消息</h3>
 <p>通过 <code>POST /1.1/push</code> 来推送消息给设备，<code>push</code> 接口支持下列属性：</p>
@@ -596,147 +662,170 @@
 <thead>
 <tr>
 <th>名称</th>
+<th>约束</th>
 <th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>channels</td>
+<td>可选</td>
 <td>推送给哪些频道，将作为条件加入 where 对象。</td>
 </tr>
 <tr>
 <td>data</td>
-<td>推送的内容数据，JSON 对象，请参考 <a href="#消息内容_Data">消息内容</a>。</td>
+<td><strong>必填</strong></td>
+<td>推送的内容数据，JSON 对象，请参考 <a href="#消息内容_Data">消息内容</a>。请注意，整个 JSON 字符串不能超过 4096 个字符。</td>
 </tr>
 <tr>
 <td>expiration_interval</td>
+<td>可选</td>
 <td>消息过期的相对时间，从调用 API 的时间开始算起，单位是秒。</td>
 </tr>
 <tr>
 <td>expiration_time</td>
+<td>可选</td>
 <td>消息过期的绝对日期时间</td>
 </tr>
 <tr>
+<td>notification_id</td>
+<td>可选</td>
+<td>自定义推送 id，最长 16 个字符且只能由英文字母和数字组成，不提供该参数时我们会为每个推送请求随机分配一个唯一的推送 id，用于区分不同推送。我们会根据推送 id 来统计推送的目标设备数和最终消息到达数，并展示在 <a href="#Notification">推送记录</a> 当中。用户自定义推送 id 可以将多个不同的请求并入同一个推送 id 下从而整体统计出这一批推送请求的目标设备数和最终消息到达数。</td>
+</tr>
+<tr>
 <td>prod</td>
+<td>可选</td>
 <td><strong>仅对 iOS 有效</strong>。设置使用开发证书（<strong>dev</strong>）还是生产证书（<strong>prod</strong>）。当设备设置了 deviceProfile 时我们优先按照 deviceProfile 指定的证书推送。</td>
 </tr>
 <tr>
 <td>push_time</td>
+<td>可选</td>
 <td>定期推送时间</td>
 </tr>
 <tr>
+<td>req_id</td>
+<td>可选</td>
+<td>自定义请求 id，最长 16 个字符且只能由英文字母和数字组成。5 分钟内带有相同 req_id 的不同推送请求我们认为是重复请求，只会发一次推送。用户可以在请求中带着唯一的 req_id 从而在接口出现超时等异常时将请求重发一次，以避免漏掉失败的推送请求。并且由于前后两次请求中 req_id 相同，我们会自动过滤重复的推送请求以保证每个目标终端用户最多只会收到一次推送消息。<strong>重发过频或次数过多会影响正常的消息推送</strong>，请注意控制。</td>
+</tr>
+<tr>
 <td>where</td>
-<td>检索 _Installation 表使用的查询条件，JSON 对象。</td>
+<td>可选</td>
+<td>检索 <code>_Installation</code> 表使用的查询条件，JSON 对象。</td>
+</tr>
+<tr>
+<td>topic</td>
+<td>可选</td>
+<td>使用 iOS Token Authentication 的鉴权方式后，如果 iOS SDK 版本低于 v4.2.0 或推送目标设备使用的 Topic 与 iOS Bundle ID 不同时，请主动提供该参数以便于系统能够按照该参数指定的 topic 来发推送消息。</td>
 </tr>
 </tbody>
 </table>
+<h4 id="master-key-">master key 校验</h4>
+<p>当在 <a href="/app.html?appid={{appid}}#/permission">控制台 &gt; 设置 &gt; 应用选项</a> 中点选了 <strong>聊天、推送</strong> &gt; <strong>禁止从客户端进行消息推送</strong> 后，推送消息接口必须增加 <strong>master key</strong> 校验才能成功发送推送，从而避免了客户端可以不经限制的给应用内任意目标设备推送消息的可能。我们建议用户都将此限制启用。</p>
+<pre><code class="lang-sh">curl -X POST \
+  -H &quot;X-LC-Id: {{appid}}&quot;          \
+  -H &quot;X-LC-Key: {{masterkey}},master&quot;        \
+  -H &quot;Content-Type: application/json&quot; \
+  -d &#39;{
+        &quot;where&quot;: {&quot;channels&quot; : [&quot;public&quot;]}
+        &quot;data&quot;: {&quot;alert&quot; : &quot;Hello from LeanCloud&quot;}
+     }&#39; \
+  https://{{v2Domain}}/1.1/push
+</code></pre>
 <h4 id="-">过期时间</h4>
 <p>我们建议给 iOS 设备的推送都设置过期时间，这样才能保证在推送的当时，如果用户与 APNs 之间的连接恰好断开（如关闭了手机网络、设置了飞行模式等)，在连接恢复之后消息过期之前，用户仍然可以收到推送消息。可以参考 <a href="http://stackoverflow.com/questions/24026544/push-notification-is-not-being-delivered-when-iphone-comes-back-online">Stackoverflow &middot; Push notification is not being delivered when iPhone comes back online</a>。</p>
 <p>过期时间的用法请参考 <a href="#过期时间和定时推送">过期时间和定时推送</a>。</p>
 <h4 id="-data">消息内容 Data</h4>
-<p>对于 iOS 设备，data 内属性可以是：</p>
+<p>对于 iOS 设备，消息内容参数 data 内属性可以是：</p>
 <pre><code>{
-  &quot;data&quot;: {
-   &quot;alert&quot;:             &quot;消息内容&quot;,
-   &quot;category&quot;:          &quot;通知分类名称&quot;,
-   &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以是字符串 &quot;Increment&quot;（大小写敏感）,
-   &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
-   &quot;content-available&quot;: 数字类型，如果使用 Newsstand，设置为 1 来开始一次后台下载,
-   &quot;mutable-content&quot;:   数字类型，用于支持 UNNotificationServiceExtension 功能，设置为 1 时启用,
-   &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
-  }
+  &quot;alert&quot;:             &quot;消息内容&quot;,
+  &quot;category&quot;:          &quot;通知类型&quot;,
+  &quot;thread-id&quot;:         &quot;通知分类名称&quot;,
+  &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以是字符串 &quot;Increment&quot;（大小写敏感）,
+  &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
+  &quot;content-available&quot;: 数字类型，如果使用 Newsstand，设置为 1 来开始一次后台下载,
+  &quot;mutable-content&quot;:   数字类型，用于支持 UNNotificationServiceExtension 功能，设置为 1 时启用,
+  &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
 }
 </code></pre><p>并且 iOS 设备支持 <code>alert</code> 本地化消息推送，只需要将上面 <code>alert</code> 参数从 String 替换为一个由本地化消息推送属性组成的 JSON 即可：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;alert&quot;: {
-      &quot;title&quot;:               &quot;标题&quot;,
-      &quot;title-loc-key&quot;:       &quot;&quot;,
-      &quot;sub-title&quot;:           &quot;附标题&quot;,
-      &quot;sub-title-loc-key&quot;:   &quot;&quot;,
-      &quot;body&quot;:                &quot;消息内容&quot;,
-      &quot;action-loc-key&quot;:      &quot;&quot;,
-      &quot;loc-key&quot;:             &quot;&quot;,
-      &quot;loc-args&quot;:            [&quot;&quot;],
-      &quot;launch-image&quot;:        &quot;&quot;
-     }
+  &quot;alert&quot;: {
+    &quot;title&quot;:               &quot;标题&quot;,
+    &quot;title-loc-key&quot;:       &quot;&quot;,
+    &quot;sub-title&quot;:           &quot;附标题&quot;,
+    &quot;sub-title-loc-key&quot;:   &quot;&quot;,
+    &quot;body&quot;:                &quot;消息内容&quot;,
+    &quot;action-loc-key&quot;:      &quot;&quot;,
+    &quot;loc-key&quot;:             &quot;&quot;,
+    &quot;loc-args&quot;:            [&quot;&quot;],
+    &quot;launch-image&quot;:        &quot;&quot;
    }
 }
-</code></pre><p>data 和 alert 内属性的具体含义请参考 <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/TheNotificationPayload.html">Apple 官方文档</a>。</p>
+</code></pre><p>data 和 alert 内属性的具体含义请参考 <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html">Apple 官方文档</a>。</p>
 <p>另外，我们也支持按照上述 Apple 官方文档的方式构造推送参数，如：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;aps&quot;: {
-      &quot;alert&quot;: {
-        &quot;title&quot;:               &quot;标题&quot;,
-        &quot;title-loc-key&quot;:       &quot;&quot;,
-        &quot;sub-title&quot;:           &quot;附标题&quot;,
-        &quot;sub-title-loc-key&quot;:   &quot;&quot;,
-        &quot;body&quot;:                &quot;消息内容&quot;,
-        &quot;action-loc-key&quot;:      &quot;&quot;,
-        &quot;loc-key&quot;:             &quot;&quot;,
-        &quot;loc-args&quot;:            [&quot;&quot;],
-        &quot;launch-image&quot;:        &quot;&quot;
-      }
-      &quot;category&quot;:          &quot;通知分类名称&quot;,
-      &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以是字符串 &quot;Increment&quot;（大小写敏感）,
-      &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
-      &quot;content-available&quot;: 数字类型，如果使用 Newsstand，设置为 1 来开始一次后台下载,
-      &quot;mutable-content&quot;:   数字类型，用于支持 UNNotificationServiceExtension 功能，设置为 1 时启用,
-    }
-    &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
-  }
+  &quot;aps&quot;: {
+     &quot;alert&quot;: {
+       &quot;title&quot;:               &quot;标题&quot;,
+       &quot;title-loc-key&quot;:       &quot;&quot;,
+       &quot;sub-title&quot;:           &quot;附标题&quot;,
+       &quot;sub-title-loc-key&quot;:   &quot;&quot;,
+       &quot;body&quot;:                &quot;消息内容&quot;,
+       &quot;action-loc-key&quot;:      &quot;&quot;,
+       &quot;loc-key&quot;:             &quot;&quot;,
+       &quot;loc-args&quot;:            [&quot;&quot;],
+       &quot;launch-image&quot;:        &quot;&quot;
+     }
+     &quot;category&quot;:          &quot;通知类型&quot;,
+     &quot;thread-id&quot;:         &quot;通知分类名称&quot;,
+     &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以是字符串 &quot;Increment&quot;（大小写敏感）,
+     &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
+     &quot;content-available&quot;: 数字类型，如果使用 Newsstand，设置为 1 来开始一次后台下载,
+     &quot;mutable-content&quot;:   数字类型，用于支持 UNNotificationServiceExtension 功能，设置为 1 时启用,
+   }
+   &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
 }
-</code></pre><p>如果是 Android 设备，默认的消息栏通知 <code>data</code> 支持下列属性：</p>
+</code></pre><p>如果是 Android 设备，默认的消息栏通知消息内容参数支持下列属性：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;alert&quot;:      &quot;消息内容&quot;,
-    &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
-    &quot;custom-key&quot;: &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
-    &quot;silent&quot;:     true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
-  }
+  &quot;alert&quot;:      &quot;消息内容&quot;,
+  &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
+  &quot;custom-key&quot;: &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
+  &quot;silent&quot;:     true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
 }
 </code></pre><p>如果自定义 Receiver，需要设置 <code>action</code>：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;alert&quot;:      &quot;消息内容&quot;,
-    &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
-    &quot;action&quot;:     &quot;com.your_company.push&quot;,
-    &quot;custom-key&quot;: &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
-    &quot;silent&quot;:     true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
-  }
+  &quot;alert&quot;:      &quot;消息内容&quot;,
+  &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
+  &quot;action&quot;:     &quot;com.your_company.push&quot;,
+  &quot;custom-key&quot;: &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
+  &quot;silent&quot;:     true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
 }
 </code></pre><p>Windows Phone 设备类似，也支持 <code>title</code> 和 <code>alert</code>，同时支持 <code>wp-param</code> 用于定义打开通知的时候打开的是哪个 Page：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;alert&quot;:      &quot;消息内容&quot;,
-    &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
-    &quot;wp-param&quot;:   &quot;/chat.xaml?NavigatedFrom=Toast Notification&quot;
-  }
+  &quot;alert&quot;:      &quot;消息内容&quot;,
+  &quot;title&quot;:      &quot;显示在通知栏的标题&quot;,
+  &quot;wp-param&quot;:   &quot;/chat.xaml?NavigatedFrom=Toast Notification&quot;
 }
-</code></pre><p>但是如果想一次 push 调用<strong>推送不同的数据给不同类型的设备</strong>，<code>data</code> 属性同时支持设定设备特定消息，例如：</p>
+</code></pre><p>但是如果想一次 push 调用<strong>推送不同的数据给不同类型的设备</strong>，消息内容参数同时支持设定设备特定消息，例如：</p>
 <pre><code>{
-  &quot;data&quot;:{
-    &quot;ios&quot;: {
-      &quot;alert&quot;:             &quot;消息内容&quot;,
-      &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以设置为 &quot;Increment&quot; 这个字符串（大小写敏感）,
-      &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
-      &quot;content-available&quot;: &quot;如果你在使用 Newsstand, 设置为 1 来开始一次后台下载&quot;,
-      &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
-    },
-    &quot;android&quot;: {
-      &quot;alert&quot;:             &quot;消息内容&quot;,
-      &quot;title&quot;:             &quot;显示在通知栏的标题&quot;,
-      &quot;action&quot;:            &quot;com.your_company.push&quot;,
-      &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
-      &quot;silent&quot;:            true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
-    },
-    &quot;wp&quot;:{
-      &quot;alert&quot;:             &quot;消息内容&quot;,
-      &quot;title&quot;:             &quot;显示在通知栏的标题&quot;,
-      &quot;wp-param&quot;:          &quot;/chat.xaml?NavigatedFrom=Toast Notification&quot;
-    }
-  }
+  &quot;ios&quot;: {
+    &quot;alert&quot;:             &quot;消息内容&quot;,
+     &quot;badge&quot;:             数字类型，未读消息数目，应用图标边上的小红点数字，可以是数字，也可以设置为 &quot;Increment&quot; 这个字符串（大小写敏感）,
+     &quot;sound&quot;:             &quot;声音文件名，前提在应用里存在&quot;,
+     &quot;content-available&quot;: &quot;如果你在使用 Newsstand, 设置为 1 来开始一次后台下载&quot;,
+     &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;
+   },
+   &quot;android&quot;: {
+     &quot;alert&quot;:             &quot;消息内容&quot;,
+     &quot;title&quot;:             &quot;显示在通知栏的标题&quot;,
+     &quot;action&quot;:            &quot;com.your_company.push&quot;,
+     &quot;custom-key&quot;:        &quot;由用户添加的自定义属性，custom-key 仅是举例，可随意替换&quot;,
+     &quot;silent&quot;:            true/false // 用于控制是否关闭推送通知栏提醒，默认为 false，即不关闭通知栏提醒
+   },
+   &quot;wp&quot;:{
+     &quot;alert&quot;:             &quot;消息内容&quot;,
+     &quot;title&quot;:             &quot;显示在通知栏的标题&quot;,
+     &quot;wp-param&quot;:          &quot;/chat.xaml?NavigatedFrom=Toast Notification&quot;
+   }
 }
 </code></pre><h4 id="ios-">iOS 测试和生产证书区分</h4>
 <p>我们现在支持上传两个环境的 iOS 推送证书：测试和生产环境，你可以通过设定 <code>prod</code> 属性来指定使用哪个环境证书。</p>
@@ -752,36 +841,12 @@
 <p>LeanCloud 推送服务通过推送请求中 <code>data</code> 参数内的 <code>silent</code> 字段区分透传和通知栏消息。如果 <code>silent</code> 是 <code>true</code> 则表示这个消息是透传消息，为 <code>false</code> 表示消息是通知栏消息。如果不传递 <code>silent</code> 则默认其值为 <code>false</code>。另外请注意，如果希望接收透传消息请不要忘记自行实现 <a href="./android_push_guide.html#自定义_Receiver">自定义 Receiver</a>。</p>
 <p>推送请求中的 <code>data</code> 参数请参考 <a href="#消息内容_Data">消息内容 Data</a>。</p>
 <h4 id="android-">Android 混合推送多配置区分</h4>
-<p>如果使用了混合推送功能且设置了多个混合推送配置，需要在 <code>_Installation</code> 表保存设备信息时将当前设备所对应的混合推送配置名存入 <code>deviceProfile</code>。推送时我们会按照每个目标设备在 <code>_Installation</code> 表 <code>deviceProfile</code> 字段指定的配置名来发混合推送。如果 <code>deviceProfile</code> 为空，我们会默认使用名为 <code>_default</code> 的混合推送配置名来发推送。</p>
-<div class="callout callout-info">如果无法保证 <code>_Installation</code> 表中所有设备记录的 <code>deviceProfile</code> 字段都不为空，请一定保证名为 <code>_default</code> 的混合推送配置在 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 推送设置</a> 中存在且被正确配置。否则 <code>deviceProfile</code> 为空的设备会因为没有对应的 <code>_default</code> 配置而<strong>无法完成推送。</strong></div>
-
+<p>如果使用了混合推送功能，并且在 <a href="/messaging.html?appid={{appid}}#/message/push/conf">控制台 &gt; 消息 &gt; 推送 &gt; 设置 &gt; 混合推送</a> 增加了多个混合推送配置，那么在向 <code>_Installation</code> 表保存设备信息时就需要将当前设备所对应的混合推送配置名存入 <code>deviceProfile</code> 字段。系统会按照该字段指定的唯一配置名为每个目标设备进行混合推送。</p>
+<p>如果 <code>deviceProfile</code> 字段为空，系统会默认使用名为 <code>_default</code> 的混合推送配置来进行推送，所以一定要保证在控制台的混合推送设置中，存在以 <code>_default</code> 命名的 Profile 并且已被正确配置，否则系统会<strong>拒绝推送。</strong></p>
+<p><code>deviceProfile</code> 的值必须以字母开头，由大小写字母、数字和下划线组成的字符串，或为空值。</p>
 <h4 id="-">推送查询条件</h4>
 <p><code>_Installation</code> 表中的所有属性，无论是内置的还是自定义的，都可以作为查询条件通过 where 来指定，并且支持 <a href="./rest_api.html#查询">REST API</a> 定义的各种复杂查询。</p>
-<p>后文会举一些例子，更多例子请参考 <a href="./rest_api.html#查询">REST API</a> 查询文档。</p>
-<h4 id="-">过期时间和定时推送</h4>
-<p><code>expiration_time</code> 属性用于指定消息的过期时间，如果客户端收到消息的时间超过这个绝对时间，那么消息将不显示给用户。<code>expiration_time</code> 是一个 UTC 时间的字符串，格式为 <code>YYYY-MM-DDTHH:MM:SS.MMMZ</code>。</p>
-<pre><code>{
-      &quot;expiration_time&quot;: &quot;2016-01-28T00:07:29.773Z&quot;,
-      &quot;data&quot;: {
-        &quot;alert&quot;: &quot;过期时间为北京时间 1 月 28 日 8:07。&quot;
-      }
-}
-</code></pre><p><code>expiration_interval</code> 也可以用于指定过期时间，不过这是一个相对时间，以<strong>秒</strong>为单位，从 API 调用时间点开始计算起：</p>
-<pre><code>{
-      &quot;expiration_interval&quot;: &quot;86400&quot;,
-      &quot;data&quot;: {
-        &quot;alert&quot;: &quot;收到 Push API 调用的 24 小时后过期。&quot;
-      }
-}
-</code></pre><p><code>push_time</code> 是定时推送的时间，格式为 <code>YYYY-MM-DDTHH:MM:SS.MMMZ</code> 的 UTC 时间，也可以结合 <code>expiration_interval</code> 设定过期时间：</p>
-<pre><code>{
-      &quot;push_time&quot;:           &quot;2016-01-28T00:07:29.773Z&quot;,
-      &quot;expiration_interval&quot;: &quot;86400&quot;,
-      &quot;data&quot;: {
-        &quot;alert&quot;: &quot;北京时间 1 月 28 日 8:07 发送这条推送，24 小时后过期&quot;
-      }
-}
-</code></pre><p>下面是一些推送的例子</p>
+<p>下面会举一些例子，更多例子请参考 <a href="./rest_api.html#查询">REST API</a> 查询文档。</p>
 <h4 id="-">推送给所有的设备</h4>
 <pre><code class="lang-sh">curl -X POST \
   -H &quot;X-LC-Id: {{appid}}&quot;          \
@@ -792,9 +857,26 @@
           &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <h4 id="-">发送给特定的用户</h4>
+<ul>
+<li>发送给 android 设备的用户</li>
+</ul>
+<pre><code class="lang-sh">curl -X POST \
+-H &quot;X-LC-Id: {{appid}}&quot;          \
+-H &quot;X-LC-Key: {{appkey}}&quot;        \
+-H &quot;Content-Type: application/json&quot; \
+-d &#39;{
+      &quot;where&quot;:{
+        &quot;deviceType&quot;: &quot;android&quot;
+      },
+      &quot;data&quot;: {
+        &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
+      }
+    }&#39; \
+https://{{v2Domain}}/1.1/push
+</code></pre>
 <ul>
 <li>发送给 public 频道的用户</li>
 </ul>
@@ -811,7 +893,7 @@
         &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
       }
     }&#39; \
-https://leancloud.cn/1.1/push
+https://{{v2Domain}}/1.1/push
 </code></pre>
 <p>或者更简便的方式</p>
 <pre><code class="lang-sh">curl -X POST \
@@ -824,7 +906,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <ul>
 <li>发送给某个 installation id 的用户</li>
@@ -841,7 +923,7 @@ https://leancloud.cn/1.1/push
         &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
       }
     }&#39; \
-https://leancloud.cn/1.1/push
+https://{{v2Domain}}/1.1/push
 </code></pre>
 <ul>
 <li>推送给不活跃的用户</li>
@@ -860,7 +942,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
       }
     }&#39; \
-https://leancloud.cn/1.1/push
+https://{{v2Domain}}/1.1/push
 </code></pre>
 <ul>
 <li>根据查询条件做推送：</li>
@@ -877,7 +959,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;您关注的商品已经到货，请尽快购买。&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <p>用 <code>where</code> 查询的都是 <code>_Installations</code> 表中的属性。这里假设该表存储了 <code>inStock</code> 的布尔属性。</p>
 <ul>
@@ -906,7 +988,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;北京明日最高气温 40 摄氏度。&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <p>上面的例子假设 installation 有个 owner 属性指向 <code>_User</code> 表的记录，并且用户有个 <code>location</code> 属性是 GeoPoint 类型，我们就可以根据地理信息位置做推送。</p>
 <h4 id="-cql-">使用 CQL 查询推送</h4>
@@ -921,9 +1003,32 @@ https://leancloud.cn/1.1/push
         &quot;alert&quot;: &quot;LeanCloud 向您问好！&quot;
       }
     }&#39; \
-https://leancloud.cn/1.1/push
+https://{{v2Domain}}/1.1/push
 </code></pre>
-<h4 id="-">推送消息属性</h4>
+<h4 id="-">过期时间和定时推送</h4>
+<p><code>expiration_time</code> 属性用于指定消息的过期时间，如果客户端收到消息的时间超过这个绝对时间，那么消息将不显示给用户。<code>expiration_time</code> 是一个 UTC 时间的字符串，格式为 <code>YYYY-MM-DDTHH:MM:SS.MMMZ</code>。</p>
+<pre><code>{
+      &quot;expiration_time&quot;: &quot;2016-01-28T00:07:29.773Z&quot;,
+      &quot;data&quot;: {
+        &quot;alert&quot;: &quot;过期时间为北京时间 1 月 28 日 8:07。&quot;
+      }
+}
+</code></pre><p><code>expiration_interval</code> 也可以用于指定过期时间，不过这是一个相对时间，以<strong>秒</strong>为单位，从 API 调用时间点开始计算起：</p>
+<pre><code>{
+      &quot;expiration_interval&quot;: &quot;86400&quot;,
+      &quot;data&quot;: {
+        &quot;alert&quot;: &quot;收到 Push API 调用的 24 小时后过期。&quot;
+      }
+}
+</code></pre><p><code>push_time</code> 是定时推送的时间，格式为 <code>YYYY-MM-DDTHH:MM:SS.MMMZ</code> 的 UTC 时间，也可以结合 <code>expiration_interval</code> 设定过期时间：</p>
+<pre><code>{
+      &quot;push_time&quot;:           &quot;2016-01-28T00:07:29.773Z&quot;,
+      &quot;expiration_interval&quot;: &quot;86400&quot;,
+      &quot;data&quot;: {
+        &quot;alert&quot;: &quot;北京时间 1 月 28 日 8:07 发送这条推送，24 小时后过期&quot;
+      }
+}
+</code></pre><h4 id="-">推送消息属性</h4>
 <h5 id="-">消息过期</h5>
 <p> 过期时间，可以是绝对时间：</p>
 <pre><code class="lang-sh">curl -X POST \
@@ -936,7 +1041,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;您的优惠券将于 10 月 7 日到期。&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <p>也可以是相对时间（从推送 API 调用开始算起，结合 push_time 做定期推送）:</p>
 <pre><code class="lang-sh">curl -X POST \
@@ -950,7 +1055,7 @@ https://leancloud.cn/1.1/push
           &quot;alert&quot;: &quot;您未使用的代金券将于 2015 年 7 月 4 日过期。&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <h5 id="-">定制消息属性：</h5>
 <pre><code class="lang-sh">curl -X POST \
@@ -968,7 +1073,7 @@ https://leancloud.cn/1.1/push
           &quot;title&quot;: &quot;员工福利&quot;
         }
       }&#39; \
-  https://leancloud.cn/1.1/push
+  https://{{v2Domain}}/1.1/push
 </code></pre>
 <h3 id="-">推送记录查询</h3>
 <p><code>/push</code> 接口在推送后会返回代表该条推送消息的 <code>objectId</code>，你可以使用这个 ID 调用下列 API 查询推送记录：</p>
@@ -976,7 +1081,7 @@ https://leancloud.cn/1.1/push
   -H &quot;X-LC-Id: {{appid}}&quot;          \
   -H &quot;X-LC-Key: {{appkey}}&quot;        \
   -H &quot;Content-Type: application/json&quot; \
-  https://leancloud.cn/1.1/tables/Notifications/:objectId
+  https://{{v2Domain}}/1.1/tables/Notifications/:objectId
 </code></pre>
 <p>其中 URL 里的 <code>:objectId</code> 替换成 <code>/push</code> 接口返回的 objectId 。</p>
 <p>将返回推送记录对象，推送记录各字段含义参考 <a href="#Notification">Notification 说明</a>。</p>
@@ -990,7 +1095,7 @@ https://leancloud.cn/1.1/push
   -H &quot;X-LC-Id: {{appid}}&quot;          \
   -H &quot;X-LC-Key: {{masterkey}},master&quot;        \
   -H &quot;Content-Type: application/json&quot; \
-  https://leancloud.cn/1.1/scheduledPushMessages
+  https://{{v2Domain}}/1.1/scheduledPushMessages
 </code></pre>
 <p>查询出来的结果类似：</p>
 <pre><code class="lang-json">{
@@ -1029,23 +1134,40 @@ https://leancloud.cn/1.1/push
   -H &quot;X-LC-Id: {{appid}}&quot;          \
   -H &quot;X-LC-Key: {{masterkey}},master&quot;        \
   -H &quot;Content-Type: application/json&quot; \
-  https://leancloud.cn/1.1/scheduledPushMessages/:id
+  https://{{v2Domain}}/1.1/scheduledPushMessages/:id
 </code></pre>
 <h2 id="-">限制</h2>
 <ul>
-<li><p>为防止由于大量证书错误所产生的性能问题，我们对使用 <strong>开发证书</strong> 的推送做了设备数量的限制，即一次至多可以向 20,000 个设备进行推送。如果满足推送条件的设备超过了 20,000 个，系统会拒绝此次推送，并在 <a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 &gt; 消息 &gt; 推送记录</a> 页面中体现。因此，在使用开发证书推送时，请合理设置推送条件。</p>
-</li>
-<li><p>Apple 对推送消息大小有限制，对 iOS 推送请尽量缩小要发送的数据大小，否则会被截断。详情请参看 <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/APNsProviderAPI.html#//apple_ref/doc/uid/TP40008194-CH101-SW1">APNs 文档</a>。</p>
-</li>
-<li>如果使用了 Android 的混合推送，请注意小米推送和华为推送均对消息大小有限制。为保证推送消息能被正常发送，我们要求 data + channels 参数须小于 4096 字节，超过限制会导致推送无法正常发送，请尽量减小发送数据大小。</li>
-<li>对于 silent 参数不为 true 的通知栏消息来说，title 必须小于 16 个字符，alert 必须小于 128 个字符。对于小米推送如果没有填写 title 我们会取 alert 中前五个字符作为 title。</li>
+<li>为避免给大量早已不再活跃的用户发消息，我们限制只能给 <code>_Installation</code> 表内 <code>updatedAt</code> 时间在最近三个月以内的设备推送消息。我们会在根据推送查询条件查出目标设备后自动将不符合条件的设备从目标设备中剔除，并且被剔除的设备不会计入<a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 &gt; 消息 &gt; 推送记录</a> 内的目标设备数中。</li>
+<li>为防止由于大量证书错误所产生的性能问题，我们对使用 <strong>开发证书</strong> 的推送做了设备数量的限制，即一次至多可以向 20,000 个设备进行推送。如果满足推送条件的设备超过了 20,000 个，系统会拒绝此次推送，在 <a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 &gt; 消息 &gt; 推送记录</a> 中的 <strong>状态</strong> 一栏显示「错误」，提示信息为「dev profile disabled for massive push」。因此，在使用开发证书推送时，请合理设置推送条件。</li>
+<li>Apple 对推送消息大小有限制，对 iOS 推送请尽量缩小要发送的数据大小，否则会被截断。详情请参看 <a href="https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/PayloadKeyReference.html">APNs 文档</a>。</li>
+<li>如果使用了 Android 的混合推送，请注意华为推送对消息大小有限制。为保证推送消息能被正常发送，我们要求 data + channels 参数须小于 4096 字节，超过限制会导致推送无法正常发送，请尽量减小发送数据大小。</li>
+<li>每个开发版应用处在待发队列中的定时推送数量最多 10 条，每个商用版应用处在待发队列中的定时推送数量最多 1000 条。</li>
 </ul>
-<p>如果推送失败，在 <a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 &gt; 消息 &gt; 推送记录</a> 的 <strong>状态</strong> 一栏中会看到错误提示。</p>
+<p>如果推送失败，在 <a href="/messaging.html?appid={{appid}}#/message/push/list">控制台 &gt; 消息 &gt; 推送记录 &gt; 状态</a> 一栏中会看到错误提示。</p>
 <h2 id="installation-">Installation 自动过期和清理</h2>
 <p>每当用户打开应用，我们都会更新该设备的 <code>_Installation</code> 表中的 <code>updatedAt</code> 时间戳。如果用户长期没有更新 <code>_Installation</code> 表的 <code>updatedAt</code> 时间戳，也就意味着该用户长期没有打开过应用。当超过 360 天没有打开过应用时，我们会将这个用户在 <code>_Installation</code> 表中的记录删除。不过请不要担心，当用户再次打开应用的时候，仍然会自动创建一个新的 Installation 用于推送。</p>
 <p>对于 iOS 设备，除了上述过期机制外还多拥有一套过期机制。当我们根据 Apple 推送服务的反馈获取到某设备的 deviceToken 已过期时，我们也会将这个设备在 <code>_Installation</code> 表中的信息删除，并标记这个已过期的 deviceToken 为无效，丢弃后续所有发送到该 deviceToken 的消息。</p>
 <h2 id="-">推送问题排查</h2>
 <p>推送因为环节较多，跟设备和网络都相关，并且调用都是异步化，因此问题比较难以查找，这里提供一些有用助于排查消息推送问题的技巧。</p>
+<h3 id="-">为什么成功设备数小于目标设备数？</h3>
+<p>「目标设备数」是指符合本次推送查询条件的有效设备数量，「成功设备数」是指这次推送成功到达的设备数量。没有到达设备一般有以下几种情况：</p>
+<ul>
+<li>Android 设备中的应用被杀掉，在网络中处于离线状态。对于这种情况，稍等一段时间待设备上线后，成功设备数就会逐渐增加。同时推荐集成 <a href="android_push_guide.html#混合推送">混合推送</a> 来提升推送到达率。</li>
+<li>Android 用户删掉或重装应用生成了新的设备数据，之前的无效数据被包含到了成功设备数中。</li>
+<li>iOS 用户删掉或重装了应用，之前的无效数据被包含到了成功设备数中，这些数量就是 invalidTokens 数量。</li>
+</ul>
+<h3 id="-">为什么只能给三个月内活跃过的设备发消息？能否发全量设备？</h3>
+<p>我们只允许开发者给 <code>_Installation</code> 表中 <strong>updatedAt</strong> 值为<strong>最近三个月以内</strong>的设备推送消息。原因如下：</p>
+<ul>
+<li>三个月没有活跃过的设备，用户打开推送的概率已经非常小了，我们将这些不活跃的设备视为无效设备。</li>
+<li>成本原因。全量推送需要处理的无效设备数量会成倍增长，因而会消耗大量云端资源，其中一个能被用户感知到的影响就是推送时间，目标设备数成倍增长也意味着单次全量推送的时间也成倍增长。</li>
+</ul>
+<p>基于以上考虑，我们默认只能向三个月以内活跃过的设备发消息。如果您确实需要给全量设备发消息，可以联系 <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x6c;&#x65;&#97;&#x6e;&#x63;&#108;&#111;&#117;&#x64;&#x2e;&#114;&#111;&#99;&#x6b;&#115;">&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x6c;&#x65;&#97;&#x6e;&#x63;&#108;&#111;&#117;&#x64;&#x2e;&#114;&#111;&#99;&#x6b;&#115;</a> 使用我们的企业版服务，我们将为您的应用创建独立集群来提供推送服务。</p>
+<h3 id="-0-">为什么推送记录的目标设备数为 0？</h3>
+<p>在 <a href="/dashboard/messaging.html?appid={{appid}}#/message/push/list">控制台的推送记录</a> 中，「目标设备数」是指符合本次推送查询条件的有效设备数量。该值为 0 时请检查<u>推送查询条件及目标设备是否有效</u>。另外请参考 <a href="#限制">目标设备数的限制</a>。</p>
+<h3 id="-">为什么推送记录的内容为空？</h3>
+<p>在 <a href="/dashboard/messaging.html?appid={{appid}}#/message/push/list">控制台的推送记录</a> 中，当针对不同目标设备类型设置了不同消息内容时，「内容」一栏会显示为空，需要点击消息的「ID」打开推送详情来查看具体的内容。</p>
 <h3 id="-">推送结果查询</h3>
 <p>所有经过 <code>/push</code> 接口发出的消息的都可以在控制台的消息菜单里的推送记录看到。每次调用 <code>/push</code> 都将产生一条新的 推送记录表示一次推送。该表的各属性含义请参考 <a href="#Notification">Notification 表详解</a> 。</p>
 <p><code>/push</code> 接口会返回新建的推送记录的 <code>objectId</code>，你就可以在推送记录里根据 ID 查询消息推送的结果。</p>
@@ -1093,7 +1215,7 @@ https://leancloud.cn/1.1/push
         <li ng-show="currentComments.length<1">暂无评论</li>
         <li ng-repeat="comment in currentComments">
           <div class="comment-author">{{comment.author}}</div>
-          <div class="comment-timestamp">{{ comment.updatedAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
+          <div class="comment-timestamp">{{ comment.createdAt | date: 'yyyy-MM-dd HH:mm:ss '}}</div>
           <div class="comment-content">{{comment.content}}</div>
         </li>
       </ul>
@@ -1116,12 +1238,8 @@ https://leancloud.cn/1.1/push
 <script src="https://download.leancloud.cn/sdk/latest.js"></script>
 
 
-
-
 <script src="custom/js/lib/contents.js"></script>
 <script src="custom/js/md.js"></script>
-
-
 
 
 <script type="text/javascript">
@@ -1163,29 +1281,26 @@ $(function(){
 
 
 
-
-
-
   <footer class="footer" role="contentinfo">
   <div class="container-fluid">
-    <a href="http://leancloud.cn/" class="logo font-logo pull-left">
+    <!-- <a href="http://leancloud.cn/" class="logo font-logo pull-left">
       LeanCloud
-    </a>
+    </a> -->
 
     <ul class="footer-links pull-right">
       <li class="muted">·</li>
-      <li><a href="/pricing.html">价格</a></li>
+      <li><a href="/pricing">价格</a></li>
       <li class="muted">·</li>
       <li><a href="/docs/sdk_down.html">下载</a></li>
-      <li class="muted">·</li>
-      <li><a href="/apps.html" target="_self">App</a></li>
+      <!-- <li class="muted">·</li>
+      <li><a href="/apps.html" target="_self">App</a></li> -->
       <li class="muted">·</li>
       <li><a href="http://leancloud.cn/docs/faq.html" target="_self">常见问题</a></li>
       <li class="muted">·</li>
       <li><a href="http://leanticket.cn" target="_self"><span class="mobile-hide">技术</span>支持</a></li>
       <!-- <li><a href="http://ticket.leancloud.cn/tickets?token={{user.session_token || 'Gs5Xw4vjyCznrP6OcgMheOWDuatVpbFPiL78eMo6JC0dENB8'}}" target="_blank"><span class="mobile-hide">用户</span>反馈</a></li> -->
       <li class="muted">·</li>
-      <li><a href="//status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
+      <li><a href="https://status.leancloud.cn/"><span class="mobile-hide">健康</span>状态</a></li>
       <li class="muted">·</li>
       <li><a href="http://forum.leancloud.cn/">社区</a></li>
       <li class="muted">·</li>
