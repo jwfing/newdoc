@@ -138,7 +138,7 @@
         </ul>
         <!-- hide search input on the home page -->
         
-          <form role="search" action="/search.html" method="get">
+          <form role="search" action="https://newdoc.leanapp.cn/search" method="get">
             <div class="app-search">
               <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
             </div>
@@ -442,7 +442,7 @@
       <div class="doc-content with-comment" id="content">
         <div class="docs-meta">
           <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
-        <span class="doc-mdate" data-toggle="tooltip" title="2017年5月23日下午1点38分">更新于 <time datetime="2017-05-23T13:38:11+08:00">2017-05-23</time></span></div>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月25日上午10点53分">更新于 <time datetime="2017-10-25T10:53:03+08:00">2017-10-25</time></span></div>
         <h1 id="-">离线数据分析指南</h1>
 <p>针对大规模数据的分析任务一般都比较耗时。LeanCloud 为开发者提供了部分兼容 SQL 语法的离线数据分析功能。所谓「离线分析」，是指运行分析程序的机器和服务 API 请求的机器是分开的，这样可以尽量减少线上集群的压力，也就是说，使用离线分析并不会影响或牺牲线上正式数据的访问性能。</p>
 <p>离线分析的数据来源，对于普通表来说就是线上实时数据，而对于 <a href="https://blog.leancloud.cn/3838/">日志表</a> 则是<strong>前一天的数据备份（并非最新的在线数据）</strong>，这一点需要大家注意。</p>

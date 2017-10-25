@@ -138,7 +138,7 @@
         </ul>
         <!-- hide search input on the home page -->
         
-          <form role="search" action="/search.html" method="get">
+          <form role="search" action="https://newdoc.leanapp.cn/search" method="get">
             <div class="app-search">
               <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
             </div>
@@ -442,7 +442,7 @@
       <div class="doc-content with-comment" id="content">
         <div class="docs-meta">
           <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
-        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月25日上午10点53分">更新于 <time datetime="2017-10-25T10:53:03+08:00">2017-10-25</time></span></div>
         <script type="text/javascript">
 angular.module("app").run(['$rootScope', function($rootScope) {
   $rootScope.service = 'push';
@@ -1163,7 +1163,7 @@ https://{{v2Domain}}/1.1/push
 <li>三个月没有活跃过的设备，用户打开推送的概率已经非常小了，我们将这些不活跃的设备视为无效设备。</li>
 <li>成本原因。全量推送需要处理的无效设备数量会成倍增长，因而会消耗大量云端资源，其中一个能被用户感知到的影响就是推送时间，目标设备数成倍增长也意味着单次全量推送的时间也成倍增长。</li>
 </ul>
-<p>基于以上考虑，我们默认只能向三个月以内活跃过的设备发消息。如果您确实需要给全量设备发消息，可以联系 <a href="&#x6d;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x6c;&#x65;&#97;&#x6e;&#x63;&#108;&#111;&#117;&#x64;&#x2e;&#114;&#111;&#99;&#x6b;&#115;">&#115;&#117;&#x70;&#x70;&#111;&#114;&#116;&#x40;&#x6c;&#x65;&#97;&#x6e;&#x63;&#108;&#111;&#117;&#x64;&#x2e;&#114;&#111;&#99;&#x6b;&#115;</a> 使用我们的企业版服务，我们将为您的应用创建独立集群来提供推送服务。</p>
+<p>基于以上考虑，我们默认只能向三个月以内活跃过的设备发消息。如果您确实需要给全量设备发消息，可以联系 <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#x3a;&#115;&#117;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#99;&#x6b;&#x73;">&#115;&#117;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#99;&#x6b;&#x73;</a> 使用我们的企业版服务，我们将为您的应用创建独立集群来提供推送服务。</p>
 <h3 id="-0-">为什么推送记录的目标设备数为 0？</h3>
 <p>在 <a href="/dashboard/messaging.html?appid={{appid}}#/message/push/list">控制台的推送记录</a> 中，「目标设备数」是指符合本次推送查询条件的有效设备数量。该值为 0 时请检查<u>推送查询条件及目标设备是否有效</u>。另外请参考 <a href="#限制">目标设备数的限制</a>。</p>
 <h3 id="-">为什么推送记录的内容为空？</h3>

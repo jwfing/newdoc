@@ -138,7 +138,7 @@
         </ul>
         <!-- hide search input on the home page -->
         
-          <form role="search" action="/search.html" method="get">
+          <form role="search" action="https://newdoc.leanapp.cn/search" method="get">
             <div class="app-search">
               <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
             </div>
@@ -442,7 +442,7 @@
       <div class="doc-content with-comment" id="content">
         <div class="docs-meta">
           <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
-        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月25日上午10点53分">更新于 <time datetime="2017-10-25T10:53:03+08:00">2017-10-25</time></span></div>
         <h1 id="rest-api-">REST API 使用详解</h1>
 <p>REST API 可以让你用任何支持发送 HTTP 请求的设备来与 LeanCloud 进行交互，你可以使用 REST API 做很多事情，比如：</p>
 <ul>
@@ -2101,7 +2101,7 @@ https://{{v2Domain}}/1.1/login
      }
   }
 </code></pre>
-<p>要保证一个第三方账号只绑定到一个 LeanCloud 应用内用户上，就需要为 <code>_User</code> 表中的 <code>authData.第三方平台名称.uid</code> 建立唯一索引；另外当 <code>_User</code> 表的记录数量超过了 1 万条，用户也无法自行创建该索引。这两种操作都需要提交工单或联系 <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#x3a;&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#x63;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#x63;&#107;&#x73;">&#x73;&#117;&#112;&#x70;&#x6f;&#x72;&#x74;&#x40;&#x6c;&#101;&#97;&#x6e;&#x63;&#x6c;&#x6f;&#x75;&#100;&#46;&#114;&#111;&#x63;&#107;&#x73;</a> 来创建。</p>
+<p>要保证一个第三方账号只绑定到一个 LeanCloud 应用内用户上，就需要为 <code>_User</code> 表中的 <code>authData.第三方平台名称.uid</code> 建立唯一索引；另外当 <code>_User</code> 表的记录数量超过了 1 万条，用户也无法自行创建该索引。这两种操作都需要提交工单或联系 <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x73;&#117;&#x70;&#112;&#x6f;&#x72;&#116;&#x40;&#108;&#x65;&#x61;&#x6e;&#x63;&#x6c;&#x6f;&#117;&#100;&#x2e;&#x72;&#111;&#x63;&#107;&#115;">&#x73;&#117;&#x70;&#112;&#x6f;&#x72;&#116;&#x40;&#108;&#x65;&#x61;&#x6e;&#x63;&#x6c;&#x6f;&#117;&#100;&#x2e;&#x72;&#111;&#x63;&#107;&#115;</a> 来创建。</p>
 <h4 id="-authdata">获取 authData</h4>
 <p>authData 的数据<u>默认为不可查询</u>，也就是说它既不包含在当前登录用户的数据中，也无法在 query 中以 include 或 fetch 来获取。要更改这一默认行为，需要进入 <a href="/dashboard/data.html?appid={{appid}}#/_User">应用控制台 &gt; 存储 &gt; _User 表</a>，点击 authData 字段右侧的箭头，选择 <strong>编辑</strong>，关掉「列属性」里的「客户端不可见」选项才能获取到。</p>
 <h4 id="-">注册和登录</h4>

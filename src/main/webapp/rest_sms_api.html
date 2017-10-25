@@ -138,7 +138,7 @@
         </ul>
         <!-- hide search input on the home page -->
         
-          <form role="search" action="/search.html" method="get">
+          <form role="search" action="https://newdoc.leanapp.cn/search" method="get">
             <div class="app-search">
               <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
             </div>
@@ -442,7 +442,7 @@
       <div class="doc-content with-comment" id="content">
         <div class="docs-meta">
           <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
-        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月25日上午10点53分">更新于 <time datetime="2017-10-25T10:53:03+08:00">2017-10-25</time></span></div>
         <h1 id="-rest-api-">短信服务 REST API 详解</h1>
   <div class="callout callout-danger">
   <p><a href="https://us.leancloud.cn">美国节点</a> 尚不支持短信服务，因此以下内容不适用于美国节点。</p>
@@ -995,7 +995,7 @@
 <li>请注意一天内不要往同一号码发送超过 5 条验证码短信（包含语音验证码）；</li>
 <li>对于实在无法送达的少量手机号码，请转用 <a href="https://blog.leancloud.cn/3202/">语音验证码</a>，将短信内容通过语音电话直接发送。强烈建议大家在产品上，对于同一用户尝试再次获取验证码的情况，换用语音验证码来保证绝对送达（语音验证码收费与文本短信一样）。</li>
 </ul>
-<p>如果需要详查原因，请将 appId 及手机号发送到 <a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#x3a;&#x73;&#117;&#x70;&#x70;&#111;&#x72;&#x74;&#x40;&#x6c;&#x65;&#x61;&#110;&#x63;&#x6c;&#111;&#117;&#x64;&#x2e;&#114;&#x6f;&#x63;&#x6b;&#x73;">&#x73;&#117;&#x70;&#x70;&#111;&#x72;&#x74;&#x40;&#x6c;&#x65;&#x61;&#110;&#x63;&#x6c;&#111;&#117;&#x64;&#x2e;&#114;&#x6f;&#x63;&#x6b;&#x73;</a>，我们联系运营商查询详情。</p>
+<p>如果需要详查原因，请将 appId 及手机号发送到 <a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#115;&#x75;&#x70;&#x70;&#111;&#x72;&#116;&#x40;&#x6c;&#101;&#97;&#110;&#x63;&#x6c;&#x6f;&#117;&#x64;&#46;&#x72;&#111;&#x63;&#x6b;&#x73;">&#115;&#x75;&#x70;&#x70;&#111;&#x72;&#116;&#x40;&#x6c;&#101;&#97;&#110;&#x63;&#x6c;&#x6f;&#117;&#x64;&#46;&#x72;&#111;&#x63;&#x6b;&#x73;</a>，我们联系运营商查询详情。</p>
 <h3 id="-">短信签名是什么？必须的吗？</h3>
 <p>短信签名是指短信内容里用【】括起来的短信发送方名称，根据运营商的规定，它必须出现在<strong>短信内容的开头或结尾</strong>。你需要在 <a href="/messaging.html?appid=#/message/sms/conf">控制台 &gt; 消息 &gt; 短信 &gt; 设置 &gt; 短信签名</a> 为每个应用创建合法的短信签名。如果一个应用拥有多个短信签名，请确保选择其一作为<strong>默认签名</strong>。</p>
   <div class="callout callout-danger">

@@ -138,7 +138,7 @@
         </ul>
         <!-- hide search input on the home page -->
         
-          <form role="search" action="/search.html" method="get">
+          <form role="search" action="https://newdoc.leanapp.cn/search" method="get">
             <div class="app-search">
               <input name="q" type="text" class="form-control" placeholder="搜索文档&hellip;">
             </div>
@@ -442,7 +442,7 @@
       <div class="doc-content with-comment" id="content">
         <div class="docs-meta">
           <span class="icon icon-github"></span><a href="https://github.com/leancloud/docs#贡献">编辑文档</a>
-        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月23日晚上11点29分">更新于 <time datetime="2017-10-23T23:29:16+08:00">2017-10-23</time></span></div>
+        <span class="doc-mdate" data-toggle="tooltip" title="2017年10月25日上午10点53分">更新于 <time datetime="2017-10-25T10:53:03+08:00">2017-10-25</time></span></div>
         <h1 id="-middot-objective-c">实时通信开发指南 &middot; Objective-C</h1>
 <p>实时通信服务可以让你一行后端代码都不用写，就能做出一个功能完备的实时聊天应用，或是一个实时对战类的游戏。所有聊天记录都保存在云端，离线消息会通过消息推送来及时送达，推送消息文本可以灵活进行定制。</p>
 <p>在继续阅读本文档之前，请先阅读<a href="./realtime_v2.html">《实时通信开发指南》</a>，了解一下实时通信的基本概念和模型。</p>
@@ -1380,7 +1380,7 @@ AVIMMessage *newMessage = [AVIMTextMessage messageWithText:@&quot;Just a new mes
 </code></pre>
 <p>注意：修改和撤回会更新或删除在本地缓存和云端的对应的聊天记录。</p>
 <h3 id="-">消息的有效期</h3>
-<p>一个对话的消息记录会在云端保留 <strong>6 个月</strong>，也就是说一个对话可以查询到半年之内的历史消息记录。开发者可以付费来延长这一期限，请联系 <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x73;&#117;&#112;&#x70;&#x6f;&#114;&#116;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#x6f;&#x75;&#100;&#x2e;&#x72;&#111;&#99;&#107;&#x73;">&#x73;&#117;&#112;&#x70;&#x6f;&#114;&#116;&#64;&#x6c;&#x65;&#97;&#110;&#99;&#x6c;&#x6f;&#x75;&#100;&#x2e;&#x72;&#111;&#99;&#107;&#x73;</a>。相关参考 <a href="#对话的有效期">对话的有效期</a>。</p>
+<p>一个对话的消息记录会在云端保留 <strong>6 个月</strong>，也就是说一个对话可以查询到半年之内的历史消息记录。开发者可以付费来延长这一期限，请联系 <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#x6f;&#x3a;&#x73;&#x75;&#112;&#x70;&#111;&#x72;&#x74;&#64;&#x6c;&#x65;&#x61;&#x6e;&#99;&#108;&#x6f;&#117;&#x64;&#46;&#x72;&#111;&#x63;&#x6b;&#115;">&#x73;&#x75;&#112;&#x70;&#111;&#x72;&#x74;&#64;&#x6c;&#x65;&#x61;&#x6e;&#99;&#108;&#x6f;&#117;&#x64;&#46;&#x72;&#111;&#x63;&#x6b;&#115;</a>。相关参考 <a href="#对话的有效期">对话的有效期</a>。</p>
 <h2 id="-">对话</h2>
 <p>以上章节基本演示了实时通信 SDK 的核心概念「对话」，即 <code>AVIMConversation</code>。我们将单聊和群聊（包括聊天室）的消息发送和接收都依托于 <code>AVIMConversation</code> 这个统一的概念进行操作，所以开发者需要强化理解的一个概念就是：</p>
 <blockquote>
